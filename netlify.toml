@@ -1,0 +1,8 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+ ￼
+[build]
+  publish = "./dist/"
+  command = "export ELM_HOME=\"$NETLIFY_CACHE_DIR/elm\" && yarn build"
