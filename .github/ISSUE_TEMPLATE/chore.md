@@ -1,0 +1,12 @@
+---
+name: Task
+about: Create a new task ticket
+
+---
+
+## Description
+What needs doing?
+
+## Plan
+- [ ] Step one to achieve this.
+- [ ] Step two to achieve this.
