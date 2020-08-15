@@ -4,5 +4,10 @@
   status = 200
 
 [build]
-  publish = "./dist/"
-  command = "export ELM_HOME=\"$NETLIFY_CACHE_DIR/elm\" && yarn build"
+  publish = "dist"
+  command = "export ELM_HOME=\"elm-stuff\" && npm run build"
+
+[[plugins]]
+  package = "netlify-plugin-cache"
+    [plugins.inputs]
+    paths = ["elm-stuff"]
