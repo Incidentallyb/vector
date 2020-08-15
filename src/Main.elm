@@ -3,10 +3,11 @@ module Main exposing (main)
 import Browser
 import Browser.Dom
 import Browser.Navigation
-import Html exposing (Html)
+import Html exposing (Html, a, div, h1, li, text, ul)
+import Html.Attributes exposing (href)
 import Task
 import Url
-import Url.Parser as Parser exposing ((</>), Parser, map, oneOf, s, string, top)
+import Url.Parser as Parser exposing (Parser, map, oneOf, s, top)
 
 
 
@@ -77,7 +78,51 @@ viewDocument model =
 
 view : Model -> Html Msg
 view model =
-    Html.div [] [ Html.text "Hej" ]
+    case model.page of
+        Desktop ->
+            div []
+                [ renderHeading "Desktop"
+                , renderNavLinks
+                ]
+
+        Document ->
+            div []
+                [ renderHeading "Documents"
+                , renderNavLinks
+                ]
+
+        Email ->
+            div []
+                [ renderHeading "Emails"
+                , renderNavLinks
+                ]
+
+        Message ->
+            div []
+                [ renderHeading "Messages"
+                , renderNavLinks
+                ]
+
+        Tweet ->
+            div []
+                [ renderHeading "Tweets"
+                , renderNavLinks
+                ]
+
+
+renderHeading : String -> Html Msg
+renderHeading title =
+    h1 [] [ text title ]
+
+
+renderNavLinks : Html Msg
+renderNavLinks =
+    ul []
+        [ li [] [ a [ href "document" ] [ text "documents" ] ]
+        , li [] [ a [ href "email" ] [ text "emails" ] ]
+        , li [] [ a [ href "message" ] [ text "mesages" ] ]
+        , li [] [ a [ href "tweet" ] [ text "tweets" ] ]
+        ]
 
 
 
@@ -86,8 +131,8 @@ view model =
 
 type Route
     = Desktop
-    | Email
     | Document
+    | Email
     | Message
     | Tweet
 
@@ -96,8 +141,8 @@ routeParser : Parser (Route -> a) a
 routeParser =
     oneOf
         [ Parser.map Desktop Parser.top
-        , Parser.map Email (Parser.s "email")
         , Parser.map Document (Parser.s "document")
+        , Parser.map Email (Parser.s "email")
         , Parser.map Message (Parser.s "message")
         , Parser.map Tweet (Parser.s "tweet")
         ]
