@@ -7,7 +7,7 @@ about: Create a feature request
 ## User story & Acceptance criteria
 Trello card: {{link}}
 
-### Implemenation notes
+### Implementation notes
 
 ### Implementation plan
 - [ ] criteria one
