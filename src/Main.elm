@@ -120,7 +120,7 @@ renderNavLinks =
     ul []
         [ li [] [ a [ href "document" ] [ text "documents" ] ]
         , li [] [ a [ href "email" ] [ text "emails" ] ]
-        , li [] [ a [ href "message" ] [ text "mesages" ] ]
+        , li [] [ a [ href "message" ] [ text "messages" ] ]
         , li [] [ a [ href "tweet" ] [ text "tweets" ] ]
         ]
 
