@@ -31,8 +31,10 @@ We recommend integrating `elm-format@0.8.3` into your code editor, but if you do
 - `yarn build` to generate a production build in `dist`
 
 ### Test
-
-- Todo
+We are using [elm test](https://package.elm-lang.org/packages/elm-explorations/test/latest).
+We don't have all the time in the world, so tests will be light.
+We aim to cover any exposed API in our modules and things with potential to fail and go unnoticed.
+- `yarn test` to run `elm-test`
 
 ## Deployment
 

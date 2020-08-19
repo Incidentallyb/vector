@@ -5,9 +5,9 @@
 
 [build]
   publish = "dist"
-  command = "export ELM_HOME=\"elm-stuff\" && npm run build"
+  command = "export ELM_HOME=\"elm-stuff\" && yarn test && yarn build"
 
 [[plugins]]
   package = "netlify-plugin-cache"
     [plugins.inputs]
-    paths = ["elm-stuff"]
+      paths = ["elm-stuff"]
