@@ -7,7 +7,7 @@ import Html exposing (Html, a, div, h1, li, text, ul)
 import Html.Attributes exposing (href)
 import Task
 import Url
-import Url.Parser as Parser exposing (Parser, map, oneOf, s, top)
+import Url.Parser as Parser exposing ((</>), Parser, int, map, oneOf, s, top)
 
 
 
@@ -85,25 +85,41 @@ view model =
                 , renderNavLinks
                 ]
 
-        Document ->
+        Documents ->
             div []
                 [ renderHeading "Documents"
                 , renderNavLinks
+                , renderDocumentList
                 ]
 
-        Email ->
+        Document id ->
+            div []
+                [ renderHeading "Single Document"
+                , renderNavLinks
+                , renderDocument id
+                ]
+
+        Emails ->
             div []
                 [ renderHeading "Emails"
                 , renderNavLinks
+                , renderEmailList
                 ]
 
-        Message ->
+        Email id ->
+            div []
+                [ renderHeading "Single Email"
+                , renderNavLinks
+                , renderEmail id
+                ]
+
+        Messages ->
             div []
                 [ renderHeading "Messages"
                 , renderNavLinks
                 ]
 
-        Tweet ->
+        Tweets ->
             div []
                 [ renderHeading "Tweets"
                 , renderNavLinks
@@ -118,11 +134,37 @@ renderHeading title =
 renderNavLinks : Html Msg
 renderNavLinks =
     ul []
-        [ li [] [ a [ href "document" ] [ text "documents" ] ]
-        , li [] [ a [ href "email" ] [ text "emails" ] ]
-        , li [] [ a [ href "message" ] [ text "messages" ] ]
-        , li [] [ a [ href "tweet" ] [ text "tweets" ] ]
+        [ li [] [ a [ href "/documents" ] [ text "documents" ] ]
+        , li [] [ a [ href "/emails" ] [ text "emails" ] ]
+        , li [] [ a [ href "/messages" ] [ text "messages" ] ]
+        , li [] [ a [ href "/tweets" ] [ text "tweets" ] ]
         ]
+
+
+renderDocumentList : Html Msg
+renderDocumentList =
+    ul []
+        [ li [] [ a [ href "/documents/1" ] [ text "Document number 1" ] ]
+        , li [] [ a [ href "/documents/2" ] [ text "Document number 2" ] ]
+        ]
+
+
+renderDocument : Int -> Html Msg
+renderDocument id =
+    div [] [ text ("Document with id: " ++ String.fromInt id) ]
+
+
+renderEmailList : Html Msg
+renderEmailList =
+    ul []
+        [ li [] [ a [ href "/emails/1" ] [ text "Email number 1" ] ]
+        , li [] [ a [ href "/emails/2" ] [ text "Email number 2" ] ]
+        ]
+
+
+renderEmail : Int -> Html Msg
+renderEmail id =
+    div [] [ text ("Email with id: " ++ String.fromInt id) ]
 
 
 
@@ -131,20 +173,24 @@ renderNavLinks =
 
 type Route
     = Desktop
-    | Document
-    | Email
-    | Message
-    | Tweet
+    | Documents
+    | Document Int
+    | Emails
+    | Email Int
+    | Messages
+    | Tweets
 
 
 routeParser : Parser (Route -> a) a
 routeParser =
     oneOf
-        [ Parser.map Desktop Parser.top
-        , Parser.map Document (Parser.s "document")
-        , Parser.map Email (Parser.s "email")
-        , Parser.map Message (Parser.s "message")
-        , Parser.map Tweet (Parser.s "tweet")
+        [ map Desktop top
+        , map Documents (s "documents")
+        , map Document (s "documents" </> int)
+        , map Emails (s "emails")
+        , map Email (s "emails" </> int)
+        , map Messages (s "messages")
+        , map Tweets (s "tweets")
         ]
 
 
