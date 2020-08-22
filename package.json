@@ -10,7 +10,10 @@
     "build": "./node_modules/.bin/webpack --config webpack.config.build.js",
     "test": "elm-test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "sw-precache-webpack-plugin": "^1.0.0",
+    "webpack-pwa-manifest": "^4.2.0"
+  },
   "devDependencies": {
     "copy-webpack-plugin": "^6.0.3",
     "elm": "^0.19.1-3",
