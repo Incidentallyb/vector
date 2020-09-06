@@ -14,6 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname + '/dist'),
     filename: '[name].js',
+    publicPath: '/',
   },
 
   plugins: [
@@ -62,6 +63,8 @@ module.exports = {
   },
 
   devServer: {
+    // Redirect 404s to index.html
+    historyApiFallback: true,
     inline: true,
     stats: { colors: true },
   },
