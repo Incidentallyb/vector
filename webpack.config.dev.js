@@ -1,11 +1,11 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-
 module.exports = {
   entry: {
     app: [
-      './src/index.js'
+        './src/index.js',
+        './src/styles/style.scss'
     ]
   },
 
@@ -28,16 +28,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        loader:  'file-loader?name=[name].[ext]',
-      },
-      {
-        test:    /\.html$/,
+        test: /\.html$/,
         exclude: /node_modules/,
-        loader:  'file-loader?name=[name].[ext]',
+        loader: 'file-loader?name=[name].[ext]',
       },
       {
-        test:    /\.elm$/,
+        test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
         use: [
           {
@@ -46,16 +42,31 @@ module.exports = {
               debug: true,
               optimize: false,
               verbose: true,
-            }
+            },
           },
         ],
       },
       {
-          test: /\.(png|jpg|gif|svg|ico|ttf|eot)$/,
-          loader: 'file-loader',
-          options: {
-              name: '[name].[ext]?[hash]'
-          }
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif|svg|ico|ttf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]',
+        },
       },
     ],
 
