@@ -1,11 +1,19 @@
-body { 
-    background:#9FB8F0;
-    padding:1em 0em;
+// Colours vars
+:root {
+  --background-colour: #9fb8f0;
+  --red: #dc3545;
+  --green: #28a745;
+  --blue: #007bff;
 }
 
-.nav.nav-pills { 
-    margin-top:1em;
-    a { 
-        color:#111; 
-    }
+body {
+  background: var(--background-colour);
+  padding: 1em 0em;
+}
+
+.nav.nav-pills {
+  margin-top: 1em;
+  a {
+    color: #111;
+  }
 }
