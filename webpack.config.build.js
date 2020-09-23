@@ -2,6 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
@@ -43,7 +44,11 @@ module.exports = {
         sizes: [192],
         destination: path.join('static', 'img')
       }]
-    })
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
   ],
 
   module: {
@@ -67,16 +72,33 @@ module.exports = {
               debug: false,
               optimize: true,
               verbose: false,
-            }
+            },
           },
         ],
       },
       {
-          test: /\.(png|jpg|gif|svg|ico|ttf|eot)$/,
-          loader: 'file-loader',
-          options: {
-              name: '[name].[ext]?[hash]'
-          }
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif|svg|ico|ttf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash:8].[ext]',
+        },
       },
     ],
 
