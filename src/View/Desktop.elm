@@ -17,6 +17,7 @@ view pageRoute =
         renderWrapperWithNav pageRoute [text "my desktop"]
     ]
 
+
 renderWrapperWithNav : Route -> List (Html Msg) -> Html Msg
 renderWrapperWithNav pageRoute elements  =
     div [ class "container" ] [
@@ -28,6 +29,8 @@ renderWrapperWithNav pageRoute elements  =
             div [ class "col" ] elements
         ]
     ]
+
+-- @todo implement "nav-link active" class using pageRoute
 
 renderNavLinks : Route -> Html Msg
 renderNavLinks pageRoute =
