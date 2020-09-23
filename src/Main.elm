@@ -3,6 +3,8 @@ module Main exposing (main)
 import Browser
 import Browser.Dom
 import Browser.Navigation
+import Copy.Keys exposing (Key(..))
+import Copy.Text exposing (t)
 import Html exposing (Html, a, div, h1, li, text, ul)
 import Html.Attributes exposing (href)
 import Message exposing (Msg(..))
@@ -71,53 +73,55 @@ update msg model =
 
 viewDocument : Model -> Browser.Document Msg
 viewDocument model =
-    { title = "Vector App", body = [ view model ] }
+    { title = t SiteTitle, body = [ view model ] }
 
 
 view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            View.Desktop.view
+            View.Desktop.view model.page
 
         Documents ->
             div []
-                [ renderHeading "Documents"
-                , View.Desktop.renderNavLinks
-                , renderDocumentList
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderDocumentList
+                    ]
                 ]
 
         Document id ->
             div []
-                [ renderHeading "Single Document"
-                , View.Desktop.renderNavLinks
-                , renderDocument id
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderDocument id
+                    ]
                 ]
 
         Emails ->
             div []
-                [ renderHeading "Emails"
-                , View.Desktop.renderNavLinks
-                , View.Emails.view
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ View.Emails.view
+                    ]
                 ]
 
         Email id ->
             div []
-                [ renderHeading "Single Email"
-                , View.Desktop.renderNavLinks
-                , View.Email.view id
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ View.Email.view id
+                    ]
                 ]
 
         Messages ->
             div []
-                [ renderHeading "Messages"
-                , View.Desktop.renderNavLinks
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderHeading "Messages"
+                    ]
                 ]
 
-        Tweets ->
+        Social ->
             div []
-                [ renderHeading "Tweets"
-                , View.Desktop.renderNavLinks
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderHeading "Social"
+                    ]
                 ]
 
 
@@ -129,8 +133,8 @@ renderHeading title =
 renderDocumentList : Html Msg
 renderDocumentList =
     ul []
-        [ li [] [ a [ href "/documents/1" ] [ text "Document number 1" ] ]
-        , li [] [ a [ href "/documents/2" ] [ text "Document number 2" ] ]
+        [ li [] [ a [ href (Route.toString (Document 1)) ] [ text "Document number 1" ] ]
+        , li [] [ a [ href (Route.toString (Document 2)) ] [ text "Document number 2" ] ]
         ]
 
 
