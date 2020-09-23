@@ -32,9 +32,12 @@ t key =
 
         NavDocuments ->
             "Documents"
+
         NavEmails ->
             "Emails"
+
         NavMessages ->
             "Messages"
+
         NavSocial ->
             "Tweeeeter"

@@ -78,47 +78,47 @@ view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            View.Desktop.view model.page 
+            View.Desktop.view model.page
 
         Documents ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page [ 
-                        renderDocumentList 
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderDocumentList
                     ]
                 ]
 
         Document id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page [ 
-                        renderDocument id 
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderDocument id
                     ]
                 ]
 
         Emails ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page [
-                        renderEmailList 
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderEmailList
                     ]
                 ]
 
         Email id ->
             div []
-                [ View.Desktop.renderWrapperWithNav  model.page [ 
-                        renderEmail id 
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderEmail id
                     ]
                 ]
 
         Messages ->
             div []
-                [ View.Desktop.renderWrapperWithNav  model.page [ 
-                        renderHeading "Messages"
-                    ] 
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderHeading "Messages"
+                    ]
                 ]
 
         Social ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page [ 
-                    renderHeading "Social"
+                [ View.Desktop.renderWrapperWithNav model.page
+                    [ renderHeading "Social"
                     ]
                 ]
 
