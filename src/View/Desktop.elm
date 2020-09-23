@@ -8,12 +8,6 @@ import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 
-
-iconSize : Int
-iconSize =
-    24
-
-
 view : Route -> Html Msg
 view pageRoute =
     div []
@@ -44,8 +38,7 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Documents)
             ]
-            [ documentText [ width iconSize, height iconSize ]
-            , text " "
+            [ documentText []
             , text (t NavDocuments)
             , text " "
             , span [ class "badge badge-secondary" ] [ text "4" ]
@@ -57,8 +50,7 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Emails)
             ]
-            [ mail [ width iconSize, height iconSize ]
-            , text " "
+            [ mail []
             , text (t NavEmails)
             ]
         , a
@@ -68,8 +60,7 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Messages)
             ]
-            [ chatAlt [ width iconSize, height iconSize ]
-            , text " "
+            [ chatAlt []
             , text (t NavMessages)
             ]
         , a
@@ -79,8 +70,7 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Social)
             ]
-            [ hashtag [ width iconSize, height iconSize ]
-            , text " "
+            [ hashtag []
             , text (t NavSocial)
             ]
         ]

@@ -41,3 +41,6 @@ t key =
 
         NavSocial ->
             "Tweeeeter"
+        
+        NavDocumentsBackTo -> 
+            "Back to Documents"

@@ -15,3 +15,5 @@ type Key
     | NavEmails
     | NavMessages
     | NavSocial
+      --- "Back to" area texts
+    | NavDocumentsBackTo

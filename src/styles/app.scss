@@ -1,11 +1,21 @@
+$background: #9FB8F0;
+$navTextForeground: #111;
+
 body { 
-    background:#9FB8F0;
+    background: $background;
     padding:1em 0em;
 }
 
 .nav.nav-pills { 
     margin-top:1em;
     a { 
-        color:#111; 
+        color: $navTextForeground;
     }
+}
+
+a.btn > svg,
+a.nav-link > svg { 
+    width:24px; 
+    height:24px;
+    margin-right:0.5em;
 }
