@@ -4,4 +4,6 @@ require('./styles/style.scss');
 
 const { Elm } = require('./Main.elm');
 
-const app = Elm.Main.init({});
+const messages = require('../data/test.json');
+
+const app = Elm.Main.init({flags : {messages: messages}});
