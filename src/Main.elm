@@ -3,6 +3,8 @@ module Main exposing (main)
 import Browser
 import Browser.Dom
 import Browser.Navigation
+import Copy.Keys exposing (Key(..))
+import Copy.Text exposing (t)
 import Html exposing (Html, a, div, h1, li, text, ul)
 import Html.Attributes exposing (href)
 import Message exposing (Msg(..))
@@ -69,7 +71,7 @@ update msg model =
 
 viewDocument : Model -> Browser.Document Msg
 viewDocument model =
-    { title = "Vector App", body = [ view model ] }
+    { title = t SiteTitle, body = [ view model ] }
 
 
 view : Model -> Html Msg

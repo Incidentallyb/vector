@@ -12,7 +12,7 @@ t key =
     case key of
         -- Meta
         SiteTitle ->
-            "Economic Abuse Guide"
+            "Vector App"
 
         -- Slugs
         DesktopSlug ->
