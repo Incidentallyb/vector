@@ -1,6 +1,10 @@
 // Colours vars
 :root {
   --background-colour: #9fb8f0;
+  --white: #ffffff;
+  --grey-light: #f5f7f7;
+  --grey: #e3e8ea;
+  --black: #111111;
   --red: #dc3545;
   --green: #28a745;
   --blue: #007bff;
@@ -14,6 +18,6 @@ body {
 .nav.nav-pills {
   margin-top: 1em;
   a {
-    color: #111;
+    color: var(--black);
   }
 }
