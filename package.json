@@ -8,6 +8,7 @@
     "format": "elm-format src",
     "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.js --port 3000 --hot",
     "build": "./node_modules/.bin/webpack --config webpack.config.build.js",
+    "generate": "m2j -o ./content.json ./content/emails",
     "test": "elm-test"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "elm-test": "^0.19.0-rev6",
     "elm-webpack-loader": "^6.0.1",
     "file-loader": "^6.0.0",
+    "markdown-to-json": "^0.5.4",
     "mini-css-extract-plugin": "^0.11.2",
     "netlify-plugin-cache": "^1.0.3",
     "postcss-loader": "^4.0.2",
