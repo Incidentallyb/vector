@@ -21,15 +21,15 @@ view emailId =
         info =
             emailInfoFromId emailId
     in
-    article [ classList [ ( "email", True ), ( "p-3", True ) ] ]
+    article [ class "email p-3" ]
         [ h2 [] [ text info.subject ]
-        , div [ classList [ ( "d-flex", True ), ( "align-items-center", True ) ] ]
-            [ div [ classList [ ( "email-icon", True ), ( info.colour, True ) ], ariaHidden True ]
+        , div [ class "d-flex align-items-center" ]
+            [ div [ class ("email-icon " ++ info.colour), ariaHidden True ]
                 [ text (String.left 1 info.from)
                 ]
-            , div [ classList [ ( "ml-3", True ) ] ] [ text info.from ]
+            , div [ class "ml-3" ] [ text info.from ]
             ]
-        , div [ classList [ ( "mt-3", True ) ] ] [ text info.content ]
+        , div [ class "mt-3" ] [ text info.content ]
         ]
 
 

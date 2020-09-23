@@ -22,10 +22,10 @@ renderEmail from subject routeId colour =
     li
         [ class "email-list-item" ]
         [ a [ class "text-body", href (Route.toString (Email routeId)) ]
-            [ div [ classList [ ( "email-icon", True ), ( colour, True ) ], ariaHidden True ]
+            [ div [ class ("email-icon " ++ colour), ariaHidden True ]
                 [ text (String.left 1 from)
                 ]
-            , div [ classList [ ( "email-info", True ), ( "ml-3", True ) ] ]
+            , div [ class "email-info ml-3" ]
                 [ h2 [ class "m-0" ] [ text subject ]
                 , p [ class "m-0" ] [ text from ]
                 ]
