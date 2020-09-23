@@ -6,7 +6,6 @@ import Html.Attributes.Aria exposing (ariaHidden)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import String
-import View.Desktop exposing (..)
 
 
 view : Html Msg
