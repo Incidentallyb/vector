@@ -22,6 +22,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: './src/assets', to: './'},
+        { from: './data', to: './data'},
       ]
     }),
     new SWPrecacheWebpackPlugin({

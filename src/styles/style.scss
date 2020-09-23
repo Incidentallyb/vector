@@ -2,6 +2,8 @@
 @import 'bootstrap/bootstrap-grid.scss';
 @import 'bootstrap/bootstrap.scss';
 
+@import './app.scss';
+
 .email-list {
   background-color: #f5f7f7;
   list-style: none;
@@ -47,15 +49,15 @@
 
   // TODO make these use constants
   .red {
-    background-color: #dc3545;
+    background-color: var(--background-colour);
   }
 
   .green {
-    background-color: #28a745;
+    background-color: var(--background-colour);
   }
 
   .blue {
-    background-color: #007bff;
+    background-color: var(--background-colour);
   }
 
   h2 {

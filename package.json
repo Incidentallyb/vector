@@ -7,7 +7,12 @@
   "scripts": {
     "format": "elm-format src",
     "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.js --port 3000 --hot",
-    "build": "./node_modules/.bin/webpack --config webpack.config.build.js",
+    "build": "npm run generate && ./node_modules/.bin/webpack --config webpack.config.build.js",
+    "generate": "npm run generate_docs && npm run generate_emails && npm run generate_messages && npm run generate_social",
+    "generate_docs": "m2j -o ./data/documents.json -c ./content/documents/*.md",
+    "generate_emails": "m2j -o ./data/emails.json -c ./content/emails/*.md",
+    "generate_messages": "m2j -o ./data/messages.json -c ./content/messages/*.md",
+    "generate_social": "m2j -o ./data/social.json -c ./content/social/*.md",
     "test": "elm-test"
   },
   "dependencies": {
@@ -22,6 +27,7 @@
     "elm-test": "^0.19.0-rev6",
     "elm-webpack-loader": "^6.0.1",
     "file-loader": "^6.0.0",
+    "markdown-to-json": "^0.5.4",
     "mini-css-extract-plugin": "^0.11.2",
     "netlify-plugin-cache": "^1.0.3",
     "postcss-loader": "^4.0.2",
