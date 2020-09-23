@@ -29,3 +29,15 @@ t key =
 
         SocialSlug ->
             "social-media"
+
+        NavDocuments ->
+            "Documents"
+
+        NavEmails ->
+            "Emails"
+
+        NavMessages ->
+            "Messages"
+
+        NavSocial ->
+            "Tweeeeter"

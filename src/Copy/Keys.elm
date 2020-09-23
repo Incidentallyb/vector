@@ -10,3 +10,8 @@ type Key
     | EmailsSlug
     | MessagesSlug
     | SocialSlug
+      --- Navigation text
+    | NavDocuments
+    | NavEmails
+    | NavMessages
+    | NavSocial
