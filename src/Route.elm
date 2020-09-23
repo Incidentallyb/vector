@@ -1,4 +1,4 @@
-module Route exposing (Route(..), fromUrl, toString)
+module Route exposing (Route(..), fromUrl, isDocumentRoute, isEmailRoute, toString)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
@@ -45,6 +45,32 @@ toString route =
 
         Social ->
             "/" ++ t SocialSlug
+
+
+isDocumentRoute : Route -> Bool
+isDocumentRoute pageRoute =
+    case pageRoute of
+        Documents ->
+            True
+
+        Document _ ->
+            True
+
+        _ ->
+            False
+
+
+isEmailRoute : Route -> Bool
+isEmailRoute pageRoute =
+    case pageRoute of
+        Emails ->
+            True
+
+        Email _ ->
+            True
+
+        _ ->
+            False
 
 
 

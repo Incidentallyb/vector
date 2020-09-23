@@ -8,6 +8,7 @@ import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 
+
 view : Route -> Html Msg
 view pageRoute =
     div []
@@ -34,7 +35,7 @@ renderNavLinks pageRoute =
         [ a
             [ classList
                 [ ( "nav-link", True )
-                , ( "active", pageRoute == Route.Documents )
+                , ( "active", Route.isDocumentRoute pageRoute )
                 ]
             , href (Route.toString Route.Documents)
             ]
@@ -46,7 +47,7 @@ renderNavLinks pageRoute =
         , a
             [ classList
                 [ ( "nav-link", True )
-                , ( "active", pageRoute == Route.Emails )
+                , ( "active", Route.isEmailRoute pageRoute )
                 ]
             , href (Route.toString Route.Emails)
             ]

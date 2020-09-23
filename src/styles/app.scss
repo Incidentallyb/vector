@@ -17,7 +17,21 @@ body {
     a { 
         color: var(--navTextForeground);
     }
+    .nav-link { 
+        transition: all 0.2s;
+        svg {
+            transition: all 0.2s;
+        }
+        &:hover { 
+            color: #000;
+            background-color: #fff;
+            svg { 
+                color: var(--blue);
+            }
+        }
+    }
 }
+
 
 a.btn > svg,
 a.nav-link > svg { 
