@@ -22,6 +22,7 @@
     "elm-test": "^0.19.0-rev6",
     "elm-webpack-loader": "^6.0.1",
     "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.11.2",
     "netlify-plugin-cache": "^1.0.3",
     "postcss-loader": "^4.0.2",
     "sass": "^1.26.11",
