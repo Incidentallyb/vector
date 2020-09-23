@@ -41,29 +41,48 @@ renderWrapperWithNav pageRoute elements =
 renderNavLinks : Route -> Html Msg
 renderNavLinks pageRoute =
     nav [ class "nav flex-column nav-pills" ]
-        [ a [ class "nav-link", href (Route.toString Route.Documents) ]
+        [ a
+            [ classList
+                [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Documents )
+                ]
+            , href (Route.toString Route.Documents)
+            ]
             [ documentText [ width iconSize, height iconSize ]
             , text " "
             , text (t NavDocuments)
+            , text " "
             , span [ class "badge badge-secondary" ] [ text "4" ]
             ]
-        , a [ class "nav-link active", href (Route.toString Route.Emails) ]
+        , a [ classList
+                [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Emails )
+                ]
+            , href (Route.toString Route.Emails) 
+            ]
             [ mail [ width iconSize, height iconSize ]
             , text " "
             , text (t NavEmails)
             ]
-        , a [ class "nav-link", href (Route.toString Route.Messages) ]
+        , a [ classList
+                [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Messages )
+                ]
+            , href (Route.toString Route.Messages) ]
             [ chatAlt [ width iconSize, height iconSize ]
             , text " "
             , text (t NavMessages)
             ]
-        , a [ class "nav-link", href (Route.toString Route.Social) ]
+        , a [ classList
+                [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Social )
+                ]
+            , href (Route.toString Route.Social) ]
             [ hashtag [ width iconSize, height iconSize ]
             , text " "
             , text (t NavSocial)
             ]
         ]
-
 
 renderTeamInformation : Html Msg
 renderTeamInformation =
