@@ -94,11 +94,11 @@ module.exports = {
         ],
       },
       {
-          test: /\.(png|jpg|gif|svg|ico|ttf|eot)$/,
-          loader: 'file-loader',
-          options: {
-              name: '[name].[ext]?[hash]'
-          }
+        test: /\.(png|jpg|gif|svg|ico|ttf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash:8].[ext]',
+        },
       },
     ],
 

@@ -65,7 +65,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg|ico|ttf|eot)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]',
+          name: '[name].[hash:8].[ext]',
         },
       },
     ],
