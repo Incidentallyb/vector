@@ -34,10 +34,6 @@ renderWrapperWithNav pageRoute elements =
         ]
 
 
-
--- @todo implement "nav-link active" class using pageRoute
-
-
 renderNavLinks : Route -> Html Msg
 renderNavLinks pageRoute =
     nav [ class "nav flex-column nav-pills" ]
@@ -54,35 +50,41 @@ renderNavLinks pageRoute =
             , text " "
             , span [ class "badge badge-secondary" ] [ text "4" ]
             ]
-        , a [ classList
+        , a
+            [ classList
                 [ ( "nav-link", True )
                 , ( "active", pageRoute == Route.Emails )
                 ]
-            , href (Route.toString Route.Emails) 
+            , href (Route.toString Route.Emails)
             ]
             [ mail [ width iconSize, height iconSize ]
             , text " "
             , text (t NavEmails)
             ]
-        , a [ classList
+        , a
+            [ classList
                 [ ( "nav-link", True )
                 , ( "active", pageRoute == Route.Messages )
                 ]
-            , href (Route.toString Route.Messages) ]
+            , href (Route.toString Route.Messages)
+            ]
             [ chatAlt [ width iconSize, height iconSize ]
             , text " "
             , text (t NavMessages)
             ]
-        , a [ classList
+        , a
+            [ classList
                 [ ( "nav-link", True )
                 , ( "active", pageRoute == Route.Social )
                 ]
-            , href (Route.toString Route.Social) ]
+            , href (Route.toString Route.Social)
+            ]
             [ hashtag [ width iconSize, height iconSize ]
             , text " "
             , text (t NavSocial)
             ]
         ]
+
 
 renderTeamInformation : Html Msg
 renderTeamInformation =

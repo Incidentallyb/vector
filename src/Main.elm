@@ -12,6 +12,7 @@ import Route exposing (Route(..))
 import Task
 import Url
 import View.Desktop
+import View.Document
 
 
 
@@ -83,14 +84,14 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderDocumentList
+                    [ View.Document.list
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderDocument id
+                    [ View.Document.single id
                     ]
                 ]
 
