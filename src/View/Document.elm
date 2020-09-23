@@ -29,7 +29,22 @@ single documentId =
 
 list : Html Msg
 list =
-    ul []
-        [ li [] [ a [ href (Route.toString (Document 1)) ] [ text "Document number 1" ] ]
-        , li [] [ a [ href (Route.toString (Document 2)) ] [ text "Document number 2" ] ]
+    div [ class "card-deck"]
+        [ div [ class "card" ] [ 
+            div [ class "card-body" ] [ 
+                div [ class "card-title" ] [ text "Document 1" ] 
+                ,div [ class "card-text" ] [ 
+                    a [ class "btn btn-primary", href (Route.toString (Document 1)) ] [ text "View Document" ] 
+                ]
+            ]
         ]
+        , div [ class "card" ] [ 
+            div [ class "card-body" ] [ 
+                div [ class "card-title" ] [ text "Document 2" ] 
+                , div [ class "card-text" ] [ 
+                    a [ class "btn btn-primary", href (Route.toString (Document 2)) ] [ text "View Document" ] 
+                ]
+            ]
+        ]
+    ]
+
