@@ -29,22 +29,22 @@ toString route =
             t DesktopSlug
 
         Documents ->
-            t DocumentsSlug
+            "/" ++ t DocumentsSlug
 
         Document id ->
-            t DocumentsSlug ++ "/" ++ String.fromInt id
+            "/" ++ t DocumentsSlug ++ "/" ++ String.fromInt id
 
         Emails ->
-            t EmailsSlug
+            "/" ++ t EmailsSlug
 
         Email id ->
-            t EmailsSlug ++ "/" ++ String.fromInt id
+            "/" ++ t EmailsSlug ++ "/" ++ String.fromInt id
 
         Messages ->
-            t MessagesSlug
+            "/" ++ t MessagesSlug
 
         Social ->
-            t SocialSlug
+            "/" ++ t SocialSlug
 
 
 

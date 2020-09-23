@@ -3,14 +3,15 @@
 @import 'bootstrap/bootstrap.scss';
 
 .email-list {
-  list-style: none;
   background-color: #f5f7f7;
+  list-style: none;
   padding: 0;
 }
 
 .email {
   border-top: 1px solid #e3e8ea;
   display: block;
+
   &:last-of-type {
     border-bottom: 1px solid #e3e8ea;
   }
@@ -36,7 +37,7 @@
   .email-icon {
     align-items: center;
     color: #ffffff;
-    clip-path: circle(50% at center);
+    clip-path: circle(48% at center);
     display: flex;
     height: 2.5rem;
     justify-content: center;
@@ -44,6 +45,7 @@
     width: 2.5rem;
   }
 
+  // TODO make these use constants
   .red {
     background-color: #dc3545;
   }
