@@ -1,8 +1,67 @@
 @import 'bootstrap/bootstrap-reboot.scss';
 
-ul {
+.email-list {
+  list-style: none;
+  background-color: #f5f7f7;
+  padding: 0;
+}
+
+.email {
+  border-top: 1px solid #e3e8ea;
+  display: block;
+  &:last-of-type {
+    border-bottom: 1px solid #e3e8ea;
+  }
+
   a {
-    color: #333;
-    font-size: 20px;
+    align-items: center;
+    color: #212529;
+    display: flex;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background-color: #ffffff;
+      text-decoration: none;
+    }
+  }
+
+  .email-info {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-left: 1rem;
+  }
+
+  .email-icon {
+    align-items: center;
+    color: #ffffff;
+    clip-path: circle(50% at center);
+    display: flex;
+    height: 2.5rem;
+    justify-content: center;
+    font-weight: 700;
+    width: 2.5rem;
+  }
+
+  .red {
+    background-color: #dc3545;
+  }
+
+  .green {
+    background-color: #28a745;
+  }
+
+  .blue {
+    background-color: #007bff;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  p {
+    font-weight: 700;
+    margin: 0;
   }
 }
