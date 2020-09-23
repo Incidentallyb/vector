@@ -3,6 +3,8 @@ module Main exposing (main)
 import Browser
 import Browser.Dom
 import Browser.Navigation
+import Copy.Keys exposing (Key(..))
+import Copy.Text exposing (t)
 import Html exposing (Html, a, div, h1, li, text, ul)
 import Html.Attributes exposing (href)
 import Message exposing (Msg(..))
@@ -69,7 +71,7 @@ update msg model =
 
 viewDocument : Model -> Browser.Document Msg
 viewDocument model =
-    { title = "Vector App", body = [ view model ] }
+    { title = t SiteTitle, body = [ view model ] }
 
 
 view : Model -> Html Msg
@@ -112,9 +114,9 @@ view model =
                 , View.Desktop.renderNavLinks
                 ]
 
-        Tweets ->
+        Social ->
             div []
-                [ renderHeading "Tweets"
+                [ renderHeading "Social"
                 , View.Desktop.renderNavLinks
                 ]
 
@@ -127,8 +129,8 @@ renderHeading title =
 renderDocumentList : Html Msg
 renderDocumentList =
     ul []
-        [ li [] [ a [ href "/documents/1" ] [ text "Document number 1" ] ]
-        , li [] [ a [ href "/documents/2" ] [ text "Document number 2" ] ]
+        [ li [] [ a [ href (Route.toString (Document 1)) ] [ text "Document number 1" ] ]
+        , li [] [ a [ href (Route.toString (Document 2)) ] [ text "Document number 2" ] ]
         ]
 
 
@@ -140,8 +142,8 @@ renderDocument id =
 renderEmailList : Html Msg
 renderEmailList =
     ul []
-        [ li [] [ a [ href "/emails/1" ] [ text "Email number 1" ] ]
-        , li [] [ a [ href "/emails/2" ] [ text "Email number 2" ] ]
+        [ li [] [ a [ href (Route.toString (Email 1)) ] [ text "Email number 1" ] ]
+        , li [] [ a [ href (Route.toString (Email 2)) ] [ text "Email number 2" ] ]
         ]
 
 
