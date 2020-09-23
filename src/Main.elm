@@ -13,7 +13,8 @@ import Task
 import Url
 import View.Desktop
 import View.Document
-
+import View.Email exposing (view)
+import View.Emails exposing (view)
 
 
 -- MODEL
@@ -98,14 +99,14 @@ view model =
         Emails ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderEmailList
+                    [ View.Emails.view
                     ]
                 ]
 
         Email id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderEmail id
+                    [ View.Email.view id
                     ]
                 ]
 
@@ -140,19 +141,6 @@ renderDocumentList =
 renderDocument : Int -> Html Msg
 renderDocument id =
     div [] [ text ("Document with id: " ++ String.fromInt id) ]
-
-
-renderEmailList : Html Msg
-renderEmailList =
-    ul []
-        [ li [] [ a [ href (Route.toString (Email 1)) ] [ text "Email number 1" ] ]
-        , li [] [ a [ href (Route.toString (Email 2)) ] [ text "Email number 2" ] ]
-        ]
-
-
-renderEmail : Int -> Html Msg
-renderEmail id =
-    div [] [ text ("Email with id: " ++ String.fromInt id) ]
 
 
 resetViewportTop : Cmd Msg
