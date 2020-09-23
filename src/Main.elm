@@ -80,42 +80,48 @@ view model =
 
         Documents ->
             div []
-                [ renderHeading "Documents"
-                , View.Desktop.renderNavLinks
-                , renderDocumentList
+                [ View.Desktop.renderWrapperWithNav [ 
+                        renderHeading "Documents"
+                        , renderDocumentList 
+                    ]
                 ]
 
         Document id ->
             div []
-                [ renderHeading "Single Document"
-                , View.Desktop.renderNavLinks
-                , renderDocument id
+                [ View.Desktop.renderWrapperWithNav [ 
+                    renderHeading "Single Document"
+                    , renderDocument id 
+                    ]
                 ]
 
         Emails ->
             div []
-                [ renderHeading "Emails"
-                , View.Desktop.renderNavLinks
-                , renderEmailList
+                [ View.Desktop.renderWrapperWithNav [
+                    renderHeading "Emails"
+                    , renderEmailList 
+                    ]
                 ]
 
         Email id ->
             div []
-                [ renderHeading "Single Email"
-                , View.Desktop.renderNavLinks
-                , renderEmail id
+                [ View.Desktop.renderWrapperWithNav [ 
+                    renderHeading "Single Email"
+                    , renderEmail id 
+                    ]
                 ]
 
         Messages ->
             div []
-                [ renderHeading "Messages"
-                , View.Desktop.renderNavLinks
+                [ View.Desktop.renderWrapperWithNav [ 
+                    renderHeading "Messages"
+                    ] 
                 ]
 
         Tweets ->
             div []
-                [ renderHeading "Tweets"
-                , View.Desktop.renderNavLinks
+                [ View.Desktop.renderWrapperWithNav [ 
+                    renderHeading "Tweets"
+                    ] 
                 ]
 
 
