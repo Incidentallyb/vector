@@ -5,9 +5,11 @@ import Browser.Dom
 import Browser.Navigation
 import Html exposing (Html, a, div, h1, li, text, ul)
 import Html.Attributes exposing (href)
+import Message exposing (Msg(..))
+import Route exposing (Route(..))
 import Task
 import Url
-import Url.Parser as Parser exposing ((</>), Parser, int, map, oneOf, s, top)
+import View.Desktop
 
 
 
@@ -24,7 +26,7 @@ init : () -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
 init _ url key =
     let
         maybeRoute =
-            routeFromUrl url
+            Route.fromUrl url
     in
     -- If not a valid route, default to Desktop
     ( { key = key, page = Maybe.withDefault Desktop maybeRoute }, Cmd.none )
@@ -32,12 +34,6 @@ init _ url key =
 
 
 -- UPDATE
-
-
-type Msg
-    = UrlChanged Url.Url
-    | LinkClicked Browser.UrlRequest
-    | NoOp
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -59,7 +55,7 @@ update msg model =
             let
                 newRoute =
                     -- If not a valid Route, default to Desktop
-                    Maybe.withDefault Desktop (routeFromUrl url)
+                    Maybe.withDefault Desktop (Route.fromUrl url)
             in
             ( { model | page = newRoute }, resetViewportTop )
 
@@ -80,65 +76,52 @@ view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            div []
-                [ renderHeading "Desktop"
-                , renderNavLinks
-                ]
+            View.Desktop.view
 
         Documents ->
             div []
                 [ renderHeading "Documents"
-                , renderNavLinks
+                , View.Desktop.renderNavLinks
                 , renderDocumentList
                 ]
 
         Document id ->
             div []
                 [ renderHeading "Single Document"
-                , renderNavLinks
+                , View.Desktop.renderNavLinks
                 , renderDocument id
                 ]
 
         Emails ->
             div []
                 [ renderHeading "Emails"
-                , renderNavLinks
+                , View.Desktop.renderNavLinks
                 , renderEmailList
                 ]
 
         Email id ->
             div []
                 [ renderHeading "Single Email"
-                , renderNavLinks
+                , View.Desktop.renderNavLinks
                 , renderEmail id
                 ]
 
         Messages ->
             div []
                 [ renderHeading "Messages"
-                , renderNavLinks
+                , View.Desktop.renderNavLinks
                 ]
 
         Tweets ->
             div []
                 [ renderHeading "Tweets"
-                , renderNavLinks
+                , View.Desktop.renderNavLinks
                 ]
 
 
 renderHeading : String -> Html Msg
 renderHeading title =
     h1 [] [ text title ]
-
-
-renderNavLinks : Html Msg
-renderNavLinks =
-    ul []
-        [ li [] [ a [ href "/documents" ] [ text "documents" ] ]
-        , li [] [ a [ href "/emails" ] [ text "emails" ] ]
-        , li [] [ a [ href "/messages" ] [ text "messages" ] ]
-        , li [] [ a [ href "/tweets" ] [ text "tweets" ] ]
-        ]
 
 
 renderDocumentList : Html Msg
@@ -165,39 +148,6 @@ renderEmailList =
 renderEmail : Int -> Html Msg
 renderEmail id =
     div [] [ text ("Email with id: " ++ String.fromInt id) ]
-
-
-
---ROUTING
-
-
-type Route
-    = Desktop
-    | Documents
-    | Document Int
-    | Emails
-    | Email Int
-    | Messages
-    | Tweets
-
-
-routeParser : Parser (Route -> a) a
-routeParser =
-    oneOf
-        [ map Desktop top
-        , map Documents (s "documents")
-        , map Document (s "documents" </> int)
-        , map Emails (s "emails")
-        , map Email (s "emails" </> int)
-        , map Messages (s "messages")
-        , map Tweets (s "tweets")
-        ]
-
-
-routeFromUrl : Url.Url -> Maybe Route
-routeFromUrl url =
-    { url | path = url.path }
-        |> Parser.parse routeParser
 
 
 resetViewportTop : Cmd Msg
