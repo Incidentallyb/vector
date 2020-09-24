@@ -37,6 +37,9 @@ t key =
         StartNewGame ->
             "Start New Game"
 
+        IntroVideo ->
+            "https://www.youtube.com/embed/mRRMSFHPWJU"
+
         NavDocuments ->
             "Documents"
 
@@ -64,5 +67,5 @@ t key =
         ViewDocument ->
             "View Document"
 
-        EmailDummySentTime -> 
+        EmailDummySentTime ->
             "Sent: Today"

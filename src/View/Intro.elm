@@ -19,7 +19,7 @@ view =
                 [ class "d-block mx-auto"
                 , width 560
                 , height 315
-                , src "https://www.youtube.com/embed/mRRMSFHPWJU"
+                , src (t IntroVideo)
                 , attribute "frameborder" "0"
                 , attribute "allowfullscreen" "true"
                 , attribute "gyroscope" "true"

@@ -91,5 +91,5 @@ routeParser =
         , map Email (s (t EmailsSlug) </> string)
         , map Messages (s (t MessagesSlug))
         , map Social (s (t SocialSlug))
-        , map Intro (s (t IntroSlug))
+        , map Intro top
         ]

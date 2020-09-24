@@ -13,6 +13,7 @@ type Key
     | IntroSlug
       --- Intro page
     | StartNewGame
+    | IntroVideo
       --- Navigation text
     | NavDocuments
     | NavEmails
