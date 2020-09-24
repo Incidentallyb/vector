@@ -14,7 +14,7 @@ import Route exposing (Route(..))
 import Task
 import Url
 import View.Desktop
-import View.Document
+import View.Documents
 import View.Emails
 import View.Messages exposing (view)
 
@@ -92,14 +92,14 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.list model.data.documents
+                    [ View.Documents.list model.data.documents
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.single (Dict.get id model.data.documents)
+                    [ View.Documents.single (Dict.get id model.data.documents)
                     ]
                 ]
 
