@@ -24,3 +24,5 @@ type Key
     | ItemNotFound
       --- Documents
     | ViewDocument
+      --- Emails
+    | EmailDummySentTime

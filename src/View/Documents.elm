@@ -1,4 +1,4 @@
-module View.Document exposing (list, single)
+module View.Documents exposing (list, single)
 
 import Content
 import Copy.Keys exposing (Key(..))

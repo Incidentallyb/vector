@@ -1,4 +1,6 @@
 ---
+triggered_by:
+  - "start"
 image: FISH BD.jpg
 ---
 # Fish
