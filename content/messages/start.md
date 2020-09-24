@@ -1,6 +1,6 @@
 ---
-triggered by:
-  - 0
+triggered_by:
+  - "0"
 author: AL
 choices:
   - We are ready
