@@ -31,7 +31,7 @@ t key =
             "social-media"
 
         IntroSlug ->
-            "intro"
+            ""
 
         -- Intro page
         StartNewGame ->
