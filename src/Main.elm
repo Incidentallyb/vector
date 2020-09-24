@@ -112,14 +112,14 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.list
+                    [ View.Document.list model.data.documents
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.single id
+                    [ View.Document.single (Dict.get id model.data.documents)
                     ]
                 ]
 

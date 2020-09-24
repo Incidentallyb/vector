@@ -7,6 +7,9 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Dict exposing (Dict)
+import Content 
+import Markdown
 
 
 iconSize : Int
@@ -14,33 +17,37 @@ iconSize =
     24
 
 
-single : Int -> Html Msg
-single documentId =
-    div [ class "document" ]
-        [ h2 [] [ text "Single Document" ]
-        , img [ src "/images/documents/BIOBANK BD.jpg", class "img-fluid p-md-1" ] []
-        , p [] [ text ("Document body" ++ String.fromInt documentId) ]
-        , a [ href (Route.toString Documents), class "btn btn-primary" ]
-            [ arrowLeft []
-            , text (t NavDocumentsBackTo)
-            ]
-        ]
+single : Maybe Content.DocumentData -> Html Msg
+single maybeContent =
+    case maybeContent of 
+        Nothing -> 
+            text "document not found"
+        Just document -> 
+            div [ class "document" ]
+                [ img [ src ("/images/documents/" ++ document.image), class "img-fluid p-md-1" ] []
+                , p [] [ Markdown.toHtml [class "content"] document.content ]
+                , a [ href (Route.toString Documents), class "btn btn-primary" ]
+                    [ arrowLeft []
+                    , text (t NavDocumentsBackTo)
+                    ]
+                ]
+
+list : Dict String Content.DocumentData -> Html Msg
+list documentDict =
+    div [ class "card-columns" ] 
+        (List.map listItem (Dict.values documentDict))
+        
 
 
-list : Html Msg
-list =
-    div [ class "card-deck" ]
-        [ listItem "my document"
-        ]
-
-
-listItem : String -> Html Msg
+listItem : Content.DocumentData -> Html Msg
 listItem content =
     div [ class "card" ]
         [ div [ class "card-body" ]
-            [ div [ class "card-title" ] [ text content ]
+            [ div [ class "card-title" ] [ h1 [ ] [ text content.basename ]
+                , img [ src ("/images/documents/" ++ content.image), class "img-fluid p-md-1" ] []
+            ]
             , div [ class "card-text" ]
-                [ a [ class "btn btn-primary", href (Route.toString (Document 2)) ] [ text "View Document" ]
+                [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text "View Document" ]
                 ]
             ]
         ]
