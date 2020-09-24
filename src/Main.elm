@@ -18,6 +18,7 @@ import View.Desktop
 import View.Document
 import View.Email exposing (view)
 import View.Emails exposing (view)
+import View.Messages exposing (view)
 
 
 
@@ -139,7 +140,7 @@ view model =
         Messages ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderHeading "Messages"
+                    [ View.Messages.view
                     ]
                 ]
 

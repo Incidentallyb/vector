@@ -15,5 +15,8 @@ type Key
     | NavEmails
     | NavMessages
     | NavSocial
+      --- Messages
+    | FromAL
+    | FromPlayerTeam
       --- "Back to" area texts
     | NavDocumentsBackTo

@@ -41,6 +41,12 @@ t key =
 
         NavSocial ->
             "Tweeeeter"
-        
-        NavDocumentsBackTo -> 
+
+        FromAL ->
+            "AL @ Biocore"
+
+        FromPlayerTeam ->
+            "Team Elm"
+
+        NavDocumentsBackTo ->
             "Back to Documents"
