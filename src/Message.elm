@@ -7,4 +7,5 @@ import Url
 type Msg
     = UrlChanged Url.Url
     | LinkClicked Browser.UrlRequest
+    | ChoiceButtonClicked String
     | NoOp

@@ -74,6 +74,9 @@ update msg model =
             in
             ( { model | page = newRoute }, resetViewportTop )
 
+        ChoiceButtonClicked choice ->
+            ( { model | choices = choice :: model.choices }, Cmd.none )
+
         NoOp ->
             ( model, Cmd.none )
 
