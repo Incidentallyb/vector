@@ -6,10 +6,8 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import Dict exposing (Dict)
-import Html exposing (Html, a, div, h1, li, text, ul)
-import Html.Attributes exposing (href)
-import Json.Decode exposing (..)
+import Html exposing (Html, div, h1, text)
+import Json.Decode
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Task
@@ -25,28 +23,11 @@ import View.Messages exposing (view)
 -- MODEL
 
 
-type alias Datastore =
-    { messages : Dict String Content.MessageData
-    , documents : Dict String Content.DocumentData
-    , emails : Dict String Content.EmailData
-    , social : Dict String Content.SocialData
-    }
-
-
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
-    , data : Datastore
+    , data : Content.Datastore
     }
-
-
-flagsDictDecoder : Json.Decode.Decoder Datastore
-flagsDictDecoder =
-    map4 Datastore
-        (field "messages" Content.messageDictDecoder)
-        (field "documents" Content.documentDictDecoder)
-        (field "emails" Content.emailDictDecoder)
-        (field "social" Content.socialDictDecoder)
 
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
@@ -56,23 +37,7 @@ init flags url key =
             Route.fromUrl url
 
         datastore =
-            case Json.Decode.decodeValue flagsDictDecoder flags of
-                Ok goodMessages ->
-                    goodMessages
-
-                Err _ ->
-                    { messages = Dict.empty
-                    , documents = Dict.empty
-                    , emails = Dict.empty
-                    , social = Dict.empty
-                    }
-
-        {- to debug the above
-           let
-               debugger =
-                   Debug.log "Json Decode Error" (Debug.toString dataError)
-           in
-        -}
+            Content.datastoreDictDecoder flags
     in
     -- If not a valid route, default to Desktop
     ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )

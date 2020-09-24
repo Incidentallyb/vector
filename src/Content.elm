@@ -1,7 +1,15 @@
-module Content exposing (DocumentData, EmailData, MessageData, SocialData, documentDictDecoder, emailDictDecoder, messageDictDecoder, socialDictDecoder)
+module Content exposing (Datastore, datastoreDictDecoder)
 
 import Dict exposing (Dict)
-import Json.Decode exposing (..)
+import Json.Decode exposing (field, list, map4, map5, map6, string)
+
+
+type alias Datastore =
+    { messages : Dict String MessageData
+    , documents : Dict String DocumentData
+    , emails : Dict String EmailData
+    , social : Dict String SocialData
+    }
 
 
 type alias MessageData =
@@ -39,6 +47,38 @@ type alias SocialData =
     , content : String
     , basename : String
     }
+
+
+datastoreDictDecoder : Json.Decode.Value -> Datastore
+datastoreDictDecoder flags =
+    case Json.Decode.decodeValue flagsDictDecoder flags of
+        Ok goodMessages ->
+            goodMessages
+
+        Err _ ->
+            { messages = Dict.empty
+            , documents = Dict.empty
+            , emails = Dict.empty
+            , social = Dict.empty
+            }
+
+
+
+{- to debug the above
+   let
+       debugger =
+           Debug.log "Json Decode Error" (Debug.toString dataError)
+   in
+-}
+
+
+flagsDictDecoder : Json.Decode.Decoder Datastore
+flagsDictDecoder =
+    map4 Datastore
+        (field "messages" messageDictDecoder)
+        (field "documents" documentDictDecoder)
+        (field "emails" emailDictDecoder)
+        (field "social" socialDictDecoder)
 
 
 
