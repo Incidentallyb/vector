@@ -27,8 +27,8 @@ body {
             transition: all 0.2s;
         }
         &:hover { 
-            color: #000;
-            background-color: #fff;
+            color: var(--navTextForeground);
+            background-color: var(--grey-light);
             svg { 
                 color: var(--blue);
             }
