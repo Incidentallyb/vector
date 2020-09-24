@@ -1,4 +1,4 @@
-module Content exposing (DocumentData, EmailData, MessageData, documentDictDecoder, emailDictDecoder, messageDictDecoder)
+module Content exposing (DocumentData, EmailData, MessageData, SocialData, documentDictDecoder, emailDictDecoder, messageDictDecoder, socialDictDecoder)
 
 import Dict exposing (Dict)
 import Json.Decode exposing (..)
@@ -27,6 +27,15 @@ type alias EmailData =
     , author : String
     , summary : String
     , preview : String
+    , content : String
+    , basename : String
+    }
+
+
+type alias SocialData =
+    { triggered_by : List String
+    , author : String
+    , handle : String
     , content : String
     , basename : String
     }
@@ -69,6 +78,18 @@ emailDictDecoder =
             (field "author" string)
             (field "summary" string)
             (field "preview" string)
+            (field "content" string)
+            (field "basename" string)
+        )
+
+
+socialDictDecoder : Json.Decode.Decoder (Dict String SocialData)
+socialDictDecoder =
+    Json.Decode.dict
+        (map5 SocialData
+            (field "triggered_by" (list string))
+            (field "author" string)
+            (field "handle" string)
             (field "content" string)
             (field "basename" string)
         )

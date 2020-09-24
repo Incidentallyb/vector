@@ -29,6 +29,7 @@ type alias Datastore =
     { messages : Dict String Content.MessageData
     , documents : Dict String Content.DocumentData
     , emails : Dict String Content.EmailData
+    , social : Dict String Content.SocialData
     }
 
 
@@ -41,10 +42,11 @@ type alias Model =
 
 flagsDictDecoder : Json.Decode.Decoder Datastore
 flagsDictDecoder =
-    map3 Datastore
+    map4 Datastore
         (field "messages" Content.messageDictDecoder)
         (field "documents" Content.documentDictDecoder)
         (field "emails" Content.emailDictDecoder)
+        (field "social" Content.socialDictDecoder)
 
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
@@ -59,7 +61,11 @@ init flags url key =
                     goodMessages
 
                 Err _ ->
-                    { messages = Dict.empty, documents = Dict.empty, emails = Dict.empty }
+                    { messages = Dict.empty
+                    , documents = Dict.empty
+                    , emails = Dict.empty
+                    , social = Dict.empty
+                    }
 
         {- to debug the above
            let
