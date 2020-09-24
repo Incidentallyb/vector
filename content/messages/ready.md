@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - 1
+  - "1"
 author: AL
 choices:
   - Macaque (1.1)

@@ -25,7 +25,7 @@ import View.Desktop
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
-    , data : Dict String MessageData
+    , data : Dict String (Dict String MessageData)
     }
 
 
@@ -39,16 +39,18 @@ type alias MessageData =
     }
 
 
-messageDictDecoder : Json.Decode.Decoder (Dict String MessageData)
+messageDictDecoder : Json.Decode.Decoder (Dict String (Dict String MessageData))
 messageDictDecoder =
     Json.Decode.dict
-        (map6 MessageData
-            (field "triggered_by" (list string))
-            (field "author" string)
-            (field "choices" (list string))
-            (field "preview" string)
-            (field "content" string)
-            (field "basename" string)
+        (Json.Decode.dict
+            (map6 MessageData
+                (field "triggered_by" (list string))
+                (field "author" string)
+                (field "choices" (list string))
+                (field "preview" string)
+                (field "content" string)
+                (field "basename" string)
+            )
         )
 
 
@@ -59,9 +61,12 @@ init flags url key =
             Route.fromUrl url
 
         data =
-            flags
-                |> Json.Decode.decodeValue messageDictDecoder
-                |> Result.withDefault Dict.empty
+            case Json.Decode.decodeValue messageDictDecoder flags of
+                Ok goodMessages ->
+                    goodMessages
+
+                Err err ->
+                    Dict.empty
     in
     -- If not a valid route, default to Desktop
     ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = data }, Cmd.none )
