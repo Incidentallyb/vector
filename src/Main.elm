@@ -16,6 +16,7 @@ import Url
 import View.Desktop
 import View.Documents
 import View.Emails
+import View.Intro exposing (view)
 import View.Messages exposing (view)
 import View.Social
 
@@ -45,7 +46,7 @@ init flags url key =
             []
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Intro maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
 
 
 
@@ -70,8 +71,8 @@ update msg model =
         UrlChanged url ->
             let
                 newRoute =
-                    -- If not a valid Route, default to Desktop
-                    Maybe.withDefault Desktop (Route.fromUrl url)
+                    -- If not a valid Route, default to Intro
+                    Maybe.withDefault Intro (Route.fromUrl url)
             in
             ( { model | page = newRoute }, resetViewportTop )
 
@@ -136,10 +137,10 @@ view model =
                     ]
                 ]
 
-
-renderHeading : String -> Html Msg
-renderHeading title =
-    h1 [] [ text title ]
+        Intro ->
+            div []
+                [ View.Intro.view
+                ]
 
 
 resetViewportTop : Cmd Msg

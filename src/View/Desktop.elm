@@ -18,7 +18,7 @@ view pageRoute =
 
 renderWrapperWithNav : Route -> List (Html Msg) -> Html Msg
 renderWrapperWithNav pageRoute elements =
-    div [ class "container-fluid" ]
+    div [ class "container-fluid desktop" ]
         [ div [ class "row" ]
             [ div [ class "col-sm-auto" ]
                 [ renderTeamInformation
