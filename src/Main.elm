@@ -52,7 +52,7 @@ init flags url key =
                 Err dataError ->
                     let
                         debugger =
-                            Debug.log "label" (Debug.toString dataError)
+                            Debug.log "Json Decode Error" (Debug.toString dataError)
                     in
                     { messages = Dict.empty, documents = Dict.empty }
 
