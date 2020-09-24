@@ -50,3 +50,9 @@ t key =
 
         NavDocumentsBackTo ->
             "Back to Documents"
+
+        ItemNotFound -> 
+            "Item not found"
+
+        ViewDocument ->
+            "View Document"

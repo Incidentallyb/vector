@@ -3,13 +3,13 @@ module Route exposing (Route(..), fromUrl, isDocumentRoute, isEmailRoute, toStri
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Url
-import Url.Parser as Parser exposing ((</>), Parser, int, map, oneOf, s, top)
+import Url.Parser as Parser exposing ((</>), Parser, int, map, oneOf, s, string, top)
 
 
 type Route
     = Desktop
     | Documents
-    | Document Int
+    | Document String
     | Emails
     | Email Int
     | Messages
@@ -33,7 +33,7 @@ toString route =
             "/" ++ t DocumentsSlug
 
         Document id ->
-            "/" ++ t DocumentsSlug ++ "/" ++ String.fromInt id
+            "/" ++ t DocumentsSlug ++ "/" ++ id
 
         Emails ->
             "/" ++ t EmailsSlug
@@ -86,7 +86,7 @@ routeParser =
     oneOf
         [ map Desktop top
         , map Documents (s (t DocumentsSlug))
-        , map Document (s (t DocumentsSlug) </> int)
+        , map Document (s (t DocumentsSlug) </> string)
         , map Emails (s (t EmailsSlug))
         , map Email (s (t EmailsSlug) </> int)
         , map Messages (s (t MessagesSlug))

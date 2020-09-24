@@ -6,10 +6,9 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import Dict exposing (Dict)
-import Html exposing (Html, a, div, h1, li, text, ul)
-import Html.Attributes exposing (href)
-import Json.Decode exposing (..)
+import Dict
+import Html exposing (Html, div, h1, text)
+import Json.Decode
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Task
@@ -20,27 +19,18 @@ import View.Email exposing (view)
 import View.Emails exposing (view)
 import View.Intro exposing (view)
 import View.Messages exposing (view)
+import View.Social
 
 
 
 -- MODEL
 
 
-type alias Datastore =
-    { messages : Dict String Content.MessageData
-    , documents : Dict String Content.DocumentData
-    }
-
-
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
-    , data : Datastore
+    , data : Content.Datastore
     }
-
-flagsDictDecoder : Json.Decode.Decoder Datastore 
-flagsDictDecoder = 
-    map2 Datastore (field "messages" Content.messageDictDecoder) (field "documents" Content.documentDictDecoder)
 
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
@@ -49,18 +39,8 @@ init flags url key =
         maybeRoute =
             Route.fromUrl url
 
-        datastore = case  Json.Decode.decodeValue flagsDictDecoder flags of
-                Ok goodMessages ->
-                    goodMessages
-
-                Err _ ->
-                    { messages = Dict.empty, documents = Dict.empty }
-{- to debug the above
-                    let
-                        debugger =
-                            Debug.log "Json Decode Error" (Debug.toString dataError)
-                    in                
--}
+        datastore =
+            Content.datastoreDictDecoder flags
     in
     -- If not a valid route, default to Desktop
     ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
@@ -115,14 +95,14 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.list
+                    [ View.Document.list model.data.documents
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.single id
+                    [ View.Document.single (Dict.get id model.data.documents)
                     ]
                 ]
 
@@ -150,7 +130,7 @@ view model =
         Social ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderHeading "Social"
+                    [ View.Social.view
                     ]
                 ]
 

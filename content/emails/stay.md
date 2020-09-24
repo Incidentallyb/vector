@@ -4,10 +4,9 @@ triggered_by:
   - 1.4.2.1.1 (stay fish embryo)
   - 1.4.2.2.1 (stay fish embryo)
   - 1.4.2.3.1 (stay fish embryo)
-  - ? (stay stem cells)
-  -
+  - (stay stem cells)
 author: Jenny
-summary: [cCc]
+summary: Email subject content [cCc]
 ---
 
 Hey Guys,
