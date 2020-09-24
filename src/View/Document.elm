@@ -10,6 +10,12 @@ import Html.Attributes exposing (..)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Url.Builder exposing (string)
+
+
+imagePath : String
+imagePath =
+    "/images/documents/"
 
 
 single : Maybe Content.DocumentData -> Html Msg
@@ -20,7 +26,7 @@ single maybeContent =
 
         Just document ->
             div [ class "document" ]
-                [ img [ src ("/images/documents/" ++ document.image), class "img-fluid p-md-1" ] []
+                [ img [ src (imagePath ++ document.image), class "img-fluid p-md-1" ] []
                 , p [] [ Markdown.toHtml [ class "content" ] document.content ]
                 , a [ href (Route.toString Documents), class "btn btn-primary" ]
                     [ arrowLeft []
@@ -41,7 +47,7 @@ listItem content =
         [ div [ class "card-body" ]
             [ div [ class "card-title" ]
                 [ h1 [] [ text content.basename ]
-                , img [ src ("/images/documents/" ++ content.image), class "img-fluid p-md-1" ] []
+                , img [ src (imagePath ++ content.image), class "img-fluid p-md-1" ] []
                 ]
             , div [ class "card-text" ]
                 [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text (t ViewDocument) ]
