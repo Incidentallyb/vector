@@ -22,12 +22,15 @@ import View.Emails exposing (view)
 
 
 -- MODEL
-
+type alias Datastore =
+  { messages : Dict String (Dict String Content.MessageData)
+  , documents : Dict String (Dict String Content.DocumentData)
+  }
 
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
-    , data : Dict String (Dict String Content.MessageData)
+    , data : Datastore
     }
 
 
@@ -37,16 +40,26 @@ init flags url key =
         maybeRoute =
             Route.fromUrl url
 
-        data =
-            case Json.Decode.decodeValue Content.messageDictDecoder flags of
+        documents =
+            case Json.Decode.decodeValue Content.documentDictDecoder flags of
                 Ok goodMessages ->
                     goodMessages
 
                 Err err ->
                     Dict.empty
+
+        messages =
+            case Json.Decode.decodeValue Content.messageDictDecoder flags of
+                Ok goodMessages ->
+                    goodMessages
+
+                Err err2 ->
+                    Dict.empty
+
+       
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = data }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = (Datastore messages documents) }, Cmd.none )
 
 
 
