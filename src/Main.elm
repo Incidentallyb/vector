@@ -22,10 +22,13 @@ import View.Emails exposing (view)
 
 
 -- MODEL
+
+
 type alias Datastore =
-  { messages : Dict String (Dict String Content.MessageData)
-  , documents : Dict String (Dict String Content.DocumentData)
-  }
+    { messages : Dict String Content.MessageData
+    , documents : Dict String Content.DocumentData
+    }
+
 
 type alias Model =
     { key : Browser.Navigation.Key
@@ -53,13 +56,15 @@ init flags url key =
                 Ok goodMessages ->
                     goodMessages
 
-                Err err2 ->
+                Err messageError ->
+                    let
+                        debug =
+                            Debug.log "label" (Debug.toString messageError)
+                    in
                     Dict.empty
-
-       
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = (Datastore messages documents) }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = Datastore messages documents }, Cmd.none )
 
 
 

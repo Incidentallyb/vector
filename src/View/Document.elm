@@ -29,17 +29,18 @@ single documentId =
 
 list : Html Msg
 list =
-    div [ class "card-deck"] [
-        listItem "my document"
-    ]
+    div [ class "card-deck" ]
+        [ listItem "my document"
+        ]
+
 
 listItem : String -> Html Msg
 listItem content =
-    div [ class "card" ] [ 
-            div [ class "card-body" ] [ 
-                div [ class "card-title" ] [ text content ] 
-                , div [ class "card-text" ] [ 
-                    a [ class "btn btn-primary", href (Route.toString (Document 2)) ] [ text "View Document" ] 
+    div [ class "card" ]
+        [ div [ class "card-body" ]
+            [ div [ class "card-title" ] [ text content ]
+            , div [ class "card-text" ]
+                [ a [ class "btn btn-primary", href (Route.toString (Document 2)) ] [ text "View Document" ]
                 ]
             ]
         ]
