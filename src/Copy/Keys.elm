@@ -18,3 +18,5 @@ type Key
       --- Messages
     | FromAL
     | FromPlayerTeam
+      --- "Back to" area texts
+    | NavDocumentsBackTo

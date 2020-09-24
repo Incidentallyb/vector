@@ -47,3 +47,6 @@ t key =
 
         FromPlayerTeam ->
             "Team Elm"
+
+        NavDocumentsBackTo ->
+            "Back to Documents"
