@@ -2,7 +2,7 @@
 triggered_by:
   - 1.1 (macaque)
 author: Jenny
-summary: [cCc]
+summary: email subject [cCc]
 ---
 
 Hello, 
