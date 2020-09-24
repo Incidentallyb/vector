@@ -11,7 +11,6 @@ import Json.Decode
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Task
-import Tuple
 import Url
 import View.Desktop
 import View.Document
