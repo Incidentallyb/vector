@@ -14,6 +14,7 @@ type Route
     | Email Int
     | Messages
     | Social
+    | Intro
 
 
 fromUrl : Url.Url -> Maybe Route
@@ -45,6 +46,9 @@ toString route =
 
         Social ->
             "/" ++ t SocialSlug
+
+        Intro ->
+            "/intro"
 
 
 isDocumentRoute : Route -> Bool
@@ -87,4 +91,5 @@ routeParser =
         , map Email (s (t EmailsSlug) </> int)
         , map Messages (s (t MessagesSlug))
         , map Social (s (t SocialSlug))
+        , map Intro (s "intro")
         ]
