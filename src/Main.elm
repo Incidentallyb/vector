@@ -28,7 +28,9 @@ import View.Messages exposing (view)
 type alias Datastore =
     { messages : Dict String Content.MessageData
     , documents : Dict String Content.DocumentData
+    , emails : Dict String Content.EmailData
     }
+
 
 type alias Model =
     { key : Browser.Navigation.Key
@@ -36,9 +38,14 @@ type alias Model =
     , data : Datastore
     }
 
-flagsDictDecoder : Json.Decode.Decoder Datastore 
-flagsDictDecoder = 
-    map2 Datastore (field "messages" Content.messageDictDecoder) (field "documents" Content.documentDictDecoder)
+
+flagsDictDecoder : Json.Decode.Decoder Datastore
+flagsDictDecoder =
+    map3 Datastore
+        (field "messages" Content.messageDictDecoder)
+        (field "documents" Content.documentDictDecoder)
+        (field "emails" Content.emailDictDecoder)
+
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
 init flags url key =
@@ -46,18 +53,20 @@ init flags url key =
         maybeRoute =
             Route.fromUrl url
 
-        datastore = case  Json.Decode.decodeValue flagsDictDecoder flags of
+        datastore =
+            case Json.Decode.decodeValue flagsDictDecoder flags of
                 Ok goodMessages ->
                     goodMessages
 
                 Err _ ->
-                    { messages = Dict.empty, documents = Dict.empty }
-{- to debug the above
-                    let
-                        debugger =
-                            Debug.log "Json Decode Error" (Debug.toString dataError)
-                    in                
--}
+                    { messages = Dict.empty, documents = Dict.empty, emails = Dict.empty }
+
+        {- to debug the above
+           let
+               debugger =
+                   Debug.log "Json Decode Error" (Debug.toString dataError)
+           in
+        -}
     in
     -- If not a valid route, default to Desktop
     ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )

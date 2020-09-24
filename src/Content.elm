@@ -1,11 +1,7 @@
-module Content exposing (..)
+module Content exposing (DocumentData, EmailData, MessageData, documentDictDecoder, emailDictDecoder, messageDictDecoder)
 
 import Dict exposing (Dict)
 import Json.Decode exposing (..)
-
-
-
--- A single message
 
 
 type alias MessageData =
@@ -20,6 +16,16 @@ type alias MessageData =
 
 type alias DocumentData =
     { image : String
+    , preview : String
+    , content : String
+    , basename : String
+    }
+
+
+type alias EmailData =
+    { triggered_by : List String
+    , author : String
+    , summary : String
     , preview : String
     , content : String
     , basename : String
@@ -49,6 +55,19 @@ documentDictDecoder =
     Json.Decode.dict
         (map4 DocumentData
             (field "image" string)
+            (field "preview" string)
+            (field "content" string)
+            (field "basename" string)
+        )
+
+
+emailDictDecoder : Json.Decode.Decoder (Dict String EmailData)
+emailDictDecoder =
+    Json.Decode.dict
+        (map6 EmailData
+            (field "triggered_by" (list string))
+            (field "author" string)
+            (field "summary" string)
             (field "preview" string)
             (field "content" string)
             (field "basename" string)
