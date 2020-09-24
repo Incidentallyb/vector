@@ -15,8 +15,7 @@ import Task
 import Url
 import View.Desktop
 import View.Document
-import View.Email exposing (view)
-import View.Emails exposing (view)
+import View.Emails
 import View.Messages exposing (view)
 
 
@@ -107,14 +106,14 @@ view model =
         Emails ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Emails.view
+                    [ View.Emails.list model.data.emails
                     ]
                 ]
 
         Email id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Email.view id
+                    [ View.Emails.single (Dict.get id model.data.emails)
                     ]
                 ]
 

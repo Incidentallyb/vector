@@ -11,7 +11,7 @@ type Route
     | Documents
     | Document String
     | Emails
-    | Email Int
+    | Email String
     | Messages
     | Social
 
@@ -38,7 +38,7 @@ toString route =
             "/" ++ t EmailsSlug
 
         Email id ->
-            "/" ++ t EmailsSlug ++ "/" ++ String.fromInt id
+            "/" ++ t EmailsSlug ++ "/" ++ id
 
         Messages ->
             "/" ++ t MessagesSlug
@@ -84,7 +84,7 @@ routeParser =
         , map Documents (s (t DocumentsSlug))
         , map Document (s (t DocumentsSlug) </> string)
         , map Emails (s (t EmailsSlug))
-        , map Email (s (t EmailsSlug) </> int)
+        , map Email (s (t EmailsSlug) </> string)
         , map Messages (s (t MessagesSlug))
         , map Social (s (t SocialSlug))
         ]

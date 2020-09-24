@@ -56,3 +56,6 @@ t key =
 
         ViewDocument ->
             "View Document"
+
+        EmailDummySentTime -> 
+            "Sent: Today"
