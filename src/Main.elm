@@ -120,7 +120,7 @@ view model =
         Messages ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Messages.view
+                    [ View.Messages.view model.data.messages
                     ]
                 ]
 

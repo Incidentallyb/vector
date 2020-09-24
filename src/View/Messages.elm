@@ -1,16 +1,26 @@
 module View.Messages exposing (view)
 
+import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Dict exposing (Dict)
 
 
 type From
     = AL
     | PlayerTeam
+
+stringToFrom : String -> From
+stringToFrom fromString = 
+    case fromString of 
+        "AL" -> 
+            AL
+        _   ->
+            PlayerTeam
 
 
 type alias ButtonInfo =
@@ -18,14 +28,30 @@ type alias ButtonInfo =
     , action : String
     }
 
+choiceStringsToButtons: String -> ButtonInfo
+choiceStringsToButtons buttonString = 
+    { label = buttonString, action = "#" }
 
-view : Html Msg
-view =
+
+view : Dict String Content.MessageData -> Html Msg
+view messagesDict =
     ul [ class "message-list p-0" ]
-        [ renderMessage AL "Which animal would you like to use?" []
-        , renderMessage PlayerTeam "We'd like to choose:" [ { label = "Mouse", action = "#" }, { label = "Monkey", action = "#" }, { label = "Fish", action = "#" } ]
-        , renderMessage AL "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." []
-        ]
+    (List.map listItem (Dict.values messagesDict))
+{- 
+    [ renderMessage AL "Which animal would you like to use?" []
+    , renderMessage PlayerTeam "We'd like to choose:" [ { label = "Mouse", action = "#" }, { label = "Monkey", action = "#" }, { label = "Fish", action = "#" } ]
+    , renderMessage AL "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." []
+    ]
+-}
+    
+
+listItem : Content.MessageData -> Html Msg
+listItem message = 
+    let 
+        buttonList = 
+            List.map choiceStringsToButtons message.choices
+    in 
+    renderMessage (stringToFrom message.author) message.content buttonList
 
 
 renderMessage : From -> String -> List ButtonInfo -> Html Msg
