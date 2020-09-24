@@ -1,4 +1,4 @@
-module Content exposing (Datastore, datastoreDictDecoder)
+module Content exposing (Datastore, datastoreDictDecoder, DocumentData)
 
 import Dict exposing (Dict)
 import Json.Decode exposing (field, list, map4, map5, map6, string)

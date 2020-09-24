@@ -6,6 +6,7 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import Dict exposing (get)
 import Html exposing (Html, div, h1, text)
 import Json.Decode
 import Message exposing (Msg(..))
