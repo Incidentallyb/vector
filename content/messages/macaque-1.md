@@ -1,12 +1,12 @@
 ---
 triggered_by:
-  - 1.1 (macaque)
+  - macaques
 author: AL
 choices:
-  - Stay
-  - Pigs
-  - Mice
-  - Fish
+  - stay|Stay
+  - pigs|Pigs
+  - mice|Mice
+  - fish|Fish
 ---
 
 Are you sure you would like to use macaques?

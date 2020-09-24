@@ -28,6 +28,7 @@ type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
     , data : Content.Datastore
+    , choices : List String
     }
 
 
@@ -39,9 +40,12 @@ init flags url key =
 
         datastore =
             Content.datastoreDictDecoder flags
+
+        choiceData =
+            []
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
 
 
 
