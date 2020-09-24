@@ -26,17 +26,17 @@
 
   .email-info {
     display: flex;
-    flex-direction: column-reverse;
-  }
-
-  h2 {
-    font-size: 1rem;
-    font-weight: 400;
+    flex-direction: column;
   }
 
   p {
+    font-size: 1rem;
+  }
+  
+  p.author {
     font-weight: 700;
   }
+
 }
 
 .email-icon {
@@ -49,7 +49,7 @@
   font-weight: 700;
   width: 2.5rem;
 
-  &.red {
+  &.Jenny {
     background-color: var(--red);
   }
 
@@ -64,4 +64,8 @@
 
 .email {
   background-color: var(--white);
+
+  .date {
+    color: var(--grey-medium);
+  }
 }

@@ -10,6 +10,10 @@ type Key
     | EmailsSlug
     | MessagesSlug
     | SocialSlug
+    | IntroSlug
+      --- Intro page
+    | StartNewGame
+    | IntroVideo
       --- Navigation text
     | NavDocuments
     | NavEmails
@@ -20,3 +24,9 @@ type Key
     | FromPlayerTeam
       --- "Back to" area texts
     | NavDocumentsBackTo
+      --- General application texts
+    | ItemNotFound
+      --- Documents
+    | ViewDocument
+      --- Emails
+    | EmailDummySentTime

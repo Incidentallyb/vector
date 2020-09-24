@@ -1,4 +1,6 @@
 ---
+triggered_by:
+  - "start"
 image: PIG BD.jpg
 ---
 # Pig

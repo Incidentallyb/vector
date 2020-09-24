@@ -6,6 +6,7 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import Dict
 import Html exposing (Html, div, h1, text)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -13,10 +14,11 @@ import Route exposing (Route(..))
 import Task
 import Url
 import View.Desktop
-import View.Document
-import View.Email exposing (view)
-import View.Emails exposing (view)
+import View.Documents
+import View.Emails
+import View.Intro exposing (view)
 import View.Messages exposing (view)
+import View.Social
 
 
 
@@ -44,7 +46,7 @@ init flags url key =
             []
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Intro maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
 
 
 
@@ -69,8 +71,8 @@ update msg model =
         UrlChanged url ->
             let
                 newRoute =
-                    -- If not a valid Route, default to Desktop
-                    Maybe.withDefault Desktop (Route.fromUrl url)
+                    -- If not a valid Route, default to Intro
+                    Maybe.withDefault Intro (Route.fromUrl url)
             in
             ( { model | page = newRoute }, resetViewportTop )
 
@@ -99,28 +101,28 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.list
+                    [ View.Documents.list model.data.documents
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.single id
+                    [ View.Documents.single (Dict.get id model.data.documents)
                     ]
                 ]
 
         Emails ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Emails.view
+                    [ View.Emails.list model.data.emails
                     ]
                 ]
 
         Email id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Email.view id
+                    [ View.Emails.single (Dict.get id model.data.emails)
                     ]
                 ]
 
@@ -134,14 +136,14 @@ view model =
         Social ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderHeading "Social"
+                    [ View.Social.view
                     ]
                 ]
 
-
-renderHeading : String -> Html Msg
-renderHeading title =
-    h1 [] [ text title ]
+        Intro ->
+            div []
+                [ View.Intro.view
+                ]
 
 
 resetViewportTop : Cmd Msg

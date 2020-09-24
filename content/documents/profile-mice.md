@@ -1,4 +1,6 @@
 ---
+triggered_by:
+  - "start"
 image: MOUSE BD.jpg
 ---
 # Mice

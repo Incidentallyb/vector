@@ -6,7 +6,6 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Message exposing (Msg(..))
-import Route exposing (Route(..))
 
 
 type From
