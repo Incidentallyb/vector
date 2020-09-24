@@ -16,7 +16,7 @@ single : Maybe Content.DocumentData -> Html Msg
 single maybeContent =
     case maybeContent of
         Nothing ->
-            text "document not found"
+            text (t ItemNotFound)
 
         Just document ->
             div [ class "document" ]
@@ -44,7 +44,7 @@ listItem content =
                 , img [ src ("/images/documents/" ++ content.image), class "img-fluid p-md-1" ] []
                 ]
             , div [ class "card-text" ]
-                [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text "View Document" ]
+                [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text (t ViewDocument) ]
                 ]
             ]
         ]
