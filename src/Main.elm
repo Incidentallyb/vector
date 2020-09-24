@@ -3,13 +3,12 @@ module Main exposing (main)
 import Browser
 import Browser.Dom
 import Browser.Navigation
+import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import Debug
 import Dict exposing (Dict)
 import Html exposing (Html, a, div, h1, li, text, ul)
 import Html.Attributes exposing (href)
-import Http
 import Json.Decode exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
@@ -25,33 +24,8 @@ import View.Desktop
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
-    , data : Dict String (Dict String MessageData)
+    , data : Dict String (Dict String Content.MessageData)
     }
-
-
-type alias MessageData =
-    { triggered_by : List String
-    , author : String
-    , choices : List String
-    , preview : String
-    , content : String
-    , basename : String
-    }
-
-
-messageDictDecoder : Json.Decode.Decoder (Dict String (Dict String MessageData))
-messageDictDecoder =
-    Json.Decode.dict
-        (Json.Decode.dict
-            (map6 MessageData
-                (field "triggered_by" (list string))
-                (field "author" string)
-                (field "choices" (list string))
-                (field "preview" string)
-                (field "content" string)
-                (field "basename" string)
-            )
-        )
 
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
@@ -61,7 +35,7 @@ init flags url key =
             Route.fromUrl url
 
         data =
-            case Json.Decode.decodeValue messageDictDecoder flags of
+            case Json.Decode.decodeValue Content.messageDictDecoder flags of
                 Ok goodMessages ->
                     goodMessages
 
