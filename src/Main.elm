@@ -29,13 +29,15 @@ type alias Datastore =
     , documents : Dict String Content.DocumentData
     }
 
-
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
     , data : Datastore
     }
 
+flagsDictDecoder : Json.Decode.Decoder Datastore 
+flagsDictDecoder = 
+    map2 Datastore (field "messages" Content.messageDictDecoder) (field "documents" Content.documentDictDecoder)
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
 init flags url key =
@@ -43,28 +45,20 @@ init flags url key =
         maybeRoute =
             Route.fromUrl url
 
-        documents =
-            case Json.Decode.decodeValue Content.documentDictDecoder flags of
+        datastore = case  Json.Decode.decodeValue flagsDictDecoder flags of
                 Ok goodMessages ->
                     goodMessages
 
-                Err err ->
-                    Dict.empty
-
-        messages =
-            case Json.Decode.decodeValue Content.messageDictDecoder flags of
-                Ok goodMessages ->
-                    goodMessages
-
-                Err messageError ->
+                Err dataError ->
                     let
-                        debug =
-                            Debug.log "label" (Debug.toString messageError)
+                        debugger =
+                            Debug.log "label" (Debug.toString dataError)
                     in
-                    Dict.empty
+                    { messages = Dict.empty, documents = Dict.empty }
+
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = Datastore messages documents }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
 
 
 
