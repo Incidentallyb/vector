@@ -49,13 +49,14 @@ init flags url key =
                 Ok goodMessages ->
                     goodMessages
 
-                Err dataError ->
+                Err _ ->
+                    { messages = Dict.empty, documents = Dict.empty }
+{- to debug the above
                     let
                         debugger =
                             Debug.log "Json Decode Error" (Debug.toString dataError)
-                    in
-                    { messages = Dict.empty, documents = Dict.empty }
-
+                    in                
+-}
     in
     -- If not a valid route, default to Desktop
     ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
