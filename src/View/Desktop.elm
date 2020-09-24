@@ -58,7 +58,7 @@ renderNavLinks pageRoute =
                 [ ( "nav-link", True )
                 , ( "active", pageRoute == Route.Emails )
                 ]
-            , href (Route.toString Route.Emails) 
+            , href (Route.toString Route.Emails)
             ]
             [ mail [ width iconSize, height iconSize ]
             , text " "

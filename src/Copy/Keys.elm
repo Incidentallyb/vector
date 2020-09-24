@@ -15,3 +15,6 @@ type Key
     | NavEmails
     | NavMessages
     | NavSocial
+      --- Messages
+    | FromAL
+    | FromPlayerTeam

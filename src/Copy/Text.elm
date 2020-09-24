@@ -41,3 +41,9 @@ t key =
 
         NavSocial ->
             "Tweeeeter"
+
+        FromAL ->
+            "AL @ Biocore"
+
+        FromPlayerTeam ->
+            "Team Elm"
