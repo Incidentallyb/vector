@@ -42,7 +42,7 @@ renderNavLinks pageRoute =
             [ documentText []
             , text (t NavDocuments)
             , text " "
-            , span [ class "badge badge-secondary" ] [ text "4" ]
+--            , span [ class "badge badge-secondary" ] [ text "4" ]
             ]
         , a
             [ classList
