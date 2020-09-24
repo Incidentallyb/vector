@@ -9,11 +9,6 @@ import Message exposing (Msg(..))
 import Route exposing (Route(..))
 
 
-iconSize : Int
-iconSize =
-    24
-
-
 view : Route -> Html Msg
 view pageRoute =
     div []
@@ -34,55 +29,53 @@ renderWrapperWithNav pageRoute elements =
         ]
 
 
-
--- @todo implement "nav-link active" class using pageRoute
-
-
 renderNavLinks : Route -> Html Msg
 renderNavLinks pageRoute =
     nav [ class "nav flex-column nav-pills" ]
         [ a
             [ classList
                 [ ( "nav-link", True )
-                , ( "active", pageRoute == Route.Documents )
+                , ( "active", Route.isDocumentRoute pageRoute )
                 ]
             , href (Route.toString Route.Documents)
             ]
-            [ documentText [ width iconSize, height iconSize ]
-            , text " "
+            [ documentText []
             , text (t NavDocuments)
             , text " "
             , span [ class "badge badge-secondary" ] [ text "4" ]
             ]
-        , a [ classList
+        , a
+            [ classList
                 [ ( "nav-link", True )
-                , ( "active", pageRoute == Route.Emails )
+                , ( "active", Route.isEmailRoute pageRoute )
                 ]
-            , href (Route.toString Route.Emails) 
+            , href (Route.toString Route.Emails)
             ]
-            [ mail [ width iconSize, height iconSize ]
-            , text " "
+            [ mail []
             , text (t NavEmails)
             ]
-        , a [ classList
+        , a
+            [ classList
                 [ ( "nav-link", True )
                 , ( "active", pageRoute == Route.Messages )
                 ]
-            , href (Route.toString Route.Messages) ]
-            [ chatAlt [ width iconSize, height iconSize ]
-            , text " "
+            , href (Route.toString Route.Messages)
+            ]
+            [ chatAlt []
             , text (t NavMessages)
             ]
-        , a [ classList
+        , a
+            [ classList
                 [ ( "nav-link", True )
                 , ( "active", pageRoute == Route.Social )
                 ]
-            , href (Route.toString Route.Social) ]
-            [ hashtag [ width iconSize, height iconSize ]
-            , text " "
+            , href (Route.toString Route.Social)
+            ]
+            [ hashtag []
             , text (t NavSocial)
             ]
         ]
+
 
 renderTeamInformation : Html Msg
 renderTeamInformation =

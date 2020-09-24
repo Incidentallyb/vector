@@ -15,6 +15,7 @@ import Route exposing (Route(..))
 import Task
 import Url
 import View.Desktop
+import View.Document
 import View.Email exposing (view)
 import View.Emails exposing (view)
 
@@ -23,12 +24,20 @@ import View.Emails exposing (view)
 -- MODEL
 
 
+type alias Datastore =
+    { messages : Dict String Content.MessageData
+    , documents : Dict String Content.DocumentData
+    }
+
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
-    , data : Dict String (Dict String Content.MessageData)
+    , data : Datastore
     }
 
+flagsDictDecoder : Json.Decode.Decoder Datastore 
+flagsDictDecoder = 
+    map2 Datastore (field "messages" Content.messageDictDecoder) (field "documents" Content.documentDictDecoder)
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
 init flags url key =
@@ -36,16 +45,21 @@ init flags url key =
         maybeRoute =
             Route.fromUrl url
 
-        data =
-            case Json.Decode.decodeValue Content.messageDictDecoder flags of
+        datastore = case  Json.Decode.decodeValue flagsDictDecoder flags of
                 Ok goodMessages ->
                     goodMessages
 
-                Err err ->
-                    Dict.empty
+                Err _ ->
+                    { messages = Dict.empty, documents = Dict.empty }
+{- to debug the above
+                    let
+                        debugger =
+                            Debug.log "Json Decode Error" (Debug.toString dataError)
+                    in                
+-}
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = data }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
 
 
 
@@ -97,14 +111,14 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderDocumentList
+                    [ View.Document.list
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderDocument id
+                    [ View.Document.single id
                     ]
                 ]
 
@@ -140,19 +154,6 @@ view model =
 renderHeading : String -> Html Msg
 renderHeading title =
     h1 [] [ text title ]
-
-
-renderDocumentList : Html Msg
-renderDocumentList =
-    ul []
-        [ li [] [ a [ href (Route.toString (Document 1)) ] [ text "Document number 1" ] ]
-        , li [] [ a [ href (Route.toString (Document 2)) ] [ text "Document number 2" ] ]
-        ]
-
-
-renderDocument : Int -> Html Msg
-renderDocument id =
-    div [] [ text ("Document with id: " ++ String.fromInt id) ]
 
 
 resetViewportTop : Cmd Msg
