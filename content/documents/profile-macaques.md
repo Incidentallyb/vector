@@ -1,4 +1,6 @@
 ---
+triggered_by:
+  - "start"
 image: MACAQUE BD.jpg
 ---
 # Macaques

@@ -14,8 +14,7 @@ import Route exposing (Route(..))
 import Task
 import Url
 import View.Desktop
-import View.Document
-import View.Email exposing (view)
+import View.Documents
 import View.Emails exposing (view)
 import View.Intro exposing (view)
 import View.Messages exposing (view)
@@ -30,6 +29,7 @@ type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
     , data : Content.Datastore
+    , choices : List String
     }
 
 
@@ -41,9 +41,12 @@ init flags url key =
 
         datastore =
             Content.datastoreDictDecoder flags
+
+        choiceData =
+            []
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Intro maybeRoute, data = datastore }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Intro maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
 
 
 
@@ -95,28 +98,28 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.list model.data.documents
+                    [ View.Documents.list model.data.documents
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.single (Dict.get id model.data.documents)
+                    [ View.Documents.single (Dict.get id model.data.documents)
                     ]
                 ]
 
         Emails ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Emails.view
+                    [ View.Emails.list model.data.emails
                     ]
                 ]
 
         Email id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Email.view id
+                    [ View.Emails.single (Dict.get id model.data.emails)
                     ]
                 ]
 

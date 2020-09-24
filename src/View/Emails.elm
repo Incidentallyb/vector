@@ -1,33 +1,55 @@
-module View.Emails exposing (view)
+module View.Emails exposing (list, single)
 
+import Content
+import Copy.Keys exposing (Key(..))
+import Copy.Text exposing (t)
+import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Attributes.Aria exposing (ariaHidden)
+import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import String
 
 
-view : Html Msg
-view =
+single : Maybe Content.EmailData -> Html Msg
+single maybeContent =
+    case maybeContent of
+        Nothing ->
+            text (t ItemNotFound)
+
+        Just email ->
+            article [ class "email p-3" ]
+                [ p [ class "date" ] [ text (t EmailDummySentTime) ]
+                , h2 [] [ text "EMAIL_SUBJECT_TODO" ]
+                , div [ class "d-flex align-items-center" ]
+                    [ div [ class ("email-icon " ++ email.author), ariaHidden True ]
+                        [ text (String.left 1 email.author)
+                        ]
+                    , div [ class "ml-3" ] [ text email.author ]
+                    ]
+                , div [ class "mt-3" ] [ Markdown.toHtml [ class "content" ] email.content ]
+                ]
+
+
+list : Dict String Content.EmailData -> Html Msg
+list emailDict =
     ul [ class "email-list" ]
-        [ renderEmail "Kris" "Important News" 1 "red"
-        , renderEmail "Katja" "Interesting Stuff" 2 "blue"
-        , renderEmail "Nick" "Fish" 3 "green"
-        ]
+        (List.map listItem (Dict.values emailDict))
 
 
-renderEmail : String -> String -> Int -> String -> Html msg
-renderEmail from subject routeId colour =
+listItem : Content.EmailData -> Html msg
+listItem email =
     li
         [ class "email-list-item" ]
-        [ a [ class "text-body", href (Route.toString (Email routeId)) ]
-            [ div [ class ("email-icon " ++ colour), ariaHidden True ]
-                [ text (String.left 1 from)
+        [ a [ class "text-body", href (Route.toString (Email email.basename)) ]
+            [ div [ class ("email-icon " ++ email.author), ariaHidden True ]
+                [ text (String.left 1 email.author)
                 ]
             , div [ class "email-info ml-3" ]
-                [ h2 [ class "m-0" ] [ text subject ]
-                , p [ class "m-0" ] [ text from ]
+                [ p [ class "m-0 author" ] [ text email.author ]
+                , p [ class "m-0" ] [ text email.preview ]
                 ]
             ]
         ]

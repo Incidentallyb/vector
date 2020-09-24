@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - 1.1 (macaque)
+  - start|macaques
 author: Jenny
 summary: email subject [cCc]
 ---
