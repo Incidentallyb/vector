@@ -15,7 +15,7 @@ import Task
 import Url
 import View.Desktop
 import View.Documents
-import View.Emails exposing (view)
+import View.Emails
 import View.Intro exposing (view)
 import View.Messages exposing (view)
 import View.Social

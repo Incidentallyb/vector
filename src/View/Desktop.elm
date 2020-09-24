@@ -11,7 +11,7 @@ import Route exposing (Route(..))
 
 view : Route -> Html Msg
 view pageRoute =
-    div [ class "" ]
+    div []
         [ renderWrapperWithNav pageRoute [ text "my desktop" ]
         ]
 
