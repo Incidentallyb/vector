@@ -156,19 +156,6 @@ renderHeading title =
     h1 [] [ text title ]
 
 
-renderDocumentList : Html Msg
-renderDocumentList =
-    ul []
-        [ li [] [ a [ href (Route.toString (Document 1)) ] [ text "Document number 1" ] ]
-        , li [] [ a [ href (Route.toString (Document 2)) ] [ text "Document number 2" ] ]
-        ]
-
-
-renderDocument : Int -> Html Msg
-renderDocument id =
-    div [] [ text ("Document with id: " ++ String.fromInt id) ]
-
-
 resetViewportTop : Cmd Msg
 resetViewportTop =
     Task.perform (\_ -> NoOp) (Browser.Dom.setViewport 0 0)
