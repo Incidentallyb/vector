@@ -20,3 +20,7 @@ type Key
     | FromPlayerTeam
       --- "Back to" area texts
     | NavDocumentsBackTo
+      --- General application texts
+    | ItemNotFound
+      --- Documents
+    | ViewDocument

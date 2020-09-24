@@ -6,6 +6,7 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import Dict
 import Html exposing (Html, div, h1, text)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -92,14 +93,14 @@ view model =
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.list
+                    [ View.Document.list model.data.documents
                     ]
                 ]
 
         Document id ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Document.single id
+                    [ View.Document.single (Dict.get id model.data.documents)
                     ]
                 ]
 
