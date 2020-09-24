@@ -1,0 +1,44 @@
+.tweet {
+  background-color: var(--white);
+  list-style: none;
+  border: 1px solid var(--grey-twitter-border);
+  border-top: 0;
+
+  &:hover {
+    background-color: var(--grey-twitter-hover);
+  }
+
+  .author-icon {
+    align-items: center;
+    color: var(--white);
+    clip-path: circle(48% at center);
+    display: flex;
+    height: 2.5rem;
+    justify-content: center;
+    font-weight: 700;
+    width: 2.5rem;
+
+    &.red {
+      background-color: var(--red);
+    }
+  }
+
+  .author {
+    font-weight: 700;
+  }
+
+  .handle {
+    color: var(--grey-twitter);
+    margin-left: 0.5rem;
+  }
+
+  .icons {
+    color: var(--grey-twitter);
+  }
+
+  svg {
+    color: var(--grey-twitter);
+    height: 24px;
+    margin-right: 0.5rem;
+  }
+}

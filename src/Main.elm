@@ -18,6 +18,7 @@ import View.Document
 import View.Email exposing (view)
 import View.Emails exposing (view)
 import View.Messages exposing (view)
+import View.Social
 
 
 
@@ -128,7 +129,7 @@ view model =
         Social ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderHeading "Social"
+                    [ View.Social.view
                     ]
                 ]
 
