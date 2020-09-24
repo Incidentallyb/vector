@@ -20,14 +20,14 @@ view =
 renderEmail : String -> String -> Int -> String -> Html msg
 renderEmail from subject routeId colour =
     li
-        [ class "email" ]
+        [ class "email-list-item" ]
         [ a [ class "text-body", href (Route.toString (Email routeId)) ]
-            [ div [ class "email-icon", class colour, ariaHidden True ]
+            [ div [ class ("email-icon " ++ colour), ariaHidden True ]
                 [ text (String.left 1 from)
                 ]
-            , div [ class "email-info" ]
-                [ h2 [] [ text subject ]
-                , p [] [ text from ]
+            , div [ class "email-info ml-3" ]
+                [ h2 [ class "m-0" ] [ text subject ]
+                , p [ class "m-0" ] [ text from ]
                 ]
             ]
         ]
