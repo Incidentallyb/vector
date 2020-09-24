@@ -11,6 +11,7 @@ import Json.Decode
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Task
+import Tuple
 import Url
 import View.Desktop
 import View.Document
@@ -27,6 +28,7 @@ type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
     , data : Content.Datastore
+    , choices : List String
     }
 
 
@@ -38,9 +40,12 @@ init flags url key =
 
         datastore =
             Content.datastoreDictDecoder flags
+
+        choiceData =
+            []
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
 
 
 
