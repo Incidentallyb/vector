@@ -11,14 +11,14 @@ import Route exposing (Route(..))
 
 view : Route -> Html Msg
 view pageRoute =
-    div []
+    div [ class "" ]
         [ renderWrapperWithNav pageRoute [ text "my desktop" ]
         ]
 
 
 renderWrapperWithNav : Route -> List (Html Msg) -> Html Msg
 renderWrapperWithNav pageRoute elements =
-    div [ class "container-fluid" ]
+    div [ class "container-fluid desktop" ]
         [ div [ class "row" ]
             [ div [ class "col-sm-auto" ]
                 [ renderTeamInformation

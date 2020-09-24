@@ -1,48 +1,46 @@
 // Colours vars
 :root {
-    --red: #dc3545;
-    --green: #28a745;
-    --blue: #007bff;
-    --white: #ffffff;
-    --grey-light: #f5f7f7;
-    --grey: #e3e8ea;
-    --black: #111111;
-    --background-colour: #9fb8f0;
-    --navTextForeground: var(--black);
+  --red: #dc3545;
+  --green: #28a745;
+  --blue: #007bff;
+  --white: #ffffff;
+  --grey-light: #f5f7f7;
+  --grey: #e3e8ea;
   --grey-twitter: #657786;
   --grey-twitter-border: #e6ecf0;
   --grey-twitter-hover: #f5f8fa;
+  --black: #111111;
+  --background-colour: #9fb8f0;
+  --navTextForeground: var(--black);
 }
 
 body {
-    background: var(--background-colour);
-    padding: 1em 0em;
+  background-color: var(--black);
 }
 
-.nav.nav-pills { 
-    margin-top:1em;
-    a { 
-        color: var(--navTextForeground);
+.nav.nav-pills {
+  margin-top: 1em;
+  a {
+    color: var(--navTextForeground);
+  }
+  .nav-link {
+    transition: all 0.2s;
+    svg {
+      transition: all 0.2s;
     }
-    .nav-link { 
-        transition: all 0.2s;
-        svg {
-            transition: all 0.2s;
-        }
-        &:hover { 
-            color: var(--navTextForeground);
-            background-color: var(--grey-light);
-            svg { 
-                color: var(--blue);
-            }
-        }
+    &:hover {
+      color: var(--navTextForeground);
+      background-color: var(--grey-light);
+      svg {
+        color: var(--blue);
+      }
     }
+  }
 }
-
 
 a.btn > svg,
-a.nav-link > svg { 
-    width: 24px; 
-    height: 24px;
-    margin-right:0.5em;
+a.nav-link > svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5em;
 }

@@ -16,7 +16,7 @@ t key =
 
         -- Slugs
         DesktopSlug ->
-            ""
+            "desktop"
 
         DocumentsSlug ->
             "documents"
@@ -29,6 +29,13 @@ t key =
 
         SocialSlug ->
             "social-media"
+
+        IntroSlug ->
+            "intro"
+
+        -- Intro page
+        StartNewGame ->
+            "Start New Game"
 
         NavDocuments ->
             "Documents"
@@ -51,7 +58,7 @@ t key =
         NavDocumentsBackTo ->
             "Back to Documents"
 
-        ItemNotFound -> 
+        ItemNotFound ->
             "Item not found"
 
         ViewDocument ->

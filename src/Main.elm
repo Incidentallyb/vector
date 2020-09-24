@@ -43,7 +43,7 @@ init flags url key =
             Content.datastoreDictDecoder flags
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Intro maybeRoute, data = datastore }, Cmd.none )
 
 
 
@@ -68,8 +68,8 @@ update msg model =
         UrlChanged url ->
             let
                 newRoute =
-                    -- If not a valid Route, default to Desktop
-                    Maybe.withDefault Desktop (Route.fromUrl url)
+                    -- If not a valid Route, default to Intro
+                    Maybe.withDefault Intro (Route.fromUrl url)
             in
             ( { model | page = newRoute }, resetViewportTop )
 
@@ -138,11 +138,6 @@ view model =
             div []
                 [ View.Intro.view
                 ]
-
-
-renderHeading : String -> Html Msg
-renderHeading title =
-    h1 [] [ text title ]
 
 
 resetViewportTop : Cmd Msg
