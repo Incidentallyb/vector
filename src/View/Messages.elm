@@ -13,17 +13,23 @@ type From
     | PlayerTeam
 
 
+type alias ButtonInfo =
+    { label : String
+    , action : String
+    }
+
+
 view : Html Msg
 view =
     ul [ class "message-list p-0" ]
-        [ renderMessage AL "Fish are cool"
-        , renderMessage PlayerTeam "They sure are."
-        , renderMessage AL "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        [ renderMessage AL "Which animal would you like to use?" []
+        , renderMessage PlayerTeam "We'd like to choose:" [ { label = "Mouse", action = "#" }, { label = "Monkey", action = "#" }, { label = "Fish", action = "#" } ]
+        , renderMessage AL "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." []
         ]
 
 
-renderMessage : From -> String -> Html Msg
-renderMessage from message =
+renderMessage : From -> String -> List ButtonInfo -> Html Msg
+renderMessage from message buttons =
     if from == AL then
         li
             [ class "message al w-75 float-left mt-3 ml-5 py-2" ]
@@ -42,14 +48,17 @@ renderMessage from message =
             [ div [ class "ml-3" ]
                 [ p [ class "message-from m-0" ]
                     [ text (t FromPlayerTeam) ]
-                , renderButtons
+                , p [ class "card-text m-0" ]
+                    [ text message ]
+                , renderButtons buttons
                 ]
             ]
 
 
-renderButtons : Html Msg
-renderButtons =
+renderButtons : List ButtonInfo -> Html Msg
+renderButtons buttonList =
     div []
-        [ button [] [ text "Yes" ]
-        , button [] [ text "No" ]
-        ]
+        (List.map
+            (\buttonItem -> button [ class "btn btn-primary choice-button" ] [ text buttonItem.label ])
+            buttonList
+        )
