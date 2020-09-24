@@ -19,6 +19,7 @@ import View.Document
 import View.Email exposing (view)
 import View.Emails exposing (view)
 import View.Messages exposing (view)
+import View.Social
 
 
 
@@ -30,6 +31,7 @@ type alias Datastore =
     , documents : Dict String Content.DocumentData
     }
 
+
 type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
@@ -39,6 +41,7 @@ type alias Model =
 flagsDictDecoder : Json.Decode.Decoder Datastore 
 flagsDictDecoder = 
     map2 Datastore (field "messages" Content.messageDictDecoder) (field "documents" Content.documentDictDecoder)
+
 
 init : Flags -> Url.Url -> Browser.Navigation.Key -> ( Model, Cmd Msg )
 init flags url key =
@@ -147,7 +150,7 @@ view model =
         Social ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderHeading "Social"
+                    [ View.Social.view
                     ]
                 ]
 

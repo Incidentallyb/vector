@@ -5,7 +5,6 @@ import Copy.Text exposing (t)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
-import Route exposing (Route(..))
 
 
 type From
