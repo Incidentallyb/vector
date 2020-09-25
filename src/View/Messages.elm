@@ -3,11 +3,11 @@ module View.Messages exposing (view)
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
-import Dict exposing (Dict)
 
 
 type From

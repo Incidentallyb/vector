@@ -14,6 +14,7 @@ type Route
     | Email String
     | Messages
     | Social
+    | Intro
 
 
 fromUrl : Url.Url -> Maybe Route
@@ -26,7 +27,7 @@ toString : Route -> String
 toString route =
     case route of
         Desktop ->
-            t DesktopSlug
+            "/" ++ t DesktopSlug
 
         Documents ->
             "/" ++ t DocumentsSlug
@@ -45,6 +46,9 @@ toString route =
 
         Social ->
             "/" ++ t SocialSlug
+
+        Intro ->
+            "/" ++ t IntroSlug
 
 
 isDocumentRoute : Route -> Bool
@@ -80,11 +84,12 @@ isEmailRoute pageRoute =
 routeParser : Parser (Route -> a) a
 routeParser =
     oneOf
-        [ map Desktop top
+        [ map Desktop (s (t DesktopSlug))
         , map Documents (s (t DocumentsSlug))
         , map Document (s (t DocumentsSlug) </> string)
         , map Emails (s (t EmailsSlug))
         , map Email (s (t EmailsSlug) </> string)
         , map Messages (s (t MessagesSlug))
         , map Social (s (t SocialSlug))
+        , map Intro top
         ]

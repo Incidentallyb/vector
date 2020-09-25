@@ -16,7 +16,9 @@ import Url
 import View.Desktop
 import View.Documents
 import View.Emails
+import View.Intro exposing (view)
 import View.Messages exposing (view)
+import View.Social
 
 
 
@@ -27,6 +29,7 @@ type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
     , data : Content.Datastore
+    , choices : List String
     }
 
 
@@ -38,9 +41,12 @@ init flags url key =
 
         datastore =
             Content.datastoreDictDecoder flags
+
+        choiceData =
+            []
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Desktop maybeRoute, data = datastore }, Cmd.none )
+    ( { key = key, page = Maybe.withDefault Intro maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
 
 
 
@@ -65,8 +71,8 @@ update msg model =
         UrlChanged url ->
             let
                 newRoute =
-                    -- If not a valid Route, default to Desktop
-                    Maybe.withDefault Desktop (Route.fromUrl url)
+                    -- If not a valid Route, default to Intro
+                    Maybe.withDefault Intro (Route.fromUrl url)
             in
             ( { model | page = newRoute }, resetViewportTop )
 
@@ -127,14 +133,14 @@ view model =
         Social ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ renderHeading "Social"
+                    [ View.Social.view
                     ]
                 ]
 
-
-renderHeading : String -> Html Msg
-renderHeading title =
-    h1 [] [ text title ]
+        Intro ->
+            div []
+                [ View.Intro.view
+                ]
 
 
 resetViewportTop : Cmd Msg

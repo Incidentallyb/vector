@@ -10,6 +10,10 @@ type Key
     | EmailsSlug
     | MessagesSlug
     | SocialSlug
+    | IntroSlug
+      --- Intro page
+    | StartNewGame
+    | IntroVideo
       --- Navigation text
     | NavDocuments
     | NavEmails
