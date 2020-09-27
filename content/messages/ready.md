@@ -3,7 +3,7 @@ triggered_by:
   - "start"
 author: AL
 choices:
-  - macaques|Macaque
+  - macaques|Macaques
   - pigs|Pigs
   - mice|Mice
   - fish|Fish

@@ -1,12 +1,10 @@
 ---
 triggered_by:
-  - macaques
+  - start|macaques
 author: AL
 choices:
-  - stay|Stay
-  - pigs|Pigs
-  - mice|Mice
-  - fish|Fish
+  - stay|Let's stay with Macaques
+  - change|Can we change the animal model?
 ---
 
 Are you sure you would like to use macaques?
