@@ -7,7 +7,8 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import Html exposing (Html, div, h1, text)
+import GameData exposing (GameData, init)
+import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
@@ -29,7 +30,7 @@ type alias Model =
     { key : Browser.Navigation.Key
     , page : Route
     , data : Content.Datastore
-    , choices : List String
+    , gameData : GameData
     }
 
 
@@ -41,12 +42,15 @@ init flags url key =
 
         datastore =
             Content.datastoreDictDecoder flags
-
-        choiceData =
-            []
     in
     -- If not a valid route, default to Desktop
-    ( { key = key, page = Maybe.withDefault Intro maybeRoute, data = datastore, choices = choiceData }, Cmd.none )
+    ( { key = key
+      , page = Maybe.withDefault Intro maybeRoute
+      , data = datastore
+      , gameData = GameData.init
+      }
+    , Cmd.none
+    )
 
 
 
@@ -77,7 +81,11 @@ update msg model =
             ( { model | page = newRoute }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
-            ( { model | choices = choice :: model.choices }, Cmd.none )
+            let
+                newGameData =
+                    { choices = choice :: model.gameData.choices }
+            in
+            ( { model | gameData = newGameData }, Cmd.none )
 
         NoOp ->
             ( model, Cmd.none )
