@@ -11,7 +11,7 @@ triggered_by:
   - start|pigs|keep|collaborate|limit
 author: Charlie
 choices:
-  - null
+  - Nothing
 ---
 I will change the shift patterns and I personally thank you
 

@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - "start"
+  - start
 author: AL
 choices:
   - macaques|Macaques

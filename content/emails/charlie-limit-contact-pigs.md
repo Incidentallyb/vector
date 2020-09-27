@@ -9,7 +9,6 @@ triggered_by:
   - start|pigs|keep|scale
   - start|pigs|keep|learn
   - start|pigs|keep|collaborate
-
 author: Charlie Benn
 summary: Email subject content [cCc]
 ---

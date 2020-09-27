@@ -17,7 +17,7 @@ triggered_by:
   - start|mice|handle|scale
 author: Charlie
 choices:
-  - null
+  - Nothing 
 ---
 I have a bit of a personal request, so I have sent over an email....
 
