@@ -2,22 +2,21 @@ module View.Desktop exposing (renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail)
+import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail, userCircle)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (on, onClick)
-import Heroicons.Outline exposing (userCircle)
+import Html.Events exposing (on, onClick, targetValue)
 import Json.Decode as Json
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
-import Html.Events exposing (targetValue)
 
 
 view : String -> Route -> Html Msg
 view teamName pageRoute =
-    case String.left 1 teamName of 
-        "?" -> 
+    case String.left 1 teamName of
+        "?" ->
             renderLoginPage teamName
+
         _ ->
             div []
                 [ renderWrapperWithNav teamName pageRoute [ text "my desktop" ]
@@ -40,26 +39,29 @@ renderWrapperWithNav teamName pageRoute elements =
 loginOption login =
     option [ value login ] [ text (String.dropLeft 1 login) ]
 
-renderLoginPage : String -> Html Msg 
+
+renderLoginPage : String -> Html Msg
 renderLoginPage teamName =
     div [ class "container desktop" ]
         [ div [ class "v-centred" ]
             [ div [ class "sign-in" ]
-                [ userCircle [] 
+                [ userCircle []
                 , h1 [] [ text "Please login" ]
-                , select [ on "change" (Json.map TeamChosen targetValue)
+                , select
+                    [ on "change" (Json.map TeamChosen targetValue)
                     , class "form-control"
-                    , value teamName ]
-                        (List.map loginOption ["?", "?ash", "?birch", "?elm"])
-                  
+                    , value teamName
+                    ]
+                    (List.map loginOption [ "?", "?ash", "?birch", "?elm" ])
                 , button
                     [ class "btn btn-primary btn-block"
                     , onClick (TeamChosen (String.dropLeft 1 teamName))
                     ]
-                    [ text "Login" ]  
+                    [ text "Login" ]
                 ]
             ]
         ]
+
 
 renderNavLinks : Route -> Html Msg
 renderNavLinks pageRoute =
