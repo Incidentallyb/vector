@@ -24,11 +24,7 @@ choices:
 
 You have been making some very difficult decisions so far, and your experiments are starting to show results.
 
-[cCc]
-In order to keep the balance of success vs harm, we have a few options for you, each will affect your success and harm rating. 
-
-[cCc]
-(To keep the balance of success vs harm, we have a few options for you, each will affect your success and harm rating.)
+To keep the balance of success vs harm, we have a few options for you, each will affect your success and harm rating.
 
 Would you like to:
 

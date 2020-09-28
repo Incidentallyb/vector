@@ -19,7 +19,4 @@ author: Charlie
 choices:
   - Nothing 
 ---
-I have a bit of a personal request, so I have sent over an email....
-
-[cCc]
-(Hi Guys, I have a bit of a personal request, so I have sent over an email....)
+Hi Guys, I have a bit of a personal request, so I have sent over an email...
