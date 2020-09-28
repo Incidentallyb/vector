@@ -1,7 +1,10 @@
+.message-list {
+  list-style: none;
+}
+
 .message {
   border-radius: 4px;
   background-color: var(--white);
-  list-style: none;
   position: relative;
 }
 
