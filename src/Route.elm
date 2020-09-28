@@ -3,7 +3,7 @@ module Route exposing (Route(..), fromUrl, isDocumentRoute, isEmailRoute, toStri
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Url
-import Url.Parser as Parser exposing ((</>), Parser, int, map, oneOf, s, string, top)
+import Url.Parser as Parser exposing ((</>), Parser, map, oneOf, s, string, top)
 
 
 type Route

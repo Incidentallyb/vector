@@ -7,7 +7,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import Html exposing (Html, div, h1, text)
+import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
