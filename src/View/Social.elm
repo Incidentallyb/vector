@@ -6,12 +6,6 @@ import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 
 
-type alias ButtonInfo =
-    { label : String
-    , action : String
-    }
-
-
 view : Html Msg
 view =
     ul [ class "tweet-list p-0" ]
