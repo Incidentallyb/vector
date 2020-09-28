@@ -35,5 +35,13 @@ body {
         color: var(--blue);
       }
     }
+    &:focus {
+      background-color: var(--blue);
+      color: var(--white);
+      text-decoration: underline;
+      svg {
+        color: var(--white);
+      }
+    }
   }
 }
