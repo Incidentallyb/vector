@@ -19,12 +19,34 @@ init =
 
 
 -- Process choices into a staged list of choice strings to match triggers
--- e.g. ["start", "macaques", "stay"] becomes ["start", "start|macaques", "start|macaques|stay"]
+--   e.g. ["start", "macaques", "stay"] becomes ["start", "start|macaques", "start|macaques|stay"]
 
 
 choiceStepsList : List String -> List String
 choiceStepsList currentChoices =
-    [ String.join "|" (List.reverse currentChoices) ]
+    let
+        reverseChoices =
+            currentChoices
+
+        list =
+            case reverseChoices of
+                -- There are at least 2 choices in the list
+                a :: tail ->
+                    -- join them and call again on the tail
+                    String.replace "init|" "" (String.join "|" (tail ++ [ a ])) :: choiceStepsList tail
+
+                other ->
+                    -- return unchanged
+                    other
+
+        debug =
+            Debug.log "list" list
+    in
+    list
+
+
+
+--    [ String.join "|" (List.reverse currentChoices) ]
 
 
 triggeredByChoices : List String -> List String -> Bool
