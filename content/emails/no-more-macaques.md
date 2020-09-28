@@ -2,7 +2,7 @@
 triggered_by:
   - step|macaque-scale-3
 author: Jenny
-summary: Email subject content [cCc]
+subject: Email subject content [cCc]
 ---
 
 Dear Team,

@@ -10,7 +10,7 @@ triggered_by:
   - start|pigs|keep|learn
   - start|pigs|keep|collaborate
 author: Charlie Benn
-summary: Email subject content [cCc]
+subject: Email subject content [cCc]
 ---
 Hello All,
 

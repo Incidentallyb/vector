@@ -7,7 +7,7 @@ triggered_by:
   - start|macaques|change|mice|learn
   - start|macaques|change|mice|collaborate
 author: Charlie Benn
-summary: Email subject content [cCc]
+subject: Email subject content [cCc]
 ---
 Hello All,
 

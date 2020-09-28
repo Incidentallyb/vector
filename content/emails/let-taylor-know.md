@@ -10,7 +10,7 @@ triggered_by:
   - start|macaques|stay|collaborate|mice
   - start|macaques|stay|collaborate|fish
 author: Jenny
-summary: Email subject content [cCc]
+subject: Email subject content [cCc]
 ---
 
 Hello Dream Team!

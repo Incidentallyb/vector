@@ -9,7 +9,7 @@ triggered_by:
   - end-transcript-pigs
   - end-transcript-mice
 author: Jenny
-summary: Email subject content [cCc]
+subject: Email subject content [cCc]
 ---
 Hey Guys,
 
