@@ -1,6 +1,6 @@
-module GameData exposing (GameData, filterMessages, init)
+module GameData exposing (GameData, filterEmails, filterMessages, init)
 
-import Content exposing (MessageData)
+import Content exposing (EmailData, MessageData)
 import Dict exposing (Dict)
 
 
@@ -15,6 +15,20 @@ init =
     { choices = []
     , teamName = "?"
     }
+
+
+
+-- Public filter functions, might become one
+
+
+filterMessages : Dict String MessageData -> List String -> Dict String MessageData
+filterMessages allMessages choices =
+    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allMessages
+
+
+filterEmails : Dict String EmailData -> List String -> Dict String EmailData
+filterEmails allEmails choices =
+    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allEmails
 
 
 
@@ -45,8 +59,3 @@ triggeredByChoices currentChoices triggeredByList =
     choiceStepsList currentChoices
         |> List.map (\choices -> List.member choices triggeredByList)
         |> List.member True
-
-
-filterMessages : Dict String MessageData -> List String -> Dict String MessageData
-filterMessages allMessages choices =
-    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allMessages

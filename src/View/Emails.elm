@@ -4,6 +4,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
+import GameData exposing (GameData, filterEmails)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Attributes.Aria exposing (ariaHidden)
@@ -33,10 +34,10 @@ single maybeContent =
                 ]
 
 
-list : Dict String Content.EmailData -> Html Msg
-list emailDict =
+list : GameData -> Dict String Content.EmailData -> Html Msg
+list gamedata emailDict =
     ul [ class "email-list" ]
-        (List.map listItem (Dict.values emailDict))
+        (List.map listItem (Dict.values (filterEmails emailDict gamedata.choices)))
 
 
 listItem : Content.EmailData -> Html msg
