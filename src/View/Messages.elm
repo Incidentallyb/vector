@@ -6,6 +6,7 @@ import Copy.Text exposing (t)
 import Dict exposing (Dict)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 
@@ -85,6 +86,12 @@ renderButtons : List ButtonInfo -> Html Msg
 renderButtons buttonList =
     div []
         (List.map
-            (\buttonItem -> button [ class "btn btn-primary choice-button" ] [ text buttonItem.label ])
+            (\buttonItem ->
+                button
+                    [ class "btn btn-primary choice-button"
+                    , onClick (ChoiceButtonClicked buttonItem.action)
+                    ]
+                    [ text buttonItem.label ]
+            )
             buttonList
         )
