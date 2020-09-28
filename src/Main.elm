@@ -11,7 +11,8 @@ import GameData exposing (GameData, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
-import Route exposing (Route(..))
+import Route exposing (Route(..), toString)
+import Set
 import Task
 import Url
 import View.Desktop
@@ -31,6 +32,7 @@ type alias Model =
     , page : Route
     , data : Content.Datastore
     , gameData : GameData
+    , visited : Set.Set String
     }
 
 
@@ -48,6 +50,7 @@ init flags url key =
       , page = Maybe.withDefault Intro maybeRoute
       , data = datastore
       , gameData = GameData.init
+      , visited = Set.empty
       }
     , Cmd.none
     )
@@ -78,7 +81,7 @@ update msg model =
                     -- If not a valid Route, default to Intro
                     Maybe.withDefault Intro (Route.fromUrl url)
             in
-            ( { model | page = newRoute }, resetViewportTop )
+            ( { model | page = newRoute, visited = Set.insert (Route.toString newRoute) model.visited }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
             let
