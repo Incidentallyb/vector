@@ -7,6 +7,9 @@ import Dict exposing (Dict)
 type alias GameData =
     { choices : List String
     , teamName : String
+    , scoreSuccess : Int
+    , scoreEconomic : Int
+    , scoreHarm : Int
     }
 
 
@@ -15,6 +18,9 @@ init =
     -- Start button on intro screen will eventually set this "init"
     { choices = [ "init" ]
     , teamName = "?"
+    , scoreSuccess = 0
+    , scoreEconomic = 18000000
+    , scoreHarm = 0
     }
 
 
