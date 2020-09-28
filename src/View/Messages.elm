@@ -47,7 +47,7 @@ view messagesDict =
 
 renderMessageAndPrompt : Content.MessageData -> Html Msg
 renderMessageAndPrompt message =
-    div []
+    li []
         [ renderMessage message.author message.content
         , renderPrompt message
         ]
@@ -55,7 +55,7 @@ renderMessageAndPrompt message =
 
 renderMessage : String -> String -> Html Msg
 renderMessage from message =
-    li
+    div
         [ class "message al w-75 float-left mt-3 ml-5 py-2" ]
         [ div [ class "ml-3" ]
             [ p [ class "message-from m-0" ]
@@ -70,7 +70,7 @@ renderMessage from message =
 renderPrompt : Content.MessageData -> Html Msg
 renderPrompt message =
     if List.length message.choices > 0 then
-        li
+        div
             [ class "message player w-75 float-right mt-3 mr-5 py-2" ]
             [ div [ class "ml-3" ]
                 [ p [ class "message-from m-0" ]
@@ -83,7 +83,7 @@ renderPrompt message =
             ]
 
     else
-        span [] []
+        text ""
 
 
 renderButtons : List ButtonInfo -> Html Msg
