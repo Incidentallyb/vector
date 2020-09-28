@@ -83,7 +83,18 @@ update msg model =
         ChoiceButtonClicked choice ->
             let
                 newGameData =
-                    { choices = choice :: model.gameData.choices }
+                    { choices = choice :: model.gameData.choices
+                    , teamName = model.gameData.teamName
+                    }
+            in
+            ( { model | gameData = newGameData }, Cmd.none )
+
+        TeamChosen teamName ->
+            let
+                newGameData =
+                    { choices = model.gameData.choices
+                    , teamName = teamName
+                    }
             in
             ( { model | gameData = newGameData }, Cmd.none )
 
@@ -104,46 +115,52 @@ view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            View.Desktop.view model.page
+            View.Desktop.view model.gameData model.page
 
         Documents ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page
+                [ View.Desktop.renderWrapperWithNav model.gameData
+                    model.page
                     [ View.Documents.list model.data.documents
                     ]
                 ]
 
         Document id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page
+                [ View.Desktop.renderWrapperWithNav model.gameData
+                    model.page
                     [ View.Documents.single (Dict.get id model.data.documents)
                     ]
                 ]
 
         Emails ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page
+                [ View.Desktop.renderWrapperWithNav model.gameData
+                    model.page
                     [ View.Emails.list model.data.emails
                     ]
                 ]
 
         Email id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page
+                [ View.Desktop.renderWrapperWithNav model.gameData
+                    model.page
                     [ View.Emails.single (Dict.get id model.data.emails)
                     ]
                 ]
 
         Messages ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page
+                [ View.Desktop.renderWrapperWithNav model.gameData
+                    model.page
                     [ View.Messages.view model.gameData model.data.messages
                     ]
                 ]
 
         Social ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.page
+                [ View.Desktop.renderWrapperWithNav model.gameData
+                    model.page
                     [ View.Social.view
                     ]
                 ]

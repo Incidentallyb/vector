@@ -5,13 +5,17 @@ import Dict exposing (Dict)
 
 
 type alias GameData =
-    { choices : List String }
+    { choices : List String
+    , teamName : String
+    }
 
 
 init : GameData
 init =
     -- Start button on intro screen will eventually set this "init"
-    { choices = [ "init" ] }
+    { choices = [ "init" ]
+    , teamName = "?"
+    }
 
 
 triggeredByChoices : String -> List String -> Bool
