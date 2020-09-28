@@ -11,27 +11,46 @@ import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 
+
 type alias ButtonInfo =
     { label : String
     , action : String
     }
 
-choiceStringsToButtons: String -> ButtonInfo
-choiceStringsToButtons buttonString = 
-    { label = buttonString, action = "#" }
+
+choiceStringsToButtons : String -> ButtonInfo
+choiceStringsToButtons buttonString =
+    let
+        ( parsedString, action ) =
+            ( case List.head (String.indexes "|" buttonString) of
+                Nothing ->
+                    buttonString
+
+                Just val ->
+                    String.dropLeft (val + 1) buttonString
+            , case List.head (String.indexes "|" buttonString) of
+                Nothing ->
+                    buttonString
+
+                Just val ->
+                    String.left val buttonString
+            )
+    in
+    { label = parsedString, action = action }
 
 
 view : Dict String Content.MessageData -> Html Msg
 view messagesDict =
     ul [ class "message-list p-0" ]
-    (List.map renderMessageAndPrompt (Dict.values messagesDict))
+        (List.map renderMessageAndPrompt (Dict.values messagesDict))
+
 
 renderMessageAndPrompt : Content.MessageData -> Html Msg
-renderMessageAndPrompt message = 
-    div [] [
-        renderMessage message.author message.content
+renderMessageAndPrompt message =
+    div []
+        [ renderMessage message.author message.content
         , renderPrompt message
-    ]
+        ]
 
 
 renderMessage : String -> String -> Html Msg
@@ -43,24 +62,27 @@ renderMessage from message =
                 [ text from ]
             , p
                 [ class "card-text m-0" ]
-                [ Markdown.toHtml [ class "content" ]  message ]
+                [ Markdown.toHtml [ class "content" ] message ]
             ]
         ]
 
+
 renderPrompt : Content.MessageData -> Html Msg
-renderPrompt message = 
+renderPrompt message =
     if List.length message.choices > 0 then
         li
             [ class "message player w-75 float-right mt-3 mr-5 py-2" ]
             [ div [ class "ml-3" ]
                 [ p [ class "message-from m-0" ]
                     [ text (t FromPlayerTeam) ]
+                -- we might have some player text in the future? 
                 --, div [ class "card-text m-0" ]
                 --    [ Markdown.toHtml [ class "content" ] message.content ]
                 , renderButtons (List.map choiceStringsToButtons message.choices)
                 ]
             ]
-    else 
+
+    else
         span [] []
 
 
