@@ -10,7 +10,6 @@ import Html.Attributes exposing (..)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
-import Url.Builder exposing (string)
 
 
 imagePath : String

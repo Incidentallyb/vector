@@ -4,7 +4,7 @@ triggered_by:
   - start|macaques|fishembryo
   - start|macaques|stemcells
 author: Jenny
-summary: Email subject content [cCc]
+subject: Email subject content [cCc]
 ---
 
 Hey Guys,

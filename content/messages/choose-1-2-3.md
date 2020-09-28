@@ -1,54 +1,88 @@
 ---
 triggered_by:
-  - 1.1.1.1.1 (pig)
-  - 1.1.1.1.2 (mice)
-  - 1.1.1.1.3 (fish)
-  - 1.1.1.2.1 (pig)
-  - 1.1.1.2.2 (mice)
-  - 1.1.1.2.3 (fish)
-  - 1.1.1.3.1 (pig)
-  - 1.1.1.3.2 (mice)
-  - 1.1.1.3.3 (fish)
-  - 1.1.2.1.1.1 (limit contact)
-  - 1.1.2.1.1.2.1 (mice)
-  - 1.1.2.1.1.2.2 (fish)
-  - 1.1.2.1.2.1 (limit contact)
-  - 1.1.2.1.2.2.1 (mice)
-  - 1.1.2.1.2.2.2 (fish)
-  - 1.1.2.1.3.1 (limit contact)
-  - 1.1.2.1.3.2.1 (mice)
-  - 1.1.2.1.3.2.2 (fish)
-  - 1.1.2.2.1.1 (limit time handling mice)
-  - 1.1.2.2.1.2 (change to fish)
-  - 1.1.2.2.2.1 (limit time handling mice)
-  - 1.1.2.2.2.2 (change to mice)
-  - 1.1.2.2.3.1 (limit time handling mice)
-  - 1.1.2.2.3.2 (change to fish)
-  - 1.1.2.3.1.1 (continue with adult fish)
-  - 1.1.2.3.1.2 (move to fish embryo)
-  - 1.1.2.3.2.1 (continue with adult fish)
-  - 1.1.2.3.2.2 (move to fish embryo)
-  - 1.1.2.3.3.1 (continue with adult fish)
-  - 1.1.2.3.3.2 (move to fish embryo)
-  - 1.2.1.1.1 (limit contact)
-  - 1.2.1.1.2.1 (mice)
-  - 1.2.1.2.1 (limit contact)
-  - 1.2.1.2.2.1 (mice)
-  - 1.2.1.3.1 (limit contact)
-  - 1.2.1.3.2.1 (mice)
-  - 1.2.2.1.1 (limit contact)
-  - 1.2.2.1.2.1 (mice)
-  - 1.2.2.2.1 (limit contact)
-  - 1.2.2.2.2.1 (mice)
-  - 1.2.2.3.1 (limit contact)
-  - 1.2.2.3.2.1 (mice)
+  - start|macaques|stay|scale|pigs
+  - start|macaques|stay|scale|mice
+  - start|macaques|stay|scale|fish
+  - start|macaques|stay|learn|pigs
+  - start|macaques|stay|learn|mice
+  - start|macaques|stay|learn|fish
+  - start|macaques|stay|collaborate|pigs
+  - start|macaques|stay|collaborate|mice
+  - start|macaques|stay|collaborate|fish
+  - start|macaques|change|pigs|scale|limit
+  - start|macaques|change|pigs|scale|change|mice
+  - start|macaques|change|pigs|scale|change|fish
+  - start|macaques|change|pigs|learn|limit
+  - start|macaques|change|pigs|learn|change|mice
+  - start|macaques|change|pigs|learn|change|fish
+  - start|macaques|change|pigs|collaborate|limit
+  - start|macaques|change|pigs|collaborate|change|mice
+  - start|macaques|change|pigs|collaborate|change|fish
+  - start|macaques|change|mice|scale|limit
+  - start|macaques|change|mice|scale|fish
+  - start|macaques|change|mice|learn|limit
+  - start|macaques|change|mice|learn|fish
+  - start|macaques|change|mice|collaborate|limit
+  - start|macaques|change|mice|collaborate|fish
+  - start|macaques|change|fish|scale|adult
+  - start|macaques|change|fish|scale|embryos
+  - start|macaques|change|fish|learn|adult
+  - start|macaques|change|fish|learn|embryos
+  - start|macaques|change|fish|collaborate|adult
+  - start|macaques|change|fish|collaborate|embryos
+  - start|pigs|increase|scale|limit
+  - start|pigs|increase|learn|limit
+  - start|pigs|increase|learn|change|fish
+  - start|pigs|increase|learn|change|mice
+  - start|pigs|increase|collaborate|limit
+  - start|pigs|increase|collaborate|change|mice
+  - start|pigs|increase|collaborate|change|fish
+  - start|pigs|increase|scale|change|fish
+  - start|pigs|keep|scale|limit
+  - start|pigs|keep|scale|change|mice
+  - start|pigs|keep|scale|change|fish
+  - start|pigs|keep|learn|limit
+  - start|pigs|keep|learn|change|mice
+  - start|pigs|keep|learn|change|fish
+  - start|pigs|keep|collaborate|limit
+  - start|pigs|keep|collaborate|change|mice
+  - start|pigs|keep|collaborate|change|fish
+  - start|mice|handle|scale|limit
+  - start|mice|handle|learn|limit
+  - start|mice|handle|scale|fish
+  - start|mice|handle|learn|fish
+  - start|mice|handle|collaborate|limit
+  - start|mice|handle|collaborate|fish
+  - start|mice|tubes|scale|tubes
+  - start|mice|tubes|learn|tubes
+  - start|mice|tubes|collaborate|tubes
+  - start|mice|tubes|scale|change|fish
+  - start|mice|tubes|scale|change|pigs
+  - start|mice|tubes|learn|change|fish
+  - start|mice|tubes|learn|change|pigs
+  - start|mice|tubes|collaborate|change|fish
+  - start|mice|tubes|collaborate|change|pigs
+  - start|fish|adult|scale|embryos
+  - start|fish|adult|scale|adult
+  - start|fish|adult|learn|embryos
+  - start|fish|adult|learn|adult
+  - start|fish|adult|collaborate|embryos
+  - start|fish|adult|collaborate|adult
+  - start|fish|embryo|scale|embryo
+  - start|fish|embryo|scale|change|mice
+  - start|fish|embryo|scale|change|pigs
+  - start|fish|embryo|learn|stay
+  - start|fish|embryo|learn|change|mice
+  - start|fish|embryo|learn|change|pigs
+  - start|fish|embryo|collaborate|stay
+  - start|fish|embryo|collaborate|change|mice
+  - start|fish|embryo|collaborate|change|pigs
 author: AL
 choices:
-  - Any two extras
-  - Any one extra
-  - Do nothing
+  - two-extras|Any two extras
+  - one-extra|Any one extra
+  - nothing|Do nothing
 ---
-
 We are almost at the end of the simulation. You are doing very well and your experiments are making results. There are a few more things we can do to affect the harm and success ratings.
 
 You can choose two to employ in your experiments. 
