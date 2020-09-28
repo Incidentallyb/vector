@@ -92,7 +92,7 @@ update msg model =
         TeamChosen teamName ->
             let
                 newGameData =
-                    { choices = model.gameData.choices
+                    { choices = [ "init" ]
                     , teamName = teamName
                     }
             in
