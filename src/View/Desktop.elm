@@ -7,6 +7,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Svg.Attributes
 
 
 view : Route -> Html Msg
@@ -20,9 +21,12 @@ renderWrapperWithNav : Route -> List (Html Msg) -> Html Msg
 renderWrapperWithNav pageRoute elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop" ]
-            [ div [ class "col-sm-auto" ]
+            [ div [ class "col-sm-auto d-none d-md-block" ]
                 [ renderTeamInformation
                 , renderNavLinks pageRoute
+                ]
+            , div [ class "order-last d-md-none" ]
+                [ renderMobileNavLinks pageRoute
                 ]
             , div [ class "col" ] elements
             ]
@@ -39,7 +43,7 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Documents)
             ]
-            [ documentText []
+            [ documentText [ Svg.Attributes.class "nav-icon" ]
             , text (t NavDocuments)
             , text " "
 
@@ -52,7 +56,7 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Emails)
             ]
-            [ mail []
+            [ mail [ Svg.Attributes.class "nav-icon" ]
             , text (t NavEmails)
             ]
         , a
@@ -62,7 +66,7 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Messages)
             ]
-            [ chatAlt []
+            [ chatAlt [ Svg.Attributes.class "nav-icon" ]
             , text (t NavMessages)
             ]
         , a
@@ -72,8 +76,61 @@ renderNavLinks pageRoute =
                 ]
             , href (Route.toString Route.Social)
             ]
-            [ hashtag []
+            [ hashtag [ Svg.Attributes.class "nav-icon" ]
             , text (t NavSocial)
+            ]
+        ]
+
+
+renderMobileNavLinks : Route -> Html Msg
+renderMobileNavLinks pageRoute =
+    nav [ class "nav nav-pills mobile-nav fixed-bottom" ]
+        [ a
+            [ classList
+                [ ( "nav-link", True )
+                , ( "active", Route.isDocumentRoute pageRoute )
+                ]
+            , class "mobile-nav-item"
+            , href (Route.toString Route.Documents)
+            ]
+            [ documentText [ Svg.Attributes.class "mobile-nav-icon" ]
+            , div [] [ text (t NavDocuments) ]
+            , text " "
+
+            --            , span [ class "badge badge-secondary" ] [ text "4" ]
+            ]
+        , a
+            [ classList
+                [ ( "nav-link", True )
+                , ( "active", Route.isEmailRoute pageRoute )
+                ]
+            , class "mobile-nav-item"
+            , href (Route.toString Route.Emails)
+            ]
+            [ mail [ Svg.Attributes.class "mobile-nav-icon" ]
+            , div [] [ text (t NavEmails) ]
+            ]
+        , a
+            [ classList
+                [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Messages )
+                ]
+            , class "mobile-nav-item"
+            , href (Route.toString Route.Messages)
+            ]
+            [ chatAlt [ Svg.Attributes.class "mobile-nav-icon" ]
+            , div [] [ text (t NavMessages) ]
+            ]
+        , a
+            [ classList
+                [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Social )
+                ]
+            , class "mobile-nav-item"
+            , href (Route.toString Route.Social)
+            ]
+            [ hashtag [ Svg.Attributes.class "mobile-nav-icon" ]
+            , div [] [ text (t NavSocial) ]
             ]
         ]
 

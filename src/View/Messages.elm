@@ -56,8 +56,8 @@ renderMessageAndPrompt message =
 renderMessage : String -> String -> Html Msg
 renderMessage from message =
     div
-        [ class "message al w-75 float-left mt-3 ml-5 py-2" ]
-        [ div [ class "ml-3" ]
+        [ class "message al w-75 float-left mt-3 ml-3 py-2" ]
+        [ div [ class "mx-3" ]
             [ p [ class "message-from m-0" ]
                 [ text from ]
             , p
@@ -71,11 +71,12 @@ renderPrompt : Content.MessageData -> Html Msg
 renderPrompt message =
     if List.length message.choices > 0 then
         div
-            [ class "message player w-75 float-right mt-3 mr-5 py-2" ]
-            [ div [ class "ml-3" ]
+            [ class "message player w-75 float-right mt-3 mr-3 py-2" ]
+            [ div [ class "mx-3" ]
                 [ p [ class "message-from m-0" ]
                     [ text (t FromPlayerTeam) ]
-                -- we might have some player text in the future? 
+
+                -- we might have some player text in the future?
                 --, div [ class "card-text m-0" ]
                 --    [ Markdown.toHtml [ class "content" ] message.content ]
                 , renderButtons (List.map choiceStringsToButtons message.choices)
