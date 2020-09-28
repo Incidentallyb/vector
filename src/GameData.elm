@@ -27,14 +27,15 @@ choiceStepsList currentChoices =
     let
         list =
             case currentChoices of
-                -- There are at least 2 choices in the list
-                a :: tail ->
-                    -- join them and call again on the tail
-                    String.join "|" (List.reverse tail ++ [ a ]) :: choiceStepsList tail
+                -- There are at least 2 choices in the list (a first choice and tail)
+                firstChoice :: remainingChoices ->
+                    -- Join them by pipe, add to list and call again on the tail
+                    String.join "|" (List.reverse remainingChoices ++ [ firstChoice ])
+                        :: choiceStepsList remainingChoices
 
-                other ->
+                oneChoiceList ->
                     -- return unchanged
-                    other
+                    oneChoiceList
     in
     list
 
