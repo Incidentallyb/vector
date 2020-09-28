@@ -10,21 +10,32 @@ type alias GameData =
 
 init : GameData
 init =
-    -- Start button on intro screen will eventually set this "init"
-    { choices = [ "init" ] }
+    { choices = [] }
 
 
-triggeredByChoices : String -> List String -> Bool
-triggeredByChoices currentChoices triggeredByList =
+
+-- Process choices into a staged list of choice strings to match triggers
+-- e.g. ["start", "macaques", "stay"] becomes ["start", "start|macaques", "start|macaques|stay"]
+
+
+choiceStepsList : List String -> List String
+choiceStepsList currentChoices =
+    [ String.join "|" (List.reverse currentChoices) ]
+
+
+stripInitChoice : String -> String
+stripInitChoice choices =
     -- "init" only for the initial content after that all trigger strings start with "start"
-    List.member (String.replace "init|" "" currentChoices) triggeredByList
+    String.replace "init|" "" choices
+
+
+triggeredByChoices : List String -> List String -> Bool
+triggeredByChoices currentChoices triggeredByList =
+    choiceStepsList currentChoices
+        |> List.map (\choices -> List.member (stripInitChoice choices) triggeredByList)
+        |> List.member True
 
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
 filterMessages allMessages choices =
-    let
-        choiceString =
-            -- The game data choices get added to head of list, we want to match that in reverse.
-            String.join "|" (List.reverse choices)
-    in
-    Dict.filter (\key value -> triggeredByChoices choiceString value.triggered_by) allMessages
+    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allMessages
