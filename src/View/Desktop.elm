@@ -21,7 +21,7 @@ renderWrapperWithNav : Route -> List (Html Msg) -> Html Msg
 renderWrapperWithNav pageRoute elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop" ]
-            [ div [ class "col-sm-auto d-none d-md-block" ]
+            [ div [ class "col-md-2 d-none d-md-block" ]
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation
                     , renderNavLinks pageRoute
