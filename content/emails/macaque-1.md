@@ -2,7 +2,7 @@
 triggered_by:
   - start|macaques
 author: Jenny
-summary: email subject [cCc]
+subject: email subject [cCc]
 ---
 
 Hello, 
