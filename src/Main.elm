@@ -137,7 +137,7 @@ view model =
         Messages ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.page
-                    [ View.Messages.view model.data.messages
+                    [ View.Messages.view model.gameData model.data.messages
                     ]
                 ]
 

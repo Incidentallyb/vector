@@ -4,6 +4,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
+import GameData exposing (GameData, filterMessages)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
@@ -39,10 +40,10 @@ choiceStringsToButtons buttonString =
     { label = parsedString, action = action }
 
 
-view : Dict String Content.MessageData -> Html Msg
-view messagesDict =
+view : GameData -> Dict String Content.MessageData -> Html Msg
+view gamedata messagesDict =
     ul [ class "message-list p-0" ]
-        (List.map renderMessageAndPrompt (Dict.values messagesDict))
+        (List.map renderMessageAndPrompt (Dict.values (filterMessages messagesDict gamedata.choices)))
 
 
 renderMessageAndPrompt : Content.MessageData -> Html Msg
@@ -75,7 +76,8 @@ renderPrompt message =
             [ div [ class "ml-3" ]
                 [ p [ class "message-from m-0" ]
                     [ text (t FromPlayerTeam) ]
-                -- we might have some player text in the future? 
+
+                -- we might have some player text in the future?
                 --, div [ class "card-text m-0" ]
                 --    [ Markdown.toHtml [ class "content" ] message.content ]
                 , renderButtons (List.map choiceStringsToButtons message.choices)
