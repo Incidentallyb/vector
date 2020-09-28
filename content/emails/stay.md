@@ -1,8 +1,8 @@
 ---
 triggered_by:
-  - start|macaques|stay
-  - start|macaques|fishembryo
-  - start|macaques|stemcells
+  - init|start|macaques|stay
+  - init|start|macaques|fishembryo
+  - init|start|macaques|stemcells
 author: Jenny
 subject: Email subject content [cCc]
 ---

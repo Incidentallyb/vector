@@ -69,3 +69,6 @@ t key =
 
         EmailDummySentTime ->
             "Sent: Today"
+
+        TeamNames ->
+            "Ash, Birch, Cedar, Elm, Fir, Hawthorn, Juniper, Lime, Maple, Oak"

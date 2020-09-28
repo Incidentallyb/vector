@@ -35,12 +35,13 @@ body {
         color: var(--blue);
       }
     }
+    &:focus {
+      background-color: var(--blue);
+      color: var(--white);
+      text-decoration: underline;
+      svg {
+        color: var(--white);
+      }
+    }
   }
-}
-
-a.btn > svg,
-a.nav-link > svg {
-  width: 24px;
-  height: 24px;
-  margin-right: 0.5em;
 }

@@ -27,7 +27,7 @@ renderTweet author handle content =
             , div [ class "flex-grow-1" ]
                 [ div [ class "m-0" ]
                     [ span [ class "author" ] [ text author ], span [ class "handle" ] [ text handle ] ]
-                , p [ class "card-text m-0" ]
+                , p [ class "m-0 mr-2" ]
                     [ text content ]
                 , div [ class "icons d-flex justify-content-between my-2 mr-4" ]
                     [ div [] [ chat [], text "3" ]

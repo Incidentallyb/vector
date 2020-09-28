@@ -1,11 +1,11 @@
 ---
 triggered_by:
-  - start|fish|embryo|1|2|mice
-  - start|fish|embryo|1|2|pigs
-  - start|fish|embryo|2|2|mice
-  - start|fish|embryo|2|2|pigs
-  - start|fish|embryo|3|2|mice
-  - start|fish|embryo|3|2|pigs
+  - init|start|fish|embryo|1|2|mice
+  - init|start|fish|embryo|1|2|pigs
+  - init|start|fish|embryo|2|2|mice
+  - init|start|fish|embryo|2|2|pigs
+  - init|start|fish|embryo|3|2|mice
+  - init|start|fish|embryo|3|2|pigs
   - end-transcript-pigs
   - end-transcript-mice
 author: Jenny

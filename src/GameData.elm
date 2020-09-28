@@ -5,12 +5,16 @@ import Dict exposing (Dict)
 
 
 type alias GameData =
-    { choices : List String }
+    { choices : List String
+    , teamName : String
+    }
 
 
 init : GameData
 init =
-    { choices = [] }
+    { choices = []
+    , teamName = "?"
+    }
 
 
 
@@ -23,16 +27,10 @@ choiceStepsList currentChoices =
     [ String.join "|" (List.reverse currentChoices) ]
 
 
-stripInitChoice : String -> String
-stripInitChoice choices =
-    -- "init" only for the initial content after that all trigger strings start with "start"
-    String.replace "init|" "" choices
-
-
 triggeredByChoices : List String -> List String -> Bool
 triggeredByChoices currentChoices triggeredByList =
     choiceStepsList currentChoices
-        |> List.map (\choices -> List.member (stripInitChoice choices) triggeredByList)
+        |> List.map (\choices -> List.member choices triggeredByList)
         |> List.member True
 
 
