@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - start|macaques|change
+  - init|start|macaques|change
 author: AL
 choices:
   - pigs|Pigs

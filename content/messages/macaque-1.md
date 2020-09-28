@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - start|macaques
+  - init|start|macaques
 author: AL
 choices:
   - stay|Let's stay with Macaques

@@ -12,8 +12,7 @@ type alias GameData =
 
 init : GameData
 init =
-    -- Start button on intro screen will eventually set this "init"
-    { choices = [ "init" ]
+    { choices = []
     , teamName = "?"
     }
 
@@ -21,7 +20,7 @@ init =
 triggeredByChoices : String -> List String -> Bool
 triggeredByChoices currentChoices triggeredByList =
     -- "init" only for the initial content after that all trigger strings start with "start"
-    List.member (String.replace "init|" "" currentChoices) triggeredByList
+    List.member currentChoices triggeredByList
 
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
