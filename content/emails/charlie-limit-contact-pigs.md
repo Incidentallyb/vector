@@ -1,14 +1,14 @@
 ---
 triggered_by:
-  - start|macaques|change|pigs|scale
-  - start|macaques|change|pigs|learn
-  - start|macaques|change|pigs|collaborate
-  - start|pigs|increase|scale
-  - start|pigs|increase|learn
-  - start|pigs|increase|collaborate
-  - start|pigs|keep|scale
-  - start|pigs|keep|learn
-  - start|pigs|keep|collaborate
+  - init|start|macaques|change|pigs|scale
+  - init|start|macaques|change|pigs|learn
+  - init|start|macaques|change|pigs|collaborate
+  - init|start|pigs|increase|scale
+  - init|start|pigs|increase|learn
+  - init|start|pigs|increase|collaborate
+  - init|start|pigs|keep|scale
+  - init|start|pigs|keep|learn
+  - init|start|pigs|keep|collaborate
 author: Charlie Benn
 subject: Email subject content [cCc]
 ---

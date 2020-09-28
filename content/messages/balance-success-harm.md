@@ -1,20 +1,20 @@
 ---
 triggered_by:
   - step|next-section
-  - start|macaques|stay
-  - start|macaques|pigs
-  - start|macaques|?|mice
-  - start|macaques|?|fish
-  - start|pigs|increase
-  - start|pigs|keep
-  - start|mice|handle
-  - start|mice|tubes
-  - start|fish|adult
-  - start|fish|embryo
-  - start|macaques|change|pigs
-  - start|macaques|change|mice
-  - start|macaques|change|fish
-  - start|macaques|change|pigs|3
+  - init|start|macaques|stay
+  - init|start|macaques|pigs
+  - init|start|macaques|?|mice
+  - init|start|macaques|?|fish
+  - init|start|pigs|increase
+  - init|start|pigs|keep
+  - init|start|mice|handle
+  - init|start|mice|tubes
+  - init|start|fish|adult
+  - init|start|fish|embryo
+  - init|start|macaques|change|pigs
+  - init|start|macaques|change|mice
+  - init|start|macaques|change|fish
+  - init|start|macaques|change|pigs|3
 author: AL
 choices:
   - scale|Scale up
