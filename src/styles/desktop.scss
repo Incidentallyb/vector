@@ -34,3 +34,33 @@
 .content {
   margin: 0 auto 5rem auto;
 }
+
+.v-centred {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  .sign-in {
+    width: 100%;
+    max-width: 500px;
+    padding: 2em;
+    margin: auto;
+    background-color: var(--grey-light);
+    border-radius: 5px;
+    text-align: center;
+
+    svg {
+      width: 33%;
+      color: var(--grey-twitter);
+    }
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  select {
+    margin: 1em 0em;
+  }
+}
