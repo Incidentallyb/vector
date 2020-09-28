@@ -9,26 +9,33 @@ import Html.Events exposing (on, onClick, targetValue)
 import Json.Decode as Json
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import GameData exposing (GameData)
 
 
-view : String -> Route -> Html Msg
-view teamName pageRoute =
-    case String.left 1 teamName of
+view : GameData -> Route -> Html Msg
+view gameData pageRoute =
+    case String.left 1 gameData.teamName of
         "?" ->
-            renderLoginPage teamName
+            renderLoginPage gameData
+        {-
+        When the team name consists of a ? or is prefixed with a ?, we should show the login box.
 
+        A ? prefix on teamname value is used so that we can change the model's data value in the 
+        <select> 'onChange' event without instantly navigating away from this page (which is a weird user experience) 
+        - instead, they click on the login <button> which removes the '?' prefix from the teamName
+        -}
         _ ->
             div []
-                [ renderWrapperWithNav teamName pageRoute [ text "my desktop" ]
+                [ renderWrapperWithNav gameData pageRoute [ text "my desktop" ]
                 ]
 
 
-renderWrapperWithNav : String -> Route -> List (Html Msg) -> Html Msg
-renderWrapperWithNav teamName pageRoute elements =
+renderWrapperWithNav : GameData -> Route -> List (Html Msg) -> Html Msg
+renderWrapperWithNav gameData pageRoute elements =
     div [ class "container-fluid desktop" ]
         [ div [ class "row" ]
             [ div [ class "col-sm-auto" ]
-                [ renderTeamInformation teamName
+                [ renderTeamInformation gameData.teamName
                 , renderNavLinks pageRoute
                 ]
             , div [ class "col" ] elements
@@ -37,25 +44,29 @@ renderWrapperWithNav teamName pageRoute elements =
 
 
 loginOption login =
-    option [ value login ] [ text (String.dropLeft 1 login) ]
+    option [ value ("?" ++ login) ] [ text login ]
 
 
-renderLoginPage : String -> Html Msg
-renderLoginPage teamName =
+renderLoginPage : GameData -> Html Msg
+renderLoginPage gameData =
     div [ class "container desktop" ]
         [ div [ class "v-centred" ]
             [ div [ class "sign-in" ]
                 [ userCircle []
                 , h1 [] [ text "Please login" ]
-                , select
+                ,  let
+                        teamNamesList = 
+                            String.split "," (t TeamNames)
+                    in 
+                    select
                     [ on "change" (Json.map TeamChosen targetValue)
                     , class "form-control"
-                    , value teamName
+                    , value gameData.teamName
                     ]
-                    (List.map loginOption [ "?", "?Ash", "?Birch", "?Cedar", "?Elm", "?Fir", "?Hawthorn", "?Juniper", "?Lime", "?Maple", "?Oak" ])
+                    (List.map loginOption teamNamesList)
                 , button
                     [ class "btn btn-primary btn-block"
-                    , onClick (TeamChosen (String.dropLeft 1 teamName))
+                    , onClick (TeamChosen (String.dropLeft 1 gameData.teamName))
                     ]
                     [ text "Login" ]
                 ]

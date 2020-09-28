@@ -115,11 +115,11 @@ view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            View.Desktop.view model.gameData.teamName model.page
+            View.Desktop.view model.gameData model.page
 
         Documents ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData.teamName
+                [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     [ View.Documents.list model.data.documents
                     ]
@@ -127,7 +127,7 @@ view model =
 
         Document id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData.teamName
+                [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     [ View.Documents.single (Dict.get id model.data.documents)
                     ]
@@ -135,7 +135,7 @@ view model =
 
         Emails ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData.teamName
+                [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     [ View.Emails.list model.data.emails
                     ]
@@ -143,7 +143,7 @@ view model =
 
         Email id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData.teamName
+                [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     [ View.Emails.single (Dict.get id model.data.emails)
                     ]
@@ -151,7 +151,7 @@ view model =
 
         Messages ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData.teamName
+                [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     [ View.Messages.view model.data.messages
                     ]
@@ -159,7 +159,7 @@ view model =
 
         Social ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData.teamName
+                [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     [ View.Social.view
                     ]
