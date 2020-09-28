@@ -33,7 +33,7 @@ type alias DocumentData =
 type alias EmailData =
     { triggered_by : List String
     , author : String
-    , summary : String
+    , subject : String
     , preview : String
     , content : String
     , basename : String
@@ -116,7 +116,7 @@ emailDictDecoder =
         (map6 EmailData
             (field "triggered_by" (list string))
             (field "author" string)
-            (field "summary" string)
+            (field "subject" string)
             (field "preview" string)
             (field "content" string)
             (field "basename" string)
