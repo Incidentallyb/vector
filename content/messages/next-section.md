@@ -5,7 +5,7 @@ triggered_by:
   - init|start|mice|handle
   - init|start|mice|tubes
   - init|start|fish|adult
-  - init|start|start|fish|embryo
+  - init|start|init|start|fish|embryo
   - init|start|macaques|stay|pigs
   - init|start|macaques|stay|mice
   - init|start|macaques|stay|fish

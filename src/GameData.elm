@@ -15,7 +15,6 @@ type alias GameData =
 
 init : GameData
 init =
-    -- Start button on intro screen will eventually set this "init"
     { choices = [ ]
     , teamName = "?"
     , scoreSuccess = 0
