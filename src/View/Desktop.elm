@@ -22,13 +22,15 @@ renderWrapperWithNav pageRoute elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop" ]
             [ div [ class "col-sm-auto d-none d-md-block" ]
-                [ renderTeamInformation
-                , renderNavLinks pageRoute
+                [ div [ class "sticky-top" ]
+                    [ renderTeamInformation
+                    , renderNavLinks pageRoute
+                    ]
                 ]
             , div [ class "order-last d-md-none" ]
                 [ renderMobileNavLinks pageRoute
                 ]
-            , div [ class "col" ] elements
+            , div [ class "col-md-8 content" ] elements
             ]
         ]
 
