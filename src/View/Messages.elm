@@ -4,7 +4,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
-import GameData exposing (filterMessages)
+import GameData exposing (GameData, filterMessages)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
@@ -40,10 +40,10 @@ choiceStringsToButtons buttonString =
     { label = parsedString, action = action }
 
 
-view : Dict String Content.MessageData -> Html Msg
-view messagesDict =
+view : GameData -> Dict String Content.MessageData -> Html Msg
+view gamedata messagesDict =
     ul [ class "message-list p-0" ]
-        (List.map renderMessageAndPrompt (Dict.values (filterMessages messagesDict [ "start", "macaques" ])))
+        (List.map renderMessageAndPrompt (Dict.values (filterMessages messagesDict gamedata.choices)))
 
 
 renderMessageAndPrompt : Content.MessageData -> Html Msg
