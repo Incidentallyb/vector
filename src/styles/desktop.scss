@@ -22,12 +22,12 @@
 }
 
 .mobile-nav-item {
-  flex: 1 0 25%;
-  font-size: 14px;
-  padding: 2px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  border-radius: 0px !important;
+  display: flex;
+  flex: 1 0 25%;
+  flex-direction: column;
+  font-size: 14px;
   padding: 10px 0;
 }
 
