@@ -96,7 +96,7 @@ update msg model =
         TeamChosen teamName ->
             let
                 newGameData =
-                    { choices = model.gameData.choices
+                    { choices = [ "init" ]
                     , teamName = teamName
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
