@@ -52,7 +52,7 @@ renderLoginPage teamName =
                     , class "form-control"
                     , value teamName
                     ]
-                    (List.map loginOption [ "?", "?ash", "?birch", "?elm" ])
+                    (List.map loginOption [ "?", "?Ash", "?Birch", "?Cedar", "?Elm", "?Fir", "?Hawthorn", "?Juniper", "?Lime", "?Maple", "?Oak" ])
                 , button
                     [ class "btn btn-primary btn-block"
                     , onClick (TeamChosen (String.dropLeft 1 teamName))
