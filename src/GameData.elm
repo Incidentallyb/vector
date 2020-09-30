@@ -1,6 +1,6 @@
-module GameData exposing (GameData, filterMessages, init, updateSuccessScore, updateEconomicScore)
+module GameData exposing (GameData, filterEmails, filterMessages, init, updateSuccessScore, updateEconomicScore)
 
-import Content exposing (MessageData)
+import Content exposing (EmailData, MessageData)
 import Dict exposing (Dict)
 
 
@@ -23,19 +23,47 @@ init =
     }
 
 
-triggeredByChoices : String -> List String -> Bool
-triggeredByChoices currentChoices triggeredByList =
-    List.member currentChoices triggeredByList
+-- Public filter functions, might become one
 
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
 filterMessages allMessages choices =
+    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allMessages
+
+
+filterEmails : Dict String EmailData -> List String -> Dict String EmailData
+filterEmails allEmails choices =
+    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allEmails
+
+
+
+-- Process choices into a staged list of choice strings to match triggers
+--   e.g. ["start", "macaques", "stay"] becomes ["start", "start|macaques", "start|macaques|stay"]
+
+
+choiceStepsList : List String -> List String
+choiceStepsList currentChoices =
     let
-        choiceString =
-            -- The game data choices get added to head of list, we want to match that in reverse.
-            String.join "|" (List.reverse choices)
+        list =
+            case currentChoices of
+                -- There are at least 2 choices in the list (a first choice and tail)
+                firstChoice :: remainingChoices ->
+                    -- Join them by pipe, add to list and call again on the tail
+                    String.join "|" (List.reverse remainingChoices ++ [ firstChoice ])
+                        :: choiceStepsList remainingChoices
+
+                oneChoiceList ->
+                    -- return unchanged
+                    oneChoiceList
     in
-    Dict.filter (\key value -> triggeredByChoices choiceString value.triggered_by) allMessages
+    list
+
+
+triggeredByChoices : List String -> List String -> Bool
+triggeredByChoices currentChoices triggeredByList =
+    choiceStepsList currentChoices
+        |> List.map (\choices -> List.member choices triggeredByList)
+        |> List.member True
 
 
 applySuccessScore: Int -> List Content.MessageData -> Int

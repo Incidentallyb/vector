@@ -43,7 +43,10 @@ choiceStringsToButtons buttonString =
 view : GameData -> Dict String Content.MessageData -> Html Msg
 view gamedata messagesDict =
     ul [ class "message-list p-0" ]
-        (List.map renderMessageAndPrompt (Dict.values (filterMessages messagesDict gamedata.choices)))
+        (List.reverse
+            (Dict.values (filterMessages messagesDict gamedata.choices))
+            |> List.map renderMessageAndPrompt
+        )
 
 
 renderMessageAndPrompt : Content.MessageData -> Html Msg
