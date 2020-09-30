@@ -1,5 +1,6 @@
 module View.Messages exposing (triggeredByWithChoiceStrings, view)
 
+import Array exposing (set)
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
@@ -14,7 +15,6 @@ import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Set
-import Array exposing (set)
 
 
 type alias ButtonInfo =
@@ -98,19 +98,22 @@ renderPrompt message choices =
 renderButtons : List ButtonInfo -> String -> Html Msg
 renderButtons buttonList chosenValue =
     div []
-        (List.map                   
+        (List.map
             (\buttonItem ->
                 button
+                    [ classList
+                        [ ( "btn choice-button", True )
+                        , ( "active btn-success", chosenValue == buttonItem.action )
+                        , ( "btn-secondary", chosenValue /= buttonItem.action && chosenValue /= "" )
+                        , ( "btn-primary", chosenValue == "" )
+                        , ( "actn-" ++ buttonItem.action, True )
+                        , ( "chsn-" ++ chosenValue, True )
+                        ]
+                    , if chosenValue == "" then
+                        onClick (ChoiceButtonClicked buttonItem.action)
 
-                    [ classList [
-                        ( "btn choice-button", True )
-                        , ( "active btn-success", chosenValue == buttonItem.action)
-                        , ( "btn-secondary", chosenValue /= buttonItem.action && chosenValue /= "")
-                        , ( "btn-primary", chosenValue == "")
-                        , ( "actn-" ++  buttonItem.action, True)
-                        , ( "chsn-" ++  chosenValue, True)
-                    ]
-                    , if chosenValue == "" then onClick (ChoiceButtonClicked buttonItem.action) else Html.Attributes.class ""
+                      else
+                        Html.Attributes.class ""
                     ]
                     [ text buttonItem.label ]
             )
@@ -124,32 +127,37 @@ choiceHasBeenMade playerChoices message =
     -- if the message doesn't give us choices, don't do anything
     if List.length playerChoices <= 1 || List.length message.choices == 0 then
         ""
+
     else
         let
             -- set of current player choices, e.g. ["init", "init|start", "init|start|macaque"]
-            setOfPlayerChoices = 
+            setOfPlayerChoices =
                 Set.fromList (GameData.choiceStepsList playerChoices)
+
             -- list of valid triggers for the current message that match our current or historical player choices
             -- this is normally a single item, but could be multiple
             -- e.g. [ "init|start" ]
             listOfChoicesThatMatch =
                 GameData.triggeredByChoicesGetMatches playerChoices message.triggered_by
+
             -- set of triggers that also have our choice strings attached to them, e.g.
             -- [ "init|start|macaque", "init|start|fish", "init|start|mice" ... ]
             setOfTriggersWithChoiceStringsAttached =
                 Set.fromList (triggeredByWithChoiceStrings listOfChoicesThatMatch message.choices)
 
-            setOfMatches = 
+            setOfMatches =
                 Set.intersect setOfPlayerChoices setOfTriggersWithChoiceStringsAttached
 
-            chosenAction = 
+            chosenAction =
                 Maybe.withDefault "" (List.head (List.reverse (String.split "|" (Maybe.withDefault "" (List.head (Set.toList setOfMatches))))))
 
             result =
                 if Set.isEmpty setOfMatches then
                     ""
+
                 else
-                   chosenAction
+                    chosenAction
+
             -- debugger =
             --    Debug.log "SETS" (Debug.toString playerChoices ++ " TRIGGERS for " ++ message.basename ++ " " ++ Debug.toString (triggeredByWithChoiceStrings playerChoices message.choices))
         in

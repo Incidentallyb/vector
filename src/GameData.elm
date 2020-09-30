@@ -1,4 +1,4 @@
-module GameData exposing (GameData, filterEmails, filterMessages, init, choiceStepsList, triggeredByChoices, triggeredByChoicesGetMatches, updateSuccessScore, updateEconomicScore)
+module GameData exposing (GameData, choiceStepsList, filterEmails, filterMessages, init, triggeredByChoices, triggeredByChoicesGetMatches, updateEconomicScore, updateSuccessScore)
 
 import Content exposing (EmailData, MessageData)
 import Dict exposing (Dict)
@@ -16,12 +16,13 @@ type alias GameData =
 
 init : GameData
 init =
-    { choices = [ ]
+    { choices = []
     , teamName = "?"
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
     }
+
 
 
 -- Public filter functions, might become one
@@ -66,7 +67,10 @@ triggeredByChoices currentChoices triggeredByList =
         |> List.map (\choices -> List.member choices triggeredByList)
         |> List.member True
 
+
+
 -- find the triggeredBy strings that match our current choices
+
 
 triggeredByChoicesGetMatches : List String -> List String -> List String
 triggeredByChoicesGetMatches currentChoices triggeredByList =
@@ -75,18 +79,21 @@ triggeredByChoicesGetMatches currentChoices triggeredByList =
         |> List.filter (\returnString -> returnString /= "")
 
 
-applySuccessScore: Int -> List Content.MessageData -> Int
-applySuccessScore initialScore messages = 
+applySuccessScore : Int -> List Content.MessageData -> Int
+applySuccessScore initialScore messages =
     List.foldl (+) initialScore (List.map (\record -> Maybe.withDefault 0 record.scoreChangeSuccess) messages)
-    
-updateSuccessScore: Content.Datastore -> List String -> Int -> Int
-updateSuccessScore datastore choices initialScore = 
+
+
+updateSuccessScore : Content.Datastore -> List String -> Int -> Int
+updateSuccessScore datastore choices initialScore =
     applySuccessScore initialScore (Dict.values (filterMessages datastore.messages choices))
 
-applyEconomicScore: Int -> List Content.MessageData -> Int
-applyEconomicScore initialScore messages = 
+
+applyEconomicScore : Int -> List Content.MessageData -> Int
+applyEconomicScore initialScore messages =
     List.foldl (+) initialScore (List.map (\record -> Maybe.withDefault 0 record.scoreChangeEconomic) messages)
 
-updateEconomicScore: Content.Datastore -> List String -> Int -> Int
-updateEconomicScore datastore choices initialScore = 
+
+updateEconomicScore : Content.Datastore -> List String -> Int -> Int
+updateEconomicScore datastore choices initialScore =
     applyEconomicScore initialScore (Dict.values (filterMessages datastore.messages choices))

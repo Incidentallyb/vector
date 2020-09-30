@@ -1,7 +1,7 @@
 module Content exposing (Datastore, DocumentData, EmailData, MessageData, datastoreDictDecoder)
 
 import Dict exposing (Dict)
-import Json.Decode exposing (field, list, map4, map5, map6, map8, string, int, maybe)
+import Json.Decode exposing (field, int, list, map4, map5, map6, map8, maybe, string)
 
 
 type alias Datastore =
@@ -20,6 +20,7 @@ type alias MessageData =
     , content : String
     , basename : String
     , scoreChangeEconomic : Maybe Int
+
     --, scoreChangeHarm : Maybe Int
     , scoreChangeSuccess : Maybe Int
     }
@@ -103,20 +104,22 @@ messageDictDecoder =
             (maybe (field "scoreChangeSuccess" int))
         )
 
+
+
 {-
-flagsDecoder : Decode.Decoder Params
-flagsDecoder =
-    Decode.succeed Params
-        |> Decode.andMap (Decode.field "field1" (Decode.string) |> (Decode.withDefault) "1")
-        |> Decode.andMap (Decode.field "field2" (Decode.string)   |> (Decode.withDefault) "2")
-        |> Decode.andMap (Decode.field "field3" (Decode.string)   |> (Decode.withDefault) "3")
-        |> Decode.andMap (Decode.field "field4" (Decode.string) |> (Decode.withDefault) "4")
-        |> Decode.andMap (Decode.field "field5" (Decode.string)  |> (Decode.withDefault) "5")
-        |> Decode.andMap (Decode.field "field6" (Decode.int) |> (Decode.withDefault) "6")
-        |> Decode.andMap (Decode.field "field7" (Decode.string)    |> (Decode.withDefault) "7")
-        |> Decode.andMap (Decode.field "field8" (Decode.string)   |> (Decode.withDefault) "8")
-        
-        -}
+   flagsDecoder : Decode.Decoder Params
+   flagsDecoder =
+       Decode.succeed Params
+           |> Decode.andMap (Decode.field "field1" (Decode.string) |> (Decode.withDefault) "1")
+           |> Decode.andMap (Decode.field "field2" (Decode.string)   |> (Decode.withDefault) "2")
+           |> Decode.andMap (Decode.field "field3" (Decode.string)   |> (Decode.withDefault) "3")
+           |> Decode.andMap (Decode.field "field4" (Decode.string) |> (Decode.withDefault) "4")
+           |> Decode.andMap (Decode.field "field5" (Decode.string)  |> (Decode.withDefault) "5")
+           |> Decode.andMap (Decode.field "field6" (Decode.int) |> (Decode.withDefault) "6")
+           |> Decode.andMap (Decode.field "field7" (Decode.string)    |> (Decode.withDefault) "7")
+           |> Decode.andMap (Decode.field "field8" (Decode.string)   |> (Decode.withDefault) "8")
+
+-}
 
 
 documentDictDecoder : Json.Decode.Decoder (Dict String DocumentData)
