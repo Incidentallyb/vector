@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - step|maquaques-scale-3
+  - init|step|maquaques-scale-3
 author: AL
 choices:
   - pigs|Pigs

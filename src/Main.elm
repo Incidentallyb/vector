@@ -85,7 +85,11 @@ update msg model =
                 newGameData =
                     { choices = choice :: model.gameData.choices
                     , teamName = model.gameData.teamName
+                    , scoreSuccess = GameData.updateSuccessScore model.data (choice :: model.gameData.choices) model.gameData.scoreSuccess
+                    , scoreEconomic = GameData.updateEconomicScore model.data (choice :: model.gameData.choices) model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
                     }
+
             in
             ( { model | gameData = newGameData }, Cmd.none )
 
@@ -94,6 +98,9 @@ update msg model =
                 newGameData =
                     { choices = [ "init" ]
                     , teamName = teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
