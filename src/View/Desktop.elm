@@ -51,7 +51,7 @@ renderWrapperWithNav gameData pageRoute elements =
 
 
 loginOption login =
-    option [ value ("?" ++ login) ] [ text login ]
+    option [ value ("?" ++ String.trim login) ] [ text login ]
 
 
 renderLoginPage : GameData -> Html Msg

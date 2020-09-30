@@ -1,7 +1,8 @@
-module GameData exposing (GameData, filterEmails, filterMessages, init, updateSuccessScore, updateEconomicScore)
+module GameData exposing (GameData, filterEmails, filterMessages, init, choiceStepsList, triggeredByChoices, triggeredByChoicesGetMatches, updateSuccessScore, updateEconomicScore)
 
 import Content exposing (EmailData, MessageData)
 import Dict exposing (Dict)
+import List.Extra
 
 
 type alias GameData =
@@ -64,6 +65,14 @@ triggeredByChoices currentChoices triggeredByList =
     choiceStepsList currentChoices
         |> List.map (\choices -> List.member choices triggeredByList)
         |> List.member True
+
+-- find the triggeredBy strings that match our current choices
+
+triggeredByChoicesGetMatches : List String -> List String -> List String
+triggeredByChoicesGetMatches currentChoices triggeredByList =
+    choiceStepsList currentChoices
+        |> List.map (\choice -> Maybe.withDefault "" (List.Extra.find (\val -> val == choice) triggeredByList))
+        |> List.filter (\returnString -> returnString /= "")
 
 
 applySuccessScore: Int -> List Content.MessageData -> Int
