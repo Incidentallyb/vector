@@ -103,11 +103,9 @@ renderButtons buttonList chosenValue =
                 button
                     [ classList
                         [ ( "btn choice-button", True )
-                        , ( "active btn-success", chosenValue == buttonItem.action )
-                        , ( "btn-secondary", chosenValue /= buttonItem.action && chosenValue /= "" )
                         , ( "btn-primary", chosenValue == "" )
-                        , ( "actn-" ++ buttonItem.action, True )
-                        , ( "chsn-" ++ chosenValue, True )
+                        , ( "active", chosenValue == buttonItem.action )
+                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
                         ]
                     , if chosenValue == "" then
                         onClick (ChoiceButtonClicked buttonItem.action)
@@ -120,7 +118,26 @@ renderButtons buttonList chosenValue =
             buttonList
         )
 
+{-
+    Finding player choices is done by looking at the current message.triggeredBy, 
+    seeing if that matches one of our current or previous game choices,
+    then looping over the choice actions to see if the current game choice list's last element matches 
+    one of our choice actions.
 
+    e.g.
+        gameData.choices = [ "macaques", "start", "init"]  
+    so we've just clicked to select 'macaques' as our animal.
+
+    The message entry for that point in time is 
+        message.triggered_by = [ "init|start" ]
+        message.choices = [ "macaques|Macaques", "mice|Mice", "fish|Fish" ... ]
+
+    so we transform gameData.choices to ["init" , "init|start", "init|start|macaques"], 
+    and iterate over all the combinations and look for matches against [ "init|start|macaques", "init|start|mice", "init|start|fish" ... ]
+
+    If we find a match, we simply take the last element of the string (macaques) and deduce that this must be the value we chose for this message.
+
+-}
 choiceHasBeenMade : List String -> Content.MessageData -> String
 choiceHasBeenMade playerChoices message =
     -- first choice is 'init', so don't do anything
@@ -145,9 +162,12 @@ choiceHasBeenMade playerChoices message =
             setOfTriggersWithChoiceStringsAttached =
                 Set.fromList (triggeredByWithChoiceStrings listOfChoicesThatMatch message.choices)
 
+            -- which player choices match this message?
             setOfMatches =
                 Set.intersect setOfPlayerChoices setOfTriggersWithChoiceStringsAttached
 
+            -- take the matching player choice, find the last string (e.g. "macaques") 
+            -- and we use that as the value that was clicked by the button
             chosenAction =
                 Maybe.withDefault "" (List.head (List.reverse (String.split "|" (Maybe.withDefault "" (List.head (Set.toList setOfMatches))))))
 
