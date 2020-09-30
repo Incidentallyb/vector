@@ -119,7 +119,7 @@ renderButtons buttonList chosenValue =
         )
 
 {-
-    Finding player choices is done by looking at the current message.triggeredBy, 
+    Finding player choices is done by looking at the current message.triggered_by, 
     seeing if that matches one of our current or previous game choices,
     then looping over the choice actions to see if the current game choice list's last element matches 
     one of our choice actions.
