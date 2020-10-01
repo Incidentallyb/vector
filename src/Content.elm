@@ -19,10 +19,10 @@ type alias MessageData =
     , preview : String
     , content : String
     , basename : String
-    , scoreChangeEconomic : Maybe Int
+    , scoreChangeEconomic : Maybe (List String)
 
     --, scoreChangeHarm : Maybe Int
-    , scoreChangeSuccess : Maybe Int
+    , scoreChangeSuccess : Maybe (List String)
     }
 
 
@@ -100,8 +100,8 @@ messageDictDecoder =
             (field "preview" string)
             (field "content" string)
             (field "basename" string)
-            (maybe (field "scoreChangeEconomic" int))
-            (maybe (field "scoreChangeSuccess" int))
+            (maybe (field "scoreChangeEconomic" (list string)))
+            (maybe (field "scoreChangeSuccess" (list string)))
         )
 
 
