@@ -51,4 +51,14 @@
   margin-top: 0.5rem;
   min-width: 75%;
   text-align: left;
+  &.disabled {
+    cursor: not-allowed;
+    background-color: var(--choicebutton-disabled);
+  }
+  &.active {
+    background-color: var(--choicebutton-selected);
+    border-color: var(--choicebutton-selected);
+    color: var(--white);
+    cursor: not-allowed !important;
+  }
 }

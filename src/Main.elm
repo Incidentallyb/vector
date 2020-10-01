@@ -89,7 +89,6 @@ update msg model =
                     , scoreEconomic = GameData.updateEconomicScore model.data (choice :: model.gameData.choices) model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
                     }
-
             in
             ( { model | gameData = newGameData }, Cmd.none )
 
