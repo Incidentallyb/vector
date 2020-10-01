@@ -5,7 +5,7 @@ import ContentChoices
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
-import GameData exposing (GameData, filterMessages, triggeredByChoicesGetMatches)
+import GameData exposing (GameData, filterMessages)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)

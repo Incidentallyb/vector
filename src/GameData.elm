@@ -1,8 +1,11 @@
-module GameData exposing (GameData, choiceStepsList, filterEmails, filterMessages, init, triggeredByChoices, triggeredByChoicesGetMatches)
+module GameData exposing (GameData, filterEmails, filterMessages, init, updateEconomicScore)
 
 import Content exposing (EmailData, MessageData)
+import ContentChoices
+import Debug
 import Dict exposing (Dict)
 import List.Extra
+import Set
 
 
 type alias GameData =
@@ -30,71 +33,91 @@ init =
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
 filterMessages allMessages choices =
-    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allMessages
+    Dict.filter (\_ value -> ContentChoices.triggeredByChoices choices value.triggered_by) allMessages
 
 
 filterEmails : Dict String EmailData -> List String -> Dict String EmailData
 filterEmails allEmails choices =
-    Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allEmails
+    Dict.filter (\_ value -> ContentChoices.triggeredByChoices choices value.triggered_by) allEmails
 
 
-
--- Process choices into a staged list of choice strings to match triggers
---   e.g. ["start", "macaques", "stay"] becomes ["start", "start|macaques", "start|macaques|stay"]
-
-
-choiceStepsList : List String -> List String
-choiceStepsList currentChoices =
+updateEconomicScore : Content.Datastore -> GameData -> String -> Int
+updateEconomicScore datastore gamedata newChoice =
     let
-        list =
-            case currentChoices of
-                -- There are at least 2 choices in the list (a first choice and tail)
-                firstChoice :: remainingChoices ->
-                    -- Join them by pipe, add to list and call again on the tail
-                    String.join "|" (List.reverse remainingChoices ++ [ firstChoice ])
-                        :: choiceStepsList remainingChoices
+        playerChoices =
+            newChoice :: gamedata.choices
 
-                oneChoiceList ->
-                    -- return unchanged
-                    oneChoiceList
+        -- get a list of the messages that are being shown
+        messages =
+            List.reverse
+                (Dict.values (filterMessages datastore.messages gamedata.choices))
+
+        -- a list of tuples of choices chosen against their message, e.g.
+        -- [ ("start", message1) ] , then on next choice it would be
+        -- [ ("start", message1), ("macaques", message2) ]
+        economicScoreChanges =
+            List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message )) messages
+
+        -- this variable ends up with a list of score changes based on each message's point in time, e.g.
+        -- [18000000, -7000000, 0 ] for the message choices of start > macaques > stay
+        listOfEconomicScoreChanges =
+            List.map (\( choice, message ) -> getEconomicScoreChange choice message) economicScoreChanges
+
+        --debugger2 =
+        --    Debug.log "applyEconomicScoreChange " (Debug.toString applyEconomicScoreChange)
+        -- debugger =
+        --    Debug.log "Messages " (Debug.toString economicScoreChanges)
     in
-    list
+    -- take all of the economic score changes and add them together
+    List.foldl (+) 0 listOfEconomicScoreChanges
 
 
-triggeredByChoices : List String -> List String -> Bool
-triggeredByChoices currentChoices triggeredByList =
-    choiceStepsList currentChoices
-        |> List.map (\choices -> List.member choices triggeredByList)
-        |> List.member True
-
-
-
--- find the triggeredBy strings that match our current choices
-
-
-triggeredByChoicesGetMatches : List String -> List String -> List String
-triggeredByChoicesGetMatches currentChoices triggeredByList =
-    choiceStepsList currentChoices
-        |> List.map (\choice -> Maybe.withDefault "" (List.Extra.find (\val -> val == choice) triggeredByList))
-        |> List.filter (\returnString -> returnString /= "")
 
 {-
-applySuccessScore : Int -> List Content.MessageData -> Int
-applySuccessScore initialScore messages =
-    List.foldl (+) initialScore (List.map (\record -> Maybe.withDefault 0 record.scoreChangeSuccess) messages)
-
-
-updateSuccessScore : Content.Datastore -> List String -> Int -> Int
-updateSuccessScore datastore choices initialScore =
-    applySuccessScore initialScore (Dict.values (filterMessages datastore.messages choices))
-
-
-applyEconomicScore : Int -> List Content.MessageData -> Int
-applyEconomicScore initialScore messages =
-    List.foldl (+) initialScore (List.map (\record -> Maybe.withDefault 0 record.scoreChangeEconomic) messages)
-
-
-updateEconomicScore : Content.Datastore -> List String -> Int -> Int
-updateEconomicScore datastore choices initialScore =
-    applyEconomicScore initialScore (Dict.values (filterMessages datastore.messages choices))
+   This function produces a list of eceonomic change values that match choices made for this message.
+   so if you have a choice of 'macaque' and your scoreChangeEconomic is
+       ["macaques|-7000000", "pigs|-3000000", "mice|-2000000", "fish|-4000000", "bio|-11000000"]
+   it will return
+       foldr (+) 0 [-7000000 , 0 , 0 , 0 , 0]
+   == -7000000
 -}
+
+
+getEconomicScoreChange : String -> MessageData -> Int
+getEconomicScoreChange choice message =
+    let
+        result =
+            List.map
+                (\scoreChangeValue ->
+                    let
+                        ( changeValue, choiceMatch ) =
+                            ( case List.head (String.indexes "|" scoreChangeValue) of
+                                Nothing ->
+                                    0
+
+                                Just val ->
+                                    Maybe.withDefault 0 (String.toInt (String.dropLeft (val + 1) scoreChangeValue))
+                            , case List.head (String.indexes "|" scoreChangeValue) of
+                                Nothing ->
+                                    scoreChangeValue
+
+                                Just val ->
+                                    String.left val scoreChangeValue
+                            )
+
+                        --debug =
+                        --    Debug.log "getEconomicScoreChange " (Debug.toString (changeValue, choiceMatch, choice))
+                    in
+                    if choiceMatch == choice then
+                        changeValue
+
+                    else
+                        0
+                )
+                -- ["macaques|-7000000", "pigs|-7000000", "mice|-7000000", "fish|-7000000", "bio|-7000000"]
+                (Maybe.withDefault [ "" ] message.scoreChangeEconomic)
+
+        --debug2 =
+        --    Debug.log "getEconomicScoreChange result " (Debug.toString result)
+    in
+    List.foldr (+) 0 result
