@@ -1,4 +1,4 @@
-module GameData exposing (GameData, choiceStepsList, filterEmails, filterMessages, init, triggeredByChoices, triggeredByChoicesGetMatches, updateEconomicScore, updateSuccessScore)
+module GameData exposing (GameData, choiceStepsList, filterEmails, filterMessages, init, triggeredByChoices, triggeredByChoicesGetMatches)
 
 import Content exposing (EmailData, MessageData)
 import Dict exposing (Dict)
@@ -78,7 +78,7 @@ triggeredByChoicesGetMatches currentChoices triggeredByList =
         |> List.map (\choice -> Maybe.withDefault "" (List.Extra.find (\val -> val == choice) triggeredByList))
         |> List.filter (\returnString -> returnString /= "")
 
-
+{-
 applySuccessScore : Int -> List Content.MessageData -> Int
 applySuccessScore initialScore messages =
     List.foldl (+) initialScore (List.map (\record -> Maybe.withDefault 0 record.scoreChangeSuccess) messages)
@@ -97,3 +97,4 @@ applyEconomicScore initialScore messages =
 updateEconomicScore : Content.Datastore -> List String -> Int -> Int
 updateEconomicScore datastore choices initialScore =
     applyEconomicScore initialScore (Dict.values (filterMessages datastore.messages choices))
+-}
