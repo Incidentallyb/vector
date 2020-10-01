@@ -11,7 +11,7 @@ messagesTests =
         [ test "triggeredByWithChoiceStrings produces correct lists" <|
             \_ ->
                 View.Messages.triggeredByWithChoiceStrings [ "init|start" ] ["macaque|Macaque", "fish|Fish", "mice|Mice"]
-                    |> Expect.equal [ "init|start|macaque", "init|start|fish", "init|start|mice" ],
+                    |> Expect.equal [ "init|start|macaque", "init|start|fish", "init|start|mice" ]
         ,test "triggeredByWithChoiceStrings produces correct lists (2)" <|
             \_ ->
                 View.Messages.triggeredByWithChoiceStrings [ "init|start|macaque", "init|start|fish" ] ["stay|Stay with macaque", "change|Change" ]
@@ -20,5 +20,5 @@ messagesTests =
         ,test "triggeredByWithChoiceStrings produces correct lists (3)" <|       
             \_ ->
                 View.Messages.triggeredByWithChoiceStrings [ "init|start" ] ["macaque|Macaque", "fish|Fish", "mice|Mice"]
-                    |> Expect.equal [ "init|start|macaque", "init|start|fish", "init|start|mice" ],             
+                    |> Expect.equal [ "init|start|macaque", "init|start|fish", "init|start|mice" ]
         ]
