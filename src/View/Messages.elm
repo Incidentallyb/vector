@@ -53,7 +53,8 @@ view gamedata messagesDict =
 renderMessageAndPrompt : List String -> Content.MessageData -> Html Msg
 renderMessageAndPrompt choices message =
     li []
-        [ renderMessage message.author message.content
+        [ div [ class "typing-indicator"] [ span [] [text ""], span [] [text ""], span [] [text ""]]
+        , renderMessage message.author message.content
         , renderPrompt message choices
         ]
 
