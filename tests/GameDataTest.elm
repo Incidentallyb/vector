@@ -1,45 +1,35 @@
-module GameDataTest exposing (gamedataTests)
+module GameDataTest exposing (getIntegerIfMatchFound)
 
 import Expect
-import Test exposing (Test, describe, test)
 import GameData
+import Test exposing (Test, describe, test)
 
 
-gamedataTests : Test
-gamedataTests =
-    describe "Gamedata"
-        [ test "choiceStepsList produces correct lists" <|
+getIntegerIfMatchFound : Test
+getIntegerIfMatchFound =
+    describe "getIntegerIfMatchFound Function"
+        [ test "returns 0 for non matching values" <|
             \_ ->
-                GameData.choiceStepsList [ "macaque", "start", "init" ]
-                    |> Expect.equal [ "init|start|macaque", "init|start", "init" ]
-        , test "triggeredByChoices triggers correctly (1)" <|
+                GameData.getIntegerIfMatchFound "macaque|50" "fish"
+                    |> Expect.equal 0
+        , test "returns 0 for non matching values (2)" <|
             \_ ->
-                GameData.triggeredByChoices [ "macaque", "start", "init" ]  [ "init|start" ]
-                    |> Expect.equal True
-        , test "triggeredByChoices triggers correctly (2)" <|
+                GameData.getIntegerIfMatchFound "macaque|50" "mice"
+                    |> Expect.equal 0
+        , test "returns 0 for non matching values (3)" <|
             \_ ->
-                GameData.triggeredByChoices [ "start", "init" ]  [ "init|start" ]
-                    |> Expect.equal True
-        , test "triggeredByChoices triggers correctly (3)" <|
+                GameData.getIntegerIfMatchFound "" "fish"
+                    |> Expect.equal 0
+        , test "returns 0 for non matching values (4)" <|
             \_ ->
-                GameData.triggeredByChoices [ "macaque", "start", "init" ]  [ "init|start|fish", "init|start|mice" ]
-                    |> Expect.equal False
-        -- given a list of triggers, based on our current choices, find the exact trigger which matches the choice. 
-        , test "triggeredByChoicesReturnStrings" <|
+                GameData.getIntegerIfMatchFound "" ""
+                    |> Expect.equal 0
+        , test "returns value for matching values" <|
             \_ ->
-                GameData.triggeredByChoicesGetMatches [ "macaque", "start", "init" ]  [ "init|start|macaque" , "init|start|fish", "init|start|mice"]
-                    |> Expect.equal [ "init|start|macaque" ]
-        , test "triggeredByChoicesReturnStrings (2)" <|
+                GameData.getIntegerIfMatchFound "macaque|50" "macaque"
+                    |> Expect.equal 50
+        , test "returns value for matching values (2)" <|
             \_ ->
-                GameData.triggeredByChoicesGetMatches [ "start", "init" ]  [ "init|start|fish", "init|start|macaque" , "init|start|mice"]
-                    |> Expect.equal [ ]
-        -- given a list of triggers, based on our current choices, find the trigger which matched the choice (including historical choices). 
-        , test "triggeredByChoicesReturnStrings (3)" <|
-            \_ ->
-                GameData.triggeredByChoicesGetMatches [ "macaque", "start", "init" ]  [ "init|start" ]
-                    |> Expect.equal ["init|start" ]
-        , test "triggeredByChoicesReturnStrings (4)" <|
-            \_ ->
-                GameData.triggeredByChoicesGetMatches [ "stay", "macaque", "start", "init" ]  [ "init|start|fish", "init|start|macaque", "init|start|mice"]
-                    |> Expect.equal ["init|start|macaque" ]                           
+                GameData.getIntegerIfMatchFound "macaque|-40000" "macaque"
+                    |> Expect.equal -40000
         ]

@@ -1,11 +1,8 @@
-module GameData exposing (GameData, filterEmails, filterMessages, init, updateEconomicScore)
+module GameData exposing (GameData, filterEmails, filterMessages, getIntegerIfMatchFound, init, updateEconomicScore)
 
 import Content exposing (EmailData, MessageData)
 import ContentChoices
-import Debug
 import Dict exposing (Dict)
-import List.Extra
-import Set
 
 
 type alias GameData =
@@ -39,6 +36,10 @@ filterMessages allMessages choices =
 filterEmails : Dict String EmailData -> List String -> Dict String EmailData
 filterEmails allEmails choices =
     Dict.filter (\_ value -> ContentChoices.triggeredByChoices choices value.triggered_by) allEmails
+
+
+
+-- scoring functions
 
 
 updateEconomicScore : Content.Datastore -> GameData -> String -> Int
@@ -88,36 +89,37 @@ getEconomicScoreChange choice message =
     let
         result =
             List.map
-                (\scoreChangeValue ->
-                    let
-                        ( changeValue, choiceMatch ) =
-                            ( case List.head (String.indexes "|" scoreChangeValue) of
-                                Nothing ->
-                                    0
-
-                                Just val ->
-                                    Maybe.withDefault 0 (String.toInt (String.dropLeft (val + 1) scoreChangeValue))
-                            , case List.head (String.indexes "|" scoreChangeValue) of
-                                Nothing ->
-                                    scoreChangeValue
-
-                                Just val ->
-                                    String.left val scoreChangeValue
-                            )
-
-                        --debug =
-                        --    Debug.log "getEconomicScoreChange " (Debug.toString (changeValue, choiceMatch, choice))
-                    in
-                    if choiceMatch == choice then
-                        changeValue
-
-                    else
-                        0
-                )
+                (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice)
                 -- ["macaques|-7000000", "pigs|-7000000", "mice|-7000000", "fish|-7000000", "bio|-7000000"]
                 (Maybe.withDefault [ "" ] message.scoreChangeEconomic)
-
-        --debug2 =
-        --    Debug.log "getEconomicScoreChange result " (Debug.toString result)
     in
     List.foldr (+) 0 result
+
+
+
+-- given a string like "macaques|50" , return int 50 if string == macaques
+
+
+getIntegerIfMatchFound : String -> String -> Int
+getIntegerIfMatchFound scoreChangeValue choice =
+    let
+        ( changeValue, choiceMatch ) =
+            ( case List.head (String.indexes "|" scoreChangeValue) of
+                Nothing ->
+                    0
+
+                Just val ->
+                    Maybe.withDefault 0 (String.toInt (String.dropLeft (val + 1) scoreChangeValue))
+            , case List.head (String.indexes "|" scoreChangeValue) of
+                Nothing ->
+                    scoreChangeValue
+
+                Just val ->
+                    String.left val scoreChangeValue
+            )
+    in
+    if choiceMatch == choice then
+        changeValue
+
+    else
+        0

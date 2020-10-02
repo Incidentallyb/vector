@@ -1,4 +1,4 @@
-module ContentChoices exposing (choiceStepsList, getChoiceChosen, triggeredByChoices)
+module ContentChoices exposing (choiceStepsList, getChoiceChosen, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings)
 
 import Content
 import Debug
