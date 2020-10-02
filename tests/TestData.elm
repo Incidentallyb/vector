@@ -39,7 +39,8 @@ testMessage3 =
     , content = "Are you sure you want to stay with macaques?"
     , basename = "testMessage3"
     , scoreChangeEconomic = Nothing
-    , scoreChangeSuccess = Nothing
+    -- bonus of 5% sucesss if you stick with macaques
+    , scoreChangeSuccess = Just ["stay|5"]
     }
 
 
@@ -52,7 +53,10 @@ testMessage4 =
     , content = "Choose another animal (you lost 250,000 in lab costs by changing your mind)"
     , basename = "testMessage4"
     , scoreChangeEconomic = Just ["mice|5750000", "fish|6250000" ]
-    , scoreChangeSuccess = Nothing
+    
+    -- bonus of +10% sucesss if you switch to fish
+    -- else SET to 30% if you choose mice
+    , scoreChangeSuccess =  Just ["mice|=30", "fish|10" ]
     }
 
 
