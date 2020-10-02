@@ -4,6 +4,15 @@ $timeToWait: 2s;
   list-style: none;
   li { 
     @include clearfix;
+    &:not(:last-child) {
+      .typing-indicator {
+        display:none !important;
+        animation:none !important;
+      }
+      .message {
+        animation:none !important;
+      }
+    }
   }
 }
 
