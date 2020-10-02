@@ -88,7 +88,7 @@ update msg model =
                 newGameData =
                     { choices = choice :: model.gameData.choices
                     , teamName = model.gameData.teamName
-                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreSuccess = GameData.updateSuccessScore model.data model.gameData choice
                     , scoreEconomic = GameData.updateEconomicScore model.data model.gameData choice
                     , scoreHarm = model.gameData.scoreHarm
                     }

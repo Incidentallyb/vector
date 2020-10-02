@@ -1,4 +1,4 @@
-module GameData exposing (GameData, filterEmails, filterMessages, getIntegerIfMatchFound, init, updateEconomicScore)
+module GameData exposing (GameData, filterEmails, filterMessages, getIntegerIfMatchFound, init, updateEconomicScore, updateSuccessScore)
 
 import Content exposing (EmailData, MessageData)
 import ContentChoices
@@ -39,28 +39,7 @@ filterEmails allEmails choices =
 
 
 
--- scoring functions
-
-
-updateEconomicScore : Content.Datastore -> GameData -> String -> Int
-updateEconomicScore datastore gamedata newChoice =
-    let
-        playerChoices =
-            newChoice :: gamedata.choices
-
-        -- get a list of the messages that are being shown
-        messages =
-            List.reverse
-                (Dict.values (filterMessages datastore.messages gamedata.choices))
-
-        -- this variable ends up with a list of score changes based on each message's point in time, e.g.
-        -- [18000000, -7000000, 0 ] for the message choices of start > macaques > stay
-        listOfEconomicScoreChanges =
-            List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndMessages playerChoices messages)
-
-    in
-    -- take all of the economic score changes and add them together
-    List.foldl (+) 0 listOfEconomicScoreChanges
+-- Scoring functions
 
 
 {-
@@ -73,25 +52,6 @@ updateEconomicScore datastore gamedata newChoice =
 choicesAndMessages : List String -> List MessageData -> List (String, MessageData)
 choicesAndMessages playerChoices messages =
     List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message )) messages
-
-{-
-   This function produces a list of eceonomic change values that match choices made for this message.
-   so if you have a choice of 'macaque' and your scoreChangeEconomic is
-       ["macaques|-7000000", "pigs|-3000000", "mice|-2000000", "fish|-4000000", "bio|-11000000"]
-   it will return
-       foldr (+) 0 [-7000000 , 0 , 0 , 0 , 0]
-   == -7000000
--}
-
-
-getEconomicScoreChange : String -> MessageData -> Int
-getEconomicScoreChange choice message =
-    let
-        result =
-            List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeEconomic)
-    in
-    List.foldr (+) 0 result
-
 
 
 -- given a string like "macaques|50" , return int 50 if string == macaques
@@ -120,3 +80,61 @@ getIntegerIfMatchFound scoreChangeValue choice =
 
     else
         0
+
+
+
+updateEconomicScore : Content.Datastore -> GameData -> String -> Int
+updateEconomicScore datastore gamedata newChoice =
+    let
+        playerChoices =
+            newChoice :: gamedata.choices
+
+        -- get a list of the messages that are being shown
+        messages =
+            List.reverse
+                (Dict.values (filterMessages datastore.messages gamedata.choices))
+
+        -- this variable ends up with a list of score changes based on each message's point in time, e.g.
+        -- [18000000, -7000000, 0 ] for the message choices of start > macaques > stay
+        listOfEconomicScoreChanges =
+            List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndMessages playerChoices messages)
+
+    in
+    -- take all of the economic score changes and add them together
+    List.foldl (+) 0 listOfEconomicScoreChanges
+
+
+{-
+   This function produces a list of eceonomic change values that match choices made for this message.
+   so if you have a choice of 'macaque' and your scoreChangeEconomic is
+       ["macaques|-7000000", "pigs|-3000000", "mice|-2000000", "fish|-4000000", "bio|-11000000"]
+   it will return
+       foldr (+) 0 [-7000000 , 0 , 0 , 0 , 0]
+   == -7000000
+-}
+
+
+getEconomicScoreChange : String -> MessageData -> Int
+getEconomicScoreChange choice message =
+    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeEconomic))
+
+-- same as updateEconomicScore
+
+updateSuccessScore : Content.Datastore -> GameData -> String -> Int
+updateSuccessScore datastore gamedata newChoice =
+    let
+        playerChoices =
+            newChoice :: gamedata.choices
+        messages =
+            List.reverse
+                (Dict.values (filterMessages datastore.messages gamedata.choices))
+        listOfSuccessScoreChanges =
+            List.map (\( choice, message ) -> getSuccessScoreChange choice message) (choicesAndMessages playerChoices messages)
+    in
+    List.foldl (+) 0 listOfSuccessScoreChanges
+
+-- same as getEconomicScoreChange
+    
+getSuccessScoreChange : String -> MessageData -> Int
+getSuccessScoreChange choice message =
+    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeSuccess))
