@@ -53,26 +53,26 @@ updateEconomicScore datastore gamedata newChoice =
             List.reverse
                 (Dict.values (filterMessages datastore.messages gamedata.choices))
 
-        -- a list of tuples of choices chosen against their message, e.g.
-        -- [ ("start", message1) ] , then on next choice it would be
-        -- [ ("start", message1), ("macaques", message2) ]
-        economicScoreChanges =
-            List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message )) messages
-
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
         -- [18000000, -7000000, 0 ] for the message choices of start > macaques > stay
         listOfEconomicScoreChanges =
-            List.map (\( choice, message ) -> getEconomicScoreChange choice message) economicScoreChanges
+            List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndMessages playerChoices messages)
 
-        --debugger2 =
-        --    Debug.log "applyEconomicScoreChange " (Debug.toString applyEconomicScoreChange)
-        -- debugger =
-        --    Debug.log "Messages " (Debug.toString economicScoreChanges)
     in
     -- take all of the economic score changes and add them together
     List.foldl (+) 0 listOfEconomicScoreChanges
 
 
+{-
+    This function produces a list of tuples of choices chosen against their message, e.g.
+    [ ("start", message1) ] , then on next choice it would be
+    [ ("start", message1), ("macaques", message2) ]
+-}
+
+
+choicesAndMessages : List String -> List MessageData -> List (String, MessageData)
+choicesAndMessages playerChoices messages =
+    List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message )) messages
 
 {-
    This function produces a list of eceonomic change values that match choices made for this message.
@@ -88,10 +88,7 @@ getEconomicScoreChange : String -> MessageData -> Int
 getEconomicScoreChange choice message =
     let
         result =
-            List.map
-                (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice)
-                -- ["macaques|-7000000", "pigs|-7000000", "mice|-7000000", "fish|-7000000", "bio|-7000000"]
-                (Maybe.withDefault [ "" ] message.scoreChangeEconomic)
+            List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeEconomic)
     in
     List.foldr (+) 0 result
 
