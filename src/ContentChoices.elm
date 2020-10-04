@@ -1,4 +1,12 @@
-module ContentChoices exposing (getChoiceChosen, triggeredEmailsByChoice, triggeredMessagesByChoice)
+module ContentChoices exposing
+    ( choiceStepsList
+    , getChoiceChosen
+    , triggeredByChoices
+    , triggeredByChoicesGetMatches
+    , triggeredByWithChoiceStrings
+    , triggeredEmailsByChoice
+    , triggeredMessagesByChoice
+    )
 
 import Content exposing (EmailData, MessageData)
 import Dict exposing (Dict)
@@ -64,10 +72,7 @@ triggeredMessagesByChoice choices messages =
     Dict.fromList (messageListKeyedByTriggerChoice choices filteredMessages)
 
 
-emailListKeyedByTriggerChoice :
-    List String
-    -> Dict String EmailData
-    -> List ( String, EmailData )
+emailListKeyedByTriggerChoice : List String -> Dict String EmailData -> List ( String, EmailData )
 emailListKeyedByTriggerChoice choices emails =
     -- Go through the (key, email) pairs and replace key with the choice string that tiggered it.
     List.map
