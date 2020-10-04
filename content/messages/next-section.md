@@ -2,14 +2,14 @@
 triggered_by:
   - init|start|macaques|stay
   - init|start|pigs|increase
+  - init|start|pigs|keep
   - init|start|mice|handle
   - init|start|mice|tubes
   - init|start|fish|adult
-  - init|start|init|start|fish|embryo
-  - init|start|macaques|stay|pigs
-  - init|start|macaques|stay|mice
-  - init|start|macaques|stay|fish
-  - init|start|pigs|keep
+  - init|start|fish|embryo
+  - init|start|macaques|change|pigs
+  - init|start|macaques|change|mice
+  - init|start|macaques|change|fish
 author: AL
 choices:
   - step|Yes, let's go

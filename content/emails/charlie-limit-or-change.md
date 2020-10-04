@@ -1,11 +1,11 @@
 ---
 triggered_by:
-  - init|start|mice|handle|scale
-  - init|start|mice|handle|learn
-  - init|start|mice|handle|collaborate
-  - init|start|macaques|change|mice|scale
-  - init|start|macaques|change|mice|learn
-  - init|start|macaques|change|mice|collaborate
+  - init|start|mice|handle|step|scale
+  - init|start|mice|handle|step|learn
+  - init|start|mice|handle|step|collaborate
+  - init|start|macaques|change|mice|step|scale
+  - init|start|macaques|change|mice|step|learn
+  - init|start|macaques|change|mice|step|collaborate
 author: Charlie Benn
 subject: Email subject content [cCc]
 ---

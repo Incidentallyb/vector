@@ -1,11 +1,11 @@
 ---
 triggered_by:
-  - init|start|fish|embryo|1|2|mice
-  - init|start|fish|embryo|1|2|pigs
-  - init|start|fish|embryo|2|2|mice
-  - init|start|fish|embryo|2|2|pigs
-  - init|start|fish|embryo|3|2|mice
-  - init|start|fish|embryo|3|2|pigs
+  - init|start|fish|embryo|step|scale|change|mice
+  - init|start|fish|embryo|step|scale|change|pigs
+  - init|start|fish|embryo|step|learn|change|mice
+  - init|start|fish|embryo|step|learn|change|pigs
+  - init|start|fish|embryo|step|collaborate|change|mice
+  - init|start|fish|embryo|step|colaborate|change|pigs
   - end-transcript-pigs
   - end-transcript-mice
 author: Jenny
