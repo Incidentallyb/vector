@@ -84,7 +84,7 @@ getIntegerIfMatchFound scoreChangeValue choice =
 
 {-
    given a string like "macaques|50" , return string "50" if string == macaques
-   given a string like "mice|=30" , return string ""=30" if string == mice
+   given a string like "mice|=30" , return string "=30" if string == mice
 
    This allows our scoreChange options to be both delta modifiers (+/-) or be prefixed with a = if we want to SET a value.
 -}

@@ -50,6 +50,7 @@ renderWrapperWithNav gameData pageRoute elements =
         ]
 
 
+loginOption : String -> Html Msg
 loginOption login =
     option [ value ("?" ++ String.trim login) ] [ text login ]
 
@@ -74,13 +75,14 @@ renderLoginPage gameData =
                 , button
                     [ class "btn btn-primary btn-block"
                     , let
-                        teamName = 
+                        teamName =
                             if gameData.teamName == "?" then
                                 gameData.teamName
+
                             else
                                 String.dropLeft 1 gameData.teamName
-                    in
-                        onClick (TeamChosen teamName)
+                      in
+                      onClick (TeamChosen teamName)
                     ]
                     [ text "Login" ]
                 ]
