@@ -20,7 +20,7 @@ FILE-messages: balance-success-harm.md
 
 init|start|macaques|stay|step|scale
 1.1.1.1 Scale up
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 
 step|jenny-not-good-news
 FILE-messages: jenny-not-good-news.md
@@ -30,7 +30,7 @@ FILE-emails: no-more-macaques.md
 
 init|start|macaques|stay|step|scale|pigs
 1.1.1.1.1 Pig
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.1.1.1 Any two Extras
@@ -39,7 +39,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|scale|mice
 1.1.1.1.2 Mice
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.1.2.1 Any two Extras
@@ -48,7 +48,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|scale|fish
 1.1.1.1.3 Fish
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.1.3.1 Any two Extras
@@ -57,7 +57,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|learn
 1.1.1.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 
 step|jenny-not-good-news
 FILE-messages: jenny-not-good-news.md
@@ -67,7 +67,7 @@ FILE-emails: no-more-macaques.md
 
 init|start|macaques|stay|step|learn|pigs
 1.1.1.2.1 Pig
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.2.1.1 Any two Extras
@@ -76,7 +76,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|learn|mice
 1.1.1.2.2 Mice
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.2.2.1 Any two Extras
@@ -85,7 +85,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|learn|fish
 1.1.1.2.3 Fish
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.2.3.1 Any two Extras
@@ -94,7 +94,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|collaborate
 1.1.1.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 
 step|jenny-not-good-news
 FILE-messages: jenny-not-good-news.md
@@ -104,7 +104,7 @@ FILE-emails: no-more-macaques.md
 
 init|start|macaques|stay|step|collaborate|pigs
 1.1.1.3.1 Pig
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.3.1.1 Any two Extras
@@ -113,7 +113,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|collaborate|mice
 1.1.1.3.2 Mice
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.3.2.1 Any two Extras
@@ -122,7 +122,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|stay|step|collaborate|fish
 1.1.1.3.3 Fish
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.3.3.1 Any two Extras
@@ -136,7 +136,7 @@ FILE-messages: change-pigs-mice-fish.md
 
 init|start|macaques|change|pigs
 1.1.2.1 Pigs
-FILE-messages: al-let-taylor-know.md
+FILE-messages: al-let-barry-know.md
 FILE-messages: next-section.md
 
 init|start|macaques|change|pigs|step
@@ -144,7 +144,7 @@ FILE-messages: balance-success-harm.md
 
 init|start|macaques|change|pigs|step|scale
 1.1.2.1.1 Scale up
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -163,7 +163,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|macaques|change|pigs|step|scale|change|mice
 1.1.2.1.1.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.1.2.1.1 Any two Extras
@@ -172,7 +172,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|pigs|step|scale|change|fish
 1.1.2.1.1.2.2 Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.1.2.2.1 Any two Extras
@@ -181,7 +181,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|pigs|step|learn
 1.1.2.1.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -200,7 +200,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|macaques|change|pigs|step|learn|change|mice
 1.1.2.1.2.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.2.2.1.1 Any two Extras
@@ -209,7 +209,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|pigs|step|learn|change|fish
 1.1.2.1.2.2.2 Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.2.2.2.1 Any two Extras
@@ -218,7 +218,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|pigs|step|collaborate
 1.1.2.1.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -237,7 +237,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|macaques|change|pigs|step|collaborate|change|mice
 1.1.2.1.3.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.3.2.1.1 Any two Extras
@@ -246,7 +246,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|pigs|step|collaborate|change|fish
 1.1.2.1.3.2.2 Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.3.2.2.1 Any two Extras
@@ -255,7 +255,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|mice
 1.1.2.2 Mice
-FILE-messages: al-let-taylor-know.md
+FILE-messages: al-let-barry-know.md
 FILE-messages: next-section.md
 
 init|start|macaques|change|mice|step
@@ -263,7 +263,7 @@ FILE-messages: balance-success-harm.md
 
 init|start|macaques|change|mice|step|scale
 1.1.2.2.1 
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
@@ -287,7 +287,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|mice|step|learn
 1.1.2.2.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
@@ -311,7 +311,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|mice|step|collaborate
 1.1.2.2.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
@@ -335,7 +335,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|macaques|change|fish
 1.1.2.3 Fish 
-FILE-messages: al-let-taylor-know.md
+FILE-messages: al-let-barry-know.md
 FILE-messages: next-section.md
 
 init|start|macaques|change|fish|step
@@ -430,7 +430,7 @@ FILE-messages: balance-success-harm.md
 
 init|start|pigs|increase|step|scale
 1.2.1.1 Scale up
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -449,7 +449,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|pigs|increase|step|scale|change|mice
 1.2.1.1.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.1.2.1.1 Any two Extras
@@ -458,7 +458,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|increase|step|scale|change|fish
 1.2.1.1.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.1.2.2.1 Any two Extras
@@ -467,7 +467,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|increase|step|learn
 1.2.1.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -486,7 +486,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|pigs|increase|step|learn|change|mice
 1.2.1.2.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.2.2.1.1 Any two Extras
@@ -495,7 +495,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|increase|step|learn|change|fish
 1.2.1.2.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.2.2.2.1 Any two Extras
@@ -504,7 +504,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|increase|step|collaborate
 1.2.1.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -523,7 +523,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|pigs|increase|step|collaborate|change|mice
 1.2.1.3.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.3.2.1.1 Any two Extras
@@ -532,7 +532,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|increase|step|collaborate|change|fish
 1.2.1.3.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.3.2.2.1 Any two Extras
@@ -549,7 +549,7 @@ FILE-messages: balance-success-harm.md
 
 init|start|pigs|keep|step|scale
 1.2.2.1 Scale up
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -568,7 +568,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|pigs|keep|step|scale|change|mice
 1.2.2.1.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.1.2.1.1 Any two Extras
@@ -577,7 +577,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|keep|step|scale|change|fish
 1.2.2.1.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.1.2.2.1 Any two Extras
@@ -586,7 +586,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|keep|step|learn
 1.2.2.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -605,7 +605,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|pigs|keep|step|learn|change|mice
 1.2.2.2.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.2.2.1.1 Any two Extras
@@ -614,7 +614,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|keep|step|learn|change|fish
 1.2.2.2.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.2.2.2.1 Any two Extras
@@ -623,7 +623,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|keep|step|collaborate
 1.2.2.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
@@ -642,7 +642,7 @@ FILE-messages: charlie-no-more-macaques.md
 
 init|start|pigs|keep|step|collaborate|change|mice
 1.2.2.3.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.3.2.1.1 Any two Extras
@@ -651,7 +651,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|pigs|keep|step|collaborate|change|fish
 1.2.2.3.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.3.2.2.1 Any two Extras
@@ -669,7 +669,7 @@ FILE-emails: lisa-handle-mice.md
 
 init|start|mice|handle
 1.3.1 Continue handling the mice
-FILE-mesasges: lisa-let-taylor-know.md
+FILE-mesasges: lisa-let-barry-know.md
 FILE-messages: next-section.md
 
 init|start|mice|handle|step
@@ -682,9 +682,7 @@ FILE-emails: charlie-limit-or-change.md
 
 init|start|mice|handle|step|scale|limit
 1.3.1.1.1 Limit the time technicians spend handling mice
-
-CB: Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.1.1.1 Any two Extras
@@ -693,9 +691,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|mice|handle|step|scale|fish
 1.3.1.1.2 Change to Fish Model
-
-CB: We can make the changes
-
+FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.1.2.1 Any two Extras
@@ -709,9 +705,7 @@ FILE-emails: charlie-limit-or-change.md
 
 init|start|mice|handle|step|learn|limit
 1.3.1.2.1 Limit the time technicians spend handling mice
-
-CB: Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.2.1.1 Any two Extras
@@ -720,9 +714,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|mice|handle|step|learn|fish
 1.3.1.2.2 Change to Fish Model
-
-CB: We can make the changes
-
+FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.2.2.1 Any two Extras
@@ -736,9 +728,7 @@ FILE-emails: charlie-limit-or-change.md
 
 init|start|mice|handle|step|collaborate|limit
 1.3.1.3.1 Limit the time technicians spend handling mice
-
-CB: Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.3.1.1 Any two Extras
@@ -747,9 +737,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|mice|handle|step|collaborate|fish
 1.3.1.3.2 Change to Fish Model
-
-CB: We can make the changes
-
+FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.3.2.1 Any two Extras
@@ -758,7 +746,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|mice|tubes
 1.3.2 Mice in Glass Tubes
-FILE-mesasges: lisa-let-taylor-know.md
+FILE-mesasges: lisa-let-barry-know.md
 FILE-messages: next-section.md
 
 init|start|mice|tubes|step
@@ -766,48 +754,21 @@ FILE-messages: balance-success-harm.md
 
 init|start|mice|tubes|step|scale
 1.3.2.1 Scale up
-
-DR BARRY TALYOR
-
-BT: I am going to send you an email about some issues I am having .....
-
-BT: 
-
-Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine to this disease.
-
-Though I appreciate the decision taken to move toward mice observation through plastic tubes; myself and the team are encountering difficulties with this approach. While the comfort of the subjects themselves has improved, our abilities to monitor and physically examine the mice, and to effectively conduct trials, has suffered. Evidence from some previous studies suggests that this approach will decrease our chances of developing a vaccine. 
-
-I, of course, am happy to be led by your decision, but I would like to request that we alter our approach to trials and use fish or pigs to achieve better results. Changing the animal model will cost us £2,000,000
-
-I await your response.
-
-Many thanks,
-
-Dr. Barry Taylor
+FILE-messages: barry-issues.md
+FILE-emails: barry-tube-mice-change.md
 
 init|start|mice|tubes|step|scale|tubes
 1.3.2.1.1 Carry on with tube mice
-
-Thank you for your response. I appreciate your time in reaching this decision and we will continue the trials as you have requested. 
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
 
  1.3.2.1.1.1 Any two Extras
  1.3.2.1.1.2 Any One Extra
  1.3.2.1.1.3 Do Nothing
  
-init|start|mice|tubes|step|scale|chang
+init|start|mice|tubes|step|scale|change
 1.3.2.1.2 Change animal model
-
-BT: Thank you for your email and careful consideration in the change of approach. Though these decisions are challenging they give us a greater chance of success. I am confident in teams abilities and look forward to reporting back to you shortly.
-
-Which model would you like us to use?
+FILE-messages: barry-change.md
 
 init|start|mice|tubes|step|scale|change|fish
 1.3.2.1.2.1 Fish
@@ -841,51 +802,24 @@ FILE-messages: choose-1-2-3.md
 
 init|start|mice|tubes|step|learn
 1.3.2.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
-
-DR BARRY TALYOR
-
-BT: I am going to send you an email about some issues I am having .....
-
-BT: 
-
-Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine to this disease.
-
-Though I appreciate the decision taken to move toward mice observation through plastic tubes; myself and the team are encountering difficulties with this approach. While the comfort of the subjects themselves has improved, our abilities to monitor and physically examine the mice, and to effectively conduct trials, has suffered. Evidence from some previous studies suggests that this approach will decrease our chances of developing a vaccine. 
-
-I, of course, am happy to be led by your decision, but I would like to request that we alter our approach to trials and use fish or pigs to achieve better results. Changing the animal model will cost us £2,000,000
-
-I await your response.
-
-Many thanks,
-
-Dr. Barry Taylor
+FILE-messages: al-send-to-barry.md
+File-messages: barry-issues.md
+FILE-emails: barry-tube-mice-change.md
 
 init|start|mice|tubes|step|learn|tubes
 1.3.2.2.1 Carry on with tube mice
-
-Thank you for your response. I appreciate your time in reaching this decision and we will continue the trials as you have requested. 
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
 
 1.3.2.2.1.1 Any two Extras
 1.3.2.2.1.2 Any One Extra
 1.3.2.2.1.3 Do Nothing
 
-init|start|mice|tubes|step|learn|tubes|change
+init|start|mice|tubes|step|learn|change
 1.3.2.2.2 Change animal model
+FILE-messages: barry-change.md
 
-BT: Thank you for your email and careful consideration in the change of approach. Though these decisions are challenging they give us a greater chance of success. I am confident in teams abilities and look forward to reporting back to you shortly.
-
-Which model would you like us to use?
-
-init|start|mice|tubes|step|learn|tubes|change|fish
+init|start|mice|tubes|step|learn|change|fish
 1.3.2.2.2.1 Fish
 
 BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
@@ -900,7 +834,7 @@ FILE-messages: choose-1-2-3.md
 1.3.2.2.2.1.2 Any One Extra
 1.3.2.2.2.1.3 Do Nothing
 
-init|start|mice|tubes|step|learn|tubes|change|pigs
+init|start|mice|tubes|step|learn|change|pigs
 1.3.2.2.2.2 Change to Pigs
 
 BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
@@ -917,37 +851,13 @@ FILE-messages: choose-1-2-3.md
 
 init|start|mice|tubes|step|collaborate
 1.3.2.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
-
-DR BARRY TALYOR
-
-BT: I am going to send you an email about some issues I am having .....
-
-BT: 
-
-Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine to this disease.
-
-Though I appreciate the decision taken to move toward mice observation through plastic tubes; myself and the team are encountering difficulties with this approach. While the comfort of the subjects themselves has improved, our abilities to monitor and physically examine the mice, and to effectively conduct trials, has suffered. Evidence from some previous studies suggests that this approach will decrease our chances of developing a vaccine. 
-
-I, of course, am happy to be led by your decision, but I would like to request that we alter our approach to trials and use fish or pigs to achieve better results. Changing the animal model will cost us £2,000,000
-
-I await your response.
-
-Many thanks,
-
-Dr. Barry Taylor
+FILE-messages: al-send-to-barry.md
+FILE-messages: barry-issues.md
+FILE-emails: barry-tube-mice-change.md
 
 init|start|mice|tubes|step|collaborate|tubes
 1.3.2.3.1 Carry on with tube mice
-
-Thank you for your response. I appreciate your time in reaching this decision and we will continue the trials as you have requested. 
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
 
 1.3.2.3.1.1  Any two Extras
@@ -956,10 +866,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|mice|tubes|step|collaborate|change
 1.3.2.3.2 Change animal model
-
-BT: Thank you for your email and careful consideration in the change of approach. Though these decisions are challenging they give us a greater chance of success. I am confident in teams abilities and look forward to reporting back to you shortly.
-
-Which model would you like us to use?
+FILE-messages: barry-change.md
 
 init|start|mice|tubes|step|collaborate|change|fish
 1.3.2.3.2.1 Fish
@@ -1141,7 +1048,7 @@ JC: Have a look at the options and let me know
 
 init|start|fish|embryo|step|scale|change|mice
 1.4.2.1.2.1 Change to Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.1.2.1.1 Any two Extras
@@ -1150,7 +1057,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|fish|embryo|step|scale|change|pigs
 1.4.2.1.2.2 Change to Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.1.2.2.1 Any two Extras
@@ -1189,7 +1096,7 @@ JC: Have a look at the options and let me know
 
 init|start|fish|embryo|step|learn|change|mice
 1.4.2.2.2.1 Change to Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.2.2.1.1 Any two Extras
@@ -1198,7 +1105,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|fish|embryo|step|learn|change|pigs
 1.4.2.2.2.2 Change to Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.2.2.2.1 Any two Extras
@@ -1237,7 +1144,7 @@ JC: Have a look at the options and let me know
 
 init|start|fish|embryo|step|collaborate|change|mice
 1.4.2.3.2.1 Change to Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.3.2.1.1 Any two Extras
@@ -1246,7 +1153,7 @@ FILE-messages: choose-1-2-3.md
 
 init|start|fish|embryo|step|collaborate|change|pigs
 1.4.2.3.2.2 Change to Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.3.2.2.1 Any two Extras
@@ -1521,7 +1428,7 @@ Change Model
 JC: Have a look at the list bellow and let me know
 
 Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 Any two Extras
@@ -1530,5 +1437,5 @@ Do Nothing
 
 
 Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
