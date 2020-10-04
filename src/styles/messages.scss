@@ -128,6 +128,15 @@ $timeToWait: 2s;
   margin-top: 0.5rem;
   min-width: 75%;
   text-align: left;
+  &:not(.disabled):not(.active):hover {
+    margin-left: 5px;
+    &:before {
+      content: '>';
+    }
+    &:after {
+      content: '<';
+    }
+  }
   &.disabled {
     cursor: not-allowed;
     background-color: var(--choicebutton-disabled);
@@ -139,5 +148,6 @@ $timeToWait: 2s;
     cursor: not-allowed !important;
   }
   transition: all 0.5s;
+  transition: margin-left 0.2s;
 }
 

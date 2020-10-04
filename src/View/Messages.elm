@@ -83,8 +83,15 @@ renderPrompt message choices =
                     [ text (t FromPlayerTeam) ]
 
                 -- we might have some player text in the future?
-                --, div [ class "card-text m-0" ]
-                --    [ Markdown.toHtml [ class "content" ] message.content ]
+                , let
+                    playerMessage = 
+                        case message.playerMessage of
+                            Nothing -> 
+                                div [] []
+                            Just playerMessageText ->
+                                Markdown.toHtml [ class "playerMessageText" ] playerMessageText
+                in
+                playerMessage
                 , renderButtons (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
                 ]
             ]

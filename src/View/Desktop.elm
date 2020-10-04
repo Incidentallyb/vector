@@ -73,7 +73,14 @@ renderLoginPage gameData =
                     (List.map loginOption teamNamesList)
                 , button
                     [ class "btn btn-primary btn-block"
-                    , onClick (TeamChosen (String.dropLeft 1 gameData.teamName))
+                    , let
+                        teamName = 
+                            if gameData.teamName == "?" then
+                                gameData.teamName
+                            else
+                                String.dropLeft 1 gameData.teamName
+                    in
+                        onClick (TeamChosen teamName)
                     ]
                     [ text "Login" ]
                 ]
