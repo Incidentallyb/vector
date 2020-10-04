@@ -6,6 +6,7 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import Debug
 import Dict
 import GameData exposing (GameData, init)
 import Html exposing (Html, div)
@@ -82,11 +83,13 @@ update msg model =
 
         ChoiceButtonClicked choice ->
             let
+                --debug =
+                --   Debug.log "NEWSCORE" (Debug.toString (GameData.updateEconomicScore model.data model.gameData choice))
                 newGameData =
                     { choices = choice :: model.gameData.choices
                     , teamName = model.gameData.teamName
-                    , scoreSuccess = GameData.updateSuccessScore model.data (choice :: model.gameData.choices) model.gameData.scoreSuccess
-                    , scoreEconomic = GameData.updateEconomicScore model.data (choice :: model.gameData.choices) model.gameData.scoreEconomic
+                    , scoreSuccess = GameData.updateSuccessScore model.data model.gameData choice
+                    , scoreEconomic = GameData.updateEconomicScore model.data model.gameData choice
                     , scoreHarm = model.gameData.scoreHarm
                     }
             in
