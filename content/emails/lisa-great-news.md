@@ -1,11 +1,11 @@
 ---
 triggered_by:
-  - init|start|macaques|change|fish|step|scale|embryos
-  - init|start|macaques|change|fish|step|learn|embryos
-  - init|start|macaques|change|fish|step|collaborate|embryos
-  - init|start|fish|adult|step|scale|embryos
-  - init|start|fish|adult|step|learn|embryos
-  - init|start|fish|adult|step|collaborate|embryos
+  - init|start|macaques|change|fish|step|scale|embryo
+  - init|start|macaques|change|fish|step|learn|embryo
+  - init|start|macaques|change|fish|step|collaborate|embryo
+  - init|start|fish|adult|step|scale|embryo
+  - init|start|fish|adult|step|learn|embryo
+  - init|start|fish|adult|step|collaborate|embryo
 author: Dr Lisa Finnamore
 subject: Email subject content [cCc]
 ---

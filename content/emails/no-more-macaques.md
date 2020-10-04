@@ -1,6 +1,8 @@
 ---
 triggered_by:
-  - step|macaque-scale-3
+  -init|start|macaques|stay|step|scale
+  -init|start|macaques|stay|step|learn
+  -init|start|macaques|stay|step|collaborate
 author: Jenny
 subject: Email subject content [cCc]
 ---

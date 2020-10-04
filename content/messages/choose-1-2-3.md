@@ -25,11 +25,11 @@ triggered_by:
   - init|start|macaques|change|mice|step|collaborate|limit
   - init|start|macaques|change|mice|step|collaborate|fish
   - init|start|macaques|change|fish|step|scale|adult
-  - init|start|macaques|change|fish|step|scale|embryos
+  - init|start|macaques|change|fish|step|scale|embryo
   - init|start|macaques|change|fish|step|learn|adult
-  - init|start|macaques|change|fish|step|learn|embryos
+  - init|start|macaques|change|fish|step|learn|embryo
   - init|start|macaques|change|fish|step|collaborate|adult
-  - init|start|macaques|change|fish|step|collaborate|embryos
+  - init|start|macaques|change|fish|step|collaborate|embryo
   - init|start|pigs|increase|step|scale|limit
   - init|start|pigs|increase|step|learn|limit
   - init|start|pigs|increase|step|learn|change|fish
@@ -62,11 +62,11 @@ triggered_by:
   - init|start|mice|tubes|step|learn|change|pigs
   - init|start|mice|tubes|step|collaborate|change|fish
   - init|start|mice|tubes|step|collaborate|change|pigs
-  - init|start|fish|adult|step|scale|embryos
+  - init|start|fish|adult|step|scale|embryo
   - init|start|fish|adult|step|scale|adult
-  - init|start|fish|adult|step|learn|embryos
+  - init|start|fish|adult|step|learn|embryo
   - init|start|fish|adult|step|learn|adult
-  - init|start|fish|adult|step|collaborate|embryos
+  - init|start|fish|adult|step|collaborate|embryo
   - init|start|fish|adult|step|collaborate|adult
   - init|start|fish|embryo|step|scale|embryo
   - init|start|fish|embryo|step|scale|change|mice
