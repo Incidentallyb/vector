@@ -53,7 +53,7 @@ view gamedata messagesDict =
 renderMessageAndPrompt : List String -> Content.MessageData -> Html Msg
 renderMessageAndPrompt choices message =
     li []
-        [ div [ class "typing-indicator"] [ span [] [text ""], span [] [text ""], span [] [text ""]]
+        [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
         , renderMessage message.author message.content
         , renderPrompt message choices
         ]
@@ -84,14 +84,15 @@ renderPrompt message choices =
 
                 -- we might have some player text in the future?
                 , let
-                    playerMessage = 
+                    playerMessage =
                         case message.playerMessage of
-                            Nothing -> 
+                            Nothing ->
                                 div [] []
+
                             Just playerMessageText ->
                                 Markdown.toHtml [ class "playerMessageText" ] playerMessageText
-                in
-                playerMessage
+                  in
+                  playerMessage
                 , renderButtons (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
                 ]
             ]
