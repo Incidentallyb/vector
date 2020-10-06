@@ -1,7 +1,19 @@
 .email-list {
-  background-color: var(--grey-light);
+  background-color: var(--white);
   list-style: none;
   padding: 0;
+}
+
+.email-list-item.read {
+  background-color: var(--grey-light);
+
+  .author {
+    font-weight: normal;
+  }
+
+  .subject {
+    font-weight: normal;
+  }
 }
 
 .email-list-item {
@@ -19,7 +31,7 @@
     padding: 0.5rem 1rem;
 
     &:hover {
-      background-color: var(--white);
+      background-color: var(--email-hover);
       text-decoration: none;
     }
   }
@@ -37,6 +49,9 @@
     font-weight: 700;
   }
 
+  .subject {
+    font-weight: 700;
+  }
 }
 
 .email-icon {
