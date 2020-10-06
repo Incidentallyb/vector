@@ -1,7 +1,19 @@
 .email-list {
-  background-color: var(--grey-light);
+  background-color: var(--white);
   list-style: none;
   padding: 0;
+}
+
+.email-list-item.read {
+  background-color: var(--grey-light);
+
+  .author {
+    font-weight: normal;
+  }
+
+  .subject {
+    font-weight: normal;
+  }
 }
 
 .email-list-item {
@@ -19,7 +31,7 @@
     padding: 0.5rem 1rem;
 
     &:hover {
-      background-color: var(--white);
+      background-color: var(--email-hover);
       text-decoration: none;
     }
   }
@@ -32,11 +44,14 @@
   p {
     font-size: 1rem;
   }
-  
+
   p.author {
     font-weight: 700;
   }
 
+  .subject {
+    font-weight: 700;
+  }
 }
 
 .email-icon {
@@ -44,21 +59,26 @@
   color: var(--white);
   clip-path: circle(48% at center);
   display: flex;
+  flex-shrink: 0;
   height: 2.5rem;
   justify-content: center;
   font-weight: 700;
   width: 2.5rem;
 
-  &.Jenny {
+  &.jenny {
     background-color: var(--red);
   }
 
-  &.green {
+  &.charliebenn {
     background-color: var(--green);
   }
 
-  &.blue {
+  &.drlisafinnamore {
     background-color: var(--blue);
+  }
+
+  &.dr\.barrytaylor {
+    background-color: var(--purple);
   }
 }
 
