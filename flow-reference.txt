@@ -1,153 +1,142 @@
+init
 FILE-messages: start.md
 
-start
+init|start
 1 We are ready
 FILE-messages: ready.md
 
-start|macaques
+init|start|macaques
 1.1 Macaques
 FILE-messages: macaque-1.md
 FILE-emails: macaque-1.md
 
-start|macaques|stay
+init|start|macaques|stay
 1.1.1 Lets stay with Macaques
 FILE-emails: stay.md
 FILE-messages: next-section.md
 
-step|next-section
+init|start|macaques|stay|step
 FILE-messages: balance-success-harm.md
 
-start|macaques|stay|scale
+init|start|macaques|stay|step|scale
 1.1.1.1 Scale up
-FILE-messages: al-send-to-taylor.md
-
-step|jenny-not-good-news
+FILE-messages: al-send-to-barry.md
 FILE-messages: jenny-not-good-news.md
-
-step|macaque-scale-3
 FILE-emails: no-more-macaques.md
 
-start|macaques|stay|scale|pigs
+init|start|macaques|stay|step|scale|pigs
 1.1.1.1.1 Pig
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.1.1.1 Any two Extras
 1.1.1.1.1.2 Any One Extra
 1.1.1.1.1.3 Do Nothing
 
-start|macaques|stay|scale|mice
+init|start|macaques|stay|step|scale|mice
 1.1.1.1.2 Mice
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.1.2.1 Any two Extras
 1.1.1.1.2.2 Any One Extra
 1.1.1.1.2.3 Do Nothing
 
-start|macaques|stay|scale|fish
+init|start|macaques|stay|step|scale|fish
 1.1.1.1.3 Fish
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.1.3.1 Any two Extras
 1.1.1.1.3.2 Any One Extra
 1.1.1.1.3.3 Do Nothing
 
-FILE-messages: balance-success-harm.md
-
-start|macaques|stay|learn
+init|start|macaques|stay|step|learn
 1.1.1.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
-
-step|jenny-not-good-news
+FILE-messages: al-send-to-barry.md
 FILE-messages: jenny-not-good-news.md
-
-step|macaque-scale-3
 FILE-emails: no-more-macaques.md
 
-start|macaques|stay|learn|pigs
+init|start|macaques|stay|step|learn|pigs
 1.1.1.2.1 Pig
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.2.1.1 Any two Extras
 1.1.1.2.1.2 Any One Extra
 1.1.1.2.1.3 Do Nothing
 
-start|macaques|stay|learn|mice
+init|start|macaques|stay|step|learn|mice
 1.1.1.2.2 Mice
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.2.2.1 Any two Extras
 1.1.1.2.2.2 Any One Extra
 1.1.1.2.2.3 Do Nothing
 
-start|macaques|stay|learn|fish
+init|start|macaques|stay|step|learn|fish
 1.1.1.2.3 Fish
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.2.3.1 Any two Extras
 1.1.1.2.3.2 Any One Extra
 1.1.1.2.3.3 Do Nothing
 
-start|macaques|stay|collaborate
+init|start|macaques|stay|step|collaborate
 1.1.1.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
-
-step|jenny-not-good-news
+FILE-messages: al-send-to-barry.md
 FILE-messages: jenny-not-good-news.md
-
-step|macaque-scale-3
 FILE-emails: no-more-macaques.md
 
-start|macaques|stay|collaborate|pigs
+init|start|macaques|stay|step|collaborate|pigs
 1.1.1.3.1 Pig
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.3.1.1 Any two Extras
 1.1.1.3.1.2 Any One Extra
 1.1.1.3.1.3 Do Nothing
 
-start|macaques|stay|collaborate|mice
+init|start|macaques|stay|step|collaborate|mice
 1.1.1.3.2 Mice
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.3.2.1 Any two Extras
 1.1.1.3.2.2 Any One Extra
 1.1.1.3.2.3 Do Nothing
 
-start|macaques|stay|collaborate|fish
+init|start|macaques|stay|step|collaborate|fish
 1.1.1.3.3 Fish
-FILE-emails: let-taylor-know.md
+FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.1.3.3.1 Any two Extras
 1.1.1.3.3.2 Any One Extra
 1.1.1.3.3.3 Do Nothing
 
-start|macaques|change
+init|start|macaques|change
 1.1.2 Can we change the animal model?
 FILE-emails: change-al.md
 FILE-messages: change-pigs-mice-fish.md
 
-start|macaques|change|pigs
+init|start|macaques|change|pigs
 1.1.2.1 Pigs
-FILE-messages: al-let-taylor-know.md
+FILE-messages: al-let-barry-know.md
 FILE-messages: next-section.md
+
+init|start|macaques|change|pigs|step
 FILE-messages: balance-success-harm.md
 
-start|macaques|change|pigs|scale
+init|start|macaques|change|pigs|step|scale
 1.1.2.1.1 Scale up
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|macaques|change|pigs|scale|limit
+init|start|macaques|change|pigs|step|scale|limit
 1.1.2.1.1.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -156,35 +145,35 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.1.1.2 Any One Extra
 1.1.2.1.1.1.3 Do Nothing
 
-start|macaques|change|pigs|scale|change
+init|start|macaques|change|pigs|step|scale|change
 1.1.2.1.1.2 Change Animal Model
 FILE-messages: charlie-no-more-macaques.md
 
-start|macaques|change|pigs|scale|change|mice
+init|start|macaques|change|pigs|step|scale|change|mice
 1.1.2.1.1.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.1.2.1.1 Any two Extras
 1.1.2.1.1.2.1.2 Any One Extra
 1.1.2.1.1.2.1.3 Do Nothing
 
-start|macaques|change|pigs|scale|change|fish
+init|start|macaques|change|pigs|step|scale|change|fish
 1.1.2.1.1.2.2 Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.1.2.2.1 Any two Extras
 1.1.2.1.1.2.2.2 Any One Extra
 1.1.2.1.1.2.2.3 Do Nothing
 
-start|macaques|change|pigs|learn
+init|start|macaques|change|pigs|step|learn
 1.1.2.1.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|macaques|change|pigs|learn|limit
+init|start|macaques|change|pigs|step|learn|limit
 1.1.2.1.2.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -193,37 +182,35 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.2.1.2 Any One Extra
 1.1.2.1.2.1.3 Do Nothing
 
-start|macaques|change|pigs|learn|change
+init|start|macaques|change|pigs|step|learn|change
 1.1.2.1.2.2 Change Animal Model
 FILE-messages: charlie-no-more-macaques.md
 
-start|macaques|change|pigs|learn|change|mice
+init|start|macaques|change|pigs|step|learn|change|mice
 1.1.2.1.2.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.2.2.1.1 Any two Extras
 1.1.2.1.2.2.1.2 Any One Extra
 1.1.2.1.2.2.1.3 Do Nothing
 
-start|macaques|change|pigs|learn|change|fish
+init|start|macaques|change|pigs|step|learn|change|fish
 1.1.2.1.2.2.2 Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.2.2.2.1 Any two Extras
 1.1.2.1.2.2.2.2 Any One Extra
 1.1.2.1.2.2.2.3 Do Nothing
 
-FILE-Messages: balance-success-harm.md
-
-start|macaques|change|pigs|collaborate
+init|start|macaques|change|pigs|step|collaborate
 1.1.2.1.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|macaques|change|pigs|collaborate|limit
+init|start|macaques|change|pigs|step|collaborate|limit
 1.1.2.1.3.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -232,308 +219,210 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.3.1.2 Any One Extra
 1.1.2.1.3.1.3 Do Nothing
 
-start|macaques|change|pigs|collaborate|change
+init|start|macaques|change|pigs|step|collaborate|change
 1.1.2.1.3.2 Change Animal Model
 FILE-messages: charlie-no-more-macaques.md
 
-start|macaques|change|pigs|collaborate|change|mice
+init|start|macaques|change|pigs|step|collaborate|change|mice
 1.1.2.1.3.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.3.2.1.1 Any two Extras
 1.1.2.1.3.2.1.2 Any One Extra
 1.1.2.1.3.2.1.3 Do Nothing
 
-start|macaques|change|pigs|collaborate|change|fish
+init|start|macaques|change|pigs|step|collaborate|change|fish
 1.1.2.1.3.2.2 Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.1.3.2.2.1 Any two Extras
 1.1.2.1.3.2.2.2 Any One Extra
 1.1.2.1.3.2.2.3 Do Nothing
 
-
-start|macaques|change|mice
+init|start|macaques|change|mice
 1.1.2.2 Mice
-FILE-messages: al-let-taylor-know.md
+FILE-messages: al-let-barry-know.md
 FILE-messages: next-section.md
+
+init|start|macaques|change|mice|step
 FILE-messages: balance-success-harm.md
 
-start|macaques|change|mice|scale
+init|start|macaques|change|mice|step|scale
 1.1.2.2.1 
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-start|macaques|change|mice|scale|limit
+init|start|macaques|change|mice|step|scale|limit
 1.1.2.2.1.1 Limit the time technicians spend handling mice
-
-CB Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.2.1.1.1 Any two Extras
 1.1.2.2.1.1.2 Any One Extra
 1.1.2.2.1.1.3 Do Nothing
 
-start|macaques|change|mice|scale|fish
+init|start|macaques|change|mice|step|scale|fish
 1.1.2.2.1.2 Lets change to Fish models
-
-CB We can make the changes
-
+FILE-emails: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.2.1.2.1 Any two Extras
 1.1.2.2.1.2.2 Any One Extra
 1.1.2.2.1.2.3 Do Nothing
 
-start|macaques|change|mice|learn
+init|start|macaques|change|mice|step|learn
 1.1.2.2.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-start|macaques|change|mice|learn|limit
+init|start|macaques|change|mice|step|learn|limit
 1.1.2.2.2.1 Limit the time technicians spend handling mice
-
-CB Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.2.2.1.1 Any two Extras
 1.1.2.2.2.1.2 Any One Extra
 1.1.2.2.2.1.3 Do Nothing
 
-start|macaques|change|mice|learn|fish
+init|start|macaques|change|mice|step|learn|fish
 1.1.2.2.2.2 Lets change to Fish models
-
-CB We can make the changes
-
+FILE-emails: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.2.2.2.1 Any two Extras
 1.1.2.2.2.2.2 Any One Extra
 1.1.2.2.2.2.3 Do Nothing
 
-start|macaques|change|mice|collaborate
+init|start|macaques|change|mice|step|collaborate
 1.1.2.2.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-start|macaques|change|mice|collaborate|limit
+init|start|macaques|change|mice|step|collaborate|limit
 1.1.2.2.3.1 Limit the time technicians spend handling mice
-
-CB Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.2.3.1.1 Any two Extras
 1.1.2.2.3.1.2 Any One Extra
 1.1.2.2.3.1.3 Do Nothing
 
-start|macaques|change|mice|collaborate|fish
+init|start|macaques|change|mice|step|collaborate|fish
 1.1.2.2.3.2 Lets change to Fish models
-
-CB We can make the changes
-
+FILE-emails: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.2.3.2.1 Any two Extras
 1.1.2.2.3.2.2 Any One Extra
 1.1.2.2.3.2.3 Do Nothing
 
-start|macaques|change|fish
+init|start|macaques|change|fish
 1.1.2.3 Fish 
-FILE-messages: al-let-taylor-know.md
+FILE-messages: al-let-barry-know.md
 FILE-messages: next-section.md
+
+init|start|macaques|change|fish|step
 FILE-messages: balance-success-harm.md
 
-start|macaques|change|fish|scale
+init|start|macaques|change|fish|step|scale
 1.1.2.3.1 
+FILE-messages: lisa-found-new-research.md
+FILE-emails: lisa-fish-pain.md
 
-Dr Lisa Finamore: My Team have found some new research. Im going to email you now....
-
-LF EMAIL
-
-Hello, 
-
-I don’t think we’ve met yet, I’m Dr Lisa Finnamore, the named veterinary surgeon in this facility, I’m responsible for ensuring that the welfare of the animals remains within legal standards. My main concern is the wellbeing of the animals within the lab and I will stop the experiment if I feel the animals are under too much distress. 
-
-I wanted to contact you about some new research one of my team has brought to me regarding our understanding of the way fish experience pain. We used to believe that fish did not experience pain. Evidence suggests that fish can sense potentially harmful environmental changes, such as high temperatures, intense pressure, and caustic chemicals, but that they do not feel and react to pain in the same way that mammals do. However, it has now become apparent that fish are showing signs of distress and abnormal behavior when placed in painful conditions, which, quite frankly, is not surprising behavior for a sentient life form if you ask me! 
-
-I request that we go for a different approach. Dr Taylor showed some interest in changing to fish embryos. I think, in light of this new research, we should consider this and change the model to fish embryos. This will cost us £3,000,000.
- 
-I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
-Dr Lisa Finnamore
-
-start|macaques|change|fish|scale|adult
+init|start|macaques|change|fish|step|scale|adult
 1.1.2.3.1.1 Lets continue with the adult fish
-
-LF: This is understandable as we do need results, but I will be keeping an eye on these sentient beings and working with Charlie to see if we can find a way to track their behavior to build a recognisable/workable communication between the fish and ourselves so we can recognise when they are in distress.
-
+FILE-messages: lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.3.1.1.1 Any two Extras
 1.1.2.3.1.1.2 Any One Extra
 1.1.2.3.1.1.3 Do Nothing
 
-start|macaques|change|fish|scale|embryos
+init|start|macaques|change|fish|step|scale|embryo
 1.1.2.3.1.2 Lets move to a fish embryo model
-
-LF: This is great news, and should decrease the harm rating. I will let Dr Taylor to make the changes.
-
-Many Thanks
-
-Dr Lisa Finnamore
-
+FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.3.1.2.1 Any two Extras
 1.1.2.3.1.2.2 Any One Extra
 1.1.2.3.1.2.3 Do Nothing
 
-start|macaques|change|fish|learn
+init|start|macaques|change|fish|step|learn
 1.1.2.3.2 Learn from phased experiments
+FILE-messages: lisa-found-new-research.md
+FILE-emails: lisa-fish-pain.md
 
-
-Dr Lisa Finamore: My Team have found some new research. Im going to email you now....
-
-LF EMAIL
-
-Hello, 
-
-I don’t think we’ve met yet, I’m Dr Lisa Finnamore, the named veterinary surgeon in this facility, I’m responsible for ensuring that the welfare of the animals remains within legal standards. My main concern is the wellbeing of the animals within the lab and I will stop the experiment if I feel the animals are under too much distress. 
-
-I wanted to contact you about some new research one of my team has brought to me regarding our understanding of the way fish experience pain. We used to believe that fish did not experience pain. Evidence suggests that fish can sense potentially harmful environmental changes, such as high temperatures, intense pressure, and caustic chemicals, but that they do not feel and react to pain in the same way that mammals do. However, it has now become apparent that fish are showing signs of distress and abnormal behavior when placed in painful conditions, which, quite frankly, is not surprising behavior for a sentient life form if you ask me! 
-
-I request that we go for a different approach. Dr Taylor showed some interest in changing to fish embryos. I think, in light of this new research, we should consider this and change the model to fish embryos. This will cost us £3,000,000.
- 
-I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
-Dr Lisa Finnamore
-
-start|macaques|change|fish|learn|adult
+init|start|macaques|change|fish|step|learn|adult
 1.1.2.3.2.1 Lets continue with the adult fish
-
-LF: This is understandable as we do need results, but I will be keeping an eye on these sentient beings and working with Charlie to see if we can find a way to track their behavior to build a recognisable/workable communication between the fish and ourselves so we can recognise when they are in distress.
-
+FILE-messages: lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.3.2.1.1 Any two Extras
 1.1.2.3.2.1.2 Any One Extra
 1.1.2.3.2.1.3 Do Nothing
 
-start|macaques|change|fish|learn|embryos
+init|start|macaques|change|fish|step|learn|embryo
 1.1.2.3.2.2 Lets move to a fish embryo model
-
-LF: This is great news, and should decrease the harm rating. I will let Dr Taylor to make the changes.
-
-Many Thanks
-
-Dr Lisa Finnamore
-
+FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.3.2.2.1 Any two Extras
 1.1.2.3.2.2.2 Any One Extra
 1.1.2.3.2.2.3 Do Nothing
 
-start|macaques|change|fish|collaborate
+init|start|macaques|change|fish|step|collaborate
 1.1.2.3.3 Collaborate with a competitor
+FILE-messages: lisa-found-new-research.md
+FILE-emails: lisa-fish-pain.md
 
-Dr Lisa Finamore: My Team have found some new research. Im going to email you now....
-
-LF EMAIL
-
-Hello, 
-
-I don’t think we’ve met yet, I’m Dr Lisa Finnamore, the named veterinary surgeon in this facility, I’m responsible for ensuring that the welfare of the animals remains within legal standards. My main concern is the wellbeing of the animals within the lab and I will stop the experiment if I feel the animals are under too much distress. 
-
-I wanted to contact you about some new research one of my team has brought to me regarding our understanding of the way fish experience pain. We used to believe that fish did not experience pain. Evidence suggests that fish can sense potentially harmful environmental changes, such as high temperatures, intense pressure, and caustic chemicals, but that they do not feel and react to pain in the same way that mammals do. However, it has now become apparent that fish are showing signs of distress and abnormal behavior when placed in painful conditions, which, quite frankly, is not surprising behavior for a sentient life form if you ask me! 
-
-I request that we go for a different approach. Dr Taylor showed some interest in changing to fish embryos. I think, in light of this new research, we should consider this and change the model to fish embryos. This will cost us £3,000,000.
- 
-I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
-Dr Lisa Finnamore
-
-start|macaques|change|fish|collaborate|adult
+init|start|macaques|change|fish|step|collaborate|adult
 1.1.2.3.3.1 Lets continue with the adult fish
-
-LF: This is understandable as we do need results, but I will be keeping an eye on these sentient beings and working with Charlie to see if we can find a way to track their behavior to build a recognisable/workable communication between the fish and ourselves so we can recognise when they are in distress.
-
+FILE-messages: lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.3.3.1.1 Any two Extras
 1.1.2.3.3.1.2 Any One Extra
 1.1.2.3.3.1.3 Do Nothing
 
-start|macaques|change|fish|collaborate|embryos
+init|start|macaques|change|fish|step|collaborate|embryo
 1.1.2.3.3.2 Lets move to a fish embryo model
-
-LF: This is great news, and should decrease the harm rating. I will let Dr Taylor to make the changes.
-
-Many Thanks
-
-Dr Lisa Finnamore
-
+FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
 
 1.1.2.3.3.2.1 Any two Extras
 1.1.2.3.3.2.2 Any One Extra
 1.1.2.3.3.2.3 Do Nothing
 
-start|pigs
+init|start|pigs
 1.2 Pigs
 
 AL: Are you sure you would like to use the pig model?
 
 YES
 
+FILE-messages: pigs-1.md
+FILE-emails: charlie-pen-size.md
 
-Pigs are a well established animal model that have been used for many years and has a good track record for successful experiments.
-
-CHARLIE BENN EMAIL
-
-Good afternoon,
-
-I don’t think we’ve met yet! I’m Charlie, the Lab Technician on this experiment - I take care of the animals on a day to day basis, feeding them, keeping note of their behaviour and making sure that they are well and happy. The experiment is going really well, however I am concerned that the pigs don’t have enough space in their current housing. They are showing some signs of stress as their movement is limited.
-
- I think it would be worth increasing the size of their pens; now I know that this is a costly option and we have limited resources, but I really believe that this would provide a much better environment for them. And as we know, unhappy pigs make for poor data; better welfare equals better science. The larger pens will cost us £3,000,000
-
-Let me know what you think,
-
-Thanks,
-
-start|pigs|increase
+init|start|pigs|increase
 1.2.1 Increase the Pen Size
-
-CB: I will get the new pens built for the pigs 
-
-Thanks,
-
-Charlie
-
+FILE-messages: pigs-increase.md
 FILE-messages: next-section.md
+
+init|start|pigs|increase|step
 FILE-messages: balance-success-harm.md 
 
-start|pigs|increase|scale
+init|start|pigs|increase|step|scale
 1.2.1.1 Scale up
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|pigs|increase|scale|limit
+init|start|pigs|increase|step|scale|limit
 1.2.1.1.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -542,35 +431,35 @@ FILE-messages: choose-1-2-3.md
 1.2.1.1.1.2 Any One Extra
 1.2.1.1.1.3 Do Nothing
 
-start|pigs|increase|scale|change
+init|start|pigs|increase|step|scale|change
 1.2.1.1.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-start|pigs|increase|scale|change|mice
+init|start|pigs|increase|step|scale|change|mice
 1.2.1.1.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.1.2.1.1 Any two Extras
 1.2.1.1.2.1.2 Any One Extra
 1.2.1.1.2.1.3 Do Nothing
 
-start|pigs|increase|scale|change|fish
+init|start|pigs|increase|step|scale|change|fish
 1.2.1.1.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.1.2.2.1 Any two Extras
 1.2.1.1.2.2.2 Any One Extra
 1.2.1.1.2.2.3 Do Nothing
 
-start|pigs|increase|learn
+init|start|pigs|increase|step|learn
 1.2.1.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|pigs|increase|learn|limit
+init|start|pigs|increase|step|learn|limit
 1.2.1.2.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -579,35 +468,35 @@ FILE-messages: choose-1-2-3.md
 1.2.1.2.1.2 Any One Extra
 1.2.1.2..3 Do Nothing
 
-start|pigs|increase|learn|change
+init|start|pigs|increase|step|learn|change
 1.2.1.2.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-start|pigs|increase|learn|change|mice
+init|start|pigs|increase|step|learn|change|mice
 1.2.1.2.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.2.2.1.1 Any two Extras
 1.2.1.2.2.1.2 Any One Extra
 1.2.1.2.2.1.3 Do Nothing
 
-start|pigs|increase|learn|change|fish
+init|start|pigs|increase|step|learn|change|fish
 1.2.1.2.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.2.2.2.1 Any two Extras
 1.2.1.2.2.2.2 Any One Extra
 1.2.1.2.2.2.3 Do Nothing
 
-start|pigs|increase|collaborate
+init|start|pigs|increase|step|collaborate
 1.2.1.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|pigs|increase|collaborate|limit
+init|start|pigs|increase|step|collaborate|limit
 1.2.1.3.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -616,43 +505,43 @@ FILE-messages: choose-1-2-3.md
 1.2.1.3.1.2 Any One Extra
 1.2.1.3.1.3 Do Nothing
 
-start|pigs|increase|collaborate|change
+init|start|pigs|increase|step|collaborate|change
 1.2.1.3.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-start|pigs|increase|collaborate|change|mice
+init|start|pigs|increase|step|collaborate|change|mice
 1.2.1.3.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.3.2.1.1 Any two Extras
 1.2.1.3.2.1.2 Any One Extra
 1.2.1.3.2.1.3 Do Nothing
 
-start|pigs|increase|collaborate|change|fish
+init|start|pigs|increase|step|collaborate|change|fish
 1.2.1.3.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.1.3.2.2.1 Any two Extras
 1.2.1.3.2.2.2 Any One Extra
 1.2.1.3.2.2.3 Do Nothing
 
-start|pigs|keep
+init|start|pigs|keep
 1.2.2 Keep the pens the same size
-
-CB: Thank you, I hope Dr Finnamore will be ok with this....
-
+FILE-messages: pigs-keep.md
 FILE-messages: next-section.md
+
+init|start|pigs|keep|step
 FILE-messages: balance-success-harm.md
 
-start|pigs|keep|scale
+init|start|pigs|keep|step|scale
 1.2.2.1 Scale up
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|pigs|keep|scale|limit
+init|start|pigs|keep|step|scale|limit
 1.2.2.1.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -661,35 +550,35 @@ FILE-messages: choose-1-2-3.md
 1.2.2.1.1.2 Any One Extra
 1.2.2.1.1.3 Do Nothing
 
-start|pigs|keep|scale|change
+init|start|pigs|keep|step|scale|change
 1.2.2.1.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-start|pigs|keep|scale|change|mice
+init|start|pigs|keep|step|scale|change|mice
 1.2.2.1.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.1.2.1.1 Any two Extras
 1.2.2.1.2.1.2 Any One Extra
 1.2.2.1.2.1.3 Do Nothing
 
-start|pigs|keep|scale|change|fish
+init|start|pigs|keep|step|scale|change|fish
 1.2.2.1.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.1.2.2.1 Any two Extras
 1.2.2.1.2.2.2 Any One Extra
 1.2.2.1.2.2.3 Do Nothing
 
-start|pigs|keep|learn
+init|start|pigs|keep|step|learn
 1.2.2.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|pigs|keep|learn|limit
+init|start|pigs|keep|step|learn|limit
 1.2.2.2.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -698,35 +587,35 @@ FILE-messages: choose-1-2-3.md
 1.2.2.2.1.2 Any One Extra
 1.2.2.2.1.3 Do Nothing
 
-start|pigs|keep|learn|change
+init|start|pigs|keep|step|learn|change
 1.2.2.2.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-start|pigs|keep|learn|change|mice
+init|start|pigs|keep|step|learn|change|mice
 1.2.2.2.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.2.2.1.1 Any two Extras
 1.2.2.2.2.1.2 Any One Extra
 1.2.2.2.2.1.3 Do Nothing
 
-start|pigs|keep|learn|change|fish
+init|start|pigs|keep|step|learn|change|fish
 1.2.2.2.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.2.2.2.1 Any two Extras
 1.2.2.2.2.2.2 Any One Extra
 1.2.2.2.2.2.3 Do Nothing
 
-start|pigs|keep|collaborate
+init|start|pigs|keep|step|collaborate
 1.2.2.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-start|pigs|keep|collaborate|limit
+init|start|pigs|keep|step|collaborate|limit
 1.2.2.3.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -735,22 +624,22 @@ FILE-messages: choose-1-2-3.md
 1.2.2.3.1.2 Any One Extra
 1.2.2.3.1.3 Do Nothing
 
-start|pigs|keep|collaborate|change
+init|start|pigs|keep|step|collaborate|change
 1.2.2.3.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-start|pigs|keep|collaborate|change|mice
+init|start|pigs|keep|step|collaborate|change|mice
 1.2.2.3.2.1 Mice
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.3.2.1.1 Any two Extras
 1.2.2.3.2.1.2 Any One Extra
 1.2.2.3.2.1.3 Do Nothing
 
-start|pigs|keep|collaborate|change|fish
+init|start|pigs|keep|step|collaborate|change|fish
 1.2.2.3.2.2 Change to Fish
-FILE-messages: charlie-let-taylor-know.md
+FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
 
 1.2.2.3.2.2.1 Any two Extras
@@ -763,548 +652,307 @@ AL: Are you sure you would like to use a Mouse Model?
 
 YES
 
-AL: Mice are a well established animal model that has been used for many years and has a good track record for successful experiments.
+FILE-messages: mice-1.md
+FILE-emails: lisa-handle-mice.md
 
-EMAIL FROM DR LISA FINAMORE
-
-LF: Good afternoon,
-
-I don’t think we’ve met yet. I’m Dr Lisa Finnamore, the Named Veterinary Surgeon in this facility. I’m responsible for ensuring that the welfare of the animals remains within legal standards. I know it sounds grand, but should the activities in the experiment compromise the welfare of the animals, I have the ability to stop it straight away. Just to let you know! 
-
-I’m getting in touch as the technicians have reported that the mice are showing signs of stress (increased heart rate and repetitive movement) when being routinely handled for observation; the solution is to introduce the use of observation tubes - this is standard practice in some facilities now. This means that we would train the mice to enter a plastic tube; the technician will then be able to observe the mice through the tube without having to handle them at all. This will cost us £3,000,00
-
-This does have an economic impact, as we will need to invest in the tubes and spend time training the mice as well as purchasing the specialist cleaning equipment needed to ensure that the tubes are fully sterilised. It may also limit the quality of observation undertaken by the technicians.
-
- I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
-Dr Lisa Finnamore
-
-start|mice|handle
+init|start|mice|handle
 1.3.1 Continue handling the mice
-
-LF: Thanks, I’ll Let Dr Taylor know
-
+FILE-mesasges: lisa-let-barry-know.md
 FILE-messages: next-section.md
+
+init|start|mice|handle|step
 FILE-messages: balance-success-harm.md
 
-start|mice|handle|scale
+init|start|mice|handle|step|scale
 1.3.1.1 Scale up
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-start|mice|handle|scale|limit
+init|start|mice|handle|step|scale|limit
 1.3.1.1.1 Limit the time technicians spend handling mice
-
-CB: Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.1.1.1 Any two Extras
 1.3.1.1.1.2 Any One Extra
 1.3.1.1.1.3 Do Nothing
 
-start|mice|handle|scale|fish
+init|start|mice|handle|step|scale|fish
 1.3.1.1.2 Change to Fish Model
-
-CB: We can make the changes
-
+FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.1.2.1 Any two Extras
 1.3.1.1.2.2 Any One Extra
 1.3.1.1.2.3 Do Nothing
 
-start|mice|handle|learn
+init|start|mice|handle|step|learn
 1.3.1.2 Learn from phased experiments
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-start|mice|handle|learn|limit
+init|start|mice|handle|step|learn|limit
 1.3.1.2.1 Limit the time technicians spend handling mice
-
-CB: Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.2.1.1 Any two Extras
 1.3.1.2.1.2 Any One Extra
 1.3.1.2.1.3 Do Nothing
 
-start|mice|handle|learn|fish
+init|start|mice|handle|step|learn|fish
 1.3.1.2.2 Change to Fish Model
-
-CB: We can make the changes
-
+FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.2.2.1 Any two Extras
 1.3.1.2.2.2 Any One Extra
 1.3.1.2.2.3 Do Nothing
 
-start|mice|handle|collaborate
+init|start|mice|handle|step|collaborate
 1.3.1.3 Collaborate with a competitor
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-start|mice|handle|collaborate|limit
+init|start|mice|handle|step|collaborate|limit
 1.3.1.3.1 Limit the time technicians spend handling mice
-
-CB: Thank you, I will get the shift patterns changed
-
+FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.3.1.1 Any two Extras
 1.3.1.3.1.2 Any One Extra
 1.3.1.3.1.3 Do Nothing
 
-start|mice|handle|collaborate|fish
+init|start|mice|handle|step|collaborate|fish
 1.3.1.3.2 Change to Fish Model
-
-CB: We can make the changes
-
+FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
 
 1.3.1.3.2.1 Any two Extras
 1.3.1.3.2.2 Any One Extra
 1.3.1.3.2.3  Do Nothing
 
-start|mice|tubes
+init|start|mice|tubes
 1.3.2 Mice in Glass Tubes
-
-LF: Thanks, I’ll Let Dr Taylor know
-
+FILE-mesasges: lisa-let-barry-know.md
 FILE-messages: next-section.md
+
+init|start|mice|tubes|step
 FILE-messages: balance-success-harm.md
 
-start|mice|tubes|scale
+init|start|mice|tubes|step|scale
 1.3.2.1 Scale up
+FILE-messages: barry-issues.md
+FILE-emails: barry-tube-mice-change.md
 
-DR BARRY TALYOR
-
-BT: I am going to send you an email about some issues I am having .....
-
-BT: 
-
-Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine to this disease.
-
-Though I appreciate the decision taken to move toward mice observation through plastic tubes; myself and the team are encountering difficulties with this approach. While the comfort of the subjects themselves has improved, our abilities to monitor and physically examine the mice, and to effectively conduct trials, has suffered. Evidence from some previous studies suggests that this approach will decrease our chances of developing a vaccine. 
-
-I, of course, am happy to be led by your decision, but I would like to request that we alter our approach to trials and use fish or pigs to achieve better results. Changing the animal model will cost us £2,000,000
-
-I await your response.
-
-Many thanks,
-
-Dr. Barry Taylor
-
-start|mice|tubes|scale|tubes
+init|start|mice|tubes|step|scale|tubes
 1.3.2.1.1 Carry on with tube mice
-
-Thank you for your response. I appreciate your time in reaching this decision and we will continue the trials as you have requested. 
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
 
  1.3.2.1.1.1 Any two Extras
  1.3.2.1.1.2 Any One Extra
  1.3.2.1.1.3 Do Nothing
  
-start|mice|tubes|scale|chang
+init|start|mice|tubes|step|scale|change
 1.3.2.1.2 Change animal model
+FILE-emails: barry-change.md
 
-BT: Thank you for your email and careful consideration in the change of approach. Though these decisions are challenging they give us a greater chance of success. I am confident in teams abilities and look forward to reporting back to you shortly.
-
-Which model would you like us to use?
-
-start|mice|tubes|scale|change|fish
+init|start|mice|tubes|step|scale|change|fish
 1.3.2.1.2.1 Fish
-
-BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
 
 1.3.2.1.2.1.1 Any two Extras
 1.3.2.1.2.1.2 Any One Extra
 1.3.2.1.2.1.3 Do Nothing
 
-start|mice|tubes|scale|change|pigs
+init|start|mice|tubes|step|scale|change|pigs
 1.3.2.1.2.2 Change to Pigs
-
-BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
 
 1.3.2.1.2.2.1 Any two Extras
 1.3.2.1.2.2.2 Any One Extra
 1.3.2.1.2.2.3 Do Nothing
 
-start|mice|tubes|learn
+init|start|mice|tubes|step|learn
 1.3.2.2 Learn from phased experiments
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
+File-messages: barry-issues.md
+FILE-emails: barry-tube-mice-change.md
 
-DR BARRY TALYOR
-
-BT: I am going to send you an email about some issues I am having .....
-
-BT: 
-
-Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine to this disease.
-
-Though I appreciate the decision taken to move toward mice observation through plastic tubes; myself and the team are encountering difficulties with this approach. While the comfort of the subjects themselves has improved, our abilities to monitor and physically examine the mice, and to effectively conduct trials, has suffered. Evidence from some previous studies suggests that this approach will decrease our chances of developing a vaccine. 
-
-I, of course, am happy to be led by your decision, but I would like to request that we alter our approach to trials and use fish or pigs to achieve better results. Changing the animal model will cost us £2,000,000
-
-I await your response.
-
-Many thanks,
-
-Dr. Barry Taylor
-
-start|mice|tubes|learn|tubes
+init|start|mice|tubes|step|learn|tubes
 1.3.2.2.1 Carry on with tube mice
-
-Thank you for your response. I appreciate your time in reaching this decision and we will continue the trials as you have requested. 
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
 
 1.3.2.2.1.1 Any two Extras
 1.3.2.2.1.2 Any One Extra
 1.3.2.2.1.3 Do Nothing
 
-start|mice|tubes|learn|tubes|change
+init|start|mice|tubes|step|learn|change
 1.3.2.2.2 Change animal model
+FILE-emails: barry-change.md
 
-BT: Thank you for your email and careful consideration in the change of approach. Though these decisions are challenging they give us a greater chance of success. I am confident in teams abilities and look forward to reporting back to you shortly.
-
-Which model would you like us to use?
-
-start|mice|tubes|learn|tubes|change|fish
+init|start|mice|tubes|step|learn|change|fish
 1.3.2.2.2.1 Fish
-
-BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
 
 1.3.2.2.2.1.1 Any two Extras
 1.3.2.2.2.1.2 Any One Extra
 1.3.2.2.2.1.3 Do Nothing
 
-start|mice|tubes|learn|tubes|change|pigs
+init|start|mice|tubes|step|learn|change|pigs
 1.3.2.2.2.2 Change to Pigs
-
-BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
 
 1.3.2.2.2.2.1 Any two Extras
 1.3.2.2.2.2.2 Any One Extra
 1.3.2.2.2.2.3 Do Nothing
 
-start|mice|tubes|collaborate
+init|start|mice|tubes|step|collaborate
 1.3.2.3 Collaborate with a competitor
-FILE-messages: al-send-to-taylor.md
+FILE-messages: al-send-to-barry.md
+FILE-messages: barry-issues.md
+FILE-emails: barry-tube-mice-change.md
 
-DR BARRY TALYOR
-
-BT: I am going to send you an email about some issues I am having .....
-
-BT: 
-
-Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine to this disease.
-
-Though I appreciate the decision taken to move toward mice observation through plastic tubes; myself and the team are encountering difficulties with this approach. While the comfort of the subjects themselves has improved, our abilities to monitor and physically examine the mice, and to effectively conduct trials, has suffered. Evidence from some previous studies suggests that this approach will decrease our chances of developing a vaccine. 
-
-I, of course, am happy to be led by your decision, but I would like to request that we alter our approach to trials and use fish or pigs to achieve better results. Changing the animal model will cost us £2,000,000
-
-I await your response.
-
-Many thanks,
-
-Dr. Barry Taylor
-
-start|mice|tubes|collaborate|tubes
+init|start|mice|tubes|step|collaborate|tubes
 1.3.2.3.1 Carry on with tube mice
-
-Thank you for your response. I appreciate your time in reaching this decision and we will continue the trials as you have requested. 
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
 
 1.3.2.3.1.1  Any two Extras
 1.3.2.3.1.2  Any One Extra
 1.3.2.3.1.3  Do Nothing
 
-start|mice|tubes|collaborate|change
+init|start|mice|tubes|step|collaborate|change
 1.3.2.3.2 Change animal model
+FILE-emails: barry-change.md
 
-BT: Thank you for your email and careful consideration in the change of approach. Though these decisions are challenging they give us a greater chance of success. I am confident in teams abilities and look forward to reporting back to you shortly.
-
-Which model would you like us to use?
-
-start|mice|tubes|collaborate|change|fish
+init|start|mice|tubes|step|collaborate|change|fish
 1.3.2.3.2.1 Fish
-
-BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
 
 1.3.2.3.2.1.1 Any two Extras
 1.3.2.3.2.1.2 Any One Extra
 1.3.2.3.2.1.3 Do Nothing
 
-start|mice|tubes|collaborate|change|pigs
+init|start|mice|tubes|step|collaborate|change|pigs
 1.3.2.3.2.2 Change to Pigs
-
-BT: Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
-
-Many Thanks,
-
-Dr. Barry Taylor
-
+FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
 
 1.3.2.3.2.2.1 Any two Extras
 1.3.2.3.2.2.2 Any One Extra
 1.3.2.3.2.2.3 Do Nothing
 
-
-
-start|fish
+init|start|fish
 1.4 Fish
 
 AL: Are you sure you would like to use a Fish Model?
 
 YES
 
-
-AL: Fish are a new animal model which is really promising as an alternative to other models. Hopefully, we can get some great results
+FILE-messages: fish-1.md
 
 DR BARRY TAYLOR EMAIL:
+FILE-emails: barry-adult-or-embryo.md
 
-BT: Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine for this disease.
-
-I have found some really interesting research which suggests there is a different way we can use the fish in this experiment. One of the great attributes of zebrafish is that the embryonic matter is transparent, allowing us to see the cells developing or even observe the interactions of the virus and the proteins inside the cells themselves! This is terribly exciting! This will cost us £3,000,000 to change over.
-
-If we go along this direction, we might be able to decrease our harm rating. However, it might not yield the results we need. I am confident that my team can get it done either way. 
-
-Let me know how you would like to move forward.
-
-Many thanks,
-
-Dr Barry Taylor
-
-start|fish|adult
+init|start|fish|adult
 1.4.1 Stay with Adult Fish
-
-BT: I am sure the results will come soon.
-
+FILE-messages: barry-results-soon.md
 FILE-messages: next-section.md
+
+init|start|fish|adult|step
 FILE-messages: balance-success-harm.md
 
-start|fish|adult|scale
+init|start|fish|adult|step|scale
 1.4.1.1 Scale up
+FILE-messages: lisa-found-new-research.md
+FILE-emails: lisa-fish-pain.md
 
-DR LISA FINAMORE
-My Team have found some new research. Im going to email you now....
-
-LF: Hello, 
-
-I don’t think we’ve met yet, I’m Dr Lisa Finnamore, the named veterinary surgeon in this facility, I’m responsible for ensuring that the welfare of the animals remains within legal standards. My main concern is the wellbeing of the animals within the lab and I will stop the experiment if I feel the animals are under too much distress. 
-
-I wanted to contact you about some new research one of my team has brought to me regarding our understanding of the way fish experience pain. We used to believe that fish did not experience pain. Evidence suggests that fish can sense potentially harmful environmental changes, such as high temperatures, intense pressure, and caustic chemicals, but that they do not feel and react to pain in the same way that mammals do. However, it has now become apparent that fish are showing signs of distress and abnormal behavior when placed in painful conditions, which, quite frankly, is not surprising behavior for a sentient life form if you ask me! 
-
-I request that we go for a different approach. Dr Taylor showed some interest in changing to fish embryos. I think, in light of this new research, we should consider this and change the model to fish embryos. This will cost us £3,000,000.
- 
-I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
-Dr Lisa Finnamore
-
-start|fish|adult|scale|embryos
+init|start|fish|adult|step|scale|embryo
 1.4.1.1.1 Move to Fish Embryos
-
-This is great news, and should decrease the harm rating. I will let Dr Taylor to make the changes.
-
-Many Thanks
-
-Dr Lisa Finnamore
-
+FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
 
 1.4.1.1.1.1 Any two Extras
 1.4.1.1.1.2 Any One Extra
 1.4.1.1.1.3 Do Nothing
 
-start|fish|adult|scale|adult
+init|start|fish|adult|step|scale|adult
 1.4.1.1.2 Stay with Adult Fish
-
-This is understandable as we do need results, but I will be keeping an eye on these sentient beings and working with Charlie to see if we can find a way to track their behaviour to build a recognisable/workable communication between the fish and ourselves so we can recognise when they are in distress.
-
+FILE-messages: lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
 
 1.4.1.1.2.1 Any two Extras
 1.4.1.1.2.2 Any One Extra
 1.4.1.1.2.3 Do Nothing
 
-start|fish|adult|learn
+init|start|fish|adult|step|learn
 1.4.1.2 Learn from phased experiments
+FILE-messages: lisa-found-new-research.md
+FILE-emails: lisa-fish-pain.md
 
-DR LISA FINAMORE
-My Team have found some new research. Im going to email you now....
-
-LF: Hello, 
-
-I don’t think we’ve met yet, I’m Dr Lisa Finnamore, the named veterinary surgeon in this facility, I’m responsible for ensuring that the welfare of the animals remains within legal standards. My main concern is the wellbeing of the animals within the lab and I will stop the experiment if I feel the animals are under too much distress. 
-
-I wanted to contact you about some new research one of my team has brought to me regarding our understanding of the way fish experience pain. We used to believe that fish did not experience pain. Evidence suggests that fish can sense potentially harmful environmental changes, such as high temperatures, intense pressure, and caustic chemicals, but that they do not feel and react to pain in the same way that mammals do. However, it has now become apparent that fish are showing signs of distress and abnormal behavior when placed in painful conditions, which, quite frankly, is not surprising behavior for a sentient life form if you ask me! 
-
-I request that we go for a different approach. Dr Taylor showed some interest in changing to fish embryos. I think, in light of this new research, we should consider this and change the model to fish embryos. This will cost us £3,000,000.
- 
-I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
-Dr Lisa Finnamore
-
-start|fish|adult|learn|embryos
+init|start|fish|adult|step|learn|embryo
 1.4.1.2.1 Move to Fish Embryos
-
-This is great news, and should decrease the harm rating. I will let Dr Taylor to make the changes.
-
-Many Thanks
-
-Dr Lisa Finnamore
-
+FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
 
 1.4.1.2.1.1 Any two Extras
 1.4.1.2.1.2 Any One Extra
 1.4.1.2.1.3 Do Nothing
 
-start|fish|adult|learn|adult
+init|start|fish|adult|step|learn|adult
 1.4.1.2.2 Stay with Adult Fish
-
-This is understandable as we do need results, but I will be keeping an eye on these sentient beings and working with Charlie to see if we can find a way to track their behaviour to build a recognisable/workable communication between the fish and ourselves so we can recognise when they are in distress.
-
+FILE-messages: lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
 
 1.4.1.2.2.1 Any two Extras
 1.4.1.2.2.2 Any One Extra
 1.4.1.2.2.3 Do Nothing
 
-start|fish|adult|collaborate
+init|start|fish|adult|step|collaborate
 1.4.1.3 Collaborate with a competitor
+FILE-messages: lisa-found-new-research.md
+FILE-emails: lisa-fish-pain.md
 
-DR LISA FINAMORE
-My Team have found some new research. Im going to email you now....
-
-LF: Hello, 
-
-I don’t think we’ve met yet, I’m Dr Lisa Finnamore, the named veterinary surgeon in this facility, I’m responsible for ensuring that the welfare of the animals remains within legal standards. My main concern is the wellbeing of the animals within the lab and I will stop the experiment if I feel the animals are under too much distress. 
-
-I wanted to contact you about some new research one of my team has brought to me regarding our understanding of the way fish experience pain. We used to believe that fish did not experience pain. Evidence suggests that fish can sense potentially harmful environmental changes, such as high temperatures, intense pressure, and caustic chemicals, but that they do not feel and react to pain in the same way that mammals do. However, it has now become apparent that fish are showing signs of distress and abnormal behavior when placed in painful conditions, which, quite frankly, is not surprising behavior for a sentient life form if you ask me! 
-
-I request that we go for a different approach. Dr Taylor showed some interest in changing to fish embryos. I think, in light of this new research, we should consider this and change the model to fish embryos. This will cost us £3,000,000.
- 
-I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
-Dr Lisa Finnamore
-
-start|fish|adult|collaborate|embryos
+init|start|fish|adult|step|collaborate|embryo
 1.4.1.3.1 Move to Fish Embryos
-
-This is great news, and should decrease the harm rating. I will let Dr Taylor to make the changes.
-
-Many Thanks
-
-Dr Lisa Finnamore
-
+FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
 
 1.4.1.3.1.1 Any two Extras
 1.4.1.3.1.2 Any One Extra
 1.4.1.3.1.3 Do Nothing
 
-start|fish|adult|collaborate|adult
+init|start|fish|adult|step|collaborate|adult
 1.4.1.3.2 Stay with Adult Fish
-
-This is understandable as we do need results, but I will be keeping an eye on these sentient beings and working with Charlie to see if we can find a way to track their behaviour to build a recognisable/workable communication between the fish and ourselves so we can recognise when they are in distress.
-
+FILE-messages: lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
 
 1.4.1.3.2.1 Any two Extras
 1.4.1.3.2.2 Any One Extra
 1.4.1.3.2.3 Do Nothing
 
-start|fish|embryo
+init|start|fish|embryo
 1.4.2 Move to Fish Embryos
-
-BT: I will inform Dr Finnamore and the rest of the team to make the changes.
-
+FILE-messages: barry-inform-lisa.md
 FILE-messages: next-section.md
+
+init|start|fish|embryo|step
 FILE-messages: balance-success-harm.md
 
-start|fish|embryo|scale
+init|start|fish|embryo|step|scale
 1.4.2.1 Scale up
+FILE-messages: jenny-public-reation.md
+FILE-emails: jenny-fish-protest.md
 
-Jenny Collins :  We are getting a bit of a reaction from the public about your choices. I have sent over an email....
-
-JC:  Hello, 
-
-It’s Jenny from the PR department; we’re encountering a lot of bad press and protest activity across social media, due to the use of fish embryos as our animal model for the development of the vaccine. We’re getting significant activity from @AllLifeIsScared in particular, and there are rumours of a large scale pro-life protest planned outside the facility next week. Do not directly engage with or respond personally to any approaches from protestors; please refer any enquiries to the PR office. The facility is upping security measures to make sure the building is safe, and it is vital that you let us know if you receive any correspondence from the protest group; we have procedures in place should you or your family feel threatened. 
- 
-I would recommend rethinking the animal model, at a cost of £2,000,00 or press ahead if you want to. The extra security will also cost us £3,000,000
-
-Do let me know either way, and I’ll start thinking about the best way to handle the situation. 
-
-Many thanks,
-
-Jenny
-
-start|fish|embryo|scale|embryo
+init|start|fish|embryo|step|scale|embryo
 1.4.2.1.1 Stay with Fish Embryos 
 FILE-emails: stay.md
 FILE-messages: choose-1-2-3.md
@@ -1313,47 +961,34 @@ FILE-messages: choose-1-2-3.md
 1.4.2.1.1.2 Any One Extra
 1.4.2.1.1.3 Do Nothing
 
-start|fish|embryo|scale|change
+init|start|fish|embryo|step|scale|change
 1.4.2.1.2 Change Model
+FILE-messages: jenny-change-model.md
 
-JC: Have a look at the options and let me know
-
-start|fish|embryo|scale|change|mice
+init|start|fish|embryo|step|scale|change|mice
 1.4.2.1.2.1 Change to Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.1.2.1.1 Any two Extras
 1.4.2.1.2.1.2 Any One Extra
 1.4.2.1.2.1.3 Do Nothing
 
-start|fish|embryo|scale|change|pigs
+init|start|fish|embryo|step|scale|change|pigs
 1.4.2.1.2.2 Change to Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.1.2.2.1 Any two Extras
 1.4.2.1.2.2.2 Any One Extra
 1.4.2.1.2.2.3 Do Nothing
 
-start|fish|embryo|learn
+init|start|fish|embryo|step|learn
 1.4.2.2 Learn from phased experiments
+FILE-messages: jenny-public-reaction.md
+FILE-emails: jenny-fish-protest.md
 
-Jenny Collins :  We are getting a bit of a reaction from the public about your choices. I have sent over an email....
-
-JC:  Hello, 
-
-It’s Jenny from the PR department; we’re encountering a lot of bad press and protest activity across social media, due to the use of fish embryos as our animal model for the development of the vaccine. We’re getting significant activity from @AllLifeIsScared in particular, and there are rumours of a large scale pro-life protest planned outside the facility next week. Do not directly engage with or respond personally to any approaches from protestors; please refer any enquiries to the PR office. The facility is upping security measures to make sure the building is safe, and it is vital that you let us know if you receive any correspondence from the protest group; we have procedures in place should you or your family feel threatened. 
- 
-I would recommend rethinking the animal model, at a cost of £2,000,00 or press ahead if you want to. The extra security will also cost us £3,000,000
-
-Do let me know either way, and I’ll start thinking about the best way to handle the situation. 
-
-Many thanks,
-
-Jenny
-
-start|fish|embryo|learn|stay
+init|start|fish|embryo|step|learn|stay
 1.4.2.2.1 Stay with Fish Embryos 
 FILE-emails: stay.md
 FILE-messages: choose-1-2-3.md
@@ -1362,46 +997,34 @@ FILE-messages: choose-1-2-3.md
 1.4.2.2.1.2 Any One Extra
 1.4.2.2.1.3 Do Nothing
 
+init|start|fish|embryo|step|learn|change
 1.4.2.2.2 Change Model
+FILE-messages: jenny-change-model.md
 
-JC: Have a look at the options and let me know
-
-start|fish|embryo|learn|change|mice
+init|start|fish|embryo|step|learn|change|mice
 1.4.2.2.2.1 Change to Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.2.2.1.1 Any two Extras
 1.4.2.2.2.1.2 Any One Extra
 1.4.2.2.2.1.3 Do Nothing
 
-start|fish|embryo|learn|change|pigs
+init|start|fish|embryo|step|learn|change|pigs
 1.4.2.2.2.2 Change to Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.2.2.2.1 Any two Extras
 1.4.2.2.2.2.2 Any One Extra
 1.4.2.2.2.2.3 Do Nothing
 
-start|fish|embryo|collaborate
+init|start|fish|embryo|step|collaborate
 1.4.2.3 Collaborate with a competitor
+FILE-messages: jenny-public-reaction.md
+FILE-emails: jenny-fish-protest.md
 
-Jenny Collins :  We are getting a bit of a reaction from the public about your choices. I have sent over an email....
-
-JC:  Hello, 
-
-It’s Jenny from the PR department; we’re encountering a lot of bad press and protest activity across social media, due to the use of fish embryos as our animal model for the development of the vaccine. We’re getting significant activity from @AllLifeIsScared in particular, and there are rumours of a large scale pro-life protest planned outside the facility next week. Do not directly engage with or respond personally to any approaches from protestors; please refer any enquiries to the PR office. The facility is upping security measures to make sure the building is safe, and it is vital that you let us know if you receive any correspondence from the protest group; we have procedures in place should you or your family feel threatened. 
- 
-I would recommend rethinking the animal model, at a cost of £2,000,00 or press ahead if you want to. The extra security will also cost us £3,000,000
-
-Do let me know either way, and I’ll start thinking about the best way to handle the situation. 
-
-Many thanks,
-
-Jenny
-
-start|fish|embryo|collaborate|stay
+init|start|fish|embryo|step|collaborate|stay
 1.4.2.3.1 Stay with Fish Embryos 
 FILE-emails: stay.md
 FILE-messages: choose-1-2-3.md
@@ -1410,22 +1033,22 @@ FILE-messages: choose-1-2-3.md
 1.4.2.3.1.2 Any One Extra
 1.4.2.3.1.3 Do Nothing
 
+init|start|fish|embryo|step|collaborate|change
 1.4.2.3.2 Change Model
+FILE-messages: jenny-change-model.md
 
-JC: Have a look at the options and let me know
-
-start|fish|embryo|collaborate|change|mice
+init|start|fish|embryo|step|collaborate|change|mice
 1.4.2.3.2.1 Change to Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.3.2.1.1 Any two Extras
 1.4.2.3.2.1.2 Any One Extra
 1.4.2.3.2.1.3 Do Nothing
 
-start|fish|embryo|collaborate|change|pigs
+init|start|fish|embryo|step|collaborate|change|pigs
 1.4.2.3.2.2 Change to Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 1.4.2.3.2.2.1 Any two Extras
@@ -1700,7 +1323,7 @@ Change Model
 JC: Have a look at the list bellow and let me know
 
 Pigs
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
 
 Any two Extras
@@ -1709,5 +1332,5 @@ Do Nothing
 
 
 Mice
-FILE-emails: change-taylor.md
+FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md

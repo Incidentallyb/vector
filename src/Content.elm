@@ -1,7 +1,8 @@
 module Content exposing (Datastore, DocumentData, EmailData, MessageData, datastoreDictDecoder)
 
 import Dict exposing (Dict)
-import Json.Decode exposing (field, list, map4, map5, map6, string)
+import Json.Decode exposing (field, list, map4, maybe, string)
+import Json.Decode.Extra exposing (andMap, withDefault)
 
 
 type alias Datastore =
@@ -15,10 +16,14 @@ type alias Datastore =
 type alias MessageData =
     { triggered_by : List String
     , author : String
+    , playerMessage : Maybe String
     , choices : List String
     , preview : String
     , content : String
     , basename : String
+    , scoreChangeEconomic : Maybe (List String)
+    , scoreChangeHarm : Maybe (List String)
+    , scoreChangeSuccess : Maybe (List String)
     }
 
 
@@ -37,6 +42,10 @@ type alias EmailData =
     , preview : String
     , content : String
     , basename : String
+    , choices : Maybe (List String)
+    , scoreChangeEconomic : Maybe (List String)
+    , scoreChangeHarm : Maybe (List String)
+    , scoreChangeSuccess : Maybe (List String)
     }
 
 
@@ -89,47 +98,55 @@ flagsDictDecoder =
 messageDictDecoder : Json.Decode.Decoder (Dict String MessageData)
 messageDictDecoder =
     Json.Decode.dict
-        (map6 MessageData
-            (field "triggered_by" (list string))
-            (field "author" string)
-            (field "choices" (list string))
-            (field "preview" string)
-            (field "content" string)
-            (field "basename" string)
+        (Json.Decode.succeed MessageData
+            |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
+            |> andMap (Json.Decode.field "author" string |> withDefault "")
+            |> andMap (Json.Decode.maybe (Json.Decode.field "playerMessage" string))
+            |> andMap (Json.Decode.field "choices" (list string) |> withDefault [])
+            |> andMap (Json.Decode.field "preview" string |> withDefault "")
+            |> andMap (Json.Decode.field "content" string |> withDefault "")
+            |> andMap (Json.Decode.field "basename" string |> withDefault "")
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeEconomic" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeSuccess" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeHarm" (list string)))
         )
 
 
 documentDictDecoder : Json.Decode.Decoder (Dict String DocumentData)
 documentDictDecoder =
     Json.Decode.dict
-        (map4 DocumentData
-            (field "image" string)
-            (field "preview" string)
-            (field "content" string)
-            (field "basename" string)
+        (Json.Decode.succeed DocumentData
+            |> andMap (Json.Decode.field "image" string |> withDefault "")
+            |> andMap (Json.Decode.field "preview" string |> withDefault "")
+            |> andMap (Json.Decode.field "content" string |> withDefault "")
+            |> andMap (Json.Decode.field "basename" string |> withDefault "")
         )
 
 
 emailDictDecoder : Json.Decode.Decoder (Dict String EmailData)
 emailDictDecoder =
     Json.Decode.dict
-        (map6 EmailData
-            (field "triggered_by" (list string))
-            (field "author" string)
-            (field "subject" string)
-            (field "preview" string)
-            (field "content" string)
-            (field "basename" string)
+        (Json.Decode.succeed EmailData
+            |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
+            |> andMap (Json.Decode.field "author" string |> withDefault "")
+            |> andMap (Json.Decode.field "subject" string |> withDefault "")
+            |> andMap (Json.Decode.field "preview" string |> withDefault "")
+            |> andMap (Json.Decode.field "content" string |> withDefault "")
+            |> andMap (Json.Decode.field "basename" string |> withDefault "")
+            |> andMap (Json.Decode.maybe (Json.Decode.field "choices" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeEconomic" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeSuccess" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeHarm" (list string)))
         )
 
 
 socialDictDecoder : Json.Decode.Decoder (Dict String SocialData)
 socialDictDecoder =
     Json.Decode.dict
-        (map5 SocialData
-            (field "triggered_by" (list string))
-            (field "author" string)
-            (field "handle" string)
-            (field "content" string)
-            (field "basename" string)
+        (Json.Decode.succeed SocialData
+            |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
+            |> andMap (Json.Decode.field "author" string |> withDefault "")
+            |> andMap (Json.Decode.field "handle" string |> withDefault "")
+            |> andMap (Json.Decode.field "content" string |> withDefault "")
+            |> andMap (Json.Decode.field "basename" string |> withDefault "")
         )

@@ -1,25 +1,20 @@
 ---
 triggered_by:
-  - start|macaques|change|pigs|scale
-  - start|macaques|change|pigs|learn
-  - start|macaques|change|pigs|collaborate
-  - start|macaques|change|mice|scale
-  - start|macaques|change|mice|learn
-  - start|macaques|change|mice|collaborate
-  - start|pigs|increase|scale
-  - start|pigs|increase|learn
-  - start|pigs|increase|collaborate
-  - start|pigs|keep|scale
-  - start|pigs|keep|learn
-  - start|pigs|keep|collaborate
-  - start|mice|handle|collaborate
-  - start|mice|handle|scale
-  - start|mice|handle|scale
+  - init|start|macaques|change|pigs|step|scale
+  - init|start|macaques|change|pigs|step|learn
+  - init|start|macaques|change|pigs|step|collaborate
+  - init|start|macaques|change|mice|step|scale
+  - init|start|macaques|change|mice|step|learn
+  - init|start|macaques|change|mice|step|collaborate
+  - init|start|pigs|increase|step|scale
+  - init|start|pigs|increase|step|learn
+  - init|start|pigs|increase|step|collaborate
+  - init|start|pigs|keep|step|scale
+  - init|start|pigs|keep|step|learn
+  - init|start|pigs|keep|step|collaborate
+  - init|start|mice|handle|step|collaborate
+  - init|start|mice|handle|step|scale
+  - init|start|mice|handle|step|scale
 author: Charlie
-choices:
-  - Nothing 
 ---
-I have a bit of a personal request, so I have sent over an email....
-
-[cCc]
-(Hi Guys, I have a bit of a personal request, so I have sent over an email....)
+Hi Guys, I have a bit of a personal request, so I have sent over an email...

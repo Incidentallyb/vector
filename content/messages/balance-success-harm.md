@@ -1,20 +1,15 @@
 ---
 triggered_by:
-  - step|next-section
-  - start|macaques|stay
-  - start|macaques|pigs
-  - start|macaques|?|mice
-  - start|macaques|?|fish
-  - start|pigs|increase
-  - start|pigs|keep
-  - start|mice|handle
-  - start|mice|tubes
-  - start|fish|adult
-  - start|fish|embryo
-  - start|macaques|change|pigs
-  - start|macaques|change|mice
-  - start|macaques|change|fish
-  - start|macaques|change|pigs|3
+  - init|start|macaques|stay|step
+  - init|start|pigs|increase|step
+  - init|start|pigs|keep|step
+  - init|start|mice|handle|step
+  - init|start|mice|tubes|step
+  - init|start|fish|adult|step
+  - init|start|fish|embryo|step
+  - init|start|macaques|change|pigs|step
+  - init|start|macaques|change|mice|step
+  - init|start|macaques|change|fish|step
 author: AL
 choices:
   - scale|Scale up
@@ -24,11 +19,7 @@ choices:
 
 You have been making some very difficult decisions so far, and your experiments are starting to show results.
 
-[cCc]
-In order to keep the balance of success vs harm, we have a few options for you, each will affect your success and harm rating. 
-
-[cCc]
-(To keep the balance of success vs harm, we have a few options for you, each will affect your success and harm rating.)
+To keep the balance of success vs harm, we have a few options for you, each will affect your success and harm rating.
 
 Would you like to:
 

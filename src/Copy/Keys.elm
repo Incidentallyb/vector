@@ -30,6 +30,5 @@ type Key
     | ViewDocument
       --- Emails
     | EmailDummySentTime
-
       --- TeamNames
     | TeamNames

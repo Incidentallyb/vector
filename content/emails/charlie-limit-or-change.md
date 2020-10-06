@@ -1,13 +1,16 @@
 ---
 triggered_by:
-  - start|mice|handle|scale
-  - start|mice|handle|learn
-  - start|mice|handle|collaborate
-  - start|macaques|change|mice|scale
-  - start|macaques|change|mice|learn
-  - start|macaques|change|mice|collaborate
+  - init|start|mice|handle|step|scale
+  - init|start|mice|handle|step|learn
+  - init|start|mice|handle|step|collaborate
+  - init|start|macaques|change|mice|step|scale
+  - init|start|macaques|change|mice|step|learn
+  - init|start|macaques|change|mice|step|collaborate
 author: Charlie Benn
 subject: Email subject content [cCc]
+choices:
+  - limit|Limit the time technicians spend handling mice
+  - fish|Let's change to fish models
 ---
 Hello All,
 

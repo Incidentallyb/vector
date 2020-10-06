@@ -1,16 +1,19 @@
 ---
 triggered_by:
-  - start|macaques|change|pigs|scale
-  - start|macaques|change|pigs|learn
-  - start|macaques|change|pigs|collaborate
-  - start|pigs|increase|scale
-  - start|pigs|increase|learn
-  - start|pigs|increase|collaborate
-  - start|pigs|keep|scale
-  - start|pigs|keep|learn
-  - start|pigs|keep|collaborate
+  - init|start|macaques|change|pigs|step|scale
+  - init|start|macaques|change|pigs|step|learn
+  - init|start|macaques|change|pigs|step|collaborate
+  - init|start|pigs|increase|step|scale
+  - init|start|pigs|increase|step|learn
+  - init|start|pigs|increase|step|collaborate
+  - init|start|pigs|keep|step|scale
+  - init|start|pigs|keep|step|learn
+  - init|start|pigs|keep|step|collaborate
 author: Charlie Benn
 subject: Email subject content [cCc]
+choices:
+ - limit|Limit contact
+ - change|Change animal model
 ---
 Hello All,
 

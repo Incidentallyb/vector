@@ -6,6 +6,7 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import Debug
 import Dict
 import GameData exposing (GameData, init)
 import Html exposing (Html, div)
@@ -85,9 +86,14 @@ update msg model =
 
         ChoiceButtonClicked choice ->
             let
+                --debug =
+                --   Debug.log "NEWSCORE" (Debug.toString (GameData.updateEconomicScore model.data model.gameData choice))
                 newGameData =
                     { choices = choice :: model.gameData.choices
                     , teamName = model.gameData.teamName
+                    , scoreSuccess = GameData.updateSuccessScore model.data model.gameData choice
+                    , scoreEconomic = GameData.updateEconomicScore model.data model.gameData choice
+                    , scoreHarm = model.gameData.scoreHarm
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
@@ -95,8 +101,11 @@ update msg model =
         TeamChosen teamName ->
             let
                 newGameData =
-                    { choices = model.gameData.choices
+                    { choices = [ "init" ]
                     , teamName = teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
@@ -140,7 +149,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
-                    [ View.Emails.list model.data.emails model.visited
+                    [ View.Emails.list model.gameData model.data.emails model.visited
                     ]
                 ]
 

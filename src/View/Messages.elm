@@ -1,6 +1,7 @@
 module View.Messages exposing (view)
 
 import Content
+import ContentChoices
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
@@ -43,22 +44,26 @@ choiceStringsToButtons buttonString =
 view : GameData -> Dict String Content.MessageData -> Html Msg
 view gamedata messagesDict =
     ul [ class "message-list p-0" ]
-        (List.map renderMessageAndPrompt (Dict.values (filterMessages messagesDict gamedata.choices)))
+        (List.reverse
+            (Dict.values (filterMessages messagesDict gamedata.choices))
+            |> List.map (renderMessageAndPrompt gamedata.choices)
+        )
 
 
-renderMessageAndPrompt : Content.MessageData -> Html Msg
-renderMessageAndPrompt message =
+renderMessageAndPrompt : List String -> Content.MessageData -> Html Msg
+renderMessageAndPrompt choices message =
     li []
-        [ renderMessage message.author message.content
-        , renderPrompt message
+        [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
+        , renderMessage message.author message.content
+        , renderPrompt message choices
         ]
 
 
 renderMessage : String -> String -> Html Msg
 renderMessage from message =
     div
-        [ class "message al w-75 float-left mt-3 ml-5 py-2" ]
-        [ div [ class "ml-3" ]
+        [ class "message al w-75 float-left mt-3 ml-3 py-2" ]
+        [ div [ class "mx-3" ]
             [ p [ class "message-from m-0" ]
                 [ text from ]
             , p
@@ -68,19 +73,27 @@ renderMessage from message =
         ]
 
 
-renderPrompt : Content.MessageData -> Html Msg
-renderPrompt message =
+renderPrompt : Content.MessageData -> List String -> Html Msg
+renderPrompt message choices =
     if List.length message.choices > 0 then
         div
-            [ class "message player w-75 float-right mt-3 mr-5 py-2" ]
-            [ div [ class "ml-3" ]
+            [ class "message player w-75 float-right mt-3 mr-3 py-2" ]
+            [ div [ class "mx-3" ]
                 [ p [ class "message-from m-0" ]
                     [ text (t FromPlayerTeam) ]
 
                 -- we might have some player text in the future?
-                --, div [ class "card-text m-0" ]
-                --    [ Markdown.toHtml [ class "content" ] message.content ]
-                , renderButtons (List.map choiceStringsToButtons message.choices)
+                , let
+                    playerMessage =
+                        case message.playerMessage of
+                            Nothing ->
+                                div [] []
+
+                            Just playerMessageText ->
+                                Markdown.toHtml [ class "playerMessageText" ] playerMessageText
+                  in
+                  playerMessage
+                , renderButtons (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
                 ]
             ]
 
@@ -88,14 +101,23 @@ renderPrompt message =
         text ""
 
 
-renderButtons : List ButtonInfo -> Html Msg
-renderButtons buttonList =
+renderButtons : List ButtonInfo -> String -> Html Msg
+renderButtons buttonList chosenValue =
     div []
         (List.map
             (\buttonItem ->
                 button
-                    [ class "btn btn-primary choice-button"
-                    , onClick (ChoiceButtonClicked buttonItem.action)
+                    [ classList
+                        [ ( "btn choice-button", True )
+                        , ( "btn-primary", chosenValue == "" )
+                        , ( "active", chosenValue == buttonItem.action )
+                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
+                        ]
+                    , if chosenValue == "" then
+                        onClick (ChoiceButtonClicked buttonItem.action)
+
+                      else
+                        Html.Attributes.class ""
                     ]
                     [ text buttonItem.label ]
             )

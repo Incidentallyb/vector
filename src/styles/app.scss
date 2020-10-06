@@ -2,16 +2,21 @@
 :root {
   --red: #dc3545;
   --green: #28a745;
+  --green-dark: #1e7e34;
   --blue: #007bff;
+  --blue-pale: #9fb8f0;
   --white: #ffffff;
-  --grey-light: #f5f7f7;
   --grey: #e3e8ea;
+  --grey-light: #f5f7f7;
+  --grey-medium: #ccc;
   --grey-twitter: #657786;
   --grey-twitter-border: #e6ecf0;
   --grey-twitter-hover: #f5f8fa;
   --email-hover: #e0efff;
   --black: #111111;
-  --background-colour: #9fb8f0;
+  --choicebutton-disabled: var(--grey-medium);
+  --choicebutton-selected: var(--green-dark);
+  --background-colour: var(--blue-pale);
   --navTextForeground: var(--black);
 }
 
@@ -36,12 +41,13 @@ body {
         color: var(--blue);
       }
     }
+    &:focus {
+      background-color: var(--blue);
+      color: var(--white);
+      text-decoration: underline;
+      svg {
+        color: var(--white);
+      }
+    }
   }
-}
-
-a.btn > svg,
-a.nav-link > svg {
-  width: 24px;
-  height: 24px;
-  margin-right: 0.5em;
 }
