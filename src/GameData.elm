@@ -30,12 +30,12 @@ init =
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
 filterMessages allMessages choices =
-    Dict.filter (\_ value -> ContentChoices.triggeredByChoices choices value.triggered_by) allMessages
+    ContentChoices.triggeredMessagesByChoice choices allMessages
 
 
 filterEmails : Dict String EmailData -> List String -> Dict String EmailData
 filterEmails allEmails choices =
-    Dict.filter (\_ value -> ContentChoices.triggeredByChoices choices value.triggered_by) allEmails
+    ContentChoices.triggeredEmailsByChoice choices allEmails
 
 
 

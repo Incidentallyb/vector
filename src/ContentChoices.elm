@@ -1,7 +1,15 @@
-module ContentChoices exposing (choiceStepsList, getChoiceChosen, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings)
+module ContentChoices exposing
+    ( choiceStepsList
+    , getChoiceChosen
+    , triggeredByChoices
+    , triggeredByChoicesGetMatches
+    , triggeredByWithChoiceStrings
+    , triggeredEmailsByChoice
+    , triggeredMessagesByChoice
+    )
 
-import Content
-import Debug
+import Content exposing (EmailData, MessageData)
+import Dict exposing (Dict)
 import List.Extra
 import Set
 
@@ -27,6 +35,58 @@ choiceStepsList currentChoices =
                     oneChoiceList
     in
     list
+
+
+getTriggeringChoice : List String -> List String -> String
+getTriggeringChoice choices triggers =
+    let
+        choiceSet =
+            -- The set of choices at each stage
+            Set.fromList (choiceStepsList choices)
+
+        triggerSet =
+            -- The set of triggers in this content's `triggered_by`
+            Set.fromList triggers
+    in
+    -- Get the match (the choice string that triggered this content to display)
+    Set.intersect choiceSet triggerSet
+        |> Set.toList
+        |> List.head
+        |> Maybe.withDefault "error-no-choice-trigger-match"
+
+
+messageListKeyedByTriggerChoice : List String -> Dict String MessageData -> List ( String, MessageData )
+messageListKeyedByTriggerChoice choices messages =
+    -- Go through the (key, message) pairs and replace key with the choice string that tiggered it.
+    List.map
+        (\( _, message ) -> ( getTriggeringChoice choices message.triggered_by, message ))
+        (Dict.toList messages)
+
+
+triggeredMessagesByChoice : List String -> Dict String MessageData -> Dict String MessageData
+triggeredMessagesByChoice choices messages =
+    let
+        filteredMessages =
+            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) messages
+    in
+    Dict.fromList (messageListKeyedByTriggerChoice choices filteredMessages)
+
+
+emailListKeyedByTriggerChoice : List String -> Dict String EmailData -> List ( String, EmailData )
+emailListKeyedByTriggerChoice choices emails =
+    -- Go through the (key, email) pairs and replace key with the choice string that tiggered it.
+    List.map
+        (\( _, email ) -> ( getTriggeringChoice choices email.triggered_by, email ))
+        (Dict.toList emails)
+
+
+triggeredEmailsByChoice : List String -> Dict String EmailData -> Dict String EmailData
+triggeredEmailsByChoice choices emails =
+    let
+        filteredEmails =
+            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) emails
+    in
+    Dict.fromList (emailListKeyedByTriggerChoice choices filteredEmails)
 
 
 triggeredByChoices : List String -> List String -> Bool
@@ -70,7 +130,7 @@ triggeredByChoicesGetMatches currentChoices triggeredByList =
 -}
 
 
-getChoiceChosen : List String -> Content.MessageData -> String
+getChoiceChosen : List String -> MessageData -> String
 getChoiceChosen playerChoices message =
     -- first choice is 'init', so don't do anything
     -- if the message doesn't give us choices, don't do anything
