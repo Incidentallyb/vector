@@ -1,14 +1,14 @@
 ---
 triggered_by:
-  - init|start|macaques|change|pigs|scale|change
-  - init|start|macaques|change|pigs|learn|change
-  - init|start|macaques|change|pigs|collaborate|change
-  - init|start|pigs|increase|scale|change
-  - init|start|pigs|increase|learn|change
-  - init|start|pigs|increase|collaborate|change
-  - init|start|pigs|keep|scale|change
-  - init|start|pigs|keep|learn|change
-  - init|start|pigs|keep|collaborate|change
+  - init|start|macaques|change|pigs|step|scale|change
+  - init|start|macaques|change|pigs|step|learn|change
+  - init|start|macaques|change|pigs|step|collaborate|change
+  - init|start|pigs|increase|step|scale|change
+  - init|start|pigs|increase|step|learn|change
+  - init|start|pigs|increase|step|collaborate|change
+  - init|start|pigs|keep|step|scale|change
+  - init|start|pigs|keep|step|learn|change
+  - init|start|pigs|keep|step|collaborate|change
 author: Charlie
 choices:
   - mice|Mice

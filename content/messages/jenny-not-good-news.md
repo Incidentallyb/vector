@@ -1,8 +1,8 @@
 ---
 triggered_by:
-  - step|jenny-not-good-news
+  - init|start|macaques|stay|step|scale
+  - init|start|macaques|stay|step|learn
+  - init|start|macaques|stay|step|collaborate
 author: Jenny
-choices:
-  - step|macaque-scale-3
 ---
 I have sent you an email......its not good news......sorry xxx

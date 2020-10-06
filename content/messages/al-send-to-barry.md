@@ -1,5 +1,8 @@
 ---
 triggered_by:
+  - init|start|macaques|stay|step|scale
+  - init|start|macaques|stay|step|learn
+  - init|start|macaques|stay|step|collaborate  
   - init|start|macaques|change|pigs|step|scale
   - init|start|macaques|change|pigs|step|learn
   - init|start|macaques|change|pigs|step|collaborate
@@ -12,9 +15,8 @@ triggered_by:
   - init|start|pigs|keep|step|scale
   - init|start|pigs|keep|step|learn
   - init|start|pigs|keep|step|collaborate
-  - init|start|mice|handle|step|collaborate
-  - init|start|mice|handle|step|scale
-  - init|start|mice|handle|step|scale
-author: Charlie
+  - init|start|mice|tubes|step|learn
+  - init|start|mice|tubes|step|collaborate
+author: AL
 ---
-Hi Guys, I have a bit of a personal request, so I have sent over an email...
+I will send this over to Dr Barry Taylor and the team now

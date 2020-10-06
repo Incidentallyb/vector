@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - "init"
+  - init
 author: AL
 choices:
   - start|We are ready
