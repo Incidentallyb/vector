@@ -32,7 +32,7 @@
   p {
     font-size: 1rem;
   }
-  
+
   p.author {
     font-weight: 700;
   }
@@ -44,16 +44,17 @@
   color: var(--white);
   clip-path: circle(48% at center);
   display: flex;
+  flex-shrink: 0;
   height: 2.5rem;
   justify-content: center;
   font-weight: 700;
   width: 2.5rem;
 
-  &.Jenny {
+  &.jenny {
     background-color: var(--red);
   }
 
-  &.green {
+  &.charliebenn {
     background-color: var(--green);
   }
 

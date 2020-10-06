@@ -24,7 +24,7 @@ single maybeContent =
                 [ p [ class "date" ] [ text (t EmailDummySentTime) ]
                 , h2 [] [ text "EMAIL_SUBJECT_TODO" ]
                 , div [ class "d-flex align-items-center" ]
-                    [ div [ class ("email-icon " ++ email.author), ariaHidden True ]
+                    [ div [ class ("email-icon " ++ generateCssString email.author), ariaHidden True ]
                         [ text (String.left 1 email.author)
                         ]
                     , div [ class "ml-3" ] [ text email.author ]
@@ -44,7 +44,7 @@ listItem email =
     li
         [ class "email-list-item" ]
         [ a [ class "text-body", href (Route.toString (Email email.basename)) ]
-            [ div [ class ("email-icon " ++ email.author), ariaHidden True ]
+            [ div [ class ("email-icon " ++ generateCssString email.author), ariaHidden True ]
                 [ text (String.left 1 email.author)
                 ]
             , div [ class "email-info ml-3" ]
@@ -53,3 +53,8 @@ listItem email =
                 ]
             ]
         ]
+
+
+generateCssString : String.String -> String.String
+generateCssString name =
+    String.toLower (String.concat (String.words name))
