@@ -56,25 +56,18 @@ addReadStatus : List Content.EmailData -> Set.Set String -> List EmailWithRead
 addReadStatus emailData visitedSet =
     List.map
         (\email ->
-            if Set.member ("/emails/" ++ email.basename) visitedSet then
-                { triggered_by = email.triggered_by
-                , author = email.author
-                , subject = email.subject
-                , preview = email.preview
-                , content = email.content
-                , basename = email.basename
-                , read = True
-                }
-
-            else
-                { triggered_by = email.triggered_by
-                , author = email.author
-                , subject = email.subject
-                , preview = email.preview
-                , content = email.content
-                , basename = email.basename
-                , read = False
-                }
+            let
+                readStatus =
+                    Set.member ("/emails/" ++ email.basename) visitedSet
+            in
+            { triggered_by = email.triggered_by
+            , author = email.author
+            , subject = email.subject
+            , preview = email.preview
+            , content = email.content
+            , basename = email.basename
+            , read = readStatus
+            }
         )
         emailData
 
