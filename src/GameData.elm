@@ -49,7 +49,10 @@ filterEmails allEmails choices =
 
 choicesAndMessages : List String -> List MessageData -> List ( String, MessageData )
 choicesAndMessages playerChoices messages =
-    List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message )) messages
+    List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message ))
+        -- We want to process the mesages in reverse for scoring
+        -- We will also need to include emails
+        (List.reverse messages)
 
 
 

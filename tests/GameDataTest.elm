@@ -161,12 +161,10 @@ updateSuccessScore =
             \_ ->
                 GameData.updateSuccessScore TestData.testDatastore macaquesGameData "stay"
                     |> Expect.equal 45
-
-        -- Fails following key by choice refactor
-        --, test "returns 30% (set value) for start->macaques->change->mice" <|
-        --    \_ ->
-        --        GameData.updateSuccessScore TestData.testDatastore changeGameData "mice"
-        --            |> Expect.equal 30
+        , test "returns 30% (set value) for start->macaques->change->mice" <|
+            \_ ->
+                GameData.updateSuccessScore TestData.testDatastore changeGameData "mice"
+                    |> Expect.equal 30
         , test "returns 50% (added value) for start->macaques->change->fish" <|
             \_ ->
                 GameData.updateSuccessScore TestData.testDatastore changeGameData "fish"
