@@ -12,9 +12,9 @@ triggered_by:
   - init|start|pigs|keep|step|scale
   - init|start|pigs|keep|step|phased
   - init|start|pigs|keep|step|share
+  - init|start|mice|handle|step|scale
+  - init|start|mice|handle|step|phased
   - init|start|mice|handle|step|share
-  - init|start|mice|handle|step|scale
-  - init|start|mice|handle|step|scale
 author: Charlie
 ---
 Hi Guys, I have a bit of a personal request, so I have sent over an email...
