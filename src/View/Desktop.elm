@@ -96,6 +96,16 @@ renderNavLinks pageRoute =
         [ a
             [ classList
                 [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Messages )
+                ]
+            , href (Route.toString Route.Messages)
+            ]
+            [ chatAlt [ Svg.Attributes.class "nav-icon" ]
+            , text (t NavMessages)
+            ]
+        , a
+            [ classList
+                [ ( "nav-link", True )
                 , ( "active", Route.isDocumentRoute pageRoute )
                 ]
             , href (Route.toString Route.Documents)
@@ -119,16 +129,6 @@ renderNavLinks pageRoute =
         , a
             [ classList
                 [ ( "nav-link", True )
-                , ( "active", pageRoute == Route.Messages )
-                ]
-            , href (Route.toString Route.Messages)
-            ]
-            [ chatAlt [ Svg.Attributes.class "nav-icon" ]
-            , text (t NavMessages)
-            ]
-        , a
-            [ classList
-                [ ( "nav-link", True )
                 , ( "active", pageRoute == Route.Social )
                 ]
             , href (Route.toString Route.Social)
@@ -143,6 +143,17 @@ renderMobileNavLinks : Route -> Html Msg
 renderMobileNavLinks pageRoute =
     nav [ class "nav nav-pills mobile-nav fixed-bottom" ]
         [ a
+            [ classList
+                [ ( "nav-link", True )
+                , ( "active", pageRoute == Route.Messages )
+                ]
+            , class "mobile-nav-item"
+            , href (Route.toString Route.Messages)
+            ]
+            [ chatAlt [ Svg.Attributes.class "mobile-nav-icon" ]
+            , div [] [ text (t NavMessages) ]
+            ]
+        , a
             [ classList
                 [ ( "nav-link", True )
                 , ( "active", Route.isDocumentRoute pageRoute )
@@ -166,17 +177,6 @@ renderMobileNavLinks pageRoute =
             ]
             [ mail [ Svg.Attributes.class "mobile-nav-icon" ]
             , div [] [ text (t NavEmails) ]
-            ]
-        , a
-            [ classList
-                [ ( "nav-link", True )
-                , ( "active", pageRoute == Route.Messages )
-                ]
-            , class "mobile-nav-item"
-            , href (Route.toString Route.Messages)
-            ]
-            [ chatAlt [ Svg.Attributes.class "mobile-nav-icon" ]
-            , div [] [ text (t NavMessages) ]
             ]
         , a
             [ classList
