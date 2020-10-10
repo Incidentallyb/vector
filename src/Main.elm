@@ -157,7 +157,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
-                    [ View.Emails.single (Dict.get id model.data.emails)
+                    [ View.Emails.single model.gameData (Dict.get id model.data.emails)
                     ]
                 ]
 

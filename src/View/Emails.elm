@@ -1,6 +1,7 @@
 module View.Emails exposing (list, single)
 
 import Content
+import ContentChoices
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
@@ -8,6 +9,7 @@ import GameData exposing (GameData, filterEmails)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Attributes.Aria exposing (ariaHidden)
+import Html.Events exposing (onClick)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
@@ -26,8 +28,63 @@ type alias EmailWithRead =
     }
 
 
-single : Maybe Content.EmailData -> Html Msg
-single maybeContent =
+type alias ButtonInfo =
+    { label : String
+    , action : String
+    }
+
+
+choiceStringsToButtons : String -> ButtonInfo
+choiceStringsToButtons buttonString =
+    let
+        ( parsedString, action ) =
+            ( case List.head (String.indexes "|" buttonString) of
+                Nothing ->
+                    buttonString
+
+                Just val ->
+                    String.dropLeft (val + 1) buttonString
+            , case List.head (String.indexes "|" buttonString) of
+                Nothing ->
+                    buttonString
+
+                Just val ->
+                    String.left val buttonString
+            )
+    in
+    { label = parsedString, action = action }
+
+
+renderButtons : List ButtonInfo -> String -> Html Msg
+renderButtons buttonList chosenValue =
+    if List.length buttonList > 1 then
+        div []
+            (List.map
+                (\buttonItem ->
+                    button
+                        [ classList
+                            [ ( "btn choice-button", True )
+                            , ( "btn-primary", chosenValue == "" )
+                            , ( "active", chosenValue == buttonItem.action )
+                            , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
+                            ]
+                        , if chosenValue == "" then
+                            onClick (ChoiceButtonClicked buttonItem.action)
+
+                          else
+                            Html.Attributes.class ""
+                        ]
+                        [ text buttonItem.label ]
+                )
+                buttonList
+            )
+
+    else
+        text ""
+
+
+single : GameData -> Maybe Content.EmailData -> Html Msg
+single gamedata maybeContent =
     case maybeContent of
         Nothing ->
             text (t ItemNotFound)
@@ -43,13 +100,14 @@ single maybeContent =
                     , div [ class "ml-3" ] [ text email.author ]
                     ]
                 , div [ class "mt-3" ] [ Markdown.toHtml [ class "content" ] email.content ]
+                , renderButtons (List.map choiceStringsToButtons (Maybe.withDefault [ "" ] email.choices)) (ContentChoices.getChoiceChosenEmail gamedata.choices email)
                 ]
 
 
 list : GameData -> Dict String Content.EmailData -> Set.Set String -> Html Msg
 list gamedata emailDict visitedSet =
     ul [ class "email-list" ]
-        (List.map listItem (addReadStatus (Dict.values (filterEmails emailDict gamedata.choices)) visitedSet))
+        (List.map listItem (List.reverse (addReadStatus (Dict.values (filterEmails emailDict gamedata.choices)) visitedSet)))
 
 
 addReadStatus : List Content.EmailData -> Set.Set String -> List EmailWithRead
