@@ -6,9 +6,10 @@ module ContentChoices exposing
     , triggeredByWithChoiceStrings
     , triggeredEmailsByChoice
     , triggeredMessagesByChoice
+    , triggeredSocialsByChoice
     )
 
-import Content exposing (EmailData, MessageData)
+import Content exposing (EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
 import List.Extra
 import Set
@@ -87,6 +88,23 @@ triggeredEmailsByChoice choices emails =
             Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) emails
     in
     Dict.fromList (emailListKeyedByTriggerChoice choices filteredEmails)
+
+
+socialListKeyedByTriggerChoice : List String -> Dict String SocialData -> List ( String, SocialData )
+socialListKeyedByTriggerChoice choices socials =
+    -- Go through the (key, message) pairs and replace key with the choice string that tiggered it.
+    List.map
+        (\( _, social ) -> ( getTriggeringChoice choices social.triggered_by, social ))
+        (Dict.toList socials)
+
+
+triggeredSocialsByChoice : List String -> Dict String SocialData -> Dict String SocialData
+triggeredSocialsByChoice choices socials =
+    let
+        filteredSocials =
+            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) socials
+    in
+    Dict.fromList (socialListKeyedByTriggerChoice choices filteredSocials)
 
 
 triggeredByChoices : List String -> List String -> Bool

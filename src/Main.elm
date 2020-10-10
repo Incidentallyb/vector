@@ -173,7 +173,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
-                    [ View.Social.view
+                    [ View.Social.view model.gameData model.data.social
                     ]
                 ]
 
