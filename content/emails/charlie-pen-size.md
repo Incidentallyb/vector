@@ -6,6 +6,13 @@ subject: Email subject content [cCc]
 choices:
   - increase|Increase the pen size
   - keep|Keep the pens the same size
+scoreChangeEconomic:
+  - increase|-3
+scoreChangeHarm:
+  - increase|-1
+  - keep|3
+scoreChangeSuccess:
+  - keep|-7
 ---
 Good afternoon,
 

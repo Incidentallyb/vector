@@ -1,8 +1,8 @@
 ---
 triggered_by:
   - init|start|fish|embryo|step|scale|change
-  - init|start|fish|embryo|step|learn|change
-  - init|start|fish|embryo|step|collaborate|change
+  - init|start|fish|embryo|step|phased|change
+  - init|start|fish|embryo|step|share|change
 author: Jenny
 choices:
   - mice|Change to mice
