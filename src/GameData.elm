@@ -1,4 +1,4 @@
-module GameData exposing (GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateSuccessScore)
+module GameData exposing (GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateHarmScore, updateSuccessScore)
 
 import Content exposing (EmailData, MessageData, SocialData)
 import ContentChoices
@@ -26,6 +26,8 @@ init =
 
 
 -- Public filter functions, might become one
+-- Might also want change these to return List (String, String, ContentData)
+-- With Strings being trigger & choice made to make render less complicated
 
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
@@ -135,7 +137,7 @@ updateEconomicScore datastore gamedata newChoice =
                 (Dict.values (filterMessages datastore.messages gamedata.choices))
 
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
-        -- [18000000, -7000000, 0 ] for the message choices of start > macaques > stay
+        -- [18, -7, 0 ] for the message choices of start > macaques > stay
         listOfEconomicScoreChanges =
             List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndMessages playerChoices messages)
     in
@@ -147,16 +149,45 @@ updateEconomicScore datastore gamedata newChoice =
 {-
    This function produces a list of eceonomic change values that match choices made for this message.
    so if you have a choice of 'macaque' and your scoreChangeEconomic is
-       ["macaques|-7000000", "pigs|-3000000", "mice|-2000000", "fish|-4000000", "bio|-11000000"]
+       ["macaques|-7", "pigs|-3", "mice|-2", "fish|-4", "bio|-11"]
    it will return
-       foldr (+) 0 [-7000000 , 0 , 0 , 0 , 0]
-   == -7000000
+       foldr (+) 0 [-7 , 0 , 0 , 0 , 0]
+   == -7
 -}
 
 
 getEconomicScoreChange : String -> MessageData -> Int
 getEconomicScoreChange choice message =
     List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeEconomic))
+
+
+
+-- Same as updateEconomicScore
+
+
+updateHarmScore : Content.Datastore -> GameData -> String -> Int
+updateHarmScore datastore gamedata newChoice =
+    let
+        playerChoices =
+            newChoice :: gamedata.choices
+
+        messages =
+            List.reverse
+                (Dict.values (filterMessages datastore.messages gamedata.choices))
+
+        listOfHarmScoreChanges =
+            List.map (\( choice, message ) -> getHarmScoreChange choice message) (choicesAndMessages playerChoices messages)
+    in
+    List.foldl (+) 0 listOfHarmScoreChanges
+
+
+
+-- Same as getEconomicScoreChange
+
+
+getHarmScoreChange : String -> MessageData -> Int
+getHarmScoreChange choice message =
+    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeHarm))
 
 
 

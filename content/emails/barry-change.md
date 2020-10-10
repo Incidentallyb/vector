@@ -1,8 +1,8 @@
 ---
 triggered_by:
   - init|start|mice|tubes|step|scale|change
-  - init|start|mice|tubes|step|learn|change
-  - init|start|mice|tubes|step|collaborate|change
+  - init|start|mice|tubes|step|phased|change
+  - init|start|mice|tubes|step|share|change
 author: Dr. Barry Taylor
 subject: Email subject content [cCc]
 choices:

@@ -6,6 +6,13 @@ subject: Email subject content [cCc]
 choices:
   - handle|Continue handling the mice
   - tubes|Mice in glass tubes
+scoreChangeEconomic: 
+  - tubes|-3
+scoreChangeHarm:
+  - handle|2
+  - tubes|-1
+scoreChangeSuccess:
+  - handle|5
 ---
 Good afternoon,
 
