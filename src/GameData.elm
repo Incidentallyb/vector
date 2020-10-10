@@ -1,6 +1,6 @@
-module GameData exposing (GameData, filterEmails, filterMessages, getIntegerIfMatchFound, init, updateEconomicScore, updateSuccessScore)
+module GameData exposing (GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateSuccessScore)
 
-import Content exposing (EmailData, MessageData)
+import Content exposing (EmailData, MessageData, SocialData)
 import ContentChoices
 import Dict exposing (Dict)
 
@@ -36,6 +36,11 @@ filterMessages allMessages choices =
 filterEmails : Dict String EmailData -> List String -> Dict String EmailData
 filterEmails allEmails choices =
     ContentChoices.triggeredEmailsByChoice choices allEmails
+
+
+filterSocials : Dict String SocialData -> List String -> Dict String SocialData
+filterSocials allSocials choices =
+    ContentChoices.triggeredSocialsByChoice choices allSocials
 
 
 

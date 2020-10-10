@@ -1,6 +1,6 @@
-module ContentChoices exposing (choiceStepsList, getChoiceChosen, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice)
+module ContentChoices exposing (choiceStepsList, getChoiceChosen, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
 
-import Content exposing (EmailData, MessageData)
+import Content exposing (EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
 import List.Extra
 import Set
@@ -32,6 +32,15 @@ triggeredMessagesByChoice choices messages =
     -- A Dict of messages keyed by the choice string that triggered them.
     -- In alphabetical order so messages triggered first come first in dict.
     Dict.fromList (messageListKeyedByTriggerChoice choices filteredMessages)
+
+
+triggeredSocialsByChoice : List String -> Dict String SocialData -> Dict String SocialData
+triggeredSocialsByChoice choices socials =
+    let
+        filteredSocials =
+            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) socials
+    in
+    Dict.fromList (socialListKeyedByTriggerChoice choices filteredSocials)
 
 
 getChoiceChosen : List String -> MessageData -> String
@@ -138,6 +147,14 @@ emailListKeyedByTriggerChoice choices emails =
     List.map
         (\( _, email ) -> ( getTriggeringChoice choices email.triggered_by, email ))
         (Dict.toList emails)
+
+
+socialListKeyedByTriggerChoice : List String -> Dict String SocialData -> List ( String, SocialData )
+socialListKeyedByTriggerChoice choices socials =
+    -- Go through the (key, message) pairs and replace key with the choice string that tiggered it.
+    List.map
+        (\( _, social ) -> ( getTriggeringChoice choices social.triggered_by, social ))
+        (Dict.toList socials)
 
 
 triggeredByChoices : List String -> List String -> Bool
