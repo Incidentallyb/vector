@@ -57,7 +57,7 @@ filterSocials allSocials choices =
 choicesAndMessages : List String -> List MessageData -> List ( String, MessageData )
 choicesAndMessages playerChoices messages =
     List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message ))
-        -- We want to process the mesages in reverse for scoring
+        -- We want to process the messages in reverse for scoring
         -- We will also need to include emails
         (List.reverse messages)
 
@@ -147,7 +147,7 @@ updateEconomicScore datastore gamedata newChoice =
 
 
 {-
-   This function produces a list of eceonomic change values that match choices made for this message.
+   This function produces a list of economic change values that match choices made for this message.
    so if you have a choice of 'macaque' and your scoreChangeEconomic is
        ["macaques|-7", "pigs|-3", "mice|-2", "fish|-4", "bio|-11"]
    it will return
