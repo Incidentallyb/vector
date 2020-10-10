@@ -15,6 +15,18 @@ choices:
   - scale|Scale up
   - learn|Learn from phased experiments
   - collaborate|Collaborate with a competitor
+scoreChangeEconomic: 
+  - scale|-2
+  - learn|-1
+  - collaborate|-3
+scoreChangeHarm: 
+  - scale|3
+  - learn|-1
+  - collaborate|-2
+scoreChangeSuccess: 
+  - scale|10
+  - learn|5
+  - collaborate|5
 ---
 
 You have been making some very difficult decisions so far, and your experiments are starting to show results.

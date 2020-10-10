@@ -82,6 +82,14 @@ choices:
   - two-extras|Any two extras
   - one-extra|Any one extra
   - nothing|Do nothing
+scoreChangeEconomic:
+  - two-extras|-2
+  - one-extra|-1
+scoreChangeHarm:
+  - two-extras|-2
+  - one-extra|-1
+scoreChangeSuccess:
+  - nothing|-5
 ---
 We are almost at the end of the simulation. You are doing very well and your experiments are making results. There are a few more things we can do to affect the harm and success ratings.
 
