@@ -2,7 +2,6 @@
 :root {
   --red: #dc3545;
   --green: #28a745;
-  --green-dark: #1e7e34;
   --blue: #007bff;
   --blue-pale: #9fb8f0;
   --purple: #563d7c;
@@ -16,7 +15,7 @@
   --email-hover: #e0efff;
   --black: #111111;
   --choicebutton-disabled: var(--grey-medium);
-  --choicebutton-selected: var(--green-dark);
+  --choicebutton-selected: var(--blue);
   --background-colour: var(--blue-pale);
   --navTextForeground: var(--black);
 }
