@@ -66,9 +66,7 @@ renderMessage from message =
         [ div [ class "mx-3" ]
             [ p [ class "message-from m-0" ]
                 [ text from ]
-            , p
-                [ class "card-text m-0" ]
-                [ Markdown.toHtml [ class "content" ] message ]
+            , Markdown.toHtml [ class "card-text" ] message
             ]
         ]
 

@@ -2,15 +2,15 @@ $timeToWait: 2s;
 
 .message-list {
   list-style: none;
-  li { 
+  li {
     @include clearfix;
     &:not(:last-child) {
       .typing-indicator {
-        display:none !important;
-        animation:none !important;
+        display: none !important;
+        animation: none !important;
       }
       .message {
-        animation:none !important;
+        animation: none !important;
       }
     }
   }
@@ -24,7 +24,7 @@ $timeToWait: 2s;
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #fff;
+    background-color: var(--white);
     display: block;
     border-radius: 50%;
     opacity: 0.4;
@@ -66,10 +66,16 @@ $timeToWait: 2s;
   position: relative;
   animation: slide-into-view 0.5s ease-out;
   animation-fill-mode: backwards;
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
 }
+
 .message-list .message:nth-child(2n) {
   animation-delay: #{$timeToWait};
 }
+
 .message-list .message:nth-child(3n) {
   animation-delay: #{$timeToWait + 1};
 }
