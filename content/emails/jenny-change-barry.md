@@ -2,9 +2,9 @@
 triggered_by:
   - init|start|fish|embryo|step|scale|change|mice
   - init|start|fish|embryo|step|scale|change|pigs
-  - init|start|fish|embryo|step|learn|change|mice
-  - init|start|fish|embryo|step|learn|change|pigs
-  - init|start|fish|embryo|step|collaborate|change|mice
+  - init|start|fish|embryo|step|phased|change|mice
+  - init|start|fish|embryo|step|phased|change|pigs
+  - init|start|fish|embryo|step|share|change|mice
   - init|start|fish|embryo|step|colaborate|change|pigs
   - end-transcript-pigs
   - end-transcript-mice

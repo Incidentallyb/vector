@@ -3,80 +3,80 @@ triggered_by:
   - init|start|macaques|stay|step|scale|pigs
   - init|start|macaques|stay|step|scale|mice
   - init|start|macaques|stay|step|scale|fish
-  - init|start|macaques|stay|step|learn|pigs
-  - init|start|macaques|stay|step|learn|mice
-  - init|start|macaques|stay|step|learn|fish
-  - init|start|macaques|stay|step|collaborate|pigs
-  - init|start|macaques|stay|step|collaborate|mice
-  - init|start|macaques|stay|step|collaborate|fish
+  - init|start|macaques|stay|step|phased|pigs
+  - init|start|macaques|stay|step|phased|mice
+  - init|start|macaques|stay|step|phased|fish
+  - init|start|macaques|stay|step|share|pigs
+  - init|start|macaques|stay|step|share|mice
+  - init|start|macaques|stay|step|share|fish
   - init|start|macaques|change|pigs|step|scale|limit
   - init|start|macaques|change|pigs|step|scale|change|mice
   - init|start|macaques|change|pigs|step|scale|change|fish
-  - init|start|macaques|change|pigs|step|learn|limit
-  - init|start|macaques|change|pigs|step|learn|change|mice
-  - init|start|macaques|change|pigs|step|learn|change|fish
-  - init|start|macaques|change|pigs|step|collaborate|limit
-  - init|start|macaques|change|pigs|step|collaborate|change|mice
-  - init|start|macaques|change|pigs|step|collaborate|change|fish
+  - init|start|macaques|change|pigs|step|phased|limit
+  - init|start|macaques|change|pigs|step|phased|change|mice
+  - init|start|macaques|change|pigs|step|phased|change|fish
+  - init|start|macaques|change|pigs|step|share|limit
+  - init|start|macaques|change|pigs|step|share|change|mice
+  - init|start|macaques|change|pigs|step|share|change|fish
   - init|start|macaques|change|mice|step|scale|limit
   - init|start|macaques|change|mice|step|scale|fish
-  - init|start|macaques|change|mice|step|learn|limit
-  - init|start|macaques|change|mice|step|learn|fish
-  - init|start|macaques|change|mice|step|collaborate|limit
-  - init|start|macaques|change|mice|step|collaborate|fish
+  - init|start|macaques|change|mice|step|phased|limit
+  - init|start|macaques|change|mice|step|phased|fish
+  - init|start|macaques|change|mice|step|share|limit
+  - init|start|macaques|change|mice|step|share|fish
   - init|start|macaques|change|fish|step|scale|adult
   - init|start|macaques|change|fish|step|scale|embryo
-  - init|start|macaques|change|fish|step|learn|adult
-  - init|start|macaques|change|fish|step|learn|embryo
-  - init|start|macaques|change|fish|step|collaborate|adult
-  - init|start|macaques|change|fish|step|collaborate|embryo
+  - init|start|macaques|change|fish|step|phased|adult
+  - init|start|macaques|change|fish|step|phased|embryo
+  - init|start|macaques|change|fish|step|share|adult
+  - init|start|macaques|change|fish|step|share|embryo
   - init|start|pigs|increase|step|scale|limit
-  - init|start|pigs|increase|step|learn|limit
-  - init|start|pigs|increase|step|learn|change|fish
-  - init|start|pigs|increase|step|learn|change|mice
-  - init|start|pigs|increase|step|collaborate|limit
-  - init|start|pigs|increase|step|collaborate|change|mice
-  - init|start|pigs|increase|step|collaborate|change|fish
+  - init|start|pigs|increase|step|phased|limit
+  - init|start|pigs|increase|step|phased|change|fish
+  - init|start|pigs|increase|step|phased|change|mice
+  - init|start|pigs|increase|step|share|limit
+  - init|start|pigs|increase|step|share|change|mice
+  - init|start|pigs|increase|step|share|change|fish
   - init|start|pigs|increase|step|scale|change|fish
   - init|start|pigs|keep|step|scale|limit
   - init|start|pigs|keep|step|scale|change|mice
   - init|start|pigs|keep|step|scale|change|fish
-  - init|start|pigs|keep|step|learn|limit
-  - init|start|pigs|keep|step|learn|change|mice
-  - init|start|pigs|keep|step|learn|change|fish
-  - init|start|pigs|keep|step|collaborate|limit
-  - init|start|pigs|keep|step|collaborate|change|mice
-  - init|start|pigs|keep|step|collaborate|change|fish
+  - init|start|pigs|keep|step|phased|limit
+  - init|start|pigs|keep|step|phased|change|mice
+  - init|start|pigs|keep|step|phased|change|fish
+  - init|start|pigs|keep|step|share|limit
+  - init|start|pigs|keep|step|share|change|mice
+  - init|start|pigs|keep|step|share|change|fish
   - init|start|mice|handle|step|scale|limit
-  - init|start|mice|handle|step|learn|limit
+  - init|start|mice|handle|step|phased|limit
   - init|start|mice|handle|step|scale|fish
-  - init|start|mice|handle|step|learn|fish
-  - init|start|mice|handle|step|collaborate|limit
-  - init|start|mice|handle|step|collaborate|fish
+  - init|start|mice|handle|step|phased|fish
+  - init|start|mice|handle|step|share|limit
+  - init|start|mice|handle|step|share|fish
   - init|start|mice|tubes|step|scale|tubes
-  - init|start|mice|tubes|step|learn|tubes
-  - init|start|mice|tubes|step|collaborate|tubes
+  - init|start|mice|tubes|step|phased|tubes
+  - init|start|mice|tubes|step|share|tubes
   - init|start|mice|tubes|step|scale|change|fish
   - init|start|mice|tubes|step|scale|change|pigs
-  - init|start|mice|tubes|step|learn|change|fish
-  - init|start|mice|tubes|step|learn|change|pigs
-  - init|start|mice|tubes|step|collaborate|change|fish
-  - init|start|mice|tubes|step|collaborate|change|pigs
+  - init|start|mice|tubes|step|phased|change|fish
+  - init|start|mice|tubes|step|phased|change|pigs
+  - init|start|mice|tubes|step|share|change|fish
+  - init|start|mice|tubes|step|share|change|pigs
   - init|start|fish|adult|step|scale|embryo
   - init|start|fish|adult|step|scale|adult
-  - init|start|fish|adult|step|learn|embryo
-  - init|start|fish|adult|step|learn|adult
-  - init|start|fish|adult|step|collaborate|embryo
-  - init|start|fish|adult|step|collaborate|adult
+  - init|start|fish|adult|step|phased|embryo
+  - init|start|fish|adult|step|phased|adult
+  - init|start|fish|adult|step|share|embryo
+  - init|start|fish|adult|step|share|adult
   - init|start|fish|embryo|step|scale|embryo
   - init|start|fish|embryo|step|scale|change|mice
   - init|start|fish|embryo|step|scale|change|pigs
-  - init|start|fish|embryo|step|learn|stay
-  - init|start|fish|embryo|step|learn|change|mice
-  - init|start|fish|embryo|step|learn|change|pigs
-  - init|start|fish|embryo|step|collaborate|stay
-  - init|start|fish|embryo|step|collaborate|change|mice
-  - init|start|fish|embryo|step|collaborate|change|pigs
+  - init|start|fish|embryo|step|phased|stay
+  - init|start|fish|embryo|step|phased|change|mice
+  - init|start|fish|embryo|step|phased|change|pigs
+  - init|start|fish|embryo|step|share|stay
+  - init|start|fish|embryo|step|share|change|mice
+  - init|start|fish|embryo|step|share|change|pigs
 author: AL
 choices:
   - two-extras|Any two extras

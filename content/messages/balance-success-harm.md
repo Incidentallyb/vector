@@ -13,20 +13,20 @@ triggered_by:
 author: AL
 choices:
   - scale|Scale up
-  - learn|Learn from phased experiments
-  - collaborate|Collaborate with a competitor
+  - phased|Learn from phased experiments
+  - share|Collaborate with a competitor
 scoreChangeEconomic: 
   - scale|-2
-  - learn|-1
-  - collaborate|-3
+  - phased|-1
+  - share|-3
 scoreChangeHarm: 
   - scale|3
-  - learn|-1
-  - collaborate|-2
+  - phased|-1
+  - share|-2
 scoreChangeSuccess: 
   - scale|10
-  - learn|5
-  - collaborate|5
+  - phased|5
+  - share|5
 ---
 
 You have been making some very difficult decisions so far, and your experiments are starting to show results.

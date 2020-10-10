@@ -1,8 +1,8 @@
 ---
 triggered_by:
   -init|start|macaques|stay|step|scale
-  -init|start|macaques|stay|step|learn
-  -init|start|macaques|stay|step|collaborate
+  -init|start|macaques|stay|step|phased
+  -init|start|macaques|stay|step|share
 author: Jenny
 subject: Email subject content [cCc]
 choices:

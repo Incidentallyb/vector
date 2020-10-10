@@ -1,14 +1,14 @@
 ---
 triggered_by:
   - init|start|macaques|change|pigs|step|scale
-  - init|start|macaques|change|pigs|step|learn
-  - init|start|macaques|change|pigs|step|collaborate
+  - init|start|macaques|change|pigs|step|phased
+  - init|start|macaques|change|pigs|step|share
   - init|start|pigs|increase|step|scale
-  - init|start|pigs|increase|step|learn
-  - init|start|pigs|increase|step|collaborate
+  - init|start|pigs|increase|step|phased
+  - init|start|pigs|increase|step|share
   - init|start|pigs|keep|step|scale
-  - init|start|pigs|keep|step|learn
-  - init|start|pigs|keep|step|collaborate
+  - init|start|pigs|keep|step|phased
+  - init|start|pigs|keep|step|share
 author: Charlie Benn
 subject: Email subject content [cCc]
 choices:
