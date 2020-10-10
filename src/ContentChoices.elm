@@ -1,4 +1,4 @@
-module ContentChoices exposing (choiceStepsList, getChoiceChosen, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
+module ContentChoices exposing (choiceStepsList, getChoiceChosen, getChoiceChosenEmail, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
 
 import Content exposing (EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
@@ -89,6 +89,49 @@ getChoiceChosen playerChoices message =
         result
 
 
+getChoiceChosenEmail : List String -> EmailData -> String
+getChoiceChosenEmail playerChoices email =
+    -- first choice is 'init', so don't do anything
+    -- if the message doesn't give us choices, don't do anything
+    if List.length playerChoices <= 1 || List.length (Maybe.withDefault [] email.choices) == 0 then
+        ""
+
+    else
+        let
+            -- set of current player choices, e.g. ["init", "init|start", "init|start|macaque"]
+            setOfPlayerChoices =
+                Set.fromList (choiceStepsList playerChoices)
+
+            -- list of valid triggers for the current email that match our current or historical player choices
+            -- this is normally a single item, but could be multiple
+            -- e.g. [ "init|start" ]
+            listOfChoicesThatMatch =
+                triggeredByChoicesGetMatches playerChoices email.triggered_by
+
+            -- set of triggers that also have our choice strings attached to them, e.g.
+            -- [ "init|start|macaque", "init|start|fish", "init|start|mice" ... ]
+            setOfTriggersWithChoiceStringsAttached =
+                Set.fromList (triggeredByWithChoiceStrings listOfChoicesThatMatch (Maybe.withDefault [] email.choices))
+
+            -- which player choices match this email?
+            setOfMatches =
+                Set.intersect setOfPlayerChoices setOfTriggersWithChoiceStringsAttached
+
+            -- take the matching player choice, find the last string (e.g. "macaques")
+            -- and we use that as the value that was clicked by the button
+            chosenAction =
+                Maybe.withDefault "" (List.head (List.reverse (String.split "|" (Maybe.withDefault "" (List.head (Set.toList setOfMatches))))))
+
+            result =
+                if Set.isEmpty setOfMatches then
+                    ""
+
+                else
+                    chosenAction
+        in
+        result
+
+
 
 --
 -- Private helper functions
@@ -135,7 +178,7 @@ getTriggeringChoice choices triggers =
 
 messageListKeyedByTriggerChoice : List String -> Dict String MessageData -> List ( String, MessageData )
 messageListKeyedByTriggerChoice choices messages =
-    -- Go through the (key, message) pairs and replace key with the choice string that tiggered it.
+    -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
     List.map
         (\( _, message ) -> ( getTriggeringChoice choices message.triggered_by, message ))
         (Dict.toList messages)
@@ -143,7 +186,7 @@ messageListKeyedByTriggerChoice choices messages =
 
 emailListKeyedByTriggerChoice : List String -> Dict String EmailData -> List ( String, EmailData )
 emailListKeyedByTriggerChoice choices emails =
-    -- Go through the (key, email) pairs and replace key with the choice string that tiggered it.
+    -- Go through the (key, email) pairs and replace key with the choice string that triggered it.
     List.map
         (\( _, email ) -> ( getTriggeringChoice choices email.triggered_by, email ))
         (Dict.toList emails)
@@ -151,7 +194,7 @@ emailListKeyedByTriggerChoice choices emails =
 
 socialListKeyedByTriggerChoice : List String -> Dict String SocialData -> List ( String, SocialData )
 socialListKeyedByTriggerChoice choices socials =
-    -- Go through the (key, message) pairs and replace key with the choice string that tiggered it.
+    -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
     List.map
         (\( _, social ) -> ( getTriggeringChoice choices social.triggered_by, social ))
         (Dict.toList socials)
