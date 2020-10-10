@@ -13,5 +13,14 @@ author: Charlie
 choices:
   - mice|Mice
   - fish|Fish
+scoreChangeEconomic:
+  - mice|-2
+  - fish|-2
+scoreChangeHarm:
+  - mice|2
+  - fish|1
+scoreChangeSuccess:
+  - mice|10
+  - fish|10
 ---
 We can't use Macaques as the supply lines have become difficult because of Brexit, and we are too far along to start a bio-matter model. Here are the choices below.

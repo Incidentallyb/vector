@@ -14,6 +14,12 @@ subject: Email subject content [cCc]
 choices:
  - limit|Limit contact
  - change|Change animal model
+scoreChangeEconomic:
+  - limit|-3
+scoreChangeHarm:
+  - limit|-2
+scoreChangeSuccess:
+  - limit|10
 ---
 Hello All,
 
