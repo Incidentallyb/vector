@@ -93,7 +93,7 @@ update msg model =
                     , teamName = model.gameData.teamName
                     , scoreSuccess = GameData.updateSuccessScore model.data model.gameData choice
                     , scoreEconomic = GameData.updateEconomicScore model.data model.gameData choice
-                    , scoreHarm = model.gameData.scoreHarm
+                    , scoreHarm = GameData.updateHarmScore model.data model.gameData choice
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )

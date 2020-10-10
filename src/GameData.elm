@@ -1,4 +1,4 @@
-module GameData exposing (GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateSuccessScore)
+module GameData exposing (GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateHarmScore, updateSuccessScore)
 
 import Content exposing (EmailData, MessageData, SocialData)
 import ContentChoices
@@ -26,6 +26,8 @@ init =
 
 
 -- Public filter functions, might become one
+-- Might also want change these to return List (String, String, ContentData)
+-- With Strings being trigger & choice made to make render less complicated
 
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
@@ -157,6 +159,35 @@ updateEconomicScore datastore gamedata newChoice =
 getEconomicScoreChange : String -> MessageData -> Int
 getEconomicScoreChange choice message =
     List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeEconomic))
+
+
+
+-- Same as updateEconomicScore
+
+
+updateHarmScore : Content.Datastore -> GameData -> String -> Int
+updateHarmScore datastore gamedata newChoice =
+    let
+        playerChoices =
+            newChoice :: gamedata.choices
+
+        messages =
+            List.reverse
+                (Dict.values (filterMessages datastore.messages gamedata.choices))
+
+        listOfHarmScoreChanges =
+            List.map (\( choice, message ) -> getHarmScoreChange choice message) (choicesAndMessages playerChoices messages)
+    in
+    List.foldl (+) 0 listOfHarmScoreChanges
+
+
+
+-- Same as getEconomicScoreChange
+
+
+getHarmScoreChange : String -> MessageData -> Int
+getHarmScoreChange choice message =
+    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeHarm))
 
 
 
