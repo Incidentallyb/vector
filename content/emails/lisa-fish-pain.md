@@ -11,6 +11,14 @@ subject: Email subject content [cCc]
 choices:
   - change|Let's move to a fish embryo model
   - stay|Let's continue with the adult fish
+scoreChangeEconomic:
+  - change|-3
+scoreChangeHarm:
+  - change|-2
+  - stay|2
+scoreChangeSuccess:
+  - change|10
+  - stay|15
 ---
 Hello, 
 
