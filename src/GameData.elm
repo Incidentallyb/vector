@@ -135,7 +135,7 @@ updateEconomicScore datastore gamedata newChoice =
                 (Dict.values (filterMessages datastore.messages gamedata.choices))
 
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
-        -- [18000000, -7000000, 0 ] for the message choices of start > macaques > stay
+        -- [18, -7, 0 ] for the message choices of start > macaques > stay
         listOfEconomicScoreChanges =
             List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndMessages playerChoices messages)
     in
@@ -147,10 +147,10 @@ updateEconomicScore datastore gamedata newChoice =
 {-
    This function produces a list of eceonomic change values that match choices made for this message.
    so if you have a choice of 'macaque' and your scoreChangeEconomic is
-       ["macaques|-7000000", "pigs|-3000000", "mice|-2000000", "fish|-4000000", "bio|-11000000"]
+       ["macaques|-7", "pigs|-3", "mice|-2", "fish|-4", "bio|-11"]
    it will return
-       foldr (+) 0 [-7000000 , 0 , 0 , 0 , 0]
-   == -7000000
+       foldr (+) 0 [-7 , 0 , 0 , 0 , 0]
+   == -7
 -}
 
 

@@ -1,13 +1,20 @@
 ---
 triggered_by:
   - init|start|mice|tubes|step|scale
-  - init|start|mice|tubes|step|learn
-  - init|start|mice|tubes|step|collaborate
+  - init|start|mice|tubes|step|phased
+  - init|start|mice|tubes|step|share
 author: Dr. Barry Taylor
 subject: Email subject content [cCc]
 choices:
   - tubes|Carry on with tube mice
   - change|Change animal model
+scoreChangeEconomic:
+  - change|-2
+scoreChangeHarm:
+  - tubes|-1
+  - change|2
+scoreChangeSuccess:
+  - change|5
 ---
 Hello,
 

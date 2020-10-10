@@ -2,10 +2,10 @@
 triggered_by:
   - init|start|mice|tubes|step|scale|change|fish
   - init|start|mice|tubes|step|scale|change|pigs
-  - init|start|mice|tubes|step|learn|change|fish
-  - init|start|mice|tubes|step|learn|change|pigs
-  - init|start|mice|tubes|step|collaborate|change|fish
-  - init|start|mice|tubes|step|collaborate|change|pigs
+  - init|start|mice|tubes|step|phased|change|fish
+  - init|start|mice|tubes|step|phased|change|pigs
+  - init|start|mice|tubes|step|share|change|fish
+  - init|start|mice|tubes|step|share|change|pigs
 author: Dr. Barry Taylor
 subject: Email subject content [cCc]
 ---

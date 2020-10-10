@@ -6,6 +6,13 @@ subject: Email subject content [cCc]
 choices:
   - adult|Stay with adult fish
   - embryo|Move to fish embryos
+scoreChangeEconomic:
+  - embryo|-3
+scoreChangeHarm:
+  - adult|2
+  - embryo|-1
+scoreChangeSuccess:
+  - adult|5
 ---
 Hello,
 
@@ -20,4 +27,3 @@ Let me know how you would like to move forward.
 Many thanks,
 
 Dr Barry Taylor
-
