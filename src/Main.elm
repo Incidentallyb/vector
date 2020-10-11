@@ -8,7 +8,7 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Debug
 import Dict
-import GameData exposing (GameData, init)
+import GameData exposing (GameData, ScoreType(..), init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -92,8 +92,8 @@ update msg model =
                     { choices = choice :: model.gameData.choices
                     , teamName = model.gameData.teamName
                     , scoreSuccess = GameData.updateSuccessScore model.data model.gameData choice
-                    , scoreEconomic = GameData.updateEconomicScore model.data model.gameData choice
-                    , scoreHarm = GameData.updateHarmScore model.data model.gameData choice
+                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData choice
+                    , scoreHarm = GameData.updateScore Harm model.data model.gameData choice
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )

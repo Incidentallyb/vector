@@ -203,8 +203,8 @@ choiceStepsList currentChoices =
     list
 
 
-getTriggeringChoice : List String -> List String -> String
-getTriggeringChoice choices triggers =
+getTriggeringChoice : String -> List String -> List String -> String
+getTriggeringChoice filename choices triggers =
     let
         choiceSet =
             -- The set of choices at each stage
@@ -215,18 +215,22 @@ getTriggeringChoice choices triggers =
             Set.fromList triggers
     in
     -- Get the match (the choice string that triggered this content to display)
-    Set.intersect choiceSet triggerSet
+    -- Todo preserve alphabetical by making key a (,) pair?
+    (Set.intersect choiceSet triggerSet
         |> Set.toList
         |> List.head
         |> Maybe.withDefault "error-no-choice-trigger-match"
+    )
+        ++ filename
 
 
 branchingContentListKeyedByTriggerChoice : List String -> Dict String BranchingContent -> List ( String, BranchingContent )
 branchingContentListKeyedByTriggerChoice choices content =
     -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
+    -- Todo add type to avoid email & message or other content overwriting.
     List.map
-        (\( _, data ) ->
-            ( getTriggeringChoice choices (getTriggeredBy data), data )
+        (\( filename, data ) ->
+            ( getTriggeringChoice filename choices (getTriggeredBy data), data )
         )
         (Dict.toList content)
 
@@ -245,7 +249,7 @@ socialListKeyedByTriggerChoice : List String -> Dict String SocialData -> List (
 socialListKeyedByTriggerChoice choices socials =
     -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
     List.map
-        (\( _, social ) -> ( getTriggeringChoice choices social.triggered_by, social ))
+        (\( filename, social ) -> ( getTriggeringChoice filename choices social.triggered_by, social ))
         (Dict.toList socials)
 
 
