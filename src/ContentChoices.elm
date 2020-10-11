@@ -1,4 +1,4 @@
-module ContentChoices exposing (choiceStepsList, getChoiceChosen, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
+module ContentChoices exposing (choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
 
 import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
@@ -54,6 +54,16 @@ triggeredSocialsByChoice choices socials =
     Dict.fromList (socialListKeyedByTriggerChoice choices filteredSocials)
 
 
+getChoices : BranchingContent -> List String
+getChoices data =
+    case data of
+        Email emailData ->
+            Maybe.withDefault [] emailData.choices
+
+        Message messageData ->
+            messageData.choices
+
+
 getChoiceChosen : List String -> MessageData -> String
 getChoiceChosen playerChoices message =
     -- first choice is 'init', so don't do anything
@@ -77,6 +87,52 @@ getChoiceChosen playerChoices message =
             -- [ "init|start|macaque", "init|start|fish", "init|start|mice" ... ]
             setOfTriggersWithChoiceStringsAttached =
                 Set.fromList (triggeredByWithChoiceStrings listOfChoicesThatMatch message.choices)
+
+            -- which player choices match this message?
+            setOfMatches =
+                Set.intersect setOfPlayerChoices setOfTriggersWithChoiceStringsAttached
+
+            -- take the matching player choice, find the last string (e.g. "macaques")
+            -- and we use that as the value that was clicked by the button
+            chosenAction =
+                Maybe.withDefault "" (List.head (List.reverse (String.split "|" (Maybe.withDefault "" (List.head (Set.toList setOfMatches))))))
+
+            result =
+                if Set.isEmpty setOfMatches then
+                    ""
+
+                else
+                    chosenAction
+
+            -- debugger =
+            --    Debug.log "SETS" (Debug.toString playerChoices ++ " TRIGGERS for " ++ message.basename ++ " " ++ Debug.toString (triggeredByWithChoiceStrings playerChoices message.choices))
+        in
+        result
+
+
+getBranchingChoiceChosen : List String -> BranchingContent -> String
+getBranchingChoiceChosen playerChoices message =
+    -- first choice is 'init', so don't do anything
+    -- if the message doesn't give us choices, don't do anything
+    if List.length playerChoices <= 1 || List.length (getChoices message) == 0 then
+        ""
+
+    else
+        let
+            -- set of current player choices, e.g. ["init", "init|start", "init|start|macaque"]
+            setOfPlayerChoices =
+                Set.fromList (choiceStepsList playerChoices)
+
+            -- list of valid triggers for the current message that match our current or historical player choices
+            -- this is normally a single item, but could be multiple
+            -- e.g. [ "init|start" ]
+            listOfChoicesThatMatch =
+                triggeredByChoicesGetMatches playerChoices (getTriggeredBy message)
+
+            -- set of triggers that also have our choice strings attached to them, e.g.
+            -- [ "init|start|macaque", "init|start|fish", "init|start|mice" ... ]
+            setOfTriggersWithChoiceStringsAttached =
+                Set.fromList (triggeredByWithChoiceStrings listOfChoicesThatMatch (getChoices message))
 
             -- which player choices match this message?
             setOfMatches =

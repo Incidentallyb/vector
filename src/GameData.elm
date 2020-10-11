@@ -30,19 +30,19 @@ init =
 -- With Strings being trigger & choice made to make render less complicated
 
 
+filterMessages : Dict String MessageData -> List String -> Dict String BranchingContent
+filterMessages messagesData choices =
+    filterBranchingContent (messagesToBranchingContent messagesData) choices
+
+
+filterEmails : Dict String EmailData -> List String -> Dict String BranchingContent
+filterEmails emailsData choices =
+    filterBranchingContent (emailsToBranchingContent emailsData) choices
+
+
 filterBranchingContent : Dict String BranchingContent -> List String -> Dict String BranchingContent
 filterBranchingContent content choices =
     ContentChoices.triggeredBranchingContentByChoice choices content
-
-
-filterMessages : Dict String MessageData -> List String -> Dict String MessageData
-filterMessages allMessages choices =
-    ContentChoices.triggeredMessagesByChoice choices allMessages
-
-
-filterEmails : Dict String EmailData -> List String -> Dict String EmailData
-filterEmails allEmails choices =
-    ContentChoices.triggeredEmailsByChoice choices allEmails
 
 
 filterSocials : Dict String SocialData -> List String -> Dict String SocialData
@@ -59,12 +59,12 @@ filterSocials allSocials choices =
 -}
 
 
-choicesAndMessages : List String -> List MessageData -> List ( String, MessageData )
-choicesAndMessages playerChoices messages =
-    List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message ))
+choicesAndBranchingContent : List String -> List BranchingContent -> List ( String, BranchingContent )
+choicesAndBranchingContent playerChoices contentList =
+    List.map (\content -> ( ContentChoices.getBranchingChoiceChosen playerChoices content, content ))
         -- We want to process the messages in reverse for scoring
         -- We will also need to include emails
-        (List.reverse messages)
+        (List.reverse contentList)
 
 
 
@@ -139,15 +139,25 @@ updateEconomicScore datastore gamedata newChoice =
         -- get a list of the messages that are being shown
         messages =
             List.reverse
-                (Dict.values (filterMessages datastore.messages gamedata.choices))
+                (Dict.values (filterBranchingContent (messagesToBranchingContent datastore.messages) gamedata.choices))
 
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
         -- [18, -7, 0 ] for the message choices of start > macaques > stay
         listOfEconomicScoreChanges =
-            List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndMessages playerChoices messages)
+            List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndBranchingContent playerChoices messages)
     in
     -- take all of the economic score changes and add them together
     List.foldl (+) 0 listOfEconomicScoreChanges
+
+
+messagesToBranchingContent : Dict String MessageData -> Dict String BranchingContent
+messagesToBranchingContent data =
+    Dict.map (\_ messageData -> Message messageData) data
+
+
+emailsToBranchingContent : Dict String EmailData -> Dict String BranchingContent
+emailsToBranchingContent data =
+    Dict.map (\_ emailData -> Email emailData) data
 
 
 
@@ -161,9 +171,45 @@ updateEconomicScore datastore gamedata newChoice =
 -}
 
 
-getEconomicScoreChange : String -> MessageData -> Int
+getEconomicScoreChange : String -> BranchingContent -> Int
 getEconomicScoreChange choice message =
-    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeEconomic))
+    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (getScoreChange Economic message))
+
+
+type ScoreChange
+    = Economic
+    | Harm
+    | Success
+
+
+getScoreChange : ScoreChange -> BranchingContent -> List String
+getScoreChange changeType branchingContent =
+    let
+        maybeChange =
+            case branchingContent of
+                Message contentData ->
+                    case changeType of
+                        Economic ->
+                            contentData.scoreChangeEconomic
+
+                        Harm ->
+                            contentData.scoreChangeHarm
+
+                        Success ->
+                            contentData.scoreChangeSuccess
+
+                Email contentData ->
+                    case changeType of
+                        Economic ->
+                            contentData.scoreChangeEconomic
+
+                        Harm ->
+                            contentData.scoreChangeHarm
+
+                        Success ->
+                            contentData.scoreChangeSuccess
+    in
+    Maybe.withDefault [ "" ] maybeChange
 
 
 
@@ -178,10 +224,10 @@ updateHarmScore datastore gamedata newChoice =
 
         messages =
             List.reverse
-                (Dict.values (filterMessages datastore.messages gamedata.choices))
+                (Dict.values (filterBranchingContent (messagesToBranchingContent datastore.messages) gamedata.choices))
 
         listOfHarmScoreChanges =
-            List.map (\( choice, message ) -> getHarmScoreChange choice message) (choicesAndMessages playerChoices messages)
+            List.map (\( choice, message ) -> getHarmScoreChange choice message) (choicesAndBranchingContent playerChoices messages)
     in
     List.foldl (+) 0 listOfHarmScoreChanges
 
@@ -190,9 +236,9 @@ updateHarmScore datastore gamedata newChoice =
 -- Same as getEconomicScoreChange
 
 
-getHarmScoreChange : String -> MessageData -> Int
+getHarmScoreChange : String -> BranchingContent -> Int
 getHarmScoreChange choice message =
-    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeHarm))
+    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (getScoreChange Harm message))
 
 
 
@@ -207,10 +253,10 @@ updateSuccessScore datastore gamedata newChoice =
 
         messages =
             List.reverse
-                (Dict.values (filterMessages datastore.messages gamedata.choices))
+                (Dict.values (filterBranchingContent (messagesToBranchingContent datastore.messages) gamedata.choices))
 
         listOfSuccessScoreChanges =
-            List.map (\( choice, message ) -> getSuccessScoreChange choice message) (choicesAndMessages playerChoices messages)
+            List.map (\( choice, message ) -> getSuccessScoreChange choice message) (choicesAndBranchingContent playerChoices messages)
     in
     List.foldl
         (\x a ->
@@ -233,6 +279,6 @@ updateSuccessScore datastore gamedata newChoice =
 -- same as getEconomicScoreChange, but can use = (set) values for scoring mechanics
 
 
-getSuccessScoreChange : String -> MessageData -> String
+getSuccessScoreChange : String -> BranchingContent -> String
 getSuccessScoreChange choice message =
-    List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeSuccess))
+    List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (getScoreChange Success message))
