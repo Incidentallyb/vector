@@ -1,4 +1,4 @@
-module ContentChoices exposing (choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
+module ContentChoices exposing (choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredSocialsByChoice)
 
 import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
@@ -23,28 +23,6 @@ triggeredBranchingContentByChoice choices contentData =
     Dict.fromList (branchingContentListKeyedByTriggerChoice choices filteredData)
 
 
-triggeredEmailsByChoice : List String -> Dict String EmailData -> Dict String EmailData
-triggeredEmailsByChoice choices emails =
-    let
-        filteredEmails =
-            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) emails
-    in
-    -- A Dict of emails keyed by the choice string that triggered them.
-    -- In alphabetical order so emails triggered first come first in dict.
-    Dict.fromList (emailListKeyedByTriggerChoice choices filteredEmails)
-
-
-triggeredMessagesByChoice : List String -> Dict String MessageData -> Dict String MessageData
-triggeredMessagesByChoice choices messages =
-    let
-        filteredMessages =
-            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) messages
-    in
-    -- A Dict of messages keyed by the choice string that triggered them.
-    -- In alphabetical order so messages triggered first come first in dict.
-    Dict.fromList (messageListKeyedByTriggerChoice choices filteredMessages)
-
-
 triggeredSocialsByChoice : List String -> Dict String SocialData -> Dict String SocialData
 triggeredSocialsByChoice choices socials =
     let
@@ -52,16 +30,6 @@ triggeredSocialsByChoice choices socials =
             Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) socials
     in
     Dict.fromList (socialListKeyedByTriggerChoice choices filteredSocials)
-
-
-getChoices : BranchingContent -> List String
-getChoices data =
-    case data of
-        Email emailData ->
-            Maybe.withDefault [] emailData.choices
-
-        Message messageData ->
-            messageData.choices
 
 
 getChoiceChosen : List String -> MessageData -> String
@@ -207,6 +175,16 @@ getChoiceChosenEmail playerChoices email =
 --   e.g. ["start", "macaques", "stay"] becomes ["start", "start|macaques", "start|macaques|stay"]
 
 
+getChoices : BranchingContent -> List String
+getChoices data =
+    case data of
+        Email emailData ->
+            Maybe.withDefault [] emailData.choices
+
+        Message messageData ->
+            messageData.choices
+
+
 choiceStepsList : List String -> List String
 choiceStepsList currentChoices =
     let
@@ -261,22 +239,6 @@ getTriggeredBy content =
 
         Email email ->
             email.triggered_by
-
-
-messageListKeyedByTriggerChoice : List String -> Dict String MessageData -> List ( String, MessageData )
-messageListKeyedByTriggerChoice choices messages =
-    -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
-    List.map
-        (\( _, message ) -> ( getTriggeringChoice choices message.triggered_by, message ))
-        (Dict.toList messages)
-
-
-emailListKeyedByTriggerChoice : List String -> Dict String EmailData -> List ( String, EmailData )
-emailListKeyedByTriggerChoice choices emails =
-    -- Go through the (key, email) pairs and replace key with the choice string that triggered it.
-    List.map
-        (\( _, email ) -> ( getTriggeringChoice choices email.triggered_by, email ))
-        (Dict.toList emails)
 
 
 socialListKeyedByTriggerChoice : List String -> Dict String SocialData -> List ( String, SocialData )

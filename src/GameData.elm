@@ -30,19 +30,20 @@ init =
 -- With Strings being trigger & choice made to make render less complicated
 
 
-filterMessages : Dict String MessageData -> List String -> Dict String BranchingContent
+filterMessages : Dict String MessageData -> List String -> Dict String MessageData
 filterMessages messagesData choices =
+    -- Try to get a Dict of keyed filtered message. Fail with empty.
     filterBranchingContent (messagesToBranchingContent messagesData) choices
+        |> branchingContentToMessageData
+        |> Maybe.withDefault Dict.empty
 
 
-filterEmails : Dict String EmailData -> List String -> Dict String BranchingContent
+filterEmails : Dict String EmailData -> List String -> Dict String EmailData
 filterEmails emailsData choices =
+    -- Try to get a Dict of keyed filtered emails. Fail with empty.
     filterBranchingContent (emailsToBranchingContent emailsData) choices
-
-
-filterBranchingContent : Dict String BranchingContent -> List String -> Dict String BranchingContent
-filterBranchingContent content choices =
-    ContentChoices.triggeredBranchingContentByChoice choices content
+        |> branchingContentToEmailData
+        |> Maybe.withDefault Dict.empty
 
 
 filterSocials : Dict String SocialData -> List String -> Dict String SocialData
@@ -51,7 +52,103 @@ filterSocials allSocials choices =
 
 
 
+--
+-- Branching content helpers
+--
+
+
+filterBranchingContent : Dict String BranchingContent -> List String -> Dict String BranchingContent
+filterBranchingContent content choices =
+    ContentChoices.triggeredBranchingContentByChoice choices content
+
+
+messagesToBranchingContent : Dict String MessageData -> Dict String BranchingContent
+messagesToBranchingContent data =
+    Dict.map (\_ messageData -> Message messageData) data
+
+
+emailsToBranchingContent : Dict String EmailData -> Dict String BranchingContent
+emailsToBranchingContent data =
+    Dict.map (\_ emailData -> Email emailData) data
+
+
+branchingContentToMessageData : Dict String BranchingContent -> Maybe (Dict String MessageData)
+branchingContentToMessageData contentDict =
+    let
+        values =
+            Dict.toList contentDict
+
+        value1 =
+            List.head values
+    in
+    case value1 of
+        -- Our branching data holds messages
+        Just ( _, Message _ ) ->
+            Just (Dict.fromList (List.map (\( key, value ) -> ( key, getMessage value )) values))
+
+        _ ->
+            Nothing
+
+
+getMessage : BranchingContent -> MessageData
+getMessage data =
+    case data of
+        Message message ->
+            message
+
+        _ ->
+            { triggered_by = [ "" ]
+            , author = ""
+            , playerMessage = Nothing
+            , choices = [ "" ]
+            , preview = ""
+            , content = "Sorry. Something's gone wrong."
+            , basename = ""
+            , scoreChangeEconomic = Nothing
+            , scoreChangeHarm = Nothing
+            , scoreChangeSuccess = Nothing
+            }
+
+
+branchingContentToEmailData : Dict String BranchingContent -> Maybe (Dict String EmailData)
+branchingContentToEmailData contentDict =
+    let
+        keyedList =
+            Dict.toList contentDict
+    in
+    case List.head keyedList of
+        -- Our branching data holds emails
+        Just ( _, Email _ ) ->
+            Just (Dict.fromList (List.map (\( key, email ) -> ( key, getEmail email )) keyedList))
+
+        _ ->
+            Nothing
+
+
+getEmail : BranchingContent -> EmailData
+getEmail data =
+    case data of
+        Email email ->
+            email
+
+        _ ->
+            { triggered_by = [ "" ]
+            , author = ""
+            , subject = ""
+            , choices = Nothing
+            , preview = ""
+            , content = "Sorry. Something's gone wrong."
+            , basename = ""
+            , scoreChangeEconomic = Nothing
+            , scoreChangeHarm = Nothing
+            , scoreChangeSuccess = Nothing
+            }
+
+
+
+--
 -- Scoring functions
+--
 {-
    This function produces a list of tuples of choices chosen against their message, e.g.
    [ ("start", message1) ] , then on next choice it would be
@@ -68,7 +165,9 @@ choicesAndBranchingContent playerChoices contentList =
 
 
 
--- given a string like "macaques|50" , return int 50 if string == macaques
+{-
+   given a string like "macaques|50" , return int 50 if string == macaques
+-}
 
 
 getIntegerIfMatchFound : String -> String -> Int
@@ -101,7 +200,8 @@ getIntegerIfMatchFound scoreChangeValue choice =
    given a string like "macaques|50" , return string "50" if string == macaques
    given a string like "mice|=30" , return string "=30" if string == mice
 
-   This allows our scoreChange options to be both delta modifiers (+/-) or be prefixed with a = if we want to SET a value.
+   This allows our scoreChange options to be both delta modifiers (+/-)
+   or be prefixed with a = if we want to SET a value.
 -}
 
 
@@ -148,16 +248,6 @@ updateEconomicScore datastore gamedata newChoice =
     in
     -- take all of the economic score changes and add them together
     List.foldl (+) 0 listOfEconomicScoreChanges
-
-
-messagesToBranchingContent : Dict String MessageData -> Dict String BranchingContent
-messagesToBranchingContent data =
-    Dict.map (\_ messageData -> Message messageData) data
-
-
-emailsToBranchingContent : Dict String EmailData -> Dict String BranchingContent
-emailsToBranchingContent data =
-    Dict.map (\_ emailData -> Email emailData) data
 
 
 
