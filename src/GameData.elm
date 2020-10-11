@@ -1,6 +1,6 @@
 module GameData exposing (GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateHarmScore, updateSuccessScore)
 
-import Content exposing (EmailData, MessageData, SocialData)
+import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import ContentChoices
 import Dict exposing (Dict)
 
@@ -28,6 +28,11 @@ init =
 -- Public filter functions, might become one
 -- Might also want change these to return List (String, String, ContentData)
 -- With Strings being trigger & choice made to make render less complicated
+
+
+filterBranchingContent : Dict String BranchingContent -> List String -> Dict String BranchingContent
+filterBranchingContent content choices =
+    ContentChoices.triggeredBranchingContentByChoice choices content
 
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData

@@ -1,6 +1,6 @@
-module ContentChoices exposing (choiceStepsList, getChoiceChosen, getChoiceChosenEmail, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
+module ContentChoices exposing (choiceStepsList, getChoiceChosen, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
 
-import Content exposing (EmailData, MessageData, SocialData)
+import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
 import List.Extra
 import Set
@@ -10,6 +10,17 @@ import Set
 --
 -- Public functions to get choices and triggered content keyed by choice list
 --
+
+
+triggeredBranchingContentByChoice : List String -> Dict String BranchingContent -> Dict String BranchingContent
+triggeredBranchingContentByChoice choices contentData =
+    let
+        filteredData =
+            Dict.filter (\_ value -> triggeredByChoices choices (getTriggeredBy value)) contentData
+    in
+    -- A Dict of messages keyed by the choice string that triggered them.
+    -- In alphabetical order so messages triggered first come first in dict.
+    Dict.fromList (branchingContentListKeyedByTriggerChoice choices filteredData)
 
 
 triggeredEmailsByChoice : List String -> Dict String EmailData -> Dict String EmailData
@@ -174,6 +185,26 @@ getTriggeringChoice choices triggers =
         |> Set.toList
         |> List.head
         |> Maybe.withDefault "error-no-choice-trigger-match"
+
+
+branchingContentListKeyedByTriggerChoice : List String -> Dict String BranchingContent -> List ( String, BranchingContent )
+branchingContentListKeyedByTriggerChoice choices content =
+    -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
+    List.map
+        (\( _, data ) ->
+            ( getTriggeringChoice choices (getTriggeredBy data), data )
+        )
+        (Dict.toList content)
+
+
+getTriggeredBy : BranchingContent -> List String
+getTriggeredBy content =
+    case content of
+        Message message ->
+            message.triggered_by
+
+        Email email ->
+            email.triggered_by
 
 
 messageListKeyedByTriggerChoice : List String -> Dict String MessageData -> List ( String, MessageData )
