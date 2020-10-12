@@ -16,6 +16,21 @@
   height: 24px;
 }
 
+.badge {
+  background-color: var(--red);
+  color: var(--white);
+  margin-left: 5px;
+
+  &.badge-mobile {
+    font-size: 1rem;
+    left: 70%;
+    margin: 0;
+    padding: 5px;
+    position: absolute;
+    top: -10px;
+  }
+}
+
 .mobile-nav {
   display: flex;
   background-color: var(--white);
@@ -29,6 +44,7 @@
   flex-direction: column;
   font-size: 14px;
   padding: 10px 0;
+  position: relative;
 }
 
 .content {

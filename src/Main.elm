@@ -129,12 +129,13 @@ view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            View.Desktop.view model.gameData model.page
+            View.Desktop.view model.gameData model.page model.notifications
 
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Documents.list model.data.documents
                     ]
                 ]
@@ -143,6 +144,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Documents.single (Dict.get id model.data.documents)
                     ]
                 ]
@@ -151,6 +153,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Emails.list model.gameData model.data.emails model.visited
                     ]
                 ]
@@ -159,6 +162,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Emails.single model.gameData (Dict.get id model.data.emails)
                     ]
                 ]
@@ -167,6 +171,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Messages.view model.gameData model.data.messages
                     ]
                 ]
@@ -175,6 +180,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Social.view model.gameData model.data.social
                     ]
                 ]

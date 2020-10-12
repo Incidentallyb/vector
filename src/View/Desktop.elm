@@ -2,7 +2,7 @@ module View.Desktop exposing (renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import GameData exposing (GameData)
+import GameData exposing (ContentLength, GameData)
 import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail, userCircle)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -13,8 +13,8 @@ import Route exposing (Route(..))
 import Svg.Attributes
 
 
-view : GameData -> Route -> Html Msg
-view gameData pageRoute =
+view : GameData -> Route -> ContentLength -> Html Msg
+view gameData pageRoute notifications =
     case String.left 1 gameData.teamName of
         "?" ->
             renderLoginPage gameData
@@ -28,22 +28,23 @@ view gameData pageRoute =
         -}
         _ ->
             div []
-                [ renderWrapperWithNav gameData pageRoute [ text "my desktop" ]
+                [ renderWrapperWithNav gameData pageRoute notifications [ text "my desktop" ]
                 ]
 
 
-renderWrapperWithNav : GameData -> Route -> List (Html Msg) -> Html Msg
-renderWrapperWithNav gameData pageRoute elements =
+renderWrapperWithNav : GameData -> Route -> ContentLength -> List (Html Msg) -> Html Msg
+renderWrapperWithNav gameData pageRoute notifications elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop" ]
             [ div [ class "col-md-2 d-none d-md-block" ]
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
-                    , renderNavLinks pageRoute
+                    , renderNavLinks pageRoute notifications
+                    , div [] [ text ("money: " ++ String.fromInt gameData.scoreEconomic) ]
                     ]
                 ]
             , div [ class "order-last d-md-none" ]
-                [ renderMobileNavLinks pageRoute
+                [ renderMobileNavLinks pageRoute notifications
                 ]
             , div [ class "col-md-8 content" ] elements
             ]
@@ -90,8 +91,8 @@ renderLoginPage gameData =
         ]
 
 
-renderNavLinks : Route -> Html Msg
-renderNavLinks pageRoute =
+renderNavLinks : Route -> ContentLength -> Html Msg
+renderNavLinks pageRoute notifications =
     nav [ class "nav flex-column nav-pills" ]
         [ a
             [ classList
@@ -102,6 +103,11 @@ renderNavLinks pageRoute =
             ]
             [ chatAlt [ Svg.Attributes.class "nav-icon" ]
             , text (t NavMessages)
+            , if notifications.messages > 0 then
+                span [ class "badge badge-warning" ] [ text (String.fromInt notifications.messages) ]
+
+              else
+                text ""
             ]
         , a
             [ classList
@@ -113,8 +119,11 @@ renderNavLinks pageRoute =
             [ documentText [ Svg.Attributes.class "nav-icon" ]
             , text (t NavDocuments)
             , text " "
+            , if notifications.documents > 0 then
+                span [ class "badge badge-warning" ] [ text (String.fromInt notifications.documents) ]
 
-            --            , span [ class "badge badge-secondary" ] [ text "4" ]
+              else
+                text ""
             ]
         , a
             [ classList
@@ -125,6 +134,11 @@ renderNavLinks pageRoute =
             ]
             [ mail [ Svg.Attributes.class "nav-icon" ]
             , text (t NavEmails)
+            , if notifications.emails > 0 then
+                span [ class "badge badge-warning" ] [ text (String.fromInt notifications.emails) ]
+
+              else
+                text ""
             ]
         , a
             [ classList
@@ -135,12 +149,17 @@ renderNavLinks pageRoute =
             ]
             [ hashtag [ Svg.Attributes.class "nav-icon" ]
             , text (t NavSocial)
+            , if notifications.social > 0 then
+                span [ class "badge badge-warning" ] [ text (String.fromInt notifications.social) ]
+
+              else
+                text ""
             ]
         ]
 
 
-renderMobileNavLinks : Route -> Html Msg
-renderMobileNavLinks pageRoute =
+renderMobileNavLinks : Route -> ContentLength -> Html Msg
+renderMobileNavLinks pageRoute notifications =
     nav [ class "nav nav-pills mobile-nav fixed-bottom" ]
         [ a
             [ classList
@@ -152,6 +171,11 @@ renderMobileNavLinks pageRoute =
             ]
             [ chatAlt [ Svg.Attributes.class "mobile-nav-icon" ]
             , div [] [ text (t NavMessages) ]
+            , if notifications.messages > 0 then
+                span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.messages) ]
+
+              else
+                text ""
             ]
         , a
             [ classList
@@ -163,9 +187,11 @@ renderMobileNavLinks pageRoute =
             ]
             [ documentText [ Svg.Attributes.class "mobile-nav-icon" ]
             , div [] [ text (t NavDocuments) ]
-            , text " "
+            , if notifications.documents > 0 then
+                span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.documents) ]
 
-            --            , span [ class "badge badge-secondary" ] [ text "4" ]
+              else
+                text ""
             ]
         , a
             [ classList
@@ -177,6 +203,11 @@ renderMobileNavLinks pageRoute =
             ]
             [ mail [ Svg.Attributes.class "mobile-nav-icon" ]
             , div [] [ text (t NavEmails) ]
+            , if notifications.emails > 0 then
+                span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.emails) ]
+
+              else
+                text ""
             ]
         , a
             [ classList
@@ -188,6 +219,11 @@ renderMobileNavLinks pageRoute =
             ]
             [ hashtag [ Svg.Attributes.class "mobile-nav-icon" ]
             , div [] [ text (t NavSocial) ]
+            , if notifications.social > 0 then
+                span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.social) ]
+
+              else
+                text ""
             ]
         ]
 
