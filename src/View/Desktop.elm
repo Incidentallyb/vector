@@ -2,7 +2,7 @@ module View.Desktop exposing (renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import GameData exposing (ContentLength, GameData)
+import GameData exposing (GameData, NotificationCount)
 import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail, userCircle)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -13,7 +13,7 @@ import Route exposing (Route(..))
 import Svg.Attributes
 
 
-view : GameData -> Route -> ContentLength -> Html Msg
+view : GameData -> Route -> NotificationCount -> Html Msg
 view gameData pageRoute notifications =
     case String.left 1 gameData.teamName of
         "?" ->
@@ -32,7 +32,7 @@ view gameData pageRoute notifications =
                 ]
 
 
-renderWrapperWithNav : GameData -> Route -> ContentLength -> List (Html Msg) -> Html Msg
+renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg) -> Html Msg
 renderWrapperWithNav gameData pageRoute notifications elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop" ]
@@ -90,7 +90,7 @@ renderLoginPage gameData =
         ]
 
 
-renderNavLinks : Route -> ContentLength -> Html Msg
+renderNavLinks : Route -> NotificationCount -> Html Msg
 renderNavLinks pageRoute notifications =
     nav [ class "nav flex-column nav-pills" ]
         [ a
@@ -157,7 +157,7 @@ renderNavLinks pageRoute notifications =
         ]
 
 
-renderMobileNavLinks : Route -> ContentLength -> Html Msg
+renderMobileNavLinks : Route -> NotificationCount -> Html Msg
 renderMobileNavLinks pageRoute notifications =
     nav [ class "nav nav-pills mobile-nav fixed-bottom" ]
         [ a

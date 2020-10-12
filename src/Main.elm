@@ -8,7 +8,7 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Debug
 import Dict
-import GameData exposing (ContentLength, GameData, filterEmails, filterMessages, filterSocials, init)
+import GameData exposing (GameData, NotificationCount, filterEmails, filterMessages, filterSocials, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -34,7 +34,7 @@ type alias Model =
     , data : Content.Datastore
     , gameData : GameData
     , visited : Set.Set String
-    , notifications : ContentLength
+    , notifications : NotificationCount
     }
 
 
