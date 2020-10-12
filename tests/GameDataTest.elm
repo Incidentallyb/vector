@@ -1,7 +1,7 @@
 module GameDataTest exposing (getIntegerIfMatchFound, updateEconomicScore, updateSuccessScore)
 
 import Expect
-import GameData
+import GameData exposing (ScoreType(..))
 import Test exposing (Test, describe, test)
 import TestData
 
@@ -74,30 +74,30 @@ updateEconomicScore =
             , scoreHarm = 0
             }
     in
-    describe "updateEconomicScore Function"
+    describe "updateScore Function"
         [ test "returns 0 for init" <|
             \_ ->
-                GameData.updateEconomicScore TestData.testDatastore testGameData "init"
+                GameData.updateScore Economic TestData.testDatastore testGameData "init"
                     |> Expect.equal 0
         , test "returns 18000000 for start" <|
             \_ ->
-                GameData.updateEconomicScore TestData.testDatastore initGameData "start"
+                GameData.updateScore Economic TestData.testDatastore initGameData "start"
                     |> Expect.equal 18000000
         , test "returns 0 for non-start" <|
             \_ ->
-                GameData.updateEconomicScore TestData.testDatastore initGameData "no-thanks"
+                GameData.updateScore Economic TestData.testDatastore initGameData "no-thanks"
                     |> Expect.equal 0
         , test "returns 11000000 for start->macaques" <|
             \_ ->
-                GameData.updateEconomicScore TestData.testDatastore startGameData "macaques"
+                GameData.updateScore Economic TestData.testDatastore startGameData "macaques"
                     |> Expect.equal 11000000
         , test "returns 11000000 for start->macaques->stay" <|
             \_ ->
-                GameData.updateEconomicScore TestData.testDatastore macaquesGameData "stay"
+                GameData.updateScore Economic TestData.testDatastore macaquesGameData "stay"
                     |> Expect.equal 11000000
         , test "returns 167500000 for start->macaques->change->mice" <|
             \_ ->
-                GameData.updateEconomicScore TestData.testDatastore changeGameData "mice"
+                GameData.updateScore Economic TestData.testDatastore changeGameData "mice"
                     |> Expect.equal 16750000
         ]
 

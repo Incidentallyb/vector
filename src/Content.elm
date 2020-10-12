@@ -1,4 +1,4 @@
-module Content exposing (Datastore, DocumentData, EmailData, MessageData, SocialData, datastoreDictDecoder)
+module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, MessageData, SocialData, datastoreDictDecoder, emptyEmail, emptyMessage)
 
 import Dict exposing (Dict)
 import Json.Decode exposing (field, list, map4, maybe, string)
@@ -11,6 +11,11 @@ type alias Datastore =
     , emails : Dict String EmailData
     , social : Dict String SocialData
     }
+
+
+type BranchingContent
+    = Message MessageData
+    | Email EmailData
 
 
 type alias MessageData =
@@ -55,6 +60,36 @@ type alias SocialData =
     , handle : String
     , content : String
     , basename : String
+    }
+
+
+emptyMessage : MessageData
+emptyMessage =
+    { triggered_by = [ "" ]
+    , author = ""
+    , playerMessage = Nothing
+    , choices = [ "" ]
+    , preview = ""
+    , content = "Sorry. Something's gone wrong."
+    , basename = ""
+    , scoreChangeEconomic = Nothing
+    , scoreChangeHarm = Nothing
+    , scoreChangeSuccess = Nothing
+    }
+
+
+emptyEmail : EmailData
+emptyEmail =
+    { triggered_by = [ "" ]
+    , author = ""
+    , subject = ""
+    , choices = Nothing
+    , preview = ""
+    , content = "Sorry. Something's gone wrong."
+    , basename = ""
+    , scoreChangeEconomic = Nothing
+    , scoreChangeHarm = Nothing
+    , scoreChangeSuccess = Nothing
     }
 
 

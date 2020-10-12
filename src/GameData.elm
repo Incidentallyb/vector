@@ -1,6 +1,6 @@
-module GameData exposing (GameData, NotificationCount, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateHarmScore, updateSuccessScore)
+module GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateScore, updateSuccessScore)
 
-import Content exposing (EmailData, MessageData, SocialData)
+import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import ContentChoices
 import Dict exposing (Dict)
 
@@ -39,13 +39,19 @@ init =
 
 
 filterMessages : Dict String MessageData -> List String -> Dict String MessageData
-filterMessages allMessages choices =
-    ContentChoices.triggeredMessagesByChoice choices allMessages
+filterMessages messagesData choices =
+    -- Try to get a Dict of keyed filtered message. Fail with empty.
+    filterBranchingContent (messagesToBranchingContent messagesData) choices
+        |> branchingContentToMessageData
+        |> Maybe.withDefault Dict.empty
 
 
 filterEmails : Dict String EmailData -> List String -> Dict String EmailData
-filterEmails allEmails choices =
-    ContentChoices.triggeredEmailsByChoice choices allEmails
+filterEmails emailsData choices =
+    -- Try to get a Dict of keyed filtered emails. Fail with empty.
+    filterBranchingContent (emailsToBranchingContent emailsData) choices
+        |> branchingContentToEmailData
+        |> Maybe.withDefault Dict.empty
 
 
 filterSocials : Dict String SocialData -> List String -> Dict String SocialData
@@ -54,7 +60,82 @@ filterSocials allSocials choices =
 
 
 
+--
+-- Branching content helpers
+--
+
+
+filterBranchingContent : Dict String BranchingContent -> List String -> Dict String BranchingContent
+filterBranchingContent content choices =
+    ContentChoices.triggeredBranchingContentByChoice choices content
+
+
+messagesToBranchingContent : Dict String MessageData -> Dict String BranchingContent
+messagesToBranchingContent data =
+    Dict.map (\_ messageData -> Message messageData) data
+
+
+emailsToBranchingContent : Dict String EmailData -> Dict String BranchingContent
+emailsToBranchingContent data =
+    Dict.map (\_ emailData -> Email emailData) data
+
+
+branchingContentToMessageData : Dict String BranchingContent -> Maybe (Dict String MessageData)
+branchingContentToMessageData contentDict =
+    let
+        keyedList =
+            Dict.toList contentDict
+    in
+    case List.head keyedList of
+        -- Our branching data holds messages
+        Just ( _, Message _ ) ->
+            Just (Dict.fromList (List.map (\( key, value ) -> ( key, getMessage value )) keyedList))
+
+        _ ->
+            Nothing
+
+
+getMessage : BranchingContent -> MessageData
+getMessage data =
+    case data of
+        Message message ->
+            message
+
+        _ ->
+            -- Not sure best way to handle this error
+            Content.emptyMessage
+
+
+branchingContentToEmailData : Dict String BranchingContent -> Maybe (Dict String EmailData)
+branchingContentToEmailData contentDict =
+    let
+        keyedList =
+            Dict.toList contentDict
+    in
+    case List.head keyedList of
+        -- Our branching data holds emails
+        Just ( _, Email _ ) ->
+            Just (Dict.fromList (List.map (\( key, email ) -> ( key, getEmail email )) keyedList))
+
+        _ ->
+            Nothing
+
+
+getEmail : BranchingContent -> EmailData
+getEmail data =
+    case data of
+        Email email ->
+            email
+
+        _ ->
+            -- Not sure best way to handle this error.
+            Content.emptyEmail
+
+
+
+--
 -- Scoring functions
+--
 {-
    This function produces a list of tuples of choices chosen against their message, e.g.
    [ ("start", message1) ] , then on next choice it would be
@@ -62,16 +143,17 @@ filterSocials allSocials choices =
 -}
 
 
-choicesAndMessages : List String -> List MessageData -> List ( String, MessageData )
-choicesAndMessages playerChoices messages =
-    List.map (\message -> ( ContentChoices.getChoiceChosen playerChoices message, message ))
+choicesAndBranchingContent : List String -> List BranchingContent -> List ( String, BranchingContent )
+choicesAndBranchingContent playerChoices contentList =
+    List.map (\content -> ( ContentChoices.getBranchingChoiceChosen playerChoices content, content ))
         -- We want to process the messages in reverse for scoring
-        -- We will also need to include emails
-        (List.reverse messages)
+        (List.reverse contentList)
 
 
 
--- given a string like "macaques|50" , return int 50 if string == macaques
+{-
+   given a string like "macaques|50" , return int 50 if string == macaques
+-}
 
 
 getIntegerIfMatchFound : String -> String -> Int
@@ -104,7 +186,8 @@ getIntegerIfMatchFound scoreChangeValue choice =
    given a string like "macaques|50" , return string "50" if string == macaques
    given a string like "mice|=30" , return string "=30" if string == mice
 
-   This allows our scoreChange options to be both delta modifiers (+/-) or be prefixed with a = if we want to SET a value.
+   This allows our scoreChange options to be both delta modifiers (+/-)
+   or be prefixed with a = if we want to SET a value.
 -}
 
 
@@ -133,24 +216,38 @@ getStringIfMatchFound scoreChangeValue choice =
         ""
 
 
-updateEconomicScore : Content.Datastore -> GameData -> String -> Int
-updateEconomicScore datastore gamedata newChoice =
+type ScoreType
+    = Economic
+    | Harm
+    | Success
+
+
+updateScore : ScoreType -> Content.Datastore -> GameData -> String -> Int
+updateScore scoreType datastore gamedata newChoice =
     let
         playerChoices =
             newChoice :: gamedata.choices
 
-        -- get a list of the messages that are being shown
+        messageDict =
+            messagesToBranchingContent datastore.messages
+
+        emailDict =
+            emailsToBranchingContent datastore.emails
+
+        -- get a list of the messages & emails that are being shown
         messages =
-            List.reverse
-                (Dict.values (filterMessages datastore.messages gamedata.choices))
+            filterBranchingContent (Dict.union messageDict emailDict) gamedata.choices
+                |> Dict.values
+                |> List.reverse
 
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
         -- [18, -7, 0 ] for the message choices of start > macaques > stay
-        listOfEconomicScoreChanges =
-            List.map (\( choice, message ) -> getEconomicScoreChange choice message) (choicesAndMessages playerChoices messages)
+        listOfScoreChanges =
+            choicesAndBranchingContent playerChoices messages
+                |> List.map (\( choice, message ) -> getScoreChanges scoreType choice message)
     in
-    -- take all of the economic score changes and add them together
-    List.foldl (+) 0 listOfEconomicScoreChanges
+    -- take all of the score changes and add them together
+    List.foldl (+) 0 listOfScoreChanges
 
 
 
@@ -164,42 +261,43 @@ updateEconomicScore datastore gamedata newChoice =
 -}
 
 
-getEconomicScoreChange : String -> MessageData -> Int
-getEconomicScoreChange choice message =
-    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeEconomic))
+getScoreChanges : ScoreType -> String -> BranchingContent -> Int
+getScoreChanges scoreType choice message =
+    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (getScoreChange scoreType message))
 
 
-
--- Same as updateEconomicScore
-
-
-updateHarmScore : Content.Datastore -> GameData -> String -> Int
-updateHarmScore datastore gamedata newChoice =
+getScoreChange : ScoreType -> BranchingContent -> List String
+getScoreChange changeType branchingContent =
     let
-        playerChoices =
-            newChoice :: gamedata.choices
+        maybeChange =
+            case branchingContent of
+                Message contentData ->
+                    case changeType of
+                        Economic ->
+                            contentData.scoreChangeEconomic
 
-        messages =
-            List.reverse
-                (Dict.values (filterMessages datastore.messages gamedata.choices))
+                        Harm ->
+                            contentData.scoreChangeHarm
 
-        listOfHarmScoreChanges =
-            List.map (\( choice, message ) -> getHarmScoreChange choice message) (choicesAndMessages playerChoices messages)
+                        Success ->
+                            contentData.scoreChangeSuccess
+
+                Email contentData ->
+                    case changeType of
+                        Economic ->
+                            contentData.scoreChangeEconomic
+
+                        Harm ->
+                            contentData.scoreChangeHarm
+
+                        Success ->
+                            contentData.scoreChangeSuccess
     in
-    List.foldl (+) 0 listOfHarmScoreChanges
+    Maybe.withDefault [ "" ] maybeChange
 
 
 
--- Same as getEconomicScoreChange
-
-
-getHarmScoreChange : String -> MessageData -> Int
-getHarmScoreChange choice message =
-    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeHarm))
-
-
-
--- same as updateEconomicScore, but can use = (set) values for scoring mechanics
+-- same as updateScore, but can use = (set) values for scoring mechanics
 
 
 updateSuccessScore : Content.Datastore -> GameData -> String -> Int
@@ -210,10 +308,10 @@ updateSuccessScore datastore gamedata newChoice =
 
         messages =
             List.reverse
-                (Dict.values (filterMessages datastore.messages gamedata.choices))
+                (Dict.values (filterBranchingContent (messagesToBranchingContent datastore.messages) gamedata.choices))
 
         listOfSuccessScoreChanges =
-            List.map (\( choice, message ) -> getSuccessScoreChange choice message) (choicesAndMessages playerChoices messages)
+            List.map (\( choice, message ) -> getSuccessScoreChange choice message) (choicesAndBranchingContent playerChoices messages)
     in
     List.foldl
         (\x a ->
@@ -236,6 +334,6 @@ updateSuccessScore datastore gamedata newChoice =
 -- same as getEconomicScoreChange, but can use = (set) values for scoring mechanics
 
 
-getSuccessScoreChange : String -> MessageData -> String
+getSuccessScoreChange : String -> BranchingContent -> String
 getSuccessScoreChange choice message =
-    List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (Maybe.withDefault [ "" ] message.scoreChangeSuccess))
+    List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (getScoreChange Success message))

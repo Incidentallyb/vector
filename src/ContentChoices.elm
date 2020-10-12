@@ -1,6 +1,6 @@
-module ContentChoices exposing (choiceStepsList, getChoiceChosen, getChoiceChosenEmail, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredEmailsByChoice, triggeredMessagesByChoice, triggeredSocialsByChoice)
+module ContentChoices exposing (choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredSocialsByChoice)
 
-import Content exposing (EmailData, MessageData, SocialData)
+import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
 import List.Extra
 import Set
@@ -12,26 +12,15 @@ import Set
 --
 
 
-triggeredEmailsByChoice : List String -> Dict String EmailData -> Dict String EmailData
-triggeredEmailsByChoice choices emails =
+triggeredBranchingContentByChoice : List String -> Dict String BranchingContent -> Dict String BranchingContent
+triggeredBranchingContentByChoice choices contentData =
     let
-        filteredEmails =
-            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) emails
-    in
-    -- A Dict of emails keyed by the choice string that triggered them.
-    -- In alphabetical order so emails triggered first come first in dict.
-    Dict.fromList (emailListKeyedByTriggerChoice choices filteredEmails)
-
-
-triggeredMessagesByChoice : List String -> Dict String MessageData -> Dict String MessageData
-triggeredMessagesByChoice choices messages =
-    let
-        filteredMessages =
-            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) messages
+        filteredData =
+            Dict.filter (\_ value -> triggeredByChoices choices (getTriggeredBy value)) contentData
     in
     -- A Dict of messages keyed by the choice string that triggered them.
     -- In alphabetical order so messages triggered first come first in dict.
-    Dict.fromList (messageListKeyedByTriggerChoice choices filteredMessages)
+    Dict.fromList (branchingContentListKeyedByTriggerChoice choices filteredData)
 
 
 triggeredSocialsByChoice : List String -> Dict String SocialData -> Dict String SocialData
@@ -66,6 +55,52 @@ getChoiceChosen playerChoices message =
             -- [ "init|start|macaque", "init|start|fish", "init|start|mice" ... ]
             setOfTriggersWithChoiceStringsAttached =
                 Set.fromList (triggeredByWithChoiceStrings listOfChoicesThatMatch message.choices)
+
+            -- which player choices match this message?
+            setOfMatches =
+                Set.intersect setOfPlayerChoices setOfTriggersWithChoiceStringsAttached
+
+            -- take the matching player choice, find the last string (e.g. "macaques")
+            -- and we use that as the value that was clicked by the button
+            chosenAction =
+                Maybe.withDefault "" (List.head (List.reverse (String.split "|" (Maybe.withDefault "" (List.head (Set.toList setOfMatches))))))
+
+            result =
+                if Set.isEmpty setOfMatches then
+                    ""
+
+                else
+                    chosenAction
+
+            -- debugger =
+            --    Debug.log "SETS" (Debug.toString playerChoices ++ " TRIGGERS for " ++ message.basename ++ " " ++ Debug.toString (triggeredByWithChoiceStrings playerChoices message.choices))
+        in
+        result
+
+
+getBranchingChoiceChosen : List String -> BranchingContent -> String
+getBranchingChoiceChosen playerChoices message =
+    -- first choice is 'init', so don't do anything
+    -- if the message doesn't give us choices, don't do anything
+    if List.length playerChoices <= 1 || List.length (getChoices message) == 0 then
+        ""
+
+    else
+        let
+            -- set of current player choices, e.g. ["init", "init|start", "init|start|macaque"]
+            setOfPlayerChoices =
+                Set.fromList (choiceStepsList playerChoices)
+
+            -- list of valid triggers for the current message that match our current or historical player choices
+            -- this is normally a single item, but could be multiple
+            -- e.g. [ "init|start" ]
+            listOfChoicesThatMatch =
+                triggeredByChoicesGetMatches playerChoices (getTriggeredBy message)
+
+            -- set of triggers that also have our choice strings attached to them, e.g.
+            -- [ "init|start|macaque", "init|start|fish", "init|start|mice" ... ]
+            setOfTriggersWithChoiceStringsAttached =
+                Set.fromList (triggeredByWithChoiceStrings listOfChoicesThatMatch (getChoices message))
 
             -- which player choices match this message?
             setOfMatches =
@@ -140,6 +175,16 @@ getChoiceChosenEmail playerChoices email =
 --   e.g. ["start", "macaques", "stay"] becomes ["start", "start|macaques", "start|macaques|stay"]
 
 
+getChoices : BranchingContent -> List String
+getChoices data =
+    case data of
+        Email emailData ->
+            Maybe.withDefault [] emailData.choices
+
+        Message messageData ->
+            messageData.choices
+
+
 choiceStepsList : List String -> List String
 choiceStepsList currentChoices =
     let
@@ -158,8 +203,8 @@ choiceStepsList currentChoices =
     list
 
 
-getTriggeringChoice : List String -> List String -> String
-getTriggeringChoice choices triggers =
+getTriggeringChoice : String -> List String -> List String -> String
+getTriggeringChoice filename choices triggers =
     let
         choiceSet =
             -- The set of choices at each stage
@@ -170,33 +215,47 @@ getTriggeringChoice choices triggers =
             Set.fromList triggers
     in
     -- Get the match (the choice string that triggered this content to display)
-    Set.intersect choiceSet triggerSet
+    (Set.intersect choiceSet triggerSet
         |> Set.toList
         |> List.head
         |> Maybe.withDefault "error-no-choice-trigger-match"
+    )
+        -- Append filename in case an email & messages triggered, we don't want key to overwrite
+        -- This is fragile & needs a refactor:
+        -- Important that content appears in order triggered & keys are unique
+        -- Could be fixed by using a list - since we aren't using the Dict lookup
+        ++ filename
 
 
-messageListKeyedByTriggerChoice : List String -> Dict String MessageData -> List ( String, MessageData )
-messageListKeyedByTriggerChoice choices messages =
+branchingContentListKeyedByTriggerChoice : List String -> Dict String BranchingContent -> List ( String, BranchingContent )
+branchingContentListKeyedByTriggerChoice choices content =
     -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
+    -- This needs a refactor, maybe a list of records with:
+    -- Content Data Type, basename, triggering key, Maybe scoreChangers, Maybe triggered choice
+    -- Using the Data Type and basename to lookup the content on render
+    -- and the other values to increment score & highlight read/chosen
     List.map
-        (\( _, message ) -> ( getTriggeringChoice choices message.triggered_by, message ))
-        (Dict.toList messages)
+        (\( filename, data ) ->
+            ( getTriggeringChoice filename choices (getTriggeredBy data), data )
+        )
+        (Dict.toList content)
 
 
-emailListKeyedByTriggerChoice : List String -> Dict String EmailData -> List ( String, EmailData )
-emailListKeyedByTriggerChoice choices emails =
-    -- Go through the (key, email) pairs and replace key with the choice string that triggered it.
-    List.map
-        (\( _, email ) -> ( getTriggeringChoice choices email.triggered_by, email ))
-        (Dict.toList emails)
+getTriggeredBy : BranchingContent -> List String
+getTriggeredBy content =
+    case content of
+        Message message ->
+            message.triggered_by
+
+        Email email ->
+            email.triggered_by
 
 
 socialListKeyedByTriggerChoice : List String -> Dict String SocialData -> List ( String, SocialData )
 socialListKeyedByTriggerChoice choices socials =
     -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
     List.map
-        (\( _, social ) -> ( getTriggeringChoice choices social.triggered_by, social ))
+        (\( filename, social ) -> ( getTriggeringChoice filename choices social.triggered_by, social ))
         (Dict.toList socials)
 
 
