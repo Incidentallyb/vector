@@ -14,9 +14,10 @@ scoreChangeHarm:
 scoreChangeSuccess:
   - adult|5
 ---
+
 Hello,
 
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine for this disease.
+My name is Dr. Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine for this disease.
 
 I have found some really interesting research which suggests there is a different way we can use the fish in this experiment. One of the great attributes of zebrafish is that the embryonic matter is transparent, allowing us to see the cells developing or even observe the interactions of the virus and the proteins inside the cells themselves! This is terribly exciting! This will cost us £3,000,000 to change over.
 
@@ -26,4 +27,4 @@ Let me know how you would like to move forward.
 
 Many thanks,
 
-Dr Barry Taylor
+Dr. Barry Taylor
