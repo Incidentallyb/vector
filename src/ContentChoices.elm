@@ -215,19 +215,25 @@ getTriggeringChoice filename choices triggers =
             Set.fromList triggers
     in
     -- Get the match (the choice string that triggered this content to display)
-    -- Todo preserve alphabetical by making key a (,) pair?
     (Set.intersect choiceSet triggerSet
         |> Set.toList
         |> List.head
         |> Maybe.withDefault "error-no-choice-trigger-match"
     )
+        -- Append filename in case an email & messages triggered, we don't want key to overwrite
+        -- This is fragile & needs a refactor:
+        -- Important that content appears in order triggered & keys are unique
+        -- Could be fixed by using a list - since we aren't using the Dict lookup
         ++ filename
 
 
 branchingContentListKeyedByTriggerChoice : List String -> Dict String BranchingContent -> List ( String, BranchingContent )
 branchingContentListKeyedByTriggerChoice choices content =
     -- Go through the (key, message) pairs and replace key with the choice string that triggered it.
-    -- Todo add type to avoid email & message or other content overwriting.
+    -- This needs a refactor, maybe a list of records with:
+    -- Content Data Type, basename, triggering key, Maybe scoreChangers, Maybe triggered choice
+    -- Using the Data Type and basename to lookup the content on render
+    -- and the other values to increment score & highlight read/chosen
     List.map
         (\( filename, data ) ->
             ( getTriggeringChoice filename choices (getTriggeredBy data), data )
