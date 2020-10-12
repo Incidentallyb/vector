@@ -1,4 +1,4 @@
-module GameData exposing (GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateHarmScore, updateSuccessScore)
+module GameData exposing (ContentLength, GameData, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateEconomicScore, updateHarmScore, updateSuccessScore)
 
 import Content exposing (EmailData, MessageData, SocialData)
 import ContentChoices
@@ -11,6 +11,14 @@ type alias GameData =
     , scoreSuccess : Int
     , scoreEconomic : Int
     , scoreHarm : Int
+    }
+
+
+type alias ContentLength =
+    { messages : Int
+    , documents : Int
+    , emails : Int
+    , social : Int
     }
 
 

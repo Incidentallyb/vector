@@ -8,7 +8,7 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Debug
 import Dict
-import GameData exposing (GameData, init)
+import GameData exposing (ContentLength, GameData, filterEmails, filterMessages, filterSocials, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -34,6 +34,7 @@ type alias Model =
     , data : Content.Datastore
     , gameData : GameData
     , visited : Set.Set String
+    , notifications : ContentLength
     }
 
 
@@ -52,6 +53,7 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
+      , notifications = { messages = 1, documents = 0, emails = 0, social = 0 }
       }
     , Cmd.none
     )
