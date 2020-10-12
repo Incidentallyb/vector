@@ -84,11 +84,14 @@ update msg model =
                     -- If not a valid Route, default to Intro
                     Maybe.withDefault Intro (Route.fromUrl url)
 
+                newVisits =
+                    Set.insert (Route.toString newRoute) model.visited
+
                 currentNotifications =
                     model.notifications
 
-                -- If we visit a route, set the notifications to 0
-                updatedNotifications =
+                -- If we visit a route that automatically "reads" content, set the notifications to 0
+                updatedListViewNotifications =
                     case newRoute of
                         Messages ->
                             { currentNotifications | messages = 0 }
@@ -96,16 +99,17 @@ update msg model =
                         Documents ->
                             { currentNotifications | documents = 0 }
 
-                        Emails ->
-                            { currentNotifications | emails = 0 }
-
                         Social ->
                             { currentNotifications | social = 0 }
 
                         _ ->
                             currentNotifications
+
+                -- For any route change, check which manually readable content needs notifications
+                updatedSingleViewNotifications =
+                    { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
             in
-            ( { model | page = newRoute, visited = Set.insert (Route.toString newRoute) model.visited, notifications = updatedNotifications }, resetViewportTop )
+            ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
             let
@@ -130,12 +134,8 @@ update msg model =
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
                     , documents = model.notifications.documents
                     , emails =
-                        if model.page == Emails then
-                            0
-
-                        else
-                            model.notifications.emails
-                                + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
+                        model.notifications.emails
+                            + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
                     , social = model.notifications.social + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
                     }
             in
