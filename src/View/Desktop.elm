@@ -40,7 +40,6 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
                     , renderNavLinks pageRoute notifications
-                    , div [] [ text ("money: " ++ String.fromInt gameData.scoreEconomic) ]
                     ]
                 ]
             , div [ class "order-last d-md-none" ]
