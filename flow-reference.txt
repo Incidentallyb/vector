@@ -1055,49 +1055,30 @@ FILE-messages: choose-1-2-3.md
 1.4.2.3.2.2.2 Any One Extra
 1.4.2.3.2.2.3 Do Nothing
 
-
+init|start|bio
 1.5 Bio Matter
+FILE-messages: bio-1.md
 
-
-AL: Biomatter is very experimental, and there are a few options for you to have a look at. I have sent you some documents regarding human embryonic stem cells and biobank material. Let me know when you have made a choice.
-
-Which option would you like to use?
-
+init|start|bio|biobank
 1.5.1 Bio Bank
 
 AL: Are you Sure you would like to use Bio Banks?
 
 YES
 
-Using material from other experiments is a great way of decreasing overall harm of the experiment.
+FILE-messages: bio-bank-stay.md
+FILE-messages: barry-emailed-bio-bank.md
+FILE-emails: barry-bio-bank.md
 
-DR BARRY TAYLOR
-
-BT: I am having problems using the biobank samples. I have sent you an email
-
-BT: Hello,
-
-My name is Dr Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern, and I want to find the vaccine to this disease.
-
-I had my misgivings about using biobanks as I do like to make my own samples from the animals, as I then know that the sample is prepared under controlled conditions to a good standard.
-
-I do not think that this material will work for us, but I understand the reason for choosing to use this material. If you would like to continue to use the Bio Bank model, we would need to get a new batch of samples costing us £5,000,000
-
-If possible, can we consider changing to a different animal model? I would suggest fish as they are not considered sentient and therefore, the harm rating should be lower than the other species. This will cost us £2,000,00 to change model
-
-I, of course, am happy to be led by your decision I am confident my team can find the vaccine.
-
-I await your response,
-
-Dr Barry Taylor
 
 1.5.1.1 Change the Model
 
+(added choices to email instead)
 BT: Have a look aat the options and let me know
 
+init|start|bio|biobank|pigs
 1.5.1.1.1 Change to Pigs
-
-BT: I will make the changes
+FILE-messages: barry-bio-change.md
 
 FILE-messages: choose-1-2-3.md
 
@@ -1105,10 +1086,9 @@ Any two Extras
 Any One Extra
 Do Nothing
 
-
+init|start|bio|biobank|mice
 1.5.1.1.2? Change to Mice
-
-BT: I will make the changes
+FILE-messages: barry-bio-change.md
 
 FILE-messages: choose-1-2-3.md
 
@@ -1116,63 +1096,41 @@ Any two Extras
 Any One Extra
 Do Nothing
 
+init|start|bio|biobank|fish
 1.5.1.1.3? Change to Fish
-
-BT: I will make the changes
-
+FILE-messages: barry-bio-change.md
 FILE-messages: choose-1-2-3.md
 
 Any two Extras
 Any One Extra
 Do Nothing
 
-
+init|start|bio|biobank|stay
 1.5.1.1.4?Stay with Bio Bank
+FILE-messages: barry-push-on-bio-bank.md
+FILE-emails: barry-bio-bank-stay.md
 
-I understand this is a difficult decision. My team will push on.
-
-Many Thanks
-
-Dr Barry Taylor
-
-
-BT: Hello, 
-
-I am afraid my misgivings were correct. This material is unusable, and the quality is not to the standard required to perform the types of experiments we need to conduct!
-
-It is not consistent, and sometimes we are having false positives, which is killing the moral of my team, and I feel this is all down to the material we are using. 
-
-I feel that we don’t have the technology to make this a viable option, yet. You never know, we might be the ones to find a new and successful way of using this matter. We can get another set of samples in for another £5,000,000
-
-I request again, can we consider moving to a different model? As before, this will cost us £2,000,000
-
-I await your response
-
-Dr Barry Taylor
-
+init|start|bio|biobank|stay|pigs
 Change to Pig
-
-BT: I will make the changes now
-
+FILE-messages: barry-bio-change.md
 FILE-messages: choose-1-2-3.md
 
 Any two Extras
 Any One Extra
 Do Nothing
 
+init|start|bio|biobank|stay|mice
 Change to Mice
-
-BT: I will make the changes now
-
+FILE-messages: barry-bio-change.md
 FILE-messages: choose-1-2-3.md
 
 Any two Extras
 Any One Extra
 Do Nothing
 
+init|start|bio|biobank|stay|fish
 Change to Fish
-
-BT: I will make the changes now
+FILE-messages: barry-bio-change.md
 
 FILE-messages: choose-1-2-3.md
 
@@ -1180,78 +1138,41 @@ Any two Extras
 Any One Extra
 Do Nothing
 
+init|start|bio|biobank|stay|stay
 Carry on with Bio Bank
+FILE-messages: barry-good-ethics.md
+FILE-emails: barry-bio-bank-vaccine.md
 
-BT: Ethically speaking this is a great idea, hopefully we’ll have a success also. I understand why you’re choosing to do it, ethically good, scientifically challenging.
 
-Many Thanks
-
-Dr Barry Taylor
-
-BT: Hi Everyone,
-
-The new batch of samples were much better quality.
-
-It gives me great pleasure to inform you that we have discovered a major breakthrough in vaccine development. This is a result of the complex and sometimes challenging decisions you have had to make. 
-
-As a result of this breakthrough we must push ahead to the next stage of trials and begin testing on more complex living organisms. It is intended this will use a small sample size and I am fully confident in my team’s ability to further progress our research. A decision must be made as to which organism will be selected for testing - Pigs, Mice or Fish. Each have their own merits and I would encourage you to once again pursue a results driven approach for the benefit of progress. 
-
-As we only need a small sample size, the cost will only be £1,000,000. The harm rate will also be lower than usual
-
-I await your response.
-
-Many Thanks,
-
+init|start|bio|biobank|stay|stay|pigs
 Choose Pigs
-
-BT: With any luck, we will find a vaccine soon. Thank you for your help
+FILE-messages: barry-vaccine-hope.md
 
 Choose Mice
-BT: With any luck, we will find a vaccine soon. Thank you for your help
+FILE-messages: barry-vaccine-hope.md
 
 Choose Fish
+FILE-messages: barry-vaccine-hope.md
 
-BT: With any luck, we will find a vaccine soon. Thank you for your help
-
-
+init|start|bio|stemcell
 Stem Cell
 
 AL: Are you sure you would like to use Stem Cells?
 
 YES
+FILE-messages: bio-stemcells.md
+FILE-messages: jenny-bio-protestors.md
+FILE-email: jenny-stemcells-protest.md
 
-AL: Stem Cells might lower the harm rating
 
-JENNY COLLINS
-
-JC: We have some protesters gathering outside the lab.....
-
-Hello, 
-
-It’s Jenny from the PR department; we’re encountering a lot of bad press and protest activity across social media, due to the use of Human Stem Cells as our model for the development of the immunisation. We’re getting significant activity from @AllLifeIsSacred in particular, and there are rumours of a large scale Pro Life protest planned outside the facility next week. The facility is upping security measures to make sure the building is safe, and it is vital that you let us know if you receive any correspondence from the protest group; we have procedures in place should you or your family feel threatened. 
- 
-I would recommend rethinking the animal model, which will cost us £2,000,000 or press ahead if you want to but we will have to pay for extra security at £3,000,000. Do let me know either way, and I’ll start thinking about the best way to handle the situation. 
-
-Many Thanks,
-
-Jenny
-
+init|start|bio|stemcell|stay
 Lets stay on course with Stem Cells
 
 FILE-emails: stay.md
+FILE-message: jenny-more-bad-news.md
+FILE-emails: jenny-stemcells-more-bad-news.md
 
-JC: I have some more bad news........
-
-JC:  Hi Team, 
-
-Unfortunately we had a major break in last night and there has been a significant amount of damage to our equipment. All of our kit and computers have been destroyed, and the samples have been taken. Luckily, we still have back ups of the data, so at least that is safe. 
-
-The good news is that the culprits have been caught - they were working with a pro-life group who objected to the experiment on religious grounds. 
-
-The first thing we need to do is re-build which is going to cost us £5m, but we also need to decide how we want to engage with the culprit. We can prosecute them and try to recoup our money through the courts - or we can engage the group in conversation and maybe develop a new public engagement project. This might help them and similar groups understand more about stem cell research and future proof our experiments. The latter is a bold move, but it might decrease our harm, as it raises public awareness of the issues surrounding our research.
-
-Let me know what you think
-
+init|start|bio|stemcell|stay|engage
 Engage Protestors 
 
 JC: I will start the process. I think that this is the best solution to this problem
@@ -1285,7 +1206,7 @@ Choose Fish
 BT: With any luck, we will find a vaccine soon. Thank you for your help
 
 
-
+init|start|bio|stemcell|stay|prosecute
 Prosecute Protestors
 
 JC: I will start the process. I think we can get a little more money from them....
@@ -1319,8 +1240,9 @@ Choose Fish
 
 BT: With any luck, we will find a vaccine soon. Thank you for your help
 
+init|start|bio|stemcell|change
 Change Model
-JC: Have a look at the list bellow and let me know
+FILE-messages: jenny-change-mice-fish-pigs.md
 
 Pigs
 FILE-emails: jenny-change-barry.md
