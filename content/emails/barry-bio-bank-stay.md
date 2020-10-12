@@ -33,4 +33,4 @@ I request again, can we consider moving to a different model? As before, this wi
 
 I await your response
 
-Dr Barry Taylor
+Dr. Barry Taylor

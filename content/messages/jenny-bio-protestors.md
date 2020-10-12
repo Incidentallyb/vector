@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - init|start|bio|stemcells
-author: Jenny Collins
+  - init|start|bio|stemcell
+author: Jenny
 ---
 We have some protesters gathering outside the lab.....

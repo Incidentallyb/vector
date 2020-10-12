@@ -4,7 +4,7 @@ triggered_by:
   - init|start|fish|embryo|step|scale|embryo
   - init|start|fish|embryo|step|phased|stay
   - init|start|fish|embryo|step|share|stay
-  - end-transcript-stemcells
+  - init|start|bio|stemcell|stay
 author: Jenny
 subject: Email subject content [cCc]
 ---
