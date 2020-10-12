@@ -6,7 +6,6 @@ import Browser.Navigation
 import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import Debug
 import Dict
 import GameData exposing (GameData, ScoreType(..), init)
 import Html exposing (Html, div)

@@ -232,9 +232,6 @@ updateScore scoreType datastore gamedata newChoice =
                 |> Dict.values
                 |> List.reverse
 
-        mix =
-            Debug.log "mixed" messages
-
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
         -- [18, -7, 0 ] for the message choices of start > macaques > stay
         listOfScoreChanges =
