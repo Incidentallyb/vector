@@ -2,7 +2,7 @@
 triggered_by:
   - init|start|macaques|stay|step|scale
   - init|start|macaques|stay|step|phased
-  - init|start|macaques|stay|step|share  
+  - init|start|macaques|stay|step|share
   - init|start|macaques|change|pigs|step|scale
   - init|start|macaques|change|pigs|step|phased
   - init|start|macaques|change|pigs|step|share
@@ -19,4 +19,5 @@ triggered_by:
   - init|start|mice|tubes|step|share
 author: AL
 ---
-I will send this over to Dr Barry Taylor and the team now
+
+I will send this over to Dr. Barry Taylor and the team now

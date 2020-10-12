@@ -17,4 +17,5 @@ triggered_by:
   - init|start|mice|handle|step|share
 author: Charlie
 ---
-Hi Guys, I have a bit of a personal request, so I have sent over an email...
+
+Hi Everyone, I have a bit of a personal request, so I have sent over an email...
