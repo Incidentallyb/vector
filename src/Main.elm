@@ -7,7 +7,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import GameData exposing (GameData, ScoreType(..), init)
+import GameData exposing (GameData, NotificationCount, ScoreType(..), init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -33,6 +33,7 @@ type alias Model =
     , data : Content.Datastore
     , gameData : GameData
     , visited : Set.Set String
+    , notifications : NotificationCount
     }
 
 
@@ -51,6 +52,7 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
+      , notifications = { messages = 1, documents = 0, emails = 0, social = 0 }
       }
     , Cmd.none
     )
@@ -80,8 +82,33 @@ update msg model =
                 newRoute =
                     -- If not a valid Route, default to Intro
                     Maybe.withDefault Intro (Route.fromUrl url)
+
+                newVisits =
+                    Set.insert (Route.toString newRoute) model.visited
+
+                currentNotifications =
+                    model.notifications
+
+                -- If we visit a route that automatically "reads" content, set the notifications to 0
+                updatedListViewNotifications =
+                    case newRoute of
+                        Messages ->
+                            { currentNotifications | messages = 0 }
+
+                        Documents ->
+                            { currentNotifications | documents = 0 }
+
+                        Social ->
+                            { currentNotifications | social = 0 }
+
+                        _ ->
+                            currentNotifications
+
+                -- For any route change, check which manually readable content needs notifications
+                updatedSingleViewNotifications =
+                    { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
             in
-            ( { model | page = newRoute, visited = Set.insert (Route.toString newRoute) model.visited }, resetViewportTop )
+            ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
             let
@@ -94,8 +121,24 @@ update msg model =
                     , scoreEconomic = GameData.updateScore Economic model.data model.gameData choice
                     , scoreHarm = GameData.updateScore Harm model.data model.gameData choice
                     }
+
+                -- Take the current notifications and add the number of items filtered by the new choice
+                newNotifications =
+                    { messages =
+                        if model.page == Messages then
+                            0
+
+                        else
+                            model.notifications.messages
+                                + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
+                    , documents = model.notifications.documents
+                    , emails =
+                        model.notifications.emails
+                            + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
+                    , social = model.notifications.social + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
+                    }
             in
-            ( { model | gameData = newGameData }, Cmd.none )
+            ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
 
         TeamChosen teamName ->
             let
@@ -126,12 +169,13 @@ view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            View.Desktop.view model.gameData model.page
+            View.Desktop.view model.gameData model.page model.notifications
 
         Documents ->
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Documents.list model.data.documents
                     ]
                 ]
@@ -140,6 +184,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Documents.single (Dict.get id model.data.documents)
                     ]
                 ]
@@ -148,6 +193,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Emails.list model.gameData model.data.emails model.visited
                     ]
                 ]
@@ -156,6 +202,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Emails.single model.gameData (Dict.get id model.data.emails)
                     ]
                 ]
@@ -164,6 +211,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Messages.view model.gameData model.data.messages
                     ]
                 ]
@@ -172,6 +220,7 @@ view model =
             div []
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
+                    model.notifications
                     [ View.Social.view model.gameData model.data.social
                     ]
                 ]

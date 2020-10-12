@@ -56,7 +56,7 @@ t key =
             "AL @ Biocore"
 
         FromPlayerTeam ->
-            "Team Elm"
+            "Team "
 
         NavDocumentsBackTo ->
             "Back to Documents"

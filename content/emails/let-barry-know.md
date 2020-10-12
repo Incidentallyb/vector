@@ -15,7 +15,7 @@ subject: Email subject content [cCc]
 
 Hello Dream Team!
 
-Thanks for this - I’ll let Dr Taylor know,
+Thanks for this - I’ll let Dr. Taylor know,
 
 Best,
 
