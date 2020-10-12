@@ -24,11 +24,13 @@ type Key
     | FromPlayerTeam
       --- "Back to" area texts
     | NavDocumentsBackTo
+    | NavEmailsBackTo
       --- General application texts
     | ItemNotFound
       --- Documents
     | ViewDocument
       --- Emails
     | EmailDummySentTime
+    | EmailQuickReply
       --- TeamNames
     | TeamNames

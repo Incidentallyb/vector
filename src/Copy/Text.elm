@@ -61,6 +61,9 @@ t key =
         NavDocumentsBackTo ->
             "Back to Documents"
 
+        NavEmailsBackTo ->
+            "Back to Emails"
+
         ItemNotFound ->
             "Item not found"
 
@@ -69,6 +72,9 @@ t key =
 
         EmailDummySentTime ->
             "Sent: Today"
+
+        EmailQuickReply ->
+            "Email quick-reply: "
 
         TeamNames ->
             "Ash, Birch, Cedar, Elm, Fir, Hawthorn, Juniper, Lime, Maple, Oak"

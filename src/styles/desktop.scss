@@ -19,6 +19,8 @@
 .mobile-nav {
   display: flex;
   background-color: var(--white);
+  margin-right:1rem;
+  margin-left:1rem;
 }
 
 .mobile-nav-item {
@@ -31,8 +33,9 @@
   padding: 10px 0;
 }
 
-.content {
-  margin: 0 auto 5rem auto;
+.desktop > .content {
+  margin: 0 auto;
+  padding-bottom: 5rem;
 }
 
 .v-centred {
