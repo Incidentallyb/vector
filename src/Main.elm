@@ -83,8 +83,29 @@ update msg model =
                 newRoute =
                     -- If not a valid Route, default to Intro
                     Maybe.withDefault Intro (Route.fromUrl url)
+
+                currentNotifications =
+                    model.notifications
+
+                -- If we visit a route, set the notifications to 0
+                updatedNotifications =
+                    case newRoute of
+                        Messages ->
+                            { currentNotifications | messages = 0 }
+
+                        Documents ->
+                            { currentNotifications | documents = 0 }
+
+                        Emails ->
+                            { currentNotifications | emails = 0 }
+
+                        Social ->
+                            { currentNotifications | social = 0 }
+
+                        _ ->
+                            currentNotifications
             in
-            ( { model | page = newRoute, visited = Set.insert (Route.toString newRoute) model.visited }, resetViewportTop )
+            ( { model | page = newRoute, visited = Set.insert (Route.toString newRoute) model.visited, notifications = updatedNotifications }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
             let
@@ -97,8 +118,28 @@ update msg model =
                     , scoreEconomic = GameData.updateEconomicScore model.data model.gameData choice
                     , scoreHarm = GameData.updateHarmScore model.data model.gameData choice
                     }
+
+                -- Take the current notifications and add the number of items filtered by the new choice
+                newNotifications =
+                    { messages =
+                        if model.page == Messages then
+                            0
+
+                        else
+                            model.notifications.messages
+                                + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
+                    , documents = model.notifications.documents
+                    , emails =
+                        if model.page == Emails then
+                            0
+
+                        else
+                            model.notifications.emails
+                                + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
+                    , social = model.notifications.social + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
+                    }
             in
-            ( { model | gameData = newGameData }, Cmd.none )
+            ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
 
         TeamChosen teamName ->
             let
