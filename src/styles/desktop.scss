@@ -5,6 +5,12 @@
   overflow-y: auto;
 }
 
+@media (max-width: 767px) {
+  .desktop {
+    height: calc(100vh - 4em);
+  }
+}
+
 .nav-icon {
   width: 24px;
   height: 24px;
@@ -19,8 +25,7 @@
 .mobile-nav {
   display: flex;
   background-color: var(--white);
-  margin-right:1rem;
-  margin-left:1rem;
+  height: 4em;
 }
 
 .mobile-nav-item {
