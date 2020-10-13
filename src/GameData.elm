@@ -1,4 +1,4 @@
-module GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateScore, updateSuccessScore)
+module GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
 
 import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import ContentChoices
@@ -152,37 +152,6 @@ choicesAndBranchingContent playerChoices contentList =
 
 
 {-
-   given a string like "macaques|50" , return int 50 if string == macaques
--}
-
-
-getIntegerIfMatchFound : String -> String -> Int
-getIntegerIfMatchFound scoreChangeValue choice =
-    let
-        ( changeValue, choiceMatch ) =
-            ( case List.head (String.indexes "|" scoreChangeValue) of
-                Nothing ->
-                    0
-
-                Just val ->
-                    Maybe.withDefault 0 (String.toInt (String.dropLeft (val + 1) scoreChangeValue))
-            , case List.head (String.indexes "|" scoreChangeValue) of
-                Nothing ->
-                    scoreChangeValue
-
-                Just val ->
-                    String.left val scoreChangeValue
-            )
-    in
-    if choiceMatch == choice then
-        changeValue
-
-    else
-        0
-
-
-
-{-
    given a string like "macaques|50" , return string "50" if string == macaques
    given a string like "mice|=30" , return string "=30" if string == mice
 
@@ -247,12 +216,26 @@ updateScore scoreType datastore gamedata newChoice =
                 |> List.map (\( choice, message ) -> getScoreChanges scoreType choice message)
     in
     -- take all of the score changes and add them together
-    List.foldl (+) 0 listOfScoreChanges
+    List.foldl
+        (\x a ->
+            let
+                result =
+                    case String.left 1 x of
+                        "=" ->
+                            Maybe.withDefault 0 (String.toInt (String.dropLeft 1 x))
+
+                        _ ->
+                            a + Maybe.withDefault 0 (String.toInt x)
+            in
+            result
+        )
+        0
+        listOfScoreChanges
 
 
 
 {-
-   This function produces a list of economic change values that match choices made for this message.
+   This function produces a list of change values that match choices made for this message.
    so if you have a choice of 'macaque' and your scoreChangeEconomic is
        ["macaques|-7", "pigs|-3", "mice|-2", "fish|-4", "bio|-11"]
    it will return
@@ -261,9 +244,9 @@ updateScore scoreType datastore gamedata newChoice =
 -}
 
 
-getScoreChanges : ScoreType -> String -> BranchingContent -> Int
+getScoreChanges : ScoreType -> String -> BranchingContent -> String
 getScoreChanges scoreType choice message =
-    List.foldr (+) 0 (List.map (\scoreChangeValue -> getIntegerIfMatchFound scoreChangeValue choice) (getScoreChange scoreType message))
+    List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (getScoreChange scoreType message))
 
 
 getScoreChange : ScoreType -> BranchingContent -> List String
@@ -294,46 +277,3 @@ getScoreChange changeType branchingContent =
                             contentData.scoreChangeSuccess
     in
     Maybe.withDefault [ "" ] maybeChange
-
-
-
--- same as updateScore, but can use = (set) values for scoring mechanics
-
-
-updateSuccessScore : Content.Datastore -> GameData -> String -> Int
-updateSuccessScore datastore gamedata newChoice =
-    let
-        playerChoices =
-            newChoice :: gamedata.choices
-
-        messages =
-            List.reverse
-                (Dict.values (filterBranchingContent (messagesToBranchingContent datastore.messages) gamedata.choices))
-
-        listOfSuccessScoreChanges =
-            List.map (\( choice, message ) -> getSuccessScoreChange choice message) (choicesAndBranchingContent playerChoices messages)
-    in
-    List.foldl
-        (\x a ->
-            let
-                result =
-                    case String.left 1 x of
-                        "=" ->
-                            Maybe.withDefault 0 (String.toInt (String.dropLeft 1 x))
-
-                        _ ->
-                            a + Maybe.withDefault 0 (String.toInt x)
-            in
-            result
-        )
-        0
-        listOfSuccessScoreChanges
-
-
-
--- same as getEconomicScoreChange, but can use = (set) values for scoring mechanics
-
-
-getSuccessScoreChange : String -> BranchingContent -> String
-getSuccessScoreChange choice message =
-    List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (getScoreChange Success message))

@@ -1,4 +1,4 @@
-module GameDataTest exposing (getIntegerIfMatchFound, updateEconomicScore, updateSuccessScore)
+module GameDataTest exposing (getStringIfMatchFound, updateEconomicScore, updateSuccessScore)
 
 import Expect
 import GameData exposing (ScoreType(..))
@@ -6,33 +6,33 @@ import Test exposing (Test, describe, test)
 import TestData
 
 
-getIntegerIfMatchFound : Test
-getIntegerIfMatchFound =
-    describe "getIntegerIfMatchFound Function"
+getStringIfMatchFound : Test
+getStringIfMatchFound =
+    describe "getStringIfMatchFound Function"
         [ test "returns 0 for non matching values" <|
             \_ ->
-                GameData.getIntegerIfMatchFound "macaque|50" "fish"
-                    |> Expect.equal 0
+                GameData.getStringIfMatchFound "macaque|50" "fish"
+                    |> Expect.equal ""
         , test "returns 0 for non matching values (2)" <|
             \_ ->
-                GameData.getIntegerIfMatchFound "macaque|50" "mice"
-                    |> Expect.equal 0
+                GameData.getStringIfMatchFound "macaque|50" "mice"
+                    |> Expect.equal ""
         , test "returns 0 for non matching values (3)" <|
             \_ ->
-                GameData.getIntegerIfMatchFound "" "fish"
-                    |> Expect.equal 0
+                GameData.getStringIfMatchFound "" "fish"
+                    |> Expect.equal ""
         , test "returns 0 for non matching values (4)" <|
             \_ ->
-                GameData.getIntegerIfMatchFound "" ""
-                    |> Expect.equal 0
+                GameData.getStringIfMatchFound "" ""
+                    |> Expect.equal ""
         , test "returns value for matching values" <|
             \_ ->
-                GameData.getIntegerIfMatchFound "macaque|50" "macaque"
-                    |> Expect.equal 50
+                GameData.getStringIfMatchFound "macaque|50" "macaque"
+                    |> Expect.equal "50"
         , test "returns value for matching values (2)" <|
             \_ ->
-                GameData.getIntegerIfMatchFound "macaque|-40000" "macaque"
-                    |> Expect.equal -40000
+                GameData.getStringIfMatchFound "macaque|-40000" "macaque"
+                    |> Expect.equal "-40000"
         ]
 
 
@@ -143,30 +143,30 @@ updateSuccessScore =
     describe "updateSuccessScore Function"
         [ test "returns 0 for init" <|
             \_ ->
-                GameData.updateSuccessScore TestData.testDatastore testGameData "init"
+                GameData.updateScore Success TestData.testDatastore testGameData "init"
                     |> Expect.equal 0
         , test "returns 0 for start" <|
             \_ ->
-                GameData.updateSuccessScore TestData.testDatastore initGameData "start"
+                GameData.updateScore Success TestData.testDatastore initGameData "start"
                     |> Expect.equal 0
         , test "returns 0 for non-start" <|
             \_ ->
-                GameData.updateSuccessScore TestData.testDatastore initGameData "no-thanks"
+                GameData.updateScore Success TestData.testDatastore initGameData "no-thanks"
                     |> Expect.equal 0
         , test "returns 40% success for start->macaques" <|
             \_ ->
-                GameData.updateSuccessScore TestData.testDatastore startGameData "macaques"
+                GameData.updateScore Success TestData.testDatastore startGameData "macaques"
                     |> Expect.equal 40
         , test "returns bonus 5% for start->macaques->stay" <|
             \_ ->
-                GameData.updateSuccessScore TestData.testDatastore macaquesGameData "stay"
+                GameData.updateScore Success TestData.testDatastore macaquesGameData "stay"
                     |> Expect.equal 45
         , test "returns 30% (set value) for start->macaques->change->mice" <|
             \_ ->
-                GameData.updateSuccessScore TestData.testDatastore changeGameData "mice"
+                GameData.updateScore Success TestData.testDatastore changeGameData "mice"
                     |> Expect.equal 30
         , test "returns 50% (added value) for start->macaques->change->fish" <|
             \_ ->
-                GameData.updateSuccessScore TestData.testDatastore changeGameData "fish"
+                GameData.updateScore Success TestData.testDatastore changeGameData "fish"
                     |> Expect.equal 50
         ]
