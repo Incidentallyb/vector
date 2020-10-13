@@ -21,7 +21,7 @@ Unfortunately we had a major break in last night and there has been a significan
 
 The good news is that the culprits have been caught - they were working with a pro-life group who objected to the experiment on religious grounds. 
 
-The first thing we need to do is re-build which is going to cost us £5m, but we also need to decide how we want to engage with the culprit. We can prosecute them and try to recoup our money through the courts - or we can engage the group in conversation and maybe develop a new public engagement project. This might help them and similar groups understand more about stem cell research and future proof our experiments. The latter is a bold move, but it might decrease our harm, as it raises public awareness of the issues surrounding our research.
+The first thing we need to do is re-build which is going to cost us £5,000,000, but we also need to decide how we want to engage with the culprit. We can prosecute them and try to recoup our money through the courts - or we can engage the group in conversation and maybe develop a new public engagement project. This might help them and similar groups understand more about stem cell research and future proof our experiments. The latter is a bold move, but it might decrease our harm, as it raises public awareness of the issues surrounding our research.
 
 Let me know what you think,
 
