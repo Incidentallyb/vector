@@ -77,6 +77,9 @@ triggered_by:
   - init|start|fish|embryo|step|share|stay
   - init|start|fish|embryo|step|share|change|mice
   - init|start|fish|embryo|step|share|change|pigs
+  - init|start|bio|biobank|stay|stay|pigs
+  - init|start|bio|biobank|stay|stay|mice
+  - init|start|bio|biobank|stay|stay|fish
 author: AL
 choices:
   - two-extras|Any two extras
