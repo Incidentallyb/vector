@@ -30,7 +30,7 @@ I had my misgivings about using biobanks as I do like to make my own samples fro
 
 I do not think that this material will work for us, but I understand the reason for choosing to use this material. If you would like to continue to use the Bio Bank model, we would need to get a new batch of samples costing us £5,000,000
 
-If possible, can we consider changing to a different animal model? I would suggest fish as they are not considered sentient and therefore, the harm rating should be lower than the other species. This will cost us £2,000,00 to change model
+If possible, can we consider changing to a different animal model? I would suggest fish as they are not considered sentient and therefore, the harm rating should be lower than the other species. This will cost us £2,000,000 to change model
 
 I, of course, am happy to be led by your decision I am confident my team can find the vaccine.
 
