@@ -88,4 +88,18 @@
   .date {
     color: var(--grey-medium);
   }
+
+  .button-choices {
+    padding:2em;
+    margin-top:2em;
+    margin-bottom:2em;
+    background: var(--grey);
+    border-radius:5px;
+  }
+  
+  svg { 
+    width: 1rem;
+    height:1rem;
+    margin-right:0.5rem;
+  }
 }
