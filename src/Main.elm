@@ -7,7 +7,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import GameData exposing (GameData, NotificationCount, ScoreType(..), init)
+import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -105,6 +105,7 @@ update msg model =
                             currentNotifications
 
                 -- For any route change, check which manually readable content needs notifications
+                -- We'll probably move this calc to the Desktop view and remove from model
                 updatedSingleViewNotifications =
                     { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
             in
@@ -123,6 +124,7 @@ update msg model =
                     }
 
                 -- Take the current notifications and add the number of items filtered by the new choice
+                -- Hopefully this will be handled in the view and if we need to post msg to update
                 newNotifications =
                     { messages =
                         if model.page == Messages then
