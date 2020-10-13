@@ -71,6 +71,19 @@ renderMessage from message =
         ]
 
 
+renderScore : String -> GameData -> List String -> Html Msg
+renderScore from dat triggers =
+    div
+        [ class "message al w-75 float-left mt-3 ml-3 py-2" ]
+        [ div [ class "mx-3" ]
+            [ p [ class "message-from m-0" ]
+                [ text from ]
+            , div [] [ text ("Economic score" ++ String.fromInt dat.scoreEconomic) ]
+            , div [] [ text ("Economic score" ++ String.concat dat.choices) ]
+            ]
+        ]
+
+
 renderPrompt : Content.MessageData -> List String -> String -> Html Msg
 renderPrompt message choices team =
     if List.length message.choices > 0 then
