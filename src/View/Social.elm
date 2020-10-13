@@ -42,9 +42,9 @@ renderTweet social =
                     [ span [ class "author" ] [ text social.author ], span [ class "handle" ] [ text social.handle ] ]
                 , Markdown.toHtml [ class "m-0 mr-2 socialText" ] social.content
                 , div [ class "icons d-flex justify-content-between my-2 mr-4" ]
-                    [ div [] [ chat [], text "3" ]
-                    , div [] [ refresh [], text "5" ]
-                    , div [] [ heart [], text "7" ]
+                    [ div [] [ chat [], text (String.fromInt social.numComments) ]
+                    , div [] [ refresh [], text (String.fromInt social.numRetweets) ]
+                    , div [] [ heart [], text (String.fromInt social.numLoves) ]
                     , div [] [ upload [] ]
                     ]
                 ]

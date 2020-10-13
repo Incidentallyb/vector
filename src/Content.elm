@@ -1,7 +1,7 @@
 module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, MessageData, SocialData, datastoreDictDecoder, emptyEmail, emptyMessage)
 
 import Dict exposing (Dict)
-import Json.Decode exposing (field, list, map4, maybe, string)
+import Json.Decode exposing (field, list, int, map4, maybe, string)
 import Json.Decode.Extra exposing (andMap, withDefault)
 
 
@@ -60,6 +60,9 @@ type alias SocialData =
     , handle : String
     , content : String
     , basename : String
+    , numComments : Int
+    , numRetweets : Int
+    , numLoves : Int
     }
 
 
@@ -184,4 +187,7 @@ socialDictDecoder =
             |> andMap (Json.Decode.field "handle" string |> withDefault "")
             |> andMap (Json.Decode.field "content" string |> withDefault "")
             |> andMap (Json.Decode.field "basename" string |> withDefault "")
+            |> andMap (Json.Decode.field "numComments" int |> withDefault 0)
+            |> andMap (Json.Decode.field "numRetweets" int |> withDefault 0)
+            |> andMap (Json.Decode.field "numLoves" int |> withDefault 0)
         )

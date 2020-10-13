@@ -6,6 +6,7 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
 import GameData exposing (GameData, filterEmails)
+import Heroicons.Outline exposing (arrowLeft)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Attributes.Aria exposing (ariaHidden)
@@ -58,27 +59,27 @@ choiceStringsToButtons buttonString =
 renderButtons : List ButtonInfo -> String -> Html Msg
 renderButtons buttonList chosenValue =
     if List.length buttonList > 1 then
-        div []
-            (List.map
-                (\buttonItem ->
-                    button
-                        [ classList
-                            [ ( "btn choice-button", True )
-                            , ( "btn-primary", chosenValue == "" )
-                            , ( "active", chosenValue == buttonItem.action )
-                            , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
-                            ]
-                        , if chosenValue == "" then
-                            onClick (ChoiceButtonClicked buttonItem.action)
-
-                          else
-                            Html.Attributes.class ""
+     div [ class "button-choices" ]
+        (div [ class "quick-reply" ] [text (t EmailQuickReply)]  :: (List.map
+            (\buttonItem ->
+                button
+                    [ classList
+                        [ ( "btn choice-button", True )
+                        , ( "btn-primary", chosenValue == "" )
+                        , ( "active", chosenValue == buttonItem.action )
+                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
                         ]
-                        [ text buttonItem.label ]
-                )
-                buttonList
-            )
+                    , if chosenValue == "" then
+                        onClick (ChoiceButtonClicked buttonItem.action)
 
+                    else
+                        Html.Attributes.class ""
+                    ]
+                    [ text buttonItem.label ]
+            )
+            buttonList
+        )
+        )
     else
         text ""
 
@@ -92,7 +93,7 @@ single gamedata maybeContent =
         Just email ->
             article [ class "email p-3" ]
                 [ p [ class "date" ] [ text (t EmailDummySentTime) ]
-                , h2 [] [ text "EMAIL_SUBJECT_TODO" ]
+                , h2 [] [ text email.subject ]
                 , div [ class "d-flex align-items-center" ]
                     [ div [ class ("email-icon " ++ generateCssString email.author), ariaHidden True ]
                         [ text (String.left 1 email.author)
@@ -101,6 +102,10 @@ single gamedata maybeContent =
                     ]
                 , div [ class "mt-3" ] [ Markdown.toHtml [ class "content" ] email.content ]
                 , renderButtons (List.map choiceStringsToButtons (Maybe.withDefault [ "" ] email.choices)) (ContentChoices.getChoiceChosenEmail gamedata.choices email)
+                , a [ href (Route.toString Emails), class "btn btn-primary" ]
+                    [ arrowLeft []
+                    , text (t NavEmailsBackTo)
+                    ]
                 ]
 
 
