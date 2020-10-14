@@ -9,18 +9,18 @@ choices:
   - fish|Change to Fish
   - stay|Stay with Bio Banks
 scoreChangeEconomic:
-  -pigs|-2
-  -mice|-2
-  -fish|-2
-  -stay|-5
+  - pigs|-2
+  - mice|-2
+  - fish|-2
+  - stay|-5
 scoreChangeHarm:
-  -pigs|0
-  -mice|6
-  -fish|5
+  - pigs|0
+  - mice|6
+  - fish|5
 scoreChangeSuccess:
-  -pigs|0
-  -mice|35
-  -fish|25
+  - pigs|0
+  - mice|35
+  - fish|25
 ---
 Hello,
 

@@ -8,17 +8,17 @@ choices:
   - mice|Change to Mice
   - fish|Change to Fish
 scoreChangeEconomic:
-  -pigs|-1
-  -mice|-1
-  -fish|-1
+  - pigs|-1
+  - mice|-1
+  - fish|-1
 scoreChangeHarm:
-  -pigs|3
-  -mice|2
-  -fish|1
+  - pigs|3
+  - mice|2
+  - fish|1
 scoreChangeSuccess:
-  -pigs|60
-  -mice|60
-  -fish|60
+  - pigs|60
+  - mice|60
+  - fish|60
 ---
 Hi Everyone,
 

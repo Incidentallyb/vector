@@ -1,14 +1,14 @@
 ---
 triggered_by:
-  -init|start|macaques|stay|step|scale
-  -init|start|macaques|stay|step|phased
-  -init|start|macaques|stay|step|share
+  - init|start|macaques|stay|step|scale
+  - init|start|macaques|stay|step|phased
+  - init|start|macaques|stay|step|share
 author: Jenny
 subject: Email subject content [cCc]
 choices:
-  -pig|Pigs
-  -mice|Mice
-  -fish|Fish
+  - pigs|Pigs
+  - mice|Mice
+  - fish|Fish
 scoreChangeEconomic: 
   - pigs|-2
   - mice|-2
