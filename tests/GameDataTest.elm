@@ -1,4 +1,4 @@
-module GameDataTest exposing (getStringIfMatchFound, updateEconomicScore, updateSuccessScore)
+module GameDataTest exposing (getStringIfMatchFound, updateEconomicScore, updateSuccessScore, updateHarmScore, updateAllScores)
 
 import Expect
 import GameData exposing (ScoreType(..))
@@ -169,4 +169,108 @@ updateSuccessScore =
             \_ ->
                 GameData.updateScore Success TestData.testDatastore changeGameData "fish"
                     |> Expect.equal 50
+        ]
+
+
+updateHarmScore : Test
+updateHarmScore =
+    let
+        testGameData =
+            TestData.testGamedata
+
+        initGameData =
+            { choices = [ "init" ]
+            , teamName = testGameData.teamName
+            , scoreSuccess = 0
+            , scoreEconomic = 0
+            , scoreHarm = 0
+            }
+
+        startGameData =
+            { choices = [ "start", "init" ]
+            , teamName = testGameData.teamName
+            , scoreSuccess = 0
+            , scoreEconomic = 0
+            , scoreHarm = 0
+            }
+
+        macaquesGameData =
+            { choices = [ "macaques", "start", "init" ]
+            , teamName = testGameData.teamName
+            , scoreSuccess = 0
+            , scoreEconomic = 0
+            , scoreHarm = 0
+            }
+
+        changeGameData =
+            { choices = [ "change", "macaques", "start", "init" ]
+            , teamName = testGameData.teamName
+            , scoreSuccess = 0
+            , scoreEconomic = 0
+            , scoreHarm = 0
+            }
+    in
+    describe "updateHarmScore Function"
+        [ test "returns 0 for init" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore testGameData "init"
+                    |> Expect.equal 0
+        , test "returns 0 for start" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore initGameData "start"
+                    |> Expect.equal 0
+        , test "returns 0 for non-start" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore initGameData "no-thanks"
+                    |> Expect.equal 0
+        , test "returns 8 harm for start->macaques" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore startGameData "macaques"
+                    |> Expect.equal 8
+        , test "returns 8+1 harm for start->macaques->stay" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore macaquesGameData "stay"
+                    |> Expect.equal 9
+        , test "returns 3 (set value) for start->macaques->change->mice" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore changeGameData "mice"
+                    |> Expect.equal 3
+        , test "returns 2 for start->macaques->change->fish" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore changeGameData "fish"
+                    |> Expect.equal 2
+        ]
+
+
+updateAllScores : Test
+updateAllScores =
+ let
+        testGameData =
+            TestData.testGamedata
+
+        changeGameData =
+            { choices = [ "change", "macaques", "start", "init" ]
+            , teamName = testGameData.teamName
+            , scoreSuccess = 0
+            , scoreEconomic = 0
+            , scoreHarm = 0
+            }
+    in
+      describe "updateAllScores Function"
+        [ 
+            test "Check data for start->macaques->change->fish" <|
+            \_ ->
+                { choices = "fish" :: changeGameData.choices
+                    , teamName = changeGameData.teamName
+                    , scoreSuccess = GameData.updateScore Success TestData.testDatastore changeGameData "fish"
+                    , scoreEconomic = GameData.updateScore Economic TestData.testDatastore changeGameData "fish"
+                    , scoreHarm = GameData.updateScore Harm TestData.testDatastore changeGameData "fish"
+                    }
+                    |> Expect.equal { 
+                        choices = [ "fish","change","macaques","start","init" ]
+                        , teamName = "TestTeam"
+                        , scoreSuccess = 50
+                        , scoreEconomic = 17250000
+                        , scoreHarm = 2
+                    }
         ]
