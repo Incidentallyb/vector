@@ -40,6 +40,12 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
                     , renderNavLinks pageRoute notifications
+                    -- DEBUG ONLY!
+                    , div [ class "debug-score" ] [
+                        div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
+                        , div [ class "harm" ] [ text (String.fromInt gameData.scoreHarm) ]
+                        , div [ class "success" ] [ text (String.fromInt gameData.scoreSuccess ++ "%") ]
+                        ]
                     ]
                 ]
             , div [ class "order-last d-md-none" ]
