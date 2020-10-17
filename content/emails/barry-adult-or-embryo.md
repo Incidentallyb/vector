@@ -1,6 +1,7 @@
 ---
+title: Barry adult or embryo
 triggered_by:
-  - "init|start|fish"
+  - init|start|fish
 author: Dr. Barry Taylor
 subject: Email subject content [cCc]
 choices:
