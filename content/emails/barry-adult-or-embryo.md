@@ -1,7 +1,7 @@
 ---
 triggered_by:
-  - "initstartfish"
-author: Dr. Brry Taylor
+  - init|start|fish
+author: Dr. Barry Taylor
 subject: Email subject content [cCc]
 choices:
   - adult|Stay with adult fish
