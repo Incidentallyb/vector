@@ -6,8 +6,8 @@ triggered_by:
   - init|start|fish|embryo|step|phased|change|pigs
   - init|start|fish|embryo|step|share|change|mice
   - init|start|fish|embryo|step|colaborate|change|pigs
-  - end-transcript-pigs
-  - end-transcript-mice
+  - init|start|bio|stemcell|change|pigs
+  - init|start|bio|stemcell|change|mice
 author: Jenny
 subject: Email subject content [cCc]
 ---

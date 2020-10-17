@@ -1151,9 +1151,11 @@ init|start|bio|biobank|stay|stay|pigs
 Choose Pigs
 FILE-messages: barry-vaccine-hope.md
 
+init|start|bio|biobank|stay|stay|mice
 Choose Mice
 FILE-messages: barry-vaccine-hope.md
 
+init|start|bio|biobank|stay|stay|fish
 Choose Fish
 FILE-messages: barry-vaccine-hope.md
 
@@ -1179,7 +1181,7 @@ init|start|bio|stemcell|stay|engage
 Engage Protestors 
 FILE-mesasges: jenny-bio-protestors-engage.md
 FILE-mesasges: barry-bio-protestors-engage.md
-FILE-emails: barry-bio-stemcell-vaccine.md
+FILE-emails: barry-stemcell-vaccine.md
 
 Choose Pigs
 FILE-messages: barry-vaccine-hopes.md
@@ -1195,21 +1197,28 @@ init|start|bio|stemcell|stay|prosecute
 Prosecute Protestors
 FILE-messages: jenny-get-money.md
 FILE-mesasges: barry-bio-protestors-engage.md
-FILE-emails: barry-bio-stemcell-vaccine.md
+FILE-emails: barry-stemcell-vaccine.md
 
+
+init|start|bio|stemcell|stay|prosecute|pigs
 Choose Pigs
 FILE-messages: barry-vaccine-hopes.md
 
+
+init|start|bio|stemcell|stay|prosecute|mice
 Choose Mice
 FILE-messages: barry-vaccine-hopes.md
 
+
+init|start|bio|stemcell|stay|prosecute|fish
 Choose Fish
 FILE-messages: barry-vaccine-hopes.md
 
 init|start|bio|stemcell|change
 Change Model
-FILE-messages: jenny-change-mice-fish-pigs.md
+FILE-messages: jenny-change-mice-pigs.md
 
+init|start|bio|stemcell|change|pigs
 Pigs
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
@@ -1219,6 +1228,7 @@ Any One Extra
 Do Nothing
 
 
+init|start|bio|stemcell|change|mice
 Mice
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
