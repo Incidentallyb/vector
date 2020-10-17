@@ -20,7 +20,7 @@ triggered_by:
   - init|start|macaques|step|change|pigs|step|share|change|fish
 author: Charlie
 choices:
-  - Nothing
+  - step|OK, thanks
 ---
 
 I will let Dr. Taylor Know

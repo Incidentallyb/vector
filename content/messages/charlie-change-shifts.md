@@ -11,7 +11,7 @@ triggered_by:
   - init|start|pigs|keep|step|share|limit
 author: Charlie
 choices:
-  - Nothing
+  - step|OK, thanks
 ---
 I will change the shift patterns and I personally thank you
 
