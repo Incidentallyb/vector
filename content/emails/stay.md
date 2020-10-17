@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - init|start|macaques|stay
+  - init|start|macaques|step|stay
   - init|start|fish|embryo|step|scale|embryo
   - init|start|fish|embryo|step|phased|stay
   - init|start|fish|embryo|step|share|stay

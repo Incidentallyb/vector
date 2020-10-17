@@ -58,28 +58,29 @@ choiceStringsToButtons buttonString =
 
 renderButtons : List ButtonInfo -> String -> Html Msg
 renderButtons buttonList chosenValue =
-    if List.length buttonList > 1 then
-     div [ class "button-choices" ]
-        (div [ class "quick-reply" ] [text (t EmailQuickReply)]  :: (List.map
-            (\buttonItem ->
-                button
-                    [ classList
-                        [ ( "btn choice-button", True )
-                        , ( "btn-primary", chosenValue == "" )
-                        , ( "active", chosenValue == buttonItem.action )
-                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
-                        ]
-                    , if chosenValue == "" then
-                        onClick (ChoiceButtonClicked buttonItem.action)
+    if List.length buttonList > 0 then
+        div [ class "button-choices" ]
+            (div [ class "quick-reply" ] [ text (t EmailQuickReply) ]
+                :: List.map
+                    (\buttonItem ->
+                        button
+                            [ classList
+                                [ ( "btn choice-button", True )
+                                , ( "btn-primary", chosenValue == "" )
+                                , ( "active", chosenValue == buttonItem.action )
+                                , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
+                                ]
+                            , if chosenValue == "" then
+                                onClick (ChoiceButtonClicked buttonItem.action)
 
-                    else
-                        Html.Attributes.class ""
-                    ]
-                    [ text buttonItem.label ]
+                              else
+                                Html.Attributes.class ""
+                            ]
+                            [ text buttonItem.label ]
+                    )
+                    buttonList
             )
-            buttonList
-        )
-        )
+
     else
         text ""
 

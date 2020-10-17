@@ -1,8 +1,8 @@
 ---
 triggered_by:
-  - init|start|macaques|change|fish|step|scale|adult
-  - init|start|macaques|change|fish|step|phased|adult
-  - init|start|macaques|change|fish|step|share|adult
+  - init|start|macaques|step|change|fish|step|scale|adult
+  - init|start|macaques|step|change|fish|step|phased|adult
+  - init|start|macaques|step|change|fish|step|share|adult
   - init|start|fish|adult|step|scale|adult
   - init|start|fish|adult|step|phased|adult
   - init|start|fish|adult|step|share|adult

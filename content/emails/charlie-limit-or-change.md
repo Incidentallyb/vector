@@ -3,9 +3,9 @@ triggered_by:
   - init|start|mice|handle|step|scale
   - init|start|mice|handle|step|phased
   - init|start|mice|handle|step|share
-  - init|start|macaques|change|mice|step|scale
-  - init|start|macaques|change|mice|step|phased
-  - init|start|macaques|change|mice|step|share
+  - init|start|macaques|step|change|mice|step|scale
+  - init|start|macaques|step|change|mice|step|phased
+  - init|start|macaques|step|change|mice|step|share
 author: Charlie Benn
 subject: Email subject content [cCc]
 choices:

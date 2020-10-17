@@ -1,8 +1,8 @@
 ---
 triggered_by:
-  - init|start|macaques|change|pigs
-  - init|start|macaques|change|mice
-  - init|start|macaques|change|fish
+  - init|start|macaques|step|change|pigs
+  - init|start|macaques|step|change|mice
+  - init|start|macaques|step|change|fish
 author: AL
 choices:
   - step|next-section
