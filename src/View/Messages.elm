@@ -91,12 +91,45 @@ renderPrompt message choices team =
                                 Markdown.toHtml [ class "playerMessageText" ] playerMessageText
                   in
                   playerMessage
-                , renderButtons (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
+                , -- Lovely hack for multi choice messages (only choose-1-2-3 for now)
+                  if message.basename == "choose-1-2-3" then
+                    renderCheckboxes (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
+
+                  else
+                    renderButtons (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
                 ]
             ]
 
     else
         text ""
+
+
+renderCheckboxes : List ButtonInfo -> String -> Html Msg
+renderCheckboxes buttonList chosenValue =
+    let
+        submitValue =
+            "two-extras"
+    in
+    div []
+        (List.map
+            (\buttonItem ->
+                button
+                    [ classList
+                        [ ( "btn choice-button", True )
+                        , ( "btn-primary", chosenValue == "" )
+                        , ( "active", chosenValue == buttonItem.action )
+                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
+                        ]
+                    , if chosenValue == "" then
+                        onClick (ChoiceButtonClicked submitValue)
+
+                      else
+                        Html.Attributes.class ""
+                    ]
+                    [ text buttonItem.label ]
+            )
+            buttonList
+        )
 
 
 renderButtons : List ButtonInfo -> String -> Html Msg
