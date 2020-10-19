@@ -9,15 +9,15 @@ triggered_by:
 author: Dr. Lisa Finnamore
 subject: Email subject content [cCc]
 choices:
-  - change|Let's move to a fish embryo model
+  - embryo|Let's move to a fish embryo model
   - stay|Let's continue with the adult fish
 scoreChangeEconomic:
-  - change|-3
+  - embryo|-3
 scoreChangeHarm:
-  - change|-2
+  - embryo|-2
   - stay|2
 scoreChangeSuccess:
-  - change|10
+  - embryo|10
   - stay|15
 ---
 
