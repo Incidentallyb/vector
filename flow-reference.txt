@@ -1205,7 +1205,7 @@ FILE-messages: barry-vaccine-hopes.md
 
 init|start|bio|stemcell|change
 Change Model
-FILE-messages: jenny-change-mice-fish-pigs.md
+FILE-messages: jenny-change-mice-pigs.md
 
 Pigs
 FILE-emails: jenny-change-barry.md
