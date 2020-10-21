@@ -3,6 +3,8 @@ triggered_by:
   - init|start|macaques
 author: Jenny
 subject: email subject [cCc]
+choices:
+  - step|OK, Thank you
 ---
 
 Hello, 

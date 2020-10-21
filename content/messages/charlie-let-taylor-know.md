@@ -12,15 +12,15 @@ triggered_by:
   - init|start|pigs|keep|step|phased|change|fish
   - init|start|pigs|keep|step|share|change|mice
   - init|start|pigs|keep|step|share|change|fish
-  - init|start|macaques|change|pigs|step|scale|change|mice
-  - init|start|macaques|change|pigs|step|scale|change|fish
-  - init|start|macaques|change|pigs|step|phased|change|mice
-  - init|start|macaques|change|pigs|step|phased|change|fish
-  - init|start|macaques|change|pigs|step|share|change|mice
-  - init|start|macaques|change|pigs|step|share|change|fish
+  - init|start|macaques|step|change|pigs|step|scale|change|mice
+  - init|start|macaques|step|change|pigs|step|scale|change|fish
+  - init|start|macaques|step|change|pigs|step|phased|change|mice
+  - init|start|macaques|step|change|pigs|step|phased|change|fish
+  - init|start|macaques|step|change|pigs|step|share|change|mice
+  - init|start|macaques|step|change|pigs|step|share|change|fish
 author: Charlie
 choices:
-  - Nothing
+  - step|OK, thanks
 ---
 
 I will let Dr. Taylor Know

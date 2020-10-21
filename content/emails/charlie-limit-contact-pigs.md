@@ -1,8 +1,8 @@
 ---
 triggered_by:
-  - init|start|macaques|change|pigs|step|scale
-  - init|start|macaques|change|pigs|step|phased
-  - init|start|macaques|change|pigs|step|share
+  - init|start|macaques|step|change|pigs|step|scale
+  - init|start|macaques|step|change|pigs|step|phased
+  - init|start|macaques|step|change|pigs|step|share
   - init|start|pigs|increase|step|scale
   - init|start|pigs|increase|step|phased
   - init|start|pigs|increase|step|share

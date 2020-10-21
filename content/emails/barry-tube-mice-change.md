@@ -8,13 +8,8 @@ subject: Email subject content [cCc]
 choices:
   - tubes|Carry on with tube mice
   - change|Change animal model
-scoreChangeEconomic:
-  - change|-2
 scoreChangeHarm:
   - tubes|-1
-  - change|2
-scoreChangeSuccess:
-  - change|5
 ---
 
 Hello,
