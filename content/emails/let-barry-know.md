@@ -1,4 +1,7 @@
 ---
+title: Let Barry know
+author: Jenny
+subject: Email subject content [cCc]
 triggered_by:
   - init|start|macaques|step|stay|step|scale|pigs
   - init|start|macaques|step|stay|step|scale|mice
@@ -9,8 +12,6 @@ triggered_by:
   - init|start|macaques|step|stay|step|share|pigs
   - init|start|macaques|step|stay|step|share|mice
   - init|start|macaques|step|stay|step|share|fish
-author: Jenny
-subject: Email subject content [cCc]
 ---
 
 Hello Dream Team!
