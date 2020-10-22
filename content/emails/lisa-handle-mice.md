@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|mice
+title: Lisa handle mice
 author: Dr. Lisa Finnamore
 subject: Email subject content [cCc]
+triggered_by:
+  - init|start|mice
 choices:
   - handle|Continue handling the mice
   - tubes|Mice in glass tubes
