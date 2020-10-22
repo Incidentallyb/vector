@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|pigs
+title: Charlie pen size
 author: Charlie Benn
 subject: Email subject content [cCc]
+triggered_by:
+  - init|start|pigs
 choices:
   - increase|Increase the pen size
   - keep|Keep the pens the same size
