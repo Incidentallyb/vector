@@ -1,6 +1,6 @@
-module GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateScore, updateSuccessScore)
+module GameData exposing (GameData, NotificationCount, ScoreType(..), displayScoreNow, filterEmails, filterMessages, filterSocials, getIntegerIfMatchFound, init, updateScore, updateSuccessScore)
 
-import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
+import Content exposing (BranchingContent(..), Datastore, EmailData, MessageData, SocialData)
 import ContentChoices
 import Dict exposing (Dict)
 
@@ -220,6 +220,12 @@ type ScoreType
     = Economic
     | Harm
     | Success
+
+
+displayScoreNow : Content.Datastore -> GameData -> List Int
+displayScoreNow cont gam =
+    [ updateScore Economic cont gam "stuff"
+    ]
 
 
 updateScore : ScoreType -> Content.Datastore -> GameData -> String -> Int

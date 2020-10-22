@@ -5,7 +5,7 @@ import ContentChoices
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
-import GameData exposing (GameData, filterMessages)
+import GameData exposing (GameData, displayScoreNow, filterMessages)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
@@ -41,21 +41,49 @@ choiceStringsToButtons buttonString =
     { label = parsedString, action = action }
 
 
-view : GameData -> Dict String Content.MessageData -> Html Msg
+view : GameData -> Content.Datastore -> Html Msg
 view gamedata messagesDict =
     ul [ class "message-list p-0" ]
         (Dict.values
-            (filterMessages messagesDict gamedata.choices)
-            |> List.map (renderMessageAndPrompt gamedata.choices gamedata.teamName)
+            (filterMessages messagesDict.messages gamedata.choices)
+            |> List.map (renderMessageAndPrompt gamedata messagesDict gamedata.teamName)
         )
 
 
-renderMessageAndPrompt : List String -> String -> Content.MessageData -> Html Msg
-renderMessageAndPrompt choices team message =
+renderMessageAndPrompt : GameData -> Content.Datastore -> String -> Content.MessageData -> Html Msg
+renderMessageAndPrompt gamedata content team message =
     li []
         [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
         , renderMessage message.author message.content
-        , renderPrompt message choices team
+        , renderPrompt message gamedata.choices team
+        , if List.length message.triggered_by == 2 || List.length message.triggered_by == 5 then
+            renderScore "AL" gamedata content message
+
+          else
+            text ""
+        ]
+
+
+getChoicePath : List String -> List String -> List String
+getChoicePath gameChoices triggers =
+    [ "hi" ] List.partition
+
+
+renderScore : String -> GameData -> Content.Datastore -> Content.MessageData -> Html Msg
+renderScore from currentGameData content message =
+    div
+        [ class "message al w-75 float-left mt-3 ml-3 py-2" ]
+        [ div [ class "mx-3" ]
+            [ p [ class "message-from m-0" ]
+                [ text from ]
+
+            -- use the message to partition all the choices and display score up to there
+            , div [] [ text ("Something " ++ String.fromInt (Maybe.withDefault 0 (List.head (GameData.displayScoreNow content currentGameData)))) ]
+            , p [] [ text "Your choices have produced the following results:" ]
+            , p [] [ text ("Success: " ++ String.fromInt currentGameData.scoreSuccess ++ "%") ]
+            , p [] [ text ("Economic: £" ++ String.fromInt currentGameData.scoreEconomic ++ " remaining") ]
+            , p [] [ text ("Harm: " ++ String.fromInt currentGameData.scoreHarm) ]
+            ]
         ]
 
 
@@ -71,19 +99,6 @@ renderMessage from message =
         ]
 
 
-renderScore : String -> GameData -> List String -> Html Msg
-renderScore from dat triggers =
-    div
-        [ class "message al w-75 float-left mt-3 ml-3 py-2" ]
-        [ div [ class "mx-3" ]
-            [ p [ class "message-from m-0" ]
-                [ text from ]
-            , div [] [ text ("Economic score" ++ String.fromInt dat.scoreEconomic) ]
-            , div [] [ text ("Economic score" ++ String.concat dat.choices) ]
-            ]
-        ]
-
-
 renderPrompt : Content.MessageData -> List String -> String -> Html Msg
 renderPrompt message choices team =
     if List.length message.choices > 0 then
@@ -92,13 +107,11 @@ renderPrompt message choices team =
             [ div [ class "mx-3" ]
                 [ p [ class "message-from m-0" ]
                     [ text (t FromPlayerTeam ++ team) ]
-
-                -- we might have some player text in the future?
                 , let
                     playerMessage =
                         case message.playerMessage of
                             Nothing ->
-                                div [] []
+                                text ""
 
                             Just playerMessageText ->
                                 Markdown.toHtml [ class "playerMessageText" ] playerMessageText

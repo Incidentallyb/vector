@@ -214,7 +214,7 @@ view model =
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Messages.view model.gameData model.data.messages
+                    [ View.Messages.view model.gameData model.data
                     ]
                 ]
 

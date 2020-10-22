@@ -79,6 +79,9 @@ $timeToWait: 2s;
 .message-list .message:nth-child(3n) {
   animation-delay: #{$timeToWait + 1};
 }
+.message-list .message:nth-child(4n) {
+  animation-delay: #{$timeToWait + 2};
+}
 
 @keyframes slide-into-view {
   0% {
