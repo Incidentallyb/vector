@@ -1,4 +1,7 @@
 ---
+title: Lisa fish pain
+author: Dr. Lisa Finnamore
+subject: Email subject content [cCc]
 triggered_by:
   - init|start|macaques|step|change|fish|step|scale
   - init|start|macaques|step|change|fish|step|phased
@@ -6,8 +9,6 @@ triggered_by:
   - init|start|fish|adult|step|scale
   - init|start|fish|adult|step|phased
   - init|start|fish|adult|step|share
-author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
 choices:
   - embryo|Let's move to a fish embryo model
   - stay|Let's continue with the adult fish
