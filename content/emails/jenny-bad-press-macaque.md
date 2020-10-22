@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|macaques
+title: Jenny bad press macaque
 author: Jenny
 subject: email subject [cCc]
+triggered_by:
+  - init|start|macaques
 choices:
   - step|OK, Thank you
 ---
