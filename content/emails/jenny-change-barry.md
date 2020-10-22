@@ -1,7 +1,7 @@
 ---
 title: Jenny change Barry
 author: Jenny
-subject: Email subject content [cCc]
+subject: Responding to Public Opinion
 triggered_by:
   - init|start|fish|embryo|step|scale|change|mice
   - init|start|fish|embryo|step|scale|change|pigs

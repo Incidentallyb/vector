@@ -1,7 +1,7 @@
 ---
 title: Let Barry know
 author: Jenny
-subject: Email subject content [cCc]
+subject: Responding to the public - Changing the Model
 triggered_by:
   - init|start|macaques|step|stay|step|scale|pigs
   - init|start|macaques|step|stay|step|scale|mice

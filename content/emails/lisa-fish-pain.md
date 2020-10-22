@@ -1,7 +1,7 @@
 ---
 title: Lisa fish pain
 author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
+subject: New Research - Fish Sentience
 triggered_by:
   - init|start|macaques|step|change|fish|step|scale
   - init|start|macaques|step|change|fish|step|phased

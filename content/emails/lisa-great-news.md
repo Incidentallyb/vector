@@ -1,7 +1,7 @@
 ---
 title: Lisa great news
 author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
+subject: Changing to Fish Embryos
 triggered_by:
   - init|start|macaques|step|change|fish|step|scale|embryo
   - init|start|macaques|step|change|fish|step|phased|embryo

@@ -1,7 +1,7 @@
 ---
 title: Stay
 author: Jenny
-subject: Email subject content [cCc]
+subject: Continuing using Macaques
 triggered_by:
   - init|start|macaques|step|stay
   - init|start|fish|embryo|step|scale|embryo

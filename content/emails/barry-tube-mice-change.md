@@ -1,7 +1,7 @@
 ---
 title: Barry tube mice change
 author: Dr. Barry Taylor
-subject: Email subject content [cCc]
+subject: Working with Mice in Observation tubes are extremely difficult
 triggered_by:
   - init|start|mice|tubes|step|scale
   - init|start|mice|tubes|step|phased

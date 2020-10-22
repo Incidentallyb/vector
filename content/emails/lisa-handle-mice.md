@@ -1,7 +1,7 @@
 ---
 title: Lisa handle mice
 author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
+subject: Handling the Mice are causing stress
 triggered_by:
   - init|start|mice
 choices:

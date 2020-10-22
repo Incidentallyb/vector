@@ -1,7 +1,7 @@
 ---
 title: Change AL
 author: Jenny
-subject: Email subject content [cCc]
+subject: Responding to Public Outrage
 triggered_by:
   - init|start|macaques|step|change
 ---
