@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|bio|biobank
+title: Barry bio bank
 author: Dr. Barry Taylor
 subject: Email subject content [cCc]
+triggered_by:
+  - init|start|bio|biobank
 choices:
   - mice|Change to Mice
   - fish|Change to Fish
