@@ -1,4 +1,7 @@
 ---
+title: Jenny change Barry
+author: Jenny
+subject: Email subject content [cCc]
 triggered_by:
   - init|start|fish|embryo|step|scale|change|mice
   - init|start|fish|embryo|step|scale|change|pigs
@@ -8,8 +11,6 @@ triggered_by:
   - init|start|fish|embryo|step|colaborate|change|pigs
   - init|start|bio|stemcell|change|pigs
   - init|start|bio|stemcell|change|mice
-author: Jenny
-subject: Email subject content [cCc]
 ---
 
 Hey Everyone,
