@@ -11,7 +11,7 @@ scoreChangeEconomic:
   - engage|-5
   - prosecute|7
 scoreChangeHarm:
-  - engage|-2
+  - engage|-5
   - prosecute|5
 scoreChangeSuccess:
   - engage|-15
