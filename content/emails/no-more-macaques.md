@@ -1,23 +1,24 @@
 ---
+title: No more macaques
+author: Jenny
+subject: Email subject content [cCc]
 triggered_by:
   - init|start|macaques|step|stay|step|scale
   - init|start|macaques|step|stay|step|phased
   - init|start|macaques|step|stay|step|share
-author: Jenny
-subject: Email subject content [cCc]
 choices:
   - pigs|Pigs
   - mice|Mice
   - fish|Fish
-scoreChangeEconomic: 
+scoreChangeEconomic:
   - pigs|-2
   - mice|-2
   - fish|-2
-scoreChangeHarm: 
+scoreChangeHarm:
   - pigs|4
   - mice|3
   - fish|2
-scoreChangeSuccess: 
+scoreChangeSuccess:
   - pigs|10
   - mice|10
   - fish|10
