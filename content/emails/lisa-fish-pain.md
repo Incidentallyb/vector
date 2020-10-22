@@ -11,15 +11,15 @@ triggered_by:
   - init|start|fish|adult|step|share
 choices:
   - embryo|Let's move to a fish embryo model
-  - stay|Let's continue with the adult fish
+  - adult|Let's continue with the adult fish
 scoreChangeEconomic:
   - embryo|-3
 scoreChangeHarm:
   - embryo|-2
-  - stay|2
+  - adult|2
 scoreChangeSuccess:
   - embryo|10
-  - stay|15
+  - adult|15
 ---
 
 Hello,
