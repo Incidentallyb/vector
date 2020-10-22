@@ -1077,7 +1077,7 @@ FILE-emails: barry-bio-bank.md
 1.5.1.1 Change the Model
 
 (added choices to email instead)
-BT: Have a look aat the options and let me know
+BT: Have a look at the options and let me know
 
 init|start|bio|biobank|pigs
 1.5.1.1.1 Change to Pigs
@@ -1102,6 +1102,9 @@ Do Nothing
 init|start|bio|biobank|fish
 1.5.1.1.3? Change to Fish
 FILE-messages: barry-bio-change.md
+
+
+
 FILE-messages: choose-1-2-3.md
 
 Any two Extras

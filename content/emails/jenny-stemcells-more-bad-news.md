@@ -6,6 +6,7 @@ triggered_by:
   - init|start|bio|stemcell|stay
 choices:
   - engage|Engage Protestors
+  - prosecute|Prosecute Protestors
   - change|Change model
 scoreChangeEconomic:
   - engage|-5
