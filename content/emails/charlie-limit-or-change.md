@@ -1,4 +1,7 @@
 ---
+title: Charlie limit or change
+author: Charlie Benn
+subject: Email subject content [cCc]
 triggered_by:
   - init|start|mice|handle|step|scale
   - init|start|mice|handle|step|phased
@@ -6,8 +9,6 @@ triggered_by:
   - init|start|macaques|step|change|mice|step|scale
   - init|start|macaques|step|change|mice|step|phased
   - init|start|macaques|step|change|mice|step|share
-author: Charlie Benn
-subject: Email subject content [cCc]
 choices:
   - limit|Limit the time technicians spend handling mice
   - fish|Let's change to fish models
