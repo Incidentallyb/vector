@@ -11,10 +11,10 @@ scoreChangeEconomic:
   - engage|-5
   - prosecute|7
 scoreChangeHarm:
-  - enagage|-2
+  - engage|-2
   - prosecute|5
 scoreChangeSuccess:
-  - enagage|-15
+  - engage|-15
 ---
 
 Hi Team,
