@@ -4,7 +4,7 @@ triggered_by:
   - init|start|mice|tubes|step|phased
   - init|start|mice|tubes|step|share
 author: Dr. Barry Taylor
-subject: Email subject content [cCc]
+subject: Working with Mice in Observation tubes are extremely difficult
 choices:
   - tubes|Carry on with tube mice
   - change|Change animal model

@@ -10,7 +10,7 @@ triggered_by:
   - init|start|macaques|step|stay|step|share|mice
   - init|start|macaques|step|stay|step|share|fish
 author: Jenny
-subject: Email subject content [cCc]
+subject: Responding to the public - Changing the Model
 ---
 
 Hello Dream Team!

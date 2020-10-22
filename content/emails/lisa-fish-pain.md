@@ -7,7 +7,7 @@ triggered_by:
   - init|start|fish|adult|step|phased
   - init|start|fish|adult|step|share
 author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
+subject: New Research - Fish Sentience
 choices:
   - embryo|Let's move to a fish embryo model
   - stay|Let's continue with the adult fish

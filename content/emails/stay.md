@@ -6,7 +6,7 @@ triggered_by:
   - init|start|fish|embryo|step|share|stay
   - init|start|bio|stemcell|stay
 author: Jenny
-subject: Email subject content [cCc]
+subject: Continuing using Macaques
 ---
 
 Hey Everyone,

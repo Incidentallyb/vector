@@ -2,7 +2,7 @@
 triggered_by:
   - init|start|macaques|step|change
 author: Jenny
-subject: Email subject content [cCc]
+subject: Responding to Public Outrage
 ---
 
 Hey Everyone,

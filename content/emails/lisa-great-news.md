@@ -7,7 +7,7 @@ triggered_by:
   - init|start|fish|adult|step|phased|embryo
   - init|start|fish|adult|step|share|embryo
 author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
+subject: Changing to Fish Embryos
 ---
 
 This is great news, and should decrease the harm rating. I will let Dr. Taylor to make the changes.

@@ -2,7 +2,7 @@
 triggered_by:
   - init|start|mice
 author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
+subject: Handling the Mice are causing stress
 choices:
   - handle|Continue handling the mice
   - tubes|Mice in glass tubes

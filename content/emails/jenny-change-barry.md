@@ -9,7 +9,7 @@ triggered_by:
   - init|start|bio|stemcell|change|pigs
   - init|start|bio|stemcell|change|mice
 author: Jenny
-subject: Email subject content [cCc]
+subject: Responding to Public Opinion
 ---
 
 Hey Everyone,
