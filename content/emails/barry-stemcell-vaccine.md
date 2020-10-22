@@ -1,9 +1,10 @@
 ---
+title: Barry stemcell vaccine
+author: Dr. Barry Taylor
+subject: Email subject content [cCc]
 triggered_by:
   - init|start|bio|stemcell|stay|engage
   - init|start|bio|stemcell|stay|prosecute
-author: Dr. Barry Taylor
-subject: Email subject content [cCc]
 choices:
   - pigs|Change to Pigs
   - mice|Change to Mice
