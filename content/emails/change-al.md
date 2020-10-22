@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|macaques|step|change
+title: Change AL
 author: Jenny
 subject: Email subject content [cCc]
+triggered_by:
+  - init|start|macaques|step|change
 ---
 
 Hey Everyone,
