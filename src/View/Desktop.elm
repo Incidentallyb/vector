@@ -45,6 +45,7 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                         div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
                         , div [ class "harm" ] [ text (String.fromInt gameData.scoreHarm) ]
                         , div [ class "success" ] [ text (String.fromInt gameData.scoreSuccess ++ "%") ]
+                        , div [ class "choices" ] [ text (String.join " " (List.reverse gameData.choices)) ]
                         ]
                     ]
                 ]
