@@ -1,5 +1,5 @@
 ---
-title: barry email bio bank
+title: Barry email bio bank
 author: Dr. Barry Taylor
 triggered_by:
   - init|start|bio|biobank
