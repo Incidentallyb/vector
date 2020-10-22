@@ -1,4 +1,7 @@
 ---
+title: Charlie limit contact pigs
+author: Charlie Benn
+subject: Email subject content [cCc]
 triggered_by:
   - init|start|macaques|step|change|pigs|step|scale
   - init|start|macaques|step|change|pigs|step|phased
@@ -9,11 +12,9 @@ triggered_by:
   - init|start|pigs|keep|step|scale
   - init|start|pigs|keep|step|phased
   - init|start|pigs|keep|step|share
-author: Charlie Benn
-subject: Email subject content [cCc]
 choices:
- - limit|Limit contact
- - change|Change animal model
+  - limit|Limit contact
+  - change|Change animal model
 scoreChangeEconomic:
   - limit|-3
 scoreChangeHarm:
