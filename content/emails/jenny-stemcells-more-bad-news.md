@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|bio|stemcell|stay
+title: Jenny stemcells more bad news
 author: Jenny
 subject: Email subject content [cCc]
+triggered_by:
+  - init|start|bio|stemcell|stay
 choices:
   - engage|Engage Protestors
   - change|Change model
