@@ -1,4 +1,6 @@
 ---
+title: Charlie change shifts
+author: Charlie
 triggered_by:
   - init|start|macaques|step|change|pigs|step|scale|limit
   - init|start|macaques|step|change|pigs|step|phased|limit
@@ -9,7 +11,6 @@ triggered_by:
   - init|start|pigs|keep|step|scale|limit
   - init|start|pigs|keep|step|phased|limit
   - init|start|pigs|keep|step|share|limit
-author: Charlie
 choices:
   - step|OK, thanks
 ---

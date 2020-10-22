@@ -20,3 +20,18 @@ collections:
       - {label: "Harm change", name: "scoreChangeHarm", widget: "list"}
       - {label: "Success change", name: "scoreChangeSuccess", widget: "list"}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "message"
+    label: "Message"
+    folder: "/content/messages"
+    create: true
+    slug: "{{slug}}" # title.md
+    fields:
+      - {label: "Title (filename)", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Triggered by choice list", name: "triggered_by", widget: "list"}
+      - {label: "Player message", name: "playerMessage", widget: "string"}
+      - {label: "Choices", name: "choices", widget: "list"}
+      - {label: "Economic change", name: "scoreChangeEconomic", widget: "list"}
+      - {label: "Harm change", name: "scoreChangeHarm", widget: "list"}
+      - {label: "Success change", name: "scoreChangeSuccess", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}

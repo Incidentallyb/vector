@@ -1,4 +1,6 @@
 ---
+title: Charlie let Taylor know
+author: Charlie
 triggered_by:
   - init|start|pigs|increase|step|scale|change|mice
   - init|start|pigs|increase|step|scale|change|fish
@@ -18,7 +20,6 @@ triggered_by:
   - init|start|macaques|step|change|pigs|step|phased|change|fish
   - init|start|macaques|step|change|pigs|step|share|change|mice
   - init|start|macaques|step|change|pigs|step|share|change|fish
-author: Charlie
 choices:
   - step|OK, thanks
 ---

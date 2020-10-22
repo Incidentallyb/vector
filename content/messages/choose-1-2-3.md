@@ -1,4 +1,6 @@
 ---
+title: Choose 1 2 3
+author: AL
 triggered_by:
   - init|start|macaques|step|stay|step|scale|pigs
   - init|start|macaques|step|stay|step|scale|mice
@@ -81,7 +83,6 @@ triggered_by:
   - init|start|bio|biobank|stay|stay|pigs
   - init|start|bio|biobank|stay|stay|mice
   - init|start|bio|biobank|stay|stay|fish
-author: AL
 choices:
   - two-extras|Any two extras
   - one-extra|Any one extra

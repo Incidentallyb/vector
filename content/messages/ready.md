@@ -1,7 +1,8 @@
 ---
+title: ready
+author: AL
 triggered_by:
   - init|start
-author: AL
 playerMessage: "We have evaluated all the options, and have decided to go with:"
 choices:
   - macaques|Macaques

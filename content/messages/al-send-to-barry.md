@@ -1,4 +1,6 @@
 ---
+title: AL send to Barry
+author: AL
 triggered_by:
   - init|start|macaques|step|stay|step|scale
   - init|start|macaques|step|stay|step|phased
@@ -17,7 +19,6 @@ triggered_by:
   - init|start|pigs|keep|step|share
   - init|start|mice|tubes|step|phased
   - init|start|mice|tubes|step|share
-author: AL
 ---
 
 I will send this over to Dr. Barry Taylor and the team now

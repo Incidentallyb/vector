@@ -1,4 +1,5 @@
 ---
+title: Balance success harm
 triggered_by:
   - init|start|macaques|step|stay|step
   - init|start|pigs|increase|step
