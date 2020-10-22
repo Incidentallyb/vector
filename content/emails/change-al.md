@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|macaques|step|change
+title: Change AL
 author: Jenny
 subject: Responding to Public Outrage
+triggered_by:
+  - init|start|macaques|step|change
 ---
 
 Hey Everyone,

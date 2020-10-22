@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|bio|stemcell|stay
+title: Jenny stemcells more bad news
 author: Jenny
 subject: Protestors have broken into the lab!
+triggered_by:
+  - init|start|bio|stemcell|stay
 choices:
   - engage|Engage Protestors
   - change|Change model

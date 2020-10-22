@@ -1,10 +1,11 @@
 ---
+title: Barry change
+author: Dr. Barry Taylor
+subject: Adaptations to the model
 triggered_by:
   - init|start|mice|tubes|step|scale|change
   - init|start|mice|tubes|step|phased|change
   - init|start|mice|tubes|step|share|change
-author: Dr. Barry Taylor
-subject: Adaptations to the model
 choices:
   - pigs|Pigs
   - fish|Fish

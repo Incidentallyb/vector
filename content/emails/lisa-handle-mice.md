@@ -1,8 +1,9 @@
 ---
-triggered_by:
-  - init|start|mice
+title: Lisa handle mice
 author: Dr. Lisa Finnamore
 subject: Handling the Mice are causing stress
+triggered_by:
+  - init|start|mice
 choices:
   - handle|Continue handling the mice
   - tubes|Mice in glass tubes

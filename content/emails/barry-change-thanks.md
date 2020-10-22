@@ -1,4 +1,7 @@
 ---
+title: Barry change thanks
+author: Dr. Barry Taylor
+subject: Adaptations to the model
 triggered_by:
   - init|start|mice|tubes|step|scale|change|fish
   - init|start|mice|tubes|step|scale|change|pigs
@@ -6,8 +9,6 @@ triggered_by:
   - init|start|mice|tubes|step|phased|change|pigs
   - init|start|mice|tubes|step|share|change|fish
   - init|start|mice|tubes|step|share|change|pigs
-author: Dr. Barry Taylor
-subject: Adaptations to the model
 ---
 
 Thank you for your email and the careful consideration in our approach going forward. I will make the requested changes.
