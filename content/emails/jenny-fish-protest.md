@@ -9,6 +9,12 @@ triggered_by:
 choices:
   - embryo|Stay with fish embryos
   - change|Change model
+scoreChangeEconomic:
+  - embryo|-3
+scoreChangeHarm:
+  - ""
+scoreChangeSuccess:
+  - embryo|5
 ---
 Hello,
 
