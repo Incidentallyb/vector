@@ -5,7 +5,7 @@
 }
 
 .email-list-item.read {
-  background-color: var(--grey-light);
+  background-color: var(--email-read);
 
   .author {
     font-weight: normal;
@@ -96,8 +96,8 @@
     background: var(--grey);
     border-radius:5px;
   }
-  
-  svg { 
+
+  svg {
     width: 1rem;
     height:1rem;
     margin-right:0.5rem;

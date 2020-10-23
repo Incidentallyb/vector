@@ -1,27 +1,25 @@
 ---
+title: Barry bio bank
+author: Dr. Barry Taylor
+subject: Biobank material - My Misgivings
 triggered_by:
   - init|start|bio|biobank
-author: Dr. Barry Taylor
-subject: Email subject content [cCc]
 choices:
-  - pigs|Change to Pigs?
   - mice|Change to Mice
   - fish|Change to Fish
   - stay|Stay with Bio Banks
 scoreChangeEconomic:
-  - pigs|-2
   - mice|-2
   - fish|-2
   - stay|-5
 scoreChangeHarm:
-  - pigs|0
   - mice|6
   - fish|5
 scoreChangeSuccess:
-  - pigs|0
   - mice|35
   - fish|25
 ---
+
 Hello,
 
 My name is Dr. Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern, and I want to find the vaccine to this disease.

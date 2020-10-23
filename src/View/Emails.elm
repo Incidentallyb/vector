@@ -58,30 +58,27 @@ choiceStringsToButtons buttonString =
 
 renderButtons : List ButtonInfo -> String -> Html Msg
 renderButtons buttonList chosenValue =
-    if List.length buttonList > 1 then
-     div [ class "button-choices" ]
-        (div [ class "quick-reply" ] [text (t EmailQuickReply)]  :: (List.map
-            (\buttonItem ->
-                button
-                    [ classList
-                        [ ( "btn choice-button", True )
-                        , ( "btn-primary", chosenValue == "" )
-                        , ( "active", chosenValue == buttonItem.action )
-                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
-                        ]
-                    , if chosenValue == "" then
-                        onClick (ChoiceButtonClicked buttonItem.action)
+    div [ class "button-choices" ]
+        (div [ class "quick-reply" ] [ text (t EmailQuickReply) ]
+            :: List.map
+                (\buttonItem ->
+                    button
+                        [ classList
+                            [ ( "btn choice-button", True )
+                            , ( "btn-primary", chosenValue == "" )
+                            , ( "active", chosenValue == buttonItem.action )
+                            , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
+                            ]
+                        , if chosenValue == "" then
+                            onClick (ChoiceButtonClicked buttonItem.action)
 
-                    else
-                        Html.Attributes.class ""
-                    ]
-                    [ text buttonItem.label ]
-            )
-            buttonList
+                          else
+                            Html.Attributes.class ""
+                        ]
+                        [ text buttonItem.label ]
+                )
+                buttonList
         )
-        )
-    else
-        text ""
 
 
 single : GameData -> Maybe Content.EmailData -> Html Msg
@@ -91,6 +88,15 @@ single gamedata maybeContent =
             text (t ItemNotFound)
 
         Just email ->
+            let
+                choiceList =
+                    case email.choices of
+                        Nothing ->
+                            []
+
+                        Just choices ->
+                            choices
+            in
             article [ class "email p-3" ]
                 [ p [ class "date" ] [ text (t EmailDummySentTime) ]
                 , h2 [] [ text email.subject ]
@@ -101,7 +107,11 @@ single gamedata maybeContent =
                     , div [ class "ml-3" ] [ text email.author ]
                     ]
                 , div [ class "mt-3" ] [ Markdown.toHtml [ class "content" ] email.content ]
-                , renderButtons (List.map choiceStringsToButtons (Maybe.withDefault [ "" ] email.choices)) (ContentChoices.getChoiceChosenEmail gamedata.choices email)
+                , if List.length choiceList > 0 then
+                    renderButtons (List.map choiceStringsToButtons choiceList) (ContentChoices.getChoiceChosenEmail gamedata.choices email)
+
+                  else
+                    text ""
                 , a [ href (Route.toString Emails), class "btn btn-primary" ]
                     [ arrowLeft []
                     , text (t NavEmailsBackTo)
