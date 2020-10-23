@@ -27,6 +27,12 @@ type Key
     | NavEmailsBackTo
       --- General application texts
     | ItemNotFound
+      --- Desktop
+    | DesktopWelcome
+    | DesktopParagraph1
+    | DesktopParagraph2
+    | DesktopParagraph3
+    | DesktopParagraph4
       --- Documents
     | ViewDocument
       --- Emails
@@ -34,3 +40,4 @@ type Key
     | EmailQuickReply
       --- TeamNames
     | TeamNames
+

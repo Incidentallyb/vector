@@ -28,7 +28,15 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderWrapperWithNav gameData pageRoute notifications [ text "my desktop" ]
+                [ renderWrapperWithNav gameData pageRoute notifications [ 
+                        div [ class "welcome" ] [
+                            h1 [ ] [ text (t DesktopWelcome) ]
+                            ,p [ class "desktopParagraph1" ] [ text (t DesktopParagraph1) ]
+                            ,p [ class "desktopParagraph2" ] [ text (t DesktopParagraph2) ]
+                            ,p [ class "desktopParagraph3" ] [ text (t DesktopParagraph3) ]
+                            ,p [ class "desktopParagraph4" ] [ text (t DesktopParagraph4) ]
+                        ]
+                    ]
                 ]
 
 
