@@ -1,4 +1,6 @@
 ---
+title: Barry vaccine hopes
+author: Dr. Barry Taylor
 triggered_by:
   - init|start|bio|biobank|stay|stay|pigs
   - init|start|bio|biobank|stay|stay|mice
@@ -9,6 +11,5 @@ triggered_by:
   - init|start|bio|stemcell|stay|prosecute|pigs
   - init|start|bio|stemcell|stay|prosecute|mice
   - init|start|bio|stemcell|stay|prosecute|fish
-author: Dr. Barry Taylor
 ---
 With any luck, we will find a vaccine soon. Thank you for your help
