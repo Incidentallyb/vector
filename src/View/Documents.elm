@@ -71,14 +71,15 @@ addReadStatus documentData visitedSet =
 
 listItem : DocumentWithRead -> Html Msg
 listItem content =
-    div [ class "card" ]
+    div [ class "card", classList [ ( "read", content.read ) ] ]
         [ div [ class "card-body" ]
             [ div [ class "card-title" ]
-                [ h1 [] [ text content.basename ]
+                [ h1 [] [ text (String.replace "-" " " content.basename) ]
                 , img [ src (imagePath ++ content.image), class "img-fluid p-md-1" ] []
                 ]
             , div [ class "card-text" ]
                 [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text (t ViewDocument) ]
+                , span [ class "badge badge-error new" ] [ text  (t New) ]
                 ]
             ]
         ]

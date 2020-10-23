@@ -27,6 +27,7 @@ type Key
     | NavEmailsBackTo
       --- General application texts
     | ItemNotFound
+    | New
       --- Documents
     | ViewDocument
       --- Emails
