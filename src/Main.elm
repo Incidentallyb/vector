@@ -7,7 +7,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, init)
+import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, filterDocuments, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -133,11 +133,15 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
-                    , documents = model.notifications.documents
+                    , documents = 
+                        model.notifications.documents
+                            + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
                     , emails =
                         model.notifications.emails
                             + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
-                    , social = model.notifications.social + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
+                    , social = 
+                        model.notifications.social 
+                            + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
                     }
             in
             ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
@@ -178,7 +182,7 @@ view model =
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Documents.list model.data.documents
+                    [ View.Documents.list model.gameData model.data.documents model.visited
                     ]
                 ]
 

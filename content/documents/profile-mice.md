@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - "start"
+  - "init|start"
 image: MOUSE BD.jpg
 ---
 # Mice

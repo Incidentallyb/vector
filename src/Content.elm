@@ -1,4 +1,4 @@
-module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, MessageData, SocialData, datastoreDictDecoder, emptyEmail, emptyMessage)
+module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, MessageData, SocialData, datastoreDictDecoder, emptyEmail, emptyMessage, emptyDocument)
 
 import Dict exposing (Dict)
 import Json.Decode exposing (field, list, int, map4, maybe, string)
@@ -16,6 +16,8 @@ type alias Datastore =
 type BranchingContent
     = Message MessageData
     | Email EmailData
+    | Social SocialData
+    | Document DocumentData
 
 
 type alias MessageData =
@@ -33,7 +35,8 @@ type alias MessageData =
 
 
 type alias DocumentData =
-    { image : String
+    { triggered_by : List String
+    , image : String
     , preview : String
     , content : String
     , basename : String
@@ -95,6 +98,15 @@ emptyEmail =
     , scoreChangeSuccess = Nothing
     }
 
+emptyDocument : DocumentData
+emptyDocument =
+    { triggered_by = [ "" ]
+    , image = ""
+    , preview = ""
+    , content = "Sorry. Something's gone wrong."
+    , basename = ""
+    }
+
 
 datastoreDictDecoder : Json.Decode.Value -> Datastore
 datastoreDictDecoder flags =
@@ -154,6 +166,7 @@ documentDictDecoder : Json.Decode.Decoder (Dict String DocumentData)
 documentDictDecoder =
     Json.Decode.dict
         (Json.Decode.succeed DocumentData
+            |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
             |> andMap (Json.Decode.field "image" string |> withDefault "")
             |> andMap (Json.Decode.field "preview" string |> withDefault "")
             |> andMap (Json.Decode.field "content" string |> withDefault "")

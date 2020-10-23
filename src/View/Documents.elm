@@ -4,12 +4,23 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
+import GameData exposing (GameData, filterDocuments)
 import Heroicons.Outline exposing (arrowLeft)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Set
+
+type alias DocumentWithRead =
+    { triggered_by : List String
+    , image : String
+    , preview : String
+    , content : String
+    , basename : String
+    , read : Bool
+    }
 
 
 imagePath : String
@@ -34,13 +45,31 @@ single maybeContent =
                 ]
 
 
-list : Dict String Content.DocumentData -> Html Msg
-list documentDict =
+list :  GameData -> Dict String Content.DocumentData -> Set.Set String -> Html Msg
+list gamedata documentDict visitedSet =
     div [ class "card-columns" ]
-        (List.map listItem (Dict.values documentDict))
+        (List.map listItem (addReadStatus (Dict.values (filterDocuments documentDict gamedata.choices)) visitedSet))
 
 
-listItem : Content.DocumentData -> Html Msg
+addReadStatus : List Content.DocumentData -> Set.Set String -> List DocumentWithRead
+addReadStatus documentData visitedSet =
+    List.map
+        (\document ->
+            let
+                readStatus =
+                    Set.member ("/documents/" ++ document.basename) visitedSet
+            in
+            { triggered_by = document.triggered_by
+            , image = document.image
+            , preview = document.preview
+            , content = document.content
+            , basename = document.basename
+            , read = readStatus
+            }
+        )
+        documentData
+
+listItem : DocumentWithRead -> Html Msg
 listItem content =
     div [ class "card" ]
         [ div [ class "card-body" ]
