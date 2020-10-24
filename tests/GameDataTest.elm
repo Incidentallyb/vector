@@ -1,4 +1,4 @@
-module GameDataTest exposing (getStringIfMatchFound, updateEconomicScore, updateSuccessScore, updateHarmScore, updateAllScores)
+module GameDataTest exposing (getStringIfMatchFound, updateAllScores, updateEconomicScore, updateHarmScore, updateSuccessScore)
 
 import Expect
 import GameData exposing (ScoreType(..))
@@ -44,6 +44,7 @@ updateEconomicScore =
 
         initGameData =
             { choices = [ "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -52,6 +53,7 @@ updateEconomicScore =
 
         startGameData =
             { choices = [ "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -60,6 +62,7 @@ updateEconomicScore =
 
         macaquesGameData =
             { choices = [ "macaques", "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -68,6 +71,7 @@ updateEconomicScore =
 
         changeGameData =
             { choices = [ "change", "macaques", "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -110,6 +114,7 @@ updateSuccessScore =
 
         initGameData =
             { choices = [ "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -118,6 +123,7 @@ updateSuccessScore =
 
         startGameData =
             { choices = [ "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -126,6 +132,7 @@ updateSuccessScore =
 
         macaquesGameData =
             { choices = [ "macaques", "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -134,6 +141,7 @@ updateSuccessScore =
 
         changeGameData =
             { choices = [ "change", "macaques", "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -180,6 +188,7 @@ updateHarmScore =
 
         initGameData =
             { choices = [ "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -188,6 +197,7 @@ updateHarmScore =
 
         startGameData =
             { choices = [ "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -196,6 +206,7 @@ updateHarmScore =
 
         macaquesGameData =
             { choices = [ "macaques", "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -204,6 +215,7 @@ updateHarmScore =
 
         changeGameData =
             { choices = [ "change", "macaques", "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
@@ -244,33 +256,35 @@ updateHarmScore =
 
 updateAllScores : Test
 updateAllScores =
- let
+    let
         testGameData =
             TestData.testGamedata
 
         changeGameData =
             { choices = [ "change", "macaques", "start", "init" ]
+            , checkboxSet = testGameData.checkboxSet
             , teamName = testGameData.teamName
             , scoreSuccess = 0
             , scoreEconomic = 0
             , scoreHarm = 0
             }
     in
-      describe "updateAllScores Function"
-        [ 
-            test "Check data for start->macaques->change->fish" <|
+    describe "updateAllScores Function"
+        [ test "Check data for start->macaques->change->fish" <|
             \_ ->
                 { choices = "fish" :: changeGameData.choices
-                    , teamName = changeGameData.teamName
-                    , scoreSuccess = GameData.updateScore Success TestData.testDatastore changeGameData "fish"
-                    , scoreEconomic = GameData.updateScore Economic TestData.testDatastore changeGameData "fish"
-                    , scoreHarm = GameData.updateScore Harm TestData.testDatastore changeGameData "fish"
-                    }
-                    |> Expect.equal { 
-                        choices = [ "fish","change","macaques","start","init" ]
+                , checkboxSet = changeGameData.checkboxSet
+                , teamName = changeGameData.teamName
+                , scoreSuccess = GameData.updateScore Success TestData.testDatastore changeGameData "fish"
+                , scoreEconomic = GameData.updateScore Economic TestData.testDatastore changeGameData "fish"
+                , scoreHarm = GameData.updateScore Harm TestData.testDatastore changeGameData "fish"
+                }
+                    |> Expect.equal
+                        { choices = [ "fish", "change", "macaques", "start", "init" ]
+                        , checkboxSet = changeGameData.checkboxSet
                         , teamName = "TestTeam"
                         , scoreSuccess = 50
                         , scoreEconomic = 17250000
                         , scoreHarm = 2
-                    }
+                        }
         ]
