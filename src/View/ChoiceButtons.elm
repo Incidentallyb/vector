@@ -1,5 +1,6 @@
 module View.ChoiceButtons exposing (choiceStringsToButtons, renderButtons, renderCheckboxes)
 
+import GameData
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
@@ -69,8 +70,8 @@ renderCheckbox info =
         [ span [] [ text info.heading ], span [] [ text info.description ] ]
 
 
-renderCheckboxes : List ButtonInfo -> String -> Html Msg
-renderCheckboxes buttonList chosenValue =
+renderCheckboxes : List ButtonInfo -> GameData.CheckboxData -> String -> Html Msg
+renderCheckboxes buttonList checkboxes chosenValue =
     let
         submitValue =
             "two-extras"

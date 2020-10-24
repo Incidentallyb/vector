@@ -1,4 +1,4 @@
-module GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
 
 import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import ContentChoices
@@ -8,12 +8,18 @@ import Set exposing (Set)
 
 type alias GameData =
     { choices : List String
-    , checkboxSet : { selected : Set String, submitted : Bool }
+    , checkboxSet : CheckboxData
     , teamName : String
     , scoreSuccess : Int
     , scoreEconomic : Int
     , scoreHarm : Int
     }
+
+
+type alias CheckboxData =
+    -- Right now we only have one but later we might do something like this:
+    -- checkboxSets : { choice5 : (Set.empty, False) }
+    { selected : Set String, submitted : Bool }
 
 
 type alias NotificationCount =
@@ -27,9 +33,6 @@ type alias NotificationCount =
 init : GameData
 init =
     { choices = []
-
-    -- Right now we only have one but later we might do something like this:
-    -- , checkboxSets : { choice5 : (Set.empty, False) }
     , checkboxSet = { selected = Set.empty, submitted = False }
     , teamName = "?"
     , scoreSuccess = 0
