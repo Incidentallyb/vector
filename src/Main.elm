@@ -163,9 +163,10 @@ update msg model =
                         Set.insert value model.gameData.checkboxSet.selected
 
                     else
-                        -- Do nothing
+                        -- Do nothing. We already have 2 choices.
                         model.gameData.checkboxSet.selected
 
+                -- Nothing is a special case. It should cause others to unset / not be available.
                 newGameData =
                     { choices = model.gameData.choices
                     , checkboxSet = { selected = selected, submitted = model.gameData.checkboxSet.submitted }
@@ -179,6 +180,9 @@ update msg model =
 
         CheckboxesSubmitted choice ->
             let
+                noneSelected =
+                    Set.size model.gameData.checkboxSet.selected == 0
+
                 newGameData =
                     { choices = model.gameData.choices
 
@@ -190,10 +194,15 @@ update msg model =
                     , scoreHarm = model.gameData.scoreHarm
                     }
             in
-            ( { model | gameData = newGameData }
-              -- Hack to chain an update.
-            , Task.perform (always (ChoiceButtonClicked choice)) (Task.succeed ())
-            )
+            if noneSelected then
+                -- Do nothing
+                ( model, Cmd.none )
+
+            else
+                ( { model | gameData = newGameData }
+                  -- Hack to chain an update.
+                , Task.perform (always (ChoiceButtonClicked choice)) (Task.succeed ())
+                )
 
         TeamChosen teamName ->
             let

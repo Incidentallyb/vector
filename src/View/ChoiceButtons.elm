@@ -94,7 +94,14 @@ renderCheckboxes : List ButtonInfo -> GameData.CheckboxData -> Html Msg
 renderCheckboxes buttonList checkboxes =
     let
         submitValue =
-            "two-extras"
+            if Set.size checkboxes.selected == 2 then
+                "two-extras"
+
+            else if Set.member "nothing" checkboxes.selected then
+                "nothing"
+
+            else
+                "one-extra"
 
         -- Transform the button text to contain headings
         splitButtonText =
