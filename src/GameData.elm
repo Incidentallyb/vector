@@ -3,10 +3,12 @@ module GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmai
 import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import ContentChoices
 import Dict exposing (Dict)
+import Set exposing (Set)
 
 
 type alias GameData =
     { choices : List String
+    , checkboxSet : { selected : Set String, submitted : Bool }
     , teamName : String
     , scoreSuccess : Int
     , scoreEconomic : Int
@@ -25,6 +27,10 @@ type alias NotificationCount =
 init : GameData
 init =
     { choices = []
+
+    -- Right now we only have one but later we might do something like this:
+    -- , checkboxSets : { choice5 : (Set.empty, False) }
+    , checkboxSet = { selected = Set.empty, submitted = False }
     , teamName = "?"
     , scoreSuccess = 0
     , scoreEconomic = 0

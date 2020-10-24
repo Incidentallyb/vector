@@ -117,6 +117,7 @@ update msg model =
                 --   Debug.log "NEWSCORE" (Debug.toString (GameData.updateEconomicScore model.data model.gameData choice))
                 newGameData =
                     { choices = choice :: model.gameData.choices
+                    , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
                     , scoreSuccess = GameData.updateScore Success model.data model.gameData choice
                     , scoreEconomic = GameData.updateScore Economic model.data model.gameData choice
@@ -146,6 +147,7 @@ update msg model =
             let
                 newGameData =
                     { choices = [ "init" ]
+                    , checkboxSet = model.gameData.checkboxSet
                     , teamName = teamName
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
