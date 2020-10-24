@@ -71,7 +71,6 @@ renderPrompt message choices checkboxes team =
                     View.ChoiceButtons.renderCheckboxes
                         (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
                         checkboxes
-                        (ContentChoices.getChoiceChosen choices message)
 
                   else
                     div []

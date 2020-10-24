@@ -90,7 +90,7 @@ choices:
   - making|Making all your data available £1,000,000 - You can Make your data available for other people to analyze and use in their research, this includes data from the experiments that didn’t give you the results you expected or wanted. This might help other researchers use less animals. 
   - publishing|Publishing on animal welfare £1,000,000 - If you collect and publish the data you have on any animal suffering in the experiments you carried out, it might help other people make refinements to their experiments in the future. 
   - cage|Cage Conditions £1,000,000 - We can make the animals more comfortable in their cages by adding toys and stimulating objects.
-  - donothing|Do Nothing £0,000,000 -
+  - donothing|Do Nothing £0,000,000 - You can decide to do nothing.
   - two-extras|Choice left in for scoring - not display
   - one-extra|Choice left in for scoring - not display
   - nothing|Choice left in for scoring - not display

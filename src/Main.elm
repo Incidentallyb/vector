@@ -146,13 +146,17 @@ update msg model =
         CheckboxClicked value ->
             let
                 selected =
-                    if Set.member value model.gameData.checkboxSet.selected then
+                    if model.gameData.checkboxSet.submitted then
+                        -- Do Nothing we've already submitted these.
+                        model.gameData.checkboxSet.selected
+
+                    else if Set.member value model.gameData.checkboxSet.selected then
+                        -- Uncheck it
                         Set.remove value model.gameData.checkboxSet.selected
 
-                    else
-                    -- We might want to add hint message to uncheck another choice
-                    -- Right now we only have one checkbox set that allows max 2 choices
-                    if
+                    else if
+                        -- We might want to add hint message to uncheck another choice
+                        -- Right now we only have one checkbox set that allows max 2 choices
                         Set.size model.gameData.checkboxSet.selected < 2
                     then
                         -- Add it

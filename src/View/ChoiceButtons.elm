@@ -61,16 +61,26 @@ allowedSubmitValues =
     Set.fromList [ "two-extras", "one-extra", "nothing" ]
 
 
-renderCheckbox : ButtonWithHeading -> Html Msg
-renderCheckbox info =
+renderCheckbox : ButtonWithHeading -> GameData.CheckboxData -> Html Msg
+renderCheckbox info checkboxes =
     -- if this is is one of the submit values then don't make a button.
+    -- We left them in the message so scoring works.
     if Set.member info.action allowedSubmitValues then
         text ""
 
     else
+        let
+            isSelected =
+                Set.member info.action checkboxes.selected
+        in
         -- Check markup for a11y
         button
-            [ class "btn checkbox-button"
+            [ classList
+                [ ( "btn checkbox-button", True )
+                , ( "btn-primary", isSelected == False )
+                , ( "active", isSelected )
+                , ( "disabled", isSelected == False && checkboxes.submitted )
+                ]
             , if True then
                 onClick (CheckboxClicked info.action)
 
@@ -80,8 +90,8 @@ renderCheckbox info =
             [ span [] [ text info.heading ], span [] [ text info.description ] ]
 
 
-renderCheckboxes : List ButtonInfo -> GameData.CheckboxData -> String -> Html Msg
-renderCheckboxes buttonList checkboxes chosenValue =
+renderCheckboxes : List ButtonInfo -> GameData.CheckboxData -> Html Msg
+renderCheckboxes buttonList checkboxes =
     let
         submitValue =
             "two-extras"
@@ -93,12 +103,13 @@ renderCheckboxes buttonList checkboxes chosenValue =
     div []
         [ div []
             -- The multiple choices
-            (List.map (\checkboxInfo -> renderCheckbox checkboxInfo) splitButtonText)
+            (List.map (\checkboxInfo -> renderCheckbox checkboxInfo checkboxes) splitButtonText)
         , -- The chooser submit value
           button
             [ classList
-                [ ( "btn choice-button", True )
-                , ( "btn-primary", chosenValue == "" )
+                [ ( "btn checkbox-button", True )
+                , ( "btn-primary", checkboxes.submitted == False )
+                , ( "disabled", checkboxes.submitted )
                 ]
             , onClick (CheckboxesSubmitted submitValue)
             ]
