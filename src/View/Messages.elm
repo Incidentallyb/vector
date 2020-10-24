@@ -12,33 +12,7 @@ import Html.Events exposing (onClick)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
-
-
-type alias ButtonInfo =
-    { label : String
-    , action : String
-    }
-
-
-choiceStringsToButtons : String -> ButtonInfo
-choiceStringsToButtons buttonString =
-    let
-        ( parsedString, action ) =
-            ( case List.head (String.indexes "|" buttonString) of
-                Nothing ->
-                    buttonString
-
-                Just val ->
-                    String.dropLeft (val + 1) buttonString
-            , case List.head (String.indexes "|" buttonString) of
-                Nothing ->
-                    buttonString
-
-                Just val ->
-                    String.left val buttonString
-            )
-    in
-    { label = parsedString, action = action }
+import View.ChoiceButtons
 
 
 view : GameData -> Dict String Content.MessageData -> Html Msg
@@ -93,64 +67,18 @@ renderPrompt message choices team =
                   playerMessage
                 , -- Lovely hack for multi choice messages (only choose-1-2-3 for now)
                   if message.basename == "choose-1-2-3" then
-                    renderCheckboxes (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
+                    View.ChoiceButtons.renderCheckboxes
+                        (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
+                        (ContentChoices.getChoiceChosen choices message)
 
                   else
-                    renderButtons (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
+                    div []
+                        (View.ChoiceButtons.renderButtons
+                            (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
+                            (ContentChoices.getChoiceChosen choices message)
+                        )
                 ]
             ]
 
     else
         text ""
-
-
-renderCheckboxes : List ButtonInfo -> String -> Html Msg
-renderCheckboxes buttonList chosenValue =
-    let
-        submitValue =
-            "two-extras"
-    in
-    div []
-        (List.map
-            (\buttonItem ->
-                button
-                    [ classList
-                        [ ( "btn choice-button", True )
-                        , ( "btn-primary", chosenValue == "" )
-                        , ( "active", chosenValue == buttonItem.action )
-                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
-                        ]
-                    , if chosenValue == "" then
-                        onClick (ChoiceButtonClicked submitValue)
-
-                      else
-                        Html.Attributes.class ""
-                    ]
-                    [ text buttonItem.label ]
-            )
-            buttonList
-        )
-
-
-renderButtons : List ButtonInfo -> String -> Html Msg
-renderButtons buttonList chosenValue =
-    div []
-        (List.map
-            (\buttonItem ->
-                button
-                    [ classList
-                        [ ( "btn choice-button", True )
-                        , ( "btn-primary", chosenValue == "" )
-                        , ( "active", chosenValue == buttonItem.action )
-                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
-                        ]
-                    , if chosenValue == "" then
-                        onClick (ChoiceButtonClicked buttonItem.action)
-
-                      else
-                        Html.Attributes.class ""
-                    ]
-                    [ text buttonItem.label ]
-            )
-            buttonList
-        )
