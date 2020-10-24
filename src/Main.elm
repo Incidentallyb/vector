@@ -143,6 +143,54 @@ update msg model =
             in
             ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
 
+        CheckboxClicked value ->
+            let
+                selected =
+                    if Set.member value model.gameData.checkboxSet.selected then
+                        Set.remove value model.gameData.checkboxSet.selected
+
+                    else
+                    -- We might want to add hint message to uncheck another choice
+                    -- Right now we only have one checkbox set that allows max 2 choices
+                    if
+                        Set.size model.gameData.checkboxSet.selected < 2
+                    then
+                        -- Add it
+                        Set.insert value model.gameData.checkboxSet.selected
+
+                    else
+                        -- Do nothing
+                        model.gameData.checkboxSet.selected
+
+                newGameData =
+                    { choices = model.gameData.choices
+                    , checkboxSet = { selected = selected, submitted = model.gameData.checkboxSet.submitted }
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    }
+            in
+            ( { model | gameData = newGameData }, Cmd.none )
+
+        CheckboxesSubmitted choice ->
+            let
+                newGameData =
+                    { choices = model.gameData.choices
+
+                    -- Right now we only have one. Later we might pass an id.
+                    , checkboxSet = { selected = model.gameData.checkboxSet.selected, submitted = True }
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    }
+            in
+            ( { model | gameData = newGameData }
+              -- Hack to chain an update.
+            , Task.perform (always (ChoiceButtonClicked choice)) (Task.succeed ())
+            )
+
         TeamChosen teamName ->
             let
                 newGameData =

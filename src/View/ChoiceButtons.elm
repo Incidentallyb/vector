@@ -5,6 +5,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Message exposing (Msg(..))
+import Set exposing (Set)
 
 
 type alias ButtonInfo =
@@ -56,18 +57,27 @@ buttonWithHeadingFromButtonInfo splitter info =
     }
 
 
+allowedSubmitValues =
+    Set.fromList [ "two-extras", "one-extra", "nothing" ]
+
+
 renderCheckbox : ButtonWithHeading -> Html Msg
 renderCheckbox info =
-    -- Check markup for a11y
-    button
-        [ class "btn checkbox-button"
-        , if True then
-            onClick (ChoiceButtonClicked info.action)
+    -- if this is is one of the submit values then don't make a button.
+    if Set.member info.action allowedSubmitValues then
+        text ""
 
-          else
-            Html.Attributes.class ""
-        ]
-        [ span [] [ text info.heading ], span [] [ text info.description ] ]
+    else
+        -- Check markup for a11y
+        button
+            [ class "btn checkbox-button"
+            , if True then
+                onClick (CheckboxClicked info.action)
+
+              else
+                Html.Attributes.class ""
+            ]
+            [ span [] [ text info.heading ], span [] [ text info.description ] ]
 
 
 renderCheckboxes : List ButtonInfo -> GameData.CheckboxData -> String -> Html Msg
@@ -90,7 +100,7 @@ renderCheckboxes buttonList checkboxes chosenValue =
                 [ ( "btn choice-button", True )
                 , ( "btn-primary", chosenValue == "" )
                 ]
-            , onClick (ChoiceButtonClicked submitValue)
+            , onClick (CheckboxesSubmitted submitValue)
             ]
             [ text "Submit choices" ]
         ]
