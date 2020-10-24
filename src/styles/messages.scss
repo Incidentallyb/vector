@@ -156,3 +156,33 @@ $timeToWait: 2s;
   transition: all 0.5s;
   transition: margin-left 0.2s;
 }
+
+.checkbox-button {
+  display: block;
+  margin-top: 0.5rem;
+  min-width: 75%;
+  text-align: left;
+  &:not(.disabled):not(.active):hover {
+    background-color: var(--choicebutton-selected);
+  }
+  &.disabled {
+    cursor: not-allowed;
+    background-color: var(--choicebutton-disabled);
+  }
+  &.active {
+    background-color: var(--choicebutton-selected);
+    border-color: var(--choicebutton-selected);
+    color: var(--white);
+    cursor: not-allowed !important;
+  }
+  transition: all 0.5s;
+  span {
+    font-size: 1.2em;
+    font-weight: 700;
+    display: block;
+  }
+  span+span {
+    font-size: 1em;
+    font-weight: 500;
+  }
+}
