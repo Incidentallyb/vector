@@ -3,6 +3,7 @@ module TestData exposing (testDatastore, testGamedata, testMessage1, testMessage
 import Content
 import Dict
 import GameData
+import Set
 
 
 testMessage1 : Content.MessageData
@@ -45,7 +46,7 @@ testMessage3 =
     , content = "Are you sure you want to stay with macaques?"
     , basename = "testMessage3"
     , scoreChangeEconomic = Nothing
-    , scoreChangeHarm =  Just [ "stay|1" ]
+    , scoreChangeHarm = Just [ "stay|1" ]
 
     -- bonus of 5% sucesss if you stick with macaques
     , scoreChangeSuccess = Just [ "stay|5" ]
@@ -88,6 +89,7 @@ testDatastore =
 testGamedata : GameData.GameData
 testGamedata =
     { choices = [ "" ]
+    , checkboxSet = { selected = Set.empty, submitted = False }
     , teamName = "TestTeam"
     , scoreSuccess = 0
     , scoreEconomic = 0
