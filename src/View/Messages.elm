@@ -64,9 +64,10 @@ renderMessageAndPrompt gamedata content team message =
         ]
 
 
-getChoicePath : List String -> List String -> List String
-getChoicePath gameChoices triggers =
-    [ "hi" ] List.partition
+
+-- getChoicePath : List String -> List String -> List String
+-- getChoicePath gameChoices triggers =
+--     List.head Maybe.withDefault "" (List.partition (\x -> x == "hi") [ "hi", "something  " ])
 
 
 renderScore : String -> GameData -> Content.Datastore -> Content.MessageData -> Html Msg
