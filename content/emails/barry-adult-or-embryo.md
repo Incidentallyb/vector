@@ -1,8 +1,9 @@
 ---
+title: Barry adult or embryo
 triggered_by:
   - init|start|fish
 author: Dr. Barry Taylor
-subject: Email subject content [cCc]
+subject: New Model Available - Zebrafish Embryos
 choices:
   - adult|Stay with adult fish
   - embryo|Move to fish embryos

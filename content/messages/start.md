@@ -1,7 +1,8 @@
 ---
+title: Start
+author: AL
 triggered_by:
   - init
-author: AL
 choices:
   - start|We are ready
 scoreChangeEconomic: 

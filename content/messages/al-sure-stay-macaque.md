@@ -1,7 +1,8 @@
 ---
-triggered_by:
-  - init|start|macaques
+title: AL sure stay macaque
 author: AL
+triggered_by:
+  - init|start|macaques|step
 choices:
   - stay|Let's stay with Macaques
   - change|Can we change the animal model?

@@ -1,24 +1,25 @@
 ---
+title: Lisa fish pain
+author: Dr. Lisa Finnamore
+subject: New Research - Fish Sentience
 triggered_by:
-  - init|start|macaques|change|fish|step|scale
-  - init|start|macaques|change|fish|step|phased
-  - init|start|macaques|change|fish|step|share
+  - init|start|macaques|step|change|fish|step|scale
+  - init|start|macaques|step|change|fish|step|phased
+  - init|start|macaques|step|change|fish|step|share
   - init|start|fish|adult|step|scale
   - init|start|fish|adult|step|phased
   - init|start|fish|adult|step|share
-author: Dr. Lisa Finnamore
-subject: Email subject content [cCc]
 choices:
-  - change|Let's move to a fish embryo model
-  - stay|Let's continue with the adult fish
+  - embryo|Let's move to a fish embryo model
+  - adult|Let's continue with the adult fish
 scoreChangeEconomic:
-  - change|-3
+  - embryo|-3
 scoreChangeHarm:
-  - change|-2
-  - stay|2
+  - embryo|-2
+  - adult|2
 scoreChangeSuccess:
-  - change|10
-  - stay|15
+  - embryo|10
+  - adult|15
 ---
 
 Hello,

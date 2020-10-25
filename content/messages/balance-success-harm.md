@@ -1,16 +1,17 @@
 ---
+title: Balance success harm
+author: AL
 triggered_by:
-  - init|start|macaques|stay|step
+  - init|start|macaques|step|stay|step
   - init|start|pigs|increase|step
   - init|start|pigs|keep|step
   - init|start|mice|handle|step
   - init|start|mice|tubes|step
   - init|start|fish|adult|step
   - init|start|fish|embryo|step
-  - init|start|macaques|change|pigs|step
-  - init|start|macaques|change|mice|step
-  - init|start|macaques|change|fish|step
-author: AL
+  - init|start|macaques|step|change|pigs|step
+  - init|start|macaques|step|change|mice|step
+  - init|start|macaques|step|change|fish|step
 choices:
   - scale|Scale up
   - phased|Learn from phased experiments

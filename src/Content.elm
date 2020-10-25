@@ -145,8 +145,8 @@ messageDictDecoder =
             |> andMap (Json.Decode.field "content" string |> withDefault "")
             |> andMap (Json.Decode.field "basename" string |> withDefault "")
             |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeEconomic" (list string)))
-            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeSuccess" (list string)))
             |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeHarm" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeSuccess" (list string)))
         )
 
 
@@ -173,8 +173,8 @@ emailDictDecoder =
             |> andMap (Json.Decode.field "basename" string |> withDefault "")
             |> andMap (Json.Decode.maybe (Json.Decode.field "choices" (list string)))
             |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeEconomic" (list string)))
-            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeSuccess" (list string)))
             |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeHarm" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeSuccess" (list string)))
         )
 
 
@@ -188,6 +188,6 @@ socialDictDecoder =
             |> andMap (Json.Decode.field "content" string |> withDefault "")
             |> andMap (Json.Decode.field "basename" string |> withDefault "")
             |> andMap (Json.Decode.field "numComments" int |> withDefault 0)
-            |> andMap (Json.Decode.field "numRetweets" int |> withDefault 0)
             |> andMap (Json.Decode.field "numLoves" int |> withDefault 0)
+            |> andMap (Json.Decode.field "numRetweets" int |> withDefault 0)
         )

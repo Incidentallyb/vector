@@ -1,15 +1,16 @@
 ---
+title: Charlie no more macaques
+author: Charlie
 triggered_by:
-  - init|start|macaques|change|pigs|step|scale|change
-  - init|start|macaques|change|pigs|step|phased|change
-  - init|start|macaques|change|pigs|step|share|change
+  - init|start|macaques|step|change|pigs|step|scale|change
+  - init|start|macaques|step|change|pigs|step|phased|change
+  - init|start|macaques|step|change|pigs|step|share|change
   - init|start|pigs|increase|step|scale|change
   - init|start|pigs|increase|step|phased|change
   - init|start|pigs|increase|step|share|change
   - init|start|pigs|keep|step|scale|change
   - init|start|pigs|keep|step|phased|change
   - init|start|pigs|keep|step|share|change
-author: Charlie
 choices:
   - mice|Mice
   - fish|Fish

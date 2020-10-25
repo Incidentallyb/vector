@@ -1,4 +1,7 @@
 ---
+title: Jenny change Barry
+author: Jenny
+subject: Responding to Public Opinion
 triggered_by:
   - init|start|fish|embryo|step|scale|change|mice
   - init|start|fish|embryo|step|scale|change|pigs
@@ -6,10 +9,8 @@ triggered_by:
   - init|start|fish|embryo|step|phased|change|pigs
   - init|start|fish|embryo|step|share|change|mice
   - init|start|fish|embryo|step|colaborate|change|pigs
-  - end-transcript-pigs
-  - end-transcript-mice
-author: Jenny
-subject: Email subject content [cCc]
+  - init|start|bio|stemcell|change|pigs
+  - init|start|bio|stemcell|change|mice
 ---
 
 Hey Everyone,
