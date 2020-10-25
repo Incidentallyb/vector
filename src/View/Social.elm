@@ -13,9 +13,11 @@ import Message exposing (Msg(..))
 view : GameData -> Dict String Content.SocialData -> Html Msg
 view gamedata socialDict =
     ul [ class "tweet-list p-0" ]
-        (Dict.values
-            (filterSocials socialDict gamedata.choices)
-            |> List.map renderTweet
+        (List.reverse
+            (List.map
+                renderTweet
+                (Dict.values (filterSocials socialDict gamedata.choices))
+            )
         )
 
 
