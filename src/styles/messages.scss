@@ -173,7 +173,9 @@ $timeToWait: 2s;
     background-color: var(--choicebutton-selected);
     border-color: var(--choicebutton-selected);
     color: var(--white);
-    cursor: not-allowed !important;
+    &:before {
+      content: '+';
+    }
   }
   transition: all 0.5s;
   span {

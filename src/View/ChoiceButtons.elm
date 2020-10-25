@@ -57,6 +57,7 @@ buttonWithHeadingFromButtonInfo splitter info =
     }
 
 
+allowedSubmitValues : Set String
 allowedSubmitValues =
     Set.fromList [ "two-extras", "one-extra", "nothing" ]
 
@@ -94,11 +95,11 @@ renderCheckboxes : List ButtonInfo -> GameData.CheckboxData -> Html Msg
 renderCheckboxes buttonList checkboxes =
     let
         submitValue =
-            if Set.size checkboxes.selected == 2 then
-                "two-extras"
-
-            else if Set.member "nothing" checkboxes.selected then
+            if Set.member "nothing" checkboxes.selected then
                 "nothing"
+
+            else if Set.size checkboxes.selected == 2 then
+                "two-extras"
 
             else
                 "one-extra"

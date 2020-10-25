@@ -159,8 +159,13 @@ update msg model =
                         -- Right now we only have one checkbox set that allows max 2 choices
                         Set.size model.gameData.checkboxSet.selected < 2
                     then
-                        -- Add it
-                        Set.insert value model.gameData.checkboxSet.selected
+                        if value == "donothing" then
+                            -- remove any previously ticked
+                            Set.fromList [ value ]
+
+                        else
+                            -- Add it and remove "donothing" if it was there
+                            Set.insert value (Set.remove "donothing" model.gameData.checkboxSet.selected)
 
                     else
                         -- Do nothing. We already have 2 choices.
