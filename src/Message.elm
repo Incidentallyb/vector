@@ -8,5 +8,7 @@ type Msg
     = UrlChanged Url.Url
     | LinkClicked Browser.UrlRequest
     | ChoiceButtonClicked String
+    | CheckboxClicked String
+    | CheckboxesSubmitted String
     | TeamChosen String
     | NoOp
