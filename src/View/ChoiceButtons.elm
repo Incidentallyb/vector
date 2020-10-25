@@ -57,8 +57,8 @@ buttonWithHeadingFromButtonInfo splitter info =
     }
 
 
-allowedSubmitValues : Set String
-allowedSubmitValues =
+scoringValues : Set String
+scoringValues =
     Set.fromList [ "two-extras", "one-extra", "nothing" ]
 
 
@@ -66,7 +66,7 @@ renderCheckbox : ButtonWithHeading -> GameData.CheckboxData -> Html Msg
 renderCheckbox info checkboxes =
     -- if this is is one of the submit values then don't make a button.
     -- We left them in the message so scoring works.
-    if Set.member info.action allowedSubmitValues then
+    if Set.member info.action scoringValues then
         text ""
 
     else
