@@ -95,3 +95,18 @@
   margin:1em;
   border-radius:1em;
 }
+
+.desktop .welcome { 
+  background-color: var(--white);
+  color: var(--purple);
+  padding: 1em;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  line-height: 2em;
+}
+.desktop .desktopParagraph2 {
+  color: var(--white);
+  background-color: var(--purple);
+  padding:0.5em;
+  font-weight:bold;
+}

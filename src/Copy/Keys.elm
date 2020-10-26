@@ -28,6 +28,12 @@ type Key
       --- General application texts
     | ItemNotFound
     | New
+      --- Desktop
+    | DesktopWelcome
+    | DesktopParagraph1
+    | DesktopParagraph2
+    | DesktopParagraph3
+    | DesktopParagraph4
       --- Documents
     | ViewDocument
       --- Emails
@@ -35,3 +41,4 @@ type Key
     | EmailQuickReply
       --- TeamNames
     | TeamNames
+

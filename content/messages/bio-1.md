@@ -1,7 +1,8 @@
 ---
+title: Bio 1
+author: AL
 triggered_by:
   - init|start|bio
-author: AL
 choices:
   - biobank|Bio Banks
   - stemcell|Stem Cells

@@ -118,6 +118,7 @@ update msg model =
                 --   Debug.log "NEWSCORE" (Debug.toString (GameData.updateEconomicScore model.data model.gameData choice))
                 newGameData =
                     { choices = choice :: model.gameData.choices
+                    , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
                     , scoreSuccess = GameData.updateScore Success model.data model.gameData choice
                     , scoreEconomic = GameData.updateScore Economic model.data model.gameData choice
@@ -147,10 +148,77 @@ update msg model =
             in
             ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
 
+        CheckboxClicked value ->
+            let
+                selected =
+                    if model.gameData.checkboxSet.submitted then
+                        -- Do Nothing we've already submitted these.
+                        model.gameData.checkboxSet.selected
+
+                    else if Set.member value model.gameData.checkboxSet.selected then
+                        -- Uncheck it
+                        Set.remove value model.gameData.checkboxSet.selected
+
+                    else if
+                        -- We might want to add hint message to uncheck another choice
+                        -- Right now we only have one checkbox set that allows max 2 choices
+                        Set.size model.gameData.checkboxSet.selected < 2
+                    then
+                        if value == "donothing" then
+                            -- remove any previously ticked
+                            Set.fromList [ value ]
+
+                        else
+                            -- Add it and remove "donothing" if it was there
+                            Set.insert value (Set.remove "donothing" model.gameData.checkboxSet.selected)
+
+                    else
+                        -- Do nothing. We already have 2 choices.
+                        model.gameData.checkboxSet.selected
+
+                -- Nothing is a special case. It should cause others to unset / not be available.
+                newGameData =
+                    { choices = model.gameData.choices
+                    , checkboxSet = { selected = selected, submitted = model.gameData.checkboxSet.submitted }
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    }
+            in
+            ( { model | gameData = newGameData }, Cmd.none )
+
+        CheckboxesSubmitted choice ->
+            let
+                noneSelected =
+                    Set.size model.gameData.checkboxSet.selected == 0
+
+                newGameData =
+                    { choices = model.gameData.choices
+
+                    -- Right now we only have one. Later we might pass an id.
+                    , checkboxSet = { selected = model.gameData.checkboxSet.selected, submitted = True }
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    }
+            in
+            if noneSelected then
+                -- Do nothing
+                ( model, Cmd.none )
+
+            else
+                ( { model | gameData = newGameData }
+                  -- Hack to chain an update.
+                , Task.perform (always (ChoiceButtonClicked choice)) (Task.succeed ())
+                )
+
         TeamChosen teamName ->
             let
                 newGameData =
                     { choices = [ "init" ]
+                    , checkboxSet = model.gameData.checkboxSet
                     , teamName = teamName
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic

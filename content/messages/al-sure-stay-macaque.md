@@ -1,7 +1,8 @@
 ---
+title: AL sure stay macaque
+author: AL
 triggered_by:
   - init|start|macaques|step
-author: AL
 choices:
   - stay|Let's stay with Macaques
   - change|Can we change the animal model?

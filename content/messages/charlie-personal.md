@@ -1,4 +1,6 @@
 ---
+title: Charlie personal
+author: Charlie
 triggered_by:
   - init|start|macaques|step|change|pigs|step|scale
   - init|start|macaques|step|change|pigs|step|phased
@@ -15,7 +17,6 @@ triggered_by:
   - init|start|mice|handle|step|scale
   - init|start|mice|handle|step|phased
   - init|start|mice|handle|step|share
-author: Charlie
 ---
 
 Hi Everyone, I have a bit of a personal request, so I have sent over an email...
