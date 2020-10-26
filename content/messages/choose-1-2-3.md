@@ -11,27 +11,27 @@ triggered_by:
   - init|start|macaques|step|stay|step|share|pigs
   - init|start|macaques|step|stay|step|share|mice
   - init|start|macaques|step|stay|step|share|fish
-  - init|start|macaques|step|change|pigs|step|scale|limit|step
-  - init|start|macaques|step|change|pigs|step|scale|change|mice|step
-  - init|start|macaques|step|change|pigs|step|scale|change|fish|step
-  - init|start|macaques|step|change|pigs|step|phased|limit|step
-  - init|start|macaques|step|change|pigs|step|phased|change|mice|step
-  - init|start|macaques|step|change|pigs|step|phased|change|fish|step
-  - init|start|macaques|step|change|pigs|step|share|limit|step
-  - init|start|macaques|step|change|pigs|step|share|change|mice|step
-  - init|start|macaques|step|change|pigs|step|share|change|fish|step
-  - init|start|macaques|step|change|mice|step|scale|limit
-  - init|start|macaques|step|change|mice|step|scale|fish
-  - init|start|macaques|step|change|mice|step|phased|limit
-  - init|start|macaques|step|change|mice|step|phased|fish
-  - init|start|macaques|step|change|mice|step|share|limit
-  - init|start|macaques|step|change|mice|step|share|fish
-  - init|start|macaques|step|change|fish|step|scale|adult
-  - init|start|macaques|step|change|fish|step|scale|embryo
-  - init|start|macaques|step|change|fish|step|phased|adult
-  - init|start|macaques|step|change|fish|step|phased|embryo
-  - init|start|macaques|step|change|fish|step|share|adult
-  - init|start|macaques|step|change|fish|step|share|embryo
+  - init|start|macaques|step|change|step|pigs|step|scale|limit|step
+  - init|start|macaques|step|change|step|pigs|step|scale|change|mice|step
+  - init|start|macaques|step|change|step|pigs|step|scale|change|fish|step
+  - init|start|macaques|step|change|step|pigs|step|phased|limit|step
+  - init|start|macaques|step|change|step|pigs|step|phased|change|mice|step
+  - init|start|macaques|step|change|step|pigs|step|phased|change|fish|step
+  - init|start|macaques|step|change|step|pigs|step|share|limit|step
+  - init|start|macaques|step|change|step|pigs|step|share|change|mice|step
+  - init|start|macaques|step|change|step|pigs|step|share|change|fish|step
+  - init|start|macaques|step|change|step|mice|step|scale|limit
+  - init|start|macaques|step|change|step|mice|step|scale|fish
+  - init|start|macaques|step|change|step|mice|step|phased|limit
+  - init|start|macaques|step|change|step|mice|step|phased|fish
+  - init|start|macaques|step|change|step|mice|step|share|limit
+  - init|start|macaques|step|change|step|mice|step|share|fish
+  - init|start|macaques|step|change|step|fish|step|scale|adult
+  - init|start|macaques|step|change|step|fish|step|scale|embryo
+  - init|start|macaques|step|change|step|fish|step|phased|adult
+  - init|start|macaques|step|change|step|fish|step|phased|embryo
+  - init|start|macaques|step|change|step|fish|step|share|adult
+  - init|start|macaques|step|change|step|fish|step|share|embryo
   - init|start|pigs|increase|step|scale|limit|step
   - init|start|pigs|increase|step|phased|limit|step
   - init|start|pigs|increase|step|phased|change|fish|step

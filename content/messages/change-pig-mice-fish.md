@@ -2,7 +2,7 @@
 title: Change pig mice fish
 author: AL
 triggered_by:
-  - init|start|macaques|step|change
+  - init|start|macaques|step|change|step
 choices:
   - pigs|Pigs
   - mice|Mice

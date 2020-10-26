@@ -2,9 +2,9 @@
 title: Charlie no more macaques
 author: Charlie
 triggered_by:
-  - init|start|macaques|step|change|pigs|step|scale|change
-  - init|start|macaques|step|change|pigs|step|phased|change
-  - init|start|macaques|step|change|pigs|step|share|change
+  - init|start|macaques|step|change|step|pigs|step|scale|change
+  - init|start|macaques|step|change|step|pigs|step|phased|change
+  - init|start|macaques|step|change|step|pigs|step|share|change
   - init|start|pigs|increase|step|scale|change
   - init|start|pigs|increase|step|phased|change
   - init|start|pigs|increase|step|share|change

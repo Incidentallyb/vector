@@ -2,9 +2,9 @@
 title: Lisa eye on fish
 author: Dr. Lisa Finnamore
 triggered_by:
-  - init|start|macaques|step|change|fish|step|scale|adult
-  - init|start|macaques|step|change|fish|step|phased|adult
-  - init|start|macaques|step|change|fish|step|share|adult
+  - init|start|macaques|step|change|step|fish|step|scale|adult
+  - init|start|macaques|step|change|step|fish|step|phased|adult
+  - init|start|macaques|step|change|step|fish|step|share|adult
   - init|start|fish|adult|step|scale|adult
   - init|start|fish|adult|step|phased|adult
   - init|start|fish|adult|step|share|adult
