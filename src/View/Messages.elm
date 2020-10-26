@@ -5,40 +5,15 @@ import ContentChoices
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
-import GameData exposing (GameData, filterMessages)
+import GameData exposing (CheckboxData, GameData, filterMessages)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
-
-
-type alias ButtonInfo =
-    { label : String
-    , action : String
-    }
-
-
-choiceStringsToButtons : String -> ButtonInfo
-choiceStringsToButtons buttonString =
-    let
-        ( parsedString, action ) =
-            ( case List.head (String.indexes "|" buttonString) of
-                Nothing ->
-                    buttonString
-
-                Just val ->
-                    String.dropLeft (val + 1) buttonString
-            , case List.head (String.indexes "|" buttonString) of
-                Nothing ->
-                    buttonString
-
-                Just val ->
-                    String.left val buttonString
-            )
-    in
-    { label = parsedString, action = action }
+import Set exposing (Set)
+import View.ChoiceButtons
 
 
 view : GameData -> Dict String Content.MessageData -> Html Msg
@@ -46,16 +21,16 @@ view gamedata messagesDict =
     ul [ class "message-list p-0" ]
         (Dict.values
             (filterMessages messagesDict gamedata.choices)
-            |> List.map (renderMessageAndPrompt gamedata.choices gamedata.teamName)
+            |> List.map (renderMessageAndPrompt gamedata.choices gamedata.checkboxSet gamedata.teamName)
         )
 
 
-renderMessageAndPrompt : List String -> String -> Content.MessageData -> Html Msg
-renderMessageAndPrompt choices team message =
+renderMessageAndPrompt : List String -> CheckboxData -> String -> Content.MessageData -> Html Msg
+renderMessageAndPrompt choices checkboxes team message =
     li []
         [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
         , renderMessage message.author message.content
-        , renderPrompt message choices team
+        , renderPrompt message choices checkboxes team
         ]
 
 
@@ -71,8 +46,8 @@ renderMessage from message =
         ]
 
 
-renderPrompt : Content.MessageData -> List String -> String -> Html Msg
-renderPrompt message choices team =
+renderPrompt : Content.MessageData -> List String -> CheckboxData -> String -> Html Msg
+renderPrompt message choices checkboxes team =
     if List.length message.choices > 0 then
         div
             [ class "message player w-75 float-right mt-3 mr-3 py-2" ]
@@ -91,33 +66,20 @@ renderPrompt message choices team =
                                 Markdown.toHtml [ class "playerMessageText" ] playerMessageText
                   in
                   playerMessage
-                , renderButtons (List.map choiceStringsToButtons message.choices) (ContentChoices.getChoiceChosen choices message)
+                , -- Lovely hack for multi choice messages (only choose-1-2-3 for now)
+                  if message.basename == "choose-1-2-3" then
+                    View.ChoiceButtons.renderCheckboxes
+                        (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
+                        checkboxes
+
+                  else
+                    div []
+                        (View.ChoiceButtons.renderButtons
+                            (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
+                            (ContentChoices.getChoiceChosen choices message)
+                        )
                 ]
             ]
 
     else
         text ""
-
-
-renderButtons : List ButtonInfo -> String -> Html Msg
-renderButtons buttonList chosenValue =
-    div []
-        (List.map
-            (\buttonItem ->
-                button
-                    [ classList
-                        [ ( "btn choice-button", True )
-                        , ( "btn-primary", chosenValue == "" )
-                        , ( "active", chosenValue == buttonItem.action )
-                        , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
-                        ]
-                    , if chosenValue == "" then
-                        onClick (ChoiceButtonClicked buttonItem.action)
-
-                      else
-                        Html.Attributes.class ""
-                    ]
-                    [ text buttonItem.label ]
-            )
-            buttonList
-        )

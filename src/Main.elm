@@ -7,7 +7,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, init)
+import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, filterDocuments, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -52,7 +52,7 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications = { messages = 1, documents = 0, emails = 0, social = 0 }
+      , notifications = { messages = 1, documents = 1, emails = 0, social = 0 }
       }
     , Cmd.none
     )
@@ -95,9 +95,6 @@ update msg model =
                         Messages ->
                             { currentNotifications | messages = 0 }
 
-                        Documents ->
-                            { currentNotifications | documents = 0 }
-
                         Social ->
                             { currentNotifications | social = 0 }
 
@@ -108,8 +105,12 @@ update msg model =
                 -- We'll probably move this calc to the Desktop view and remove from model
                 updatedSingleViewNotifications =
                     { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
+
+                updatedSingleViewNotifications2 =
+                    { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
+
             in
-            ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications }, resetViewportTop )
+            ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications2 }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
             let
@@ -117,6 +118,7 @@ update msg model =
                 --   Debug.log "NEWSCORE" (Debug.toString (GameData.updateEconomicScore model.data model.gameData choice))
                 newGameData =
                     { choices = choice :: model.gameData.choices
+                    , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
                     , scoreSuccess = GameData.updateScore Success model.data model.gameData choice
                     , scoreEconomic = GameData.updateScore Economic model.data model.gameData choice
@@ -133,19 +135,90 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
-                    , documents = model.notifications.documents
+                    , documents = 
+                        model.notifications.documents
+                            + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
                     , emails =
                         model.notifications.emails
                             + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
-                    , social = model.notifications.social + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
+                    , social = 
+                        model.notifications.social 
+                            + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
                     }
             in
             ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
+
+        CheckboxClicked value ->
+            let
+                selected =
+                    if model.gameData.checkboxSet.submitted then
+                        -- Do Nothing we've already submitted these.
+                        model.gameData.checkboxSet.selected
+
+                    else if Set.member value model.gameData.checkboxSet.selected then
+                        -- Uncheck it
+                        Set.remove value model.gameData.checkboxSet.selected
+
+                    else if
+                        -- We might want to add hint message to uncheck another choice
+                        -- Right now we only have one checkbox set that allows max 2 choices
+                        Set.size model.gameData.checkboxSet.selected < 2
+                    then
+                        if value == "donothing" then
+                            -- remove any previously ticked
+                            Set.fromList [ value ]
+
+                        else
+                            -- Add it and remove "donothing" if it was there
+                            Set.insert value (Set.remove "donothing" model.gameData.checkboxSet.selected)
+
+                    else
+                        -- Do nothing. We already have 2 choices.
+                        model.gameData.checkboxSet.selected
+
+                -- Nothing is a special case. It should cause others to unset / not be available.
+                newGameData =
+                    { choices = model.gameData.choices
+                    , checkboxSet = { selected = selected, submitted = model.gameData.checkboxSet.submitted }
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    }
+            in
+            ( { model | gameData = newGameData }, Cmd.none )
+
+        CheckboxesSubmitted choice ->
+            let
+                noneSelected =
+                    Set.size model.gameData.checkboxSet.selected == 0
+
+                newGameData =
+                    { choices = model.gameData.choices
+
+                    -- Right now we only have one. Later we might pass an id.
+                    , checkboxSet = { selected = model.gameData.checkboxSet.selected, submitted = True }
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    }
+            in
+            if noneSelected then
+                -- Do nothing
+                ( model, Cmd.none )
+
+            else
+                ( { model | gameData = newGameData }
+                  -- Hack to chain an update.
+                , Task.perform (always (ChoiceButtonClicked choice)) (Task.succeed ())
+                )
 
         TeamChosen teamName ->
             let
                 newGameData =
                     { choices = [ "init" ]
+                    , checkboxSet = model.gameData.checkboxSet
                     , teamName = teamName
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
@@ -178,7 +251,7 @@ view model =
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Documents.list model.data.documents
+                    [ View.Documents.list model.gameData model.data.documents model.visited
                     ]
                 ]
 

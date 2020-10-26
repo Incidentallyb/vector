@@ -1,9 +1,53 @@
-module GameDataTest exposing (getStringIfMatchFound, updateEconomicScore, updateSuccessScore, updateHarmScore, updateAllScores)
+module GameDataTest exposing (getStringIfMatchFound, updateAllScores, updateEconomicScore, updateHarmScore, updateSuccessScore)
 
 import Expect
 import GameData exposing (ScoreType(..))
 import Test exposing (Test, describe, test)
 import TestData
+
+
+testGameData =
+    TestData.testGamedata
+
+
+initGameData =
+    { choices = [ "init" ]
+    , checkboxSet = testGameData.checkboxSet
+    , teamName = testGameData.teamName
+    , scoreSuccess = 0
+    , scoreEconomic = 0
+    , scoreHarm = 0
+    }
+
+
+startGameData =
+    { choices = [ "start", "init" ]
+    , checkboxSet = testGameData.checkboxSet
+    , teamName = testGameData.teamName
+    , scoreSuccess = 0
+    , scoreEconomic = 0
+    , scoreHarm = 0
+    }
+
+
+macaquesGameData =
+    { choices = [ "macaques", "start", "init" ]
+    , checkboxSet = testGameData.checkboxSet
+    , teamName = testGameData.teamName
+    , scoreSuccess = 0
+    , scoreEconomic = 0
+    , scoreHarm = 0
+    }
+
+
+changeGameData =
+    { choices = [ "change", "macaques", "start", "init" ]
+    , checkboxSet = testGameData.checkboxSet
+    , teamName = testGameData.teamName
+    , scoreSuccess = 0
+    , scoreEconomic = 0
+    , scoreHarm = 0
+    }
 
 
 getStringIfMatchFound : Test
@@ -38,42 +82,6 @@ getStringIfMatchFound =
 
 updateEconomicScore : Test
 updateEconomicScore =
-    let
-        testGameData =
-            TestData.testGamedata
-
-        initGameData =
-            { choices = [ "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        startGameData =
-            { choices = [ "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        macaquesGameData =
-            { choices = [ "macaques", "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        changeGameData =
-            { choices = [ "change", "macaques", "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-    in
     describe "updateScore Function"
         [ test "returns 0 for init" <|
             \_ ->
@@ -104,42 +112,6 @@ updateEconomicScore =
 
 updateSuccessScore : Test
 updateSuccessScore =
-    let
-        testGameData =
-            TestData.testGamedata
-
-        initGameData =
-            { choices = [ "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        startGameData =
-            { choices = [ "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        macaquesGameData =
-            { choices = [ "macaques", "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        changeGameData =
-            { choices = [ "change", "macaques", "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-    in
     describe "updateSuccessScore Function"
         [ test "returns 0 for init" <|
             \_ ->
@@ -174,42 +146,6 @@ updateSuccessScore =
 
 updateHarmScore : Test
 updateHarmScore =
-    let
-        testGameData =
-            TestData.testGamedata
-
-        initGameData =
-            { choices = [ "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        startGameData =
-            { choices = [ "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        macaquesGameData =
-            { choices = [ "macaques", "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-
-        changeGameData =
-            { choices = [ "change", "macaques", "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-    in
     describe "updateHarmScore Function"
         [ test "returns 0 for init" <|
             \_ ->
@@ -244,33 +180,22 @@ updateHarmScore =
 
 updateAllScores : Test
 updateAllScores =
- let
-        testGameData =
-            TestData.testGamedata
-
-        changeGameData =
-            { choices = [ "change", "macaques", "start", "init" ]
-            , teamName = testGameData.teamName
-            , scoreSuccess = 0
-            , scoreEconomic = 0
-            , scoreHarm = 0
-            }
-    in
-      describe "updateAllScores Function"
-        [ 
-            test "Check data for start->macaques->change->fish" <|
+    describe "updateAllScores Function"
+        [ test "Check data for start->macaques->change->fish" <|
             \_ ->
                 { choices = "fish" :: changeGameData.choices
-                    , teamName = changeGameData.teamName
-                    , scoreSuccess = GameData.updateScore Success TestData.testDatastore changeGameData "fish"
-                    , scoreEconomic = GameData.updateScore Economic TestData.testDatastore changeGameData "fish"
-                    , scoreHarm = GameData.updateScore Harm TestData.testDatastore changeGameData "fish"
-                    }
-                    |> Expect.equal { 
-                        choices = [ "fish","change","macaques","start","init" ]
+                , checkboxSet = changeGameData.checkboxSet
+                , teamName = changeGameData.teamName
+                , scoreSuccess = GameData.updateScore Success TestData.testDatastore changeGameData "fish"
+                , scoreEconomic = GameData.updateScore Economic TestData.testDatastore changeGameData "fish"
+                , scoreHarm = GameData.updateScore Harm TestData.testDatastore changeGameData "fish"
+                }
+                    |> Expect.equal
+                        { choices = [ "fish", "change", "macaques", "start", "init" ]
+                        , checkboxSet = changeGameData.checkboxSet
                         , teamName = "TestTeam"
                         , scoreSuccess = 50
                         , scoreEconomic = 17250000
                         , scoreHarm = 2
-                    }
+                        }
         ]

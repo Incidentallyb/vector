@@ -1,5 +1,5 @@
 ---
-title: Next section
+title: Z Next section
 author: AL
 triggered_by:
   - init|start|macaques|step|stay
@@ -12,6 +12,7 @@ triggered_by:
   - init|start|macaques|step|change|pigs
   - init|start|macaques|step|change|mice
   - init|start|macaques|step|change|fish
+playerMessage: " "
 choices:
   - step|Yes, let's go
 ---

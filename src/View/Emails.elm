@@ -16,6 +16,7 @@ import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Set
 import String
+import View.ChoiceButtons
 
 
 type alias EmailWithRead =
@@ -27,58 +28,6 @@ type alias EmailWithRead =
     , basename : String
     , read : Bool
     }
-
-
-type alias ButtonInfo =
-    { label : String
-    , action : String
-    }
-
-
-choiceStringsToButtons : String -> ButtonInfo
-choiceStringsToButtons buttonString =
-    let
-        ( parsedString, action ) =
-            ( case List.head (String.indexes "|" buttonString) of
-                Nothing ->
-                    buttonString
-
-                Just val ->
-                    String.dropLeft (val + 1) buttonString
-            , case List.head (String.indexes "|" buttonString) of
-                Nothing ->
-                    buttonString
-
-                Just val ->
-                    String.left val buttonString
-            )
-    in
-    { label = parsedString, action = action }
-
-
-renderButtons : List ButtonInfo -> String -> Html Msg
-renderButtons buttonList chosenValue =
-    div [ class "button-choices" ]
-        (div [ class "quick-reply" ] [ text (t EmailQuickReply) ]
-            :: List.map
-                (\buttonItem ->
-                    button
-                        [ classList
-                            [ ( "btn choice-button", True )
-                            , ( "btn-primary", chosenValue == "" )
-                            , ( "active", chosenValue == buttonItem.action )
-                            , ( "disabled", chosenValue /= buttonItem.action && chosenValue /= "" )
-                            ]
-                        , if chosenValue == "" then
-                            onClick (ChoiceButtonClicked buttonItem.action)
-
-                          else
-                            Html.Attributes.class ""
-                        ]
-                        [ text buttonItem.label ]
-                )
-                buttonList
-        )
 
 
 single : GameData -> Maybe Content.EmailData -> Html Msg
@@ -108,7 +57,12 @@ single gamedata maybeContent =
                     ]
                 , div [ class "mt-3" ] [ Markdown.toHtml [ class "content" ] email.content ]
                 , if List.length choiceList > 0 then
-                    renderButtons (List.map choiceStringsToButtons choiceList) (ContentChoices.getChoiceChosenEmail gamedata.choices email)
+                    div [ class "button-choices" ]
+                        (div [ class "quick-reply" ] [ text (t EmailQuickReply) ]
+                            :: View.ChoiceButtons.renderButtons
+                                (List.map View.ChoiceButtons.choiceStringsToButtons choiceList)
+                                (ContentChoices.getChoiceChosenEmail gamedata.choices email)
+                        )
 
                   else
                     text ""
