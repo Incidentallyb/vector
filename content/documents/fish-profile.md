@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - "start"
+  - "init|start"
 image: FISH BD.jpg
 ---
 # Fish

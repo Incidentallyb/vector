@@ -1,6 +1,6 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, filterDocuments, getStringIfMatchFound, init, updateScore)
 
-import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
+import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData, DocumentData)
 import ContentChoices
 import Dict exposing (Dict)
 import Set exposing (Set)
@@ -67,7 +67,12 @@ filterSocials : Dict String SocialData -> List String -> Dict String SocialData
 filterSocials allSocials choices =
     ContentChoices.triggeredSocialsByChoice choices allSocials
 
-
+filterDocuments : Dict String DocumentData -> List String -> Dict String DocumentData
+filterDocuments documentData choices =
+    -- Try to get a Dict of keyed filtered message. Fail with empty.
+    filterBranchingContent (documentsToBranchingContent documentData) choices
+        |> branchingContentToDocumentData
+        |> Maybe.withDefault Dict.empty
 
 --
 -- Branching content helpers
@@ -87,6 +92,11 @@ messagesToBranchingContent data =
 emailsToBranchingContent : Dict String EmailData -> Dict String BranchingContent
 emailsToBranchingContent data =
     Dict.map (\_ emailData -> Email emailData) data
+
+documentsToBranchingContent : Dict String DocumentData -> Dict String BranchingContent
+documentsToBranchingContent data =
+    Dict.map (\_ documentData -> Document documentData) data
+
 
 
 branchingContentToMessageData : Dict String BranchingContent -> Maybe (Dict String MessageData)
@@ -140,6 +150,30 @@ getEmail data =
             -- Not sure best way to handle this error.
             Content.emptyEmail
 
+
+
+branchingContentToDocumentData : Dict String BranchingContent -> Maybe (Dict String DocumentData)
+branchingContentToDocumentData contentDict =
+    let
+        keyedList =
+            Dict.toList contentDict
+    in
+    case List.head keyedList of
+        -- Our branching data holds documents
+        Just ( _, Document _ ) ->
+            Just (Dict.fromList (List.map (\( key, value ) -> ( key, getDocument value )) keyedList))
+
+        _ ->
+            Nothing
+
+getDocument : BranchingContent -> DocumentData
+getDocument data =
+    case data of
+        Document document ->
+            document
+
+        _ ->
+            Content.emptyDocument
 
 
 --
@@ -284,5 +318,13 @@ getScoreChange changeType branchingContent =
 
                         Success ->
                             contentData.scoreChangeSuccess
+
+                {- 
+                    List.tail is the easiest way to return a 'Maybe' for these items that 
+                    don't cause any score changes
+                -}
+                Document _ -> List.tail [ "" ]
+
+                Social _ -> List.tail [ "" ]
     in
     Maybe.withDefault [ "" ] maybeChange

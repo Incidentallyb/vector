@@ -67,6 +67,9 @@ t key =
         ItemNotFound ->
             "Item not found"
 
+        New -> 
+            "NEW"
+
         ViewDocument ->
             "View Document"
 
