@@ -12,6 +12,7 @@ triggered_by:
   - init|start|pigs|keep|step|scale
   - init|start|pigs|keep|step|phased
   - init|start|pigs|keep|step|share
+  - init|start|bio|stemcell|change|pigs
 choices:
   - limit|Limit contact
   - change|Change animal model

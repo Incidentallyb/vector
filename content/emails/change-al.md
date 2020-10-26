@@ -4,6 +4,8 @@ author: Jenny
 subject: Responding to Public Outrage
 triggered_by:
   - init|start|macaques|step|change
+choices:
+  - step|OK, thank you
 ---
 
 Hey Everyone,

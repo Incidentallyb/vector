@@ -9,6 +9,7 @@ triggered_by:
   - init|start|fish|adult|step|scale
   - init|start|fish|adult|step|phased
   - init|start|fish|adult|step|share
+  - init|start|bio|biobank|fish|step
 choices:
   - embryo|Let's move to a fish embryo model
   - adult|Let's continue with the adult fish

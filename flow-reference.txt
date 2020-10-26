@@ -1102,14 +1102,16 @@ Do Nothing
 init|start|bio|biobank|fish
 1.5.1.1.3? Change to Fish
 FILE-messages: barry-bio-change.md
+FILE-emails: lisa-fish-pain.md
 
+init|start|bio|biobank|fish|embryo
+content/messages/barry-inform-lisa.md
+content/messages/next-section.md
 
-
+init|start|bio|biobank|fish|embryo|step
+init|start|bio|biobank|fish|embryo|step
+init|start|bio|biobank|fish|embryo|step
 FILE-messages: choose-1-2-3.md
-
-Any two Extras
-Any One Extra
-Do Nothing
 
 init|start|bio|biobank|stay
 1.5.1.1.4?Stay with Bio Bank
@@ -1224,6 +1226,13 @@ FILE-messages: jenny-change-mice-pigs.md
 init|start|bio|stemcell|change|pigs
 Pigs
 FILE-emails: jenny-change-barry.md
+FILE-emails: charlie-limit-contact-pigs.md
+FILE-messages: charlie-personal.md
+
+init|start|bio|stemcell|change|pigs|limit
+FILE-messages: charlie-change-shifts.md
+
+init|start|bio|stemcell|change|pigs|limit|step
 FILE-messages: choose-1-2-3.md
 
 Any two Extras
@@ -1234,4 +1243,8 @@ Do Nothing
 init|start|bio|stemcell|change|mice
 Mice
 FILE-emails: jenny-change-barry.md
+FILE-emails: charlie-limit-or-change.md
+FILE-messages: charlie-personal.md
+
+init|start|bio|stemcell|change|mice|limit|step
 FILE-messages: choose-1-2-3.md
