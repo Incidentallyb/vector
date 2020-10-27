@@ -60,7 +60,7 @@ t key =
             "Team "
 
         WellDone ->
-            "Well done Team"
+            "Well done Team "
 
         Results ->
             "Your choices have produced the following results:"

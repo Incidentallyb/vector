@@ -119,9 +119,9 @@ update msg model =
                     { choices = choice :: model.gameData.choices
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
-                    , scoreSuccess = GameData.updateScore Success model.data model.gameData choice
-                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData choice
-                    , scoreHarm = GameData.updateScore Harm model.data model.gameData choice
+                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.choices choice
+                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.choices choice
+                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
                     }
 
                 -- Take the current notifications and add the number of items filtered by the new choice

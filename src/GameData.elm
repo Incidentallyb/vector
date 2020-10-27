@@ -200,17 +200,11 @@ type ScoreType
     | Success
 
 
-displayScoreNow : Content.Datastore -> GameData -> List Int
-displayScoreNow cont gam =
-    [ updateScore Economic cont gam "stuff"
-    ]
-
-
-updateScore : ScoreType -> Content.Datastore -> GameData -> String -> Int
-updateScore scoreType datastore gamedata newChoice =
+updateScore : ScoreType -> Content.Datastore -> List String -> String -> Int
+updateScore scoreType datastore gamedataChoices newChoice =
     let
         playerChoices =
-            newChoice :: gamedata.choices
+            newChoice :: gamedataChoices
 
         messageDict =
             messagesToBranchingContent datastore.messages
@@ -220,7 +214,7 @@ updateScore scoreType datastore gamedata newChoice =
 
         -- get a list of the messages & emails that are being shown
         messages =
-            filterBranchingContent (Dict.union messageDict emailDict) gamedata.choices
+            filterBranchingContent (Dict.union messageDict emailDict) gamedataChoices
                 |> Dict.values
                 |> List.reverse
 
