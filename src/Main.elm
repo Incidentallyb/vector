@@ -7,7 +7,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, init)
+import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, filterDocuments, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -52,7 +52,7 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications = { messages = 1, documents = 0, emails = 0, social = 0 }
+      , notifications = { messages = 1, documents = 1, emails = 0, social = 0 }
       }
     , Cmd.none
     )
@@ -95,9 +95,6 @@ update msg model =
                         Messages ->
                             { currentNotifications | messages = 0 }
 
-                        Documents ->
-                            { currentNotifications | documents = 0 }
-
                         Social ->
                             { currentNotifications | social = 0 }
 
@@ -108,8 +105,12 @@ update msg model =
                 -- We'll probably move this calc to the Desktop view and remove from model
                 updatedSingleViewNotifications =
                     { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
+
+                updatedSingleViewNotifications2 =
+                    { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
+
             in
-            ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications }, resetViewportTop )
+            ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications2 }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
             let
@@ -134,11 +135,15 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
-                    , documents = model.notifications.documents
+                    , documents = 
+                        model.notifications.documents
+                            + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
                     , emails =
                         model.notifications.emails
                             + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
-                    , social = model.notifications.social + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
+                    , social = 
+                        model.notifications.social 
+                            + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
                     }
             in
             ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
@@ -246,7 +251,7 @@ view model =
                 [ View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Documents.list model.data.documents
+                    [ View.Documents.list model.gameData model.data.documents model.visited
                     ]
                 ]
 

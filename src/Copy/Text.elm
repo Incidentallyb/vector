@@ -12,7 +12,7 @@ t key =
     case key of
         -- Meta
         SiteTitle ->
-            "Vector App"
+            "Welcome to BioCore"
 
         -- Slugs
         DesktopSlug ->
@@ -35,7 +35,7 @@ t key =
 
         -- Intro page
         StartNewGame ->
-            "Start New Game"
+            "Begin Ethical Review"
 
         IntroVideo ->
             "https://www.youtube.com/embed/mRRMSFHPWJU"
@@ -73,6 +73,9 @@ t key =
 
         ItemNotFound ->
             "Item not found"
+
+        New -> 
+            "NEW"
 
         ViewDocument ->
             "View Document"

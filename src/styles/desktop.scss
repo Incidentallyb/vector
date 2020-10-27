@@ -96,7 +96,7 @@
   border-radius:1em;
 }
 
-.desktop .welcome { 
+.desktop .welcome {
   background-color: var(--white);
   color: var(--purple);
   padding: 1em;
@@ -104,9 +104,22 @@
   border-radius: 15px;
   line-height: 2em;
 }
+
 .desktop .desktopParagraph2 {
   color: var(--white);
   background-color: var(--purple);
   padding:0.5em;
   font-weight:bold;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.team-logo {
+  display: block;
+  height: 160px;
+  margin: auto;
+  width: auto;
 }

@@ -184,6 +184,12 @@ getChoices data =
         Message messageData ->
             messageData.choices
 
+        Social _ -> 
+            []
+        
+        Document _ ->
+            []
+
 
 choiceStepsList : List String -> List String
 choiceStepsList currentChoices =
@@ -249,6 +255,12 @@ getTriggeredBy content =
 
         Email email ->
             email.triggered_by
+
+        Social social ->
+            social.triggered_by
+
+        Document document -> 
+            document.triggered_by
 
 
 socialListKeyedByTriggerChoice : List String -> Dict String SocialData -> List ( String, SocialData )

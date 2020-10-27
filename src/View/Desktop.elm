@@ -28,13 +28,15 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderWrapperWithNav gameData pageRoute notifications [ 
-                        div [ class "welcome" ] [
-                            h1 [ ] [ text (t DesktopWelcome) ]
-                            ,p [ class "desktopParagraph1" ] [ text (t DesktopParagraph1) ]
-                            ,p [ class "desktopParagraph2" ] [ text (t DesktopParagraph2) ]
-                            ,p [ class "desktopParagraph3" ] [ text (t DesktopParagraph3) ]
-                            ,p [ class "desktopParagraph4" ] [ text (t DesktopParagraph4) ]
+                [ renderWrapperWithNav gameData
+                    pageRoute
+                    notifications
+                    [ div [ class "welcome" ]
+                        [ h1 [] [ text (t DesktopWelcome) ]
+                        , p [ class "desktopParagraph1" ] [ text (t DesktopParagraph1) ]
+                        , p [ class "desktopParagraph2" ] [ text (t DesktopParagraph2) ]
+                        , p [ class "desktopParagraph3" ] [ text (t DesktopParagraph3) ]
+                        , p [ class "desktopParagraph4" ] [ text (t DesktopParagraph4) ]
                         ]
                     ]
                 ]
@@ -48,9 +50,10 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
                     , renderNavLinks pageRoute notifications
+
                     -- DEBUG ONLY!
-                    , div [ class "debug-score" ] [
-                        div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
+                    , div [ class "debug-score" ]
+                        [ div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
                         , div [ class "harm" ] [ text (String.fromInt gameData.scoreHarm) ]
                         , div [ class "success" ] [ text (String.fromInt gameData.scoreSuccess ++ "%") ]
                         , div [ class "choices" ] [ text (String.join " " (List.reverse gameData.choices)) ]
@@ -247,7 +250,8 @@ renderTeamInformation teamName =
     div []
         [ div [ class "card" ]
             [ div [ class "card-body" ]
-                [ h5 [ class "card-title" ] [ text ("Team " ++ teamName) ]
+                [ h2 [ class "card-title" ] [ text ("Team " ++ teamName) ]
+                , img [ src "leaf.png", alt "Team logo.", class "team-logo" ] []
                 ]
             ]
         ]
