@@ -22,6 +22,8 @@ type Key
       --- Messages
     | FromAL
     | FromPlayerTeam
+    | WellDone
+    | Results
       --- "Back to" area texts
     | NavDocumentsBackTo
     | NavEmailsBackTo
@@ -41,4 +43,3 @@ type Key
     | EmailQuickReply
       --- TeamNames
     | TeamNames
-
