@@ -52,12 +52,12 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                     , renderNavLinks pageRoute notifications
 
                     -- DEBUG ONLY!
-                    , div [ class "debug-score" ]
-                        [ div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
-                        , div [ class "harm" ] [ text (String.fromInt gameData.scoreHarm) ]
-                        , div [ class "success" ] [ text (String.fromInt gameData.scoreSuccess ++ "%") ]
-                        , div [ class "choices" ] [ text (String.join " " (List.reverse gameData.choices)) ]
-                        ]
+                    -- , div [ class "debug-score" ]
+                    --     [ div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
+                    --     , div [ class "harm" ] [ text (String.fromInt gameData.scoreHarm) ]
+                    --     , div [ class "success" ] [ text (String.fromInt gameData.scoreSuccess ++ "%") ]
+                    --     , div [ class "choices" ] [ text (String.join " " (List.reverse gameData.choices)) ]
+                    --     ]
                     ]
                 ]
             , div [ class "order-last d-md-none" ]
