@@ -9,9 +9,9 @@ triggered_by:
   - init|start|mice|tubes
   - init|start|fish|adult
   - init|start|fish|embryo
-  - init|start|macaques|step|change|pigs
-  - init|start|macaques|step|change|mice
-  - init|start|macaques|step|change|fish
+  - init|start|macaques|step|change|step|pigs
+  - init|start|macaques|step|change|step|mice
+  - init|start|macaques|step|change|step|fish
 choices:
   - step|Yes, let's go
 ---

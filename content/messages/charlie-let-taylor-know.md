@@ -14,12 +14,12 @@ triggered_by:
   - init|start|pigs|keep|step|phased|change|fish
   - init|start|pigs|keep|step|share|change|mice
   - init|start|pigs|keep|step|share|change|fish
-  - init|start|macaques|step|change|pigs|step|scale|change|mice
-  - init|start|macaques|step|change|pigs|step|scale|change|fish
-  - init|start|macaques|step|change|pigs|step|phased|change|mice
-  - init|start|macaques|step|change|pigs|step|phased|change|fish
-  - init|start|macaques|step|change|pigs|step|share|change|mice
-  - init|start|macaques|step|change|pigs|step|share|change|fish
+  - init|start|macaques|step|change|step|pigs|step|scale|change|mice
+  - init|start|macaques|step|change|step|pigs|step|scale|change|fish
+  - init|start|macaques|step|change|step|pigs|step|phased|change|mice
+  - init|start|macaques|step|change|step|pigs|step|phased|change|fish
+  - init|start|macaques|step|change|step|pigs|step|share|change|mice
+  - init|start|macaques|step|change|step|pigs|step|share|change|fish
 choices:
   - step|OK, thanks
 ---

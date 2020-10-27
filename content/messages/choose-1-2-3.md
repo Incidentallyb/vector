@@ -11,27 +11,27 @@ triggered_by:
   - init|start|macaques|step|stay|step|share|pigs
   - init|start|macaques|step|stay|step|share|mice
   - init|start|macaques|step|stay|step|share|fish
-  - init|start|macaques|step|change|pigs|step|scale|limit|step
-  - init|start|macaques|step|change|pigs|step|scale|change|mice|step
-  - init|start|macaques|step|change|pigs|step|scale|change|fish|step
-  - init|start|macaques|step|change|pigs|step|phased|limit|step
-  - init|start|macaques|step|change|pigs|step|phased|change|mice|step
-  - init|start|macaques|step|change|pigs|step|phased|change|fish|step
-  - init|start|macaques|step|change|pigs|step|share|limit|step
-  - init|start|macaques|step|change|pigs|step|share|change|mice|step
-  - init|start|macaques|step|change|pigs|step|share|change|fish|step
-  - init|start|macaques|step|change|mice|step|scale|limit
-  - init|start|macaques|step|change|mice|step|scale|fish
-  - init|start|macaques|step|change|mice|step|phased|limit
-  - init|start|macaques|step|change|mice|step|phased|fish
-  - init|start|macaques|step|change|mice|step|share|limit
-  - init|start|macaques|step|change|mice|step|share|fish
-  - init|start|macaques|step|change|fish|step|scale|adult
-  - init|start|macaques|step|change|fish|step|scale|embryo
-  - init|start|macaques|step|change|fish|step|phased|adult
-  - init|start|macaques|step|change|fish|step|phased|embryo
-  - init|start|macaques|step|change|fish|step|share|adult
-  - init|start|macaques|step|change|fish|step|share|embryo
+  - init|start|macaques|step|change|step|pigs|step|scale|limit|step
+  - init|start|macaques|step|change|step|pigs|step|scale|change|mice|step
+  - init|start|macaques|step|change|step|pigs|step|scale|change|fish|step
+  - init|start|macaques|step|change|step|pigs|step|phased|limit|step
+  - init|start|macaques|step|change|step|pigs|step|phased|change|mice|step
+  - init|start|macaques|step|change|step|pigs|step|phased|change|fish|step
+  - init|start|macaques|step|change|step|pigs|step|share|limit|step
+  - init|start|macaques|step|change|step|pigs|step|share|change|mice|step
+  - init|start|macaques|step|change|step|pigs|step|share|change|fish|step
+  - init|start|macaques|step|change|step|mice|step|scale|limit
+  - init|start|macaques|step|change|step|mice|step|scale|fish
+  - init|start|macaques|step|change|step|mice|step|phased|limit
+  - init|start|macaques|step|change|step|mice|step|phased|fish
+  - init|start|macaques|step|change|step|mice|step|share|limit
+  - init|start|macaques|step|change|step|mice|step|share|fish
+  - init|start|macaques|step|change|step|fish|step|scale|adult
+  - init|start|macaques|step|change|step|fish|step|scale|embryo
+  - init|start|macaques|step|change|step|fish|step|phased|adult
+  - init|start|macaques|step|change|step|fish|step|phased|embryo
+  - init|start|macaques|step|change|step|fish|step|share|adult
+  - init|start|macaques|step|change|step|fish|step|share|embryo
   - init|start|pigs|increase|step|scale|limit|step
   - init|start|pigs|increase|step|phased|limit|step
   - init|start|pigs|increase|step|phased|change|fish|step
@@ -74,15 +74,19 @@ triggered_by:
   - init|start|fish|embryo|step|scale|embryo
   - init|start|fish|embryo|step|scale|change|mice
   - init|start|fish|embryo|step|scale|change|pigs
-  - init|start|fish|embryo|step|phased|stay
+  - init|start|fish|embryo|step|phased|embryo
   - init|start|fish|embryo|step|phased|change|mice
   - init|start|fish|embryo|step|phased|change|pigs
-  - init|start|fish|embryo|step|share|stay
+  - init|start|fish|embryo|step|share|embryo
   - init|start|fish|embryo|step|share|change|mice
   - init|start|fish|embryo|step|share|change|pigs
   - init|start|bio|biobank|stay|stay|pigs
   - init|start|bio|biobank|stay|stay|mice
   - init|start|bio|biobank|stay|stay|fish
+  - init|start|bio|stemcell|change|pigs|limit|step
+  - init|start|bio|stemcell|change|mice|limit|step
+  - init|start|bio|biobank|fish|step|embryo
+  - init|start|bio|biobank|fish|step|adult
 choices:
   - training|Training £1,000,000 - We can spend some time and resources training the animals so they feel more comfortable with the equipment, procedures and environment where the experiments will take place. Allowing them to see the lab as their home and to see the experiments as normal procedures will decrease their distress. 
   - rehousing|Rehousing after the experiment £1,000,000 - Many of the animals that are used during the experiment cannot be released back into the wild. Some have been genetically engineered and cannot be allowed back into the eco systems. Others have never been in a wild environment and will not survive. Most animals are destroyed after the experiment has been completed and their material sent to Bio Banks. Animals that remain unused in the experiment may be able to be rehoused as pets or more often in sanctuaries. 

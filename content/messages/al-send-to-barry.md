@@ -5,12 +5,12 @@ triggered_by:
   - init|start|macaques|step|stay|step|scale
   - init|start|macaques|step|stay|step|phased
   - init|start|macaques|step|stay|step|share
-  - init|start|macaques|step|change|pigs|step|scale
-  - init|start|macaques|step|change|pigs|step|phased
-  - init|start|macaques|step|change|pigs|step|share
-  - init|start|macaques|step|change|mice|step|scale
-  - init|start|macaques|step|change|mice|step|phased
-  - init|start|macaques|step|change|mice|step|share
+  - init|start|macaques|step|change|step|pigs|step|scale
+  - init|start|macaques|step|change|step|pigs|step|phased
+  - init|start|macaques|step|change|step|pigs|step|share
+  - init|start|macaques|step|change|step|mice|step|scale
+  - init|start|macaques|step|change|step|mice|step|phased
+  - init|start|macaques|step|change|step|mice|step|share
   - init|start|pigs|increase|step|scale
   - init|start|pigs|increase|step|phased
   - init|start|pigs|increase|step|share

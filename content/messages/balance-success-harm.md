@@ -9,9 +9,9 @@ triggered_by:
   - init|start|mice|tubes|step
   - init|start|fish|adult|step
   - init|start|fish|embryo|step
-  - init|start|macaques|step|change|pigs|step
-  - init|start|macaques|step|change|mice|step
-  - init|start|macaques|step|change|fish|step
+  - init|start|macaques|step|change|step|pigs|step
+  - init|start|macaques|step|change|step|mice|step
+  - init|start|macaques|step|change|step|fish|step
 choices:
   - scale|Scale up
   - phased|Learn from phased experiments
