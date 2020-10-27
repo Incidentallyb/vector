@@ -3,7 +3,7 @@ module View.Desktop exposing (renderWrapperWithNav, view)
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import GameData exposing (GameData, NotificationCount)
-import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail, userCircle)
+import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (on, onClick, targetValue)
@@ -28,13 +28,15 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderWrapperWithNav gameData pageRoute notifications [ 
-                        div [ class "welcome" ] [
-                            h1 [ ] [ text (t DesktopWelcome) ]
-                            ,p [ class "desktopParagraph1" ] [ text (t DesktopParagraph1) ]
-                            ,p [ class "desktopParagraph2" ] [ text (t DesktopParagraph2) ]
-                            ,p [ class "desktopParagraph3" ] [ text (t DesktopParagraph3) ]
-                            ,p [ class "desktopParagraph4" ] [ text (t DesktopParagraph4) ]
+                [ renderWrapperWithNav gameData
+                    pageRoute
+                    notifications
+                    [ div [ class "welcome" ]
+                        [ h1 [] [ text (t DesktopWelcome) ]
+                        , p [ class "desktopParagraph1" ] [ text (t DesktopParagraph1) ]
+                        , p [ class "desktopParagraph2" ] [ text (t DesktopParagraph2) ]
+                        , p [ class "desktopParagraph3" ] [ text (t DesktopParagraph3) ]
+                        , p [ class "desktopParagraph4" ] [ text (t DesktopParagraph4) ]
                         ]
                     ]
                 ]
@@ -48,13 +50,14 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
                     , renderNavLinks pageRoute notifications
+
                     -- DEBUG ONLY!
-                    , div [ class "debug-score" ] [
-                        div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
-                        , div [ class "harm" ] [ text (String.fromInt gameData.scoreHarm) ]
-                        , div [ class "success" ] [ text (String.fromInt gameData.scoreSuccess ++ "%") ]
-                        , div [ class "choices" ] [ text (String.join " " (List.reverse gameData.choices)) ]
-                        ]
+                    -- , div [ class "debug-score" ]
+                    --     [ div [ class "economic" ] [ text ("£" ++ String.fromInt gameData.scoreEconomic) ]
+                    --     , div [ class "harm" ] [ text (String.fromInt gameData.scoreHarm) ]
+                    --     , div [ class "success" ] [ text (String.fromInt gameData.scoreSuccess ++ "%") ]
+                    --     , div [ class "choices" ] [ text (String.join " " (List.reverse gameData.choices)) ]
+                    --     ]
                     ]
                 ]
             , div [ class "order-last d-md-none" ]
@@ -75,7 +78,7 @@ renderLoginPage gameData =
     div [ class "container desktop" ]
         [ div [ class "v-centred" ]
             [ div [ class "sign-in" ]
-                [ userCircle []
+                [ img [ src "biocore-logo.png", alt "BioCore", class "login-logo" ] []
                 , h1 [] [ text "Please login" ]
                 , let
                     teamNamesList =
@@ -247,8 +250,8 @@ renderTeamInformation teamName =
     div []
         [ div [ class "card" ]
             [ div [ class "card-body" ]
-                [ h5 [ class "card-title" ] [ text ("Team " ++ teamName) ]
-                , p [ class "card-text" ] [ text "team picture here" ]
+                [ h2 [ class "card-title" ] [ text ("Team " ++ teamName) ]
+                , img [ src "leaf.png", alt "Team logo.", class "team-logo" ] []
                 ]
             ]
         ]

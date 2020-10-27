@@ -1,6 +1,6 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, filterDocuments, getStringIfMatchFound, init, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
 
-import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData, DocumentData)
+import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices
 import Dict exposing (Dict)
 import Set exposing (Set)
@@ -67,12 +67,15 @@ filterSocials : Dict String SocialData -> List String -> Dict String SocialData
 filterSocials allSocials choices =
     ContentChoices.triggeredSocialsByChoice choices allSocials
 
+
 filterDocuments : Dict String DocumentData -> List String -> Dict String DocumentData
 filterDocuments documentData choices =
     -- Try to get a Dict of keyed filtered message. Fail with empty.
     filterBranchingContent (documentsToBranchingContent documentData) choices
         |> branchingContentToDocumentData
         |> Maybe.withDefault Dict.empty
+
+
 
 --
 -- Branching content helpers
@@ -93,10 +96,10 @@ emailsToBranchingContent : Dict String EmailData -> Dict String BranchingContent
 emailsToBranchingContent data =
     Dict.map (\_ emailData -> Email emailData) data
 
+
 documentsToBranchingContent : Dict String DocumentData -> Dict String BranchingContent
 documentsToBranchingContent data =
     Dict.map (\_ documentData -> Document documentData) data
-
 
 
 branchingContentToMessageData : Dict String BranchingContent -> Maybe (Dict String MessageData)
@@ -151,7 +154,6 @@ getEmail data =
             Content.emptyEmail
 
 
-
 branchingContentToDocumentData : Dict String BranchingContent -> Maybe (Dict String DocumentData)
 branchingContentToDocumentData contentDict =
     let
@@ -166,6 +168,7 @@ branchingContentToDocumentData contentDict =
         _ ->
             Nothing
 
+
 getDocument : BranchingContent -> DocumentData
 getDocument data =
     case data of
@@ -174,6 +177,7 @@ getDocument data =
 
         _ ->
             Content.emptyDocument
+
 
 
 --
@@ -234,11 +238,11 @@ type ScoreType
     | Success
 
 
-updateScore : ScoreType -> Content.Datastore -> GameData -> String -> Int
-updateScore scoreType datastore gamedata newChoice =
+updateScore : ScoreType -> Content.Datastore -> List String -> String -> Int
+updateScore scoreType datastore gamedataChoices newChoice =
     let
         playerChoices =
-            newChoice :: gamedata.choices
+            newChoice :: gamedataChoices
 
         messageDict =
             messagesToBranchingContent datastore.messages
@@ -248,7 +252,7 @@ updateScore scoreType datastore gamedata newChoice =
 
         -- get a list of the messages & emails that are being shown
         messages =
-            filterBranchingContent (Dict.union messageDict emailDict) gamedata.choices
+            filterBranchingContent (Dict.union messageDict emailDict) gamedataChoices
                 |> Dict.values
                 |> List.reverse
 
@@ -319,12 +323,14 @@ getScoreChange changeType branchingContent =
                         Success ->
                             contentData.scoreChangeSuccess
 
-                {- 
-                    List.tail is the easiest way to return a 'Maybe' for these items that 
-                    don't cause any score changes
+                {-
+                   List.tail is the easiest way to return a 'Maybe' for these items that
+                   don't cause any score changes
                 -}
-                Document _ -> List.tail [ "" ]
+                Document _ ->
+                    List.tail [ "" ]
 
-                Social _ -> List.tail [ "" ]
+                Social _ ->
+                    List.tail [ "" ]
     in
     Maybe.withDefault [ "" ] maybeChange

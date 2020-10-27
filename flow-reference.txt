@@ -952,11 +952,11 @@ FILE-messages: balance-success-harm.md
 
 init|start|fish|embryo|step|scale
 1.4.2.1 Scale up
-FILE-messages: jenny-public-reation.md
+FILE-messages: jenny-public-reaction.md
 FILE-emails: jenny-fish-protest.md
 
 init|start|fish|embryo|step|scale|embryo
-1.4.2.1.1 Stay with Fish Embryos 
+1.4.2.1.1 Stay with Fish Embryos
 FILE-emails: stay.md
 FILE-messages: choose-1-2-3.md
 
@@ -1183,9 +1183,9 @@ FILE-message: jenny-more-bad-news.md
 FILE-emails: jenny-stemcells-more-bad-news.md
 
 init|start|bio|stemcell|stay|engage
-Engage Protestors 
-FILE-mesasges: jenny-bio-protestors-engage.md
-FILE-mesasges: barry-bio-protestors-engage.md
+Engage Protestors
+FILE-messages: jenny-bio-protestors-engage.md
+FILE-messages: barry-bio-protestors-engage.md
 FILE-emails: barry-stemcell-vaccine.md
 
 Choose Pigs
@@ -1201,7 +1201,7 @@ FILE-messages: barry-vaccine-hopes.md
 init|start|bio|stemcell|stay|prosecute
 Prosecute Protestors
 FILE-messages: jenny-get-money.md
-FILE-mesasges: barry-bio-protestors-engage.md
+FILE-messages: barry-bio-protestors-engage.md
 FILE-emails: barry-stemcell-vaccine.md
 
 

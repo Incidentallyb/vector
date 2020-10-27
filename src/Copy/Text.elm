@@ -12,7 +12,7 @@ t key =
     case key of
         -- Meta
         SiteTitle ->
-            "Vector App"
+            "Welcome to BioCore"
 
         -- Slugs
         DesktopSlug ->
@@ -35,7 +35,7 @@ t key =
 
         -- Intro page
         StartNewGame ->
-            "Start New Game"
+            "Begin Ethical Review"
 
         IntroVideo ->
             "https://www.youtube.com/embed/mRRMSFHPWJU"
@@ -52,11 +52,18 @@ t key =
         NavSocial ->
             "Tweeeeter"
 
+        -- Messages
         FromAL ->
             "AL @ Biocore"
 
         FromPlayerTeam ->
             "Team "
+
+        WellDone ->
+            "Well done Team "
+
+        Results ->
+            "Your choices have produced the following results:"
 
         NavDocumentsBackTo ->
             "Back to Documents"
@@ -82,17 +89,17 @@ t key =
         TeamNames ->
             "Ash, Birch, Cedar, Elm, Fir, Hawthorn, Juniper, Lime, Maple, Oak"
 
-        DesktopWelcome -> 
-            "Welcome to Biocore!"
+        DesktopWelcome ->
+            "Welcome to BioCore!"
 
-        DesktopParagraph1 -> 
+        DesktopParagraph1 ->
             "Your participation is important to us!"
 
-        DesktopParagraph2 -> 
-            "I am AL, Biocore’s ethical interface for public consultation."
+        DesktopParagraph2 ->
+            "I am AL, BioCore’s ethical interface for public consultation."
 
-        DesktopParagraph3 -> 
-            "I have been designed to help facilitate your decision making. I collect and share information between the public and our specialists. I monitor all Biocore communications channels and can share information via the document store, email, or social media. I will alert you to new information in real time, please watch out for red icons appearing on the menu. Decision buttons appear in blue, simply tap to continue."            
+        DesktopParagraph3 ->
+            "I have been designed to help facilitate your decision making. I collect and share information between the public and our specialists. I monitor all BioCore communications channels and can share information via the document store, email, or social media. I will alert you to new information in real time, please watch out for red icons appearing on the menu. Decision buttons appear in blue, simply tap to continue."
 
-        DesktopParagraph4 -> 
-            "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."                        
+        DesktopParagraph4 ->
+            "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."
