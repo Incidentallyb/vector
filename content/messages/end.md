@@ -248,8 +248,8 @@ triggered_by:
   - init|start|bio|biobank|stay|stay|mice|two-extras
   - init|start|bio|biobank|stay|stay|fish|two-extras
 choices:
-    - send|Submit Evaluation
-    - replay|Restart Evaluation
+    - send|Submit Your Review
+    - replay|Restart Your Review
 ---
 
-We've come to the end of the process.
+At BioCore we like to say an ethical review is never complete, only briefly agreed. However, you have now reached the end of this process. Your participation is important to us and we value all your insights. What would you like to do next?
