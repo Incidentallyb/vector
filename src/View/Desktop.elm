@@ -3,7 +3,7 @@ module View.Desktop exposing (renderWrapperWithNav, view)
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import GameData exposing (GameData, NotificationCount)
-import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail, userCircle)
+import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (on, onClick, targetValue)
@@ -78,7 +78,7 @@ renderLoginPage gameData =
     div [ class "container desktop" ]
         [ div [ class "v-centred" ]
             [ div [ class "sign-in" ]
-                [ userCircle []
+                [ img [ src "biocore-logo.png", alt "BioCore", class "login-logo" ] []
                 , h1 [] [ text "Please login" ]
                 , let
                     teamNamesList =
