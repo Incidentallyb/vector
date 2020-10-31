@@ -1188,12 +1188,15 @@ FILE-messages: jenny-bio-protestors-engage.md
 FILE-messages: barry-bio-protestors-engage.md
 FILE-emails: barry-stemcell-vaccine.md
 
+init|start|bio|stemcell|stay|engage|pigs
 Choose Pigs
 FILE-messages: barry-vaccine-hopes.md
 
+init|start|bio|stemcell|stay|engage|mice
 Choose Mice
 FILE-messages: barry-vaccine-hopes.md
 
+init|start|bio|stemcell|stay|engage|fish
 Choose Fish
 FILE-messages: barry-vaccine-hopes.md
 
@@ -1226,8 +1229,10 @@ FILE-messages: jenny-change-mice-pigs.md
 init|start|bio|stemcell|change|pigs
 Pigs
 FILE-emails: jenny-change-barry.md
-FILE-emails: charlie-limit-contact-pigs.md
 FILE-messages: charlie-personal.md
+
+init|start|bio|stemcell|change|pigs|step
+FILE-emails: charlie-limit-contact-pigs-bio.md
 
 init|start|bio|stemcell|change|pigs|step|limit
 FILE-messages: charlie-change-shifts.md
