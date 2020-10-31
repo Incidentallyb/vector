@@ -9,7 +9,7 @@ triggered_by:
   - init|start|macaques|step|change|step|mice|step|scale
   - init|start|macaques|step|change|step|mice|step|phased
   - init|start|macaques|step|change|step|mice|step|share
-  - init|start|bio|stemcell|change|mice
+  - init|start|bio|stemcell|change|mice|step
 choices:
   - limit|Limit the time technicians spend handling mice
   - fish|Let's change to fish models

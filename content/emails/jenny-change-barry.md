@@ -12,7 +12,7 @@ triggered_by:
   - init|start|bio|stemcell|change|pigs
   - init|start|bio|stemcell|change|mice
 choices:
-  - step | Great, thank you!
+  - step|Great, thank you!
 ---
 
 Hey Everyone,
