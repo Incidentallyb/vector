@@ -95,7 +95,7 @@ renderCheckboxes : List ButtonInfo -> GameData.CheckboxData -> Html Msg
 renderCheckboxes buttonList checkboxes =
     let
         submitValue =
-            if Set.member "nothing" checkboxes.selected then
+            if Set.member "donothing" checkboxes.selected then
                 "nothing"
 
             else if Set.size checkboxes.selected == 2 then
