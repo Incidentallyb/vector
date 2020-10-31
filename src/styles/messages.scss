@@ -191,3 +191,13 @@ $timeToWait: 2s;
     font-weight: 500;
   }
 }
+
+/* Hide all score messages in li that have siblings of same depth */
+li.triggers-2 ~ li.triggers-2,
+li.triggers-4 ~ li.triggers-4,
+li.triggers-5 ~ li.triggers-5 {
+  .score {
+    display:none;
+  }
+}
+

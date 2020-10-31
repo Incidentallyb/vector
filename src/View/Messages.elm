@@ -31,8 +31,12 @@ renderMessageAndPrompt choices checkboxes team datastore message =
     let
         actualTriggers =
             String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches choices message.triggered_by)))
+
+        triggerDepth =
+            String.fromInt (List.length (filterChoiceString actualTriggers))
     in
-    li []
+    -- Add the trigger depth so we can hide scores if they come up more than once.
+    li [ classList [ ( "triggers-" ++ triggerDepth, isScoreTime actualTriggers ) ] ]
         [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
         , if isScoreTime actualTriggers then
             renderScore "AL" actualTriggers team datastore
@@ -47,9 +51,6 @@ renderMessageAndPrompt choices checkboxes team datastore message =
 renderScore : String -> List String -> String -> Content.Datastore -> Html Msg
 renderScore from triggers team datastore =
     let
-        triggerDepth =
-            String.fromInt (List.length (filterChoiceString triggers))
-
         previousChoices =
             List.reverse (Maybe.withDefault [] (List.Extra.init triggers))
 
@@ -57,7 +58,7 @@ renderScore from triggers team datastore =
             Maybe.withDefault "" (List.Extra.last triggers)
     in
     div
-        [ class ("message al w-75 float-left mt-3 ml-3 py-2 triggers-" ++ triggerDepth) ]
+        [ class "score message al w-75 float-left mt-3 ml-3 py-2" ]
         [ div [ class "mx-3" ]
             [ p [ class "message-from m-0" ] [ text from ]
             , p [] [ text (t WellDone ++ team) ]
