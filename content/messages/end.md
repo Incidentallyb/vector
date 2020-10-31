@@ -72,14 +72,14 @@ triggered_by:
   - init|start|fish|adult|step|share|embryo|nothing
   - init|start|fish|adult|step|share|adult|nothing
   - init|start|fish|embryo|step|scale|embryo|nothing
-  - init|start|fish|embryo|step|scale|change|mice|nothing
-  - init|start|fish|embryo|step|scale|change|pigs|nothing
+  - init|start|fish|embryo|step|scale|change|mice|step|nothing
+  - init|start|fish|embryo|step|scale|change|pigs|step|nothing
   - init|start|fish|embryo|step|phased|stay|nothing
-  - init|start|fish|embryo|step|phased|change|mice|nothing
-  - init|start|fish|embryo|step|phased|change|pigs|nothing
+  - init|start|fish|embryo|step|phased|change|mice|step|nothing
+  - init|start|fish|embryo|step|phased|change|pigs|step|nothing
   - init|start|fish|embryo|step|share|stay|nothing
-  - init|start|fish|embryo|step|share|change|mice|nothing
-  - init|start|fish|embryo|step|share|change|pigs|nothing
+  - init|start|fish|embryo|step|share|change|mice|step|nothing
+  - init|start|fish|embryo|step|share|change|pigs|step|nothing
   - init|start|bio|biobank|stay|stay|pigs|nothing
   - init|start|bio|biobank|stay|stay|mice|nothing
   - init|start|bio|biobank|stay|stay|fish|nothing
@@ -154,14 +154,14 @@ triggered_by:
   - init|start|fish|adult|step|share|embryo|one-extra
   - init|start|fish|adult|step|share|adult|one-extra
   - init|start|fish|embryo|step|scale|embryo|one-extra
-  - init|start|fish|embryo|step|scale|change|mice|one-extra
-  - init|start|fish|embryo|step|scale|change|pigs|one-extra
+  - init|start|fish|embryo|step|scale|change|mice|step|one-extra
+  - init|start|fish|embryo|step|scale|change|pigs|step|one-extra
   - init|start|fish|embryo|step|phased|stay|one-extra
-  - init|start|fish|embryo|step|phased|change|mice|one-extra
-  - init|start|fish|embryo|step|phased|change|pigs|one-extra
+  - init|start|fish|embryo|step|phased|change|mice|step|one-extra
+  - init|start|fish|embryo|step|phased|change|pigs|step|one-extra
   - init|start|fish|embryo|step|share|stay|one-extra
-  - init|start|fish|embryo|step|share|change|mice|one-extra
-  - init|start|fish|embryo|step|share|change|pigs|one-extra
+  - init|start|fish|embryo|step|share|change|mice|step|one-extra
+  - init|start|fish|embryo|step|share|change|pigs|step|one-extra
   - init|start|bio|biobank|stay|stay|pigs|one-extra
   - init|start|bio|biobank|stay|stay|mice|one-extra
   - init|start|bio|biobank|stay|stay|fish|one-extra
@@ -236,14 +236,14 @@ triggered_by:
   - init|start|fish|adult|step|share|embryo|two-extras
   - init|start|fish|adult|step|share|adult|two-extras
   - init|start|fish|embryo|step|scale|embryo|two-extras
-  - init|start|fish|embryo|step|scale|change|mice|two-extras
-  - init|start|fish|embryo|step|scale|change|pigs|two-extras
+  - init|start|fish|embryo|step|scale|change|mice|step|two-extras
+  - init|start|fish|embryo|step|scale|change|pigs|step|two-extras
   - init|start|fish|embryo|step|phased|stay|two-extras
-  - init|start|fish|embryo|step|phased|change|mice|two-extras
-  - init|start|fish|embryo|step|phased|change|pigs|two-extras
+  - init|start|fish|embryo|step|phased|change|mice|step|two-extras
+  - init|start|fish|embryo|step|phased|change|pigs|step|two-extras
   - init|start|fish|embryo|step|share|stay|two-extras
-  - init|start|fish|embryo|step|share|change|mice|two-extras
-  - init|start|fish|embryo|step|share|change|pigs|two-extras
+  - init|start|fish|embryo|step|share|change|mice|step|two-extras
+  - init|start|fish|embryo|step|share|change|pigs|step|two-extras
   - init|start|bio|biobank|stay|stay|pigs|two-extras
   - init|start|bio|biobank|stay|stay|mice|two-extras
   - init|start|bio|biobank|stay|stay|fish|two-extras

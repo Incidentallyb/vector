@@ -1229,10 +1229,10 @@ FILE-emails: jenny-change-barry.md
 FILE-emails: charlie-limit-contact-pigs.md
 FILE-messages: charlie-personal.md
 
-init|start|bio|stemcell|change|pigs|limit
+init|start|bio|stemcell|change|pigs|step|limit
 FILE-messages: charlie-change-shifts.md
 
-init|start|bio|stemcell|change|pigs|limit|step
+init|start|bio|stemcell|change|pigs|step|limit|step
 FILE-messages: choose-1-2-3.md
 
 Any two Extras
@@ -1246,5 +1246,5 @@ FILE-emails: jenny-change-barry.md
 FILE-emails: charlie-limit-or-change.md
 FILE-messages: charlie-personal.md
 
-init|start|bio|stemcell|change|mice|limit|step
+init|start|bio|stemcell|change|mice|step|limit|step
 FILE-messages: choose-1-2-3.md

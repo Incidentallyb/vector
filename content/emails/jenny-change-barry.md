@@ -8,9 +8,11 @@ triggered_by:
   - init|start|fish|embryo|step|phased|change|mice
   - init|start|fish|embryo|step|phased|change|pigs
   - init|start|fish|embryo|step|share|change|mice
-  - init|start|fish|embryo|step|colaborate|change|pigs
+  - init|start|fish|embryo|step|share|change|pigs
   - init|start|bio|stemcell|change|pigs
   - init|start|bio|stemcell|change|mice
+choices:
+  - step | Great, thank you!
 ---
 
 Hey Everyone,
