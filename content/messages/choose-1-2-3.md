@@ -83,8 +83,11 @@ triggered_by:
   - init|start|bio|biobank|stay|stay|pigs
   - init|start|bio|biobank|stay|stay|mice
   - init|start|bio|biobank|stay|stay|fish
-  - init|start|bio|stemcell|change|pigs|limit|step
-  - init|start|bio|stemcell|change|mice|limit|step
+  - init|start|bio|stemcell|change|pigs|step|limit
+  - init|start|bio|stemcell|change|pigs|step|fish
+  - init|start|bio|stemcell|change|pigs|step|mice
+  - init|start|bio|stemcell|change|mice|step|limit
+  - init|start|bio|stemcell|change|mice|step|fish
   - init|start|bio|biobank|fish|step|embryo
   - init|start|bio|biobank|fish|step|adult
 choices:
