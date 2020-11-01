@@ -1,6 +1,6 @@
 ---
 triggered_by:
   - "init|start|bio"
-image: BIOBANKBD.jpg
+image: STEM CELL BD.jpg
 ---
-# Bio Bank
+# Human Stem Cells

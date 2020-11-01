@@ -11,6 +11,10 @@
     }
 }
 
+.card-title {
+  text-transform: capitalize;
+}
+
 .card.read {
     .new {
         display:none; 

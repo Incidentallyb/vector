@@ -13,6 +13,7 @@ import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Set
 
+
 type alias DocumentWithRead =
     { triggered_by : List String
     , image : String
@@ -45,7 +46,7 @@ single maybeContent =
                 ]
 
 
-list :  GameData -> Dict String Content.DocumentData -> Set.Set String -> Html Msg
+list : GameData -> Dict String Content.DocumentData -> Set.Set String -> Html Msg
 list gamedata documentDict visitedSet =
     div [ class "card-columns" ]
         (List.map listItem (addReadStatus (Dict.values (filterDocuments documentDict gamedata.choices)) visitedSet))
@@ -69,17 +70,18 @@ addReadStatus documentData visitedSet =
         )
         documentData
 
+
 listItem : DocumentWithRead -> Html Msg
 listItem content =
     div [ class "card", classList [ ( "read", content.read ) ] ]
         [ div [ class "card-body" ]
             [ div [ class "card-title" ]
-                [ h1 [] [ text (String.replace "-" " " content.basename) ]
+                [ h2 [] [ text (String.replace "-" " " content.basename) ]
                 , img [ src (imagePath ++ content.image), class "img-fluid p-md-1" ] []
                 ]
             , div [ class "card-text" ]
                 [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text (t ViewDocument) ]
-                , span [ class "badge badge-error new" ] [ text  (t New) ]
+                , span [ class "badge badge-error new" ] [ text (t New) ]
                 ]
             ]
         ]
