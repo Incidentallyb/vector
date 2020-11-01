@@ -4,6 +4,7 @@ author: Charlie Benn
 subject: Limiting contact with the Pigs
 triggered_by:
   - init|start|bio|stemcell|change|pigs|step
+  - init|start|bio|biobank|pigs|step
 choices:
   - limit|Limit contact
   - fish|Change to fish

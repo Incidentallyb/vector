@@ -83,7 +83,7 @@ triggered_by:
   - init|start|bio|biobank|stay|stay|pigs
   - init|start|bio|biobank|stay|stay|mice
   - init|start|bio|biobank|stay|stay|fish
-  - init|start|bio|stemcell|change|pigs|step|limit
+  - init|start|bio|stemcell|change|pigs|step|limit|step
   - init|start|bio|stemcell|change|pigs|step|fish
   - init|start|bio|stemcell|change|pigs|step|mice
   - init|start|bio|stemcell|change|mice|step|limit
@@ -92,6 +92,9 @@ triggered_by:
   - init|start|bio|biobank|fish|step|adult
   - init|start|bio|biobank|mice|step|step|limit
   - init|start|bio|biobank|mice|step|step|fish
+  - init|start|bio|biobank|pigs|step|limit|step
+  - init|start|bio|biobank|pigs|step|fish
+  - init|start|bio|biobank|pigs|step|mice
 choices:
   - training|Training £1,000,000 - We can spend some time and resources training the animals so they feel more comfortable with the equipment, procedures and environment where the experiments will take place. Allowing them to see the lab as their home and to see the experiments as normal procedures will decrease their distress. 
   - rehousing|Rehousing after the experiment £1,000,000 - Many of the animals that are used during the experiment cannot be released back into the wild. Some have been genetically engineered and cannot be allowed back into the eco systems. Others have never been in a wild environment and will not survive. Most animals are destroyed after the experiment has been completed and their material sent to Bio Banks. Animals that remain unused in the experiment may be able to be rehoused as pets or more often in sanctuaries. 

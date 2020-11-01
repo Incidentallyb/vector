@@ -85,12 +85,14 @@ triggered_by:
   - init|start|bio|biobank|stay|stay|fish|nothing
   - init|start|bio|biobank|mice|step|step|fish|nothing
   - init|start|bio|biobank|mice|step|step|limit|nothing
-  - init|start|bio|stemcell|change|pigs|step|limit|nothing
+  - init|start|bio|stemcell|change|pigs|step|limit|step|nothing
   - init|start|bio|stemcell|change|pigs|step|fish|nothing
   - init|start|bio|stemcell|change|pigs|step|mice|nothing
   - init|start|bio|stemcell|change|mice|step|limit|nothing
   - init|start|bio|stemcell|change|mice|step|fish|nothing
-
+  - init|start|bio|biobank|pigs|step|limit|step|nothing
+  - init|start|bio|biobank|pigs|step|fish|nothing
+  - init|start|bio|biobank|pigs|step|mice|nothing
 
   - init|start|macaques|step|stay|step|scale|pigs|one-extra
   - init|start|macaques|step|stay|step|scale|mice|one-extra
@@ -180,7 +182,9 @@ triggered_by:
   - init|start|bio|stemcell|change|pigs|step|mice|one-extra
   - init|start|bio|stemcell|change|mice|step|limit|one-extra
   - init|start|bio|stemcell|change|mice|step|fish|one-extra
-
+  - init|start|bio|biobank|pigs|step|limit|step|one-extra
+  - init|start|bio|biobank|pigs|step|fish|one-extra
+  - init|start|bio|biobank|pigs|step|mice|one-extra
 
   - init|start|macaques|step|stay|step|scale|pigs|two-extras
   - init|start|macaques|step|stay|step|scale|mice|two-extras
@@ -270,6 +274,9 @@ triggered_by:
   - init|start|bio|stemcell|change|pigs|step|mice|two-extras
   - init|start|bio|stemcell|change|mice|step|limit|two-extras
   - init|start|bio|stemcell|change|mice|step|fish|two-extras
+  - init|start|bio|biobank|pigs|step|limit|step|two-extras
+  - init|start|bio|biobank|pigs|step|fish|two-extras
+  - init|start|bio|biobank|pigs|step|mice|two-extras
 
 choices:
     - send|Submit Your Review

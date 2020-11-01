@@ -12,6 +12,7 @@ triggered_by:
   - init|start|pigs|keep|step|phased|limit
   - init|start|pigs|keep|step|share|limit
   - init|start|bio|stemcell|change|pigs|step|limit
+  - init|start|bio|biobank|pigs|step|limit
 choices:
   - step|OK, thanks
 ---

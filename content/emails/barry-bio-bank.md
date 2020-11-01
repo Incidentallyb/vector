@@ -7,17 +7,21 @@ triggered_by:
 choices:
   - mice|Change to Mice
   - fish|Change to Fish
+  - pigs|Change to Pigs
   - stay|Stay with Bio Banks
 scoreChangeEconomic:
   - mice|-2
   - fish|-2
+  - pigs|-2
   - stay|-5
 scoreChangeHarm:
   - mice|6
   - fish|5
+  - pigs|7
 scoreChangeSuccess:
   - mice|35
   - fish|25
+  - pigs|35
 ---
 
 Hello,
