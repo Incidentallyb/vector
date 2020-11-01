@@ -1,6 +1,6 @@
 ---
 triggered_by:
-  - init|start|macaques|step|stay
+  - init|start|macaques
 author: Angry Green Man
 handle: '@AngryGreenMan'
 numLoves: 2
