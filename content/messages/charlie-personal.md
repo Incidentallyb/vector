@@ -19,6 +19,7 @@ triggered_by:
   - init|start|mice|handle|step|share
   - init|start|bio|stemcell|change|mice
   - init|start|bio|stemcell|change|pigs
+  - init|start|bio|biobank|mice|step|step
 ---
 
 Hi Everyone, I have a bit of a personal request, so I have sent over an email...

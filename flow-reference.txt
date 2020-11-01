@@ -1083,21 +1083,32 @@ init|start|bio|biobank|pigs
 1.5.1.1.1 Change to Pigs
 FILE-messages: barry-bio-change.md
 
-FILE-messages: choose-1-2-3.md
+init|start|bio|biobank|pigs|step
+FILE-emails: charlie-limit-contact-pigs-bio.md
 
-Any two Extras
-Any One Extra
-Do Nothing
+init|start|bio|biobank|pigs|step|limit
+FILE-messages: charlie-change-shifts.md
+
+
+init|start|bio|biobank|pigs|step|limit|step
+init|start|bio|biobank|pigs|step|fish
+init|start|bio|biobank|pigs|step|mice
+FILE-messages: choose-1-2-3.md
 
 init|start|bio|biobank|mice
 1.5.1.1.2? Change to Mice
 FILE-messages: barry-bio-change.md
 
-FILE-messages: choose-1-2-3.md
+init|start|bio|biobank|mice|step
+FILE-emails: jenny-change-barry.md
 
-Any two Extras
-Any One Extra
-Do Nothing
+init|start|bio|biobank|mice|step|step
+FILE-messages: charlie-personal.md
+FILE-emails: charlie-limit-or-change.md
+
+init|start|bio|biobank|mice|step|step|limit
+init|start|bio|biobank|mice|step|step|fish
+FILE-messages: choose-1-2-3.md
 
 init|start|bio|biobank|fish
 1.5.1.1.3? Change to Fish
