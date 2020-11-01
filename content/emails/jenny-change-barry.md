@@ -11,6 +11,7 @@ triggered_by:
   - init|start|fish|embryo|step|share|change|pigs
   - init|start|bio|stemcell|change|pigs
   - init|start|bio|stemcell|change|mice
+  - init|start|bio|biobank|mice|step
 choices:
   - step|Great, thank you!
 ---
