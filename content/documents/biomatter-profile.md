@@ -1,7 +1,7 @@
 ---
 triggered_by:
   - "init|start"
-image: BIOMATTER BD.jpg
+image: BIOBANK BD.jpg
 ---
 # Biomatter
 -	The storage of organs or tissues from animals used in research is becoming more popular amongst the scientific community.
