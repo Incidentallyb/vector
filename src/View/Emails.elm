@@ -10,7 +10,6 @@ import Heroicons.Outline exposing (arrowLeft)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Attributes.Aria exposing (ariaHidden)
-import Html.Events exposing (onClick)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))

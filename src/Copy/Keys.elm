@@ -20,7 +20,6 @@ type Key
     | NavMessages
     | NavSocial
       --- Messages
-    | FromAL
     | FromPlayerTeam
     | WellDone
     | Results
