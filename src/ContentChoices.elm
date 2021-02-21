@@ -253,7 +253,7 @@ getTriggeredBy content =
         Email email ->
             email.triggered_by
 
-        Document document -> 
+        Document document ->
             document.triggered_by
 
 

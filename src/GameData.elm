@@ -329,6 +329,5 @@ getScoreChange changeType branchingContent =
                 -}
                 Document _ ->
                     List.tail [ "" ]
-
     in
     Maybe.withDefault [ "" ] maybeChange
