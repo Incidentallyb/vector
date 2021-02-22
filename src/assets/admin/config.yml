@@ -2,7 +2,7 @@ backend:
   name: github
   repo: TheLabCollective/vector
   branch: main
-media_folder: "/assets/images/uploads" # Media files will be stored in the repo under assets/images/uploads
+media_folder: "/src/assets/images/uploads" # Media files will be stored in the repo under assets/images/uploads
 public_folder: "/uploads" # The src attribute for uploaded media will begin with /uploads
 collections:
   - name: "email"
@@ -34,4 +34,19 @@ collections:
       - {label: "Economic change", name: "scoreChangeEconomic", widget: "list", required: false}
       - {label: "Harm change", name: "scoreChangeHarm", widget: "list", required: false}
       - {label: "Success change", name: "scoreChangeSuccess", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "social"
+    label: "Social"
+    folder: "/content/social"
+    create: true
+    slug: "{{slug}}" # title.md
+    fields:
+      - {label: "Title (filename)", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Handle", name: "handle", widget: "string"}
+      - {label: "Triggered by choice list", name: "triggered_by", widget: "list"}
+      - {label: "Loves", name: "numLoves", widget: "number", required: false}
+      - {label: "Retweets", name: "numRetweets", widget: "number", required: false}
+      - {label: "Comments", name: "numComments", widget: "number", required: false}
+      - {label: "Image", name: "image", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
