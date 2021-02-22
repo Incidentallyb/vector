@@ -56,11 +56,16 @@ type alias EmailData =
     , scoreChangeSuccess : Maybe (List String)
     }
 
+type alias ImageData =
+  {src: String
+  , alt: String
+  }
 
 type alias SocialData =
     { triggered_by : List String
     , author : String
     , handle : String
+    , image: Maybe ImageData
     , content : String
     , basename : String
     , numComments : Int
@@ -198,9 +203,16 @@ socialDictDecoder =
             |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
             |> andMap (Json.Decode.field "author" string |> withDefault "")
             |> andMap (Json.Decode.field "handle" string |> withDefault "")
+            |> andMap (Json.Decode.maybe imageDecoder)
             |> andMap (Json.Decode.field "content" string |> withDefault "")
             |> andMap (Json.Decode.field "basename" string |> withDefault "")
             |> andMap (Json.Decode.field "numComments" int |> withDefault 0)
             |> andMap (Json.Decode.field "numLoves" int |> withDefault 0)
             |> andMap (Json.Decode.field "numRetweets" int |> withDefault 0)
         )
+
+imageDecoder : Json.Decode.Decoder ImageData
+imageDecoder =
+  Json.Decode.map2 ImageData
+    (Json.Decode.field "src" string)
+    (Json.Decode.field "alt" string)

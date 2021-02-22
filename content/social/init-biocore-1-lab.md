@@ -1,6 +1,7 @@
 ---
 triggered_by:
     - init
+title: init BioCore 1 lab
 author: BioCore
 handle: '@biocore'
 numLoves: 43

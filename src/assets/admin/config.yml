@@ -48,5 +48,11 @@ collections:
       - {label: "Loves", name: "numLoves", widget: "number", required: false}
       - {label: "Retweets", name: "numRetweets", widget: "number", required: false}
       - {label: "Comments", name: "numComments", widget: "number", required: false}
-      - {label: "Image", name: "image", widget: "image"}
+      - label: Image
+        name: image
+        widget: object
+        required: false
+        fields:
+          - {label: "Image", name: "src", widget: "image"}
+          - {label: "Alt text for image", name: "alt", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
