@@ -53,13 +53,13 @@ pathList =
 
 filterChoicesByPath : String -> List String -> List String
 filterChoicesByPath path choices =
-  List.filter (\choice -> String.contains path choice) choices
+    List.filter (\choice -> String.contains path choice) choices
 
 
 renderTable : List String -> Content.Datastore -> Html Msg
 renderTable allChoices allContent =
     table []
-        [ thead [] [ tr [] (renderHeaders) ]
+        [ thead [] [ tr [] renderHeaders ]
         , tbody []
             [ tr []
                 (renderMessageList allChoices (Dict.values allContent.messages))
@@ -74,12 +74,21 @@ renderHeaders =
 
 renderMessageList : List String -> List Content.MessageData -> List (Html Msg)
 renderMessageList choiceList messageList =
-    List.map (\path -> td []( 
-      List.map (\choice -> div[][p[][text choice],ul[]
-        (renderMessageTitles choice messageList)
-        ]) (filterChoicesByPath path choiceList))
-    
-    ) pathList
+    List.map
+        (\path ->
+            td []
+                (List.map
+                    (\choice ->
+                        div []
+                            [ p [] [ text choice ]
+                            , ul []
+                                (renderMessageTitles choice messageList)
+                            ]
+                    )
+                    (filterChoicesByPath path choiceList)
+                )
+        )
+        pathList
 
 
 renderMessageTitles : String -> List Content.MessageData -> List (Html Msg)
