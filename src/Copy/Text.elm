@@ -30,6 +30,9 @@ t key =
         SocialSlug ->
             "social-media"
 
+        PathCheckerSlug ->
+            "path-check"
+
         IntroSlug ->
             ""
 
@@ -74,7 +77,7 @@ t key =
         ItemNotFound ->
             "Item not found"
 
-        New -> 
+        New ->
             "NEW"
 
         ViewDocument ->

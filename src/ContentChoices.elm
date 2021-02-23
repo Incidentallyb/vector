@@ -184,9 +184,9 @@ getChoices data =
         Message messageData ->
             messageData.choices
 
-        Social _ -> 
+        Social _ ->
             []
-        
+
         Document _ ->
             []
 
@@ -259,7 +259,7 @@ getTriggeredBy content =
         Social social ->
             social.triggered_by
 
-        Document document -> 
+        Document document ->
             document.triggered_by
 
 

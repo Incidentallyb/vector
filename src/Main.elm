@@ -7,7 +7,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import GameData exposing (GameData, NotificationCount, ScoreType(..), filterEmails, filterMessages, filterSocials, filterDocuments, init)
+import GameData exposing (GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
@@ -20,6 +20,7 @@ import View.Documents
 import View.Emails
 import View.Intro exposing (view)
 import View.Messages exposing (view)
+import View.PathChecker
 import View.Social
 
 
@@ -108,7 +109,6 @@ update msg model =
 
                 updatedSingleViewNotifications2 =
                     { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
-
             in
             ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications2 }, resetViewportTop )
 
@@ -135,14 +135,14 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
-                    , documents = 
+                    , documents =
                         model.notifications.documents
                             + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
                     , emails =
                         model.notifications.emails
                             + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
-                    , social = 
-                        model.notifications.social 
+                    , social =
+                        model.notifications.social
                             + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
                     }
             in
@@ -304,6 +304,10 @@ view model =
             div []
                 [ View.Intro.view
                 ]
+
+        PathChecker ->
+            div []
+                [ View.PathChecker.view model.data ]
 
 
 resetViewportTop : Cmd Msg

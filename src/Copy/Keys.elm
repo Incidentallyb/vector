@@ -11,6 +11,7 @@ type Key
     | MessagesSlug
     | SocialSlug
     | IntroSlug
+    | PathCheckerSlug
       --- Intro page
     | StartNewGame
     | IntroVideo
