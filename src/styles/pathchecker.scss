@@ -1,3 +1,33 @@
 #path-checker {
   background-color: var(--white);
+  font-size: 1.1em;
+  padding: 2em;
+  ul {
+    list-style: none;
+  }
+
+  .messages {
+    color: green;
+    :before {
+      content: "message: ";
+    }
+  }
+  .emails {
+    color: red;
+    :before {
+      content: "email: ";
+    }
+  }
+  .socials {
+    color: orange;
+    :before {
+      content: "social: ";
+    }
+  }
+  .documents {
+    color: purple;
+    :before {
+      content: "document: ";
+    }
+  }
 }

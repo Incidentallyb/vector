@@ -43,7 +43,10 @@ getAllChoices allContent =
         socialTriggers =
             List.map (\social -> social.triggered_by) socials
     in
-    List.sort (Set.toList (Set.fromList (List.concat messageTriggers)))
+      (documentTriggers ++ emailTriggers ++ messageTriggers ++ socialTriggers)
+          |> List.concat
+          |> Set.fromList
+          |> Set.toList
 
 
 pathList : List String
@@ -62,7 +65,7 @@ renderTable allChoices allContent =
         [ thead [] [ tr [] renderHeaders ]
         , tbody []
             [ tr []
-                (renderMessageList allChoices (Dict.values allContent.messages))
+                (renderMessageList allChoices allContent)
             ]
         ]
 
@@ -72,8 +75,8 @@ renderHeaders =
     List.map (\path -> th [] [ text path ]) pathList
 
 
-renderMessageList : List String -> List Content.MessageData -> List (Html Msg)
-renderMessageList choiceList messageList =
+renderMessageList : List String -> Content.Datastore -> List (Html Msg)
+renderMessageList choiceList allContent =
     List.map
         (\path ->
             td []
@@ -81,41 +84,40 @@ renderMessageList choiceList messageList =
                     (\choice ->
                         div []
                             [ p [] [ text choice ]
-                            , ul []
-                                (renderMessageTitles choice messageList)
+                            , ul [ class "messages"]
+                              (renderContentTitles choice (Dict.values allContent.messages))
+                            , ul [class "emails"]
+                              (renderContentTitles choice (Dict.values allContent.emails))
+                            , ul [class "documents"]
+                              (renderContentTitles choice (Dict.values allContent.documents))                           
+                            , ul [class "socials"]
+                              (renderContentTitles choice (Dict.values allContent.social))
                             ]
                     )
-                    (filterChoicesByPath path choiceList)
+                    (filterChoicesByPath path (List.sortBy String.length choiceList))
                 )
         )
         pathList
 
+type alias ContentData a =
+  { a | basename: String, triggered_by: List String }
 
-renderMessageTitles : String -> List Content.MessageData -> List (Html Msg)
-renderMessageTitles choice messages =
+renderContentTitles : String -> List (ContentData a) -> List (Html Msg)
+renderContentTitles choice content =
     List.map
-        (\message ->
-            if messageTriggeredByChoice choice message.triggered_by then
-                li [] [ text message.basename ]
+        (\file ->
+            if contentTriggeredByChoice choice file.triggered_by then
+                li [] [ text file.basename ]
 
             else
                 text ""
         )
-        messages
+        content
 
 
-messageTriggeredByChoice : String -> List String -> Bool
-messageTriggeredByChoice choice triggerList =
+contentTriggeredByChoice : String -> List String -> Bool
+contentTriggeredByChoice choice triggerList =
     List.member choice triggerList
-
-
-renderMessage : Content.MessageData -> Html Msg
-renderMessage message =
-    li []
-        [ span [] (List.map renderTrigger message.triggered_by)
-        , text " - "
-        , span [] [ text message.basename ]
-        ]
 
 
 renderTrigger : String -> Html Msg
