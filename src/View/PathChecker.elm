@@ -8,7 +8,6 @@ import Markdown
 import Message exposing (Msg(..))
 import Set
 
-
 view : Content.Datastore -> Html Msg
 view contentData =
     div [ id "path-checker" ]
@@ -47,7 +46,31 @@ getAllChoices allContent =
           |> List.concat
           |> Set.fromList
           |> Set.toList
+          -- Todo hardcoded for demo
+          |> filterChoicesBySelected ["macaques", "stay", "scale"]
 
+filterChoicesBySelected : List String -> List String -> List String
+filterChoicesBySelected selectedChoices allChoices =
+    let
+      filtered = List.filter (\item -> isTriggeredByChoices selectedChoices item) allChoices
+      print = Debug.log "filtered" filtered
+    in
+      filtered
+
+isTriggeredByChoices : List String -> String -> Bool
+isTriggeredByChoices selectedChoices triggeredBy =
+    let
+        choiceString = String.join "|" selectedChoices
+        cleanTriggerString = String.split "|" triggeredBy
+            |> List.filter (\choice -> not (List.member choice ignoreInChoiceMatch))
+            |> String.join "|"
+    in
+    -- Append init|start| so we match in choice order from start 
+    String.contains choiceString ("init|start|" ++ cleanTriggerString)
+
+ignoreInChoiceMatch : List String
+ignoreInChoiceMatch =
+    ["init", "start", "step", "change"]
 
 pathList : List String
 pathList =
@@ -89,7 +112,7 @@ renderMessageList choiceList allContent =
                             , ul [class "emails"]
                               (renderContentTitles choice (Dict.values allContent.emails))
                             , ul [class "documents"]
-                              (renderContentTitles choice (Dict.values allContent.documents))                           
+                              (renderContentTitles choice (Dict.values allContent.documents))
                             , ul [class "socials"]
                               (renderContentTitles choice (Dict.values allContent.social))
                             ]
