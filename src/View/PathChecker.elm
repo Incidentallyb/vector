@@ -8,6 +8,7 @@ import Markdown
 import Message exposing (Msg(..))
 import Set
 
+
 view : Content.Datastore -> Html Msg
 view contentData =
     div [ id "path-checker" ]
@@ -42,35 +43,38 @@ getAllChoices allContent =
         socialTriggers =
             List.map (\social -> social.triggered_by) socials
     in
-      (documentTriggers ++ emailTriggers ++ messageTriggers ++ socialTriggers)
-          |> List.concat
-          |> Set.fromList
-          |> Set.toList
-          -- Todo hardcoded for demo
-          |> filterChoicesBySelected ["macaques", "stay", "scale"]
+    (documentTriggers ++ emailTriggers ++ messageTriggers ++ socialTriggers)
+        |> List.concat
+        |> Set.fromList
+        |> Set.toList
+        -- Todo hardcoded for demo
+        |> filterChoicesBySelected [ "macaques" ]
+
 
 filterChoicesBySelected : List String -> List String -> List String
 filterChoicesBySelected selectedChoices allChoices =
-    let
-      filtered = List.filter (\item -> isTriggeredByChoices selectedChoices item) allChoices
-      print = Debug.log "filtered" filtered
-    in
-      filtered
+    List.filter (\item -> isTriggeredByChoices selectedChoices item) allChoices
+
 
 isTriggeredByChoices : List String -> String -> Bool
 isTriggeredByChoices selectedChoices triggeredBy =
     let
-        choiceString = String.join "|" selectedChoices
-        cleanTriggerString = String.split "|" triggeredBy
-            |> List.filter (\choice -> not (List.member choice ignoreInChoiceMatch))
-            |> String.join "|"
+        choiceString =
+            String.join "|" selectedChoices
+
+        cleanTriggerString =
+            String.split "|" triggeredBy
+                |> List.filter (\choice -> not (List.member choice ignoreInChoiceMatch))
+                |> String.join "|"
     in
-    -- Append init|start| so we match in choice order from start 
+    -- Append init|start| so we match in choice order from start
     String.contains choiceString ("init|start|" ++ cleanTriggerString)
+
 
 ignoreInChoiceMatch : List String
 ignoreInChoiceMatch =
-    ["init", "start", "step", "change"]
+    [ "init", "start", "step", "change" ]
+
 
 pathList : List String
 pathList =
@@ -107,23 +111,30 @@ renderMessageList choiceList allContent =
                     (\choice ->
                         div []
                             [ p [] [ text choice ]
-                            , ul [ class "messages"]
-                              (renderContentTitles choice (Dict.values allContent.messages))
-                            , ul [class "emails"]
-                              (renderContentTitles choice (Dict.values allContent.emails))
-                            , ul [class "documents"]
-                              (renderContentTitles choice (Dict.values allContent.documents))
-                            , ul [class "socials"]
-                              (renderContentTitles choice (Dict.values allContent.social))
+                            , ul [ class "messages" ]
+                                (renderContentTitles choice (Dict.values allContent.messages))
+                            , ul [ class "emails" ]
+                                (renderContentTitles choice (Dict.values allContent.emails))
+                            , ul [ class "documents" ]
+                                (renderContentTitles choice (Dict.values allContent.documents))
+                            , ul [ class "socials" ]
+                                (renderContentTitles choice (Dict.values allContent.social))
+                            , if nextIsShorter choice (getNext (filterChoicesByPath path (List.sort choiceList)) choice) then
+                                p [ class "path-end" ] []
+
+                              else
+                                text ""
                             ]
                     )
-                    (filterChoicesByPath path (List.sortBy String.length choiceList))
+                    (filterChoicesByPath path (List.sort choiceList))
                 )
         )
         pathList
 
+
 type alias ContentData a =
-  { a | basename: String, triggered_by: List String }
+    { a | basename : String, triggered_by : List String }
+
 
 renderContentTitles : String -> List (ContentData a) -> List (Html Msg)
 renderContentTitles choice content =
@@ -143,6 +154,55 @@ contentTriggeredByChoice choice triggerList =
     List.member choice triggerList
 
 
-renderTrigger : String -> Html Msg
-renderTrigger trigger =
-    text trigger
+pipeCountClass : String -> String
+pipeCountClass choice =
+    "choice-count-"
+        ++ (String.split "|" choice
+                |> List.length
+                |> String.fromInt
+           )
+
+
+nextIsShorter : String -> Maybe String -> Bool
+nextIsShorter currentChoice nextChoice =
+    let
+        currentLength =
+            List.length (String.split "|" currentChoice)
+
+        nextLength =
+            List.length (String.split "|" (Maybe.withDefault "" nextChoice))
+
+        print =
+            Debug.log "compared" (currentLength > nextLength)
+
+        print1 =
+            Debug.log "current" currentChoice
+
+        print2 =
+            Debug.log "next" (Maybe.withDefault "" nextChoice)
+    in
+    currentLength > nextLength
+
+
+
+-- Drop first item in list & zip with original to get tuple (current, next)
+-- Filter for current choice, take only the next and grab head
+
+
+getNext : List String -> String -> Maybe String
+getNext triggerList choice =
+    triggerList
+        |> List.drop 1
+        |> zip triggerList
+        |> List.filter (\( current, next ) -> current == choice)
+        |> List.map (\( current, next ) -> next)
+        |> List.head
+
+
+
+-- Convert 2 lists to list of tuples
+
+
+zip : List String -> List String -> List ( String, String )
+zip first next =
+    List.map2 Tuple.pair first next

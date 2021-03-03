@@ -11,7 +11,7 @@ import GameData exposing (GameData, NotificationCount, ScoreType(..), filterDocu
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
-import Route exposing (Route(..), toString)
+import Route exposing (Route(..))
 import Set
 import Task
 import Url
@@ -320,7 +320,7 @@ resetViewportTop =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 

@@ -4,16 +4,14 @@ import Content
 import ContentChoices exposing (triggeredByChoicesGetMatches)
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import Dict exposing (Dict)
+import Dict
 import GameData exposing (CheckboxData, GameData, ScoreType(..), filterMessages)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
 import List.Extra
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
-import Set exposing (Set)
 import View.ChoiceButtons
 
 

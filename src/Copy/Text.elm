@@ -56,9 +56,6 @@ t key =
             "Tweeeeter"
 
         -- Messages
-        FromAL ->
-            "AL @ Biocore"
-
         FromPlayerTeam ->
             "Team "
 

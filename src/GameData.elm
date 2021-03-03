@@ -329,8 +329,5 @@ getScoreChange changeType branchingContent =
                 -}
                 Document _ ->
                     List.tail [ "" ]
-
-                Social _ ->
-                    List.tail [ "" ]
     in
     Maybe.withDefault [ "" ] maybeChange
