@@ -123,8 +123,16 @@ update msg model =
 
                 updatedSingleViewNotifications2 =
                     { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
+            
+                cmdToSend = 
+                  case newRoute of
+                        Messages ->
+                            resetViewportDesktopBottom
+                        _ -> 
+                            resetViewportTop
+
             in
-            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, resetViewportTop )
+            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, cmdToSend )
 
         ChoiceButtonClicked choice ->
             let
@@ -328,6 +336,11 @@ resetViewportTop : Cmd Msg
 resetViewportTop =
     Task.perform (\_ -> NoOp) (Browser.Dom.setViewport 0 0)
 
+resetViewportDesktopBottom : Cmd Msg
+resetViewportDesktopBottom = 
+    Browser.Dom.getViewportOf "desktop"
+        |> Task.andThen (\info -> Browser.Dom.setViewportOf "desktop" 0 info.scene.height)
+        |> Task.attempt (\_ -> NoOp)
 
 
 -- SUBSCRIPTIONS & FLAGS
