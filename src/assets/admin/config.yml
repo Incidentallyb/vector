@@ -15,30 +15,11 @@ collections:
       - { label: "Title (filename)", name: "title", widget: "string" }
       - { label: "Author", name: "author", widget: "string" }
       - { label: "Subject", name: "subject", widget: "string" }
-      - {
-          label: "Triggered by choice list",
-          name: "triggered_by",
-          widget: "list",
-        }
+      - { label: "Triggered by choice list", name: "triggered_by", widget: "list" }
       - { label: "Choices", name: "choices", widget: "list", required: false }
-      - {
-          label: "Economic change",
-          name: "scoreChangeEconomic",
-          widget: "list",
-          required: false,
-        }
-      - {
-          label: "Harm change",
-          name: "scoreChangeHarm",
-          widget: "list",
-          required: false,
-        }
-      - {
-          label: "Success change",
-          name: "scoreChangeSuccess",
-          widget: "list",
-          required: false,
-        }
+      - { label: "Economic change", name: "scoreChangeEconomic", widget: "list", required: false }
+      - { label: "Harm change", name: "scoreChangeHarm", widget: "list", required: false }
+      - { label: "Success change", name: "scoreChangeSuccess", widget: "list", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "message"
     label: "Messages"
@@ -49,36 +30,12 @@ collections:
     fields:
       - { label: "Title (filename)", name: "title", widget: "string" }
       - { label: "Author", name: "author", widget: "string" }
-      - {
-          label: "Triggered by choice list",
-          name: "triggered_by",
-          widget: "list",
-        }
-      - {
-          label: "Player message",
-          name: "playerMessage",
-          widget: "string",
-          required: false,
-        }
+      - { label: "Triggered by choice list", name: "triggered_by", widget: "list" }
+      - { label: "Player message", name: "playerMessage", widget: "string", required: false }
       - { label: "Choices", name: "choices", widget: "list", required: false }
-      - {
-          label: "Economic change",
-          name: "scoreChangeEconomic",
-          widget: "list",
-          required: false,
-        }
-      - {
-          label: "Harm change",
-          name: "scoreChangeHarm",
-          widget: "list",
-          required: false,
-        }
-      - {
-          label: "Success change",
-          name: "scoreChangeSuccess",
-          widget: "list",
-          required: false,
-        }
+      - { label: "Economic change", name: "scoreChangeEconomic", widget: "list", required: false }
+      - { label: "Harm change", name: "scoreChangeHarm", widget: "list", required: false }
+      - { label: "Success change", name: "scoreChangeSuccess", widget: "list", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "social"
     label: "Social"
@@ -89,24 +46,10 @@ collections:
       - { label: "Title (filename)", name: "title", widget: "string" }
       - { label: "Author", name: "author", widget: "string" }
       - { label: "Handle", name: "handle", widget: "string" }
-      - {
-          label: "Triggered by choice list",
-          name: "triggered_by",
-          widget: "list",
-        }
+      - { label: "Triggered by choice list", name: "triggered_by", widget: "list" }
       - { label: "Loves", name: "numLoves", widget: "number", required: false }
-      - {
-          label: "Retweets",
-          name: "numRetweets",
-          widget: "number",
-          required: false,
-        }
-      - {
-          label: "Comments",
-          name: "numComments",
-          widget: "number",
-          required: false,
-        }
+      - { label: "Retweets", name: "numRetweets", widget: "number", required: false }
+      - { label: "Comments", name: "numComments", widget: "number", required: false }
       - label: Image
         name: image
         widget: object
@@ -123,50 +66,18 @@ collections:
     slug: "{{slug}}" # title.md
     fields:
       - { label: "Title (filename)", name: "title", widget: "string" }
-      - {
-          label: "Triggered by choice list",
-          name: "triggered_by",
-          required: true,
-          widget: "list",
-        }
-      - {
-          label: "Subtitle",
-          name: "subtitle",
-          widget: "string",
-          required: false,
-        }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Image alt text", name: "imageAlt", widget: "string" }
-      - {
-          label: "Number used",
-          name: "numberUsed",
-          widget: "number",
-          required: false,
-        }
+      - { label: "Triggered by choice list", name: "triggered_by", required: true, widget: "list" }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+      - label: Image
+        name: image
+        widget: object
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Alt text for image", name: "alt", widget: "string" }
+      - { label: "Number used", name: "numberUsed", widget: "number", required: false }
       - { label: "Cost (£m)", name: "cost", widget: "string", required: false }
-      - {
-          label: "Success (%)",
-          name: "succsess",
-          widget: "string",
-          required: false,
-        }
-      - {
-          label: "Harm Rating",
-          name: "harm",
-          widget: "string",
-          required: false,
-        }
-      - {
-          label: "Pros",
-          name: "pros",
-          widget: "list",
-          required: false,
-          hint: "Comma seperated list",
-        }
-      - {
-          label: "Cons",
-          name: "cons",
-          widget: "list",
-          required: false,
-          hint: "Comma seperated list",
-        }
+      - { label: "Success (%)", name: "succsess", widget: "string", required: false }
+      - { label: "Harm Rating", name: "harm", widget: "string", required: false }
+      - { label: "Pros", name: "pros", widget: "list", required: false, hint: "Comma seperated list" }
+      - { label: "Cons", name: "cons", widget: "list", required: false, hint: "Comma seperated list" }

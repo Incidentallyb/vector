@@ -2,8 +2,9 @@
 title: Bio Matter
 triggered_by:
   - "init|start"
-image: BIOBANK BD.jpg
-imageAlt: ""
+image:
+  src: BIOBANK BD.jpg
+  alt: ""
 numberUsed: ""
 cost: "5-8"
 success: "1-100"

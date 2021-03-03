@@ -3,8 +3,9 @@ title: Macaque
 triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 0
-image: MACAQUE BD.jpg
-imageAlt: ""
+image:
+  src: MACAQUE BD.jpg
+  alt: ""
 numberUsed: "18"
 cost: "7"
 success: "40"

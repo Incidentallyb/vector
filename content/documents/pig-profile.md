@@ -3,8 +3,9 @@ title: Pig
 triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 712
-image: PIG BD.jpg
-imageAlt: ""
+image:
+  src: PIG BD.jpg
+  alt: ""
 numberUsed: "50"
 cost: "6"
 success: "35"

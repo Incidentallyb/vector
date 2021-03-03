@@ -3,8 +3,9 @@ title: Biobank
 triggered_by:
   - "init|start|bio"
 subtitle: Number used in 2020 - N/A
-image: BIOBANKBD.jpg
-imageAlt: ""
+image:
+  src: BIOBANKBD.jpg
+  alt: ""
 numberUsed: "N/A"
 cost: "5"
 success: "10"

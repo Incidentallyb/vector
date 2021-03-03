@@ -3,8 +3,9 @@ title: Mouse
 triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 90,908
-image: MOUSE BD.jpg
-imageAlt: ""
+image:
+  src: MOUSE BD.jpg
+  alt: ""
 numberUsed: "500"
 cost: "5"
 success: "30"

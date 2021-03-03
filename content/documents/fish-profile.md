@@ -3,8 +3,9 @@ title: Zebrafish
 triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 11,915
-image: FISH BD.jpg
-imageAlt: ""
+image:
+  src: FISH BD.jpg
+  alt: ""
 numberUsed: "1200"
 cost: "4"
 success: "25"
