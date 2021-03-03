@@ -3,6 +3,7 @@ triggered_by:
   - init|start|fish|embryo|step|scale
   - init|start|fish|embryo|step|phased
   - init|start|fish|embryo|step|share
+title: embryo 8 contra
 author: Contra
 handle: '@ContraPerspective'
 numLoves: 1

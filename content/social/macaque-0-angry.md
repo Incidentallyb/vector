@@ -1,6 +1,7 @@
 ---
 triggered_by:
   - init|start|macaques
+title: macaque 0 angry
 author: Angry Green Man
 handle: '@AngryGreenMan'
 numLoves: 21
