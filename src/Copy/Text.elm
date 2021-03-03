@@ -53,9 +53,6 @@ t key =
             "Tweeeeter"
 
         -- Messages
-        FromAL ->
-            "AL @ Biocore"
-
         FromPlayerTeam ->
             "Team "
 
@@ -74,7 +71,7 @@ t key =
         ItemNotFound ->
             "Item not found"
 
-        New -> 
+        New ->
             "NEW"
 
         ViewDocument ->
