@@ -1,7 +1,7 @@
 module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
-import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, triggeredByChoices, socialListKeyedByTriggerChoice)
+import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
 import Dict exposing (Dict)
 import Set exposing (Set)
 
@@ -71,12 +71,14 @@ filterSocials allSocials choices =
     in
     Dict.fromList (socialListKeyedByTriggerChoice choices filteredSocials)
 
+
 filterDocuments : Dict String DocumentData -> List String -> Dict String DocumentData
 filterDocuments documentData choices =
     -- Try to get a Dict of keyed filtered message. Fail with empty.
     filterBranchingContent (documentsToBranchingContent documentData) choices
         |> branchingContentToDocumentData
         |> Maybe.withDefault Dict.empty
+
 
 
 --

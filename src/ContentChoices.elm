@@ -1,4 +1,4 @@
-module ContentChoices exposing (branchingContentListKeyedByTriggerChoice, choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceChosenEmail, getTriggeredBy, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, socialListKeyedByTriggerChoice)
+module ContentChoices exposing (branchingContentListKeyedByTriggerChoice, choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceChosenEmail, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings)
 
 import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
@@ -10,6 +10,8 @@ import Set
 --
 -- Public functions to get choices and triggered content keyed by choice list
 --
+
+
 getBranchingChoiceChosen : List String -> BranchingContent -> String
 getBranchingChoiceChosen playerChoices message =
     -- first choice is 'init', so don't do anything
