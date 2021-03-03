@@ -1,4 +1,4 @@
-module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, MessageData, SocialData, datastoreDictDecoder, emptyEmail, emptyMessage, emptyDocument)
+module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, ImageData, MessageData, SocialData, datastoreDictDecoder, emptyEmail, emptyMessage, emptyDocument)
 
 import Dict exposing (Dict)
 import Json.Decode exposing (field, list, int, map4, maybe, string)
@@ -49,6 +49,7 @@ type alias EmailData =
     , subject : String
     , preview : String
     , content : String
+    , image : Maybe ImageData
     , basename : String
     , choices : Maybe (List String)
     , scoreChangeEconomic : Maybe (List String)
@@ -96,6 +97,7 @@ emptyEmail =
     , subject = ""
     , choices = Nothing
     , preview = ""
+    , image = Nothing
     , content = "Sorry. Something's gone wrong."
     , basename = ""
     , scoreChangeEconomic = Nothing
@@ -188,6 +190,7 @@ emailDictDecoder =
             |> andMap (Json.Decode.field "subject" string |> withDefault "")
             |> andMap (Json.Decode.field "preview" string |> withDefault "")
             |> andMap (Json.Decode.field "content" string |> withDefault "")
+            |> andMap (Json.Decode.maybe (Json.Decode.field "image" imageDecoder))
             |> andMap (Json.Decode.field "basename" string |> withDefault "")
             |> andMap (Json.Decode.maybe (Json.Decode.field "choices" (list string)))
             |> andMap (Json.Decode.maybe (Json.Decode.field "scoreChangeEconomic" (list string)))
@@ -203,7 +206,7 @@ socialDictDecoder =
             |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
             |> andMap (Json.Decode.field "author" string |> withDefault "")
             |> andMap (Json.Decode.field "handle" string |> withDefault "")
-            |> andMap (Json.Decode.maybe imageDecoder)
+            |> andMap (Json.Decode.maybe (Json.Decode.field "image" imageDecoder))
             |> andMap (Json.Decode.field "content" string |> withDefault "")
             |> andMap (Json.Decode.field "basename" string |> withDefault "")
             |> andMap (Json.Decode.field "numComments" int |> withDefault 0)

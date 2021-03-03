@@ -25,6 +25,7 @@ type alias EmailWithRead =
     , subject : String
     , preview : String
     , content : String
+    , image : Maybe Content.ImageData
     , basename : String
     , read : Bool
     }
@@ -56,6 +57,7 @@ single gamedata maybeContent =
                     , div [ class "ml-3" ] [ text email.author ]
                     ]
                 , div [ class "mt-3" ] [ Markdown.toHtml [ class "content" ] email.content ]
+                , renderImage email
                 , if List.length choiceList > 0 then
                     div [ class "button-choices" ]
                         (div [ class "quick-reply" ] [ text (t EmailQuickReply) ]
@@ -92,6 +94,7 @@ addReadStatus emailData visitedSet =
             , subject = email.subject
             , preview = email.preview
             , content = email.content
+            , image = email.image
             , basename = email.basename
             , read = readStatus
             }
@@ -114,6 +117,14 @@ listItem email =
                 ]
             ]
         ]
+
+renderImage : Content.EmailData -> Html Msg
+renderImage email =
+  case email.image of
+    Nothing ->
+      text ""
+    Just image ->
+      img [src (image.src), alt (image.alt) ][]
 
 
 generateCssString : String.String -> String.String
