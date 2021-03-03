@@ -187,6 +187,15 @@ getChoices data =
         Document _ ->
             []
 
+{-
+
+    Takes a list of current choices (e.g. "init" "start" "macaques") and walk them building 
+    up choice strings so you end up with a new list which accumulates the previous item, e..g
+    "init"
+    "init|start"
+    "init|start|macaques"
+
+-}
 
 choiceStepsList : List String -> List String
 choiceStepsList currentChoices =

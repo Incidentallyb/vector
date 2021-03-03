@@ -22,6 +22,7 @@ import View.Intro exposing (view)
 import View.Messages exposing (view)
 import View.Social
 import Route
+import ContentChoices exposing (choiceStepsList)
 
 
 
@@ -94,7 +95,7 @@ update msg model =
                     -- ONLY IF WE WERE ON MESSAGES to start with
                     case model.page of
                         Messages ->
-                            Set.insert (String.join "|" (List.reverse model.gameData.choices)) newGameData.choicesVisited
+                            Set.fromList (choiceStepsList model.gameData.choices)
                         _ ->
                             newGameData.choicesVisited
                     
