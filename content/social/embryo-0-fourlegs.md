@@ -9,6 +9,5 @@ triggered_by:
 numLoves: 100
 numRetweets: 52
 numComments: 23
-image: /uploads/ash.png
 ---
 Fish embryos are still embryos. All life is sacred. #AllLifeIsSacred @AllLifeIsSacred
