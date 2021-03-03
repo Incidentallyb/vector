@@ -21,6 +21,7 @@ import View.Emails
 import View.Intro exposing (view)
 import View.Messages exposing (view)
 import View.Social
+import Route
 
 
 
@@ -85,7 +86,21 @@ update msg model =
 
                 newVisits =
                     Set.insert (Route.toString newRoute) model.visited
+                newGameData = 
+                   model.gameData 
 
+                newChoicesVisited =
+                    -- whenever the route changes, store the choice 
+                    -- ONLY IF WE WERE ON MESSAGES to start with
+                    case model.page of
+                        Messages ->
+                            Set.insert (String.join "|" (List.reverse model.gameData.choices)) newGameData.choicesVisited
+                        _ ->
+                            newGameData.choicesVisited
+                    
+                updatedGameData = 
+                   { newGameData | choicesVisited = newChoicesVisited }
+                   
                 currentNotifications =
                     model.notifications
 
@@ -109,7 +124,7 @@ update msg model =
                 updatedSingleViewNotifications2 =
                     { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
             in
-            ( { model | page = newRoute, visited = newVisits, notifications = updatedSingleViewNotifications2 }, resetViewportTop )
+            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, resetViewportTop )
 
         ChoiceButtonClicked choice ->
             let
@@ -117,6 +132,7 @@ update msg model =
                 --   Debug.log "NEWSCORE" (Debug.toString (GameData.updateEconomicScore model.data model.gameData choice))
                 newGameData =
                     { choices = choice :: model.gameData.choices
+                    , choicesVisited = model.gameData.choicesVisited
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
                     , scoreSuccess = GameData.updateScore Success model.data model.gameData.choices choice
@@ -178,6 +194,7 @@ update msg model =
                 -- Nothing is a special case. It should cause others to unset / not be available.
                 newGameData =
                     { choices = model.gameData.choices
+                    , choicesVisited = model.gameData.choicesVisited
                     , checkboxSet = { selected = selected, submitted = model.gameData.checkboxSet.submitted }
                     , teamName = model.gameData.teamName
                     , scoreSuccess = model.gameData.scoreSuccess
@@ -196,6 +213,7 @@ update msg model =
                     { choices = model.gameData.choices
 
                     -- Right now we only have one. Later we might pass an id.
+                    , choicesVisited = model.gameData.choicesVisited
                     , checkboxSet = { selected = model.gameData.checkboxSet.selected, submitted = True }
                     , teamName = model.gameData.teamName
                     , scoreSuccess = model.gameData.scoreSuccess
@@ -217,6 +235,7 @@ update msg model =
             let
                 newGameData =
                     { choices = [ "init" ]
+                    , choicesVisited = model.gameData.choicesVisited
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = teamName
                     , scoreSuccess = model.gameData.scoreSuccess
