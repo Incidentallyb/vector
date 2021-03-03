@@ -2,36 +2,136 @@ backend:
   name: github
   repo: TheLabCollective/vector
   branch: main
-media_folder: "/assets/images/uploads" # Media files will be stored in the repo under assets/images/uploads
+media_folder: "/src/assets/images/uploads" # Media files will be stored in the repo under assets/images/uploads
 public_folder: "/uploads" # The src attribute for uploaded media will begin with /uploads
 collections:
   - name: "email"
-    label: "Email"
+    label: "Emails"
+    label_singular: "Email"
     folder: "/content/emails"
     create: true
     slug: "{{slug}}" # title.md
     fields:
-      - {label: "Title (filename)", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Subject", name: "subject", widget: "string"}
-      - {label: "Triggered by choice list", name: "triggered_by", widget: "list"}
-      - {label: "Choices", name: "choices", widget: "list", required: false}
-      - {label: "Economic change", name: "scoreChangeEconomic", widget: "list", required: false}
-      - {label: "Harm change", name: "scoreChangeHarm", widget: "list", required: false}
-      - {label: "Success change", name: "scoreChangeSuccess", widget: "list", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Title (filename)", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Subject", name: "subject", widget: "string" }
+      - {
+          label: "Triggered by choice list",
+          name: "triggered_by",
+          widget: "list",
+        }
+      - { label: "Choices", name: "choices", widget: "list", required: false }
+      - {
+          label: "Economic change",
+          name: "scoreChangeEconomic",
+          widget: "list",
+          required: false,
+        }
+      - {
+          label: "Harm change",
+          name: "scoreChangeHarm",
+          widget: "list",
+          required: false,
+        }
+      - {
+          label: "Success change",
+          name: "scoreChangeSuccess",
+          widget: "list",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "message"
-    label: "Message"
+    label: "Messages"
+    label_singular: "Message"
     folder: "/content/messages"
     create: true
     slug: "{{slug}}" # title.md
     fields:
-      - {label: "Title (filename)", name: "title", widget: "string"}
-      - {label: "Author", name: "author", widget: "string"}
-      - {label: "Triggered by choice list", name: "triggered_by", widget: "list"}
-      - {label: "Player message", name: "playerMessage", widget: "string", required: false}
-      - {label: "Choices", name: "choices", widget: "list", required: false}
-      - {label: "Economic change", name: "scoreChangeEconomic", widget: "list", required: false}
-      - {label: "Harm change", name: "scoreChangeHarm", widget: "list", required: false}
-      - {label: "Success change", name: "scoreChangeSuccess", widget: "list", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Title (filename)", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - {
+          label: "Triggered by choice list",
+          name: "triggered_by",
+          widget: "list",
+        }
+      - {
+          label: "Player message",
+          name: "playerMessage",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Choices", name: "choices", widget: "list", required: false }
+      - {
+          label: "Economic change",
+          name: "scoreChangeEconomic",
+          widget: "list",
+          required: false,
+        }
+      - {
+          label: "Harm change",
+          name: "scoreChangeHarm",
+          widget: "list",
+          required: false,
+        }
+      - {
+          label: "Success change",
+          name: "scoreChangeSuccess",
+          widget: "list",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "document"
+    label: "Documents"
+    label_singular: "Document"
+    folder: "/content/documents"
+    create: true
+    slug: "{{slug}}" # title.md
+    fields:
+      - { label: "Title (filename)", name: "title", widget: "string" }
+      - {
+          label: "Triggered by choice list",
+          name: "triggered_by",
+          required: true,
+          widget: "list",
+        }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Image alt text", name: "imageAlt", widget: "string" }
+      - {
+          label: "Number used",
+          name: "numberUsed",
+          widget: "number",
+          required: false,
+        }
+      - { label: "Cost (£m)", name: "cost", widget: "string", required: false }
+      - {
+          label: "Success (%)",
+          name: "succsess",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Harm Rating",
+          name: "harm",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Pros",
+          name: "pros",
+          widget: "list",
+          required: false,
+          hint: "Comma seperated list",
+        }
+      - {
+          label: "Cons",
+          name: "cons",
+          widget: "list",
+          required: false,
+          hint: "Comma seperated list",
+        }
