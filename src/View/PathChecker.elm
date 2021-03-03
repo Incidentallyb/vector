@@ -11,7 +11,8 @@ import Set
 view : Content.Datastore -> Html Msg
 view contentData =
     div [ id "path-checker" ]
-        [ renderTable (getAllChoices contentData) contentData
+        [ p [] []
+        , renderTable (getAllChoices contentData) contentData
         ]
 
 
@@ -47,7 +48,7 @@ getAllChoices allContent =
         |> Set.fromList
         |> Set.toList
         -- Todo hardcoded for demo
-        |> filterChoicesBySelected [ "macaques" ]
+        |> filterChoicesBySelected []
 
 
 filterChoicesBySelected : List String -> List String -> List String
