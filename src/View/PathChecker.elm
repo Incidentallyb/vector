@@ -27,12 +27,12 @@ view : Model -> Content.Datastore -> Html Msg
 view filterString contentData =
     div [ id "path-checker" ]
         [ input [ onInput ChangeFilter, value filterString ][]
-        , renderTable (getAllChoices contentData) contentData
+        , renderTable (getAvailableChoices filterString contentData) contentData
         ]
 
 
-getAllChoices : Content.Datastore -> List String
-getAllChoices allContent =
+getAvailableChoices : Model -> Content.Datastore -> List String
+getAvailableChoices filterString allContent =
     let
         messages =
             Dict.values allContent.messages
@@ -62,7 +62,7 @@ getAllChoices allContent =
         |> List.concat
         |> Set.fromList
         |> Set.toList
-        |> filterChoicesBySelected (String.split ", " filterBy)
+        |> filterChoicesBySelected (String.split ", " filterString)
 
 
 filterChoicesBySelected : List String -> List String -> List String

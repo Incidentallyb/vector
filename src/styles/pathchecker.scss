@@ -8,6 +8,11 @@
   tr {
     vertical-align: top;
   }
+  td {
+    border-right: 1px solid purple;
+    min-width: 200px;
+    padding: 0 4px;
+  }
 
   .messages {
     color: green;
