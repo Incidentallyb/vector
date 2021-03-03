@@ -4,6 +4,7 @@ import Expect
 import GameData exposing (GameData, ScoreType(..))
 import Test exposing (Test, describe, test)
 import TestData
+import Set exposing (Set)
 
 
 testGameData : GameData
@@ -14,6 +15,7 @@ testGameData =
 initGameData : GameData
 initGameData =
     { choices = [ "init" ]
+    , choicesVisited = Set.empty
     , checkboxSet = testGameData.checkboxSet
     , teamName = testGameData.teamName
     , scoreSuccess = 0
@@ -25,6 +27,7 @@ initGameData =
 startGameData : GameData
 startGameData =
     { choices = [ "start", "init" ]
+    , choicesVisited = Set.empty
     , checkboxSet = testGameData.checkboxSet
     , teamName = testGameData.teamName
     , scoreSuccess = 0
@@ -36,6 +39,7 @@ startGameData =
 macaquesGameData : GameData
 macaquesGameData =
     { choices = [ "macaques", "start", "init" ]
+    , choicesVisited = Set.empty
     , checkboxSet = testGameData.checkboxSet
     , teamName = testGameData.teamName
     , scoreSuccess = 0
@@ -47,6 +51,7 @@ macaquesGameData =
 changeGameData : GameData
 changeGameData =
     { choices = [ "change", "macaques", "start", "init" ]
+    , choicesVisited = Set.empty
     , checkboxSet = testGameData.checkboxSet
     , teamName = testGameData.teamName
     , scoreSuccess = 0
@@ -189,6 +194,7 @@ updateAllScores =
         [ test "Check data for start->macaques->change->fish" <|
             \_ ->
                 { choices = "fish" :: changeGameData.choices
+                , choicesVisited = Set.empty
                 , checkboxSet = changeGameData.checkboxSet
                 , teamName = changeGameData.teamName
                 , scoreSuccess = GameData.updateScore Success TestData.testDatastore changeGameData.choices "fish"
@@ -197,6 +203,7 @@ updateAllScores =
                 }
                     |> Expect.equal
                         { choices = [ "fish", "change", "macaques", "start", "init" ]
+                        , choicesVisited = Set.empty
                         , checkboxSet = changeGameData.checkboxSet
                         , teamName = "TestTeam"
                         , scoreSuccess = 50
