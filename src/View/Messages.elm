@@ -21,21 +21,21 @@ view gamedata datastore =
     ul [ class "message-list p-0" ]
         (Dict.values
             (filterMessages datastore.messages gamedata.choices)
-            |> List.map (renderMessageAndPrompt gamedata.choices gamedata.choicesVisited gamedata.checkboxSet gamedata.teamName datastore)
+            |> List.map (renderMessageAndPrompt gamedata datastore)
         )
 
 
-renderMessageAndPrompt : List String -> Set String -> CheckboxData -> String -> Content.Datastore -> Content.MessageData -> Html Msg
-renderMessageAndPrompt choices choicesVisited checkboxes team datastore message =
+renderMessageAndPrompt : GameData -> Content.Datastore -> Content.MessageData -> Html Msg
+renderMessageAndPrompt gamedata datastore message =
     let
         actualTriggers =
-            String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches choices message.triggered_by)))
+            String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches gamedata.choices message.triggered_by)))
        
         triggeredBy =
             String.join "|" actualTriggers
        
         haveWeSeenThisBefore =
-            Set.member triggeredBy choicesVisited
+            Set.member triggeredBy gamedata.choicesVisited
 
         triggerDepth =
             String.fromInt (List.length (filterChoiceString actualTriggers))
@@ -48,12 +48,12 @@ renderMessageAndPrompt choices choicesVisited checkboxes team datastore message 
         ]
         [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
         , if isScoreTime actualTriggers then
-            renderScore "AL" actualTriggers team datastore
+            renderScore "AL" actualTriggers gamedata.teamName datastore
 
           else
             text ""
         , renderMessage message.author message.content
-        , renderPrompt message choices checkboxes team
+        , renderPrompt message gamedata.choices gamedata.checkboxSet gamedata.teamName
         ]
 
 
