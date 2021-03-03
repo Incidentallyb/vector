@@ -117,13 +117,15 @@ listItem email =
             ]
         ]
 
+
 renderImage : Content.EmailData -> Html Msg
 renderImage email =
-  case email.image of
-    Nothing ->
-      text ""
-    Just image ->
-      img [src (image.src), alt (image.alt) ][]
+    case email.image of
+        Nothing ->
+            text ""
+
+        Just image ->
+            img [ src image.src, alt image.alt ] []
 
 
 generateCssString : String.String -> String.String
