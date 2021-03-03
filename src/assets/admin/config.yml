@@ -80,6 +80,41 @@ collections:
           required: false,
         }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: "social"
+    label: "Social"
+    folder: "/content/social"
+    create: true
+    slug: "{{slug}}" # title.md
+    fields:
+      - { label: "Title (filename)", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Handle", name: "handle", widget: "string" }
+      - {
+          label: "Triggered by choice list",
+          name: "triggered_by",
+          widget: "list",
+        }
+      - { label: "Loves", name: "numLoves", widget: "number", required: false }
+      - {
+          label: "Retweets",
+          name: "numRetweets",
+          widget: "number",
+          required: false,
+        }
+      - {
+          label: "Comments",
+          name: "numComments",
+          widget: "number",
+          required: false,
+        }
+      - label: Image
+        name: image
+        widget: object
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Alt text for image", name: "alt", widget: "string" }
+      - { label: "Body", name: "body", widget: "text" }
   - name: "document"
     label: "Documents"
     label_singular: "Document"

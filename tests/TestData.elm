@@ -89,6 +89,7 @@ testDatastore =
 testGamedata : GameData.GameData
 testGamedata =
     { choices = [ "" ]
+    , choicesVisited = Set.empty
     , checkboxSet = { selected = Set.empty, submitted = False }
     , teamName = "TestTeam"
     , scoreSuccess = 0

@@ -8,6 +8,7 @@ import Set exposing (Set)
 
 type alias GameData =
     { choices : List String
+    , choicesVisited : Set String
     , checkboxSet : CheckboxData
     , teamName : String
     , scoreSuccess : Int
@@ -33,6 +34,7 @@ type alias NotificationCount =
 init : GameData
 init =
     { choices = []
+    , choicesVisited = Set.empty
     , checkboxSet = { selected = Set.empty, submitted = False }
     , teamName = "?"
     , scoreSuccess = 0

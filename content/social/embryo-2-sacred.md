@@ -1,4 +1,5 @@
 ---
+title: embryo 2 sacred
 triggered_by:
   - init|start|fish|embryo|step|scale
   - init|start|fish|embryo|step|phased
