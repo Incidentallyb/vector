@@ -55,4 +55,4 @@ collections:
         fields:
           - {label: "Image", name: "src", widget: "image"}
           - {label: "Alt text for image", name: "alt", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "text"}
