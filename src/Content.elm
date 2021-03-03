@@ -1,7 +1,7 @@
-module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, ImageData, MessageData, SocialData, datastoreDictDecoder, emptyEmail, emptyMessage, emptyDocument)
+module Content exposing (BranchingContent(..), Datastore, DocumentData, EmailData, ImageData, MessageData, SocialData, datastoreDictDecoder, emptyDocument, emptyEmail, emptyMessage)
 
 import Dict exposing (Dict)
-import Json.Decode exposing (field, list, int, map4, maybe, string)
+import Json.Decode exposing (field, int, list, map4, string)
 import Json.Decode.Extra exposing (andMap, withDefault)
 
 
@@ -16,7 +16,6 @@ type alias Datastore =
 type BranchingContent
     = Message MessageData
     | Email EmailData
-    | Social SocialData
     | Document DocumentData
 
 
@@ -104,6 +103,7 @@ emptyEmail =
     , scoreChangeHarm = Nothing
     , scoreChangeSuccess = Nothing
     }
+
 
 emptyDocument : DocumentData
 emptyDocument =

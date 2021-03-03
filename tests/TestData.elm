@@ -1,4 +1,4 @@
-module TestData exposing (testDatastore, testGamedata, testMessage1, testMessage2, testMessage3, testMessage4)
+module TestData exposing (testDatastore, testGamedata)
 
 import Content
 import Dict
