@@ -1,17 +1,32 @@
-module View.PathChecker exposing (view)
+module View.PathChecker exposing (view, update, Model, Msg)
 
 import Content
 import Dict
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Message exposing (Msg(..))
+import Html.Events exposing (onInput)
 import Set
 
+filterBy : String
+filterBy =
+  "macaques, pigs, share"
 
-view : Content.Datastore -> Html Msg
-view contentData =
+type alias Model =
+  String
+
+type Msg =
+  ChangeFilter String
+
+update : Msg -> (Model, Cmd Msg)
+update msg =
+    case msg of
+      ChangeFilter newFilter ->
+        (newFilter, Cmd.none)
+
+view : Model -> Content.Datastore -> Html Msg
+view filterString contentData =
     div [ id "path-checker" ]
-        [ p [] []
+        [ input [ onInput ChangeFilter, value filterString ][]
         , renderTable (getAllChoices contentData) contentData
         ]
 
@@ -47,8 +62,7 @@ getAllChoices allContent =
         |> List.concat
         |> Set.fromList
         |> Set.toList
-        -- Todo hardcoded for demo
-        |> filterChoicesBySelected []
+        |> filterChoicesBySelected (String.split ", " filterBy)
 
 
 filterChoicesBySelected : List String -> List String -> List String
@@ -102,6 +116,46 @@ renderHeaders =
     List.map (\path -> th [] [ text path ]) pathList
 
 
+renderBoldChoices : String -> Html Msg
+renderBoldChoices choice =
+    let
+        choiceList =
+            String.split "|" choice
+    in
+    p []
+        (List.map
+            (\item ->
+                renderBoldChoice item (isLastItem item choiceList)
+            )
+            choiceList
+        )
+
+
+isLastItem : String -> List String -> Bool
+isLastItem item list =
+    item == Maybe.withDefault "" (List.head (List.reverse list))
+
+
+renderBoldChoice : String -> Bool -> Html Msg
+renderBoldChoice choice isLast =
+    if List.member choice ignoreInChoiceMatch then
+        if not isLast then
+            text (choice ++ "|")
+
+        else
+            text choice
+
+    else
+        b []
+            [ text choice
+            , if not isLast then
+                text "|"
+
+              else
+                text ""
+            ]
+
+
 renderMessageList : List String -> Content.Datastore -> List (Html Msg)
 renderMessageList choiceList allContent =
     List.map
@@ -110,7 +164,7 @@ renderMessageList choiceList allContent =
                 (List.map
                     (\choice ->
                         div []
-                            [ p [] [ text choice ]
+                            [ renderBoldChoices choice
                             , ul [ class "messages" ]
                                 (renderContentTitles choice (Dict.values allContent.messages))
                             , ul [ class "emails" ]
