@@ -72,6 +72,15 @@ $timeToWait: 2s;
   }
 }
 
+li.already-seen { 
+  .typing-indicator {
+    display:none;
+  }
+  .message {
+    animation: none;
+  }
+}
+
 .message-list .message:nth-child(2n) {
   animation-delay: #{$timeToWait};
 }

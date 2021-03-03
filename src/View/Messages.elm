@@ -13,6 +13,7 @@ import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import View.ChoiceButtons
+import Set exposing (Set)
 
 
 view : GameData -> Content.Datastore -> Html Msg
@@ -20,29 +21,39 @@ view gamedata datastore =
     ul [ class "message-list p-0" ]
         (Dict.values
             (filterMessages datastore.messages gamedata.choices)
-            |> List.map (renderMessageAndPrompt gamedata.choices gamedata.checkboxSet gamedata.teamName datastore)
+            |> List.map (renderMessageAndPrompt gamedata datastore)
         )
 
 
-renderMessageAndPrompt : List String -> CheckboxData -> String -> Content.Datastore -> Content.MessageData -> Html Msg
-renderMessageAndPrompt choices checkboxes team datastore message =
+renderMessageAndPrompt : GameData -> Content.Datastore -> Content.MessageData -> Html Msg
+renderMessageAndPrompt gamedata datastore message =
     let
         actualTriggers =
-            String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches choices message.triggered_by)))
+            String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches gamedata.choices message.triggered_by)))
+       
+        triggeredBy =
+            String.join "|" actualTriggers
+       
+        haveWeSeenThisBefore =
+            Set.member triggeredBy gamedata.choicesVisited
 
         triggerDepth =
             String.fromInt (List.length (filterChoiceString actualTriggers))
     in
     -- Add the trigger depth so we can hide scores if they come up more than once.
-    li [ classList [ ( "triggers-" ++ triggerDepth, isScoreTime actualTriggers ) ] ]
+    -- add triggeredby so we can avoid showing typing animations on subsequent page loads of the same page.
+    li [ classList 
+        [ ( "triggers-" ++ triggerDepth, isScoreTime actualTriggers )
+        , ( "already-seen", haveWeSeenThisBefore) ] 
+        ]
         [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
         , if isScoreTime actualTriggers then
-            renderScore "AL" actualTriggers team datastore
+            renderScore "AL" actualTriggers gamedata.teamName datastore
 
           else
             text ""
         , renderMessage message.author message.content
-        , renderPrompt message choices checkboxes team
+        , renderPrompt message gamedata.choices gamedata.checkboxSet gamedata.teamName
         ]
 
 
