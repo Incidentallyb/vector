@@ -1,10 +1,9 @@
 module View.PathChecker exposing (view)
 
 import Content
-import Dict exposing (Dict)
+import Dict
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Markdown
 import Message exposing (Msg(..))
 import Set
 
@@ -154,15 +153,6 @@ contentTriggeredByChoice choice triggerList =
     List.member choice triggerList
 
 
-pipeCountClass : String -> String
-pipeCountClass choice =
-    "choice-count-"
-        ++ (String.split "|" choice
-                |> List.length
-                |> String.fromInt
-           )
-
-
 nextIsShorter : String -> Maybe String -> Bool
 nextIsShorter currentChoice nextChoice =
     let
@@ -171,15 +161,6 @@ nextIsShorter currentChoice nextChoice =
 
         nextLength =
             List.length (String.split "|" (Maybe.withDefault "" nextChoice))
-
-        print =
-            Debug.log "compared" (currentLength > nextLength)
-
-        print1 =
-            Debug.log "current" currentChoice
-
-        print2 =
-            Debug.log "next" (Maybe.withDefault "" nextChoice)
     in
     currentLength > nextLength
 
@@ -194,8 +175,8 @@ getNext triggerList choice =
     triggerList
         |> List.drop 1
         |> zip triggerList
-        |> List.filter (\( current, next ) -> current == choice)
-        |> List.map (\( current, next ) -> next)
+        |> List.filter (\( current, _ ) -> current == choice)
+        |> List.map (\( _, next ) -> next)
         |> List.head
 
 
