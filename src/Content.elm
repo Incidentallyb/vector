@@ -35,7 +35,15 @@ type alias MessageData =
 
 type alias DocumentData =
     { triggered_by : List String
-    , image : String
+    , title : String
+    , subtitle : Maybe String
+    , image : Maybe ImageData
+    , numberUsed : Maybe String
+    , cost : Maybe String
+    , success : Maybe String
+    , harm : Maybe String
+    , pros : Maybe (List String)
+    , cons : Maybe (List String)
     , preview : String
     , content : String
     , basename : String
@@ -110,7 +118,15 @@ emptyEmail =
 emptyDocument : DocumentData
 emptyDocument =
     { triggered_by = [ "" ]
-    , image = ""
+    , title = "Sorry. Something's gone wrong."
+    , subtitle = Nothing
+    , image = Nothing
+    , numberUsed = Nothing
+    , cost = Nothing
+    , success = Nothing
+    , harm = Nothing
+    , pros = Nothing
+    , cons = Nothing
     , preview = ""
     , content = "Sorry. Something's gone wrong."
     , basename = ""
@@ -176,7 +192,15 @@ documentDictDecoder =
     Json.Decode.dict
         (Json.Decode.succeed DocumentData
             |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
-            |> andMap (Json.Decode.field "image" string |> withDefault "")
+            |> andMap (Json.Decode.field "title" string |> withDefault "")
+            |> andMap (Json.Decode.maybe (Json.Decode.field "subtitle" string))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "image" imageDecoder))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "numberUsed" string))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "cost" string))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "success" string))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "harm" string))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "pros" (list string)))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "cons" (list string)))
             |> andMap (Json.Decode.field "preview" string |> withDefault "")
             |> andMap (Json.Decode.field "content" string |> withDefault "")
             |> andMap (Json.Decode.field "basename" string |> withDefault "")

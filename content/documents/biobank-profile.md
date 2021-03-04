@@ -4,7 +4,7 @@ triggered_by:
   - "init|start|bio"
 subtitle: Number used in 2020 - N/A
 image:
-  src: BIOBANKBD.jpg
+  src: BioBank.svg
   alt: ""
 numberUsed: "N/A"
 cost: "5"
@@ -18,5 +18,3 @@ cons:
   - "Variable quality of sample"
   - "Possible cross contamination"
 ---
-
-# Bio Bank
