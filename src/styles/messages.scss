@@ -4,13 +4,14 @@ $timeToWait: 2s;
   list-style: none;
   li {
     @include clearfix;
-    &:not(:last-child) {
+    &:last-child {
+      /*
+        If multiple messages are triggered at the same time, the dom will contain typing-indicators
+        for both messages. Only show the first one.
+      */
       .typing-indicator {
-        display: none !important;
-        animation: none !important;
-      }
-      .message {
-        animation: none !important;
+        display: none !important; 
+        animation: none !important; 
       }
     }
   }
@@ -84,12 +85,30 @@ li.already-seen {
 .message-list .message:nth-child(2n) {
   animation-delay: #{$timeToWait};
 }
-
 .message-list .message:nth-child(3n) {
   animation-delay: #{$timeToWait + 1};
 }
 .message-list .message:nth-child(4n) {
   animation-delay: #{$timeToWait + 2};
+}
+
+/*
+  If there are two messages that have been triggered, and both are not-seen, 
+  then we need to delay the display of the second block of messages so they appear after the first <li> block.
+*/
+li.not-seen + li.not-seen {
+  .message {
+    animation-delay: #{$timeToWait};
+  }
+  .message:nth-child(2n) {
+    animation-delay: #{$timeToWait + 2};
+  }
+  .message:nth-child(3n) {
+    animation-delay: #{$timeToWait + 3};
+  }
+  .message:nth-child(4n) {
+    animation-delay: #{$timeToWait + 4};
+  }
 }
 
 @keyframes slide-into-view {
