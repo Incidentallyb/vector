@@ -46,7 +46,7 @@ renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg)
 renderWrapperWithNav gameData pageRoute notifications elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop" , id "desktop"]
-            [ div [ class "col-md-2 d-none d-md-block" ]
+            [ div [ class "col-md-3 d-none d-md-block" ]
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
                     , renderNavLinks pageRoute notifications
@@ -122,7 +122,10 @@ renderNavLinks pageRoute notifications =
             , text (t NavMessages)
             , if notifications.messages > 0 then
                 span [ class "badge badge-warning" ] [ text (String.fromInt notifications.messages) ]
-
+              else
+                text ""
+            , if notifications.messages == 0 && notifications.messagesNeedAttention == True then
+                span  [ class "badge badge-warning need-attention", title (t NavMessagesNeedAttention) ] [text "!" ]
               else
                 text ""
             ]
@@ -190,7 +193,10 @@ renderMobileNavLinks pageRoute notifications =
             , div [] [ text (t NavMessages) ]
             , if notifications.messages > 0 then
                 span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.messages) ]
-
+              else
+                text ""
+            , if notifications.messages == 0 && notifications.messagesNeedAttention == True then
+                span  [ class "badge badge-warning badge-mobile need-attention", title (t NavMessagesNeedAttention) ] [text "!" ]
               else
                 text ""
             ]

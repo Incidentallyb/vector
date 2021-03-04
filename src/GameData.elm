@@ -25,6 +25,7 @@ type alias CheckboxData =
 
 type alias NotificationCount =
     { messages : Int
+    , messagesNeedAttention: Bool
     , documents : Int
     , emails : Int
     , social : Int

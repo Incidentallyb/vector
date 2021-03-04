@@ -49,6 +49,9 @@ t key =
         NavMessages ->
             "Messages"
 
+        NavMessagesNeedAttention ->
+            "Decisions need to be made"
+
         NavSocial ->
             "Tweeeeter"
 

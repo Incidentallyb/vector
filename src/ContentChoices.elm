@@ -1,4 +1,4 @@
-module ContentChoices exposing (choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredSocialsByChoice)
+module ContentChoices exposing (choiceStepsList, getBranchingChoiceChosen, getChoiceChosen, getChoiceAction, getChoiceChosenEmail, triggeredBranchingContentByChoice, triggeredByChoices, triggeredByChoicesGetMatches, triggeredByWithChoiceStrings, triggeredSocialsByChoice)
 
 import Content exposing (BranchingContent(..), EmailData, MessageData, SocialData)
 import Dict exposing (Dict)
