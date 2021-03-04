@@ -1,6 +1,8 @@
 module View.Social exposing (view)
 
 import Content
+import Copy.Keys exposing (Key(..))
+import Copy.Text exposing (t)
 import Dict exposing (Dict)
 import GameData exposing (GameData, filterSocials)
 import Heroicons.Outline exposing (chat, heart, refresh, upload)
@@ -20,13 +22,16 @@ view gamedata socialDict =
             )
         )
 
+
 renderImage : Content.SocialData -> Html Msg
 renderImage social =
-  case social.image of
-    Nothing ->
-      text ""
-    Just image ->
-      img [src (image.src), alt (image.alt) ][]
+    case social.image of
+        Nothing ->
+            text ""
+
+        Just image ->
+            img [ src (t UploadPath ++ image.src), alt image.alt ] []
+
 
 renderTweet : Content.SocialData -> Html Msg
 renderTweet social =
