@@ -73,6 +73,7 @@ testMessage4 =
 testEmail1 : Content.EmailData
 testEmail1 =
   { triggered_by = ["init|start"]
+  , hideFromTeams = Nothing
   , author = "test"
   , subject = "Test email subject"
   , preview = "Test email preview"
