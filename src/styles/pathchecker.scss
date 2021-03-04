@@ -1,0 +1,45 @@
+#path-checker {
+  background-color: var(--white);
+  font-size: 1.1em;
+  padding: 2em;
+  ul {
+    list-style: none;
+  }
+  tr {
+    vertical-align: top;
+  }
+  td {
+    border-right: 1px solid purple;
+    min-width: 200px;
+    padding: 0 4px;
+  }
+
+  .messages {
+    color: green;
+    :before {
+      content: "message: ";
+    }
+  }
+  .emails {
+    color: red;
+    :before {
+      content: "email: ";
+    }
+  }
+  .socials {
+    color: orange;
+    :before {
+      content: "social: ";
+    }
+  }
+  .documents {
+    color: purple;
+    :before {
+      content: "document: ";
+    }
+  }
+
+  .path-end {
+    border-bottom: solid 12px purple;
+  }
+}

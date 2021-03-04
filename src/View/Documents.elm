@@ -49,7 +49,11 @@ renderInfo label symbol data extra =
             text ""
 
         Just value ->
-            li [ class "info-list-item" ] [ div [ class "info-label" ] [ text label ], div [ class "symbol" ] [ text symbol ], div [ class "value" ] [ text (value ++ extra) ] ]
+            li [ class "info-list-item" ]
+                [ div [ class "info-label" ] [ text label ]
+                , div [ class "symbol" ] [ text symbol ]
+                , div [ class "value" ] [ text (value ++ extra) ]
+                ]
 
 
 renderListItem : String -> Html Msg

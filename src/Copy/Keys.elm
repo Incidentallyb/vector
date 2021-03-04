@@ -12,6 +12,7 @@ type Key
     | SocialSlug
     | IntroSlug
     | UploadPath
+    | PathCheckerSlug
       --- Intro page
     | StartNewGame
     | IntroVideo
@@ -44,3 +45,6 @@ type Key
     | EmailQuickReply
       --- TeamNames
     | TeamNames
+      --- Path Checker
+    | FilterInputLabel
+    | FilterInputPlaceholder

@@ -4,6 +4,7 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Url
 import Url.Parser as Parser exposing ((</>), Parser, map, oneOf, s, string, top)
+import View.PathChecker
 
 
 type Route
@@ -15,6 +16,7 @@ type Route
     | Messages
     | Social
     | Intro
+    | PathChecker View.PathChecker.Model
 
 
 fromUrl : Url.Url -> Maybe Route
@@ -49,6 +51,9 @@ toString route =
 
         Intro ->
             "/" ++ t IntroSlug
+
+        PathChecker _ ->
+            "/" ++ t PathCheckerSlug
 
 
 isDocumentRoute : Route -> Bool
@@ -91,5 +96,6 @@ routeParser =
         , map Email (s (t EmailsSlug) </> string)
         , map Messages (s (t MessagesSlug))
         , map Social (s (t SocialSlug))
+        , map (PathChecker "") (s (t PathCheckerSlug))
         , map Intro top
         ]

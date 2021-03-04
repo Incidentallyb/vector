@@ -41,14 +41,19 @@ renderMessageAndPrompt gamedata datastore message =
             String.fromInt (List.length (filterChoiceString actualTriggers))
     in
     -- Add the trigger depth so we can hide scores if they come up more than once.
-    -- add triggeredby so we can avoid showing typing animations on subsequent page loads of the same page.
+    -- add already-seen so we can avoid showing typing animations on subsequent page loads of the same page.
     li
         [ classList
             [ ( "triggers-" ++ triggerDepth, isScoreTime actualTriggers )
             , ( "already-seen", haveWeSeenThisBefore )
+            , ( "not-seen", not haveWeSeenThisBefore )
             ]
         ]
-        [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
+        [ if not haveWeSeenThisBefore then
+            div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
+
+          else    
+            text ""
         , if isScoreTime actualTriggers then
             renderScore "AL" actualTriggers gamedata.teamName datastore
 
