@@ -171,7 +171,7 @@ getChoices data =
 
 {-
 
-   Takes a list of current choices (e.g. "init" "start" "macaques") and walk them building
+   Takes a list of current choices (e.g. "init" "start" "macaques") and walks them, building
    up choice strings so you end up with a new list which accumulates the previous item, e..g
    "init"
    "init|start"
