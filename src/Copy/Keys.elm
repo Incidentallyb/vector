@@ -43,3 +43,6 @@ type Key
     | EmailQuickReply
       --- TeamNames
     | TeamNames
+      --- Path Checker
+    | FilterInputLabel
+    | FilterInputPlaceholder

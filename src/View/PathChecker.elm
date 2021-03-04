@@ -1,6 +1,8 @@
 module View.PathChecker exposing (Model, Msg, update, view)
 
 import Content
+import Copy.Keys exposing (Key(..))
+import Copy.Text exposing (t)
 import Dict
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -26,8 +28,13 @@ update msg =
 view : Model -> Content.Datastore -> Html Msg
 view filterString contentData =
     div [ id "path-checker" ]
-        [ text "Add comma separated values (with spaces) as choice1, choice2... "
-        , input [ placeholder "e.g. macaques, pigs", onInput ChangeFilter, value filterString ] []
+        [ text (t FilterInputLabel)
+        , input
+            [ placeholder (t FilterInputPlaceholder)
+            , onInput ChangeFilter
+            , value filterString
+            ]
+            []
         , renderTable (getAvailableChoices filterString contentData) contentData
         ]
 
