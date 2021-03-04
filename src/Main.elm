@@ -147,6 +147,7 @@ update msg model =
                     case model.page of
                         Messages ->
                             Set.fromList (choiceStepsList model.gameData.choices)
+
                         _ ->
                             model.gameData.choicesVisited
 
@@ -208,13 +209,15 @@ update msg model =
                         model.notifications.social
                             + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
                     }
+
                 -- If we just clicked a choice in an email, redirect to list
                 pageAfterClick =
                     case model.page of
-                      Email _ ->
-                          Emails
-                      _ ->
-                          model.page
+                        Email _ ->
+                            Emails
+
+                        _ ->
+                            model.page
             in
             ( { model | page = pageAfterClick, gameData = newGameData, notifications = newNotifications }, Cmd.none )
 

@@ -52,7 +52,7 @@ renderMessageAndPrompt gamedata datastore message =
         [ if not haveWeSeenThisBefore then
             div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
 
-          else    
+          else
             text ""
         , if isScoreTime actualTriggers then
             renderScore "AL" actualTriggers gamedata.teamName datastore
