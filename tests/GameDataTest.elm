@@ -2,9 +2,9 @@ module GameDataTest exposing (getStringIfMatchFound, updateAllScores, updateEcon
 
 import Expect
 import GameData exposing (GameData, ScoreType(..))
+import Set
 import Test exposing (Test, describe, test)
 import TestData
-import Set exposing (Set)
 
 
 testGameData : GameData

@@ -52,6 +52,9 @@ t key =
         NavMessages ->
             "Messages"
 
+        NavMessagesNeedAttention ->
+            "Decisions need to be made"
+
         NavSocial ->
             "Tweeeeter"
 
@@ -87,7 +90,7 @@ t key =
             "Email quick-reply: "
 
         TeamNames ->
-            "Ash, Birch, Cedar, Elm, Fir, Hawthorn, Juniper, Lime, Maple, Oak"
+            "Ash|Birch|Cedar|Elm|Fir|Hawthorn|Juniper|Lime|Maple|Oak"
 
         DesktopWelcome ->
             "Welcome to BioCore!"

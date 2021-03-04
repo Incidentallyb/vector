@@ -18,6 +18,7 @@ type Key
       --- Navigation text
     | NavDocuments
     | NavEmails
+    | NavMessagesNeedAttention
     | NavMessages
     | NavSocial
       --- Messages

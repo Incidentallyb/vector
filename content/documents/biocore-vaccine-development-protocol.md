@@ -1,9 +1,10 @@
 ---
+title: BioCore Vaccine Development Protocol
 triggered_by:
-    - 'init'
+  - "init"
 image:
-    src: protocol.jpg
-    alt: ''
+  src: protocol.jpg
+  alt: ""
 ---
 
 # Prepare

@@ -1,7 +1,7 @@
 module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
-import ContentChoices
+import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
 import Dict exposing (Dict)
 import Set exposing (Set)
 
@@ -25,6 +25,7 @@ type alias CheckboxData =
 
 type alias NotificationCount =
     { messages : Int
+    , messagesNeedAttention: Bool
     , documents : Int
     , emails : Int
     , social : Int
@@ -67,7 +68,11 @@ filterEmails emailsData choices =
 
 filterSocials : Dict String SocialData -> List String -> Dict String SocialData
 filterSocials allSocials choices =
-    ContentChoices.triggeredSocialsByChoice choices allSocials
+    let
+        filteredSocials =
+            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allSocials
+    in
+    Dict.fromList (socialListKeyedByTriggerChoice choices filteredSocials)
 
 
 filterDocuments : Dict String DocumentData -> List String -> Dict String DocumentData
@@ -85,8 +90,14 @@ filterDocuments documentData choices =
 
 
 filterBranchingContent : Dict String BranchingContent -> List String -> Dict String BranchingContent
-filterBranchingContent content choices =
-    ContentChoices.triggeredBranchingContentByChoice choices content
+filterBranchingContent contentData choices =
+    let
+        filteredData =
+            Dict.filter (\_ value -> triggeredByChoices choices (getTriggeredBy value)) contentData
+    in
+    -- A Dict of messages keyed by the choice string that triggered them.
+    -- In alphabetical order so messages triggered first come first in dict.
+    Dict.fromList (branchingContentListKeyedByTriggerChoice choices filteredData)
 
 
 messagesToBranchingContent : Dict String MessageData -> Dict String BranchingContent
@@ -194,7 +205,7 @@ getDocument data =
 
 choicesAndBranchingContent : List String -> List BranchingContent -> List ( String, BranchingContent )
 choicesAndBranchingContent playerChoices contentList =
-    List.map (\content -> ( ContentChoices.getBranchingChoiceChosen playerChoices content, content ))
+    List.map (\content -> ( getBranchingChoiceChosen playerChoices content, content ))
         -- We want to process the messages in reverse for scoring
         (List.reverse contentList)
 

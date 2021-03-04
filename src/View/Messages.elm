@@ -12,8 +12,8 @@ import List.Extra
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Set
 import View.ChoiceButtons
-import Set exposing (Set)
 
 
 view : GameData -> Content.Datastore -> Html Msg
@@ -30,10 +30,10 @@ renderMessageAndPrompt gamedata datastore message =
     let
         actualTriggers =
             String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches gamedata.choices message.triggered_by)))
-       
+
         triggeredBy =
             String.join "|" actualTriggers
-       
+
         haveWeSeenThisBefore =
             Set.member triggeredBy gamedata.choicesVisited
 
@@ -42,9 +42,11 @@ renderMessageAndPrompt gamedata datastore message =
     in
     -- Add the trigger depth so we can hide scores if they come up more than once.
     -- add triggeredby so we can avoid showing typing animations on subsequent page loads of the same page.
-    li [ classList 
-        [ ( "triggers-" ++ triggerDepth, isScoreTime actualTriggers )
-        , ( "already-seen", haveWeSeenThisBefore) ] 
+    li
+        [ classList
+            [ ( "triggers-" ++ triggerDepth, isScoreTime actualTriggers )
+            , ( "already-seen", haveWeSeenThisBefore )
+            ]
         ]
         [ div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
         , if isScoreTime actualTriggers then

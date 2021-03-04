@@ -1,14 +1,15 @@
 ---
 triggered_by:
-    - init
+  - init
 title: init BioCore 3 local
 author: BioCore
-handle: '@biocore'
+handle: "@biocore"
 numLoves: 26
 numRetweets: 4
 numComments: 5
+image:
+  src: biocore-map.png
+  alt: "UK map of BioCore locations"
 ---
 
 We are expanding and bringing our pubic consultation stations to Manchester, Nottingham, Oxford, Southampton and Exeter. Help us help you.
-
-![UK map of BioCore locations](./images/social/biocore-map.png)
