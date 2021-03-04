@@ -22,7 +22,6 @@ import View.Intro exposing (view)
 import View.Messages exposing (view)
 import View.PathChecker
 import View.Social
-import Route
 
 
 
@@ -87,21 +86,23 @@ update msg model =
 
                 newVisits =
                     Set.insert (Route.toString newRoute) model.visited
-                newGameData = 
-                   model.gameData 
+
+                newGameData =
+                    model.gameData
 
                 newChoicesVisited =
-                    -- whenever the route changes, store the choice 
+                    -- whenever the route changes, store the choice
                     -- ONLY IF WE WERE ON MESSAGES to start with
                     case model.page of
                         Messages ->
                             Set.insert (String.join "|" (List.reverse model.gameData.choices)) newGameData.choicesVisited
+
                         _ ->
                             newGameData.choicesVisited
-                    
-                updatedGameData = 
-                   { newGameData | choicesVisited = newChoicesVisited }
-                   
+
+                updatedGameData =
+                    { newGameData | choicesVisited = newChoicesVisited }
+
                 currentNotifications =
                     model.notifications
 
