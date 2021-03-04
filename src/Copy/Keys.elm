@@ -11,6 +11,7 @@ type Key
     | MessagesSlug
     | SocialSlug
     | IntroSlug
+    | PathCheckerSlug
       --- Intro page
     | StartNewGame
     | IntroVideo
@@ -43,3 +44,6 @@ type Key
     | EmailQuickReply
       --- TeamNames
     | TeamNames
+      --- Path Checker
+    | FilterInputLabel
+    | FilterInputPlaceholder

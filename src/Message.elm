@@ -2,6 +2,7 @@ module Message exposing (Msg(..))
 
 import Browser
 import Url
+import View.PathChecker
 
 
 type Msg
@@ -11,4 +12,5 @@ type Msg
     | CheckboxClicked String
     | CheckboxesSubmitted String
     | TeamChosen String
+    | PathCheckerMsg View.PathChecker.Msg
     | NoOp

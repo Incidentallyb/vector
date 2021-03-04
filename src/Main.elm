@@ -21,6 +21,7 @@ import View.Documents
 import View.Emails
 import View.Intro exposing (view)
 import View.Messages exposing (view)
+import View.PathChecker
 import View.Social
 
 
@@ -292,8 +293,23 @@ update msg model =
             in
             ( { model | gameData = newGameData }, Cmd.none )
 
+        PathCheckerMsg subMsg ->
+            case model.page of
+                PathChecker _ ->
+                    updatePathChecker model (View.PathChecker.update subMsg)
+
+                _ ->
+                    ( model, Cmd.none )
+
         NoOp ->
             ( model, Cmd.none )
+
+
+updatePathChecker : Model -> ( View.PathChecker.Model, Cmd View.PathChecker.Msg ) -> ( Model, Cmd Msg )
+updatePathChecker model ( pathChecker, cmds ) =
+    ( { model | page = Route.PathChecker pathChecker }
+    , Cmd.map PathCheckerMsg cmds
+    )
 
 
 
@@ -369,6 +385,10 @@ view model =
             div []
                 [ View.Intro.view
                 ]
+
+        PathChecker pathChecker ->
+            div []
+                [ Html.map PathCheckerMsg (View.PathChecker.view pathChecker model.data) ]
 
 
 resetViewportTop : Cmd Msg
