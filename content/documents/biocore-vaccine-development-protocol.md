@@ -1,7 +1,9 @@
 ---
 triggered_by:
-  - 'init'
-image: protocol.jpg
+    - 'init'
+image:
+    src: protocol.jpg
+    alt: ''
 ---
 
 # Prepare
