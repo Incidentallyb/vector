@@ -52,7 +52,7 @@ renderMessageAndPrompt gamedata datastore message =
         [ if not haveWeSeenThisBefore then
             div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
 
-          else    
+          else
             text ""
         , if isScoreTime actualTriggers then
             renderScore "AL" actualTriggers gamedata.teamName datastore
@@ -76,25 +76,17 @@ renderScore from triggers team datastore =
     div
         [ class "score message al w-75 float-left mt-3 ml-3 py-2" ]
         [ div [ class "mx-3" ]
-            [ div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , div [ class "confetti" ] [ ]
-            , p [ class "message-from m-0" ] [ text from ]
-            , p [] [ text (t WellDone ++ team) ]
-            , p [] [ text (t Results) ]
-            , div [ class "results" ] [
-                div [ class "success" ] [ h3 [] [ text "Success" ] , text (String.fromInt (GameData.updateScore Success datastore previousChoices latestChoice) ++ "%") ]
-                , div [ class "economic" ] [ h3 [] [ text "Economic" ] , text (String.fromInt (GameData.updateScore Economic datastore previousChoices latestChoice) ++ ",000,000 remaining") ]
-                , div [ class "harm" ] [ h3 [] [ text "Harm" ] , text (String.fromInt (GameData.updateScore Harm datastore previousChoices latestChoice)) ]
-                ]
-            ]
+            (List.repeat 10 (div [ class "confetti" ] [])
+                ++ [ p [ class "message-from m-0" ] [ text from ]
+                   , p [] [ text (t WellDone ++ team) ]
+                   , p [] [ text (t Results) ]
+                   , div [ class "results" ]
+                        [ div [ class "success" ] [ h3 [] [ text "Success" ], text (String.fromInt (GameData.updateScore Success datastore previousChoices latestChoice) ++ "%") ]
+                        , div [ class "economic" ] [ h3 [] [ text "Economic" ], text (String.fromInt (GameData.updateScore Economic datastore previousChoices latestChoice) ++ ",000,000 remaining") ]
+                        , div [ class "harm" ] [ h3 [] [ text "Harm" ], text (String.fromInt (GameData.updateScore Harm datastore previousChoices latestChoice)) ]
+                        ]
+                   ]
+            )
         ]
 
 
