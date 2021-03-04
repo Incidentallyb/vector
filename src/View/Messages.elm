@@ -31,6 +31,9 @@ renderMessageAndPrompt gamedata datastore message =
         actualTriggers =
             String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches gamedata.choices message.triggered_by)))
 
+        lastTriggerIsScore =
+            "score" == Maybe.withDefault "" (List.head (List.reverse actualTriggers))
+
         triggeredBy =
             String.join "|" actualTriggers
 
@@ -54,7 +57,7 @@ renderMessageAndPrompt gamedata datastore message =
 
           else
             text ""
-        , if isScoreTime actualTriggers then
+        , if {-isScoreTime actualTriggers -} lastTriggerIsScore then
             renderScore "AL" actualTriggers gamedata.teamName datastore
 
           else

@@ -3,15 +3,15 @@ title: Charlie limit contact pigs
 author: Charlie Benn
 subject: Limiting contact with the Pigs
 triggered_by:
-  - init|start|macaques|step|change|step|pigs|step|scale
-  - init|start|macaques|step|change|step|pigs|step|phased
-  - init|start|macaques|step|change|step|pigs|step|share
-  - init|start|pigs|increase|step|scale
-  - init|start|pigs|increase|step|phased
-  - init|start|pigs|increase|step|share
-  - init|start|pigs|keep|step|scale
-  - init|start|pigs|keep|step|phased
-  - init|start|pigs|keep|step|share
+  - init|start|macaques|step|change|step|pigs|score|step|scale
+  - init|start|macaques|step|change|step|pigs|score|step|phased
+  - init|start|macaques|step|change|step|pigs|score|step|share
+  - init|start|pigs|increase|score|step|scale
+  - init|start|pigs|increase|score|step|phased
+  - init|start|pigs|increase|score|step|share
+  - init|start|pigs|keep|score|step|scale
+  - init|start|pigs|keep|score|step|phased
+  - init|start|pigs|keep|score|step|share
 choices:
   - limit|Limit contact
   - change|Change animal model

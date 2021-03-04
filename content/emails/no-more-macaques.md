@@ -3,9 +3,9 @@ title: No more macaques
 author: Jenny
 subject: Macaque import issues
 triggered_by:
-  - init|start|macaques|step|stay|step|scale
-  - init|start|macaques|step|stay|step|phased
-  - init|start|macaques|step|stay|step|share
+  - init|start|macaques|step|stay|score|step|scale
+  - init|start|macaques|step|stay|score|step|phased
+  - init|start|macaques|step|stay|score|step|share
 choices:
   - pigs|Pigs
   - mice|Mice

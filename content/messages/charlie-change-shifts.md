@@ -2,15 +2,15 @@
 title: Charlie change shifts
 author: Charlie
 triggered_by:
-  - init|start|macaques|step|change|step|pigs|step|scale|limit
-  - init|start|macaques|step|change|step|pigs|step|phased|limit
-  - init|start|macaques|step|change|step|pigs|step|share|limit
-  - init|start|pigs|increase|step|scale|limit
-  - init|start|pigs|increase|step|phased|limit
-  - init|start|pigs|increase|step|share|limit
-  - init|start|pigs|keep|step|scale|limit
-  - init|start|pigs|keep|step|phased|limit
-  - init|start|pigs|keep|step|share|limit
+  - init|start|macaques|step|change|step|pigs|score|step|scale|limit
+  - init|start|macaques|step|change|step|pigs|score|step|phased|limit
+  - init|start|macaques|step|change|step|pigs|score|step|share|limit
+  - init|start|pigs|increase|score|step|scale|limit
+  - init|start|pigs|increase|score|step|phased|limit
+  - init|start|pigs|increase|score|step|share|limit
+  - init|start|pigs|keep|score|step|scale|limit
+  - init|start|pigs|keep|score|step|phased|limit
+  - init|start|pigs|keep|score|step|share|limit
   - init|start|bio|stemcell|change|pigs|step|limit
   - init|start|bio|biobank|pigs|step|limit
 choices:
