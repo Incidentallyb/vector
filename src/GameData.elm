@@ -58,11 +58,12 @@ filterMessages messagesData choices =
         |> Maybe.withDefault Dict.empty
 
 
-filterEmails : Dict String EmailData -> List String -> Dict String EmailData
-filterEmails emailsData choices =
+filterEmails : Dict String EmailData -> List String -> String -> Dict String EmailData
+filterEmails emailsData choices teamname =
     -- Try to get a Dict of keyed filtered emails. Fail with empty.
     filterBranchingContent (emailsToBranchingContent emailsData) choices
         |> branchingContentToEmailData
+        |> filterByHiddenFromTeam teamname
         |> Maybe.withDefault Dict.empty
 
 
@@ -154,6 +155,21 @@ branchingContentToEmailData contentDict =
 
         _ ->
             Nothing
+
+filterByHiddenFromTeam : String -> Maybe (Dict String EmailData) -> Maybe (Dict String EmailData)
+filterByHiddenFromTeam teamname maybeEmails =
+    case maybeEmails of
+        Just emails ->
+            Just (Dict.filter (\_ value ->
+                case value.hideFromTeams of
+                    Just hidelist ->
+                        not (List.member teamname hidelist)
+                    Nothing ->
+                        False
+                ) emails)
+        Nothing ->
+            Nothing
+
 
 
 getEmail : BranchingContent -> EmailData
