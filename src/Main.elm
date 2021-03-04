@@ -4,6 +4,7 @@ import Browser
 import Browser.Dom
 import Browser.Navigation
 import Content
+import ContentChoices exposing (choiceStepsList)
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
@@ -52,7 +53,7 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications = { messages = 1, documents = 1, emails = 0, social = 0 }
+      , notifications = { messages = 1, messagesNeedAttention = True, documents = 1, emails = 0, social = 0 }
       }
     , Cmd.none
     )
@@ -94,7 +95,7 @@ update msg model =
                     -- ONLY IF WE WERE ON MESSAGES to start with
                     case model.page of
                         Messages ->
-                            Set.insert (String.join "|" (List.reverse model.gameData.choices)) newGameData.choicesVisited
+                            Set.fromList (choiceStepsList model.gameData.choices)
 
                         _ ->
                             newGameData.choicesVisited
@@ -124,8 +125,16 @@ update msg model =
 
                 updatedSingleViewNotifications2 =
                     { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
+
+                resetViewport =
+                    case newRoute of
+                        Messages ->
+                            resetViewportDesktopBottom
+
+                        _ ->
+                            resetViewportTop
             in
-            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, resetViewportTop )
+            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, resetViewport )
 
         ChoiceButtonClicked choice ->
             let
@@ -141,6 +150,33 @@ update msg model =
                     , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
                     }
 
+                -- work out if there are un-actioned choices in messages
+                unactionedMessages =
+                    let
+                        maybeLastMessageDisplayed =
+                            List.head (List.reverse (Dict.toList (filterMessages model.data.messages newGameData.choices)))
+
+                        lastMessageDisplayed =
+                            case maybeLastMessageDisplayed of
+                                Just item ->
+                                    Tuple.second item
+
+                                Nothing ->
+                                    Content.emptyMessage
+
+                        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
+                        choiceTriggers =
+                            List.map ContentChoices.getChoiceAction lastMessageDisplayed.choices
+
+                        -- see if the last message has choices but we've answered them already
+                        -- or if the last message has no available choices
+                        hasDoneActionsFromMessages =
+                            List.member ("|" ++ Maybe.withDefault "" (List.head newGameData.choices)) choiceTriggers
+                                || List.length choiceTriggers
+                                == 0
+                    in
+                    not hasDoneActionsFromMessages
+
                 -- Take the current notifications and add the number of items filtered by the new choice
                 -- Hopefully this will be handled in the view and if we need to post msg to update
                 newNotifications =
@@ -151,6 +187,7 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
+                    , messagesNeedAttention = unactionedMessages
                     , documents =
                         model.notifications.documents
                             + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
@@ -328,6 +365,13 @@ view model =
 resetViewportTop : Cmd Msg
 resetViewportTop =
     Task.perform (\_ -> NoOp) (Browser.Dom.setViewport 0 0)
+
+
+resetViewportDesktopBottom : Cmd Msg
+resetViewportDesktopBottom =
+    Browser.Dom.getViewportOf "desktop"
+        |> Task.andThen (\info -> Browser.Dom.setViewportOf "desktop" 0 info.scene.height)
+        |> Task.attempt (\_ -> NoOp)
 
 
 

@@ -35,7 +35,28 @@
     position: absolute;
     top: -10px;
   }
+  &.need-attention { 
+    background-color: var(--blue);
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    animation: bounce 4s ease-out;
+    animation-iteration-count: infinite;
+  }
 }
+.nav-link.active { 
+  .need-attention {
+    background-color: white;
+    color: var(--blue);
+    animation: none;
+  }
+}
+
+@keyframes bounce { 
+  0%, 10%, 25%, 40%, 50% { transform: translateY(0);} 
+  20% {transform: translateY(-3px);} 
+  30% {transform: translateY(-2px);} 
+} 
 
 .mobile-nav {
   display: flex;
