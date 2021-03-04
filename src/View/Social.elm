@@ -21,6 +21,16 @@ view gamedata socialDict =
         )
 
 
+renderImage : Content.SocialData -> Html Msg
+renderImage social =
+    case social.image of
+        Nothing ->
+            text ""
+
+        Just image ->
+            img [ src image.src, alt image.alt ] []
+
+
 renderTweet : Content.SocialData -> Html Msg
 renderTweet social =
     li
@@ -34,6 +44,7 @@ renderTweet social =
                 [ div [ class "m-0" ]
                     [ span [ class "author" ] [ text social.author ], span [ class "handle" ] [ text social.handle ] ]
                 , Markdown.toHtml [ class "m-0 mr-2 socialText" ] social.content
+                , renderImage social
                 , div [ class "icons d-flex justify-content-between my-2 mr-4" ]
                     [ div [] [ chat [], text (String.fromInt social.numComments) ]
                     , div [] [ refresh [], text (String.fromInt social.numRetweets) ]

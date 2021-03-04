@@ -82,7 +82,7 @@ renderLoginPage gameData =
                 , h1 [] [ text "Please login" ]
                 , let
                     teamNamesList =
-                        String.split "," (t TeamNames)
+                        String.split "|" (t TeamNames)
                   in
                   select
                     [ on "change" (Json.map TeamChosen targetValue)
