@@ -120,7 +120,7 @@ update msg model =
                 -- For any route change, check which manually readable content needs notifications
                 -- We'll probably move this calc to the Desktop view and remove from model
                 updatedSingleViewNotifications =
-                    { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
+                    { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices model.gameData.teamName) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
 
                 updatedSingleViewNotifications2 =
                     { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
@@ -156,7 +156,7 @@ update msg model =
                             + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
                     , emails =
                         model.notifications.emails
-                            + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
+                            + (Dict.size (filterEmails model.data.emails newGameData.choices model.gameData.teamName) - Dict.size (filterEmails model.data.emails model.gameData.choices model.gameData.teamName))
                     , social =
                         model.notifications.social
                             + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
