@@ -44,6 +44,7 @@ type alias DocumentData =
 
 type alias EmailData =
     { triggered_by : List String
+    , hideFromTeams : Maybe (List String)
     , author : String
     , subject : String
     , preview : String
@@ -94,6 +95,7 @@ emptyMessage =
 emptyEmail : EmailData
 emptyEmail =
     { triggered_by = [ "" ]
+    , hideFromTeams = Nothing
     , author = ""
     , subject = ""
     , choices = Nothing
@@ -188,6 +190,7 @@ emailDictDecoder =
     Json.Decode.dict
         (Json.Decode.succeed EmailData
             |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
+            |> andMap (Json.Decode.maybe (Json.Decode.field "hideFromTeams" (list string)))
             |> andMap (Json.Decode.field "author" string |> withDefault "")
             |> andMap (Json.Decode.field "subject" string |> withDefault "")
             |> andMap (Json.Decode.field "preview" string |> withDefault "")
