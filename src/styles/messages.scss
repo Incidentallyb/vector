@@ -276,19 +276,13 @@ li.not-seen + li.not-seen {
     font-weight: 500;
   }
 }
-li.triggers-2, 
-li.triggers-4, 
-li.triggers-5 {
-  .score {
-    display:none;
-  }
-}
+
 /* Hide all score messages in li that have siblings of same depth */
 li.triggers-2 ~ li.triggers-2,
 li.triggers-4 ~ li.triggers-4,
 li.triggers-5 ~ li.triggers-5 {
   .score {
-    display:block;
+    display:none;
   }
 }
 
