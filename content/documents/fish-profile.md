@@ -4,7 +4,7 @@ triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 11,915
 image:
-  src: fish.svg
+  src: Fish.svg
   alt: ""
 numberUsed: "1200"
 cost: "4"
@@ -19,8 +19,6 @@ cons:
   - "Further from humans"
   - "Difficult to monitor behaviour"
 ---
-
-# Fish
 
 - The first scientific study of zebrafish began nearly 40 years ago, but it has been in the past 10 that the use of zebrafish in research has boomed.
 - They are easy to care for and cost-effective. More importantly, they offer biological advantages that other research models cannot match.

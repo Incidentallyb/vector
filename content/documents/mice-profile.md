@@ -4,7 +4,7 @@ triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 90,908
 image:
-  src: MOUSE BD.jpg
+  src: Mouse.svg
   alt: ""
 numberUsed: "500"
 cost: "5"
@@ -19,8 +19,6 @@ cons:
   - "Non-susceptible to some viruses"
   - "Easily stressed"
 ---
-
-# Mice
 
 - Most of the mice used in medical trials are inbred so that, other than sex differences, they are almost identical genetically. This helps make the results of medical trials more uniform.
 - Another reason rodents are used as models in medical testing is that their genetic, biological and behaviour characteristics closely resemble those of humans

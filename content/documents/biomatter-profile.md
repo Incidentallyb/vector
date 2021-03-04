@@ -3,7 +3,7 @@ title: Bio Matter
 triggered_by:
   - "init|start"
 image:
-  src: BIOBANK BD.jpg
+  src: BioBank.svg
   alt: ""
 numberUsed: ""
 cost: "5-8"
@@ -16,8 +16,6 @@ cons:
   - "Experimental model"
   - "Slow for results to manifest"
 ---
-
-# Biomatter
 
 - The storage of organs or tissues from animals used in research is becoming more popular amongst the scientific community.
 - It is seen as a way to decrease the harm of their current experiments as the individual does not have to be wasted, but instead used in other experiments.

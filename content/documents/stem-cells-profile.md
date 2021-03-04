@@ -4,7 +4,7 @@ triggered_by:
   - "init|start|bio"
 subtitle: Number used in 2020 - N/A
 image:
-  src: STEM CELL BD.jpg
+  src: Stem Cell.svg
   alt: ""
 numberUsed: "N/A"
 cost: "8"
@@ -18,5 +18,3 @@ cons:
   - "Experimental"
   - "Controversial"
 ---
-
-# Human Stem Cells
