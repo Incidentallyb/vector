@@ -126,7 +126,7 @@ update msg model =
                 updatedSingleViewNotifications2 =
                     { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
 
-                cmdToSend =
+                resetViewport =
                     case newRoute of
                         Messages ->
                             resetViewportDesktopBottom
@@ -134,7 +134,7 @@ update msg model =
                         _ ->
                             resetViewportTop
             in
-            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, cmdToSend )
+            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, resetViewport )
 
         ChoiceButtonClicked choice ->
             let
