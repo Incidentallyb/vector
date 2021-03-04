@@ -1,6 +1,6 @@
 module View.Documents exposing (list, single)
 
-import Content
+import Content exposing (ImageData)
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
@@ -16,7 +16,15 @@ import Set
 
 type alias DocumentWithRead =
     { triggered_by : List String
-    , image : String
+    , title : String
+    , subtitle : Maybe String
+    , image : Maybe ImageData
+    , numberUsed : Maybe String
+    , cost : Maybe String
+    , success : Maybe String
+    , harm : Maybe String
+    , pros : Maybe (List String)
+    , cons : Maybe (List String)
     , preview : String
     , content : String
     , basename : String
@@ -24,9 +32,43 @@ type alias DocumentWithRead =
     }
 
 
-imagePath : String
-imagePath =
-    "/images/documents/"
+renderImage : Content.DocumentData -> Html Msg
+renderImage document =
+    case document.image of
+        Nothing ->
+            text ""
+
+        Just image ->
+            img [ src (t UploadPath ++ image.src), alt image.alt, class "col-md-6" ] []
+
+
+renderInfo : String -> String -> Maybe String -> String -> Html Msg
+renderInfo label symbol data extra =
+    case data of
+        Nothing ->
+            text ""
+
+        Just value ->
+            li [ class "info-list-item" ] [ div [ class "info-label" ] [ text label ], div [ class "symbol" ] [ text symbol ], div [ class "value" ] [ text (value ++ extra) ] ]
+
+
+renderListItem : String -> Html Msg
+renderListItem login =
+    li [] [ text login ]
+
+
+renderList : String -> Maybe (List String) -> Html Msg
+renderList listTitle listContent =
+    case listContent of
+        Nothing ->
+            text ""
+
+        Just content ->
+            section [ class "col-md-6" ]
+                [ h2 [] [ text listTitle ]
+                , ul []
+                    (List.map renderListItem content)
+                ]
 
 
 single : Maybe Content.DocumentData -> Html Msg
@@ -36,19 +78,35 @@ single maybeContent =
             text (t ItemNotFound)
 
         Just document ->
-            div [ class "document" ]
-                [ img [ src (imagePath ++ document.image), class "img-fluid p-md-1" ] []
-                , p [] [ Markdown.toHtml [ class "content" ] document.content ]
-                , a [ href (Route.toString Documents), class "btn btn-primary" ]
-                    [ arrowLeft []
-                    , text (t NavDocumentsBackTo)
+            div [ class "document card" ]
+                [ div [ class "card-body" ]
+                    [ h1 []
+                        [ text document.title ]
+                    , div
+                        [ class "row" ]
+                        [ renderImage document
+                        , ul [ class "col-md-6" ]
+                            [ renderInfo "Cost" "£" document.cost "M"
+                            , renderInfo "Success" "%" document.success ""
+                            , renderInfo "Harm" "!" document.harm ""
+                            ]
+                        , renderList "Pros" document.pros
+                        , renderList "Cons" document.cons
+                        ]
+                    ]
+                , div [ class "card-footer" ]
+                    [ p [] [ Markdown.toHtml [ class "content" ] document.content ]
+                    , a [ href (Route.toString Documents), class "btn btn-primary" ]
+                        [ arrowLeft []
+                        , text (t NavDocumentsBackTo)
+                        ]
                     ]
                 ]
 
 
 list : GameData -> Dict String Content.DocumentData -> Set.Set String -> Html Msg
 list gamedata documentDict visitedSet =
-    div [ class "card-columns" ]
+    div [ class "card-columns documents" ]
         (List.map listItem (addReadStatus (Dict.values (filterDocuments documentDict gamedata.choices)) visitedSet))
 
 
@@ -61,7 +119,15 @@ addReadStatus documentData visitedSet =
                     Set.member ("/documents/" ++ document.basename) visitedSet
             in
             { triggered_by = document.triggered_by
+            , title = document.title
+            , subtitle = document.subtitle
             , image = document.image
+            , numberUsed = document.numberUsed
+            , cost = document.cost
+            , success = document.success
+            , harm = document.harm
+            , pros = document.pros
+            , cons = document.cons
             , preview = document.preview
             , content = document.content
             , basename = document.basename
@@ -71,17 +137,26 @@ addReadStatus documentData visitedSet =
         documentData
 
 
+renderCardImage : DocumentWithRead -> Html Msg
+renderCardImage document =
+    case document.image of
+        Nothing ->
+            text ""
+
+        Just image ->
+            img [ src (t UploadPath ++ image.src), alt image.alt, class "card-icon card-img-top" ] []
+
+
 listItem : DocumentWithRead -> Html Msg
 listItem content =
     div [ class "card", classList [ ( "read", content.read ) ] ]
-        [ div [ class "card-body" ]
-            [ div [ class "card-title" ]
-                [ h2 [] [ text (String.replace "-" " " content.basename) ]
-                , img [ src (imagePath ++ content.image), class "img-fluid p-md-1" ] []
-                ]
-            , div [ class "card-text" ]
-                [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text (t ViewDocument) ]
-                , span [ class "badge badge-error new" ] [ text (t New) ]
-                ]
+        [ span [ class "badge badge-error new" ] [ text (t New) ]
+        , renderCardImage content
+        , div
+            [ class "card-body" ]
+            [ h2 [ class "card-title" ] [ text (String.replace "-" " " content.basename) ]
+            ]
+        , div [ class "card-footer" ]
+            [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text (t ViewDocument) ]
             ]
         ]
