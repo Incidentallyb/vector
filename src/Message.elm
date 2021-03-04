@@ -4,6 +4,7 @@ import Browser
 import Url
 import View.PathChecker
 
+
 type Msg
     = UrlChanged Url.Url
     | LinkClicked Browser.UrlRequest

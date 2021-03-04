@@ -1,4 +1,4 @@
-module View.PathChecker exposing (view, update, Model, Msg)
+module View.PathChecker exposing (Model, Msg, update, view)
 
 import Content
 import Dict
@@ -7,26 +7,27 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onInput)
 import Set
 
-filterBy : String
-filterBy =
-  "macaques, pigs, share"
 
 type alias Model =
-  String
+    String
 
-type Msg =
-  ChangeFilter String
 
-update : Msg -> (Model, Cmd Msg)
+type Msg
+    = ChangeFilter String
+
+
+update : Msg -> ( Model, Cmd Msg )
 update msg =
     case msg of
-      ChangeFilter newFilter ->
-        (newFilter, Cmd.none)
+        ChangeFilter newFilter ->
+            ( newFilter, Cmd.none )
+
 
 view : Model -> Content.Datastore -> Html Msg
 view filterString contentData =
     div [ id "path-checker" ]
-        [ input [ onInput ChangeFilter, value filterString ][]
+        [ text "Add comma separated values (with spaces) as choice1, choice2... "
+        , input [ placeholder "e.g. macaques, pigs", onInput ChangeFilter, value filterString ] []
         , renderTable (getAvailableChoices filterString contentData) contentData
         ]
 
@@ -74,20 +75,20 @@ isTriggeredByChoices : List String -> String -> Bool
 isTriggeredByChoices selectedChoices triggeredBy =
     let
         choiceString =
-            String.join "|" selectedChoices
+            -- Append init|start| so we match in choice order from start
+            "init|start|" ++ String.join "|" selectedChoices
 
         cleanTriggerString =
             String.split "|" triggeredBy
                 |> List.filter (\choice -> not (List.member choice ignoreInChoiceMatch))
                 |> String.join "|"
     in
-    -- Append init|start| so we match in choice order from start
-    String.contains choiceString ("init|start|" ++ cleanTriggerString)
+    String.contains choiceString cleanTriggerString
 
 
 ignoreInChoiceMatch : List String
 ignoreInChoiceMatch =
-    [ "init", "start", "step", "change" ]
+    [ "step", "change" ]
 
 
 pathList : List String

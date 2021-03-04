@@ -6,6 +6,7 @@ import Url
 import Url.Parser as Parser exposing ((</>), Parser, map, oneOf, s, string, top)
 import View.PathChecker
 
+
 type Route
     = Desktop
     | Documents

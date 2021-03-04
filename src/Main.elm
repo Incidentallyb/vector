@@ -229,19 +229,22 @@ update msg model =
 
         PathCheckerMsg subMsg ->
             case model.page of
-                PathChecker pathCheckerModel ->
-                  updatePathChecker model (View.PathChecker.update subMsg)
+                PathChecker _ ->
+                    updatePathChecker model (View.PathChecker.update subMsg)
+
                 _ ->
-                  (model, Cmd.none)
+                    ( model, Cmd.none )
 
         NoOp ->
             ( model, Cmd.none )
 
-updatePathChecker : Model -> (View.PathChecker.Model, Cmd View.PathChecker.Msg)-> (Model, Cmd Msg)
-updatePathChecker model ( pathChecker, cmds) =
-  ( { model | page = Route.PathChecker pathChecker }
-  , Cmd.map PathCheckerMsg cmds
-  )
+
+updatePathChecker : Model -> ( View.PathChecker.Model, Cmd View.PathChecker.Msg ) -> ( Model, Cmd Msg )
+updatePathChecker model ( pathChecker, cmds ) =
+    ( { model | page = Route.PathChecker pathChecker }
+    , Cmd.map PathCheckerMsg cmds
+    )
+
 
 
 --VIEW
