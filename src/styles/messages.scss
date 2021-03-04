@@ -4,16 +4,6 @@ $timeToWait: 2s;
   list-style: none;
   li {
     @include clearfix;
-    &:last-child {
-      /*
-        If multiple messages are triggered at the same time, the dom will contain typing-indicators
-        for both messages. Only show the first one.
-      */
-      .typing-indicator {
-        display: none !important; 
-        animation: none !important; 
-      }
-    }
   }
 }
 
@@ -133,6 +123,14 @@ li.already-seen {
   then we need to delay the display of the second block of messages so they appear after the first <li> block.
 */
 li.not-seen + li.not-seen {
+  /*
+    If multiple messages are triggered at the same time, the dom will contain typing-indicators
+    for both messages. Only show the first one.
+  */
+  .typing-indicator {
+    display: none !important; 
+    animation: none !important; 
+  }
   .message {
     animation-delay: #{$timeToWait};
   }

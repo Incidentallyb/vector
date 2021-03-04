@@ -82,7 +82,7 @@ renderScore from triggers team datastore =
                    , p [] [ text (t Results) ]
                    , div [ class "results" ]
                         [ div [ class "success" ] [ h3 [] [ text "Success" ], text (String.fromInt (GameData.updateScore Success datastore previousChoices latestChoice) ++ "%") ]
-                        , div [ class "economic" ] [ h3 [] [ text "Economic" ], text (String.fromInt (GameData.updateScore Economic datastore previousChoices latestChoice) ++ ",000,000 remaining") ]
+                        , div [ class "economic" ] [ h3 [] [ text "Economic" ], text (String.fromInt (GameData.updateScore Economic datastore previousChoices latestChoice) ++ "m remaining") ]
                         , div [ class "harm" ] [ h3 [] [ text "Harm" ], text (String.fromInt (GameData.updateScore Harm datastore previousChoices latestChoice)) ]
                         ]
                    ]
