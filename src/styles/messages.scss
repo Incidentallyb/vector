@@ -4,13 +4,10 @@ $timeToWait: 2s;
   list-style: none;
   li {
     @include clearfix;
-    &:not(:last-child) {
+    &:last-child {
       .typing-indicator {
-        display: none !important;
-        animation: none !important;
-      }
-      .message {
-        animation: none !important;
+        display: none !important; 
+        animation: none !important; 
       }
     }
   }
@@ -90,6 +87,18 @@ li.already-seen {
 }
 .message-list .message:nth-child(4n) {
   animation-delay: #{$timeToWait + 2};
+}
+
+li.not-seen + li.not-seen {
+  .message:nth-child(2n) {
+    animation-delay: #{$timeToWait + 2};
+  }
+  .message:nth-child(3n) {
+    animation-delay: #{$timeToWait + 3};
+  }
+  .message:nth-child(4n) {
+    animation-delay: #{$timeToWait + 4};
+  }
 }
 
 @keyframes slide-into-view {

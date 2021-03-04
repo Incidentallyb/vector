@@ -140,9 +140,18 @@ update msg model =
             let
                 --debug =
                 --   Debug.log "NEWSCORE" (Debug.toString (GameData.updateEconomicScore model.data model.gameData choice))
+                newChoicesVisited =
+                    -- whenever the route changes, store the choice
+                    -- ONLY IF WE WERE ON MESSAGES to start with
+                    case model.page of
+                        Messages ->
+                            Set.fromList (choiceStepsList model.gameData.choices)
+                        _ ->
+                            model.gameData.choicesVisited
+
                 newGameData =
                     { choices = choice :: model.gameData.choices
-                    , choicesVisited = model.gameData.choicesVisited
+                    , choicesVisited = newChoicesVisited
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
                     , scoreSuccess = GameData.updateScore Success model.data model.gameData.choices choice
