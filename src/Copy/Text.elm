@@ -36,6 +36,9 @@ t key =
         IntroSlug ->
             ""
 
+        UploadPath ->
+            "/images/uploads/"
+
         -- Intro page
         StartNewGame ->
             "Begin Ethical Review"

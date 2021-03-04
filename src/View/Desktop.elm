@@ -78,7 +78,7 @@ renderLoginPage gameData =
     div [ class "container desktop" ]
         [ div [ class "v-centred" ]
             [ div [ class "sign-in" ]
-                [ img [ src "biocore-logo.png", alt "BioCore", class "login-logo" ] []
+                [ img [ src (t UploadPath ++ "biocore-logo.png"), alt "BioCore", class "login-logo" ] []
                 , h1 [] [ text "Please login" ]
                 , let
                     teamNamesList =

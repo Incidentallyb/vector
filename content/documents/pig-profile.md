@@ -4,7 +4,7 @@ triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 712
 image:
-  src: PIG BD.jpg
+  src: Pig.svg
   alt: ""
 numberUsed: "50"
 cost: "6"
@@ -18,8 +18,6 @@ cons:
   - "High sentience"
   - "Lots of space"
 ---
-
-# Pig
 
 - Pigs are preferred for this research for a number of reasons, including the size of their organs and the fact there is a long history of using genetic modification with this species.
 - Pigs are highly intelligent and social animals, and have been used in research for centuries.

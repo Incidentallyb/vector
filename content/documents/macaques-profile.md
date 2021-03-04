@@ -4,7 +4,7 @@ triggered_by:
   - "init|start"
 subtitle: Number used in 2020 - 0
 image:
-  src: MACAQUE BD.jpg
+  src: Macaque.svg
   alt: ""
 numberUsed: "18"
 cost: "7"
@@ -19,8 +19,6 @@ cons:
   - "Lots of space"
   - "Unpopular with public"
 ---
-
-# Macaques
 
 - The biology of a Macaque is similar to a humans - especially in relation to brain function and disease, reproduction and susceptibility to certain infections.
 - Non-human primates are the closest species to humans in terms of biological make-up, so they have a high degree of sentience, and a greater level of harm when conducting experiments is assumed.
