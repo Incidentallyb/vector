@@ -6,9 +6,6 @@ module.exports = {
     app: [
         './src/index.js',
         './src/styles/style.scss'
-    ],
-    vendor: [
-      './src/vendor.js',
     ]
   },
 
