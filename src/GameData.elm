@@ -1,4 +1,4 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), containsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), emailContainsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
@@ -236,11 +236,11 @@ unactionedEmailChoices emails choices teamname =
                 Nothing ->
                     Content.emptyEmail
     in
-    containsPendingDecision lastEmailDisplayed choices
+    emailContainsPendingDecision lastEmailDisplayed choices
 
 
-containsPendingDecision : EmailData -> List String -> Bool
-containsPendingDecision email choices =
+emailContainsPendingDecision : EmailData -> List String -> Bool
+emailContainsPendingDecision email choices =
     let
         triggeredBy =
             email.triggered_by

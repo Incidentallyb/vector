@@ -98,7 +98,7 @@ addStatus emailData currentChoices visitedSet =
                     Set.member ("/emails/" ++ email.basename) visitedSet
 
                 hasPendingChoice =
-                    GameData.containsPendingDecision email currentChoices
+                    GameData.emailContainsPendingDecision email currentChoices
             in
             { triggered_by = email.triggered_by
             , author = email.author
