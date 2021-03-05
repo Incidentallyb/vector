@@ -2,9 +2,9 @@
 title: Jenny change model
 author: Jenny
 triggered_by:
-  - init|start|fish|embryo|step|scale|change
-  - init|start|fish|embryo|step|phased|change
-  - init|start|fish|embryo|step|share|change
+  - init|start|fish|embryo|score|step|scale|change
+  - init|start|fish|embryo|score|step|phased|change
+  - init|start|fish|embryo|score|step|share|change
 choices:
   - mice|Change to mice
   - pigs|Change to pigs

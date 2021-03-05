@@ -3,12 +3,12 @@ title: Lisa fish pain
 author: Dr. Lisa Finnamore
 subject: New Research - Fish Sentience
 triggered_by:
-  - init|start|macaques|step|change|step|fish|step|scale
-  - init|start|macaques|step|change|step|fish|step|phased
-  - init|start|macaques|step|change|step|fish|step|share
-  - init|start|fish|adult|step|scale
-  - init|start|fish|adult|step|phased
-  - init|start|fish|adult|step|share
+  - init|start|macaques|step|change|step|fish|score|step|scale
+  - init|start|macaques|step|change|step|fish|score|step|phased
+  - init|start|macaques|step|change|step|fish|score|step|share
+  - init|start|fish|adult|score|step|scale
+  - init|start|fish|adult|score|step|phased
+  - init|start|fish|adult|score|step|share
   - init|start|bio|biobank|fish|step
 choices:
   - embryo|Let's move to a fish embryo model

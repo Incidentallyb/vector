@@ -18,16 +18,16 @@ init|start|macaques|step|stay
 FILE-emails: stay.md
 FILE-messages: z-next-section.md
 
-init|start|macaques|step|stay|step
+init|start|macaques|step|stay|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|macaques|step|stay|step|scale
+init|start|macaques|step|stay|score|step|scale
 1.1.1.1 Scale up
 FILE-messages: al-send-to-barry.md
 FILE-messages: jenny-not-good-news.md
 FILE-emails: no-more-macaques.md
 
-init|start|macaques|step|stay|step|scale|pigs
+init|start|macaques|step|stay|score|step|scale|pigs
 1.1.1.1.1 Pig
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -36,7 +36,7 @@ FILE-messages: choose-1-2-3.md
 1.1.1.1.1.2 Any One Extra
 1.1.1.1.1.3 Do Nothing
 
-init|start|macaques|step|stay|step|scale|mice
+init|start|macaques|step|stay|score|step|scale|mice
 1.1.1.1.2 Mice
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -45,7 +45,7 @@ FILE-messages: choose-1-2-3.md
 1.1.1.1.2.2 Any One Extra
 1.1.1.1.2.3 Do Nothing
 
-init|start|macaques|step|stay|step|scale|fish
+init|start|macaques|step|stay|score|step|scale|fish
 1.1.1.1.3 Fish
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -54,13 +54,13 @@ FILE-messages: choose-1-2-3.md
 1.1.1.1.3.2 Any One Extra
 1.1.1.1.3.3 Do Nothing
 
-init|start|macaques|step|stay|step|learn
+init|start|macaques|step|stay|score|step|learn
 1.1.1.2 Learn from phased experiments
 FILE-messages: al-send-to-barry.md
 FILE-messages: jenny-not-good-news.md
 FILE-emails: no-more-macaques.md
 
-init|start|macaques|step|stay|step|learn|pigs
+init|start|macaques|step|stay|score|step|learn|pigs
 1.1.1.2.1 Pig
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -69,7 +69,7 @@ FILE-messages: choose-1-2-3.md
 1.1.1.2.1.2 Any One Extra
 1.1.1.2.1.3 Do Nothing
 
-init|start|macaques|step|stay|step|learn|mice
+init|start|macaques|step|stay|score|step|learn|mice
 1.1.1.2.2 Mice
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -78,7 +78,7 @@ FILE-messages: choose-1-2-3.md
 1.1.1.2.2.2 Any One Extra
 1.1.1.2.2.3 Do Nothing
 
-init|start|macaques|step|stay|step|learn|fish
+init|start|macaques|step|stay|score|step|learn|fish
 1.1.1.2.3 Fish
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -87,13 +87,13 @@ FILE-messages: choose-1-2-3.md
 1.1.1.2.3.2 Any One Extra
 1.1.1.2.3.3 Do Nothing
 
-init|start|macaques|step|stay|step|share
+init|start|macaques|step|stay|score|step|share
 1.1.1.3 Collaborate with a competitor
 FILE-messages: al-send-to-barry.md
 FILE-messages: jenny-not-good-news.md
 FILE-emails: no-more-macaques.md
 
-init|start|macaques|step|stay|step|share|pigs
+init|start|macaques|step|stay|score|step|share|pigs
 1.1.1.3.1 Pig
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -102,7 +102,7 @@ FILE-messages: choose-1-2-3.md
 1.1.1.3.1.2 Any One Extra
 1.1.1.3.1.3 Do Nothing
 
-init|start|macaques|step|stay|step|share|mice
+init|start|macaques|step|stay|score|step|share|mice
 1.1.1.3.2 Mice
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -111,7 +111,7 @@ FILE-messages: choose-1-2-3.md
 1.1.1.3.2.2 Any One Extra
 1.1.1.3.2.3 Do Nothing
 
-init|start|macaques|step|stay|step|share|fish
+init|start|macaques|step|stay|score|step|share|fish
 1.1.1.3.3 Fish
 FILE-emails: let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -130,16 +130,16 @@ init|start|macaques|step|change|step|pigs
 FILE-messages: al-let-barry-know.md
 FILE-messages: z-next-section.md
 
-init|start|macaques|step|change|step|pigs|step
+init|start|macaques|step|change|step|pigs|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|macaques|step|change|step|pigs|step|scale
+init|start|macaques|step|change|step|pigs|score|step|scale
 1.1.2.1.1 Scale up
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|macaques|step|change|step|pigs|step|scale|limit
+init|start|macaques|step|change|step|pigs|score|step|scale|limit
 1.1.2.1.1.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -148,11 +148,11 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.1.1.2 Any One Extra
 1.1.2.1.1.1.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|scale|change
+init|start|macaques|step|change|step|pigs|score|step|scale|change
 1.1.2.1.1.2 Change Animal Model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|macaques|step|change|step|pigs|step|scale|change|mice
+init|start|macaques|step|change|step|pigs|score|step|scale|change|mice
 1.1.2.1.1.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -161,7 +161,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.1.2.1.2 Any One Extra
 1.1.2.1.1.2.1.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|scale|change|fish
+init|start|macaques|step|change|step|pigs|score|step|scale|change|fish
 1.1.2.1.1.2.2 Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -170,13 +170,13 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.1.2.2.2 Any One Extra
 1.1.2.1.1.2.2.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|phased
+init|start|macaques|step|change|step|pigs|score|step|phased
 1.1.2.1.2 Learn from phased experiments
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|macaques|step|change|step|pigs|step|phased|limit
+init|start|macaques|step|change|step|pigs|score|step|phased|limit
 1.1.2.1.2.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -185,11 +185,11 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.2.1.2 Any One Extra
 1.1.2.1.2.1.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|phased|change
+init|start|macaques|step|change|step|pigs|score|step|phased|change
 1.1.2.1.2.2 Change Animal Model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|macaques|step|change|step|pigs|step|phased|change|mice
+init|start|macaques|step|change|step|pigs|score|step|phased|change|mice
 1.1.2.1.2.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -198,7 +198,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.2.2.1.2 Any One Extra
 1.1.2.1.2.2.1.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|phased|change|fish
+init|start|macaques|step|change|step|pigs|score|step|phased|change|fish
 1.1.2.1.2.2.2 Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -207,13 +207,13 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.2.2.2.2 Any One Extra
 1.1.2.1.2.2.2.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|share
+init|start|macaques|step|change|step|pigs|score|step|share
 1.1.2.1.3 Collaborate with a competitor
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|macaques|step|change|step|pigs|step|share|limit
+init|start|macaques|step|change|step|pigs|score|step|share|limit
 1.1.2.1.3.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -222,11 +222,11 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.3.1.2 Any One Extra
 1.1.2.1.3.1.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|share|change
+init|start|macaques|step|change|step|pigs|score|step|share|change
 1.1.2.1.3.2 Change Animal Model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|macaques|step|change|step|pigs|step|share|change|mice
+init|start|macaques|step|change|step|pigs|score|step|share|change|mice
 1.1.2.1.3.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -235,7 +235,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.1.3.2.1.2 Any One Extra
 1.1.2.1.3.2.1.3 Do Nothing
 
-init|start|macaques|step|change|step|pigs|step|share|change|fish
+init|start|macaques|step|change|step|pigs|score|step|share|change|fish
 1.1.2.1.3.2.2 Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -249,16 +249,16 @@ init|start|macaques|step|change|step|mice
 FILE-messages: al-let-barry-know.md
 FILE-messages: z-next-section.md
 
-init|start|macaques|step|change|step|mice|step
+init|start|macaques|step|change|step|mice|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|macaques|step|change|step|mice|step|scale
+init|start|macaques|step|change|step|mice|score|step|scale
 1.1.2.2.1 
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-init|start|macaques|step|change|step|mice|step|scale|limit
+init|start|macaques|step|change|step|mice|score|step|scale|limit
 1.1.2.2.1.1 Limit the time technicians spend handling mice
 FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
@@ -267,7 +267,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.2.1.1.2 Any One Extra
 1.1.2.2.1.1.3 Do Nothing
 
-init|start|macaques|step|change|step|mice|step|scale|fish
+init|start|macaques|step|change|step|mice|score|step|scale|fish
 1.1.2.2.1.2 Lets change to Fish models
 FILE-emails: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
@@ -276,13 +276,13 @@ FILE-messages: choose-1-2-3.md
 1.1.2.2.1.2.2 Any One Extra
 1.1.2.2.1.2.3 Do Nothing
 
-init|start|macaques|step|change|step|mice|step|phased
+init|start|macaques|step|change|step|mice|score|step|phased
 1.1.2.2.2 Learn from phased experiments
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-init|start|macaques|step|change|step|mice|step|phased|limit
+init|start|macaques|step|change|step|mice|score|step|phased|limit
 1.1.2.2.2.1 Limit the time technicians spend handling mice
 FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
@@ -291,7 +291,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.2.2.1.2 Any One Extra
 1.1.2.2.2.1.3 Do Nothing
 
-init|start|macaques|step|change|step|mice|step|phased|fish
+init|start|macaques|step|change|step|mice|score|step|phased|fish
 1.1.2.2.2.2 Lets change to Fish models
 FILE-emails: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
@@ -300,13 +300,13 @@ FILE-messages: choose-1-2-3.md
 1.1.2.2.2.2.2 Any One Extra
 1.1.2.2.2.2.3 Do Nothing
 
-init|start|macaques|step|change|step|mice|step|share
+init|start|macaques|step|change|step|mice|score|step|share
 1.1.2.2.3 Collaborate with a competitor
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-init|start|macaques|step|change|step|mice|step|share|limit
+init|start|macaques|step|change|step|mice|score|step|share|limit
 1.1.2.2.3.1 Limit the time technicians spend handling mice
 FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
@@ -315,7 +315,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.2.3.1.2 Any One Extra
 1.1.2.2.3.1.3 Do Nothing
 
-init|start|macaques|step|change|step|mice|step|share|fish
+init|start|macaques|step|change|step|mice|score|step|share|fish
 1.1.2.2.3.2 Lets change to Fish models
 FILE-emails: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
@@ -329,15 +329,15 @@ init|start|macaques|step|change|step|fish
 FILE-messages: al-let-barry-know.md
 FILE-messages: z-next-section.md
 
-init|start|macaques|step|change|step|fish|step
+init|start|macaques|step|change|step|fish|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|macaques|step|change|step|fish|step|scale
+init|start|macaques|step|change|step|fish|score|step|scale
 1.1.2.3.1 
 FILE-messages: lisa-found-new-research.md
 FILE-emails: lisa-fish-pain.md
 
-init|start|macaques|step|change|step|fish|step|scale|adult
+init|start|macaques|step|change|step|fish|score|step|scale|adult
 1.1.2.3.1.1 Lets continue with the adult fish
 FILE-messages: a-lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
@@ -346,7 +346,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.3.1.1.2 Any One Extra
 1.1.2.3.1.1.3 Do Nothing
 
-init|start|macaques|step|change|step|fish|step|scale|embryo
+init|start|macaques|step|change|step|fish|score|step|scale|embryo
 1.1.2.3.1.2 Lets move to a fish embryo model
 FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
@@ -355,12 +355,12 @@ FILE-messages: choose-1-2-3.md
 1.1.2.3.1.2.2 Any One Extra
 1.1.2.3.1.2.3 Do Nothing
 
-init|start|macaques|step|change|step|fish|step|phased
+init|start|macaques|step|change|step|fish|score|step|phased
 1.1.2.3.2 Learn from phased experiments
 FILE-messages: lisa-found-new-research.md
 FILE-emails: lisa-fish-pain.md
 
-init|start|macaques|step|change|step|fish|step|phased|adult
+init|start|macaques|step|change|step|fish|score|step|phased|adult
 1.1.2.3.2.1 Lets continue with the adult fish
 FILE-messages: a-lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
@@ -369,7 +369,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.3.2.1.2 Any One Extra
 1.1.2.3.2.1.3 Do Nothing
 
-init|start|macaques|step|change|step|fish|step|phased|embryo
+init|start|macaques|step|change|step|fish|score|step|phased|embryo
 1.1.2.3.2.2 Lets move to a fish embryo model
 FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
@@ -378,12 +378,12 @@ FILE-messages: choose-1-2-3.md
 1.1.2.3.2.2.2 Any One Extra
 1.1.2.3.2.2.3 Do Nothing
 
-init|start|macaques|step|change|step|fish|step|share
+init|start|macaques|step|change|step|fish|score|step|share
 1.1.2.3.3 Collaborate with a competitor
 FILE-messages: lisa-found-new-research.md
 FILE-emails: lisa-fish-pain.md
 
-init|start|macaques|step|change|step|fish|step|share|adult
+init|start|macaques|step|change|step|fish|score|step|share|adult
 1.1.2.3.3.1 Lets continue with the adult fish
 FILE-messages: a-lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
@@ -392,7 +392,7 @@ FILE-messages: choose-1-2-3.md
 1.1.2.3.3.1.2 Any One Extra
 1.1.2.3.3.1.3 Do Nothing
 
-init|start|macaques|step|change|step|fish|step|share|embryo
+init|start|macaques|step|change|step|fish|score|step|share|embryo
 1.1.2.3.3.2 Lets move to a fish embryo model
 FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
@@ -416,16 +416,16 @@ init|start|pigs|increase
 FILE-messages: pigs-increase.md
 FILE-messages: z-next-section.md
 
-init|start|pigs|increase|step
+init|start|pigs|increase|score|step
 FILE-messages: balance-success-harm.md 
 
-init|start|pigs|increase|step|scale
+init|start|pigs|increase|score|step|scale
 1.2.1.1 Scale up
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|pigs|increase|step|scale|limit
+init|start|pigs|increase|score|step|scale|limit
 1.2.1.1.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -434,11 +434,11 @@ FILE-messages: choose-1-2-3.md
 1.2.1.1.1.2 Any One Extra
 1.2.1.1.1.3 Do Nothing
 
-init|start|pigs|increase|step|scale|change
+init|start|pigs|increase|score|step|scale|change
 1.2.1.1.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|pigs|increase|step|scale|change|mice
+init|start|pigs|increase|score|step|scale|change|mice
 1.2.1.1.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -447,7 +447,7 @@ FILE-messages: choose-1-2-3.md
 1.2.1.1.2.1.2 Any One Extra
 1.2.1.1.2.1.3 Do Nothing
 
-init|start|pigs|increase|step|scale|change|fish
+init|start|pigs|increase|score|step|scale|change|fish
 1.2.1.1.2.2 Change to Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -456,13 +456,13 @@ FILE-messages: choose-1-2-3.md
 1.2.1.1.2.2.2 Any One Extra
 1.2.1.1.2.2.3 Do Nothing
 
-init|start|pigs|increase|step|phased
+init|start|pigs|increase|score|step|phased
 1.2.1.2 Learn from phased experiments
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|pigs|increase|step|phased|limit
+init|start|pigs|increase|score|step|phased|limit
 1.2.1.2.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -471,11 +471,11 @@ FILE-messages: choose-1-2-3.md
 1.2.1.2.1.2 Any One Extra
 1.2.1.2..3 Do Nothing
 
-init|start|pigs|increase|step|phased|change
+init|start|pigs|increase|score|step|phased|change
 1.2.1.2.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|pigs|increase|step|phased|change|mice
+init|start|pigs|increase|score|step|phased|change|mice
 1.2.1.2.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -484,7 +484,7 @@ FILE-messages: choose-1-2-3.md
 1.2.1.2.2.1.2 Any One Extra
 1.2.1.2.2.1.3 Do Nothing
 
-init|start|pigs|increase|step|phased|change|fish
+init|start|pigs|increase|score|step|phased|change|fish
 1.2.1.2.2.2 Change to Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -493,13 +493,13 @@ FILE-messages: choose-1-2-3.md
 1.2.1.2.2.2.2 Any One Extra
 1.2.1.2.2.2.3 Do Nothing
 
-init|start|pigs|increase|step|share
+init|start|pigs|increase|score|step|share
 1.2.1.3 Collaborate with a competitor
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|pigs|increase|step|share|limit
+init|start|pigs|increase|score|step|share|limit
 1.2.1.3.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -508,11 +508,11 @@ FILE-messages: choose-1-2-3.md
 1.2.1.3.1.2 Any One Extra
 1.2.1.3.1.3 Do Nothing
 
-init|start|pigs|increase|step|share|change
+init|start|pigs|increase|score|step|share|change
 1.2.1.3.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|pigs|increase|step|share|change|mice
+init|start|pigs|increase|score|step|share|change|mice
 1.2.1.3.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -521,7 +521,7 @@ FILE-messages: choose-1-2-3.md
 1.2.1.3.2.1.2 Any One Extra
 1.2.1.3.2.1.3 Do Nothing
 
-init|start|pigs|increase|step|share|change|fish
+init|start|pigs|increase|score|step|share|change|fish
 1.2.1.3.2.2 Change to Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -535,16 +535,16 @@ init|start|pigs|keep
 FILE-messages: pigs-keep.md
 FILE-messages: z-next-section.md
 
-init|start|pigs|keep|step
+init|start|pigs|keep|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|pigs|keep|step|scale
+init|start|pigs|keep|score|step|scale
 1.2.2.1 Scale up
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|pigs|keep|step|scale|limit
+init|start|pigs|keep|score|step|scale|limit
 1.2.2.1.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -553,11 +553,11 @@ FILE-messages: choose-1-2-3.md
 1.2.2.1.1.2 Any One Extra
 1.2.2.1.1.3 Do Nothing
 
-init|start|pigs|keep|step|scale|change
+init|start|pigs|keep|score|step|scale|change
 1.2.2.1.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|pigs|keep|step|scale|change|mice
+init|start|pigs|keep|score|step|scale|change|mice
 1.2.2.1.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -566,7 +566,7 @@ FILE-messages: choose-1-2-3.md
 1.2.2.1.2.1.2 Any One Extra
 1.2.2.1.2.1.3 Do Nothing
 
-init|start|pigs|keep|step|scale|change|fish
+init|start|pigs|keep|score|step|scale|change|fish
 1.2.2.1.2.2 Change to Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -575,13 +575,13 @@ FILE-messages: choose-1-2-3.md
 1.2.2.1.2.2.2 Any One Extra
 1.2.2.1.2.2.3 Do Nothing
 
-init|start|pigs|keep|step|phased
+init|start|pigs|keep|score|step|phased
 1.2.2.2 Learn from phased experiments
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|pigs|keep|step|phased|limit
+init|start|pigs|keep|score|step|phased|limit
 1.2.2.2.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -590,11 +590,11 @@ FILE-messages: choose-1-2-3.md
 1.2.2.2.1.2 Any One Extra
 1.2.2.2.1.3 Do Nothing
 
-init|start|pigs|keep|step|phased|change
+init|start|pigs|keep|score|step|phased|change
 1.2.2.2.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|pigs|keep|step|phased|change|mice
+init|start|pigs|keep|score|step|phased|change|mice
 1.2.2.2.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -603,7 +603,7 @@ FILE-messages: choose-1-2-3.md
 1.2.2.2.2.1.2 Any One Extra
 1.2.2.2.2.1.3 Do Nothing
 
-init|start|pigs|keep|step|phased|change|fish
+init|start|pigs|keep|score|step|phased|change|fish
 1.2.2.2.2.2 Change to Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -612,13 +612,13 @@ FILE-messages: choose-1-2-3.md
 1.2.2.2.2.2.2 Any One Extra
 1.2.2.2.2.2.3 Do Nothing
 
-init|start|pigs|keep|step|share
+init|start|pigs|keep|score|step|share
 1.2.2.3 Collaborate with a competitor
 FILE-messages: al-send-to-barry.md
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-contact-pigs.md
 
-init|start|pigs|keep|step|share|limit
+init|start|pigs|keep|score|step|share|limit
 1.2.2.3.1 Limit contact
 FILE-messages: charlie-change-shifts.md
 FILE-messages: choose-1-2-3.md
@@ -627,11 +627,11 @@ FILE-messages: choose-1-2-3.md
 1.2.2.3.1.2 Any One Extra
 1.2.2.3.1.3 Do Nothing
 
-init|start|pigs|keep|step|share|change
+init|start|pigs|keep|score|step|share|change
 1.2.2.3.2 Change animal model
 FILE-messages: charlie-no-more-macaques.md
 
-init|start|pigs|keep|step|share|change|mice
+init|start|pigs|keep|score|step|share|change|mice
 1.2.2.3.2.1 Mice
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -640,7 +640,7 @@ FILE-messages: choose-1-2-3.md
 1.2.2.3.2.1.2 Any One Extra
 1.2.2.3.2.1.3 Do Nothing
 
-init|start|pigs|keep|step|share|change|fish
+init|start|pigs|keep|score|step|share|change|fish
 1.2.2.3.2.2 Change to Fish
 FILE-messages: charlie-let-barry-know.md
 FILE-messages: choose-1-2-3.md
@@ -663,15 +663,15 @@ init|start|mice|handle
 FILE-mesasges: lisa-let-barry-know.md
 FILE-messages: z-next-section.md
 
-init|start|mice|handle|step
+init|start|mice|handle|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|mice|handle|step|scale
+init|start|mice|handle|score|step|scale
 1.3.1.1 Scale up
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-init|start|mice|handle|step|scale|limit
+init|start|mice|handle|score|step|scale|limit
 1.3.1.1.1 Limit the time technicians spend handling mice
 FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
@@ -680,7 +680,7 @@ FILE-messages: choose-1-2-3.md
 1.3.1.1.1.2 Any One Extra
 1.3.1.1.1.3 Do Nothing
 
-init|start|mice|handle|step|scale|fish
+init|start|mice|handle|score|step|scale|fish
 1.3.1.1.2 Change to Fish Model
 FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
@@ -689,12 +689,12 @@ FILE-messages: choose-1-2-3.md
 1.3.1.1.2.2 Any One Extra
 1.3.1.1.2.3 Do Nothing
 
-init|start|mice|handle|step|phased
+init|start|mice|handle|score|step|phased
 1.3.1.2 Learn from phased experiments
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-init|start|mice|handle|step|phased|limit
+init|start|mice|handle|score|step|phased|limit
 1.3.1.2.1 Limit the time technicians spend handling mice
 FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
@@ -703,7 +703,7 @@ FILE-messages: choose-1-2-3.md
 1.3.1.2.1.2 Any One Extra
 1.3.1.2.1.3 Do Nothing
 
-init|start|mice|handle|step|phased|fish
+init|start|mice|handle|score|step|phased|fish
 1.3.1.2.2 Change to Fish Model
 FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
@@ -712,12 +712,12 @@ FILE-messages: choose-1-2-3.md
 1.3.1.2.2.2 Any One Extra
 1.3.1.2.2.3 Do Nothing
 
-init|start|mice|handle|step|share
+init|start|mice|handle|score|step|share
 1.3.1.3 Collaborate with a competitor
 FILE-messages: charlie-personal.md
 FILE-emails: charlie-limit-or-change.md
 
-init|start|mice|handle|step|share|limit
+init|start|mice|handle|score|step|share|limit
 1.3.1.3.1 Limit the time technicians spend handling mice
 FILE-messages: charlie-shift-change.md
 FILE-messages: choose-1-2-3.md
@@ -726,7 +726,7 @@ FILE-messages: choose-1-2-3.md
 1.3.1.3.1.2 Any One Extra
 1.3.1.3.1.3 Do Nothing
 
-init|start|mice|handle|step|share|fish
+init|start|mice|handle|score|step|share|fish
 1.3.1.3.2 Change to Fish Model
 FILE-messages: charlie-make-changes.md
 FILE-messages: choose-1-2-3.md
@@ -740,15 +740,15 @@ init|start|mice|tubes
 FILE-mesasges: lisa-let-barry-know.md
 FILE-messages: z-next-section.md
 
-init|start|mice|tubes|step
+init|start|mice|tubes|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|mice|tubes|step|scale
+init|start|mice|tubes|score|step|scale
 1.3.2.1 Scale up
 FILE-messages: barry-issues.md
 FILE-emails: barry-tube-mice-change.md
 
-init|start|mice|tubes|step|scale|tubes
+init|start|mice|tubes|score|step|scale|tubes
 1.3.2.1.1 Carry on with tube mice
 FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
@@ -757,11 +757,11 @@ FILE-messages: choose-1-2-3.md
  1.3.2.1.1.2 Any One Extra
  1.3.2.1.1.3 Do Nothing
  
-init|start|mice|tubes|step|scale|change
+init|start|mice|tubes|score|step|scale|change
 1.3.2.1.2 Change animal model
 FILE-emails: barry-change.md
 
-init|start|mice|tubes|step|scale|change|fish
+init|start|mice|tubes|score|step|scale|change|fish
 1.3.2.1.2.1 Fish
 FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
@@ -770,7 +770,7 @@ FILE-messages: choose-1-2-3.md
 1.3.2.1.2.1.2 Any One Extra
 1.3.2.1.2.1.3 Do Nothing
 
-init|start|mice|tubes|step|scale|change|pigs
+init|start|mice|tubes|score|step|scale|change|pigs
 1.3.2.1.2.2 Change to Pigs
 FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
@@ -779,13 +779,13 @@ FILE-messages: choose-1-2-3.md
 1.3.2.1.2.2.2 Any One Extra
 1.3.2.1.2.2.3 Do Nothing
 
-init|start|mice|tubes|step|phased
+init|start|mice|tubes|score|step|phased
 1.3.2.2 Learn from phased experiments
 FILE-messages: al-send-to-barry.md
 File-messages: barry-issues.md
 FILE-emails: barry-tube-mice-change.md
 
-init|start|mice|tubes|step|phased|tubes
+init|start|mice|tubes|score|step|phased|tubes
 1.3.2.2.1 Carry on with tube mice
 FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
@@ -794,11 +794,11 @@ FILE-messages: choose-1-2-3.md
 1.3.2.2.1.2 Any One Extra
 1.3.2.2.1.3 Do Nothing
 
-init|start|mice|tubes|step|phased|change
+init|start|mice|tubes|score|step|phased|change
 1.3.2.2.2 Change animal model
 FILE-emails: barry-change.md
 
-init|start|mice|tubes|step|phased|change|fish
+init|start|mice|tubes|score|step|phased|change|fish
 1.3.2.2.2.1 Fish
 FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
@@ -807,7 +807,7 @@ FILE-messages: choose-1-2-3.md
 1.3.2.2.2.1.2 Any One Extra
 1.3.2.2.2.1.3 Do Nothing
 
-init|start|mice|tubes|step|phased|change|pigs
+init|start|mice|tubes|score|step|phased|change|pigs
 1.3.2.2.2.2 Change to Pigs
 FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
@@ -816,13 +816,13 @@ FILE-messages: choose-1-2-3.md
 1.3.2.2.2.2.2 Any One Extra
 1.3.2.2.2.2.3 Do Nothing
 
-init|start|mice|tubes|step|share
+init|start|mice|tubes|score|step|share
 1.3.2.3 Collaborate with a competitor
 FILE-messages: al-send-to-barry.md
 FILE-messages: barry-issues.md
 FILE-emails: barry-tube-mice-change.md
 
-init|start|mice|tubes|step|share|tubes
+init|start|mice|tubes|score|step|share|tubes
 1.3.2.3.1 Carry on with tube mice
 FILE-email: barry-continue-tubes.md 
 FILE-messages: choose-1-2-3.md
@@ -831,11 +831,11 @@ FILE-messages: choose-1-2-3.md
 1.3.2.3.1.2  Any One Extra
 1.3.2.3.1.3  Do Nothing
 
-init|start|mice|tubes|step|share|change
+init|start|mice|tubes|score|step|share|change
 1.3.2.3.2 Change animal model
 FILE-emails: barry-change.md
 
-init|start|mice|tubes|step|share|change|fish
+init|start|mice|tubes|score|step|share|change|fish
 1.3.2.3.2.1 Fish
 FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
@@ -844,7 +844,7 @@ FILE-messages: choose-1-2-3.md
 1.3.2.3.2.1.2 Any One Extra
 1.3.2.3.2.1.3 Do Nothing
 
-init|start|mice|tubes|step|share|change|pigs
+init|start|mice|tubes|score|step|share|change|pigs
 1.3.2.3.2.2 Change to Pigs
 FILE-emails: barry-change-thanks.md
 FILE-messages: choose-1-2-3.md
@@ -870,15 +870,15 @@ init|start|fish|adult
 FILE-messages: barry-results-soon.md
 FILE-messages: z-next-section.md
 
-init|start|fish|adult|step
+init|start|fish|adult|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|fish|adult|step|scale
+init|start|fish|adult|score|step|scale
 1.4.1.1 Scale up
 FILE-messages: lisa-found-new-research.md
 FILE-emails: lisa-fish-pain.md
 
-init|start|fish|adult|step|scale|embryo
+init|start|fish|adult|score|step|scale|embryo
 1.4.1.1.1 Move to Fish Embryos
 FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
@@ -887,7 +887,7 @@ FILE-messages: choose-1-2-3.md
 1.4.1.1.1.2 Any One Extra
 1.4.1.1.1.3 Do Nothing
 
-init|start|fish|adult|step|scale|adult
+init|start|fish|adult|score|step|scale|adult
 1.4.1.1.2 Stay with Adult Fish
 FILE-messages: a-lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
@@ -896,12 +896,12 @@ FILE-messages: choose-1-2-3.md
 1.4.1.1.2.2 Any One Extra
 1.4.1.1.2.3 Do Nothing
 
-init|start|fish|adult|step|phased
+init|start|fish|adult|score|step|phased
 1.4.1.2 Learn from phased experiments
 FILE-messages: lisa-found-new-research.md
 FILE-emails: lisa-fish-pain.md
 
-init|start|fish|adult|step|phased|embryo
+init|start|fish|adult|score|step|phased|embryo
 1.4.1.2.1 Move to Fish Embryos
 FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
@@ -910,7 +910,7 @@ FILE-messages: choose-1-2-3.md
 1.4.1.2.1.2 Any One Extra
 1.4.1.2.1.3 Do Nothing
 
-init|start|fish|adult|step|phased|adult
+init|start|fish|adult|score|step|phased|adult
 1.4.1.2.2 Stay with Adult Fish
 FILE-messages: a-lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
@@ -919,12 +919,12 @@ FILE-messages: choose-1-2-3.md
 1.4.1.2.2.2 Any One Extra
 1.4.1.2.2.3 Do Nothing
 
-init|start|fish|adult|step|share
+init|start|fish|adult|score|step|share
 1.4.1.3 Collaborate with a competitor
 FILE-messages: lisa-found-new-research.md
 FILE-emails: lisa-fish-pain.md
 
-init|start|fish|adult|step|share|embryo
+init|start|fish|adult|score|step|share|embryo
 1.4.1.3.1 Move to Fish Embryos
 FILE-emails: lisa-great-news.md
 FILE-messages: choose-1-2-3.md
@@ -933,7 +933,7 @@ FILE-messages: choose-1-2-3.md
 1.4.1.3.1.2 Any One Extra
 1.4.1.3.1.3 Do Nothing
 
-init|start|fish|adult|step|share|adult
+init|start|fish|adult|score|step|share|adult
 1.4.1.3.2 Stay with Adult Fish
 FILE-messages: a-lisa-eye-on-fish.md
 FILE-messages: choose-1-2-3.md
@@ -947,15 +947,15 @@ init|start|fish|embryo
 FILE-messages: barry-inform-lisa.md
 FILE-messages: z-next-section.md
 
-init|start|fish|embryo|step
+init|start|fish|embryo|score|step
 FILE-messages: balance-success-harm.md
 
-init|start|fish|embryo|step|scale
+init|start|fish|embryo|score|step|scale
 1.4.2.1 Scale up
 FILE-messages: jenny-public-reaction.md
 FILE-emails: jenny-fish-protest.md
 
-init|start|fish|embryo|step|scale|embryo
+init|start|fish|embryo|score|step|scale|embryo
 1.4.2.1.1 Stay with Fish Embryos
 FILE-emails: stay.md
 FILE-messages: choose-1-2-3.md
@@ -964,11 +964,11 @@ FILE-messages: choose-1-2-3.md
 1.4.2.1.1.2 Any One Extra
 1.4.2.1.1.3 Do Nothing
 
-init|start|fish|embryo|step|scale|change
+init|start|fish|embryo|score|step|scale|change
 1.4.2.1.2 Change Model
 FILE-messages: jenny-change-model.md
 
-init|start|fish|embryo|step|scale|change|mice
+init|start|fish|embryo|score|step|scale|change|mice
 1.4.2.1.2.1 Change to Mice
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
@@ -977,7 +977,7 @@ FILE-messages: choose-1-2-3.md
 1.4.2.1.2.1.2 Any One Extra
 1.4.2.1.2.1.3 Do Nothing
 
-init|start|fish|embryo|step|scale|change|pigs
+init|start|fish|embryo|score|step|scale|change|pigs
 1.4.2.1.2.2 Change to Pigs
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
@@ -986,12 +986,12 @@ FILE-messages: choose-1-2-3.md
 1.4.2.1.2.2.2 Any One Extra
 1.4.2.1.2.2.3 Do Nothing
 
-init|start|fish|embryo|step|phased
+init|start|fish|embryo|score|step|phased
 1.4.2.2 Learn from phased experiments
 FILE-messages: jenny-public-reaction.md
 FILE-emails: jenny-fish-protest.md
 
-init|start|fish|embryo|step|phased|stay
+init|start|fish|embryo|score|step|phased|stay
 1.4.2.2.1 Stay with Fish Embryos 
 FILE-emails: stay.md
 FILE-messages: choose-1-2-3.md
@@ -1000,11 +1000,11 @@ FILE-messages: choose-1-2-3.md
 1.4.2.2.1.2 Any One Extra
 1.4.2.2.1.3 Do Nothing
 
-init|start|fish|embryo|step|phased|change
+init|start|fish|embryo|score|step|phased|change
 1.4.2.2.2 Change Model
 FILE-messages: jenny-change-model.md
 
-init|start|fish|embryo|step|phased|change|mice
+init|start|fish|embryo|score|step|phased|change|mice
 1.4.2.2.2.1 Change to Mice
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
@@ -1013,7 +1013,7 @@ FILE-messages: choose-1-2-3.md
 1.4.2.2.2.1.2 Any One Extra
 1.4.2.2.2.1.3 Do Nothing
 
-init|start|fish|embryo|step|phased|change|pigs
+init|start|fish|embryo|score|step|phased|change|pigs
 1.4.2.2.2.2 Change to Pigs
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
@@ -1022,12 +1022,12 @@ FILE-messages: choose-1-2-3.md
 1.4.2.2.2.2.2 Any One Extra
 1.4.2.2.2.2.3 Do Nothing
 
-init|start|fish|embryo|step|share
+init|start|fish|embryo|score|step|share
 1.4.2.3 Collaborate with a competitor
 FILE-messages: jenny-public-reaction.md
 FILE-emails: jenny-fish-protest.md
 
-init|start|fish|embryo|step|share|stay
+init|start|fish|embryo|score|step|share|stay
 1.4.2.3.1 Stay with Fish Embryos 
 FILE-emails: stay.md
 FILE-messages: choose-1-2-3.md
@@ -1036,11 +1036,11 @@ FILE-messages: choose-1-2-3.md
 1.4.2.3.1.2 Any One Extra
 1.4.2.3.1.3 Do Nothing
 
-init|start|fish|embryo|step|share|change
+init|start|fish|embryo|score|step|share|change
 1.4.2.3.2 Change Model
 FILE-messages: jenny-change-model.md
 
-init|start|fish|embryo|step|share|change|mice
+init|start|fish|embryo|score|step|share|change|mice
 1.4.2.3.2.1 Change to Mice
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md
@@ -1049,7 +1049,7 @@ FILE-messages: choose-1-2-3.md
 1.4.2.3.2.1.2 Any One Extra
 1.4.2.3.2.1.3 Do Nothing
 
-init|start|fish|embryo|step|share|change|pigs
+init|start|fish|embryo|score|step|share|change|pigs
 1.4.2.3.2.2 Change to Pigs
 FILE-emails: jenny-change-barry.md
 FILE-messages: choose-1-2-3.md

@@ -4,9 +4,9 @@ author: Jenny
 subject: Continuing using Macaques
 triggered_by:
   - init|start|macaques|step|stay
-  - init|start|fish|embryo|step|scale|embryo
-  - init|start|fish|embryo|step|phased|stay
-  - init|start|fish|embryo|step|share|stay
+  - init|start|fish|embryo|score|step|scale|embryo
+  - init|start|fish|embryo|score|step|phased|stay
+  - init|start|fish|embryo|score|step|share|stay
   - init|start|bio|stemcell|stay
 ---
 

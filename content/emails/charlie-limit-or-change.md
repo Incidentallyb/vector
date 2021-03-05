@@ -3,12 +3,12 @@ title: Charlie limit or change
 author: Charlie Benn
 subject: Limiting contact with the Mice
 triggered_by:
-  - init|start|mice|handle|step|scale
-  - init|start|mice|handle|step|phased
-  - init|start|mice|handle|step|share
-  - init|start|macaques|step|change|step|mice|step|scale
-  - init|start|macaques|step|change|step|mice|step|phased
-  - init|start|macaques|step|change|step|mice|step|share
+  - init|start|mice|handle|score|step|scale
+  - init|start|mice|handle|score|step|phased
+  - init|start|mice|handle|score|step|share
+  - init|start|macaques|step|change|step|mice|score|step|scale
+  - init|start|macaques|step|change|step|mice|score|step|phased
+  - init|start|macaques|step|change|step|mice|score|step|share
   - init|start|bio|stemcell|change|mice|step
   - init|start|bio|biobank|mice|step|step
 choices:

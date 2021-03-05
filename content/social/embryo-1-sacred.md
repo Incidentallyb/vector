@@ -1,9 +1,9 @@
 ---
 title: embryo 1 sacred
 triggered_by:
-  - init|start|fish|embryo|step|scale
-  - init|start|fish|embryo|step|phased
-  - init|start|fish|embryo|step|share
+  - init|start|fish|embryo|score|step|scale
+  - init|start|fish|embryo|score|step|phased
+  - init|start|fish|embryo|score|step|share
 author: All Life Is Sacred
 handle: '@AllLifeIsSacred'
 numLoves: 21
