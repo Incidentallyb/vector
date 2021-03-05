@@ -78,11 +78,19 @@ single gamedata maybeContent =
 list : GameData -> Dict String Content.EmailData -> Set.Set String -> Html Msg
 list gamedata emailDict visitedSet =
     ul [ class "email-list" ]
-        (List.map listItem (List.reverse (addStatus (Dict.values (filterEmails emailDict gamedata.choices gamedata.teamName)) visitedSet)))
+        (List.map listItem
+            (List.reverse
+                (addStatus
+                    (Dict.values (filterEmails emailDict gamedata.choices gamedata.teamName))
+                    gamedata.choices
+                    visitedSet
+                )
+            )
+        )
 
 
-addStatus : List Content.EmailData -> Set.Set String -> List EmailWithRead
-addStatus emailData visitedSet =
+addStatus : List Content.EmailData -> List String -> Set.Set String -> List EmailWithRead
+addStatus emailData currentChoices visitedSet =
     List.map
         (\email ->
             let
@@ -90,7 +98,7 @@ addStatus emailData visitedSet =
                     Set.member ("/emails/" ++ email.basename) visitedSet
 
                 hasPendingChoice =
-                    False
+                    GameData.containsPendingDecision email currentChoices
             in
             { triggered_by = email.triggered_by
             , author = email.author

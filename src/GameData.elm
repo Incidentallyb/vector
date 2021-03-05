@@ -1,4 +1,4 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), containsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
