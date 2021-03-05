@@ -50,7 +50,7 @@ renderTopNavigation teamName =
         , div [ id "navbar" ]
             [ ul [ class "navbar-nav ml-auto" ]
                 [ li [ class "nav-item active" ]
-                    [ a [ class "nav-link", href "#" ] [ text ("Team " ++ teamName) ]
+                    [ span [ class "navbar-text" ] [ text ("Team " ++ teamName) ]
                     ]
                 ,  li [ class "nav-item" ] [
                     audio
