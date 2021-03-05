@@ -5,6 +5,7 @@ type Key
     = --- Site Meta
       SiteTitle
       --- Route Slugs
+    | Navbar
     | DesktopSlug
     | DocumentsSlug
     | EmailsSlug
@@ -44,6 +45,7 @@ type Key
     | EmailDummySentTime
     | EmailReplyButton
     | EmailQuickReply
+    | NeedsReply
       --- TeamNames
     | TeamNames
       --- Path Checker

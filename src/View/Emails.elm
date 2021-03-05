@@ -27,6 +27,7 @@ type alias EmailWithRead =
     , image : Maybe Content.ImageData
     , basename : String
     , read : Bool
+    , needsAttention : Bool
     }
 
 
@@ -95,16 +96,27 @@ single gamedata maybeContent =
 list : GameData -> Dict String Content.EmailData -> Set.Set String -> Html Msg
 list gamedata emailDict visitedSet =
     ul [ class "email-list" ]
-        (List.map listItem (List.reverse (addReadStatus (Dict.values (filterEmails emailDict gamedata.choices gamedata.teamName)) visitedSet)))
+        (List.map listItem
+            (List.reverse
+                (addStatus
+                    (Dict.values (filterEmails emailDict gamedata.choices gamedata.teamName))
+                    gamedata.choices
+                    visitedSet
+                )
+            )
+        )
 
 
-addReadStatus : List Content.EmailData -> Set.Set String -> List EmailWithRead
-addReadStatus emailData visitedSet =
+addStatus : List Content.EmailData -> List String -> Set.Set String -> List EmailWithRead
+addStatus emailData currentChoices visitedSet =
     List.map
         (\email ->
             let
                 readStatus =
                     Set.member ("/emails/" ++ email.basename) visitedSet
+
+                hasPendingChoice =
+                    GameData.emailContainsPendingDecision email currentChoices
             in
             { triggered_by = email.triggered_by
             , author = email.author
@@ -114,6 +126,7 @@ addReadStatus emailData visitedSet =
             , image = email.image
             , basename = email.basename
             , read = readStatus
+            , needsAttention = hasPendingChoice
             }
         )
         emailData
@@ -122,14 +135,23 @@ addReadStatus emailData visitedSet =
 listItem : EmailWithRead -> Html msg
 listItem email =
     li
-        [ class "email-list-item", classList [ ( "read", email.read ) ] ]
+        [ class "email-list-item"
+        , classList [ ( "read", email.read ) ]
+        ]
         [ a [ class "text-body", href (Route.toString (Email email.basename)) ]
-            [ span [ class "badge badge-error new" ] [ text (t New) ]
+            [ span [ class "badge new" ] [ text (t New) ]
             , div [ class ("email-icon " ++ generateCssString email.author), ariaHidden True ]
                 [ text (String.left 1 email.author)
                 ]
             , div [ class "email-info ml-3" ]
-                [ p [ class "m-0 author" ] [ text email.author ]
+                [ p [ class "m-0 author" ]
+                    [ text email.author
+                    , if email.needsAttention then
+                        span [ class "badge needs-reply" ] [ text (t NeedsReply) ]
+
+                      else
+                        text ""
+                    ]
                 , p [ class "m-0 subject" ] [ text email.subject ]
                 , p [ class "m-0" ] [ text email.preview ]
                 ]

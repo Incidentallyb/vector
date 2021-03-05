@@ -1,4 +1,4 @@
-module View.Desktop exposing (renderWrapperWithNav, view)
+module View.Desktop exposing (renderTopNavigation, renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
@@ -28,7 +28,8 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderWrapperWithNav gameData
+                [ renderTopNavigation gameData.teamName
+                , renderWrapperWithNav gameData
                     pageRoute
                     notifications
                     [ div [ class "welcome" ]
@@ -40,6 +41,30 @@ view gameData pageRoute notifications =
                         ]
                     ]
                 ]
+
+
+renderTopNavigation : String -> Html Msg
+renderTopNavigation teamName =
+    nav [ class "navbar navbar-light bg-light" ]
+        [ a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
+        , div [ id "navbar" ]
+            [ ul [ class "navbar-nav ml-auto" ]
+                [ li [ class "nav-item active" ]
+                    [ span [ class "navbar-text" ] [ text ("Team " ++ teamName) ]
+                    ]
+                ,  li [ class "nav-item" ] [
+                    audio
+                        [ src "/audio/vector_loop_1_web.ogg"
+                        , id "audio-player"
+                        , controls True
+                        , autoplay True
+                        , loop True
+                        ]
+                        []
+                    ]
+                ]
+            ]
+        ]
 
 
 renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg) -> Html Msg
@@ -158,6 +183,11 @@ renderNavLinks pageRoute notifications =
             , text (t NavEmails)
             , if notifications.emails > 0 then
                 span [ class "badge badge-warning" ] [ text (String.fromInt notifications.emails) ]
+
+              else
+                text ""
+            , if notifications.emails == 0 && notifications.emailsNeedAttention == True then
+                span [ class "badge badge-warning need-attention", title (t NavMessagesNeedAttention) ] [ text "!" ]
 
               else
                 text ""
