@@ -140,7 +140,7 @@ renderButtons buttonList chosenValue =
                     onClick (ChoiceButtonClicked buttonItem.action)
 
                   else
-                    Html.Attributes.class ""
+                    Html.Attributes.disabled True
                 ]
                 [ text buttonItem.label ]
         )
