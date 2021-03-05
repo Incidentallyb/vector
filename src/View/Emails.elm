@@ -106,12 +106,15 @@ listItem email =
     li
         [ class "email-list-item", classList [ ( "read", email.read ) ] ]
         [ a [ class "text-body", href (Route.toString (Email email.basename)) ]
-            [ span [ class "badge badge-error new" ] [ text (t New) ]
+            [ span [ class "badge new" ] [ text (t New) ]
             , div [ class ("email-icon " ++ generateCssString email.author), ariaHidden True ]
                 [ text (String.left 1 email.author)
                 ]
             , div [ class "email-info ml-3" ]
-                [ p [ class "m-0 author" ] [ text email.author ]
+                [ p [ class "m-0 author" ]
+                    [ text email.author
+                    , span [ class "badge needs-reply" ] [ text (t NeedsReply)]
+                    ]
                 , p [ class "m-0 subject" ] [ text email.subject ]
                 , p [ class "m-0" ] [ text email.preview ]
                 ]

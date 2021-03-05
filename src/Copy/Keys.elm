@@ -43,6 +43,7 @@ type Key
       --- Emails
     | EmailDummySentTime
     | EmailQuickReply
+    | NeedsReply
       --- TeamNames
     | TeamNames
       --- Path Checker
