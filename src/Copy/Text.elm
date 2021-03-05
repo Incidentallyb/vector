@@ -15,6 +15,10 @@ t key =
             "Welcome to BioCore"
 
         -- Slugs
+        
+        Navbar ->
+            "BioCore"
+
         DesktopSlug ->
             "desktop"
 
