@@ -63,7 +63,16 @@ renderWrapperWithNav gameData pageRoute notifications elements =
             , div [ class "order-last d-md-none" ]
                 [ renderMobileNavLinks pageRoute notifications
                 ]
-            , div [ class "col-md-8 content" ] elements
+               
+            , let
+
+                    displayFinalScore =
+                        
+
+                    finalScoreFeedback = 
+                        [ div [ ] [ text "final score" ] ]
+                in
+              div [ class "col-md-8 content" ] (finalScoreFeedback ++ elements)
             ]
         ]
 
