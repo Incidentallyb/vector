@@ -165,7 +165,7 @@ filterByHiddenFromTeam teamname maybeEmails =
                     Just hidelist ->
                         not (List.member teamname hidelist)
                     Nothing ->
-                        False
+                        True
                 ) emails)
         Nothing ->
             Nothing
