@@ -195,6 +195,11 @@ renderNavLinks pageRoute notifications =
 
               else
                 text ""
+            , if notifications.emails == 0 && notifications.emailsNeedAttention == True then
+                span [ class "badge badge-warning need-attention", title (t NavMessagesNeedAttention) ] [ text "!" ]
+
+              else
+                text ""
             ]
         , a
             [ classList

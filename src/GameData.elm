@@ -1,4 +1,4 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), emailContainsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
@@ -28,6 +28,7 @@ type alias NotificationCount =
     , messagesNeedAttention : Bool
     , documents : Int
     , emails : Int
+    , emailsNeedAttention : Bool
     , social : Int
     }
 
@@ -156,20 +157,26 @@ branchingContentToEmailData contentDict =
         _ ->
             Nothing
 
+
 filterByHiddenFromTeam : String -> Maybe (Dict String EmailData) -> Maybe (Dict String EmailData)
 filterByHiddenFromTeam teamname maybeEmails =
     case maybeEmails of
         Just emails ->
-            Just (Dict.filter (\_ value ->
-                case value.hideFromTeams of
-                    Just hidelist ->
-                        not (List.member teamname hidelist)
-                    Nothing ->
-                        True
-                ) emails)
+            Just
+                (Dict.filter
+                    (\_ value ->
+                        case value.hideFromTeams of
+                            Just hidelist ->
+                                not (List.member teamname hidelist)
+
+                            Nothing ->
+                                True
+                    )
+                    emails
+                )
+
         Nothing ->
             Nothing
-
 
 
 getEmail : BranchingContent -> EmailData
@@ -206,6 +213,91 @@ getDocument data =
 
         _ ->
             Content.emptyDocument
+
+
+
+--
+-- Notification functions
+--
+-- work out if there are un-actioned choices in emails
+
+
+unactionedEmailChoices : Dict String EmailData -> List String -> String -> Bool
+unactionedEmailChoices emails choices teamname =
+    let
+        maybeLastEmailDisplayed =
+            List.head (List.reverse (Dict.toList (filterEmails emails choices teamname)))
+
+        lastEmailDisplayed =
+            case maybeLastEmailDisplayed of
+                Just item ->
+                    Tuple.second item
+
+                Nothing ->
+                    Content.emptyEmail
+    in
+    emailContainsPendingDecision lastEmailDisplayed choices
+
+
+emailContainsPendingDecision : EmailData -> List String -> Bool
+emailContainsPendingDecision email choices =
+    let
+        triggeredBy =
+            email.triggered_by
+
+        potentialChoices =
+            case email.choices of
+                Just someChoices ->
+                    List.map ContentChoices.getChoiceAction someChoices
+
+                Nothing ->
+                    []
+
+        triggerString =
+            String.join "|" (List.reverse choices)
+
+        triggeredByLastChoice =
+            List.member triggerString triggeredBy
+
+        hasChoiceMatchLastChoice =
+            List.member ("|" ++ Maybe.withDefault "" (List.head choices)) potentialChoices
+    in
+    triggeredByLastChoice && not hasChoiceMatchLastChoice
+
+
+
+--
+-- Notification functions
+--
+-- work out if there are un-actioned choices in messages
+
+
+unactionedMessageChoices : Dict String MessageData -> List String -> Bool
+unactionedMessageChoices messages choices =
+    let
+        maybeLastMessageDisplayed =
+            List.head (List.reverse (Dict.toList (filterMessages messages choices)))
+
+        lastMessageDisplayed =
+            case maybeLastMessageDisplayed of
+                Just item ->
+                    Tuple.second item
+
+                Nothing ->
+                    Content.emptyMessage
+
+        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
+        choiceTriggers =
+            List.map ContentChoices.getChoiceAction lastMessageDisplayed.choices
+
+        -- see if the last message has choices but we've answered them already
+        -- or if the last message has no available choices
+        hasDoneActionsFromMessages =
+            List.member ("|" ++ Maybe.withDefault "" (List.head choices)) choiceTriggers
+                || List.length choiceTriggers
+                == 0
+    in
+    not hasDoneActionsFromMessages
 
 
 

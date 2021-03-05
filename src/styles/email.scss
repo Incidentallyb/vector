@@ -39,13 +39,18 @@
       text-decoration: none;
     }
   }
-  
+
   .new {
     position: absolute;
     left: -10px;
     top: 6px;
     font-size: 0.95rem;
     z-index: 1;
+  }
+
+  .needs-reply {
+    background-color: var(--blue);
+    font-size: 0.95rem;
   }
 
   .email-info {
