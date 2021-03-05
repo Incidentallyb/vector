@@ -8,7 +8,6 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (on, onClick, targetValue)
 import Json.Decode as Json
-import Maybe
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Svg.Attributes
