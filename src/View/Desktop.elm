@@ -317,7 +317,7 @@ renderFinalScoreFeedback =
                     [ Html.form [ attribute "data-netlify" "true" ]
                         [ div [ class "form-group" ]
                             [ label [ attribute "for" "feedbackText" ] [ text "Type your feedback here" ]
-                            , textarea [ class "form-control", id "feedbackText", attribute "rows" "5" ] [ ]
+                            , textarea [ class "form-control", id "feedbackText", attribute "rows" "5" ] []
                             ]
                         ]
                     ]

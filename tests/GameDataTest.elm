@@ -5,7 +5,7 @@ import GameData exposing (GameData, ScoreType(..))
 import Set
 import Test exposing (Test, describe, test)
 import TestData
-
+import Dict
 
 testGameData : GameData
 testGameData =
@@ -21,6 +21,7 @@ initGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
+    , peepsPosted = Dict.empty
     }
 
 
@@ -33,6 +34,7 @@ startGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
+    , peepsPosted = Dict.empty
     }
 
 
@@ -45,6 +47,7 @@ macaquesGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
+    , peepsPosted = Dict.empty
     }
 
 
@@ -57,6 +60,7 @@ changeGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
+    , peepsPosted = Dict.empty
     }
 
 

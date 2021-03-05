@@ -166,6 +166,7 @@ update msg model =
                     , scoreSuccess = GameData.updateScore Success model.data model.gameData.choices choice
                     , scoreEconomic = GameData.updateScore Economic model.data model.gameData.choices choice
                     , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
+                    , peepsPosted = model.gameData.peepsPosted
                     }
 
                 -- Take the current notifications and add the number of items filtered by the new choice
@@ -241,6 +242,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , peepsPosted = model.gameData.peepsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
@@ -260,6 +262,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , peepsPosted = model.gameData.peepsPosted
                     }
             in
             if noneSelected then
@@ -282,6 +285,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , peepsPosted = model.gameData.peepsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
