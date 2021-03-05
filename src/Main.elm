@@ -298,6 +298,45 @@ update msg model =
                 _ ->
                     ( model, Cmd.none )
 
+        PostSocial lastSocialKey peepText ->
+            let
+                -- LastSocial = grab the most recent social key
+                -- Generate socialData
+                -- Add to peepsPosted
+                -- In View.Social intersperse tweets after lastSocialKey
+                teamName =
+                    model.gameData.teamName
+
+                peepCount =
+                    Dict.size model.gameData.peepsPosted
+
+                newSocial =
+                    { triggered_by = []
+                    , author = teamName
+                    , handle = "@" ++ teamName
+                    , image = Nothing
+                    , content = peepText
+
+                    -- Key by count social it follows & count of peeps
+                    , basename = lastSocialKey ++ String.fromInt peepCount
+                    , numComments = 0
+                    , numRetweets = 0
+                    , numLoves = 0
+                    }
+
+                newGameData =
+                    { choices = model.gameData.choices
+                    , choicesVisited = model.gameData.choicesVisited
+                    , checkboxSet = model.gameData.checkboxSet
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    , peepsPosted = Dict.insert newSocial.basename newSocial model.gameData.peepsPosted
+                    }
+            in
+            ( { model | gameData = newGameData }, Cmd.none )
+
         NoOp ->
             ( model, Cmd.none )
 

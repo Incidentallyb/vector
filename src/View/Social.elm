@@ -8,6 +8,7 @@ import GameData exposing (GameData, filterSocials)
 import Heroicons.Outline exposing (chat, heart, refresh, upload)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import Markdown
 import Message exposing (Msg(..))
 
@@ -18,7 +19,11 @@ view gamedata socialDict =
         [ div [ class "clearfix form-group send-tweet" ]
             [ label [ for "tweet-textbox" ] [ text (t SocialInputLabel) ]
             , textarea [ class "form-control", id "tweet-textbox" ] []
-            , button [ class "btn btn-primary float-right" ] [ text (t SocialInputPost) ]
+            , button
+                [ class "btn btn-primary float-right"
+                , onClick (PostSocial "key" "text")
+                ]
+                [ text (t SocialInputPost) ]
             ]
         , ul [ class "tweet-list p-0" ]
             (List.reverse
