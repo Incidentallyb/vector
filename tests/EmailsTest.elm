@@ -17,7 +17,7 @@ gameData =
 
 dataStore : Content.Datastore
 dataStore =
-    { testDatastore | messages = Dict.empty }
+    { testDatastore | messages = Dict.empty, social = Dict.empty }
 
 
 emailData : Maybe Content.EmailData

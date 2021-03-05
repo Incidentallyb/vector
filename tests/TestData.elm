@@ -86,6 +86,18 @@ testEmail1 =
   , scoreChangeSuccess = Nothing
   }
 
+testSocial1 : Content.SocialData
+testSocial1 =
+  { triggered_by = ["init|start"]
+  , author = "Test Author"
+  , handle = "@testauthor"
+  , content = "Test social content"
+  , image = Nothing
+  , basename = "testEmail1"
+  , numComments = 10
+  , numRetweets = 5
+  , numLoves = 2
+  }
 
 testDatastore : Content.Datastore
 testDatastore =
@@ -98,7 +110,7 @@ testDatastore =
             ]
     , documents = Dict.empty
     , emails = Dict.fromList [ ( "testEmail1", testEmail1 ) ]
-    , social = Dict.empty
+    , social = Dict.fromList [ ( "testSocial1", testSocial1 ) ]
     }
 
 
