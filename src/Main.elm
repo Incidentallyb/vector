@@ -54,7 +54,14 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications = { messages = 1, messagesNeedAttention = True, documents = 1, emails = 0, social = 0 }
+      , notifications = 
+        { messages = 1
+        , messagesNeedAttention = False
+        , documents = 1
+        , emails = 0
+        , emailsNeedAttention = False
+        , social = 0 
+        }
       }
     , Cmd.none
     )
@@ -161,10 +168,6 @@ update msg model =
                     , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
                     }
 
-                -- work out if there are un-actioned choices in messages
-                unactionedMessages =
-                    GameData.unactionedMessageChoices model.data.messages newGameData.choices
-
                 -- Take the current notifications and add the number of items filtered by the new choice
                 -- Hopefully this will be handled in the view and if we need to post msg to update
                 newNotifications =
@@ -175,7 +178,10 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
-                    , messagesNeedAttention = unactionedMessages
+                    , messagesNeedAttention =
+                        GameData.unactionedMessageChoices model.data.messages newGameData.choices
+                    , emailsNeedAttention =
+                        GameData.unactionedEmailChoices model.data.emails newGameData.choices model.gameData.teamName
                     , documents =
                         model.notifications.documents
                             + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
