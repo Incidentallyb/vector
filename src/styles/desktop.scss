@@ -176,3 +176,11 @@ audio {
   max-height: 200px;
   width: auto;
 }
+
+#finalScoreFeedback {
+  background: rgba(0,0,0,0.5);
+  h2 { 
+    font-size:1.3em;
+  }
+  textarea { width: 100%; height: 10em; }
+}
