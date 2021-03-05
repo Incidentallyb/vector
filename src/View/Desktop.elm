@@ -52,14 +52,16 @@ renderTopNavigation teamName =
                 [ li [ class "nav-item active" ]
                     [ a [ class "nav-link", href "#" ] [ text ("Team " ++ teamName) ]
                     ]
-                , audio
-                    [ src "/audio/vector_loop_1_web.ogg"
-                    , id "audio-player"
-                    , controls True
-                    , autoplay True
-                    , loop True
+                ,  li [ class "nav-item" ] [
+                    audio
+                        [ src "/audio/vector_loop_1_web.ogg"
+                        , id "audio-player"
+                        , controls True
+                        , autoplay True
+                        , loop True
+                        ]
+                        []
                     ]
-                    []
                 ]
             ]
         ]
