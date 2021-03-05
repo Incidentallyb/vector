@@ -91,7 +91,7 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                 ]
             , div [ class "col-md-8 content" ]
                 ((if "feedback" == Maybe.withDefault "" (List.head gameData.choices) then
-                    [ renderFinalScoreFeedback "" ]
+                    [ renderFinalScoreFeedback ]
 
                   else
                     []
@@ -306,8 +306,8 @@ renderTeamInformation teamName =
         ]
 
 
-renderFinalScoreFeedback : String -> Html Msg
-renderFinalScoreFeedback feedbackText =
+renderFinalScoreFeedback : Html Msg
+renderFinalScoreFeedback =
     div [ class "modal", attribute "style" "display:block", id "finalScoreFeedback" ]
         [ div [ class "modal-dialog modal-dialog-centered" ]
             [ div [ class "modal-content" ]
@@ -318,12 +318,12 @@ renderFinalScoreFeedback feedbackText =
                     [ Html.form [ attribute "data-netlify" "true" ]
                         [ div [ class "form-group" ]
                             [ label [ attribute "for" "feedbackText" ] [ text "Type your feedback here" ]
-                            , textarea [ class "form-control", id "feedbackText", attribute "rows" "5" ] [ text feedbackText ]
+                            , textarea [ class "form-control", id "feedbackText", attribute "rows" "5" ] [ ]
                             ]
                         ]
                     ]
                 , div [ class "modal-footer" ]
-                    [ button [ attribute "type" "button", class "btn btn-secondary", onClick NoFeedbackButton ] [ text "No feedback" ]
+                    [ button [ attribute "type" "button", class "btn btn-secondary", onClick (ChoiceButtonClicked "score") ] [ text "No feedback" ]
                     , button [ attribute "type" "submit", class "btn btn-primary" ] [ text "Send feedback" ]
                     ]
                 ]

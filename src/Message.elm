@@ -13,5 +13,4 @@ type Msg
     | CheckboxesSubmitted String
     | TeamChosen String
     | PathCheckerMsg View.PathChecker.Msg
-    | NoFeedbackButton
     | NoOp

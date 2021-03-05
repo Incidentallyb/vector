@@ -294,20 +294,6 @@ update msg model =
                 _ ->
                     ( model, Cmd.none )
 
-        NoFeedbackButton ->
-            let
-                newGameData =
-                    { choices = "score" :: model.gameData.choices
-                    , choicesVisited = model.gameData.choicesVisited
-                    , checkboxSet = model.gameData.checkboxSet
-                    , teamName = model.gameData.teamName
-                    , scoreSuccess = model.gameData.scoreSuccess
-                    , scoreEconomic = model.gameData.scoreEconomic
-                    , scoreHarm = model.gameData.scoreHarm
-                    }
-            in
-            ( { model | gameData = newGameData }, Cmd.none )
-
         NoOp ->
             ( model, Cmd.none )
 
