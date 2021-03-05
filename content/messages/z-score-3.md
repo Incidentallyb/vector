@@ -279,7 +279,6 @@ triggered_by:
   - init|start|bio|biobank|pigs|step|mice|score|two-extras
 
 choices:
-    - score|Yes
+    - score|Submit
 ---
-
-Are you ready for your final score?
+Submit your proposal for feedback.

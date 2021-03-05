@@ -1,8 +1,6 @@
 ---
 title: Scores
 author: AL
-choices:
-  - score|Yes
 triggered_by:
   - init|start|macaques|step|stay
   - init|start|pigs|increase
@@ -14,5 +12,8 @@ triggered_by:
   - init|start|macaques|step|change|step|pigs
   - init|start|macaques|step|change|step|mice
   - init|start|macaques|step|change|step|fish
+
+choices:
+  - score|Continue  
 ---
-Are you ready for your score?
+I've got your first set of results, are you ready to see them?

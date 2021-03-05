@@ -1,8 +1,6 @@
 ---
 title: Scores 2
 author: AL
-choices:
-  - score|Yes
 triggered_by:
   - init|start|macaques|step|stay|score|step|scale|pigs
   - init|start|macaques|step|stay|score|step|scale|mice
@@ -95,5 +93,8 @@ triggered_by:
   - init|start|bio|biobank|pigs|step|limit|step
   - init|start|bio|biobank|pigs|step|fish
   - init|start|bio|biobank|pigs|step|mice
+
+choices:
+  - score|Continue
 ---
-Are you ready for your score update?
+I've got your next set of results, are you ready to see them?
