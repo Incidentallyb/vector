@@ -54,14 +54,14 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications = 
-        { messages = 1
-        , messagesNeedAttention = False
-        , documents = 1
-        , emails = 0
-        , emailsNeedAttention = False
-        , social = 0 
-        }
+      , notifications =
+            { messages = 1
+            , messagesNeedAttention = False
+            , documents = 1
+            , emails = 0
+            , emailsNeedAttention = False
+            , social = 0
+            }
       }
     , Cmd.none
     )

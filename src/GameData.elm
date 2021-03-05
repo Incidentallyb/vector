@@ -157,20 +157,26 @@ branchingContentToEmailData contentDict =
         _ ->
             Nothing
 
+
 filterByHiddenFromTeam : String -> Maybe (Dict String EmailData) -> Maybe (Dict String EmailData)
 filterByHiddenFromTeam teamname maybeEmails =
     case maybeEmails of
         Just emails ->
-            Just (Dict.filter (\_ value ->
-                case value.hideFromTeams of
-                    Just hidelist ->
-                        not (List.member teamname hidelist)
-                    Nothing ->
-                        True
-                ) emails)
+            Just
+                (Dict.filter
+                    (\_ value ->
+                        case value.hideFromTeams of
+                            Just hidelist ->
+                                not (List.member teamname hidelist)
+
+                            Nothing ->
+                                True
+                    )
+                    emails
+                )
+
         Nothing ->
             Nothing
-
 
 
 getEmail : BranchingContent -> EmailData
@@ -208,6 +214,8 @@ getDocument data =
         _ ->
             Content.emptyDocument
 
+
+
 --
 -- Notification functions
 --
@@ -227,23 +235,34 @@ unactionedEmailChoices emails choices teamname =
 
                 Nothing ->
                     Content.emptyEmail
+    in
+    containsPendingDecision lastEmailDisplayed choices
 
-        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
-        choiceTriggers =
-             case lastEmailDisplayed.choices of
+
+containsPendingDecision : EmailData -> List String -> Bool
+containsPendingDecision email choices =
+    let
+        triggeredBy =
+            email.triggered_by
+
+        potentialChoices =
+            case email.choices of
                 Just someChoices ->
                     List.map ContentChoices.getChoiceAction someChoices
+
                 Nothing ->
                     []
 
-        -- see if the last email has choices but we've answered them already
-        -- or if the last email has no available choices
-        hasDoneActionsFromEmails =
-            List.member ("|" ++ Maybe.withDefault "" (List.head choices)) choiceTriggers
-                || List.length choiceTriggers
-                == 0
+        triggerString =
+            String.join "|" (List.reverse choices)
+
+        triggeredByLastChoice =
+            List.member triggerString triggeredBy
+
+        hasChoiceMatchLastChoice =
+            List.member ("|" ++ Maybe.withDefault "" (List.head choices)) potentialChoices
     in
-    not hasDoneActionsFromEmails
+    triggeredByLastChoice && not hasChoiceMatchLastChoice
 
 
 
@@ -279,6 +298,7 @@ unactionedMessageChoices messages choices =
                 == 0
     in
     not hasDoneActionsFromMessages
+
 
 
 --

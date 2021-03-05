@@ -166,7 +166,6 @@ renderNavLinks pageRoute notifications =
 
               else
                 text ""
-
             ]
         , a
             [ classList
