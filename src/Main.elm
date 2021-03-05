@@ -339,7 +339,8 @@ view model =
 
         Documents ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Documents.list model.gameData model.data.documents model.visited
@@ -348,7 +349,8 @@ view model =
 
         Document id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Documents.single (Dict.get id model.data.documents)
@@ -357,7 +359,8 @@ view model =
 
         Emails ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Emails.list model.gameData model.data.emails model.visited
@@ -366,7 +369,8 @@ view model =
 
         Email id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Emails.single model.gameData (Dict.get id model.data.emails)
@@ -375,7 +379,8 @@ view model =
 
         Messages ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Messages.view model.gameData model.data
@@ -384,7 +389,8 @@ view model =
 
         Social ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Social.view model.gameData model.data.social

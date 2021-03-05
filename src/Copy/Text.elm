@@ -15,6 +15,10 @@ t key =
             "Welcome to BioCore"
 
         -- Slugs
+        
+        Navbar ->
+            "BioCore"
+
         DesktopSlug ->
             "desktop"
 
@@ -89,8 +93,11 @@ t key =
         EmailDummySentTime ->
             "Sent: Today"
 
+        EmailReplyButton ->
+            "Reply"
+
         EmailQuickReply ->
-            "Email quick-reply: "
+            "Send email quick-reply: "
 
         TeamNames ->
             "Ash|Birch|Cedar|Elm|Fir|Hawthorn|Juniper|Lime|Maple|Oak"

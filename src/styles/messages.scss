@@ -8,7 +8,7 @@ $timeToWait: 2s;
 }
 
 .typing-indicator {
-  margin: 0 auto;
+  margin: 0.5em auto 0;
   position: relative;
   display: flex;
   span {
@@ -48,6 +48,8 @@ $timeToWait: 2s;
 @keyframes hide-outof-view {
   100% {
       opacity: 0;
+      margin:0px;
+      height:0px;
   }
 }
 
