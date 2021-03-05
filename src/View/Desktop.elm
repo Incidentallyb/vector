@@ -1,4 +1,4 @@
-module View.Desktop exposing (renderWrapperWithNav, renderTopNavigation, view)
+module View.Desktop exposing (renderTopNavigation, renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
@@ -44,29 +44,26 @@ view gameData pageRoute notifications =
 
 
 renderTopNavigation : String -> Html Msg
-renderTopNavigation teamName = 
-    nav [ class "navbar navbar-light bg-light"] [
-        a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
-        {- 
-        , button [ class "navbar-toggler", attribute "type" "button" , attribute "data-toggle" "collapse" , attribute "data-target" "#navbar" , attribute "aria-controls" "navbar" , attribute "aria-expanded" "false", attribute "aria-label" "Toggle navigation" ] [ 
-            span [ class "navbar-toggler-icon" ] [ ] 
-        ] -}
-        , div [ id "navbar" ] [
-            ul [ class "navbar-nav ml-auto" ] [
-                li [ class "nav-item active" ] [ 
-                    a [ class "nav-link", href "#" ] [ text ("Team " ++ teamName) ]
-                ]
+renderTopNavigation teamName =
+    nav [ class "navbar navbar-light bg-light" ]
+        [ a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
+        , div [ id "navbar" ]
+            [ ul [ class "navbar-nav ml-auto" ]
+                [ li [ class "nav-item active" ]
+                    [ a [ class "nav-link", href "#" ] [ text ("Team " ++ teamName) ]
+                    ]
                 , audio
                     [ src "/audio/vector_loop_1_web.ogg"
                     , id "audio-player"
                     , controls True
                     , autoplay True
                     , loop True
-                    ] []
+                    ]
+                    []
+                ]
             ]
         ]
-    
-    ]
+
 
 renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg) -> Html Msg
 renderWrapperWithNav gameData pageRoute notifications elements =

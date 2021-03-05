@@ -349,7 +349,7 @@ view model =
 
         Document id ->
             div []
-                [ View.Desktop.renderTopNavigation  model.gameData.teamName
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -359,7 +359,7 @@ view model =
 
         Emails ->
             div []
-                [ View.Desktop.renderTopNavigation  model.gameData.teamName 
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
