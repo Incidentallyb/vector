@@ -1,5 +1,5 @@
 ---
-title: End
+title: Pre-score feedback prompt
 author: AL
 triggered_by:
   - init|start|macaques|step|stay|score|step|scale|pigs|score|nothing
@@ -279,6 +279,6 @@ triggered_by:
   - init|start|bio|biobank|pigs|step|mice|score|two-extras
 
 choices:
-    - score|Submit
+  - feedback|Yes, submit proposal
 ---
-Submit your proposal for feedback.
+Ok, are you ready to submit your proposal for feedback?
