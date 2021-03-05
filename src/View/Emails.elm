@@ -6,7 +6,7 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
 import GameData exposing (GameData, filterEmails)
-import Heroicons.Outline exposing (arrowLeft)
+import Heroicons.Outline exposing (arrowLeft, reply)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Attributes.Aria exposing (ariaHidden)
@@ -28,6 +28,11 @@ type alias EmailWithRead =
     , basename : String
     , read : Bool
     }
+
+
+open : String -> Attribute msg
+open value =
+    attribute "open" value
 
 
 single : GameData -> Maybe Content.EmailData -> Html Msg
@@ -58,16 +63,29 @@ single gamedata maybeContent =
                 , div [ class "mt-3" ] [ Markdown.toHtml [ class "content" ] email.content ]
                 , renderImage email
                 , if List.length choiceList > 0 then
-                    div [ class "button-choices" ]
-                        (div [ class "quick-reply" ] [ text (t EmailQuickReply) ]
-                            :: View.ChoiceButtons.renderButtons
-                                (List.map View.ChoiceButtons.choiceStringsToButtons choiceList)
-                                (ContentChoices.getChoiceChosenEmail gamedata.choices email)
-                        )
+                    details
+                        [ if ContentChoices.getChoiceChosenEmail gamedata.choices email /= "" then
+                            open ""
+
+                          else
+                            Html.Attributes.class ""
+                        ]
+                        [ summary
+                            []
+                            [ reply []
+                            , span [] [ text (t EmailReplyButton) ]
+                            ]
+                        , div [ class "button-choices" ]
+                            (div [ class "quick-reply" ] [ text (t EmailQuickReply) ]
+                                :: View.ChoiceButtons.renderButtons
+                                    (List.map View.ChoiceButtons.choiceStringsToButtons choiceList)
+                                    (ContentChoices.getChoiceChosenEmail gamedata.choices email)
+                            )
+                        ]
 
                   else
                     text ""
-                , a [ href (Route.toString Emails), class "btn btn-primary" ]
+                , a [ href (Route.toString Emails), class "back-link" ]
                     [ arrowLeft []
                     , text (t NavEmailsBackTo)
                     ]

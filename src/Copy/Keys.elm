@@ -42,6 +42,7 @@ type Key
     | ViewDocument
       --- Emails
     | EmailDummySentTime
+    | EmailReplyButton
     | EmailQuickReply
       --- TeamNames
     | TeamNames
