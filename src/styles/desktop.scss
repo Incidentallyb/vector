@@ -145,6 +145,14 @@
   width: auto;
 }
 
+audio {
+  max-width: 19em;
+  margin: 0px auto;
+  display: block;
+  width: 100%;
+  filter: sepia(100%);
+}
+
 .login-logo {
   max-height: 200px;
   width: auto;
