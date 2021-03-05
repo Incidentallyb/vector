@@ -31,21 +31,19 @@ renderMessageAndPrompt gamedata datastore message =
         actualTriggers =
             String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches gamedata.choices message.triggered_by)))
 
+        lastTriggerIsScore =
+            "score" == Maybe.withDefault "" (List.head (List.reverse actualTriggers))
+
         triggeredBy =
             String.join "|" actualTriggers
 
         haveWeSeenThisBefore =
             Set.member triggeredBy gamedata.choicesVisited
-
-        triggerDepth =
-            String.fromInt (List.length (filterChoiceString actualTriggers))
     in
-    -- Add the trigger depth so we can hide scores if they come up more than once.
     -- add already-seen so we can avoid showing typing animations on subsequent page loads of the same page.
     li
         [ classList
-            [ ( "triggers-" ++ triggerDepth, isScoreTime actualTriggers )
-            , ( "already-seen", haveWeSeenThisBefore )
+            [ ( "already-seen", haveWeSeenThisBefore )
             , ( "not-seen", not haveWeSeenThisBefore )
             ]
         ]
@@ -54,7 +52,7 @@ renderMessageAndPrompt gamedata datastore message =
 
           else
             text ""
-        , if isScoreTime actualTriggers then
+        , if lastTriggerIsScore then
             renderScore "AL" actualTriggers gamedata.teamName datastore
 
           else
@@ -76,13 +74,17 @@ renderScore from triggers team datastore =
     div
         [ class "score message al w-75 float-left mt-3 ml-3 py-2" ]
         [ div [ class "mx-3" ]
-            [ p [ class "message-from m-0" ] [ text from ]
-            , p [] [ text (t WellDone ++ team) ]
-            , p [] [ text (t Results) ]
-            , p [] [ text ("Success: " ++ String.fromInt (GameData.updateScore Success datastore previousChoices latestChoice) ++ "%") ]
-            , p [] [ text ("Economic: £" ++ String.fromInt (GameData.updateScore Economic datastore previousChoices latestChoice) ++ ",000,000 remaining") ]
-            , p [] [ text ("Harm: " ++ String.fromInt (GameData.updateScore Harm datastore previousChoices latestChoice)) ]
-            ]
+            (List.repeat 10 (div [ class "confetti" ] [])
+                ++ [ p [ class "message-from m-0" ] [ text from ]
+                   , p [] [ text (t WellDone ++ team) ]
+                   , p [] [ text (t Results) ]
+                   , div [ class "results" ]
+                        [ div [ class "success" ] [ h3 [] [ text "Success" ], text (String.fromInt (GameData.updateScore Success datastore previousChoices latestChoice) ++ "%") ]
+                        , div [ class "economic" ] [ h3 [] [ text "Economic" ], text (String.fromInt (GameData.updateScore Economic datastore previousChoices latestChoice) ++ "m remaining") ]
+                        , div [ class "harm" ] [ h3 [] [ text "Harm" ], text (String.fromInt (GameData.updateScore Harm datastore previousChoices latestChoice)) ]
+                        ]
+                   ]
+            )
         ]
 
 
@@ -133,27 +135,3 @@ renderPrompt message choices checkboxes team =
 
     else
         text ""
-
-
-{-| Determines if the a score should be displayed in the messages
-based on the length of the player's choice string.
--}
-isScoreTime : List String -> Bool
-isScoreTime triggers =
-    if List.length (filterChoiceString triggers) == 2 || List.length (filterChoiceString triggers) == 4 || List.length (filterChoiceString triggers) == 5 then
-        True
-
-    else
-        False
-
-
-{-| Helper function to filter a string of choices for any
-words that don't contributes to a unique path.
--}
-filterChoiceString : List String -> List String
-filterChoiceString input =
-    let
-        genericWords =
-            [ "init", "start", "step", "change" ]
-    in
-    List.filter (\item -> not (List.member item genericWords)) input

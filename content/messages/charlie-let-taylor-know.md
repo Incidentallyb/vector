@@ -2,24 +2,24 @@
 title: Charlie let Taylor know
 author: Charlie
 triggered_by:
-  - init|start|pigs|increase|step|scale|change|mice
-  - init|start|pigs|increase|step|scale|change|fish
-  - init|start|pigs|increase|step|phased|change|mice
-  - init|start|pigs|increase|step|phased|change|fish
-  - init|start|pigs|increase|step|share|change|mice
-  - init|start|pigs|increase|step|share|change|fish
-  - init|start|pigs|keep|step|scale|change|mice
-  - init|start|pigs|keep|step|scale|change|fish
-  - init|start|pigs|keep|step|phased|change|mice
-  - init|start|pigs|keep|step|phased|change|fish
-  - init|start|pigs|keep|step|share|change|mice
-  - init|start|pigs|keep|step|share|change|fish
-  - init|start|macaques|step|change|step|pigs|step|scale|change|mice
-  - init|start|macaques|step|change|step|pigs|step|scale|change|fish
-  - init|start|macaques|step|change|step|pigs|step|phased|change|mice
-  - init|start|macaques|step|change|step|pigs|step|phased|change|fish
-  - init|start|macaques|step|change|step|pigs|step|share|change|mice
-  - init|start|macaques|step|change|step|pigs|step|share|change|fish
+  - init|start|pigs|increase|score|step|scale|change|mice
+  - init|start|pigs|increase|score|step|scale|change|fish
+  - init|start|pigs|increase|score|step|phased|change|mice
+  - init|start|pigs|increase|score|step|phased|change|fish
+  - init|start|pigs|increase|score|step|share|change|mice
+  - init|start|pigs|increase|score|step|share|change|fish
+  - init|start|pigs|keep|score|step|scale|change|mice
+  - init|start|pigs|keep|score|step|scale|change|fish
+  - init|start|pigs|keep|score|step|phased|change|mice
+  - init|start|pigs|keep|score|step|phased|change|fish
+  - init|start|pigs|keep|score|step|share|change|mice
+  - init|start|pigs|keep|score|step|share|change|fish
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|mice
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|fish
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|mice
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|fish
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|mice
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|fish
 choices:
   - step|OK, thanks
 ---

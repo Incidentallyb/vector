@@ -77,7 +77,7 @@ single gamedata maybeContent =
 list : GameData -> Dict String Content.EmailData -> Set.Set String -> Html Msg
 list gamedata emailDict visitedSet =
     ul [ class "email-list" ]
-        (List.map listItem (List.reverse (addReadStatus (Dict.values (filterEmails emailDict gamedata.choices)) visitedSet)))
+        (List.map listItem (List.reverse (addReadStatus (Dict.values (filterEmails emailDict gamedata.choices gamedata.teamName)) visitedSet)))
 
 
 addReadStatus : List Content.EmailData -> Set.Set String -> List EmailWithRead

@@ -70,6 +70,22 @@ testMessage4 =
     , scoreChangeSuccess = Just [ "mice|=30", "fish|10" ]
     }
 
+testEmail1 : Content.EmailData
+testEmail1 =
+  { triggered_by = ["init|start"]
+  , hideFromTeams = Nothing
+  , author = "test"
+  , subject = "Test email subject"
+  , preview = "Test email preview"
+  , content = "Test email content"
+  , image = Nothing
+  , basename = "testEmail1"
+  , choices = Just ["test choice"]
+  , scoreChangeEconomic = Nothing
+  , scoreChangeHarm = Nothing
+  , scoreChangeSuccess = Nothing
+  }
+
 
 testDatastore : Content.Datastore
 testDatastore =
@@ -81,7 +97,7 @@ testDatastore =
             , ( "changeanimal", testMessage4 )
             ]
     , documents = Dict.empty
-    , emails = Dict.empty
+    , emails = Dict.fromList [ ( "testEmail1", testEmail1 ) ]
     , social = Dict.empty
     }
 
