@@ -1,13 +1,22 @@
+:root {
+  --navHeight: 3.5em;
+  --mobileNavHeight: 4em;
+}
+
+nav.navbar {
+  height: var(--navHeight);
+}
+
 .desktop {
   background-color: var(--background-colour);
-  height: 100vh;
+  height: calc(100vh - var(--navHeight));
   padding: 1rem;
   overflow-y: auto;
 }
 
 @media (max-width: 767px) {
   .desktop {
-    height: calc(100vh - 4em);
+    height: calc(100vh - var(--mobileNavHeight) - var(--navHeight));
   }
 }
 
@@ -61,7 +70,7 @@
 .mobile-nav {
   display: flex;
   background-color: var(--white);
-  height: 4em;
+  height: var(--mobileNavHeight);
 }
 
 .mobile-nav-item {

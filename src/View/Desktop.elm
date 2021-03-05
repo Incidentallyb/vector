@@ -1,4 +1,4 @@
-module View.Desktop exposing (renderWrapperWithNav, view)
+module View.Desktop exposing (renderWrapperWithNav, renderTopNavigation, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
@@ -28,7 +28,8 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderWrapperWithNav gameData
+                [ renderTopNavigation
+                , renderWrapperWithNav gameData
                     pageRoute
                     notifications
                     [ div [ class "welcome" ]
@@ -41,6 +42,15 @@ view gameData pageRoute notifications =
                     ]
                 ]
 
+
+renderTopNavigation : Html Msg
+renderTopNavigation = 
+    nav [ class "navbar navbar-expand-lg navbar-light bg-light"] [
+        a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
+        , button [ class "navbar-toggler", attribute "type" "button" , attribute "data-toggle" "collapse" , attribute "data-target" "#navbarSupportedContent" , attribute "aria-controls" "navbarSupportedContent" , attribute "aria-expanded" "false", attribute "aria-label" "Toggle navigation" ] [ 
+            span [ class "navbar-toggler-icon" ] [ ] 
+        ]
+    ]
 
 renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg) -> Html Msg
 renderWrapperWithNav gameData pageRoute notifications elements =
