@@ -1,4 +1,4 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedMessageChoices, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
@@ -190,6 +190,41 @@ getDocument data =
 
         _ ->
             Content.emptyDocument
+
+
+
+--
+-- Notification functions
+--
+-- work out if there are un-actioned choices in messages
+
+
+unactionedMessageChoices : Dict String MessageData -> List String -> Bool
+unactionedMessageChoices messages choices =
+    let
+        maybeLastMessageDisplayed =
+            List.head (List.reverse (Dict.toList (filterMessages messages choices)))
+
+        lastMessageDisplayed =
+            case maybeLastMessageDisplayed of
+                Just item ->
+                    Tuple.second item
+
+                Nothing ->
+                    Content.emptyMessage
+
+        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
+        choiceTriggers =
+            List.map ContentChoices.getChoiceAction lastMessageDisplayed.choices
+
+        -- see if the last message has choices but we've answered them already
+        -- or if the last message has no available choices
+        hasDoneActionsFromMessages =
+            List.member ("|" ++ Maybe.withDefault "" (List.head choices)) choiceTriggers
+                || List.length choiceTriggers
+                == 0
+    in
+    not hasDoneActionsFromMessages
 
 
 

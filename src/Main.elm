@@ -163,30 +163,7 @@ update msg model =
 
                 -- work out if there are un-actioned choices in messages
                 unactionedMessages =
-                    let
-                        maybeLastMessageDisplayed =
-                            List.head (List.reverse (Dict.toList (filterMessages model.data.messages newGameData.choices)))
-
-                        lastMessageDisplayed =
-                            case maybeLastMessageDisplayed of
-                                Just item ->
-                                    Tuple.second item
-
-                                Nothing ->
-                                    Content.emptyMessage
-
-                        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
-                        choiceTriggers =
-                            List.map ContentChoices.getChoiceAction lastMessageDisplayed.choices
-
-                        -- see if the last message has choices but we've answered them already
-                        -- or if the last message has no available choices
-                        hasDoneActionsFromMessages =
-                            List.member ("|" ++ Maybe.withDefault "" (List.head newGameData.choices)) choiceTriggers
-                                || List.length choiceTriggers
-                                == 0
-                    in
-                    not hasDoneActionsFromMessages
+                    GameData.unactionedMessageChoices model.data.messages newGameData.choices
 
                 -- Take the current notifications and add the number of items filtered by the new choice
                 -- Hopefully this will be handled in the view and if we need to post msg to update

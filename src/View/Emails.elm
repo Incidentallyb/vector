@@ -113,7 +113,7 @@ listItem email =
             , div [ class "email-info ml-3" ]
                 [ p [ class "m-0 author" ]
                     [ text email.author
-                    , span [ class "badge needs-reply" ] [ text (t NeedsReply)]
+                    , span [ class "badge needs-reply" ] [ text (t NeedsReply) ]
                     ]
                 , p [ class "m-0 subject" ] [ text email.subject ]
                 , p [ class "m-0" ] [ text email.preview ]
