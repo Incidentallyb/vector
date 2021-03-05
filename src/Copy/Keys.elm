@@ -45,6 +45,7 @@ type Key
     | EmailDummySentTime
     | EmailReplyButton
     | EmailQuickReply
+    | NeedsReply
       --- TeamNames
     | TeamNames
       --- Path Checker

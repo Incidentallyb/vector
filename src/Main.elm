@@ -54,7 +54,14 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications = { messages = 1, messagesNeedAttention = True, documents = 1, emails = 0, social = 0 }
+      , notifications =
+            { messages = 1
+            , messagesNeedAttention = False
+            , documents = 1
+            , emails = 0
+            , emailsNeedAttention = False
+            , social = 0
+            }
       }
     , Cmd.none
     )
@@ -161,33 +168,6 @@ update msg model =
                     , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
                     }
 
-                -- work out if there are un-actioned choices in messages
-                unactionedMessages =
-                    let
-                        maybeLastMessageDisplayed =
-                            List.head (List.reverse (Dict.toList (filterMessages model.data.messages newGameData.choices)))
-
-                        lastMessageDisplayed =
-                            case maybeLastMessageDisplayed of
-                                Just item ->
-                                    Tuple.second item
-
-                                Nothing ->
-                                    Content.emptyMessage
-
-                        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
-                        choiceTriggers =
-                            List.map ContentChoices.getChoiceAction lastMessageDisplayed.choices
-
-                        -- see if the last message has choices but we've answered them already
-                        -- or if the last message has no available choices
-                        hasDoneActionsFromMessages =
-                            List.member ("|" ++ Maybe.withDefault "" (List.head newGameData.choices)) choiceTriggers
-                                || List.length choiceTriggers
-                                == 0
-                    in
-                    not hasDoneActionsFromMessages
-
                 -- Take the current notifications and add the number of items filtered by the new choice
                 -- Hopefully this will be handled in the view and if we need to post msg to update
                 newNotifications =
@@ -198,7 +178,10 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
-                    , messagesNeedAttention = unactionedMessages
+                    , messagesNeedAttention =
+                        GameData.unactionedMessageChoices model.data.messages newGameData.choices
+                    , emailsNeedAttention =
+                        GameData.unactionedEmailChoices model.data.emails newGameData.choices model.gameData.teamName
                     , documents =
                         model.notifications.documents
                             + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))

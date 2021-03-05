@@ -99,6 +99,9 @@ t key =
         EmailQuickReply ->
             "Send email quick-reply: "
 
+        NeedsReply ->
+            "Needs reply"
+
         TeamNames ->
             "Ash|Birch|Cedar|Elm|Fir|Hawthorn|Juniper|Lime|Maple|Oak"
 

@@ -154,7 +154,7 @@ renderCardImage document =
 listItem : DocumentWithRead -> Html Msg
 listItem content =
     div [ class "card", classList [ ( "read", content.read ) ] ]
-        [ span [ class "badge badge-error new" ] [ text (t New) ]
+        [ span [ class "badge new" ] [ text (t New) ]
         , renderCardImage content
         , div
             [ class "card-body" ]
