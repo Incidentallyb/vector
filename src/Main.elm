@@ -339,7 +339,7 @@ view model =
 
         Documents ->
             div []
-                [ View.Desktop.renderTopNavigation
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -349,7 +349,7 @@ view model =
 
         Document id ->
             div []
-                [ View.Desktop.renderTopNavigation
+                [ View.Desktop.renderTopNavigation  model.gameData.teamName
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -359,7 +359,7 @@ view model =
 
         Emails ->
             div []
-                [ View.Desktop.renderTopNavigation
+                [ View.Desktop.renderTopNavigation  model.gameData.teamName 
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -369,7 +369,7 @@ view model =
 
         Email id ->
             div []
-                [ View.Desktop.renderTopNavigation
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -379,7 +379,7 @@ view model =
 
         Messages ->
             div []
-                [ View.Desktop.renderTopNavigation
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -389,7 +389,7 @@ view model =
 
         Social ->
             div []
-                [ View.Desktop.renderTopNavigation 
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications

@@ -28,7 +28,7 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderTopNavigation
+                [ renderTopNavigation gameData.teamName
                 , renderWrapperWithNav gameData
                     pageRoute
                     notifications
@@ -43,13 +43,29 @@ view gameData pageRoute notifications =
                 ]
 
 
-renderTopNavigation : Html Msg
-renderTopNavigation = 
-    nav [ class "navbar navbar-expand-lg navbar-light bg-light"] [
+renderTopNavigation : String -> Html Msg
+renderTopNavigation teamName = 
+    nav [ class "navbar navbar-light bg-light"] [
         a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
-        , button [ class "navbar-toggler", attribute "type" "button" , attribute "data-toggle" "collapse" , attribute "data-target" "#navbarSupportedContent" , attribute "aria-controls" "navbarSupportedContent" , attribute "aria-expanded" "false", attribute "aria-label" "Toggle navigation" ] [ 
+        {- 
+        , button [ class "navbar-toggler", attribute "type" "button" , attribute "data-toggle" "collapse" , attribute "data-target" "#navbar" , attribute "aria-controls" "navbar" , attribute "aria-expanded" "false", attribute "aria-label" "Toggle navigation" ] [ 
             span [ class "navbar-toggler-icon" ] [ ] 
+        ] -}
+        , div [ id "navbar" ] [
+            ul [ class "navbar-nav ml-auto" ] [
+                li [ class "nav-item active" ] [ 
+                    a [ class "nav-link", href "#" ] [ text ("Team " ++ teamName) ]
+                ]
+                , audio
+                    [ src "/audio/vector_loop_1_web.ogg"
+                    , id "audio-player"
+                    , controls True
+                    , autoplay True
+                    , loop True
+                    ] []
+            ]
         ]
+    
     ]
 
 renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg) -> Html Msg
@@ -272,13 +288,6 @@ renderTeamInformation teamName =
             [ div [ class "card-body" ]
                 [ h2 [ class "card-title" ] [ text ("Team " ++ teamName) ]
                 , img [ src "leaf.png", alt "Team logo.", class "team-logo mb-2" ] []
-                , audio
-                    [ src "/audio/vector_loop_1_web.ogg"
-                    , id "audio-player"
-                    , controls True
-                    , autoplay True
-                    , loop True
-                    ] []
                 ]
             ]
         ]

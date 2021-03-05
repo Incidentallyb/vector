@@ -3,10 +3,6 @@
   --mobileNavHeight: 4em;
 }
 
-nav.navbar {
-  height: var(--navHeight);
-}
-
 .desktop {
   background-color: var(--background-colour);
   height: calc(100vh - var(--navHeight));
@@ -17,6 +13,9 @@ nav.navbar {
 @media (max-width: 767px) {
   .desktop {
     height: calc(100vh - var(--mobileNavHeight) - var(--navHeight));
+  }
+  audio {
+    max-width: 5em !important;
   }
 }
 
@@ -154,11 +153,23 @@ nav.navbar {
   width: auto;
 }
 
+#navbar {
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  display:flex;
+  ul.navbar-nav { 
+    flex-grow:1;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
 audio {
+  flex-shrink: 1;
   max-width: 19em;
-  margin: 0px auto;
+  margin-left:1em;
   display: block;
-  width: 100%;
   filter: sepia(100%);
 }
 
