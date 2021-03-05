@@ -15,7 +15,6 @@ t key =
             "Welcome to BioCore"
 
         -- Slugs
-        
         Navbar ->
             "BioCore"
 
@@ -119,6 +118,12 @@ t key =
 
         DesktopParagraph4 ->
             "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."
+
+        SocialInputLabel ->
+            "Post a peep"
+
+        SocialInputPost ->
+            "Peep"
 
         FilterInputLabel ->
             "Add comma separated values (with spaces)"

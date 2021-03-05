@@ -46,6 +46,9 @@ type Key
     | EmailReplyButton
     | EmailQuickReply
     | NeedsReply
+      --- Social
+    | SocialInputLabel
+    | SocialInputPost
       --- TeamNames
     | TeamNames
       --- Path Checker

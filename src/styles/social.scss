@@ -1,3 +1,14 @@
+.send-tweet {
+  background-color: var(--white);
+  border: 1px solid var(--grey-twitter-border);
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  textarea {
+    margin: 1rem 0;
+  }
+}
+
 .tweet {
   background-color: var(--white);
   list-style: none;

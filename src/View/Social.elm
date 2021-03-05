@@ -14,13 +14,20 @@ import Message exposing (Msg(..))
 
 view : GameData -> Dict String Content.SocialData -> Html Msg
 view gamedata socialDict =
-    ul [ class "tweet-list p-0" ]
-        (List.reverse
-            (List.map
-                renderTweet
-                (Dict.values (filterSocials socialDict gamedata.choices))
+    div []
+        [ div [ class "clearfix form-group send-tweet" ]
+            [ label [ for "tweet-textbox" ] [ text (t SocialInputLabel) ]
+            , textarea [ class "form-control", id "tweet-textbox" ] []
+            , button [ class "btn btn-primary float-right" ] [ text (t SocialInputPost) ]
+            ]
+        , ul [ class "tweet-list p-0" ]
+            (List.reverse
+                (List.map
+                    renderTweet
+                    (Dict.values (filterSocials socialDict gamedata.choices))
+                )
             )
-        )
+        ]
 
 
 renderImage : Content.SocialData -> Html Msg

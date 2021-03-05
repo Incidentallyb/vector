@@ -52,8 +52,8 @@ renderTopNavigation teamName =
                 [ li [ class "nav-item active" ]
                     [ span [ class "navbar-text" ] [ text ("Team " ++ teamName) ]
                     ]
-                ,  li [ class "nav-item" ] [
-                    audio
+                , li [ class "nav-item" ]
+                    [ audio
                         [ src "/audio/vector_loop_1_web.ogg"
                         , id "audio-player"
                         , controls True
