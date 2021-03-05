@@ -15,7 +15,7 @@
     height: calc(100vh - var(--mobileNavHeight) - var(--navHeight));
   }
   audio {
-    max-width: 5em !important;
+    max-width: 6em !important;
   }
 }
 
@@ -173,4 +173,12 @@ audio {
 .login-logo {
   max-height: 200px;
   width: auto;
+}
+
+#finalScoreFeedback {
+  background: rgba(0,0,0,0.5);
+  h2 { 
+    font-size:1.3em;
+  }
+  textarea { width: 100%; height: 10em; }
 }
