@@ -46,9 +46,7 @@
 }
 .nav-link.active { 
   .need-attention {
-    background-color: white;
-    color: var(--blue);
-    animation: none;
+    display: none;
   }
 }
 
