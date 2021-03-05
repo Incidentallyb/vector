@@ -74,6 +74,9 @@ t key =
         Results ->
             "Your choices have produced the following results:"
 
+        FinalScoreFeedbackPrompt ->
+            "While AL analyses your proposal is there anything else you would like to tell us?"
+
         NavDocumentsBackTo ->
             "Back to Documents"
 

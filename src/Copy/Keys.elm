@@ -27,6 +27,7 @@ type Key
     | FromPlayerTeam
     | WellDone
     | Results
+    | FinalScoreFeedbackPrompt
       --- "Back to" area texts
     | NavDocumentsBackTo
     | NavEmailsBackTo
