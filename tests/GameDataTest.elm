@@ -1,11 +1,12 @@
 module GameDataTest exposing (getStringIfMatchFound, updateAllScores, updateEconomicScore, updateHarmScore, updateSuccessScore)
 
+import Dict
 import Expect
 import GameData exposing (GameData, ScoreType(..))
 import Set
 import Test exposing (Test, describe, test)
 import TestData
-import Dict
+
 
 testGameData : GameData
 testGameData =
@@ -99,27 +100,27 @@ updateEconomicScore =
     describe "updateScore Function"
         [ test "returns 0 for init" <|
             \_ ->
-                GameData.updateScore Economic TestData.testDatastore testGameData.choices "init"
+                GameData.updateScore Economic TestData.testDatastore Dict.empty testGameData.choices "init"
                     |> Expect.equal 0
         , test "returns 18000000 for start" <|
             \_ ->
-                GameData.updateScore Economic TestData.testDatastore initGameData.choices "start"
+                GameData.updateScore Economic TestData.testDatastore Dict.empty initGameData.choices "start"
                     |> Expect.equal 18000000
         , test "returns 0 for non-start" <|
             \_ ->
-                GameData.updateScore Economic TestData.testDatastore initGameData.choices "no-thanks"
+                GameData.updateScore Economic TestData.testDatastore Dict.empty initGameData.choices "no-thanks"
                     |> Expect.equal 0
         , test "returns 11000000 for start->macaques" <|
             \_ ->
-                GameData.updateScore Economic TestData.testDatastore startGameData.choices "macaques"
+                GameData.updateScore Economic TestData.testDatastore Dict.empty startGameData.choices "macaques"
                     |> Expect.equal 11000000
         , test "returns 11000000 for start->macaques->stay" <|
             \_ ->
-                GameData.updateScore Economic TestData.testDatastore macaquesGameData.choices "stay"
+                GameData.updateScore Economic TestData.testDatastore Dict.empty macaquesGameData.choices "stay"
                     |> Expect.equal 11000000
         , test "returns 167500000 for start->macaques->change->mice" <|
             \_ ->
-                GameData.updateScore Economic TestData.testDatastore changeGameData.choices "mice"
+                GameData.updateScore Economic TestData.testDatastore Dict.empty changeGameData.choices "mice"
                     |> Expect.equal 16750000
         ]
 
@@ -129,31 +130,31 @@ updateSuccessScore =
     describe "updateSuccessScore Function"
         [ test "returns 0 for init" <|
             \_ ->
-                GameData.updateScore Success TestData.testDatastore testGameData.choices "init"
+                GameData.updateScore Success TestData.testDatastore Dict.empty testGameData.choices "init"
                     |> Expect.equal 0
         , test "returns 0 for start" <|
             \_ ->
-                GameData.updateScore Success TestData.testDatastore initGameData.choices "start"
+                GameData.updateScore Success TestData.testDatastore Dict.empty initGameData.choices "start"
                     |> Expect.equal 0
         , test "returns 0 for non-start" <|
             \_ ->
-                GameData.updateScore Success TestData.testDatastore initGameData.choices "no-thanks"
+                GameData.updateScore Success TestData.testDatastore Dict.empty initGameData.choices "no-thanks"
                     |> Expect.equal 0
         , test "returns 40% success for start->macaques" <|
             \_ ->
-                GameData.updateScore Success TestData.testDatastore startGameData.choices "macaques"
+                GameData.updateScore Success TestData.testDatastore Dict.empty startGameData.choices "macaques"
                     |> Expect.equal 40
         , test "returns bonus 5% for start->macaques->stay" <|
             \_ ->
-                GameData.updateScore Success TestData.testDatastore macaquesGameData.choices "stay"
+                GameData.updateScore Success TestData.testDatastore Dict.empty macaquesGameData.choices "stay"
                     |> Expect.equal 45
         , test "returns 30% (set value) for start->macaques->change->mice" <|
             \_ ->
-                GameData.updateScore Success TestData.testDatastore changeGameData.choices "mice"
+                GameData.updateScore Success TestData.testDatastore Dict.empty changeGameData.choices "mice"
                     |> Expect.equal 30
         , test "returns 50% (added value) for start->macaques->change->fish" <|
             \_ ->
-                GameData.updateScore Success TestData.testDatastore changeGameData.choices "fish"
+                GameData.updateScore Success TestData.testDatastore Dict.empty changeGameData.choices "fish"
                     |> Expect.equal 50
         ]
 
@@ -163,31 +164,31 @@ updateHarmScore =
     describe "updateHarmScore Function"
         [ test "returns 0 for init" <|
             \_ ->
-                GameData.updateScore Harm TestData.testDatastore testGameData.choices "init"
+                GameData.updateScore Harm TestData.testDatastore Dict.empty testGameData.choices "init"
                     |> Expect.equal 0
         , test "returns 0 for start" <|
             \_ ->
-                GameData.updateScore Harm TestData.testDatastore initGameData.choices "start"
+                GameData.updateScore Harm TestData.testDatastore Dict.empty initGameData.choices "start"
                     |> Expect.equal 0
         , test "returns 0 for non-start" <|
             \_ ->
-                GameData.updateScore Harm TestData.testDatastore initGameData.choices "no-thanks"
+                GameData.updateScore Harm TestData.testDatastore Dict.empty initGameData.choices "no-thanks"
                     |> Expect.equal 0
         , test "returns 8 harm for start->macaques" <|
             \_ ->
-                GameData.updateScore Harm TestData.testDatastore startGameData.choices "macaques"
+                GameData.updateScore Harm TestData.testDatastore Dict.empty startGameData.choices "macaques"
                     |> Expect.equal 8
         , test "returns 8+1 harm for start->macaques->stay" <|
             \_ ->
-                GameData.updateScore Harm TestData.testDatastore macaquesGameData.choices "stay"
+                GameData.updateScore Harm TestData.testDatastore Dict.empty macaquesGameData.choices "stay"
                     |> Expect.equal 9
         , test "returns 3 (set value) for start->macaques->change->mice" <|
             \_ ->
-                GameData.updateScore Harm TestData.testDatastore changeGameData.choices "mice"
+                GameData.updateScore Harm TestData.testDatastore Dict.empty changeGameData.choices "mice"
                     |> Expect.equal 3
         , test "returns 2 for start->macaques->change->fish" <|
             \_ ->
-                GameData.updateScore Harm TestData.testDatastore changeGameData.choices "fish"
+                GameData.updateScore Harm TestData.testDatastore Dict.empty changeGameData.choices "fish"
                     |> Expect.equal 2
         ]
 
@@ -201,9 +202,9 @@ updateAllScores =
                 , choicesVisited = Set.empty
                 , checkboxSet = changeGameData.checkboxSet
                 , teamName = changeGameData.teamName
-                , scoreSuccess = GameData.updateScore Success TestData.testDatastore changeGameData.choices "fish"
-                , scoreEconomic = GameData.updateScore Economic TestData.testDatastore changeGameData.choices "fish"
-                , scoreHarm = GameData.updateScore Harm TestData.testDatastore changeGameData.choices "fish"
+                , scoreSuccess = GameData.updateScore Success TestData.testDatastore Dict.empty changeGameData.choices "fish"
+                , scoreEconomic = GameData.updateScore Economic TestData.testDatastore Dict.empty changeGameData.choices "fish"
+                , scoreHarm = GameData.updateScore Harm TestData.testDatastore Dict.empty changeGameData.choices "fish"
                 }
                     |> Expect.equal
                         { choices = [ "fish", "change", "macaques", "start", "init" ]
