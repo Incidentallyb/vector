@@ -36,6 +36,7 @@ type alias Model =
     , gameData : GameData
     , visited : Set.Set String
     , notifications : NotificationCount
+    , socialInput : String
     }
 
 
@@ -62,6 +63,7 @@ init flags url key =
             , emailsNeedAttention = False
             , social = 0
             }
+      , socialInput = ""
       }
     , Cmd.none
     )
@@ -290,13 +292,8 @@ update msg model =
             in
             ( { model | gameData = newGameData }, Cmd.none )
 
-        PathCheckerMsg subMsg ->
-            case model.page of
-                PathChecker _ ->
-                    updatePathChecker model (View.PathChecker.update subMsg)
-
-                _ ->
-                    ( model, Cmd.none )
+        SocialInputAdded text ->
+            ( { model | socialInput = text }, Cmd.none )
 
         PostSocial lastSocialKey socialText ->
             let
@@ -335,7 +332,15 @@ update msg model =
                     , socialsPosted = Dict.insert newSocial.basename newSocial model.gameData.socialsPosted
                     }
             in
-            ( { model | gameData = newGameData }, Cmd.none )
+            ( { model | socialInput = "", gameData = newGameData }, Cmd.none )
+
+        PathCheckerMsg subMsg ->
+            case model.page of
+                PathChecker _ ->
+                    updatePathChecker model (View.PathChecker.update subMsg)
+
+                _ ->
+                    ( model, Cmd.none )
 
         NoOp ->
             ( model, Cmd.none )
@@ -419,7 +424,7 @@ view model =
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Social.view model.gameData model.data.social
+                    [ View.Social.view model.socialInput model.gameData model.data.social
                     ]
                 ]
 
