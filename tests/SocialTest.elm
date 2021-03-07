@@ -25,7 +25,7 @@ displaySocialContent =
     describe "Views.Social.view function"
         [ test "can display a social handle" <|
             \_ ->
-                View.Social.view gameData dataStore.social
+                View.Social.view "" gameData dataStore.social
                     |> Query.fromHtml
                     |> Query.find [ Selector.class "handle" ]
                     |> Query.has [ Selector.text "@testauthor" ]
