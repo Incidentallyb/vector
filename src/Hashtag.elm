@@ -23,11 +23,11 @@ type alias HashtagData =
 
 scoringHashtags : List String
 scoringHashtags =
-    [ "BiocoreAdvance"
-    , "BiocoreEngage"
-    , "BiocoreGlobal"
-    , "BiocoreInvest"
-    , "BiocoreReview"
+    [ "#BiocoreAdvance"
+    , "#BiocoreEngage"
+    , "#BiocoreGlobal"
+    , "#BiocoreInvest"
+    , "#BiocoreReview"
     ]
 
 
@@ -57,22 +57,22 @@ hashtagToString : Hashtag -> String
 hashtagToString tag =
     case tag of
         BiocoreAdvance ->
-            "BiocoreAdvance"
+            "#BiocoreAdvance"
 
         BiocoreEngage ->
-            "BiocoreEngage"
+            "#BiocoreEngage"
 
         BiocoreGlobal ->
-            "BiocoreGlobal"
+            "#BiocoreGlobal"
 
         BiocoreInvest ->
-            "BiocoreInvest"
+            "#BiocoreInvest"
 
         BiocoreReview ->
-            "BiocoreReview"
+            "#BiocoreReview"
 
         _ ->
-            "NonScoringHashtag"
+            "#NonScoringHashtag"
 
 
 getHashtagsFromSocials : Dict String SocialData -> List Hashtag
@@ -105,7 +105,7 @@ hashtagFromContent content =
     List.map
         (\tag ->
             if String.contains tag content then
-                hashtagFromString ("#" ++ tag)
+                hashtagFromString tag
 
             else
                 NonScoringHashtag
@@ -146,6 +146,7 @@ getScoreChanges tag =
             , scoreChangeSuccess = -15
             }
 
+        -- We should never get one of these - but just in case.
         NonScoringHashtag ->
             { scoreChangeEconomic = 0
             , scoreChangeHarm = 0

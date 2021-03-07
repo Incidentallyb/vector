@@ -12,7 +12,7 @@ import View.Social
 
 gameData : GameData.GameData
 gameData =
-    { testGamedata | choices = ["start", "init"] }
+    { testGamedata | choices = [ "start", "init" ] }
 
 
 dataStore : Content.Datastore

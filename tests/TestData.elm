@@ -70,34 +70,37 @@ testMessage4 =
     , scoreChangeSuccess = Just [ "mice|=30", "fish|10" ]
     }
 
+
 testEmail1 : Content.EmailData
 testEmail1 =
-  { triggered_by = ["init|start"]
-  , hideFromTeams = Nothing
-  , author = "test"
-  , subject = "Test email subject"
-  , preview = "Test email preview"
-  , content = "Test email content"
-  , image = Nothing
-  , basename = "testEmail1"
-  , choices = Just ["test choice"]
-  , scoreChangeEconomic = Nothing
-  , scoreChangeHarm = Nothing
-  , scoreChangeSuccess = Nothing
-  }
+    { triggered_by = [ "init|start" ]
+    , hideFromTeams = Nothing
+    , author = "test"
+    , subject = "Test email subject"
+    , preview = "Test email preview"
+    , content = "Test email content"
+    , image = Nothing
+    , basename = "testEmail1"
+    , choices = Just [ "test choice" ]
+    , scoreChangeEconomic = Nothing
+    , scoreChangeHarm = Nothing
+    , scoreChangeSuccess = Nothing
+    }
+
 
 testSocial1 : Content.SocialData
 testSocial1 =
-  { triggered_by = ["init|start"]
-  , author = "Test Author"
-  , handle = "@testauthor"
-  , content = "Test social content"
-  , image = Nothing
-  , basename = "testEmail1"
-  , numComments = 10
-  , numRetweets = 5
-  , numLoves = 2
-  }
+    { triggered_by = [ "init|start" ]
+    , author = "Test Author"
+    , handle = "@testauthor"
+    , content = "Test social content"
+    , image = Nothing
+    , basename = "testSocial1"
+    , numComments = 10
+    , numRetweets = 5
+    , numLoves = 2
+    }
+
 
 testDatastore : Content.Datastore
 testDatastore =
