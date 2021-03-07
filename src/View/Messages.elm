@@ -53,7 +53,7 @@ renderMessageAndPrompt gamedata datastore message =
           else
             text ""
         , if lastTriggerIsScore then
-            renderScore "AL" actualTriggers gamedata.teamName datastore gamedata.peepsPosted
+            renderScore "AL" actualTriggers gamedata.teamName datastore gamedata.socialsPosted
 
           else
             text ""

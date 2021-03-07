@@ -15,7 +15,7 @@ type alias GameData =
     , scoreSuccess : Int
     , scoreEconomic : Int
     , scoreHarm : Int
-    , peepsPosted : Dict String SocialData
+    , socialsPosted : Dict String SocialData
     }
 
 
@@ -44,7 +44,7 @@ init =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
-    , peepsPosted = Dict.empty
+    , socialsPosted = Dict.empty
     }
 
 

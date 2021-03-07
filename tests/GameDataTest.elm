@@ -22,7 +22,7 @@ initGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
-    , peepsPosted = Dict.empty
+    , socialsPosted = Dict.empty
     }
 
 
@@ -35,7 +35,7 @@ startGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
-    , peepsPosted = Dict.empty
+    , socialsPosted = Dict.empty
     }
 
 
@@ -48,7 +48,7 @@ macaquesGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
-    , peepsPosted = Dict.empty
+    , socialsPosted = Dict.empty
     }
 
 
@@ -61,7 +61,7 @@ changeGameData =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
-    , peepsPosted = Dict.empty
+    , socialsPosted = Dict.empty
     }
 
 

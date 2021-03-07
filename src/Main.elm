@@ -163,10 +163,10 @@ update msg model =
                     , choicesVisited = newChoicesVisited
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
-                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.peepsPosted model.gameData.choices choice
-                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.peepsPosted model.gameData.choices choice
-                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.peepsPosted model.gameData.choices choice
-                    , peepsPosted = model.gameData.peepsPosted
+                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , socialsPosted = model.gameData.socialsPosted
                     }
 
                 -- Take the current notifications and add the number of items filtered by the new choice
@@ -242,7 +242,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
-                    , peepsPosted = model.gameData.peepsPosted
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
@@ -262,7 +262,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
-                    , peepsPosted = model.gameData.peepsPosted
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             if noneSelected then
@@ -285,7 +285,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
-                    , peepsPosted = model.gameData.peepsPosted
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
@@ -302,13 +302,13 @@ update msg model =
             let
                 -- LastSocial = grab the most recent social key
                 -- Generate socialData
-                -- Add to peepsPosted
+                -- Add to socialsPosted
                 -- In View.Social intersperse tweets after lastSocialKey
                 teamName =
                     model.gameData.teamName
 
                 peepCount =
-                    Dict.size model.gameData.peepsPosted
+                    Dict.size model.gameData.socialsPosted
 
                 newSocial =
                     { triggered_by = []
@@ -332,7 +332,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
-                    , peepsPosted = Dict.insert newSocial.basename newSocial model.gameData.peepsPosted
+                    , socialsPosted = Dict.insert newSocial.basename newSocial model.gameData.socialsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
