@@ -298,7 +298,7 @@ update msg model =
                 _ ->
                     ( model, Cmd.none )
 
-        PostSocial lastSocialKey peepText ->
+        PostSocial lastSocialKey socialText ->
             let
                 -- LastSocial = grab the most recent social key
                 -- Generate socialData
@@ -307,7 +307,7 @@ update msg model =
                 teamName =
                     model.gameData.teamName
 
-                peepCount =
+                socialCount =
                     Dict.size model.gameData.socialsPosted
 
                 newSocial =
@@ -315,10 +315,10 @@ update msg model =
                     , author = teamName
                     , handle = "@" ++ teamName
                     , image = Nothing
-                    , content = peepText
+                    , content = socialText
 
-                    -- Key by count social it follows & count of peeps
-                    , basename = lastSocialKey ++ String.fromInt peepCount
+                    -- Key by count social it follows & count of social posts
+                    , basename = lastSocialKey ++ String.fromInt socialCount
                     , numComments = 0
                     , numRetweets = 0
                     , numLoves = 0

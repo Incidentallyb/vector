@@ -28,31 +28,31 @@ getScoreChanges : Hashtag -> HashtagData
 getScoreChanges tag =
     case tag of
         BiocoreAdvance ->
-            { scoreChangeEconomic = -2
-            , scoreChangeHarm = 0
-            , scoreChangeSuccess = 0
+            { scoreChangeEconomic = -8
+            , scoreChangeHarm = 5
+            , scoreChangeSuccess = -20
             }
 
         BiocoreEngage ->
-            { scoreChangeEconomic = 0
-            , scoreChangeHarm = 0
+            { scoreChangeEconomic = -3 --2.5
+            , scoreChangeHarm = -2
             , scoreChangeSuccess = 0
             }
 
         BiocoreGlobal ->
-            { scoreChangeEconomic = 0
-            , scoreChangeHarm = 0
-            , scoreChangeSuccess = 0
+            { scoreChangeEconomic = -8
+            , scoreChangeHarm = 5
+            , scoreChangeSuccess = 23
             }
 
         BiocoreInvest ->
-            { scoreChangeEconomic = 0
+            { scoreChangeEconomic = 5
             , scoreChangeHarm = 0
-            , scoreChangeSuccess = 0
+            , scoreChangeSuccess = 10
             }
 
         BiocoreReview ->
-            { scoreChangeEconomic = 0
-            , scoreChangeHarm = 0
-            , scoreChangeSuccess = 0
+            { scoreChangeEconomic = -1 --0.5
+            , scoreChangeHarm = -3
+            , scoreChangeSuccess = -15
             }
