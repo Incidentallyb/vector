@@ -1,7 +1,10 @@
-module HashTag exposing (HashTag(..))
+module Hashtag exposing (Hashtag(..), getHashtagsFromSocials, getScoreChanges)
+
+import Content exposing (SocialData)
+import Dict exposing (Dict)
 
 
-type HashTag
+type Hashtag
     = BiocoreEngage
     | BiocoreGlobal
     | BiocoreAdvance
@@ -9,14 +12,19 @@ type HashTag
     | BiocoreReview
 
 
-type alias HashTagData =
+type alias HashtagData =
     { scoreChangeEconomic : Int
     , scoreChangeHarm : Int
     , scoreChangeSuccess : Int
     }
 
 
-getScoreChanges : HashTag -> HashTagData
+getHashtagsFromSocials : Dict String SocialData -> List Hashtag
+getHashtagsFromSocials socials =
+    [ BiocoreEngage ]
+
+
+getScoreChanges : Hashtag -> HashtagData
 getScoreChanges tag =
     case tag of
         BiocoreAdvance ->

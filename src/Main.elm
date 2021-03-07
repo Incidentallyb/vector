@@ -163,9 +163,9 @@ update msg model =
                     , choicesVisited = newChoicesVisited
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
-                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.choices choice
-                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.choices choice
-                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
+                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.peepsPosted model.gameData.choices choice
+                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.peepsPosted model.gameData.choices choice
+                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.peepsPosted model.gameData.choices choice
                     , peepsPosted = model.gameData.peepsPosted
                     }
 

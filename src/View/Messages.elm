@@ -53,7 +53,7 @@ renderMessageAndPrompt gamedata datastore message =
           else
             text ""
         , if lastTriggerIsScore then
-            renderScore "AL" actualTriggers gamedata.teamName datastore
+            renderScore "AL" actualTriggers gamedata.teamName datastore gamedata.peepsPosted
 
           else
             text ""
@@ -62,8 +62,8 @@ renderMessageAndPrompt gamedata datastore message =
         ]
 
 
-renderScore : String -> List String -> String -> Content.Datastore -> Html Msg
-renderScore from triggers team datastore =
+renderScore : String -> List String -> String -> Content.Datastore -> Dict.Dict String Content.SocialData -> Html Msg
+renderScore from triggers team datastore socialPosts =
     let
         previousChoices =
             List.reverse (Maybe.withDefault [] (List.Extra.init triggers))
@@ -79,9 +79,9 @@ renderScore from triggers team datastore =
                    , p [] [ text (t WellDone ++ team) ]
                    , p [] [ text (t Results) ]
                    , div [ class "results" ]
-                        [ div [ class "success" ] [ h3 [] [ text "Success" ], text (String.fromInt (GameData.updateScore Success datastore previousChoices latestChoice) ++ "%") ]
-                        , div [ class "economic" ] [ h3 [] [ text "Economic" ], text (String.fromInt (GameData.updateScore Economic datastore previousChoices latestChoice) ++ "m remaining") ]
-                        , div [ class "harm" ] [ h3 [] [ text "Harm" ], text (String.fromInt (GameData.updateScore Harm datastore previousChoices latestChoice)) ]
+                        [ div [ class "success" ] [ h3 [] [ text "Success" ], text (String.fromInt (GameData.updateScore Success datastore socialPosts previousChoices latestChoice) ++ "%") ]
+                        , div [ class "economic" ] [ h3 [] [ text "Economic" ], text (String.fromInt (GameData.updateScore Economic datastore socialPosts previousChoices latestChoice) ++ "m remaining") ]
+                        , div [ class "harm" ] [ h3 [] [ text "Harm" ], text (String.fromInt (GameData.updateScore Harm datastore socialPosts previousChoices latestChoice)) ]
                         ]
                    ]
             )
