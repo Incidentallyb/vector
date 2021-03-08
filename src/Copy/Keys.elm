@@ -5,6 +5,7 @@ type Key
     = --- Site Meta
       SiteTitle
       --- Route Slugs
+    | Navbar
     | DesktopSlug
     | DocumentsSlug
     | EmailsSlug
@@ -27,6 +28,7 @@ type Key
     | ReadyToReply
     | WellDone
     | Results
+    | FinalScoreFeedbackPrompt
       --- "Back to" area texts
     | NavDocumentsBackTo
     | NavEmailsBackTo
@@ -45,6 +47,10 @@ type Key
     | EmailDummySentTime
     | EmailReplyButton
     | EmailQuickReply
+    | NeedsReply
+      --- Social
+    | SocialInputLabel
+    | SocialInputPost
       --- TeamNames
     | TeamNames
       --- Path Checker

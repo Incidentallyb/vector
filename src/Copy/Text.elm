@@ -15,6 +15,9 @@ t key =
             "Welcome to BioCore"
 
         -- Slugs
+        Navbar ->
+            "BioCore"
+
         DesktopSlug ->
             "desktop"
 
@@ -74,6 +77,9 @@ t key =
         Results ->
             "Your choices have produced the following results:"
 
+        FinalScoreFeedbackPrompt ->
+            "While AL analyses your proposal is there anything else you would like to tell us?"
+
         NavDocumentsBackTo ->
             "Back to Documents"
 
@@ -98,6 +104,9 @@ t key =
         EmailQuickReply ->
             "Send email quick-reply: "
 
+        NeedsReply ->
+            "Needs reply"
+
         TeamNames ->
             "Ash|Birch|Cedar|Elm|Fir|Hawthorn|Juniper|Lime|Maple|Oak"
 
@@ -115,6 +124,12 @@ t key =
 
         DesktopParagraph4 ->
             "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."
+
+        SocialInputLabel ->
+            "Post a peep"
+
+        SocialInputPost ->
+            "Peep"
 
         FilterInputLabel ->
             "Add comma separated values (with spaces)"

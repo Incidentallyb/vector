@@ -1,4 +1,4 @@
-module View.Desktop exposing (renderWrapperWithNav, view)
+module View.Desktop exposing (renderTopNavigation, renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
@@ -28,7 +28,8 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderWrapperWithNav gameData
+                [ renderTopNavigation gameData.teamName
+                , renderWrapperWithNav gameData
                     pageRoute
                     notifications
                     [ div [ class "welcome" ]
@@ -40,6 +41,30 @@ view gameData pageRoute notifications =
                         ]
                     ]
                 ]
+
+
+renderTopNavigation : String -> Html Msg
+renderTopNavigation teamName =
+    nav [ class "navbar navbar-light bg-light" ]
+        [ a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
+        , div [ id "navbar" ]
+            [ ul [ class "navbar-nav ml-auto" ]
+                [ li [ class "nav-item active" ]
+                    [ span [ class "navbar-text" ] [ text ("Team " ++ teamName) ]
+                    ]
+                , li [ class "nav-item" ]
+                    [ audio
+                        [ src "/audio/vector_loop_1_web.ogg"
+                        , id "audio-player"
+                        , controls True
+                        , autoplay True
+                        , loop True
+                        ]
+                        []
+                    ]
+                ]
+            ]
+        ]
 
 
 renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg) -> Html Msg
@@ -63,7 +88,15 @@ renderWrapperWithNav gameData pageRoute notifications elements =
             , div [ class "order-last d-md-none" ]
                 [ renderMobileNavLinks pageRoute notifications
                 ]
-            , div [ class "col-md-8 content" ] elements
+            , div [ class "col-md-8 content" ]
+                ((if "feedback" == Maybe.withDefault "" (List.head gameData.choices) then
+                    [ renderFinalScoreFeedback ]
+
+                  else
+                    []
+                 )
+                    ++ elements
+                )
             ]
         ]
 
@@ -158,6 +191,11 @@ renderNavLinks pageRoute notifications =
             , text (t NavEmails)
             , if notifications.emails > 0 then
                 span [ class "badge badge-warning" ] [ text (String.fromInt notifications.emails) ]
+
+              else
+                text ""
+            , if notifications.emails == 0 && notifications.emailsNeedAttention == True then
+                span [ class "badge badge-warning need-attention", title (t NavMessagesNeedAttention) ] [ text "!" ]
 
               else
                 text ""
@@ -262,6 +300,31 @@ renderTeamInformation teamName =
             [ div [ class "card-body" ]
                 [ h2 [ class "card-title" ] [ text ("Team " ++ teamName) ]
                 , img [ src "leaf.png", alt "Team logo.", class "team-logo" ] []
+                ]
+            ]
+        ]
+
+
+renderFinalScoreFeedback : Html Msg
+renderFinalScoreFeedback =
+    div [ class "modal", attribute "style" "display:block", id "finalScoreFeedback" ]
+        [ div [ class "modal-dialog modal-dialog-centered" ]
+            [ div [ class "modal-content" ]
+                [ div [ class "modal-header" ]
+                    [ h2 [ class "modal-title" ] [ text (t FinalScoreFeedbackPrompt) ]
+                    ]
+                , div [ class "modal-body" ]
+                    [ Html.form [ attribute "data-netlify" "true" ]
+                        [ div [ class "form-group" ]
+                            [ label [ attribute "for" "feedbackText" ] [ text "Type your feedback here" ]
+                            , textarea [ class "form-control", id "feedbackText", attribute "rows" "5" ] []
+                            ]
+                        ]
+                    ]
+                , div [ class "modal-footer" ]
+                    [ button [ attribute "type" "button", class "btn btn-secondary", onClick (ChoiceButtonClicked "score") ] [ text "No feedback" ]
+                    , button [ attribute "type" "submit", class "btn btn-primary" ] [ text "Send feedback" ]
+                    ]
                 ]
             ]
         ]

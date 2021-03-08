@@ -1,13 +1,21 @@
+:root {
+  --navHeight: 3.5em;
+  --mobileNavHeight: 4em;
+}
+
 .desktop {
   background-color: var(--background-colour);
-  height: 100vh;
+  height: calc(100vh - var(--navHeight));
   padding: 1rem;
   overflow-y: auto;
 }
 
 @media (max-width: 767px) {
   .desktop {
-    height: calc(100vh - 4em);
+    height: calc(100vh - var(--mobileNavHeight) - var(--navHeight));
+  }
+  audio {
+    max-width: 6em !important;
   }
 }
 
@@ -46,9 +54,7 @@
 }
 .nav-link.active { 
   .need-attention {
-    background-color: white;
-    color: var(--blue);
-    animation: none;
+    display: none;
   }
 }
 
@@ -61,7 +67,7 @@
 .mobile-nav {
   display: flex;
   background-color: var(--white);
-  height: 4em;
+  height: var(--mobileNavHeight);
 }
 
 .mobile-nav-item {
@@ -145,7 +151,34 @@
   width: auto;
 }
 
+#navbar {
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  display:flex;
+  ul.navbar-nav { 
+    flex-grow:1;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+audio {
+  max-width: 19em;
+  margin-left:1em;
+  display: block;
+  filter: sepia(100%);
+}
+
 .login-logo {
   max-height: 200px;
   width: auto;
+}
+
+#finalScoreFeedback {
+  background: rgba(0,0,0,0.5);
+  h2 { 
+    font-size:1.3em;
+  }
+  textarea { width: 100%; height: 10em; }
 }

@@ -1,8 +1,9 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), emailContainsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
 import Dict exposing (Dict)
+import Hashtag exposing (Hashtag(..))
 import Set exposing (Set)
 
 
@@ -14,6 +15,7 @@ type alias GameData =
     , scoreSuccess : Int
     , scoreEconomic : Int
     , scoreHarm : Int
+    , socialsPosted : Dict String SocialData
     }
 
 
@@ -25,9 +27,10 @@ type alias CheckboxData =
 
 type alias NotificationCount =
     { messages : Int
-    , messagesNeedAttention: Bool
+    , messagesNeedAttention : Bool
     , documents : Int
     , emails : Int
+    , emailsNeedAttention : Bool
     , social : Int
     }
 
@@ -41,6 +44,7 @@ init =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
+    , socialsPosted = Dict.empty
     }
 
 
@@ -58,11 +62,12 @@ filterMessages messagesData choices =
         |> Maybe.withDefault Dict.empty
 
 
-filterEmails : Dict String EmailData -> List String -> Dict String EmailData
-filterEmails emailsData choices =
+filterEmails : Dict String EmailData -> List String -> String -> Dict String EmailData
+filterEmails emailsData choices teamname =
     -- Try to get a Dict of keyed filtered emails. Fail with empty.
     filterBranchingContent (emailsToBranchingContent emailsData) choices
         |> branchingContentToEmailData
+        |> filterByHiddenFromTeam teamname
         |> Maybe.withDefault Dict.empty
 
 
@@ -156,6 +161,27 @@ branchingContentToEmailData contentDict =
             Nothing
 
 
+filterByHiddenFromTeam : String -> Maybe (Dict String EmailData) -> Maybe (Dict String EmailData)
+filterByHiddenFromTeam teamname maybeEmails =
+    case maybeEmails of
+        Just emails ->
+            Just
+                (Dict.filter
+                    (\_ value ->
+                        case value.hideFromTeams of
+                            Just hidelist ->
+                                not (List.member teamname hidelist)
+
+                            Nothing ->
+                                True
+                    )
+                    emails
+                )
+
+        Nothing ->
+            Nothing
+
+
 getEmail : BranchingContent -> EmailData
 getEmail data =
     case data of
@@ -190,6 +216,91 @@ getDocument data =
 
         _ ->
             Content.emptyDocument
+
+
+
+--
+-- Notification functions
+--
+-- work out if there are un-actioned choices in emails
+
+
+unactionedEmailChoices : Dict String EmailData -> List String -> String -> Bool
+unactionedEmailChoices emails choices teamname =
+    let
+        maybeLastEmailDisplayed =
+            List.head (List.reverse (Dict.toList (filterEmails emails choices teamname)))
+
+        lastEmailDisplayed =
+            case maybeLastEmailDisplayed of
+                Just item ->
+                    Tuple.second item
+
+                Nothing ->
+                    Content.emptyEmail
+    in
+    emailContainsPendingDecision lastEmailDisplayed choices
+
+
+emailContainsPendingDecision : EmailData -> List String -> Bool
+emailContainsPendingDecision email choices =
+    let
+        triggeredBy =
+            email.triggered_by
+
+        potentialChoices =
+            case email.choices of
+                Just someChoices ->
+                    List.map ContentChoices.getChoiceAction someChoices
+
+                Nothing ->
+                    []
+
+        triggerString =
+            String.join "|" (List.reverse choices)
+
+        triggeredByLastChoice =
+            List.member triggerString triggeredBy
+
+        hasChoiceMatchLastChoice =
+            List.member ("|" ++ Maybe.withDefault "" (List.head choices)) potentialChoices
+    in
+    triggeredByLastChoice && not hasChoiceMatchLastChoice
+
+
+
+--
+-- Notification functions
+--
+-- work out if there are un-actioned choices in messages
+
+
+unactionedMessageChoices : Dict String MessageData -> List String -> Bool
+unactionedMessageChoices messages choices =
+    let
+        maybeLastMessageDisplayed =
+            List.head (List.reverse (Dict.toList (filterMessages messages choices)))
+
+        lastMessageDisplayed =
+            case maybeLastMessageDisplayed of
+                Just item ->
+                    Tuple.second item
+
+                Nothing ->
+                    Content.emptyMessage
+
+        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
+        choiceTriggers =
+            List.map ContentChoices.getChoiceAction lastMessageDisplayed.choices
+
+        -- see if the last message has choices but we've answered them already
+        -- or if the last message has no available choices
+        hasDoneActionsFromMessages =
+            List.member ("|" ++ Maybe.withDefault "" (List.head choices)) choiceTriggers
+                || List.length choiceTriggers
+                == 0
+    in
+    not hasDoneActionsFromMessages
 
 
 
@@ -251,8 +362,8 @@ type ScoreType
     | Success
 
 
-updateScore : ScoreType -> Content.Datastore -> List String -> String -> Int
-updateScore scoreType datastore gamedataChoices newChoice =
+updateScore : ScoreType -> Content.Datastore -> Dict String SocialData -> List String -> String -> Int
+updateScore scoreType datastore socialContent gamedataChoices newChoice =
     let
         playerChoices =
             newChoice :: gamedataChoices
@@ -271,9 +382,15 @@ updateScore scoreType datastore gamedataChoices newChoice =
 
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
         -- [18, -7, 0 ] for the message choices of start > macaques > stay
-        listOfScoreChanges =
+        scoreChangesFromChoices =
             choicesAndBranchingContent playerChoices messages
-                |> List.map (\( choice, message ) -> getScoreChanges scoreType choice message)
+                |> List.map (\( choice, message ) -> getScoreChangesFromBranchingContent scoreType choice message)
+
+        scoreChangesFromHashtags =
+            getScoreChangesFromHashtags scoreType (Hashtag.getHashtagsFromSocials socialContent)
+
+        listOfScoreChanges =
+            scoreChangesFromChoices ++ scoreChangesFromHashtags
     in
     -- take all of the score changes and add them together
     List.foldl
@@ -304,8 +421,8 @@ updateScore scoreType datastore gamedataChoices newChoice =
 -}
 
 
-getScoreChanges : ScoreType -> String -> BranchingContent -> String
-getScoreChanges scoreType choice message =
+getScoreChangesFromBranchingContent : ScoreType -> String -> BranchingContent -> String
+getScoreChangesFromBranchingContent scoreType choice message =
     List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (getScoreChange scoreType message))
 
 
@@ -344,3 +461,25 @@ getScoreChange changeType branchingContent =
                     List.tail [ "" ]
     in
     Maybe.withDefault [ "" ] maybeChange
+
+
+getScoreChangesFromHashtags : ScoreType -> List Hashtag -> List String
+getScoreChangesFromHashtags scoreType hashtags =
+    List.map (\hashtag -> String.fromInt (getScoreChangesFromHashtag scoreType hashtag)) hashtags
+
+
+getScoreChangesFromHashtag : ScoreType -> Hashtag -> Int
+getScoreChangesFromHashtag scoreType hashtag =
+    let
+        changeValues =
+            Hashtag.getScoreChanges hashtag
+    in
+    case scoreType of
+        Economic ->
+            changeValues.scoreChangeEconomic
+
+        Harm ->
+            changeValues.scoreChangeHarm
+
+        Success ->
+            changeValues.scoreChangeSuccess

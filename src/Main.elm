@@ -36,6 +36,7 @@ type alias Model =
     , gameData : GameData
     , visited : Set.Set String
     , notifications : NotificationCount
+    , socialInput : String
     }
 
 
@@ -54,7 +55,15 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications = { messages = 1, messagesNeedAttention = True, documents = 1, emails = 0, social = 0 }
+      , notifications =
+            { messages = 1
+            , messagesNeedAttention = False
+            , documents = 1
+            , emails = 0
+            , emailsNeedAttention = False
+            , social = 0
+            }
+      , socialInput = ""
       }
     , Cmd.none
     )
@@ -122,7 +131,7 @@ update msg model =
                 -- For any route change, check which manually readable content needs notifications
                 -- We'll probably move this calc to the Desktop view and remove from model
                 updatedSingleViewNotifications =
-                    { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
+                    { updatedListViewNotifications | emails = Dict.size (filterEmails model.data.emails model.gameData.choices model.gameData.teamName) - Set.size (Set.filter (\item -> String.contains "/emails/" item) newVisits) }
 
                 updatedSingleViewNotifications2 =
                     { updatedSingleViewNotifications | documents = Dict.size (filterDocuments model.data.documents model.gameData.choices) - Set.size (Set.filter (\item -> String.contains "/documents/" item) newVisits) }
@@ -147,6 +156,7 @@ update msg model =
                     case model.page of
                         Messages ->
                             Set.fromList (choiceStepsList model.gameData.choices)
+
                         _ ->
                             model.gameData.choicesVisited
 
@@ -155,37 +165,11 @@ update msg model =
                     , choicesVisited = newChoicesVisited
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
-                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.choices choice
-                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.choices choice
-                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
+                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , socialsPosted = model.gameData.socialsPosted
                     }
-
-                -- work out if there are un-actioned choices in messages
-                unactionedMessages =
-                    let
-                        maybeLastMessageDisplayed =
-                            List.head (List.reverse (Dict.toList (filterMessages model.data.messages newGameData.choices)))
-
-                        lastMessageDisplayed =
-                            case maybeLastMessageDisplayed of
-                                Just item ->
-                                    Tuple.second item
-
-                                Nothing ->
-                                    Content.emptyMessage
-
-                        -- will return choice triggers with pipe prefix for the last item, e.g. (|macaques, |pigs, ... )
-                        choiceTriggers =
-                            List.map ContentChoices.getChoiceAction lastMessageDisplayed.choices
-
-                        -- see if the last message has choices but we've answered them already
-                        -- or if the last message has no available choices
-                        hasDoneActionsFromMessages =
-                            List.member ("|" ++ Maybe.withDefault "" (List.head newGameData.choices)) choiceTriggers
-                                || List.length choiceTriggers
-                                == 0
-                    in
-                    not hasDoneActionsFromMessages
 
                 -- Take the current notifications and add the number of items filtered by the new choice
                 -- Hopefully this will be handled in the view and if we need to post msg to update
@@ -197,19 +181,31 @@ update msg model =
                         else
                             model.notifications.messages
                                 + (Dict.size (filterMessages model.data.messages newGameData.choices) - Dict.size (filterMessages model.data.messages model.gameData.choices))
-                    , messagesNeedAttention = unactionedMessages
+                    , messagesNeedAttention =
+                        GameData.unactionedMessageChoices model.data.messages newGameData.choices
+                    , emailsNeedAttention =
+                        GameData.unactionedEmailChoices model.data.emails newGameData.choices model.gameData.teamName
                     , documents =
                         model.notifications.documents
                             + (Dict.size (filterDocuments model.data.documents newGameData.choices) - Dict.size (filterDocuments model.data.documents model.gameData.choices))
                     , emails =
                         model.notifications.emails
-                            + (Dict.size (filterEmails model.data.emails newGameData.choices) - Dict.size (filterEmails model.data.emails model.gameData.choices))
+                            + (Dict.size (filterEmails model.data.emails newGameData.choices model.gameData.teamName) - Dict.size (filterEmails model.data.emails model.gameData.choices model.gameData.teamName))
                     , social =
                         model.notifications.social
                             + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
                     }
+
+                -- If we just clicked a choice in an email, redirect to list
+                pageAfterClick =
+                    case model.page of
+                        Email _ ->
+                            Emails
+
+                        _ ->
+                            model.page
             in
-            ( { model | gameData = newGameData, notifications = newNotifications }, Cmd.none )
+            ( { model | page = pageAfterClick, gameData = newGameData, notifications = newNotifications }, Cmd.none )
 
         CheckboxClicked value ->
             let
@@ -248,6 +244,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
@@ -267,6 +264,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             if noneSelected then
@@ -289,9 +287,52 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
+
+        SocialInputAdded text ->
+            ( { model | socialInput = text }, Cmd.none )
+
+        PostSocial lastSocialKey socialText ->
+            let
+                -- LastSocial = grab the most recent social key
+                -- Generate socialData
+                -- Add to socialsPosted
+                -- In View.Social intersperse tweets after lastSocialKey
+                teamName =
+                    model.gameData.teamName
+
+                socialCount =
+                    Dict.size model.gameData.socialsPosted
+
+                newSocial =
+                    { triggered_by = []
+                    , author = teamName
+                    , handle = "@" ++ teamName
+                    , image = Nothing
+                    , content = socialText
+
+                    -- Key by count social it follows & count of social posts
+                    , basename = lastSocialKey ++ String.fromInt socialCount
+                    , numComments = 0
+                    , numRetweets = 0
+                    , numLoves = 0
+                    }
+
+                newGameData =
+                    { choices = model.gameData.choices
+                    , choicesVisited = model.gameData.choicesVisited
+                    , checkboxSet = model.gameData.checkboxSet
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = Dict.insert newSocial.basename newSocial model.gameData.socialsPosted
+                    }
+            in
+            ( { model | socialInput = "", gameData = newGameData }, Cmd.none )
 
         PathCheckerMsg subMsg ->
             case model.page of
@@ -329,7 +370,8 @@ view model =
 
         Documents ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Documents.list model.gameData model.data.documents model.visited
@@ -338,7 +380,8 @@ view model =
 
         Document id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Documents.single (Dict.get id model.data.documents)
@@ -347,7 +390,8 @@ view model =
 
         Emails ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Emails.list model.gameData model.data.emails model.visited
@@ -356,7 +400,8 @@ view model =
 
         Email id ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Emails.single model.gameData (Dict.get id model.data.emails)
@@ -365,7 +410,8 @@ view model =
 
         Messages ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
                     [ View.Messages.view model.gameData model.data
@@ -374,10 +420,11 @@ view model =
 
         Social ->
             div []
-                [ View.Desktop.renderWrapperWithNav model.gameData
+                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Social.view model.gameData model.data.social
+                    [ View.Social.view model.socialInput model.gameData model.data.social
                     ]
                 ]
 

@@ -17,6 +17,7 @@
     "test": "elm-test"
   },
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "sw-precache-webpack-plugin": "^1.0.0",
     "webpack-pwa-manifest": "^4.3.0"
   },
@@ -26,7 +27,7 @@
     "elm": "^0.19.1-5",
     "elm-format": "^0.8.5",
     "elm-review": "^2.4.2",
-    "elm-test": "^0.19.1-rev6",
+    "elm-test": "^0.19.1-revision6",
     "elm-webpack-loader": "^7.0.1",
     "file-loader": "^6.2.0",
     "markdown-to-json": "^0.5.4",
