@@ -3,6 +3,7 @@ module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(.
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
 import Dict exposing (Dict)
+import Hashtag exposing (Hashtag(..))
 import Set exposing (Set)
 
 
@@ -14,6 +15,7 @@ type alias GameData =
     , scoreSuccess : Int
     , scoreEconomic : Int
     , scoreHarm : Int
+    , socialsPosted : Dict String SocialData
     }
 
 
@@ -42,6 +44,7 @@ init =
     , scoreSuccess = 0
     , scoreEconomic = 0
     , scoreHarm = 0
+    , socialsPosted = Dict.empty
     }
 
 
@@ -359,8 +362,8 @@ type ScoreType
     | Success
 
 
-updateScore : ScoreType -> Content.Datastore -> List String -> String -> Int
-updateScore scoreType datastore gamedataChoices newChoice =
+updateScore : ScoreType -> Content.Datastore -> Dict String SocialData -> List String -> String -> Int
+updateScore scoreType datastore socialContent gamedataChoices newChoice =
     let
         playerChoices =
             newChoice :: gamedataChoices
@@ -379,9 +382,15 @@ updateScore scoreType datastore gamedataChoices newChoice =
 
         -- this variable ends up with a list of score changes based on each message's point in time, e.g.
         -- [18, -7, 0 ] for the message choices of start > macaques > stay
-        listOfScoreChanges =
+        scoreChangesFromChoices =
             choicesAndBranchingContent playerChoices messages
-                |> List.map (\( choice, message ) -> getScoreChanges scoreType choice message)
+                |> List.map (\( choice, message ) -> getScoreChangesFromBranchingContent scoreType choice message)
+
+        scoreChangesFromHashtags =
+            getScoreChangesFromHashtags scoreType (Hashtag.getHashtagsFromSocials socialContent)
+
+        listOfScoreChanges =
+            scoreChangesFromChoices ++ scoreChangesFromHashtags
     in
     -- take all of the score changes and add them together
     List.foldl
@@ -412,8 +421,8 @@ updateScore scoreType datastore gamedataChoices newChoice =
 -}
 
 
-getScoreChanges : ScoreType -> String -> BranchingContent -> String
-getScoreChanges scoreType choice message =
+getScoreChangesFromBranchingContent : ScoreType -> String -> BranchingContent -> String
+getScoreChangesFromBranchingContent scoreType choice message =
     List.foldr (++) "" (List.map (\scoreChangeValue -> getStringIfMatchFound scoreChangeValue choice) (getScoreChange scoreType message))
 
 
@@ -452,3 +461,25 @@ getScoreChange changeType branchingContent =
                     List.tail [ "" ]
     in
     Maybe.withDefault [ "" ] maybeChange
+
+
+getScoreChangesFromHashtags : ScoreType -> List Hashtag -> List String
+getScoreChangesFromHashtags scoreType hashtags =
+    List.map (\hashtag -> String.fromInt (getScoreChangesFromHashtag scoreType hashtag)) hashtags
+
+
+getScoreChangesFromHashtag : ScoreType -> Hashtag -> Int
+getScoreChangesFromHashtag scoreType hashtag =
+    let
+        changeValues =
+            Hashtag.getScoreChanges hashtag
+    in
+    case scoreType of
+        Economic ->
+            changeValues.scoreChangeEconomic
+
+        Harm ->
+            changeValues.scoreChangeHarm
+
+        Success ->
+            changeValues.scoreChangeSuccess

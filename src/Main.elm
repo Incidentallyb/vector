@@ -36,6 +36,7 @@ type alias Model =
     , gameData : GameData
     , visited : Set.Set String
     , notifications : NotificationCount
+    , socialInput : String
     }
 
 
@@ -62,6 +63,7 @@ init flags url key =
             , emailsNeedAttention = False
             , social = 0
             }
+      , socialInput = ""
       }
     , Cmd.none
     )
@@ -163,9 +165,10 @@ update msg model =
                     , choicesVisited = newChoicesVisited
                     , checkboxSet = model.gameData.checkboxSet
                     , teamName = model.gameData.teamName
-                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.choices choice
-                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.choices choice
-                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.choices choice
+                    , scoreSuccess = GameData.updateScore Success model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , scoreEconomic = GameData.updateScore Economic model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , scoreHarm = GameData.updateScore Harm model.data model.gameData.socialsPosted model.gameData.choices choice
+                    , socialsPosted = model.gameData.socialsPosted
                     }
 
                 -- Take the current notifications and add the number of items filtered by the new choice
@@ -241,6 +244,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
@@ -260,6 +264,7 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             if noneSelected then
@@ -282,9 +287,52 @@ update msg model =
                     , scoreSuccess = model.gameData.scoreSuccess
                     , scoreEconomic = model.gameData.scoreEconomic
                     , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = model.gameData.socialsPosted
                     }
             in
             ( { model | gameData = newGameData }, Cmd.none )
+
+        SocialInputAdded text ->
+            ( { model | socialInput = text }, Cmd.none )
+
+        PostSocial lastSocialKey socialText ->
+            let
+                -- LastSocial = grab the most recent social key
+                -- Generate socialData
+                -- Add to socialsPosted
+                -- In View.Social intersperse tweets after lastSocialKey
+                teamName =
+                    model.gameData.teamName
+
+                socialCount =
+                    Dict.size model.gameData.socialsPosted
+
+                newSocial =
+                    { triggered_by = []
+                    , author = teamName
+                    , handle = "@" ++ teamName
+                    , image = Nothing
+                    , content = socialText
+
+                    -- Key by count social it follows & count of social posts
+                    , basename = lastSocialKey ++ String.fromInt socialCount
+                    , numComments = 0
+                    , numRetweets = 0
+                    , numLoves = 0
+                    }
+
+                newGameData =
+                    { choices = model.gameData.choices
+                    , choicesVisited = model.gameData.choicesVisited
+                    , checkboxSet = model.gameData.checkboxSet
+                    , teamName = model.gameData.teamName
+                    , scoreSuccess = model.gameData.scoreSuccess
+                    , scoreEconomic = model.gameData.scoreEconomic
+                    , scoreHarm = model.gameData.scoreHarm
+                    , socialsPosted = Dict.insert newSocial.basename newSocial model.gameData.socialsPosted
+                    }
+            in
+            ( { model | socialInput = "", gameData = newGameData }, Cmd.none )
 
         PathCheckerMsg subMsg ->
             case model.page of
@@ -376,7 +424,7 @@ view model =
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Social.view model.gameData model.data.social
+                    [ View.Social.view model.socialInput model.gameData model.data.social
                     ]
                 ]
 

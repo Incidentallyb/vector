@@ -8,19 +8,37 @@ import GameData exposing (GameData, filterSocials)
 import Heroicons.Outline exposing (chat, heart, refresh, upload)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick, onInput)
 import Markdown
 import Message exposing (Msg(..))
 
 
-view : GameData -> Dict String Content.SocialData -> Html Msg
-view gamedata socialDict =
-    ul [ class "tweet-list p-0" ]
-        (List.reverse
-            (List.map
-                renderTweet
-                (Dict.values (filterSocials socialDict gamedata.choices))
+view : String -> GameData -> Dict String Content.SocialData -> Html Msg
+view currentSocialInput gamedata socialDict =
+    div []
+        [ div [ class "clearfix form-group send-tweet" ]
+            [ label [ for "tweet-textbox" ] [ text (t SocialInputLabel) ]
+            , textarea
+                [ class "form-control"
+                , id "tweet-textbox"
+                , onInput SocialInputAdded
+                , value currentSocialInput
+                ]
+                []
+            , button
+                [ class "btn btn-primary float-right"
+                , onClick (PostSocial "key" currentSocialInput)
+                ]
+                [ text (t SocialInputPost) ]
+            ]
+        , ul [ class "tweet-list p-0" ]
+            (List.reverse
+                (List.map
+                    renderTweet
+                    (Dict.values (filterSocials socialDict gamedata.choices))
+                )
             )
-        )
+        ]
 
 
 renderImage : Content.SocialData -> Html Msg
