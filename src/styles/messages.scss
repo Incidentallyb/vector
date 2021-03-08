@@ -10,10 +10,37 @@ $timeToWait: 2s;
         for both messages. Only show the first one.
       */
       .typing-indicator {
-        display: none !important; 
-        animation: none !important; 
+        display: none !important;
+        animation: none !important;
       }
     }
+  }
+
+  details > summary {
+    align-items: center;
+    border-radius: 4px;
+    color: white;
+    background-color: var(--blue);
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    width: 75%;
+
+    &:focus {
+      outline-offset: 3px;
+    }
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] > summary {
+    padding: 0;
+    color: var(--black);
+    background-color: var(--white);
+    border: none;
+    display: block;
   }
 }
 

@@ -16,6 +16,9 @@ scoreChangeSuccess:
   - biobank|10
   - stemcell|10
 ---
+
 Biomatter is very experimental, and there are a few options for you to have a look at. I have sent you some documents regarding human embryonic stem cells and biobank material. Let me know when you have made a choice.
 
 Which option would you like to use?
+
+[cCc] Think about your decision, and let me know when you're ready to answer.

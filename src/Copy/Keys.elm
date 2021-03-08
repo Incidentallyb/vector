@@ -24,6 +24,7 @@ type Key
     | NavSocial
       --- Messages
     | FromPlayerTeam
+    | ReadyToReply
     | WellDone
     | Results
       --- "Back to" area texts

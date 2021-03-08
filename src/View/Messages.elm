@@ -52,7 +52,7 @@ renderMessageAndPrompt gamedata datastore message =
         [ if not haveWeSeenThisBefore then
             div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
 
-          else    
+          else
             text ""
         , if isScoreTime actualTriggers then
             renderScore "AL" actualTriggers gamedata.teamName datastore
@@ -98,6 +98,11 @@ renderMessage from message =
         ]
 
 
+open : String -> Attribute msg
+open value =
+    attribute "open" value
+
+
 renderPrompt : Content.MessageData -> List String -> CheckboxData -> String -> Html Msg
 renderPrompt message choices checkboxes team =
     if List.length message.choices > 0 then
@@ -115,19 +120,50 @@ renderPrompt message choices checkboxes team =
                             Just playerMessageText ->
                                 Markdown.toHtml [ class "playerMessageText" ] playerMessageText
                   in
-                  playerMessage
-                , -- Lovely hack for multi choice messages (only choose-1-2-3 for now)
-                  if message.basename == "choose-1-2-3" then
-                    View.ChoiceButtons.renderCheckboxes
-                        (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
-                        checkboxes
+                  div []
+                    [ -- If there is more that one option to choose, it's an important decision
+                      if List.length message.choices > 1 && message.basename /= "end" then
+                        -- Lovely hack for checkbox messages (only choose-1-2-3 for now)
+                        if message.basename == "choose-1-2-3" then
+                            div []
+                                [ View.ChoiceButtons.renderCheckboxes
+                                    (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
+                                    checkboxes
+                                ]
 
-                  else
-                    div []
-                        (View.ChoiceButtons.renderButtons
-                            (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
-                            (ContentChoices.getChoiceChosen choices message)
-                        )
+                        else
+                            details
+                                [ if ContentChoices.getChoiceChosen choices message /= "" then
+                                    open ""
+
+                                  else
+                                    Html.Attributes.class ""
+                                ]
+                                [ summary
+                                    []
+                                    [ span [] [ text (t ReadyToReply) ]
+                                    ]
+                                , div []
+                                    [ playerMessage
+                                    , div []
+                                        (View.ChoiceButtons.renderButtons
+                                            (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
+                                            (ContentChoices.getChoiceChosen choices message)
+                                        )
+                                    ]
+                                ]
+
+                      else
+                        -- Otherwise, a single option confirmation
+                        div []
+                            [ playerMessage
+                            , div []
+                                (View.ChoiceButtons.renderButtons
+                                    (List.map View.ChoiceButtons.choiceStringsToButtons message.choices)
+                                    (ContentChoices.getChoiceChosen choices message)
+                                )
+                            ]
+                    ]
                 ]
             ]
 

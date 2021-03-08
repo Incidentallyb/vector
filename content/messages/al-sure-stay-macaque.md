@@ -15,3 +15,5 @@ scoreChangeHarm:
 Are you sure you would like to use macaques?
 
 Macaques have an extremely similar biology to humans, so may create a highly successful experiment, but they are also costly to house and are thought to have a high degree of sentience.
+
+[cCc] Think about your decision, and let me know when you're ready to answer.

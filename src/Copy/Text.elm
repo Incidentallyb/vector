@@ -65,6 +65,9 @@ t key =
         FromPlayerTeam ->
             "Team "
 
+        ReadyToReply ->
+            "I'm ready to reply"
+
         WellDone ->
             "Well done Team "
 
