@@ -123,7 +123,7 @@ renderPrompt message choices checkboxes team =
                                 Markdown.toHtml [ class "playerMessageText" ] playerMessageText
                   in
                   div []
-                    [ -- If there is more that one option to choose, it's an important decision
+                    [ -- If there is more than one option to choose, it's an important decision
                       if List.length message.choices > 1 && message.basename /= "end" then
                         -- Lovely hack for checkbox messages (only choose-1-2-3 for now)
                         if message.basename == "choose-1-2-3" then

@@ -395,3 +395,15 @@ li.already-seen .confetti {
     opacity: 0;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .choice-button:not(.disabled):not(.active):hover {
+    margin-left: 0;
+  }
+
+  .typing-indicator {
+    opacity: 0;
+    margin: 0;
+    height: 0;
+  }
+}

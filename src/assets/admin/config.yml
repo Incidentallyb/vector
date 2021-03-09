@@ -22,6 +22,13 @@ collections:
       - { label: "Harm change", name: "scoreChangeHarm", widget: "list", required: false }
       - { label: "Success change", name: "scoreChangeSuccess", widget: "list", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+      - label: Image
+        name: image
+        widget: object
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Alt text for image", name: "alt", widget: "string" }
   - name: "message"
     label: "Messages"
     label_singular: "Message"
