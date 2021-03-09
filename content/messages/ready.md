@@ -10,19 +10,19 @@ choices:
   - mice|Mice
   - fish|Fish
   - bio|Bio Matter
-scoreChangeEconomic: 
+scoreChangeEconomic:
   - macaques|-7
   - pigs|-6
   - mice|-5
   - fish|-4
   - bio|0
-scoreChangeHarm: 
+scoreChangeHarm:
   - macaques|9
   - pigs|8
   - mice|7
   - fish|6
   - bio|4
-scoreChangeSuccess: 
+scoreChangeSuccess:
   - macaques|40
   - pigs|35
   - mice|30
@@ -31,3 +31,5 @@ scoreChangeSuccess:
 ---
 
 We are now going to decide on the animal we will be using for the research. Each animal has proved to be a successful subject for this type of experiment, however some are better suited to our research than others.
+
+[cCc] Think about your decision, and let me know when you're ready to answer.

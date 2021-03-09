@@ -25,6 +25,7 @@ type Key
     | NavSocial
       --- Messages
     | FromPlayerTeam
+    | ReadyToReply
     | WellDone
     | Results
     | FinalScoreFeedbackPrompt

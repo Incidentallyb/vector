@@ -12,4 +12,4 @@ image:
   alt: "UK map of BioCore locations"
 ---
 
-We are expanding and bringing our pubic consultation stations to Manchester, Nottingham, Oxford, Southampton and Exeter. Help us help you.
+We are expanding and bringing our public consultation stations to Manchester, Nottingham, Oxford, Southampton and Exeter. Help us help you.
