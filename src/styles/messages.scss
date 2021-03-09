@@ -4,16 +4,6 @@ $timeToWait: 2s;
   list-style: none;
   li {
     @include clearfix;
-    &:last-child {
-      /*
-        If multiple messages are triggered at the same time, the dom will contain typing-indicators
-        for both messages. Only show the first one.
-      */
-      .typing-indicator {
-        display: none !important;
-        animation: none !important;
-      }
-    }
   }
 
   details > summary {
