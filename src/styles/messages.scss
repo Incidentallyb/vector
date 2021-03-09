@@ -82,7 +82,6 @@ $timeToWait: 2s;
   }
 }
 
-
 @media (max-width: 767px) {
   .message {
     &.score {
@@ -90,20 +89,20 @@ $timeToWait: 2s;
         flex-direction: column;
         div {
           border-bottom: 2px solid var(--white);
-          padding-bottom:0.25em;
-          margin-bottom:0.25em;
+          padding-bottom: 0.25em;
+          margin-bottom: 0.25em;
         }
         div:last-of-type {
-          border-bottom:none;
+          border-bottom: none;
         }
       }
     }
   }
 }
 
-li.already-seen { 
+li.already-seen {
   .typing-indicator {
-    display:none;
+    display: none;
   }
   .message {
     animation: none;
@@ -130,8 +129,8 @@ li.not-seen + li.not-seen {
     for both messages. Only show the first one.
   */
   .typing-indicator {
-    display: none !important; 
-    animation: none !important; 
+    display: none !important;
+    animation: none !important;
   }
   .message {
     animation-delay: #{$timeToWait};
@@ -330,4 +329,16 @@ li.already-seen .confetti {
   50% { transform: rotateZ(15deg) rotateY(720deg) translate(5vw,30vh); }
   75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw,40vh); }
   100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,55vh); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .choice-button:not(.disabled):not(.active):hover {
+    margin-left: 0;
+  }
+
+  .typing-indicator {
+    opacity: 0;
+    margin: 0;
+    height: 0;
+  }
 }
