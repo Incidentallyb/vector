@@ -7,7 +7,7 @@
   "scripts": {
     "format": "elm-format src",
     "review": "elm-review",
-    "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.js --port 3000 --hot",
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.js --port 3000 --hot --watch",
     "build": "npm run generate && ./node_modules/.bin/webpack --config webpack.config.build.js",
     "generate": "npm run generate_docs && npm run generate_emails && npm run generate_messages && npm run generate_social",
     "generate_docs": "m2j -o ./data/documents.json -c ./content/documents/*.md",
