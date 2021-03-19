@@ -11,7 +11,7 @@ triggered_by:
   - init|start|macaques|step|stay|score|step|share|pigs
   - init|start|macaques|step|stay|score|step|share|mice
   - init|start|macaques|step|stay|score|step|share|fish
-  - init|start|macaques|step|change|pigs|step|scale|limit|step
+  - init|start|macaques|step|change|pigs|score|step|scale|limit|step
   - init|start|macaques|step|change|pigs|step|scale|change|mice|step
   - init|start|macaques|step|change|pigs|step|scale|change|fish|step
   - init|start|macaques|step|change|pigs|step|phased|limit|step
@@ -93,7 +93,6 @@ triggered_by:
   - init|start|bio|biobank|pigs|step|limit|step
   - init|start|bio|biobank|pigs|step|fish
   - init|start|bio|biobank|pigs|step|mice
-
 choices:
   - score|Continue
 ---
