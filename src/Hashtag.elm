@@ -23,30 +23,30 @@ type alias HashtagData =
 
 scoringHashtags : List String
 scoringHashtags =
-    [ "#BiocoreAdvance"
-    , "#BiocoreEngage"
-    , "#BiocoreGlobal"
-    , "#BiocoreInvest"
-    , "#BiocoreReview"
+    [ "#biocoreadvance"
+    , "#biocoreengage"
+    , "#biocoreglobal"
+    , "#biocoreinvest"
+    , "#biocorereview"
     ]
 
 
 hashtagFromString : String -> Hashtag
 hashtagFromString tag =
     case tag of
-        "#BiocoreAdvance" ->
+        "#biocoreadvance" ->
             BiocoreAdvance
 
-        "#BiocoreEngage" ->
+        "#biocoreengage" ->
             BiocoreEngage
 
-        "#BiocoreGlobal" ->
+        "#biocoreglobal" ->
             BiocoreGlobal
 
-        "#BiocoreInvest" ->
+        "#biocoreinvest" ->
             BiocoreInvest
 
-        "#BiocoreReview" ->
+        "#biocorereview" ->
             BiocoreReview
 
         _ ->
@@ -57,19 +57,19 @@ hashtagToString : Hashtag -> String
 hashtagToString tag =
     case tag of
         BiocoreAdvance ->
-            "#BiocoreAdvance"
+            "#biocoreadvance"
 
         BiocoreEngage ->
-            "#BiocoreEngage"
+            "#biocoreengage"
 
         BiocoreGlobal ->
-            "#BiocoreGlobal"
+            "#biocoreglobal"
 
         BiocoreInvest ->
-            "#BiocoreInvest"
+            "#biocoreinvest"
 
         BiocoreReview ->
-            "#BiocoreReview"
+            "#biocorereview"
 
         _ ->
             "#NonScoringHashtag"
@@ -102,9 +102,13 @@ getHashtagsFromSocials socials =
 
 hashtagFromContent : String -> List Hashtag
 hashtagFromContent content =
+    let
+        loweredContent =
+            String.toLower content
+    in
     List.map
         (\tag ->
-            if String.contains tag content then
+            if String.contains tag loweredContent then
                 hashtagFromString tag
 
             else
