@@ -192,8 +192,9 @@ update msg model =
                         model.notifications.emails
                             + (Dict.size (filterEmails model.data.emails newGameData.choices model.gameData.teamName) - Dict.size (filterEmails model.data.emails model.gameData.choices model.gameData.teamName))
                     , social =
+                        -- Not passing in tweets posted, should not matter for count.
                         model.notifications.social
-                            + (Dict.size (filterSocials model.data.social newGameData.choices) - Dict.size (filterSocials model.data.social model.gameData.choices))
+                            + (Dict.size (filterSocials model.data.social newGameData.choices Dict.empty) - Dict.size (filterSocials model.data.social model.gameData.choices Dict.empty))
                     }
 
                 -- If we just clicked a choice in an email, redirect to list

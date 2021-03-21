@@ -71,13 +71,16 @@ filterEmails emailsData choices teamname =
         |> Maybe.withDefault Dict.empty
 
 
-filterSocials : Dict String SocialData -> List String -> Dict String SocialData
-filterSocials allSocials choices =
+filterSocials : Dict String SocialData -> List String -> Dict String SocialData -> Dict String SocialData
+filterSocials allSocials choices socialsPosted =
     let
         filteredSocials =
             Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allSocials
+
+        combinedSocials =
+            Dict.union filteredSocials socialsPosted
     in
-    Dict.fromList (socialListKeyedByTriggerChoice choices filteredSocials)
+    Dict.fromList (socialListKeyedByTriggerChoice choices combinedSocials)
 
 
 filterDocuments : Dict String DocumentData -> List String -> Dict String DocumentData

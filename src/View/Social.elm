@@ -35,7 +35,7 @@ view currentSocialInput gamedata socialDict =
             (List.reverse
                 (List.map
                     renderTweet
-                    (Dict.values (filterSocials socialDict gamedata.choices))
+                    (Dict.values (filterSocials socialDict gamedata.choices gamedata.socialsPosted))
                 )
             )
         ]
