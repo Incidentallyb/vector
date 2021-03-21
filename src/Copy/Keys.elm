@@ -53,6 +53,7 @@ type Key
     | SocialInputPost
       --- TeamNames
     | TeamNames
+    | TeamLogo String
       --- Path Checker
     | FilterInputLabel
     | FilterInputPlaceholder
