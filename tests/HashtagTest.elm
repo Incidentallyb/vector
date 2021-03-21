@@ -1,4 +1,4 @@
-module HashtagTest exposing (updateEconomicScore, updateHarmScore, updateSuccessScore)
+module HashtagTest exposing (updateEconomicScore, updateEconomicScoreWithDuplicate, updateHarmScore, updateHarmScoreWithDuplicate, updateSuccessScore, updateSuccessScoreWithDuplicate)
 
 import Content exposing (SocialData)
 import Dict
