@@ -126,10 +126,10 @@ t key =
             "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."
 
         SocialInputLabel ->
-            "Post a peep"
+            "Post a tweeeet"
 
         SocialInputPost ->
-            "Peep"
+            "Tweeeet"
 
         FilterInputLabel ->
             "Add comma separated values (with spaces)"
