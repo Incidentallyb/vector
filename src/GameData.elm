@@ -256,6 +256,9 @@ emailContainsPendingDecision email choices =
                 Nothing ->
                     []
 
+        hasChoices =
+            List.length potentialChoices > 0
+
         triggerString =
             String.join "|" (List.reverse choices)
 
@@ -265,7 +268,7 @@ emailContainsPendingDecision email choices =
         hasChoiceMatchLastChoice =
             List.member ("|" ++ Maybe.withDefault "" (List.head choices)) potentialChoices
     in
-    triggeredByLastChoice && not hasChoiceMatchLastChoice
+    hasChoices && triggeredByLastChoice && not hasChoiceMatchLastChoice
 
 
 
