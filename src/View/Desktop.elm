@@ -299,7 +299,7 @@ renderTeamInformation teamName =
         [ div [ class "card" ]
             [ div [ class "card-body" ]
                 [ h2 [ class "card-title" ] [ text ("Team " ++ teamName) ]
-                , img [ src "leaf.png", alt "Team logo.", class "team-logo" ] []
+                , img [ src "/images/leaf.png", alt "Team logo.", class "team-logo" ] []
                 ]
             ]
         ]
