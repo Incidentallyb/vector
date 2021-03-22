@@ -42,4 +42,4 @@ Set up some more experiments in a **phased** way so that you learn from each exp
 
 **Collaborate** with a BioCore competitor so that you can share both your past data and biomatter. It would reduce harm, but you would lose some economic benefits. Cost: £3,000,000
 
-[cCc] Think about your decision, and let me know when you're ready to answer.
+Think about your decision, and let me know when you're ready to answer.

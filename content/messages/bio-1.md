@@ -21,4 +21,4 @@ Biomatter is very experimental, and there are a few options for you to have a lo
 
 Which option would you like to use?
 
-[cCc] Think about your decision, and let me know when you're ready to answer.
+Think about your decision, and let me know when you're ready to answer.

@@ -32,4 +32,4 @@ scoreChangeSuccess:
 
 We are now going to decide on the animal we will be using for the research. Each animal has proved to be a successful subject for this type of experiment, however some are better suited to our research than others.
 
-[cCc] Think about your decision, and let me know when you're ready to answer.
+Think about your decision, and let me know when you're ready to answer.
