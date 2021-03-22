@@ -1,6 +1,7 @@
 ---
 title: Charlie no more macaques
 author: Charlie
+subject: New model options
 triggered_by:
   - init|start|macaques|step|change|step|pigs|score|step|scale|change
   - init|start|macaques|step|change|step|pigs|score|step|phased|change
@@ -24,4 +25,11 @@ scoreChangeSuccess:
   - mice|10
   - fish|10
 ---
+
+Hello,
+
 We can't use Macaques as the supply lines have become difficult because of Brexit, and we are too far along to start a bio-matter model. Here are the choices below.
+
+Thanks,
+
+Charlie

@@ -27,8 +27,8 @@ collections:
         widget: object
         required: false
         fields:
-          - { label: "Image", name: "src", widget: "image" }
-          - { label: "Alt text for image", name: "alt", widget: "string" }
+          - { label: "Image", name: "src", widget: "image", required: false }
+          - { label: "Alt text for image", name: "alt", widget: "string", required: false }
   - name: "message"
     label: "Messages"
     label_singular: "Message"
