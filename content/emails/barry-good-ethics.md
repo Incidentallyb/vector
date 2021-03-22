@@ -1,6 +1,7 @@
 ---
 title: Barry good ethics
 author: Dr. Barry Taylor
+subject: Thoughts on working with Biomatter
 triggered_by:
   - init|start|bio|biobank|stay|stay
 ---
