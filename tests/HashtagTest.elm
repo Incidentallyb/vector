@@ -1,4 +1,4 @@
-module HashtagTest exposing (updateEconomicScore, updateHarmScore, updateSuccessScore)
+module HashtagTest exposing (updateEconomicScore, updateEconomicScoreWithDuplicate, updateHarmScore, updateHarmScoreWithDuplicate, updateSuccessScore, updateSuccessScoreWithDuplicate)
 
 import Content exposing (SocialData)
 import Dict
@@ -32,14 +32,43 @@ hashtagGameData =
     }
 
 
+hashtagGameDataWithDuplicate : GameData
+hashtagGameDataWithDuplicate =
+    { hashtagGameData
+        | socialsPosted =
+            Dict.fromList
+                [ ( "hashtagSocial1"
+                  , testSocialWithHashtag
+                  )
+                , ( "hashtagSocial2"
+                  , testSocialWithDuplicateHashtag
+                  )
+                ]
+    }
+
+
 testSocialWithHashtag : SocialData
 testSocialWithHashtag =
     { triggered_by = []
     , author = "Test Author"
     , handle = "@testauthor"
-    , content = "Test social content #BiocoreAdvance yes! #BiocoreEngage"
+    , content = "Test social content #BioCOreAdvANce yes! #biocoreEngage"
     , image = Nothing
     , basename = "testSocialWithHashtag"
+    , numComments = 10
+    , numRetweets = 5
+    , numLoves = 2
+    }
+
+
+testSocialWithDuplicateHashtag : SocialData
+testSocialWithDuplicateHashtag =
+    { triggered_by = []
+    , author = "Test Author"
+    , handle = "@testauthor"
+    , content = "Test social content #BioCOreAdvANce yes!"
+    , image = Nothing
+    , basename = "testSocialWithDuplicateHashtag"
     , numComments = 10
     , numRetweets = 5
     , numLoves = 2
@@ -72,11 +101,47 @@ updateSuccessScore =
 
 updateHarmScore : Test
 updateHarmScore =
-    describe "updateHarmScore Function"
+    describe "updateHarmScore hashtag Function"
         [ test "returns 0 for init" <|
             \_ ->
                 GameData.updateScore Harm TestData.testDatastore hashtagGameData.socialsPosted hashtagGameData.choices "init"
                     |> Expect.equal (-2 + 5)
 
         -- Advance & Engage hashtags
+        ]
+
+
+updateEconomicScoreWithDuplicate : Test
+updateEconomicScoreWithDuplicate =
+    describe "updateScore with duplicate Function"
+        [ test "returns 0 for init" <|
+            \_ ->
+                GameData.updateScore Economic TestData.testDatastore hashtagGameDataWithDuplicate.socialsPosted hashtagGameDataWithDuplicate.choices "init"
+                    |> Expect.equal (-8 + -3)
+
+        -- 2x Advance & Engage hashtags
+        ]
+
+
+updateSuccessScoreWithDuplicate : Test
+updateSuccessScoreWithDuplicate =
+    describe "updateSuccessScore with duplicate Function"
+        [ test "returns 0 for init" <|
+            \_ ->
+                GameData.updateScore Success TestData.testDatastore hashtagGameDataWithDuplicate.socialsPosted hashtagGameDataWithDuplicate.choices "init"
+                    |> Expect.equal (-20 + 0)
+
+        -- 2x Advance & Engage hashtags
+        ]
+
+
+updateHarmScoreWithDuplicate : Test
+updateHarmScoreWithDuplicate =
+    describe "updateHarmScore with duplicate hashtag Function"
+        [ test "returns 0 for init" <|
+            \_ ->
+                GameData.updateScore Harm TestData.testDatastore hashtagGameDataWithDuplicate.socialsPosted hashtagGameDataWithDuplicate.choices "init"
+                    |> Expect.equal (-2 + 5)
+
+        -- 2x Advance & Engage hashtags
         ]

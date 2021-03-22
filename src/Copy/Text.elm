@@ -110,6 +110,41 @@ t key =
         TeamNames ->
             "Ash|Birch|Cedar|Elm|Fir|Hawthorn|Juniper|Lime|Maple|Oak"
 
+        TeamLogo teamname ->
+            case teamname of
+                "Ash" ->
+                    "ash.png"
+
+                "Birch" ->
+                    "birch.png"
+
+                "Cedar" ->
+                    "cedar.png"
+
+                "Elm" ->
+                    "elm.png"
+
+                "Fir" ->
+                    "fir.png"
+
+                "Hawthorne" ->
+                    "hawthorne.png"
+
+                "Juniper" ->
+                    "juniper.png"
+
+                "Lime" ->
+                    "lime.png"
+
+                "Maple" ->
+                    "maple.png"
+
+                "Oak" ->
+                    "oak.png"
+
+                _ ->
+                    "leaf.png"
+
         DesktopWelcome ->
             "Welcome to BioCore!"
 
@@ -126,10 +161,10 @@ t key =
             "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."
 
         SocialInputLabel ->
-            "Post a peep"
+            "Post a tweeeet"
 
         SocialInputPost ->
-            "Peep"
+            "Tweeeet"
 
         FilterInputLabel ->
             "Add comma separated values (with spaces)"
