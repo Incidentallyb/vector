@@ -3,7 +3,7 @@ title: Barry bio bank
 author: Dr. Barry Taylor
 subject: Biobank material - My Misgivings
 triggered_by:
-  - init|start|bio|biobank
+  - init|start|bio|biobank|score|step
 choices:
   - mice|Change to Mice
   - fish|Change to Fish

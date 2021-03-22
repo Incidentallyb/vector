@@ -1,7 +1,7 @@
 ---
 title: Barry bio bank vaccine
 triggered_by:
-  - init|start|bio|biobank|score|stay|stay
+  - init|start|bio|biobank|score|step|stay|stay
 author: Dr. Barry Taylor
 subject: Major breakthrough!
 choices:

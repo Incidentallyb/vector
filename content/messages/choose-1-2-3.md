@@ -80,21 +80,21 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|embryo|score
   - init|start|fish|embryo|score|step|share|change|mice|score
   - init|start|fish|embryo|score|step|share|change|pigs|score
-  - init|start|bio|biobank|score|stay|stay|pigs|score
-  - init|start|bio|biobank|score|stay|stay|mice|score
-  - init|start|bio|biobank|score|stay|stay|fish|score
-  - init|start|bio|stemcell|score|change|pigs|step|limit|step|score
-  - init|start|bio|stemcell|score|change|pigs|step|fish|score
-  - init|start|bio|stemcell|score|change|pigs|step|mice|score
-  - init|start|bio|stemcell|score|change|mice|step|limit|score
-  - init|start|bio|stemcell|score|change|mice|step|fish|score
-  - init|start|bio|biobank|score|fish|step|embryo|score
-  - init|start|bio|biobank|score|fish|step|adult|score
-  - init|start|bio|biobank|score|mice|step|step|limit|score
-  - init|start|bio|biobank|score|mice|step|step|fish|score
-  - init|start|bio|biobank|score|pigs|step|limit|step|score
-  - init|start|bio|biobank|score|pigs|step|fish|score
-  - init|start|bio|biobank|score|pigs|step|mice|score
+  - init|start|bio|biobank|score|step|stay|stay|pigs|score
+  - init|start|bio|biobank|score|step|stay|stay|mice|score
+  - init|start|bio|biobank|score|step|stay|stay|fish|score
+  - init|start|bio|stemcell|score|step|change|pigs|step|limit|step|score
+  - init|start|bio|stemcell|score|step|change|pigs|step|fish|score
+  - init|start|bio|stemcell|score|step|change|pigs|step|mice|score
+  - init|start|bio|stemcell|score|step|change|mice|step|limit|score
+  - init|start|bio|stemcell|score|step|change|mice|step|fish|score
+  - init|start|bio|biobank|score|step|fish|step|embryo|score
+  - init|start|bio|biobank|score|step|fish|step|adult|score
+  - init|start|bio|biobank|score|step|mice|step|step|limit|score
+  - init|start|bio|biobank|score|step|mice|step|step|fish|score
+  - init|start|bio|biobank|score|step|pigs|step|limit|step|score
+  - init|start|bio|biobank|score|step|pigs|step|fish|score
+  - init|start|bio|biobank|score|step|pigs|step|mice|score
 choices:
   - training|Training £1,000,000 - We can spend some time and resources training the animals so they feel more comfortable with the equipment, procedures and environment where the experiments will take place. Allowing them to see the lab as their home and to see the experiments as normal procedures will decrease their distress. 
   - rehousing|Rehousing after the experiment £1,000,000 - Many of the animals that are used during the experiment cannot be released back into the wild. Some have been genetically engineered and cannot be allowed back into the eco systems. Others have never been in a wild environment and will not survive. Most animals are destroyed after the experiment has been completed and their material sent to Bio Banks. Animals that remain unused in the experiment may be able to be rehoused as pets or more often in sanctuaries. 

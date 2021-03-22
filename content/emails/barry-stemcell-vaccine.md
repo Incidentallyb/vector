@@ -3,8 +3,8 @@ title: Barry stemcell vaccine
 author: Dr. Barry Taylor
 subject: Major breakthrough!
 triggered_by:
-  - init|start|bio|stemcell|score|stay|engage
-  - init|start|bio|stemcell|score|stay|prosecute
+  - init|start|bio|stemcell|score|step|stay|engage
+  - init|start|bio|stemcell|score|step|stay|prosecute
 choices:
   - pigs|Change to Pigs
   - mice|Change to Mice

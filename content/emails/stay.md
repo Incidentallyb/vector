@@ -7,7 +7,7 @@ triggered_by:
   - init|start|fish|embryo|score|step|scale|embryo
   - init|start|fish|embryo|score|step|phased|stay
   - init|start|fish|embryo|score|step|share|stay
-  - init|start|bio|stemcell|score|stay
+  - init|start|bio|stemcell|score|step|stay
 ---
 
 Hey Everyone,

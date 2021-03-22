@@ -9,9 +9,9 @@ triggered_by:
   - init|start|fish|embryo|score|step|phased|change|pigs
   - init|start|fish|embryo|score|step|share|change|mice
   - init|start|fish|embryo|score|step|share|change|pigs
-  - init|start|bio|stemcell|score|change|pigs
-  - init|start|bio|stemcell|score|change|mice
-  - init|start|bio|biobank|score|mice|step
+  - init|start|bio|stemcell|score|step|change|pigs
+  - init|start|bio|stemcell|score|step|change|mice
+  - init|start|bio|biobank|score|step|mice|step
 choices:
   - step|Great, thank you!
 ---
