@@ -15,7 +15,6 @@ scoreChangeHarm:
 scoreChangeSuccess:
   - keep|-7
 ---
-
 Good afternoon,
 
 I don’t think we’ve met yet! I’m Charlie, the Lab Technician on this experiment - I take care of the animals on a day to day basis, feeding them, keeping note of their behaviour and making sure that they are well and happy. The experiment is going really well, however I am concerned that the pigs don’t have enough space in their current housing. They are showing some signs of stress as their movement is limited.
