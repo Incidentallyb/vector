@@ -83,6 +83,9 @@ triggered_by:
   - init|start|bio|biobank|score|step|stay|pigs|score|nothing
   - init|start|bio|biobank|score|step|stay|mice|score|nothing
   - init|start|bio|biobank|score|step|stay|fish|score|nothing
+  - init|start|bio|biobank|score|step|stay|stay|score|step|pigs
+  - init|start|bio|biobank|score|step|stay|stay|score|step|mice
+  - init|start|bio|biobank|score|step|stay|stay|score|step|fish
   - init|start|bio|biobank|score|step|mice|step|step|fish|score|nothing
   - init|start|bio|biobank|score|step|mice|step|step|limit|score|nothing
   - init|start|bio|stemcell|score|step|change|pigs|step|limit|step|score|nothing
