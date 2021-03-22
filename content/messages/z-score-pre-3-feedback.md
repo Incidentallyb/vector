@@ -11,27 +11,27 @@ triggered_by:
   - init|start|macaques|step|stay|score|step|share|pigs|score|nothing
   - init|start|macaques|step|stay|score|step|share|mice|score|nothing
   - init|start|macaques|step|stay|score|step|share|fish|score|nothing
-  - init|start|macaques|step|change|pigs|step|scale|limit|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|scale|change|mice|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|scale|change|fish|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|phased|limit|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|phased|change|mice|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|phased|change|fish|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|share|limit|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|share|change|mice|step|score|nothing
-  - init|start|macaques|step|change|pigs|step|share|change|fish|step|score|nothing
-  - init|start|macaques|step|change|mice|step|scale|limit|score|nothing
-  - init|start|macaques|step|change|mice|step|scale|fish|score|nothing
-  - init|start|macaques|step|change|mice|step|phased|limit|score|nothing
-  - init|start|macaques|step|change|mice|step|phased|fish|score|nothing
-  - init|start|macaques|step|change|mice|step|share|limit|score|nothing
-  - init|start|macaques|step|change|mice|step|share|fish|score|nothing
-  - init|start|macaques|step|change|fish|step|scale|adult|score|nothing
-  - init|start|macaques|step|change|fish|step|scale|embryo|score|nothing
-  - init|start|macaques|step|change|fish|step|phased|adult|score|nothing
-  - init|start|macaques|step|change|fish|step|phased|embryo|score|nothing
-  - init|start|macaques|step|change|fish|step|share|adult|score|nothing
-  - init|start|macaques|step|change|fish|step|share|embryo|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|scale|limit|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|mice|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|fish|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|phased|limit|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|mice|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|fish|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|share|limit|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|mice|step|score|nothing
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|fish|step|score|nothing
+  - init|start|macaques|step|change|step|mice|score|step|scale|limit|score|nothing
+  - init|start|macaques|step|change|step|mice|score|step|scale|fish|score|nothing
+  - init|start|macaques|step|change|step|mice|score|step|phased|limit|score|nothing
+  - init|start|macaques|step|change|step|mice|score|step|phased|fish|score|nothing
+  - init|start|macaques|step|change|step|mice|score|step|share|limit|score|nothing
+  - init|start|macaques|step|change|step|mice|score|step|share|fish|score|nothing
+  - init|start|macaques|step|change|step|fish|score|step|scale|adult|score|nothing
+  - init|start|macaques|step|change|step|fish|score|step|scale|embryo|score|nothing
+  - init|start|macaques|step|change|step|fish|score|step|phased|adult|score|nothing
+  - init|start|macaques|step|change|step|fish|score|step|phased|embryo|score|nothing
+  - init|start|macaques|step|change|step|fish|score|step|share|adult|score|nothing
+  - init|start|macaques|step|change|step|fish|score|step|share|embryo|score|nothing
   - init|start|pigs|increase|score|step|scale|limit|step|score|nothing
   - init|start|pigs|increase|score|step|phased|limit|step|score|nothing
   - init|start|pigs|increase|score|step|phased|change|fish|step|score|nothing
@@ -105,27 +105,27 @@ triggered_by:
   - init|start|macaques|step|stay|score|step|share|pigs|score|one-extra
   - init|start|macaques|step|stay|score|step|share|mice|score|one-extra
   - init|start|macaques|step|stay|score|step|share|fish|score|one-extra
-  - init|start|macaques|step|change|pigs|step|scale|limit|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|scale|change|mice|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|scale|change|fish|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|phased|limit|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|phased|change|mice|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|phased|change|fish|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|share|limit|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|share|change|mice|step|score|one-extra
-  - init|start|macaques|step|change|pigs|step|share|change|fish|step|score|one-extra
-  - init|start|macaques|step|change|mice|step|scale|limit|score|one-extra
-  - init|start|macaques|step|change|mice|step|scale|fish|score|one-extra
-  - init|start|macaques|step|change|mice|step|phased|limit|score|one-extra
-  - init|start|macaques|step|change|mice|step|phased|fish|score|one-extra
-  - init|start|macaques|step|change|mice|step|share|limit|score|one-extra
-  - init|start|macaques|step|change|mice|step|share|fish|score|one-extra
-  - init|start|macaques|step|change|fish|step|scale|adult|score|one-extra
-  - init|start|macaques|step|change|fish|step|scale|embryo|score|one-extra
-  - init|start|macaques|step|change|fish|step|phased|adult|score|one-extra
-  - init|start|macaques|step|change|fish|step|phased|embryo|score|one-extra
-  - init|start|macaques|step|change|fish|step|share|adult|score|one-extra
-  - init|start|macaques|step|change|fish|step|share|embryo|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|scale|limit|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|mice|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|fish|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|phased|limit|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|mice|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|fish|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|share|limit|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|mice|step|score|one-extra
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|fish|step|score|one-extra
+  - init|start|macaques|step|change|step|mice|score|step|scale|limit|score|one-extra
+  - init|start|macaques|step|change|step|mice|score|step|scale|fish|score|one-extra
+  - init|start|macaques|step|change|step|mice|score|step|phased|limit|score|one-extra
+  - init|start|macaques|step|change|step|mice|score|step|phased|fish|score|one-extra
+  - init|start|macaques|step|change|step|mice|score|step|share|limit|score|one-extra
+  - init|start|macaques|step|change|step|mice|score|step|share|fish|score|one-extra
+  - init|start|macaques|step|change|step|fish|score|step|scale|adult|score|one-extra
+  - init|start|macaques|step|change|step|fish|score|step|scale|embryo|score|one-extra
+  - init|start|macaques|step|change|step|fish|score|step|phased|adult|score|one-extra
+  - init|start|macaques|step|change|step|fish|score|step|phased|embryo|score|one-extra
+  - init|start|macaques|step|change|step|fish|score|step|share|adult|score|one-extra
+  - init|start|macaques|step|change|step|fish|score|step|share|embryo|score|one-extra
   - init|start|pigs|increase|score|step|scale|limit|step|score|one-extra
   - init|start|pigs|increase|score|step|phased|limit|step|score|one-extra
   - init|start|pigs|increase|score|step|phased|change|fish|step|score|one-extra
@@ -196,27 +196,27 @@ triggered_by:
   - init|start|macaques|step|stay|score|step|share|pigs|score|two-extras
   - init|start|macaques|step|stay|score|step|share|mice|score|two-extras
   - init|start|macaques|step|stay|score|step|share|fish|score|two-extras
-  - init|start|macaques|step|change|pigs|step|scale|limit|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|scale|change|mice|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|scale|change|fish|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|phased|limit|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|phased|change|mice|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|phased|change|fish|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|share|limit|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|share|change|mice|step|score|two-extras
-  - init|start|macaques|step|change|pigs|step|share|change|fish|step|score|two-extras
-  - init|start|macaques|step|change|mice|step|scale|limit|score|two-extras
-  - init|start|macaques|step|change|mice|step|scale|fish|score|two-extras
-  - init|start|macaques|step|change|mice|step|phased|limit|score|two-extras
-  - init|start|macaques|step|change|mice|step|phased|fish|score|two-extras
-  - init|start|macaques|step|change|mice|step|share|limit|score|two-extras
-  - init|start|macaques|step|change|mice|step|share|fish|score|two-extras
-  - init|start|macaques|step|change|fish|step|scale|adult|score|two-extras
-  - init|start|macaques|step|change|fish|step|scale|embryo|score|two-extras
-  - init|start|macaques|step|change|fish|step|phased|adult|score|two-extras
-  - init|start|macaques|step|change|fish|step|phased|embryo|score|two-extras
-  - init|start|macaques|step|change|fish|step|share|adult|score|two-extras
-  - init|start|macaques|step|change|fish|step|share|embryo|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|scale|limit|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|mice|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|scale|change|fish|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|phased|limit|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|mice|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|phased|change|fish|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|share|limit|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|mice|step|score|two-extras
+  - init|start|macaques|step|change|step|pigs|score|step|share|change|fish|step|score|two-extras
+  - init|start|macaques|step|change|step|mice|score|step|scale|limit|score|two-extras
+  - init|start|macaques|step|change|step|mice|score|step|scale|fish|score|two-extras
+  - init|start|macaques|step|change|step|mice|score|step|phased|limit|score|two-extras
+  - init|start|macaques|step|change|step|mice|score|step|phased|fish|score|two-extras
+  - init|start|macaques|step|change|step|mice|score|step|share|limit|score|two-extras
+  - init|start|macaques|step|change|step|mice|score|step|share|fish|score|two-extras
+  - init|start|macaques|step|change|step|fish|score|step|scale|adult|score|two-extras
+  - init|start|macaques|step|change|step|fish|score|step|scale|embryo|score|two-extras
+  - init|start|macaques|step|change|step|fish|score|step|phased|adult|score|two-extras
+  - init|start|macaques|step|change|step|fish|score|step|phased|embryo|score|two-extras
+  - init|start|macaques|step|change|step|fish|score|step|share|adult|score|two-extras
+  - init|start|macaques|step|change|step|fish|score|step|share|embryo|score|two-extras
   - init|start|pigs|increase|score|step|scale|limit|step|score|two-extras
   - init|start|pigs|increase|score|step|phased|limit|step|score|two-extras
   - init|start|pigs|increase|score|step|phased|change|fish|step|score|two-extras
