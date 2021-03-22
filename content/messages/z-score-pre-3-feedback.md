@@ -281,7 +281,9 @@ triggered_by:
   - init|start|macaques|step|stay|score|step|share|money|score|nothing
   - init|start|macaques|step|stay|score|step|share|money|score|one-extra
   - init|start|macaques|step|stay|score|step|share|money|score|two-extras
-  - ""
+  - init|start|macaques|step|stay|score|step|share|transparant|score|nothing
+  - init|start|macaques|step|stay|score|step|share|transparant|score|one-extra
+  - init|start|macaques|step|stay|score|step|share|transparant|score|two-extras
 choices:
   - feedback|Yes, submit proposal
 ---
