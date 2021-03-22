@@ -80,9 +80,9 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|stay|score|nothing|feedback|score
   - init|start|fish|embryo|score|step|share|change|mice|step|score|nothing|feedback|score
   - init|start|fish|embryo|score|step|share|change|pigs|step|score|nothing|feedback|score
-  - init|start|bio|biobank|score|step|stay|stay|pigs|score|nothing|feedback|score
-  - init|start|bio|biobank|score|step|stay|stay|mice|score|nothing|feedback|score
-  - init|start|bio|biobank|score|step|stay|stay|fish|score|nothing|feedback|score
+  - init|start|bio|biobank|score|step|stay|pigs|score|nothing|feedback|score
+  - init|start|bio|biobank|score|step|stay|mice|score|nothing|feedback|score
+  - init|start|bio|biobank|score|step|stay|fish|score|nothing|feedback|score
   - init|start|bio|biobank|score|step|mice|step|step|fish|score|nothing|feedback|score
   - init|start|bio|biobank|score|step|mice|step|step|limit|score|nothing|feedback|score
   - init|start|bio|stemcell|score|step|change|pigs|step|limit|step|score|nothing|feedback|score
@@ -264,9 +264,9 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|stay|score|two-extras|feedback|score
   - init|start|fish|embryo|score|step|share|change|mice|step|score|two-extras|feedback|score
   - init|start|fish|embryo|score|step|share|change|pigs|step|score|two-extras|feedback|score
-  - init|start|bio|biobank|score|step|stay|stay|pigs|score|two-extras|feedback|score
-  - init|start|bio|biobank|score|step|stay|stay|mice|score|two-extras|feedback|score
-  - init|start|bio|biobank|score|step|stay|stay|fish|score|two-extras|feedback|score
+  - init|start|bio|biobank|score|step|stay|pigs|score|two-extras|feedback|score
+  - init|start|bio|biobank|score|step|stay|mice|score|two-extras|feedback|score
+  - init|start|bio|biobank|score|step|stay|fish|score|two-extras|feedback|score
   - init|start|bio|biobank|score|step|mice|step|step|limit|score|two-extras|feedback|score
   - init|start|bio|biobank|score|step|mice|step|step|fish|score|two-extras|feedback|score
   - init|start|bio|stemcell|score|step|change|pigs|step|limit|score|two-extras|feedback|score

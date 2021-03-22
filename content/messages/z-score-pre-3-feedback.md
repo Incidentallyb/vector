@@ -80,9 +80,9 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|stay|score|nothing
   - init|start|fish|embryo|score|step|share|change|mice|step|score|nothing
   - init|start|fish|embryo|score|step|share|change|pigs|step|score|nothing
-  - init|start|bio|biobank|score|step|stay|stay|pigs|score|nothing
-  - init|start|bio|biobank|score|step|stay|stay|mice|score|nothing
-  - init|start|bio|biobank|score|step|stay|stay|fish|score|nothing
+  - init|start|bio|biobank|score|step|stay|pigs|score|nothing
+  - init|start|bio|biobank|score|step|stay|mice|score|nothing
+  - init|start|bio|biobank|score|step|stay|fish|score|nothing
   - init|start|bio|biobank|score|step|mice|step|step|fish|score|nothing
   - init|start|bio|biobank|score|step|mice|step|step|limit|score|nothing
   - init|start|bio|stemcell|score|step|change|pigs|step|limit|step|score|nothing
@@ -172,9 +172,9 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|stay|score|one-extra
   - init|start|fish|embryo|score|step|share|change|mice|step|score|one-extra
   - init|start|fish|embryo|score|step|share|change|pigs|step|score|one-extra
-  - init|start|bio|biobank|score|step|stay|stay|pigs|score|one-extra
-  - init|start|bio|biobank|score|step|stay|stay|mice|score|one-extra
-  - init|start|bio|biobank|score|step|stay|stay|fish|score|one-extra
+  - init|start|bio|biobank|score|step|stay|pigs|score|one-extra
+  - init|start|bio|biobank|score|step|stay|mice|score|one-extra
+  - init|start|bio|biobank|score|step|stay|fish|score|one-extra
   - init|start|bio|biobank|score|step|mice|step|step|limit|score|one-extra
   - init|start|bio|biobank|score|step|mice|step|step|fish|score|one-extra
   - init|start|bio|stemcell|score|step|change|pigs|step|limit|score|one-extra
@@ -264,9 +264,9 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|stay|score|two-extras
   - init|start|fish|embryo|score|step|share|change|mice|step|score|two-extras
   - init|start|fish|embryo|score|step|share|change|pigs|step|score|two-extras
-  - init|start|bio|biobank|score|step|stay|stay|pigs|score|two-extras
-  - init|start|bio|biobank|score|step|stay|stay|mice|score|two-extras
-  - init|start|bio|biobank|score|step|stay|stay|fish|score|two-extras
+  - init|start|bio|biobank|score|step|stay|pigs|score|two-extras
+  - init|start|bio|biobank|score|step|stay|mice|score|two-extras
+  - init|start|bio|biobank|score|step|stay|fish|score|two-extras
   - init|start|bio|biobank|score|step|mice|step|step|limit|score|two-extras
   - init|start|bio|biobank|score|step|mice|step|step|fish|score|two-extras
   - init|start|bio|stemcell|score|step|change|pigs|step|limit|score|two-extras

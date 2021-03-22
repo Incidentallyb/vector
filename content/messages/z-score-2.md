@@ -80,9 +80,10 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|stay
   - init|start|fish|embryo|score|step|share|change|mice|step
   - init|start|fish|embryo|score|step|share|change|pigs|step
-  - init|start|bio|biobank|score|step|stay|stay|pigs
-  - init|start|bio|biobank|score|step|stay|stay|mice
-  - init|start|bio|biobank|score|step|stay|stay|fish
+  - init|start|bio|biobank|score|step|stay|pigs
+  - init|start|bio|biobank|score|step|stay|mice
+  - init|start|bio|biobank|score|step|stay|fish
+  - init|start|bio|biobank|score|step|stay|stay
   - init|start|bio|biobank|score|step|mice|step|step|fish
   - init|start|bio|biobank|score|step|mice|step|step|limit
   - init|start|bio|stemcell|score|step|change|pigs|step|limit|step
