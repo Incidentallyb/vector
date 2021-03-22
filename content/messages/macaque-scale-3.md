@@ -8,7 +8,4 @@ choices:
   - mice|Mice
   - fish|Fish
 ---
-
-[cCc] The prompt comes from Jenny email. Not sure what Al's copy is here.
-
-[cCc] Think about your decision, and let me know when you're ready to answer.
+Think about your decision, and let me know when you're ready to answer.
