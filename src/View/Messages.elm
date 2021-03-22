@@ -34,6 +34,9 @@ renderMessageAndPrompt gamedata datastore message =
         lastTriggerIsScore =
             "score" == Maybe.withDefault "" (List.head (List.reverse actualTriggers))
 
+        a =
+            Debug.log "triggers" actualTriggers
+
         triggeredBy =
             String.join "|" actualTriggers
 
