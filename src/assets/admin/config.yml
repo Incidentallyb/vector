@@ -89,3 +89,4 @@ collections:
       - { label: "Harm Rating", name: "harm", widget: "string", required: false }
       - { label: "Pros", name: "pros", widget: "list", required: false, hint: "Comma seperated list" }
       - { label: "Cons", name: "cons", widget: "list", required: false, hint: "Comma seperated list" }
+      - { label: "Body", name: "body", widget: "markdown" }

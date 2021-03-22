@@ -42,6 +42,16 @@ renderImage document =
             img [ src (t UploadPath ++ image.src), alt image.alt, class "col-md-6" ] []
 
 
+renderSubtitle : Maybe String -> Html Msg
+renderSubtitle maybeSubtitle =
+    case maybeSubtitle of
+        Just subtitle ->
+            h2 [] [ text subtitle ]
+
+        Nothing ->
+            text ""
+
+
 renderInfo : String -> String -> Maybe String -> String -> Html Msg
 renderInfo label symbol data extra =
     case data of
@@ -86,6 +96,7 @@ single maybeContent =
                 [ div [ class "card-body" ]
                     [ h1 []
                         [ text document.title ]
+                    , renderSubtitle document.subtitle
                     , div
                         [ class "row" ]
                         [ renderImage document
