@@ -27,7 +27,7 @@ view currentSocialInput gamedata socialDict =
                 []
             , button
                 [ class "btn btn-primary float-right"
-                , onClick (PostSocial "key" currentSocialInput)
+                , onClick (PostSocial (triggerFromChoices gamedata.choices) currentSocialInput)
                 ]
                 [ text (t SocialInputPost) ]
             ]
@@ -35,10 +35,15 @@ view currentSocialInput gamedata socialDict =
             (List.reverse
                 (List.map
                     renderTweet
-                    (Dict.values (filterSocials socialDict gamedata.choices gamedata.socialsPosted))
+                    (filterSocials socialDict gamedata.choices gamedata.socialsPosted)
                 )
             )
         ]
+
+
+triggerFromChoices : List String -> String
+triggerFromChoices choices =
+    String.join "|" choices
 
 
 renderImage : Content.SocialData -> Html Msg

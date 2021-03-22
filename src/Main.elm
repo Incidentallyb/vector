@@ -194,7 +194,7 @@ update msg model =
                     , social =
                         -- Not passing in tweets posted, should not matter for count.
                         model.notifications.social
-                            + (Dict.size (filterSocials model.data.social newGameData.choices Dict.empty) - Dict.size (filterSocials model.data.social model.gameData.choices Dict.empty))
+                            + (List.length (filterSocials model.data.social newGameData.choices Dict.empty) - List.length (filterSocials model.data.social model.gameData.choices Dict.empty))
                     }
 
                 -- If we just clicked a choice in an email, redirect to list
@@ -296,12 +296,8 @@ update msg model =
         SocialInputAdded text ->
             ( { model | socialInput = text }, Cmd.none )
 
-        PostSocial lastSocialKey socialText ->
+        PostSocial mostRecentTrigger socialText ->
             let
-                -- LastSocial = grab the most recent social key
-                -- Generate socialData
-                -- Add to socialsPosted
-                -- In View.Social intersperse tweets after lastSocialKey
                 teamName =
                     model.gameData.teamName
 
@@ -309,14 +305,15 @@ update msg model =
                     Dict.size model.gameData.socialsPosted
 
                 newSocial =
-                    { triggered_by = []
+                    -- Used when the list is sorted in socialsKeyeyByTriggerString
+                    { triggered_by = [ mostRecentTrigger ++ String.fromInt socialCount ]
                     , author = teamName
                     , handle = "@" ++ teamName
                     , image = Nothing
                     , content = socialText
 
-                    -- Key by count social it follows & count of social posts
-                    , basename = lastSocialKey ++ String.fromInt socialCount
+                    -- Key by count of social posts
+                    , basename = "key" ++ String.fromInt socialCount
                     , numComments = 0
                     , numRetweets = 0
                     , numLoves = 0

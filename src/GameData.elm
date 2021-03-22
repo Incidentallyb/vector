@@ -71,7 +71,7 @@ filterEmails emailsData choices teamname =
         |> Maybe.withDefault Dict.empty
 
 
-filterSocials : Dict String SocialData -> List String -> Dict String SocialData -> Dict String SocialData
+filterSocials : Dict String SocialData -> List String -> Dict String SocialData -> List SocialData
 filterSocials allSocials choices socialsPosted =
     let
         filteredSocials =
@@ -80,7 +80,7 @@ filterSocials allSocials choices socialsPosted =
         combinedSocials =
             Dict.union filteredSocials socialsPosted
     in
-    Dict.fromList (socialListKeyedByTriggerChoice choices combinedSocials)
+    List.map (\( _, socialData ) -> socialData) (socialListKeyedByTriggerChoice choices combinedSocials)
 
 
 filterDocuments : Dict String DocumentData -> List String -> Dict String DocumentData
