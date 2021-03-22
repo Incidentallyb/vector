@@ -17,9 +17,9 @@ triggered_by:
   - init|start|mice|handle|score|step|scale
   - init|start|mice|handle|score|step|phased
   - init|start|mice|handle|score|step|share
-  - init|start|bio|stemcell|change|mice
-  - init|start|bio|stemcell|change|pigs
-  - init|start|bio|biobank|mice|step|step
+  - init|start|bio|stemcell|score|change|mice
+  - init|start|bio|stemcell|score|change|pigs
+  - init|start|bio|biobank|score|mice|step|step
 ---
 
 Hi Everyone, I have a bit of a personal request, so I have sent over an email...

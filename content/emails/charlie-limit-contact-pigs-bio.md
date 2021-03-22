@@ -3,8 +3,8 @@ title: Charlie limit contact pigs
 author: Charlie Benn
 subject: Limiting contact with the Pigs
 triggered_by:
-  - init|start|bio|stemcell|change|pigs|step
-  - init|start|bio|biobank|pigs|step
+  - init|start|bio|stemcell|score|change|pigs|step
+  - init|start|bio|biobank|score|pigs|step
 choices:
   - limit|Limit contact
   - fish|Change to fish

@@ -12,6 +12,8 @@ triggered_by:
   - init|start|macaques|step|change|step|pigs
   - init|start|macaques|step|change|step|mice
   - init|start|macaques|step|change|step|fish
+  - init|start|bio|biobank
+  - init|start|bio|stemcell
 
 choices:
   - score|Continue  
