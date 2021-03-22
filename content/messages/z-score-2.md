@@ -3,7 +3,8 @@ title: Scores 2
 author: AL
 triggered_by:
   - init|start|macaques|step|stay|score|step|scale|pigs
-  - init|start|macaques|step|stay|score|step|scale|mice
+  - init|start|macaques|s
+  - tep|stay|score|step|scale|mice
   - init|start|macaques|step|stay|score|step|scale|fish
   - init|start|macaques|step|stay|score|step|phased|pigs
   - init|start|macaques|step|stay|score|step|phased|mice
@@ -81,7 +82,8 @@ triggered_by:
   - init|start|fish|embryo|score|step|share|change|mice|step
   - init|start|fish|embryo|score|step|share|change|pigs|step
   - init|start|bio|biobank|score|step|stay|pigs
-  - init|start|bio|biobank|score|step|stay|mice
+  - init|star
+  - t|bio|biobank|score|step|stay|mice
   - init|start|bio|biobank|score|step|stay|fish
   - init|start|bio|biobank|score|step|stay|stay
   - init|start|bio|biobank|score|step|mice|step|step|fish
@@ -94,6 +96,8 @@ triggered_by:
   - init|start|bio|biobank|score|step|pigs|step|limit|step
   - init|start|bio|biobank|score|step|pigs|step|fish
   - init|start|bio|biobank|score|step|pigs|step|mice
+  - init|start|macaques|step|stay|score|step|share|money
+  - init|start|macaques|step|stay|score|step|share|transparant
 choices:
   - score|Continue
 ---
