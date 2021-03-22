@@ -3,7 +3,7 @@ title: "PR Disaster "
 author: Jenny
 subject: Stakeholder Perceptions
 triggered_by:
-  - init|start|macaques|step|stay|score|step|share|step
+  - init|start|macaques|step|stay|score|step|share
 choices:
   - transparant|Realease Transparant Statement
   - money|Attract Investors
