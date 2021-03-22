@@ -101,7 +101,7 @@ updateSuccessScore =
 
 updateHarmScore : Test
 updateHarmScore =
-    describe "updateHarmScore with duplicate hashtag Function"
+    describe "updateHarmScore hashtag Function"
         [ test "returns 0 for init" <|
             \_ ->
                 GameData.updateScore Harm TestData.testDatastore hashtagGameData.socialsPosted hashtagGameData.choices "init"
@@ -113,7 +113,7 @@ updateHarmScore =
 
 updateEconomicScoreWithDuplicate : Test
 updateEconomicScoreWithDuplicate =
-    describe "updateScore Function"
+    describe "updateScore with duplicate Function"
         [ test "returns 0 for init" <|
             \_ ->
                 GameData.updateScore Economic TestData.testDatastore hashtagGameDataWithDuplicate.socialsPosted hashtagGameDataWithDuplicate.choices "init"
@@ -125,7 +125,7 @@ updateEconomicScoreWithDuplicate =
 
 updateSuccessScoreWithDuplicate : Test
 updateSuccessScoreWithDuplicate =
-    describe "updateSuccessScore Function"
+    describe "updateSuccessScore with duplicate Function"
         [ test "returns 0 for init" <|
             \_ ->
                 GameData.updateScore Success TestData.testDatastore hashtagGameDataWithDuplicate.socialsPosted hashtagGameDataWithDuplicate.choices "init"
