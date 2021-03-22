@@ -96,7 +96,6 @@ triggered_by:
   - init|start|bio|biobank|score|step|pigs|step|limit|step|score|nothing
   - init|start|bio|biobank|score|step|pigs|step|fish|score|nothing
   - init|start|bio|biobank|score|step|pigs|step|mice|score|nothing
-
   - init|start|macaques|step|stay|score|step|scale|pigs|score|one-extra
   - init|start|macaques|step|stay|score|step|scale|mice|score|one-extra
   - init|start|macaques|step|stay|score|step|scale|fish|score|one-extra
@@ -188,7 +187,6 @@ triggered_by:
   - init|start|bio|biobank|score|step|pigs|step|limit|step|score|one-extra
   - init|start|bio|biobank|score|step|pigs|step|fish|score|one-extra
   - init|start|bio|biobank|score|step|pigs|step|mice|score|one-extra
-
   - init|start|macaques|step|stay|score|step|scale|pigs|score|two-extras
   - init|start|macaques|step|stay|score|step|scale|mice|score|two-extras
   - init|start|macaques|step|stay|score|step|scale|fish|score|two-extras
@@ -280,7 +278,10 @@ triggered_by:
   - init|start|bio|biobank|score|step|pigs|step|limit|step|score|two-extras
   - init|start|bio|biobank|score|step|pigs|step|fish|score|two-extras
   - init|start|bio|biobank|score|step|pigs|step|mice|score|two-extras
-
+  - init|start|macaques|step|stay|score|step|share|money|score|nothing
+  - init|start|macaques|step|stay|score|step|share|money|score|one-extra
+  - init|start|macaques|step|stay|score|step|share|money|score|two-extras
+  - ""
 choices:
   - feedback|Yes, submit proposal
 ---
