@@ -121,6 +121,7 @@ renderLoginPage gameData =
                     [ on "change" (Json.map TeamChosen targetValue)
                     , class "form-control"
                     , value gameData.teamName
+                    , attribute "autofocus" "true"
                     ]
                     (List.map loginOption teamNamesList)
                 , button
