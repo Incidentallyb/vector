@@ -71,7 +71,7 @@ renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg)
 renderWrapperWithNav gameData pageRoute notifications elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop", id "desktop" ]
-            [ div [ class "col-md-3 d-none d-md-block" ]
+            [ div [ class "col-md-3 d-none d-md-block p-0" ]
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
                     , renderNavLinks pageRoute notifications
