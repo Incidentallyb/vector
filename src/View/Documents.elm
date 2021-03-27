@@ -121,7 +121,7 @@ single maybeContent =
 
 list : GameData -> Dict String Content.DocumentData -> Set.Set String -> Html Msg
 list gamedata documentDict visitedSet =
-    div [ class "card-columns documents" ]
+    div [ class "row documents" ]
         (List.map listItem (addReadStatus (Dict.values (filterDocuments documentDict gamedata.choices)) visitedSet))
 
 
@@ -164,14 +164,12 @@ renderCardImage document =
 
 listItem : DocumentWithRead -> Html Msg
 listItem content =
-    div [ class "card", classList [ ( "read", content.read ) ] ]
-        [ span [ class "badge new" ] [ text (t New) ]
-        , renderCardImage content
-        , div
-            [ class "card-body" ]
-            [ h2 [ class "card-title" ] [ text (String.replace "-" " " content.basename) ]
-            ]
-        , div [ class "card-footer" ]
-            [ a [ class "btn btn-primary", href (Route.toString (Document content.basename)) ] [ text (t ViewDocument) ]
+    div [ class "col-6 col-lg-4" ]
+        [ a [ class "card", href (Route.toString (Document content.basename)) ]
+            [ div [ classList [ ( "read", content.read ) ] ]
+                [ span [ class "badge new" ] [ text (t New) ]
+                , renderCardImage content
+                , h2 [ class "card-title" ] [ text content.title ]
+                ]
             ]
         ]
