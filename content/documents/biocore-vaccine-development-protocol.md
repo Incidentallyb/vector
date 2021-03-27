@@ -1,5 +1,5 @@
 ---
-title: BioCore Vaccine Development Protocol
+title: Vaccine Development Protocol
 triggered_by:
   - "init"
 image:
