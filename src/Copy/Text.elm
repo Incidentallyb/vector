@@ -39,6 +39,9 @@ t key =
         IntroSlug ->
             ""
 
+        EndInfoSlug ->
+            "thank-you"
+
         UploadPath ->
             "/images/uploads/"
 

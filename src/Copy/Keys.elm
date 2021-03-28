@@ -12,8 +12,9 @@ type Key
     | MessagesSlug
     | SocialSlug
     | IntroSlug
-    | UploadPath
+    | EndInfoSlug
     | PathCheckerSlug
+    | UploadPath
       --- Intro page
     | StartNewGame
     | IntroVideo
