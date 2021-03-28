@@ -1,4 +1,4 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), emailContainsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), emailContainsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, filteredSocials, getStringIfMatchFound, init, keyedSocialsList, unactionedEmailChoices, unactionedMessageChoices, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
@@ -74,13 +74,25 @@ filterEmails emailsData choices teamname =
 filterSocials : Dict String SocialData -> List String -> Dict String SocialData -> List SocialData
 filterSocials allSocials choices socialsPosted =
     let
-        filteredSocials =
-            Dict.filter (\_ value -> triggeredByChoices choices value.triggered_by) allSocials
+        orderedCombinedSocials =
+            Dict.union (filteredSocials allSocials choices) socialsPosted
+                |> Dict.toList
+                |> Dict.fromList
 
-        combinedSocials =
-            Dict.union filteredSocials socialsPosted
+        list =
+            Debug.log "ugh" orderedCombinedSocials
     in
-    List.map (\( _, socialData ) -> socialData) (socialListKeyedByTriggerChoice choices combinedSocials)
+    List.map (\( _, socialData ) -> socialData) (keyedSocialsList choices orderedCombinedSocials)
+
+
+filteredSocials : Dict String SocialData -> List String -> Dict String SocialData
+filteredSocials allSocials currentChoices =
+    Dict.filter (\_ value -> triggeredByChoices currentChoices value.triggered_by) allSocials
+
+
+keyedSocialsList : List String -> Dict String SocialData -> List ( String, SocialData )
+keyedSocialsList choices socialDataDict =
+    socialListKeyedByTriggerChoice choices socialDataDict
 
 
 filterDocuments : Dict String DocumentData -> List String -> Dict String DocumentData

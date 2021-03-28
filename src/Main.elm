@@ -306,14 +306,15 @@ update msg model =
 
                 newSocial =
                     -- Used when the list is sorted in socialsKeyeyByTriggerString
-                    { triggered_by = [ mostRecentTrigger ++ String.fromInt socialCount ]
+                    { triggered_by = []
                     , author = teamName
                     , handle = "@" ++ teamName
                     , image = Nothing
                     , content = socialText
 
                     -- Key by count of social posts
-                    , basename = "key" ++ String.fromInt socialCount
+                    -- Socials are ordered by trigger|choicefilename
+                    , basename = mostRecentTrigger ++ "zz" ++ String.fromInt socialCount
                     , numComments = 0
                     , numRetweets = 0
                     , numLoves = 0

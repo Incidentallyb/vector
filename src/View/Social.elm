@@ -4,7 +4,7 @@ import Content
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
-import GameData exposing (GameData, filterSocials)
+import GameData exposing (GameData, filterSocials, filteredSocials, keyedSocialsList)
 import Heroicons.Outline exposing (chat, heart, refresh, upload)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -27,7 +27,7 @@ view currentSocialInput gamedata socialDict =
                 []
             , button
                 [ class "btn btn-primary float-right"
-                , onClick (PostSocial (triggerFromChoices gamedata.choices) currentSocialInput)
+                , onClick (PostSocial (Maybe.withDefault "z" (lastSocialPostedKey socialDict gamedata.choices)) currentSocialInput)
                 ]
                 [ text (t SocialInputPost) ]
             ]
@@ -41,9 +41,20 @@ view currentSocialInput gamedata socialDict =
         ]
 
 
-triggerFromChoices : List String -> String
-triggerFromChoices choices =
-    String.join "|" choices
+lastSocialPostedKey : Dict String Content.SocialData -> List String -> Maybe String
+lastSocialPostedKey allSocials currentChoices =
+    let
+        currentSocials =
+            filteredSocials allSocials currentChoices
+                |> keyedSocialsList currentChoices
+                |> List.reverse
+    in
+    case List.head currentSocials of
+        Just ( key, _ ) ->
+            Just key
+
+        Nothing ->
+            Nothing
 
 
 renderImage : Content.SocialData -> Html Msg

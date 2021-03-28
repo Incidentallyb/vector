@@ -213,12 +213,13 @@ getTriggeringChoice filename choices triggers =
     (Set.intersect choiceSet triggerSet
         |> Set.toList
         |> List.head
-        |> Maybe.withDefault "error-no-choice-trigger-match"
+        |> Maybe.withDefault ""
     )
         -- Append filename in case an email & messages triggered, we don't want key to overwrite
         -- This is fragile & needs a refactor:
         -- Important that content appears in order triggered & keys are unique
         -- Could be fixed by using a list - since we aren't using the Dict lookup
+        -- Social Posts will not have a match, but we used current choices to build basename.
         ++ filename
 
 
