@@ -52,6 +52,12 @@ type Key
       --- Social
     | SocialInputLabel
     | SocialInputPost
+      --- Ending info
+    | EndInfoHeader
+    | EndInfoParagraph1
+    | EndInfoParagraph2
+    | EndInfoParagraph3
+    | EndInfoParagraph4
       --- TeamNames
     | TeamNames
     | TeamLogo String
