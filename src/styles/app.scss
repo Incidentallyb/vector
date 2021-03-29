@@ -2,7 +2,7 @@
 :root {
   --red: #dc3545;
   --green: #28a745;
-  --blue: #007bff;
+  --blue: #0072ed;
   --blue-pale: #9fb8f0;
   --purple: #563d7c;
   --white: #ffffff;
@@ -49,6 +49,10 @@ body {
       svg {
         color: var(--white);
       }
+    }
+
+    &.active {
+      font-weight: bold;
     }
   }
 }
