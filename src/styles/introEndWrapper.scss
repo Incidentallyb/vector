@@ -1,0 +1,18 @@
+.end,
+.intro {
+  h1 {
+    color: var(--white);
+  }
+}
+
+.end {
+  color: var(--white);
+  .row.logos {
+    background-color: var(--white);
+    padding: 2em;
+    
+    img {
+      max-height: 100px; // This keeps Annex under 300px wide.
+    }
+  }
+}
