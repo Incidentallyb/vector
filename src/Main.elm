@@ -19,6 +19,7 @@ import Url
 import View.Desktop
 import View.Documents
 import View.Emails
+import View.EndInfo exposing (view)
 import View.Intro exposing (view)
 import View.Messages exposing (view)
 import View.PathChecker
@@ -432,6 +433,11 @@ view model =
         Intro ->
             div []
                 [ View.Intro.view
+                ]
+
+        EndInfo ->
+            div []
+                [ View.EndInfo.view
                 ]
 
         PathChecker pathChecker ->

@@ -1,0 +1,18 @@
+.end,
+.intro {
+  h1 {
+    color: var(--white);
+  }
+}
+
+.end {
+  color: var(--white);
+  footer {
+    background-color: var(--white);
+    padding: 1.5em 0;
+    
+    img {
+      max-height: 100px; // This keeps Annex under 300px wide.
+    }
+  }
+}
