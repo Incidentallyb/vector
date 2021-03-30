@@ -105,7 +105,7 @@ renderLoginPage gameData =
         [ div [ class "v-centred" ]
             [ div [ class "sign-in" ]
                 [ img [ src (t UploadPath ++ "biocore-logo.png"), alt "BioCore", class "login-logo" ] []
-                , h1 [] [ text "Please login" ]
+                , h1 [] [ label [ for "select" ] [ text "Please login" ] ]
                 , let
                     teamNamesList =
                         String.split "|" (t TeamNames)
@@ -114,6 +114,7 @@ renderLoginPage gameData =
                     [ on "change" (Json.map TeamChosen targetValue)
                     , class "form-control"
                     , value gameData.teamName
+                    , id "select"
                     , attribute "autofocus" "true"
                     ]
                     (List.map loginOption teamNamesList)
