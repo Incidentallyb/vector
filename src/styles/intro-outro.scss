@@ -7,9 +7,9 @@
 
 .end {
   color: var(--white);
-  .row.logos {
+  footer {
     background-color: var(--white);
-    padding: 2em;
+    padding: 1.5em 0;
     
     img {
       max-height: 100px; // This keeps Annex under 300px wide.
