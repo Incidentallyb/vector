@@ -29,7 +29,6 @@ type Key
     | ReadyToReply
     | WellDone
     | Results
-    | FinalScoreFeedbackPrompt
       --- "Back to" area texts
     | NavDocumentsBackTo
     | NavEmailsBackTo

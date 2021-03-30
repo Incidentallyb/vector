@@ -309,20 +309,19 @@ renderFinalScoreFeedback =
     div [ class "modal", attribute "style" "display:block", id "finalScoreFeedback" ]
         [ div [ class "modal-dialog modal-dialog-centered" ]
             [ div [ class "modal-content" ]
-                [ div [ class "modal-header" ]
-                    [ h2 [ class "modal-title" ] [ text (t FinalScoreFeedbackPrompt) ]
-                    ]
-                , div [ class "modal-body" ]
-                    [ Html.form [ attribute "data-netlify" "true" ]
-                        [ div [ class "form-group" ]
-                            [ label [ attribute "for" "feedbackText" ] [ text "Type your feedback here" ]
-                            , textarea [ class "form-control", id "feedbackText", attribute "rows" "5" ] []
-                            ]
+                [ div [ class "modal-body" ]
+                    [ iframe
+                        [ src "https://docs.google.com/forms/d/e/1FAIpQLSeViv9OV63Iy9RoFZ0BqPjgJWZyJmicZLH1gIWFS0_Rpi0k3w/viewform?embedded=true"
+                        , attribute "width" "450"
+                        , attribute "height" "530"
+                        , attribute "frameborder" "0"
+                        , attribute "marginheight" "0"
+                        , attribute "marginwidth" "0"
                         ]
+                        []
                     ]
                 , div [ class "modal-footer" ]
-                    [ button [ attribute "type" "button", class "btn btn-secondary", onClick (ChoiceButtonClicked "score") ] [ text "No feedback" ]
-                    , button [ attribute "type" "submit", class "btn btn-primary" ] [ text "Send feedback" ]
+                    [ button [ attribute "type" "button", class "btn btn-secondary", onClick (ChoiceButtonClicked "score") ] [ text "No, thanks" ]
                     ]
                 ]
             ]
