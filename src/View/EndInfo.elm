@@ -19,6 +19,8 @@ view =
                     ]
                 ]
             , Markdown.toHtml [ class "row my-4" ]
+                -- join each string with newlines so Markdown.toHtml can insert paragraphs
+                -- could be joined into one string in Text.elm instead
                 (t EndInfoParagraph1
                     ++ "\n\n"
                     ++ t EndInfoParagraph2
