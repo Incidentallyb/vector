@@ -14,19 +14,24 @@ view =
     div [ class "end container-fluid" ]
         [ div [ class "container" ]
             [ div [ class "row my-4" ]
-                [ h1 [ class "d-block mx-auto" ]
+                [ h1 [ class "d-block mx-auto text-center" ]
                     [ text (t EndInfoHeader)
                     ]
                 ]
-            , div [ class "row my-4" ]
-                [ p [] [ Markdown.toHtml [] (t EndInfoParagraph1) ]
-                , p [] [ text (t EndInfoParagraph2) ]
-                , p [] [ Markdown.toHtml [] (t EndInfoParagraph3) ]
-                , p [] [ text (t EndInfoParagraph4) ]
-                ]
+            , Markdown.toHtml [ class "row my-4" ]
+                -- join each string with newlines so Markdown.toHtml can insert paragraphs
+                -- could be joined into one string in Text.elm instead
+                (t EndInfoParagraph1
+                    ++ "\n\n"
+                    ++ t EndInfoParagraph2
+                    ++ "\n\n"
+                    ++ t EndInfoParagraph3
+                    ++ "\n\n"
+                    ++ t EndInfoParagraph4
+                )
             ]
         , footer [ class "row d-flex justify-content-center" ]
-            [ div [] [ img [ src "images/wellcome-logo.png" ] [] ]
-            , div [] [ img [ src "images/AnNex_Logo_600.png" ] [] ]
+            [ img [ src "images/wellcome-logo.png", alt "Wellcome Trust" ] []
+            , img [ src "images/AnNex_Logo_600.png", alt "Annex - Animal Research Nexus" ] []
             ]
         ]
