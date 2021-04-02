@@ -2,10 +2,9 @@ module FeedbackForm exposing (count, render)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
-import GameData exposing (GameData, NotificationCount)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (on, onClick, targetValue)
+import Html.Events exposing (onClick)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 

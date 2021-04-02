@@ -46,8 +46,6 @@ type Key
     | FeedbackForm2Source
     | FeedbackForm3Source
     | FeedbackFormClose
-      --- Documents
-    | ViewDocument
       --- Emails
     | EmailDummySentTime
     | EmailReplyButton

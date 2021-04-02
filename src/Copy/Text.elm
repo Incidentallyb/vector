@@ -92,9 +92,6 @@ t key =
         New ->
             "NEW"
 
-        ViewDocument ->
-            "View Document"
-
         EmailDummySentTime ->
             "Sent: Today"
 

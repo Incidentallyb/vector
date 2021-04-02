@@ -25,14 +25,31 @@ view gamedata datastore =
         )
 
 
+lastTriggerIsScore : List String -> String -> Bool
+lastTriggerIsScore choiceList messageName =
+    let
+        scoresTriggered =
+            List.length (List.filter (\choice -> choice == "score") choiceList)
+    in
+    case scoresTriggered of
+        1 ->
+            messageName == "z-score-1"
+
+        2 ->
+            messageName == "z-score-2"
+
+        3 ->
+            messageName == "z-score-3"
+
+        _ ->
+            False
+
+
 renderMessageAndPrompt : GameData -> Content.Datastore -> Content.MessageData -> Html Msg
 renderMessageAndPrompt gamedata datastore message =
     let
         actualTriggers =
             String.split "|" (Maybe.withDefault "" (List.head (triggeredByChoicesGetMatches gamedata.choices message.triggered_by)))
-
-        lastTriggerIsScore =
-            "score" == Maybe.withDefault "" (List.head (List.reverse actualTriggers))
 
         triggeredBy =
             String.join "|" actualTriggers
@@ -52,13 +69,13 @@ renderMessageAndPrompt gamedata datastore message =
 
           else
             text ""
-        , if lastTriggerIsScore then
+        , renderMessage message.author message.content
+        , renderPrompt message gamedata.choices gamedata.checkboxSet gamedata.teamName
+        , if lastTriggerIsScore gamedata.choices message.basename then
             renderScore "AL" actualTriggers gamedata.teamName datastore gamedata.socialsPosted
 
           else
             text ""
-        , renderMessage message.author message.content
-        , renderPrompt message gamedata.choices gamedata.checkboxSet gamedata.teamName
         ]
 
 

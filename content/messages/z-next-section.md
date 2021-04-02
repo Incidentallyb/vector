@@ -2,18 +2,18 @@
 title: Next section
 author: AL
 triggered_by:
-  - init|start|macaques|step|stay|score
-  - init|start|pigs|increase|score
-  - init|start|pigs|keep|score
-  - init|start|mice|handle|score
-  - init|start|mice|tubes|score
-  - init|start|fish|adult|score
-  - init|start|fish|embryo|score
-  - init|start|macaques|step|change|step|pigs|score
-  - init|start|macaques|step|change|step|mice|score
-  - init|start|macaques|step|change|step|fish|score
-  - init|start|bio|biobank|score
-  - init|start|bio|stemcell|score
+  - init|start|macaques|step|stay|feedback|score
+  - init|start|pigs|increase|feedback|score
+  - init|start|pigs|keep|feedback|score
+  - init|start|mice|handle|feedback|score
+  - init|start|mice|tubes|feedback|score
+  - init|start|fish|adult|feedback|score
+  - init|start|fish|embryo|feedback|score
+  - init|start|macaques|step|change|step|pigs|feedback|score
+  - init|start|macaques|step|change|step|mice|feedback|score
+  - init|start|macaques|step|change|step|fish|feedback|score
+  - init|start|bio|biobank|feedback|score
+  - init|start|bio|stemcell|feedback|score
 choices:
   - step|Yes, let's go
 ---
