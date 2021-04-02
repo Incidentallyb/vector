@@ -4,10 +4,10 @@ author: Jenny
 subject: Security concerns
 triggered_by:
   - init|start|macaques|step|stay
-  - init|start|fish|embryo|score|step|scale|embryo
-  - init|start|fish|embryo|score|step|phased|stay
-  - init|start|fish|embryo|score|step|share|stay
-  - init|start|bio|stemcell|score|step|stay
+  - init|start|fish|embryo|feedback|score|step|scale|embryo
+  - init|start|fish|embryo|feedback|score|step|phased|stay
+  - init|start|fish|embryo|feedback|score|step|share|stay
+  - init|start|bio|stemcell|feedback|score|step|stay
 ---
 
 Hey Everyone,

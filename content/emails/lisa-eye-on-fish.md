@@ -3,12 +3,12 @@ title: Lisa eye on fish
 author: Dr. Lisa Finnamore
 subject: Understanding adult fish behaviour
 triggered_by:
-  - init|start|macaques|step|change|step|fish|score|step|scale|adult
-  - init|start|macaques|step|change|step|fish|score|step|phased|adult
-  - init|start|macaques|step|change|step|fish|score|step|share|adult
-  - init|start|fish|adult|score|step|scale|adult
-  - init|start|fish|adult|score|step|phased|adult
-  - init|start|fish|adult|score|step|share|adult
+  - init|start|macaques|step|change|step|fish|feedback|score|step|scale|adult
+  - init|start|macaques|step|change|step|fish|feedback|score|step|phased|adult
+  - init|start|macaques|step|change|step|fish|feedback|score|step|share|adult
+  - init|start|fish|adult|feedback|score|step|scale|adult
+  - init|start|fish|adult|feedback|score|step|phased|adult
+  - init|start|fish|adult|feedback|score|step|share|adult
 ---
 
 Hello,

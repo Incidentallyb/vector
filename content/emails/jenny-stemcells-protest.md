@@ -3,7 +3,7 @@ title: Jenny stemcells protest
 author: Jenny
 subject: Stemcell public outrage
 triggered_by:
-  - init|start|bio|stemcell|score|step
+  - init|start|bio|stemcell|feedback|score|step
 choices:
   - stay|Stay on course with Stem Cells
   - change|Change model

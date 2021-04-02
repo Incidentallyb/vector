@@ -1,7 +1,7 @@
 ---
 title: Barry bio bank stay
 triggered_by:
-  - init|start|bio|biobank|score|step|stay
+  - init|start|bio|biobank|feedback|score|step|stay
 author: Dr. Barry Taylor
 subject: Substandard Biobank material, we must discuss alternatives
 choices:

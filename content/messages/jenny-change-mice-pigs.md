@@ -2,7 +2,7 @@
 title: Jenny change mice pigs
 author: Jenny
 triggered_by:
-  - init|start|bio|stemcell|score|step|change
+  - init|start|bio|stemcell|feedback|score|step|change
 choices:
   - mice|Change to mice
   - pigs|Change to pigs

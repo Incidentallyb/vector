@@ -41,6 +41,11 @@ type Key
     | DesktopParagraph2
     | DesktopParagraph3
     | DesktopParagraph4
+      --- Feedback Forms
+    | FeedbackForm1Source
+    | FeedbackForm2Source
+    | FeedbackForm3Source
+    | FeedbackFormClose
       --- Documents
     | ViewDocument
       --- Emails

@@ -16,6 +16,7 @@ triggered_by:
   - init|start|bio|stemcell
 
 choices:
-  - score|Continue  
+  - feedback|Continue  
 ---
-I've got your first set of results, are you ready to see them?
+
+Are you ready for me to assess your results so far? [cCc]

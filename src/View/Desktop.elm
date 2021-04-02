@@ -2,6 +2,7 @@ module View.Desktop exposing (renderTopNavigation, renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import FeedbackForm
 import GameData exposing (GameData, NotificationCount)
 import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail)
 import Html exposing (..)
@@ -83,7 +84,7 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                 ]
             , div [ class "col-md-8 content" ]
                 ((if "feedback" == Maybe.withDefault "" (List.head gameData.choices) then
-                    [ renderFinalScoreFeedback ]
+                    [ FeedbackForm.render (FeedbackForm.count gameData.choices) ]
 
                   else
                     []
@@ -299,30 +300,6 @@ renderTeamInformation teamName =
                     , class "team-logo"
                     ]
                     []
-                ]
-            ]
-        ]
-
-
-renderFinalScoreFeedback : Html Msg
-renderFinalScoreFeedback =
-    div [ class "modal", attribute "style" "display:block", id "finalScoreFeedback" ]
-        [ div [ class "modal-dialog modal-dialog-centered" ]
-            [ div [ class "modal-content" ]
-                [ div [ class "modal-body" ]
-                    [ iframe
-                        [ src "https://docs.google.com/forms/d/e/1FAIpQLSeViv9OV63Iy9RoFZ0BqPjgJWZyJmicZLH1gIWFS0_Rpi0k3w/viewform?embedded=true"
-                        , attribute "width" "450"
-                        , attribute "height" "530"
-                        , attribute "frameborder" "0"
-                        , attribute "marginheight" "0"
-                        , attribute "marginwidth" "0"
-                        ]
-                        []
-                    ]
-                , div [ class "modal-footer" ]
-                    [ button [ attribute "type" "button", class "btn btn-secondary", onClick (ChoiceButtonClicked "score") ] [ text "No, thanks" ]
-                    ]
                 ]
             ]
         ]
