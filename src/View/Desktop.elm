@@ -45,25 +45,18 @@ view gameData pageRoute notifications =
 
 renderTopNavigation : String -> Html Msg
 renderTopNavigation teamName =
-    nav [ class "navbar navbar-light bg-light" ]
-        [ a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
-        , div [ id "navbar" ]
-            [ ul [ class "navbar-nav ml-auto" ]
-                [ li [ class "nav-item active" ]
-                    [ span [ class "navbar-text" ] [ text ("Team " ++ teamName) ]
-                    ]
-                , li [ class "nav-item" ]
-                    [ audio
-                        [ src "/audio/vector_loop_1_web.ogg"
-                        , id "audio-player"
-                        , controls True
-                        , autoplay True
-                        , loop True
-                        ]
-                        []
-                    ]
-                ]
+    header [ class "navbar navbar-light bg-light" ]
+        [ img [ class "header-icon", src (t UploadPath ++ "biocore-logo.png") ] []
+        , a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
+        , span [ class "ml-auto" ] [ text ("Team " ++ teamName) ]
+        , audio
+            [ src "/audio/vector_loop_1_web.ogg"
+            , id "audio-player"
+            , controls True
+            , autoplay True
+            , loop True
             ]
+            []
         ]
 
 
@@ -71,7 +64,7 @@ renderWrapperWithNav : GameData -> Route -> NotificationCount -> List (Html Msg)
 renderWrapperWithNav gameData pageRoute notifications elements =
     div [ class "container-fluid " ]
         [ div [ class "row desktop", id "desktop" ]
-            [ div [ class "col-md-3 d-none d-md-block" ]
+            [ div [ class "col-md-3 d-none d-md-block p-0" ]
                 [ div [ class "sticky-top" ]
                     [ renderTeamInformation gameData.teamName
                     , renderNavLinks pageRoute notifications
@@ -112,7 +105,7 @@ renderLoginPage gameData =
         [ div [ class "v-centred" ]
             [ div [ class "sign-in" ]
                 [ img [ src (t UploadPath ++ "biocore-logo.png"), alt "BioCore", class "login-logo" ] []
-                , h1 [] [ text "Please login" ]
+                , h1 [] [ label [ for "select" ] [ text "Please login" ] ]
                 , let
                     teamNamesList =
                         String.split "|" (t TeamNames)
@@ -121,6 +114,8 @@ renderLoginPage gameData =
                     [ on "change" (Json.map TeamChosen targetValue)
                     , class "form-control"
                     , value gameData.teamName
+                    , id "select"
+                    , attribute "autofocus" "true"
                     ]
                     (List.map loginOption teamNamesList)
                 , button

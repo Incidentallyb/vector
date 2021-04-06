@@ -66,16 +66,26 @@
 }
 
 .documents {
+  .card {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
   .card-title {
-    text-transform: capitalize;
-    margin: 0;
-    display: flex;
     align-items: center;
+    color: var(--black);
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin: 0;
+    min-height: 4em;
+    text-transform: capitalize;
   }
 
   .card-body {
     display: flex;
-    min-height: 108px;
+    min-height: 3rem;
     justify-content: center;
   }
 
@@ -89,7 +99,7 @@
   position: absolute;
   left: -25px;
   top: 15px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   z-index: 1;
 }
 
@@ -101,33 +111,5 @@
 
 .card-icon {
   width: 100%;
-  padding: 1rem 2rem;
   filter: drop-shadow(0px 0px 5px var(--black));
-}
-
-.card-columns {
-  .card {
-    margin-bottom: 2rem;
-  }
-}
-
-@media (min-width: 576px) {
-  .card-columns {
-    column-count: 2;
-    column-gap: 3rem;
-
-    .card {
-      margin-bottom: 3rem;
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .card-columns {
-    column-count: 3;
-
-    .card {
-      margin-bottom: 3rem;
-    }
-  }
 }

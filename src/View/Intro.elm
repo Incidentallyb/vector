@@ -12,7 +12,7 @@ view : Html Msg
 view =
     div [ class "intro container-fluid" ]
         [ div [ class "row my-4" ]
-            [ h1 [ class "d-block mx-auto" ] [ text (t SiteTitle) ]
+            [ h1 [ class "d-block mx-auto px-4 text-center" ] [ text (t SiteTitle) ]
             ]
         , div [ class "row my-4" ]
             [ iframe

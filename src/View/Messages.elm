@@ -8,6 +8,7 @@ import Dict
 import GameData exposing (CheckboxData, GameData, ScoreType(..), filterMessages)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Attributes.Aria exposing (ariaLive)
 import List.Extra
 import Markdown
 import Message exposing (Msg(..))
@@ -18,7 +19,7 @@ import View.ChoiceButtons
 
 view : GameData -> Content.Datastore -> Html Msg
 view gamedata datastore =
-    ul [ class "message-list p-0" ]
+    ul [ class "message-list p-0", ariaLive "polite" ]
         (Dict.values
             (filterMessages datastore.messages gamedata.choices)
             |> List.map (renderMessageAndPrompt gamedata datastore)
@@ -46,6 +47,7 @@ renderMessageAndPrompt gamedata datastore message =
             [ ( "already-seen", haveWeSeenThisBefore )
             , ( "not-seen", not haveWeSeenThisBefore )
             ]
+        , ariaLive "polite"
         ]
         [ if not haveWeSeenThisBefore then
             div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]

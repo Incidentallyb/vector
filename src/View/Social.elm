@@ -8,6 +8,7 @@ import GameData exposing (GameData, filterSocials, filteredSocials, keyedSocials
 import Heroicons.Outline exposing (chat, heart, refresh, upload)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Attributes.Aria exposing (ariaHidden)
 import Html.Events exposing (onClick, onInput)
 import Markdown
 import Message exposing (Msg(..))
@@ -73,7 +74,7 @@ renderTweet social =
         [ class "tweet py-2" ]
         [ div [ class "d-flex" ]
             -- TODO replace with photos
-            [ div [ class "author-icon red mx-2 flex-shrink-0" ]
+            [ div [ class "author-icon red mx-2 flex-shrink-0", ariaHidden True ]
                 [ text (String.left 1 social.author)
                 ]
             , div [ class "flex-grow-1" ]
@@ -82,10 +83,10 @@ renderTweet social =
                 , Markdown.toHtml [ class "m-0 mr-2 socialText" ] social.content
                 , renderImage social
                 , div [ class "icons d-flex justify-content-between my-2 mr-4" ]
-                    [ div [] [ chat [], text (String.fromInt social.numComments) ]
-                    , div [] [ refresh [], text (String.fromInt social.numRetweets) ]
-                    , div [] [ heart [], text (String.fromInt social.numLoves) ]
-                    , div [] [ upload [] ]
+                    [ div [] [ chat [], text (String.fromInt social.numComments), span [ class "sr-only" ] [ text " comments." ] ]
+                    , div [] [ refresh [], text (String.fromInt social.numRetweets), span [ class "sr-only" ] [ text " retweeeets." ] ]
+                    , div [] [ heart [], text (String.fromInt social.numLoves), span [ class "sr-only" ] [ text " likes." ] ]
+                    , div [] [ upload [], span [ class "sr-only" ] [ text "share." ] ]
                     ]
                 ]
             ]
