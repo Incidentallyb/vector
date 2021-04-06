@@ -310,10 +310,6 @@ li.not-seen + li.not-seen {
   opacity: 0;
 }
 
-li.already-seen .confetti {
-  animation: none;
-  display: none;
-}
 .confetti:nth-child(1) {
   background-color: #f2d74e;
   left: 10%;
