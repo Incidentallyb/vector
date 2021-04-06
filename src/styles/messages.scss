@@ -126,7 +126,7 @@ li.already-seen {
   .typing-indicator {
     display: none;
   }
-  .message {
+  .message:not(.latest-score) {
     animation: none;
   }
 }
@@ -139,6 +139,22 @@ li.already-seen {
 }
 .message-list .message:nth-child(4n) {
   animation-delay: #{$timeToWait + 2};
+}
+
+.message-list li.latest-score+li {
+  .message:nth-child(2n) {
+    animation-delay: #{$timeToWait + 3};
+  }
+}
+.message-list li.latest-score+li {
+  .message:nth-child(3n) {
+    animation-delay: #{$timeToWait + 4};
+  }
+}
+.message-list li.latest-score+li {
+  .message:nth-child(4n) {
+    animation-delay: #{$timeToWait + 5};
+  }
 }
 
 /*

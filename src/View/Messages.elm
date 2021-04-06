@@ -94,6 +94,7 @@ renderMessageAndPrompt gamedata datastore message =
         [ classList
             [ ( "already-seen", haveWeSeenThisBefore )
             , ( "not-seen", not haveWeSeenThisBefore )
+            , ( "latest-score", triggeredByScore )
             ]
         ]
         [ if not haveWeSeenThisBefore then
@@ -129,9 +130,6 @@ renderScore from isLatestScore triggers team datastore socialPosts =
         [ div [ class "mx-3" ]
             (if isLatestScore then
                 List.repeat 10 (div [ class "confetti" ] [])
-
-             else
-                [ text "" ]
                     ++ [ p [ class "message-from m-0" ] [ text from ]
                        , p [] [ text (t WellDone ++ team) ]
                        , p [] [ text (t Results) ]
@@ -141,6 +139,17 @@ renderScore from isLatestScore triggers team datastore socialPosts =
                             , div [ class "harm" ] [ h3 [] [ text "Harm" ], text (String.fromInt (GameData.updateScore Harm datastore socialPosts previousChoices latestChoice)) ]
                             ]
                        ]
+
+             else
+                [ p [ class "message-from m-0" ] [ text from ]
+                , p [] [ text (t WellDone ++ team) ]
+                , p [] [ text (t Results) ]
+                , div [ class "results" ]
+                    [ div [ class "success" ] [ h3 [] [ text "Success" ], text (String.fromInt (GameData.updateScore Success datastore socialPosts previousChoices latestChoice) ++ "%") ]
+                    , div [ class "economic" ] [ h3 [] [ text "Economic" ], text (String.fromInt (GameData.updateScore Economic datastore socialPosts previousChoices latestChoice) ++ "m remaining") ]
+                    , div [ class "harm" ] [ h3 [] [ text "Harm" ], text (String.fromInt (GameData.updateScore Harm datastore socialPosts previousChoices latestChoice)) ]
+                    ]
+                ]
             )
         ]
 
