@@ -50,8 +50,8 @@ triggerIsScore choiceList messageName =
             False
 
 
-lastTriggerIsScore : List String -> String -> Bool
-lastTriggerIsScore choiceList messageName =
+lastTriggerIsThisScore : List String -> String -> Bool
+lastTriggerIsThisScore choiceList messageName =
     let
         scoresTriggered =
             List.length (List.filter (\choice -> choice == "score") choiceList)
@@ -81,9 +81,10 @@ renderMessageAndPrompt gamedata datastore message =
 
         haveWeSeenThisBefore =
             Set.member triggeredBy gamedata.choicesVisited
+                || triggeredByScore
 
         triggeredByScore =
-            lastTriggerIsScore gamedata.choices message.basename
+            lastTriggerIsThisScore gamedata.choices message.basename
 
         readyForScore =
             triggerIsScore gamedata.choices message.basename
@@ -91,11 +92,11 @@ renderMessageAndPrompt gamedata datastore message =
     -- add already-seen so we can avoid showing typing animations on subsequent page loads of the same page.
     li
         [ classList
-            [ ( "already-seen", haveWeSeenThisBefore || triggeredByScore )
+            [ ( "already-seen", haveWeSeenThisBefore )
             , ( "not-seen", not haveWeSeenThisBefore )
             ]
         ]
-        [ if not (haveWeSeenThisBefore || triggeredByScore) then
+        [ if not haveWeSeenThisBefore then
             div [ class "typing-indicator" ] [ span [] [ text "" ], span [] [ text "" ], span [] [ text "" ] ]
 
           else
