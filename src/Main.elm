@@ -8,7 +8,7 @@ import ContentChoices exposing (choiceStepsList)
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict
-import GameData exposing (GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, init, notificationsInit)
+import GameData exposing (GameData, NotificationCount, ScoreType(..), filterDocuments, filterEmails, filterMessages, filterSocials, init)
 import Html exposing (Html, div)
 import Json.Decode
 import Message exposing (Msg(..))
