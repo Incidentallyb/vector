@@ -80,6 +80,9 @@ t key =
         Results ->
             "Your choices have produced the following results:"
 
+        SubmitEndChoices ->
+            "Submit choices"
+
         FinalScoreFeedbackPrompt ->
             "While AL analyses your proposal is there anything else you would like to tell us?"
 
