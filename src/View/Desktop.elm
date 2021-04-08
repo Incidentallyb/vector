@@ -45,7 +45,7 @@ view gameData pageRoute notifications =
 
 renderTopNavigation : String -> Html Msg
 renderTopNavigation teamName =
-    header [ class "navbar navbar-light bg-light" ]
+    header [ class "navbar navbar-light bg-light", id "topnav" ]
         [ img [ class "header-icon", src (t UploadPath ++ "biocore-logo.png") ] []
         , a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
         , span [ class "ml-auto" ] [ text ("Team " ++ teamName) ]
