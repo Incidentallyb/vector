@@ -14,21 +14,23 @@ view =
     div [ class "end container-fluid" ]
         [ div [ class "container" ]
             [ div [ class "row my-4" ]
-                [ h1 [ class "d-block mx-auto text-center" ]
-                    [ text (t EndInfoHeader)
+                [ div [ class "col-12" ]
+                    [ h1 [ class "d-block mx-auto text-center" ]
+                        [ text (t EndInfoHeader)
+                        ]
                     ]
+                , Markdown.toHtml [ class "col-12 mt-4" ]
+                    -- join each string with newlines so Markdown.toHtml can insert paragraphs
+                    -- could be joined into one string in Text.elm instead
+                    (t EndInfoParagraph1
+                        ++ "\n\n"
+                        ++ t EndInfoParagraph2
+                        ++ "\n\n"
+                        ++ t EndInfoParagraph3
+                        ++ "\n\n"
+                        ++ t EndInfoParagraph4
+                    )
                 ]
-            , Markdown.toHtml [ class "row my-4" ]
-                -- join each string with newlines so Markdown.toHtml can insert paragraphs
-                -- could be joined into one string in Text.elm instead
-                (t EndInfoParagraph1
-                    ++ "\n\n"
-                    ++ t EndInfoParagraph2
-                    ++ "\n\n"
-                    ++ t EndInfoParagraph3
-                    ++ "\n\n"
-                    ++ t EndInfoParagraph4
-                )
             ]
         , footer [ class "row d-flex justify-content-center" ]
             [ img [ src "images/wellcome-logo.png", alt "Wellcome Trust" ] []
