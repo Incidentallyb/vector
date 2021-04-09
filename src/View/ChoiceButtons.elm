@@ -1,5 +1,7 @@
 module View.ChoiceButtons exposing (choiceStringsToButtons, renderButtons, renderCheckboxes)
 
+import Copy.Keys exposing (Key(..))
+import Copy.Text exposing (t)
 import GameData
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -121,7 +123,7 @@ renderCheckboxes buttonList checkboxes =
                 ]
             , onClick (CheckboxesSubmitted submitValue)
             ]
-            [ text "Submit choices" ]
+            [ text (t SubmitEndChoices) ]
         ]
 
 

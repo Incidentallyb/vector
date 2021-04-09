@@ -1,4 +1,4 @@
-module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), emailContainsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, unactionedEmailChoices, unactionedMessageChoices, updateScore)
+module GameData exposing (CheckboxData, GameData, NotificationCount, ScoreType(..), emailContainsPendingDecision, filterDocuments, filterEmails, filterMessages, filterSocials, getStringIfMatchFound, init, notificationsInit, unactionedEmailChoices, unactionedMessageChoices, updateScore)
 
 import Content exposing (BranchingContent(..), DocumentData, EmailData, MessageData, SocialData)
 import ContentChoices exposing (branchingContentListKeyedByTriggerChoice, getBranchingChoiceChosen, getTriggeredBy, socialListKeyedByTriggerChoice, triggeredByChoices)
@@ -45,6 +45,17 @@ init =
     , scoreEconomic = 0
     , scoreHarm = 0
     , socialsPosted = Dict.empty
+    }
+
+
+notificationsInit : NotificationCount
+notificationsInit =
+    { messages = 1
+    , messagesNeedAttention = False
+    , documents = 1
+    , emails = 0
+    , emailsNeedAttention = False
+    , social = 0
     }
 
 

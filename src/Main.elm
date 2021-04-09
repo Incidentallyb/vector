@@ -56,14 +56,7 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
-      , notifications =
-            { messages = 1
-            , messagesNeedAttention = False
-            , documents = 1
-            , emails = 0
-            , emailsNeedAttention = False
-            , social = 0
-            }
+      , notifications = GameData.notificationsInit
       , socialInput = ""
       }
     , Cmd.none
@@ -207,7 +200,15 @@ update msg model =
                         _ ->
                             model.page
             in
-            ( { model | page = pageAfterClick, gameData = newGameData, notifications = newNotifications }, Cmd.none )
+            case choice of
+                "send" ->
+                    ( { model | page = EndInfo, gameData = GameData.init, notifications = newNotifications }, Cmd.none )
+
+                "replay" ->
+                    ( { model | page = Intro, gameData = GameData.init, notifications = GameData.notificationsInit }, Cmd.none )
+
+                _ ->
+                    ( { model | page = pageAfterClick, gameData = newGameData, notifications = GameData.notificationsInit }, Cmd.none )
 
         CheckboxClicked value ->
             let
