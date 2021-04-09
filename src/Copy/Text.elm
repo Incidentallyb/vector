@@ -169,6 +169,9 @@ t key =
         FeedbackFormClose ->
             "No, thanks"
 
+        SubmitEndChoices ->
+            "Submit choices"
+
         SocialInputLabel ->
             "Post a tweeeet"
 
