@@ -3,9 +3,9 @@ title: Barry tube mice change
 author: Dr. Barry Taylor
 subject: Working with Mice in Observation tubes are extremely difficult
 triggered_by:
-  - init|start|mice|tubes|score|step|scale
-  - init|start|mice|tubes|score|step|phased
-  - init|start|mice|tubes|score|step|share
+  - init|start|mice|tubes|feedback|score|step|scale
+  - init|start|mice|tubes|feedback|score|step|phased
+  - init|start|mice|tubes|feedback|score|step|share
 choices:
   - tubes|Carry on with tube mice
   - change|Change animal model

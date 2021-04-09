@@ -3,15 +3,15 @@ title: Charlie no more macaques
 author: Charlie
 subject: New model options
 triggered_by:
-  - init|start|macaques|step|change|step|pigs|score|step|scale|change
-  - init|start|macaques|step|change|step|pigs|score|step|phased|change
-  - init|start|macaques|step|change|step|pigs|score|step|share|change
-  - init|start|pigs|increase|score|step|scale|change
-  - init|start|pigs|increase|score|step|phased|change
-  - init|start|pigs|increase|score|step|share|change
-  - init|start|pigs|keep|score|step|scale|change
-  - init|start|pigs|keep|score|step|phased|change
-  - init|start|pigs|keep|score|step|share|change
+  - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change
+  - init|start|macaques|step|change|step|pigs|feedback|score|step|phased|change
+  - init|start|macaques|step|change|step|pigs|feedback|score|step|share|change
+  - init|start|pigs|increase|feedback|score|step|scale|change
+  - init|start|pigs|increase|feedback|score|step|phased|change
+  - init|start|pigs|increase|feedback|score|step|share|change
+  - init|start|pigs|keep|feedback|score|step|scale|change
+  - init|start|pigs|keep|feedback|score|step|phased|change
+  - init|start|pigs|keep|feedback|score|step|share|change
 choices:
   - mice|Mice
   - fish|Fish

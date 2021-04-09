@@ -3,9 +3,9 @@ title: Barry change
 author: Dr. Barry Taylor
 subject: Adaptations to the model
 triggered_by:
-  - init|start|mice|tubes|score|step|scale|change
-  - init|start|mice|tubes|score|step|phased|change
-  - init|start|mice|tubes|score|step|share|change
+  - init|start|mice|tubes|feedback|score|step|scale|change
+  - init|start|mice|tubes|feedback|score|step|phased|change
+  - init|start|mice|tubes|feedback|score|step|share|change
 choices:
   - pigs|Pigs
   - fish|Fish

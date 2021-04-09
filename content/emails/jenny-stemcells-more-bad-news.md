@@ -3,7 +3,7 @@ title: Jenny stemcells more bad news
 author: Jenny
 subject: Protestors have broken into the lab!
 triggered_by:
-  - init|start|bio|stemcell|score|step|stay
+  - init|start|bio|stemcell|feedback|score|step|stay
 choices:
   - engage|Engage Protestors
   - prosecute|Prosecute Protestors

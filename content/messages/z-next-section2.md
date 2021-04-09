@@ -2,7 +2,7 @@
 title: Next section
 author: AL
 triggered_by:
-  - init|start|bio|biobank|score|step|stay|stay|score
+  - init|start|bio|biobank|feedback|score|step|stay|stay|feedback|score
 choices:
   - step|Yes, let's go
 ---

@@ -29,8 +29,6 @@ type Key
     | ReadyToReply
     | WellDone
     | Results
-    | SubmitEndChoices
-    | FinalScoreFeedbackPrompt
       --- "Back to" area texts
     | NavDocumentsBackTo
     | NavEmailsBackTo
@@ -43,8 +41,12 @@ type Key
     | DesktopParagraph2
     | DesktopParagraph3
     | DesktopParagraph4
-      --- Documents
-    | ViewDocument
+      --- Feedback Forms
+    | FeedbackForm1Source
+    | FeedbackForm2Source
+    | FeedbackForm3Source
+    | FeedbackFormClose
+    | SubmitEndChoices
       --- Emails
     | EmailDummySentTime
     | EmailReplyButton

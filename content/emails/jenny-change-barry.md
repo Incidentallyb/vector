@@ -3,15 +3,15 @@ title: Jenny change Barry
 author: Jenny
 subject: Responding to Public Opinion
 triggered_by:
-  - init|start|fish|embryo|score|step|scale|change|mice
-  - init|start|fish|embryo|score|step|scale|change|pigs
-  - init|start|fish|embryo|score|step|phased|change|mice
-  - init|start|fish|embryo|score|step|phased|change|pigs
-  - init|start|fish|embryo|score|step|share|change|mice
-  - init|start|fish|embryo|score|step|share|change|pigs
-  - init|start|bio|stemcell|score|step|change|pigs
-  - init|start|bio|stemcell|score|step|change|mice
-  - init|start|bio|biobank|score|step|mice|step
+  - init|start|fish|embryo|feedback|score|step|scale|change|mice
+  - init|start|fish|embryo|feedback|score|step|scale|change|pigs
+  - init|start|fish|embryo|feedback|score|step|phased|change|mice
+  - init|start|fish|embryo|feedback|score|step|phased|change|pigs
+  - init|start|fish|embryo|feedback|score|step|share|change|mice
+  - init|start|fish|embryo|feedback|score|step|share|change|pigs
+  - init|start|bio|stemcell|feedback|score|step|change|pigs
+  - init|start|bio|stemcell|feedback|score|step|change|mice
+  - init|start|bio|biobank|feedback|score|step|mice|step
 choices:
   - step|Great, thank you!
 ---

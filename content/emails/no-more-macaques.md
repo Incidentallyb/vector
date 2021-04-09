@@ -3,8 +3,8 @@ title: No more macaques
 author: Jenny
 subject: Macaque import issues
 triggered_by:
-  - init|start|macaques|step|stay|score|step|scale
-  - init|start|macaques|step|stay|score|step|phased
+  - init|start|macaques|step|stay|feedback|score|step|scale
+  - init|start|macaques|step|stay|feedback|score|step|phased
 choices:
   - pigs|Pigs
   - fish|Fish
