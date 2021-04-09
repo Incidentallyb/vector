@@ -82,8 +82,7 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step
   - init|start|bio|biobank|feedback|score|step|stay|pigs
-  - init|star
-  - t|bio|biobank|feedback|score|step|stay|mice
+  - init|start|bio|biobank|feedback|score|step|stay|mice
   - init|start|bio|biobank|feedback|score|step|stay|fish
   - init|start|bio|biobank|feedback|score|step|stay|stay
   - init|start|bio|biobank|feedback|score|step|mice|step|step|fish
