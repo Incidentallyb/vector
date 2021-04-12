@@ -21,8 +21,7 @@ render formId =
                     [ div [ class "modal-body" ]
                         [ iframe
                             [ src (formSource formId)
-                            , style "height" "780px"
-                            , style "width" "100%"
+                            , class "iframe-content"
                             ]
                             []
                         ]
