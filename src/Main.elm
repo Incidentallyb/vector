@@ -208,7 +208,7 @@ update msg model =
                     ( { model | page = Intro, gameData = GameData.init, notifications = GameData.notificationsInit }, Cmd.none )
 
                 _ ->
-                    ( { model | page = pageAfterClick, gameData = newGameData, notifications = GameData.notificationsInit }, Cmd.none )
+                    ( { model | page = pageAfterClick, gameData = newGameData, notifications = newNotifications }, Cmd.none )
 
         CheckboxClicked value ->
             let
