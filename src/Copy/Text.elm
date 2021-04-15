@@ -167,7 +167,7 @@ t key =
             "https://incidentallyb.typeform.com/to/WEEJSvQN"
 
         FeedbackFormClose ->
-            "No, thanks"
+            "Close"
 
         SubmitEndChoices ->
             "Submit choices"
