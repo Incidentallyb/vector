@@ -16,19 +16,20 @@ triggered_by:
   - init|start|mice
 choices:
   - pig|Change to a pig model
-  - stem|Change to a fish model
+  - stemcell|Change to the stemcell model
+  - biobank|Change to the biobank model
 scoreChangeEconomic:
-  - macaque|-2
-  - fish|-2
+  - pig|2
+  - stemcell|4
+  - biobank|4
 scoreChangeHarm:
-  - macaque|5
-  - fish|2
+  - pig|4
+  - stemcell|2
+  - biobank|1
 scoreChangeSuccess:
-  - macaque|0
-  - fish|0
-image:
-  src: /uploads/BioBank.svg
-  alt: s
+  - pig|0
+  - stemcell|0
+  - biobank|0
 ---
 
 Good afternoon,
