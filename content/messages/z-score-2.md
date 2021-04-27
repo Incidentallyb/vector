@@ -3,15 +3,14 @@ title: Scores 2
 author: AL
 triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs
-  - init|start|macaques|s
-  - tep|stay|feedback|score|step|scale|mice
-  - init|start|macaques|step|stay|feedback|score|step|scale|fish
+  - init|start|macaques|step|stay|feedback|score|step|scale|mice
+  - init|start|macaques|step|stay|feedback|score|step|scale|resignation
+  - init|start|macaques|step|stay|feedback|score|step|scale|support
+  - init|start|macaques|step|stay|feedback|score|step|scale|redeploy
   - init|start|macaques|step|stay|feedback|score|step|phased|pigs
-  - init|start|macaques|step|stay|feedback|score|step|phased|mice
   - init|start|macaques|step|stay|feedback|score|step|phased|fish
-  - init|start|macaques|step|stay|feedback|score|step|share|pigs
-  - init|start|macaques|step|stay|feedback|score|step|share|mice
-  - init|start|macaques|step|stay|feedback|score|step|share|fish
+  - init|start|macaques|step|stay|feedback|score|step|share|money
+  - init|start|macaques|step|stay|feedback|score|step|share|transparant
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step
