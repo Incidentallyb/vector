@@ -121,6 +121,18 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|pigs|step|mice|feedback|score|nothing
   - init|start|bio|biobank|feedback|score|step|fish|step|embryo|feedback|score|nothing
   - init|start|bio|biobank|feedback|score|step|fish|step|adult|feedback|score|nothing
+  - init|start|bio|stemcell|feedback|score|step|stay|engage|feedback|score|pigs
+  - init|start|bio|stemcell|feedback|score|step|stay|prosecute|feedback|score|pigs
+  - init|start|mice|stemcell|feedback|score|step|stay|engage|feedback|score|pigs
+  - init|start|mice|stemcell|feedback|score|step|stay|prosecute|feedback|score|pigs
+  - init|start|bio|stemcell|feedback|score|step|stay|engage|feedback|score|mice
+  - init|start|bio|stemcell|feedback|score|step|stay|prosecute|feedback|score|mice
+  - init|start|mice|stemcell|feedback|score|step|stay|engage|feedback|score|mice
+  - init|start|mice|stemcell|feedback|score|step|stay|prosecute|feedback|score|mice
+  - init|start|bio|stemcell|feedback|score|step|stay|engage|feedback|score|fish
+  - init|start|bio|stemcell|feedback|score|step|stay|prosecute|feedback|score|fish
+  - init|start|mice|stemcell|feedback|score|step|stay|engage|feedback|score|fish
+  - init|start|mice|stemcell|feedback|score|step|stay|prosecute|feedback|score|fish
  
   - init|start|macaques|step|stay|feedback|score|step|scale|resignation|feedback|score|one-extra
   - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score|one-extra
