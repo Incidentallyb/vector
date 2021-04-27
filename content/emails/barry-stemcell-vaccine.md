@@ -5,6 +5,8 @@ subject: Major breakthrough!
 triggered_by:
   - init|start|bio|stemcell|feedback|score|step|stay|engage
   - init|start|bio|stemcell|feedback|score|step|stay|prosecute
+  - init|start|mice|biobank|feedback|score|step|stay|engage
+  - init|start|mice|biobank|feedback|score|step|stay|prosecute
 choices:
   - pigs|Change to Pigs
   - mice|Change to Mice
