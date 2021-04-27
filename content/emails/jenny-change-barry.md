@@ -11,7 +11,6 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|share|change|pigs
   - init|start|bio|stemcell|feedback|score|step|change|pigs
   - init|start|bio|stemcell|feedback|score|step|change|mice
-  - init|start|bio|biobank|feedback|score|step|mice|step
 choices:
   - step|Great, thank you!
 ---
