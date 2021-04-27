@@ -4,6 +4,7 @@ author: Jenny
 subject: Stemcell public outrage
 triggered_by:
   - init|start|bio|stemcell|feedback|score|step
+  - init|start|mice|stemcell|feedback|score|step
 choices:
   - stay|Stay on course with Stem Cells
   - change|Change model
