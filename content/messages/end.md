@@ -11,6 +11,12 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|pigs|feedback|score|nothing|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|mice|feedback|score|nothing|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|fish|feedback|score|nothing|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|resignation|feedback|score|nothing|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score|nothing|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|redeploy|feedback|score|nothing|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|phased|pigs|feedback|score|nothing|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|phased|fish|feedback|score|nothing|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score|nothing|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step|feedback|score|nothing|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step|feedback|score|nothing|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step|feedback|score|nothing|feedback|score
@@ -103,6 +109,14 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|pigs|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|mice|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|fish|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|resignation|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|redeploy|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|phased|pigs|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|phased|fish|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step|feedback|score|one-extra|feedback|score
@@ -195,6 +209,14 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|pigs|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|mice|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|fish|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|resignation|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|redeploy|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|phased|pigs|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|phased|fish|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step|feedback|score|two-extras|feedback|score
