@@ -15,8 +15,8 @@ hideFromTeams:
 triggered_by:
   - init|start|mice
 choices:
-  - inhouse|
-  - offsite|
+  - inhouse|Breed the mice in house
+  - offsite|Breed the mice off site
 scoreChangeEconomic:
   - inhouse|5
   - offsite|2
