@@ -8,7 +8,6 @@ triggered_by:
 choices:
   - engage|Engage Protestors
   - prosecute|Prosecute Protestors
-  - change|Change model
 scoreChangeEconomic:
   - engage|-5
   - prosecute|7
