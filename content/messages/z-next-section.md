@@ -5,8 +5,8 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score
   - init|start|pigs|increase|feedback|score
   - init|start|pigs|keep|feedback|score
-  - init|start|mice|handle|feedback|score
-  - init|start|mice|tubes|feedback|score
+  - init|start|mice|macaque|feedback|score
+  - init|start|mice|fish|feedback|score
   - init|start|fish|adult|feedback|score
   - init|start|fish|embryo|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score
