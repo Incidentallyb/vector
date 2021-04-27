@@ -50,21 +50,12 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step
-  - init|start|mice|handle|feedback|score|step|scale|limit
-  - init|start|mice|handle|feedback|score|step|phased|limit
-  - init|start|mice|handle|feedback|score|step|scale|fish
-  - init|start|mice|handle|feedback|score|step|phased|fish
-  - init|start|mice|handle|feedback|score|step|share|limit
-  - init|start|mice|handle|feedback|score|step|share|fish
-  - init|start|mice|tubes|feedback|score|step|scale|tubes
-  - init|start|mice|tubes|feedback|score|step|phased|tubes
-  - init|start|mice|tubes|feedback|score|step|share|tubes
-  - init|start|mice|tubes|feedback|score|step|scale|change|fish
-  - init|start|mice|tubes|feedback|score|step|scale|change|pigs
-  - init|start|mice|tubes|feedback|score|step|phased|change|fish
-  - init|start|mice|tubes|feedback|score|step|phased|change|pigs
-  - init|start|mice|tubes|feedback|score|step|share|change|fish
-  - init|start|mice|tubes|feedback|score|step|share|change|pigs
+  - init|start|mice|pig|feedback|score|step|scale|limit
+  - init|start|mice|pig|feedback|score|step|phased|limit
+  - init|start|mice|pig|feedback|score|step|share|limit
+  - init|start|mice|pig|feedback|score|step|scale|fish
+  - init|start|mice|pig|feedback|score|step|phased|fish
+  - init|start|mice|pig|feedback|score|step|share|fish
   - init|start|fish|adult|feedback|score|step|scale|embryo
   - init|start|fish|adult|feedback|score|step|scale|adult
   - init|start|fish|adult|feedback|score|step|phased|embryo
