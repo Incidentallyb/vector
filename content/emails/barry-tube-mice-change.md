@@ -3,9 +3,12 @@ title: Lisa tube mice change
 author: Dr. Lisa Finnamore
 subject: Working with Mice in Observation tubes are extremely difficult
 triggered_by:
-  - init|start|mice|tubes|feedback|score|step|scale
-  - init|start|mice|tubes|feedback|score|step|phased
-  - init|start|mice|tubes|feedback|score|step|share
+  - init|start|mice|inhouse|feedback|score|step|scale
+  - init|start|mice|inhouse|feedback|score|step|phased
+  - init|start|mice|inhouse|feedback|score|step|share
+  - init|start|mice|offsite|feedback|score|step|scale
+  - init|start|mice|offsite|feedback|score|step|phased
+  - init|start|mice|offsite|feedback|score|step|share
 choices:
   - tubes|place the mice in handling tubes and include toys
   - cage|place the mice in handling tubes,include toys and increase cage sizes
@@ -18,6 +21,10 @@ scoreChangeEconomic:
   - tubes|-3
   - cage|-5
   - nothing|0
+scoreChangeSuccess:
+  - tubes|0
+  - cage|-5
+  - nothing|5
 ---
 
 Hello,
