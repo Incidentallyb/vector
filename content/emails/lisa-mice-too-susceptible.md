@@ -15,8 +15,8 @@ hideFromTeams:
 triggered_by:
   - init|start|mice
 choices:
-  - macaque|Change to a macaque model
-  - fish|Change to a fish model
+  - pig|Change to a pig model
+  - stem|Change to a fish model
 scoreChangeEconomic:
   - macaque|-2
   - fish|-2
