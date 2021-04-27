@@ -2,6 +2,7 @@
 title: Biobank
 triggered_by:
   - "init|start|bio"
+  - "init|start|mice"
 subtitle: Number used in 2020 - N/A
 image:
   src: BioBank.svg
