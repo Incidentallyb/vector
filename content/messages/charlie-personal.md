@@ -14,9 +14,9 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|scale
   - init|start|pigs|keep|feedback|score|step|phased
   - init|start|pigs|keep|feedback|score|step|share
-  - init|start|mice|handle|feedback|score|step|scale
-  - init|start|mice|handle|feedback|score|step|phased
-  - init|start|mice|handle|feedback|score|step|share
+  - init|start|mice|pig|feedback|score|step|scale
+  - init|start|mice|pig|feedback|score|step|phased
+  - init|start|mice|pig|feedback|score|step|share
   - init|start|bio|stemcell|feedback|score|step|change|mice
   - init|start|bio|stemcell|feedback|score|step|change|pigs
   - init|start|bio|biobank|feedback|score|step|mice|step|step
