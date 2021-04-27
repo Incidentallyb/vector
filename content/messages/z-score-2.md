@@ -107,8 +107,8 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|stay|stay
   - init|start|bio|biobank|feedback|score|step|mice|step|fish
   - init|start|bio|biobank|feedback|score|step|mice|step|limit
-  - init|start|bio|stemcell|feedback|score|step|stay|step|engage
-  - init|start|bio|stemcell|feedback|score|step|stay|step|prosecute
+  - init|start|bio|stemcell|feedback|score|step|stay|engage
+  - init|start|bio|stemcell|feedback|score|step|stay|prosecute
   - init|start|bio|stemcell|feedback|score|step|change|pigs|step|limit|step
   - init|start|bio|stemcell|feedback|score|step|change|pigs|step|fish
   - init|start|bio|stemcell|feedback|score|step|change|pigs|step|mice
