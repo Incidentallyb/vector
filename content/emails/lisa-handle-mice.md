@@ -1,7 +1,7 @@
 ---
-title: Lisa handle mice
-author: Dr. Lisa Finnamore
-subject: Handling the Mice are causing stress
+title: Barry mice not susceptible
+author: Dr. Barry Taylor
+subject: Mice are not susceptible to the disease
 triggered_by:
   - init|start|mice
 hideFromTeams:
@@ -15,15 +15,17 @@ hideFromTeams:
   - Lime
   - Maple
 choices:
-  - handle|Continue handling the mice
-  - tubes|Mice in glass tubes
+  - macaque|Change to a macaque model
+  - fish|Change to a fish model
 scoreChangeEconomic:
-  - tubes|-3
+  - macaque|-2
+  - fish|-2
 scoreChangeHarm:
-  - handle|2
-  - tubes|-1
+  - macaque|5
+  - fish|2
 scoreChangeSuccess:
-  - handle|5
+  - macaque|0
+  - fish|0
 ---
 
 Good afternoon,
