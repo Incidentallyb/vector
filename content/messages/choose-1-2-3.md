@@ -7,9 +7,8 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|scale|redeploy|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|pigs|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|fish|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|share|pigs|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|share|mice|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|share|fish|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step|feedback|score
