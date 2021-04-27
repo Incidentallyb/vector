@@ -1,7 +1,7 @@
 ---
 title: Barry mice genetic
 author: Dr. Barry Taylor
-subject: Mice are not susceptible to the disease - We can genetically alter
+subject: Mice are not susceptible to the disease - We can genetically alter them
 hideFromTeams:
   - Birch
   - Fir
