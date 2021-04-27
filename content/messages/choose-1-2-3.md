@@ -48,9 +48,24 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|limit|feedback|score
-  - init|start|mice|handle|feedback|score|step|phased|limit|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|fish|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|tubes|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|tubes|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|tubes|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|cage|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|cage|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|cage|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|cage|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|cage|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|cage|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|nothing|feedback|score
   - init|start|mice|handle|feedback|score|step|phased|fish|feedback|score
   - init|start|mice|handle|feedback|score|step|share|limit|feedback|score
   - init|start|mice|handle|feedback|score|step|share|fish|feedback|score
