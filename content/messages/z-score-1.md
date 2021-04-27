@@ -7,6 +7,9 @@ triggered_by:
   - init|start|pigs|keep
   - init|start|mice|macaque
   - init|start|mice|fish
+  - init|start|mice|pig
+  - init|start|mice|stemcell
+  - init|start|mice|biobank
   - init|start|fish|adult
   - init|start|fish|embryo
   - init|start|macaques|step|change|step|pigs
