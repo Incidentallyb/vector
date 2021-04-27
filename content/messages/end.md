@@ -56,21 +56,24 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step|feedback|score|nothing|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step|feedback|score|nothing|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step|feedback|score|nothing|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|limit|feedback|score|nothing|feedback|score
-  - init|start|mice|handle|feedback|score|step|phased|limit|feedback|score|nothing|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|fish|feedback|score|nothing|feedback|score
-  - init|start|mice|handle|feedback|score|step|phased|fish|feedback|score|nothing|feedback|score
-  - init|start|mice|handle|feedback|score|step|share|limit|feedback|score|nothing|feedback|score
-  - init|start|mice|handle|feedback|score|step|share|fish|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|tubes|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|tubes|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|tubes|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|change|fish|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|change|pigs|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|change|fish|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|change|pigs|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|change|fish|feedback|score|nothing|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|change|pigs|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|tubes|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|tubes|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|tubes|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|cage|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|cage|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|cage|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|cage|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|cage|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|cage|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|nothing|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|nothing|feedback|score|nothing|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|nothing|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|nothing|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|nothing|feedback|score|nothing|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|nothing|feedback|score|nothing|feedback|score
   - init|start|fish|adult|feedback|score|step|scale|embryo|feedback|score|nothing|feedback|score
   - init|start|fish|adult|feedback|score|step|scale|adult|feedback|score|nothing|feedback|score
   - init|start|fish|adult|feedback|score|step|phased|embryo|feedback|score|nothing|feedback|score
@@ -156,21 +159,23 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step|feedback|score|one-extra|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step|feedback|score|one-extra|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step|feedback|score|one-extra|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|limit|feedback|score|one-extra|feedback|score
-  - init|start|mice|handle|feedback|score|step|phased|limit|feedback|score|one-extra|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|fish|feedback|score|one-extra|feedback|score
-  - init|start|mice|handle|feedback|score|step|phased|fish|feedback|score|one-extra|feedback|score
-  - init|start|mice|handle|feedback|score|step|share|limit|feedback|score|one-extra|feedback|score
-  - init|start|mice|handle|feedback|score|step|share|fish|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|tubes|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|tubes|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|tubes|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|change|fish|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|change|pigs|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|change|fish|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|change|pigs|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|change|fish|feedback|score|one-extra|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|change|pigs|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|tubes|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|tubes|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|tubes|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|cage|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|cage|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|cage|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|cage|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|cage|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|cage|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|nothing|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|nothing|feedback|score|one-extra|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|nothing|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|nothing|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|nothing|feedback|score|one-extra|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|nothing|feedback|score|one-extra|feedback|score
   - init|start|fish|adult|feedback|score|step|scale|embryo|feedback|score|one-extra|feedback|score
   - init|start|fish|adult|feedback|score|step|scale|adult|feedback|score|one-extra|feedback|score
   - init|start|fish|adult|feedback|score|step|phased|embryo|feedback|score|one-extra|feedback|score
@@ -256,21 +261,23 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step|feedback|score|two-extras|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step|feedback|score|two-extras|feedback|score
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step|feedback|score|two-extras|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|limit|feedback|score|two-extras|feedback|score
-  - init|start|mice|handle|feedback|score|step|phased|limit|feedback|score|two-extras|feedback|score
-  - init|start|mice|handle|feedback|score|step|scale|fish|feedback|score|two-extras|feedback|score
-  - init|start|mice|handle|feedback|score|step|phased|fish|feedback|score|two-extras|feedback|score
-  - init|start|mice|handle|feedback|score|step|share|limit|feedback|score|two-extras|feedback|score
-  - init|start|mice|handle|feedback|score|step|share|fish|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|tubes|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|tubes|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|tubes|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|change|fish|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|scale|change|pigs|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|change|fish|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|phased|change|pigs|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|change|fish|feedback|score|two-extras|feedback|score
-  - init|start|mice|tubes|feedback|score|step|share|change|pigs|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|tubes|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|tubes|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|tubes|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|cage|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|cage|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|cage|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|cage|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|cage|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|cage|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|scale|nothing|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|phased|nothing|feedback|score|two-extras|feedback|score
+  - init|start|mice|inhouse|feedback|score|step|share|nothing|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|scale|nothing|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|phased|nothing|feedback|score|two-extras|feedback|score
+  - init|start|mice|offsite|feedback|score|step|share|nothing|feedback|score|two-extras|feedback|score
   - init|start|fish|adult|feedback|score|step|scale|embryo|feedback|score|two-extras|feedback|score
   - init|start|fish|adult|feedback|score|step|scale|adult|feedback|score|two-extras|feedback|score
   - init|start|fish|adult|feedback|score|step|phased|embryo|feedback|score|two-extras|feedback|score
