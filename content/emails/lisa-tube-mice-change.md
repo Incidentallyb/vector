@@ -1,7 +1,7 @@
 ---
 title: Lisa tube mice change
 author: Dr. Lisa Finnamore
-subject: Working with Mice in Observation tubes are extremely difficult
+subject: Mice are stressed
 triggered_by:
   - init|start|mice|inhouse|feedback|score|step|scale
   - init|start|mice|inhouse|feedback|score|step|phased
@@ -27,16 +27,16 @@ scoreChangeSuccess:
   - nothing|5
 ---
 
-Hello,
-
-My name is Dr. Barry Taylor and I am the Principal Investigator at BioCore. My job is to ensure that the experiment stays on track and that we keep to the decisions you have made. The science is my main concern and I want to find the vaccine to this disease.
-
-Though I appreciate the decision taken to move toward mice observation through plastic tubes; myself and the team are encountering difficulties with this approach. While the comfort of the subjects themselves has improved, our abilities to monitor and physically examine the mice, and to effectively conduct trials, has suffered. Evidence from some previous studies suggests that this approach will decrease our chances of developing a vaccine.
-
-I, of course, am happy to be led by your decision, but I would like to request that we alter our approach to trials and use fish or pigs to achieve better results. Changing the animal model will cost us £2,000,000
-
-I await your response.
-
+Good afternoon,
+ 
+I don’t think we’ve met yet. I’m Dr. Lisa Finnamore, the Named Veterinary Surgeon in this facility. I’m responsible for ensuring that the welfare of the animals remains within legal standards. I know it sounds grand but should the activities in the experiment compromise the welfare of the animals, I have the ability to stop it straight away. Just to let you know!
+During my routine inspection, the animal technicians reported that the mice are showing signs of stress (increased heart rate and repetitive movement) when being routinely handled for observation and asked for my advice. We talked through some options to enrich the cage environment and reduce the stress of handling. These could include:
+ 
+Option one - tubes and toys. Switching from manual handling to using plastic observation tubes has shown to increase welfare standards by reducing stress. Adding toys, such as fibre pads and chew sticks also provides additional stimulation and encourages natural behaviour which is all great for welfare. However, some people were concerned all this extra “stuff” in the cages will make daily observations harder and increase their workload. Which brings me to option two.
+ 
+Option two - tubes and toys and increase cage size. I know this would be a significant financial investment, but the extra cage size would allow for more enrichment and make observation and handling easier. We could trial the new size just for this study before rolling out across other work packets.
+ 
+Option three - as always, you can choose not to take any action at this time.
+I’m looking forward to hearing how you would like to move forward,
 Many thanks,
-
-Dr. Barry Taylor
+Dr. Lisa Finnamore
