@@ -1,16 +1,23 @@
 ---
-title: Barry tube mice change
-author: Dr. Barry Taylor
+title: Lisa tube mice change
+author: Dr. Lisa Finnamore
 subject: Working with Mice in Observation tubes are extremely difficult
 triggered_by:
   - init|start|mice|tubes|feedback|score|step|scale
   - init|start|mice|tubes|feedback|score|step|phased
   - init|start|mice|tubes|feedback|score|step|share
 choices:
-  - tubes|Carry on with tube mice
-  - change|Change animal model
+  - tubes|place the mice in handling tubes and include toys
+  - cage|place the mice in handling tubes,include toys and increase cage sizes
+  - nothing|Carry on without improvements
 scoreChangeHarm:
   - tubes|-1
+  - cage|-2
+  - nothing|0
+scoreChangeEconomic:
+  - tubes|-3
+  - cage|-5
+  - nothing|0
 ---
 
 Hello,
