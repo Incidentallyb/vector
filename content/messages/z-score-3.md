@@ -101,6 +101,8 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|share|stay|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step|feedback|score|nothing
+  - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score|nothing
+  - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|nothing
   - init|start|bio|biobank|feedback|score|step|stay|pigs|feedback|score|nothing
   - init|start|bio|biobank|feedback|score|step|stay|mice|feedback|score|nothing
   - init|start|bio|biobank|feedback|score|step|stay|fish|feedback|score|nothing
@@ -230,6 +232,8 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|pigs|step|limit|step|feedback|score|one-extra
   - init|start|bio|biobank|feedback|score|step|pigs|step|fish|feedback|score|one-extra
   - init|start|bio|biobank|feedback|score|step|pigs|step|mice|feedback|score|one-extra
+  - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score|one-extra
+  - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|one-extra
  
   - init|start|macaques|step|stay|feedback|score|step|scale|resgination|feedback|score|two-extras
   - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score|two-extras
@@ -349,6 +353,8 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|nothing
   - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|one-extra
   - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|two-extras
+  - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score|two-extras
+  - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|two-extras
 choices:
   - feedback|Yes, submit proposal
 ---
