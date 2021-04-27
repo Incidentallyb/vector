@@ -4,6 +4,7 @@ author: Dr. Barry Taylor
 subject: Biobank material - My Misgivings
 triggered_by:
   - init|start|bio|biobank|feedback|score|step
+  - init|start|mice|biobank|feedback|score|step
 choices:
   - mice|Change to Mice
   - fish|Change to Fish
