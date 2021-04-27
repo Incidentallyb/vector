@@ -48,6 +48,12 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step|feedback|score|nothing
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step|feedback|score|nothing
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step|feedback|score|nothing
+  - init|start|mice|macaque|feedback|score|step|scale|money|feedback|score|nothing
+  - init|start|mice|macaque|feedback|score|step|phased|money|feedback|score|nothing
+  - init|start|mice|macaque|feedback|score|step|share|money|feedback|score|nothing
+  - init|start|mice|macaque|feedback|score|step|scale|transparant|feedback|score|nothing
+  - init|start|mice|macaque|feedback|score|step|phased|transparant|feedback|score|nothing
+  - init|start|mice|macaque|feedback|score|step|share|transparant|feedback|score|nothing
   - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score|nothing
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|nothing
   - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|nothing
@@ -144,6 +150,12 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step|feedback|score|one-extra
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step|feedback|score|one-extra
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step|feedback|score|one-extra
+  - init|start|mice|macaque|feedback|score|step|scale|money|feedback|score|one-extra
+  - init|start|mice|macaque|feedback|score|step|phased|money|feedback|score|one-extra
+  - init|start|mice|macaque|feedback|score|step|share|money|feedback|score|one-extra
+  - init|start|mice|macaque|feedback|score|step|scale|transparant|feedback|score|one-extra
+  - init|start|mice|macaque|feedback|score|step|phased|transparant|feedback|score|one-extra
+  - init|start|mice|macaque|feedback|score|step|share|transparant|feedback|score|one-extra
   - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score|one-extra
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|one-extra
   - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|one-extra
@@ -237,6 +249,12 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step|feedback|score|two-extras
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step|feedback|score|two-extras
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step|feedback|score|two-extras
+  - init|start|mice|macaque|feedback|score|step|scale|money|feedback|score|two-extras
+  - init|start|mice|macaque|feedback|score|step|phased|money|feedback|score|two-extras
+  - init|start|mice|macaque|feedback|score|step|share|money|feedback|score|two-extras
+  - init|start|mice|macaque|feedback|score|step|scale|transparant|feedback|score|two-extras
+  - init|start|mice|macaque|feedback|score|step|phased|transparant|feedback|score|two-extras
+  - init|start|mice|macaque|feedback|score|step|share|transparant|feedback|score|two-extras
   - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score|two-extras
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|two-extras
   - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|two-extras
