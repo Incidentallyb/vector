@@ -117,6 +117,8 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|pigs|step|limit|step
   - init|start|bio|biobank|feedback|score|step|pigs|step|fish
   - init|start|bio|biobank|feedback|score|step|pigs|step|mice
+  - init|start|bio|biobank|feedback|score|step|fish|step|adult
+  - init|start|bio|biobank|feedback|score|step|fish|step|embryo
   - init|start|macaques|step|stay|feedback|score|step|share|money
   - init|start|macaques|step|stay|feedback|score|step|share|transparant
 choices:
