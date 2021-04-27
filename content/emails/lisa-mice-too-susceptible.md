@@ -32,16 +32,20 @@ scoreChangeSuccess:
   - biobank|0
 ---
 
-Good afternoon,
+Good afternoon Team Ash, 
 
-I don’t think we’ve met yet. I’m Dr. Lisa Finnamore, the Named Veterinary Surgeon in this facility. I’m responsible for ensuring that the welfare of the animals remains within legal standards. I know it sounds grand, but should the activities in the experiment compromise the welfare of the animals, I have the ability to stop it straight away. Just to let you know!
+I don’t think we’ve met yet. I’m Dr. Lisa Finnamore, the Named Veterinary Surgeon in this facility. I’m responsible for ensuring that the welfare of the animals remains within legal standards. I know it sounds grand but should the activities in the experiment compromise the welfare of the animals, I have the ability to stop it straight away. Just to let you know!
 
-I’m getting in touch as the technicians have reported that the mice are showing signs of stress (increased heart rate and repetitive movement) when being routinely handled for observation; the solution is to introduce the use of observation tubes - this is standard practice in some facilities now. This means that we would train the mice to enter a plastic tube; the technician will then be able to observe the mice through the tube without having to handle them at all. This will cost us £3,000,00
+I have some important news about the model you have selected. 
 
-This does have an economic impact, as we will need to invest in the tubes and spend time training the mice as well as purchasing the specialist cleaning equipment needed to ensure that the tubes are fully sterilised. It may also limit the quality of observation undertaken by the technicians.
+To know how the vaccine works we need to show it stops the mice getting sick, or significantly reduces their symptoms, increases survival, and reduces recovery times. This is the “challenge phase” in your protocol document. To do this reliably we need to work out how much virus to give the mice. We have tried several doses, but even at extremely low doses of this virus the mice become very sick and must be euthanised.
 
-I’m looking forward to hearing how you would like to move forward,
-
-Many thanks,
-
+The mice will not live long enough to test if the vaccine works and to continue using this model will likely breach severity standards set out in the legislation and we risk being investigated by the Home Office. 
+ 
+I understand there are considerable time and budget pressures but for welfare reasons you need to select a new animal model. I suggest switching to either pigs or biobank stem cells. I have sent you some additional documentation to help with this decision. To change to Pigs it will cost us £2,000,000 or to change to Stemc cells/bibobank models will cost a little more at £4,000,000
+ 
+Thank you for understanding and I am sure you will continue to make good ethical choices. 
+ 
+Regards
 Dr. Lisa Finnamore
+
