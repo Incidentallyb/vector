@@ -109,6 +109,9 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|share|stay|feedback|score|nothing|feedback|score
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step|feedback|score|nothing|feedback|score
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step|feedback|score|nothing|feedback|score
+  - init|start|bio|biobank|feedback|score|step|stay|stay|feedback|score|step|pigs|feedback|score
+  - init|start|bio|biobank|feedback|score|step|stay|stay|feedback|score|step|mice|feedback|score
+  - init|start|bio|biobank|feedback|score|step|stay|stay|feedback|score|step|fish|feedback|score
   - init|start|bio|biobank|feedback|score|step|stay|pigs|feedback|score|nothing|feedback|score
   - init|start|bio|biobank|feedback|score|step|stay|mice|feedback|score|nothing|feedback|score
   - init|start|bio|biobank|feedback|score|step|stay|fish|feedback|score|nothing|feedback|score
