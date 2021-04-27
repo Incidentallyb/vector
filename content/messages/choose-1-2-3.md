@@ -124,8 +124,8 @@ triggered_by:
   - init|start|bio|stemcell|feedback|score|step|change|mice|step|fish|feedback|score
   - init|start|bio|biobank|feedback|score|step|fish|step|embryo|feedback|score
   - init|start|bio|biobank|feedback|score|step|fish|step|adult|feedback|score
-  - init|start|bio|biobank|feedback|score|step|mice|step|limit|step|score
-  - init|start|bio|biobank|feedback|score|step|mice|step|fish|step|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score
   - init|start|bio|biobank|feedback|score|step|mice|step|step|fish|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|limit|step|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|fish|feedback|score
