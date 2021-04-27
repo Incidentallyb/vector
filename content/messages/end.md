@@ -125,6 +125,8 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|pigs|step|limit|step|feedback|score|nothing|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|fish|feedback|score|nothing|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|mice|feedback|score|nothing|feedback|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score|nothing|feedback|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|nothing|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|one-extra|feedback|score
@@ -247,6 +249,8 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|pigs|step|limit|step|feedback|score|one-extra|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|fish|feedback|score|one-extra|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|mice|feedback|score|one-extra|feedback|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score|one-extra|feedback|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|one-extra|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|two-extras|feedback|score
@@ -369,6 +373,8 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|pigs|step|limit|step|feedback|score|two-extras|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|fish|feedback|score|two-extras|feedback|score
   - init|start|bio|biobank|feedback|score|step|pigs|step|mice|feedback|score|two-extras|feedback|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score|two-extras|feedback|score
+  - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|two-extras|feedback|score
 
 choices:
     - send|Submit Your Review
