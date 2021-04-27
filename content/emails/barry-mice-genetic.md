@@ -15,20 +15,17 @@ hideFromTeams:
 triggered_by:
   - init|start|mice
 choices:
-  - macaque|Change to a macaque model
-  - fish|Change to a fish model
+  - inhouse|
+  - offsite|
 scoreChangeEconomic:
-  - macaque|-2
-  - fish|-2
+  - inhouse|5
+  - offsite|2
 scoreChangeHarm:
-  - macaque|5
-  - fish|2
+  - inhouse|2
+  - offsite|4
 scoreChangeSuccess:
-  - macaque|0
-  - fish|0
-image:
-  src: /uploads/BioBank.svg
-  alt: s
+  - inhouse|0
+  - offsite|0
 ---
 
 Good afternoon,
