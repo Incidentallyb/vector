@@ -2,11 +2,10 @@
 title: Choose 1 2 3
 author: AL
 triggered_by:
-  - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|scale|fish|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|resignation|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|scale|redeploy|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|pigs|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|phased|mice|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|fish|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|pigs|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|mice|feedback|score
