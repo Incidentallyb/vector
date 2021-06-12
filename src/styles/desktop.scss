@@ -1,5 +1,5 @@
 :root {
-  --navHeight: 3.5em;
+  --navHeight: 70px;
   --mobileNavHeight: 4em;
 }
 
@@ -157,15 +157,7 @@
 }
 
 #navbar {
-  flex-basis: auto;
-  flex-grow: 1;
-  flex-shrink: 1;
-  display: flex;
-  ul.navbar-nav {
-    flex-grow: 1;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
+  min-height: var(--navHeight);
 }
 
 audio {
@@ -182,11 +174,4 @@ audio {
 
 #finalScoreFeedback {
   background: rgba(0, 0, 0, 0.5);
-  h2 {
-    font-size: 1.3em;
-  }
-  textarea {
-    width: 100%;
-    height: 10em;
-  }
 }

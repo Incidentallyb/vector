@@ -2,6 +2,7 @@ module View.Desktop exposing (renderTopNavigation, renderWrapperWithNav, view)
 
 import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
+import FeedbackForm
 import GameData exposing (GameData, NotificationCount)
 import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail)
 import Html exposing (..)
@@ -45,7 +46,7 @@ view gameData pageRoute notifications =
 
 renderTopNavigation : String -> Html Msg
 renderTopNavigation teamName =
-    header [ class "navbar navbar-light bg-light" ]
+    header [ class "navbar navbar-light bg-light", id "topnav" ]
         [ img [ class "header-icon", src (t UploadPath ++ "biocore-logo.png") ] []
         , a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
         , span [ class "ml-auto" ] [ text ("Team " ++ teamName) ]
@@ -83,7 +84,7 @@ renderWrapperWithNav gameData pageRoute notifications elements =
                 ]
             , div [ class "col-md-8 content" ]
                 ((if "feedback" == Maybe.withDefault "" (List.head gameData.choices) then
-                    [ renderFinalScoreFeedback ]
+                    [ FeedbackForm.render (FeedbackForm.count gameData.choices) ]
 
                   else
                     []
@@ -300,31 +301,6 @@ renderTeamInformation teamName =
                     , class "team-logo"
                     ]
                     []
-                ]
-            ]
-        ]
-
-
-renderFinalScoreFeedback : Html Msg
-renderFinalScoreFeedback =
-    div [ class "modal", attribute "style" "display:block", id "finalScoreFeedback" ]
-        [ div [ class "modal-dialog modal-dialog-centered" ]
-            [ div [ class "modal-content" ]
-                [ div [ class "modal-header" ]
-                    [ h2 [ class "modal-title" ] [ text (t FinalScoreFeedbackPrompt) ]
-                    ]
-                , div [ class "modal-body" ]
-                    [ Html.form [ attribute "data-netlify" "true" ]
-                        [ div [ class "form-group" ]
-                            [ label [ attribute "for" "feedbackText" ] [ text "Type your feedback here" ]
-                            , textarea [ class "form-control", id "feedbackText", attribute "rows" "5" ] []
-                            ]
-                        ]
-                    ]
-                , div [ class "modal-footer" ]
-                    [ button [ attribute "type" "button", class "btn btn-secondary", onClick (ChoiceButtonClicked "score") ] [ text "No feedback" ]
-                    , button [ attribute "type" "submit", class "btn btn-primary" ] [ text "Send feedback" ]
-                    ]
                 ]
             ]
         ]

@@ -1,0 +1,18 @@
+.iframe-content {
+  border: none;
+  height: 780px;
+  max-height: 70vh;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.modal-body {
+  padding: 0;
+  padding-top: 0.3rem;
+}
+
+@media (min-width: 767px) {
+  .iframe-content {
+    max-height: 85vh;
+  }
+}

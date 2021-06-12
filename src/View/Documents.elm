@@ -166,7 +166,7 @@ listItem : DocumentWithRead -> Html Msg
 listItem content =
     div [ class "col-6 col-lg-4" ]
         [ a [ class "card", href (Route.toString (Document content.basename)) ]
-            [ div [ classList [ ( "read", content.read ) ] ]
+            [ div [ classList [ ( "doc-read", content.read ) ] ]
                 [ span [ class "badge new" ] [ text (t New) ]
                 , renderCardImage content
                 , h2 [ class "card-title" ] [ text content.title ]

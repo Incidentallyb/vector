@@ -80,9 +80,6 @@ t key =
         Results ->
             "Your choices have produced the following results:"
 
-        FinalScoreFeedbackPrompt ->
-            "While AL analyses your proposal is there anything else you would like to tell us?"
-
         NavDocumentsBackTo ->
             "Back to Documents"
 
@@ -94,9 +91,6 @@ t key =
 
         New ->
             "NEW"
-
-        ViewDocument ->
-            "View Document"
 
         EmailDummySentTime ->
             "Sent: Today"
@@ -162,6 +156,21 @@ t key =
 
         DesktopParagraph4 ->
             "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."
+
+        FeedbackForm1Source ->
+            "https://incidentallyb.typeform.com/to/xHe8Bf3N"
+
+        FeedbackForm2Source ->
+            "https://incidentallyb.typeform.com/to/yuQOdud5"
+
+        FeedbackForm3Source ->
+            "https://incidentallyb.typeform.com/to/WEEJSvQN"
+
+        FeedbackFormClose ->
+            "Close"
+
+        SubmitEndChoices ->
+            "Submit choices"
 
         SocialInputLabel ->
             "Post a tweeeet"

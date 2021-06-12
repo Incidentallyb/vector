@@ -1,8 +1,8 @@
 ---
 triggered_by:
-  - init|start|fish|embryo|score|step|scale
-  - init|start|fish|embryo|score|step|phased
-  - init|start|fish|embryo|score|step|share
+  - init|start|fish|embryo|feedback|score|step|scale
+  - init|start|fish|embryo|feedback|score|step|phased
+  - init|start|fish|embryo|feedback|score|step|share
 title: embryo 8 contra
 author: Contra
 handle: '@ContraPerspective'

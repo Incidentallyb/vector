@@ -3,14 +3,11 @@ title: Charlie limit or change
 author: Charlie Benn
 subject: Limiting contact with the Mice
 triggered_by:
-  - init|start|mice|handle|score|step|scale
-  - init|start|mice|handle|score|step|phased
-  - init|start|mice|handle|score|step|share
-  - init|start|macaques|step|change|step|mice|score|step|scale
-  - init|start|macaques|step|change|step|mice|score|step|phased
-  - init|start|macaques|step|change|step|mice|score|step|share
-  - init|start|bio|stemcell|score|step|change|mice|step
-  - init|start|bio|biobank|score|step|mice|step|step
+  - init|start|macaques|step|change|step|mice|feedback|score|step|scale
+  - init|start|macaques|step|change|step|mice|feedback|score|step|phased
+  - init|start|macaques|step|change|step|mice|feedback|score|step|share
+  - init|start|bio|stemcell|feedback|score|step|change|mice|step
+  - init|start|bio|biobank|feedback|score|step|mice|step
 choices:
   - limit|Limit the time technicians spend handling mice
   - fish|Let's change to fish models

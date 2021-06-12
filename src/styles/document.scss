@@ -103,7 +103,7 @@
   z-index: 1;
 }
 
-.card.read {
+.doc-read {
   .new {
     display: none;
   }
@@ -112,4 +112,14 @@
 .card-icon {
   width: 100%;
   filter: drop-shadow(0px 0px 5px var(--black));
+}
+
+@media (min-width: 767px) {
+  .documents .card {
+    margin: 0 2rem 2rem 2rem;
+  }
+
+  .documents .card-title {
+    font-size: 1.2rem;
+  }
 }

@@ -3,9 +3,9 @@ title: Jenny fish protest
 author: Jenny
 subject: Fish Embryo Social Media Outrage
 triggered_by:
-  - init|start|fish|embryo|score|step|scale
-  - init|start|fish|embryo|score|step|phased
-  - init|start|fish|embryo|score|step|share
+  - init|start|fish|embryo|feedback|score|step|scale
+  - init|start|fish|embryo|feedback|score|step|phased
+  - init|start|fish|embryo|feedback|score|step|share
 choices:
   - embryo|Stay with fish embryos
   - change|Change model
