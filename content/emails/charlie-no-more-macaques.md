@@ -13,7 +13,6 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|phased|change
   - init|start|pigs|keep|feedback|score|step|share|change
   - init|start|mice|biobank|feedback|score|step|pigs|change
-  - 
 choices:
   - mice|Mice
   - fish|Fish
