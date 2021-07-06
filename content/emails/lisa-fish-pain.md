@@ -14,7 +14,7 @@ triggered_by:
   - init|start|mice|fish|feedback|score|step|phased
   - init|start|mice|fish|feedback|score|step|share
   - init|start|mice|biobank|feedback|score|step|fish
-  - init|start|mice|stemcell|feedback|score|step|change|fish|
+  - init|start|mice|stemcell|feedback|score|step|change|fish
 choices:
   - embryo|Let's move to a fish embryo model
   - adult|Let's continue with the adult fish
