@@ -24,4 +24,4 @@ choices:
   - feedback|Continue  
 ---
 
-Are you ready for me to assess your results so far? [cCc]
+Are you ready for me to assess your results so far?
