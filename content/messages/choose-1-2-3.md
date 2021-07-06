@@ -133,6 +133,7 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score
   - init|start|mice|biobank|feedback|score|step|fish|adult|feedback|score
+  - init|start|mice|biobank|feedback|score|step|pigs|limit|step|step|feedback|score
 choices:
   - training|Training £1,000,000 - We can spend some time and resources training
     the animals so they feel more comfortable with the equipment, procedures and
