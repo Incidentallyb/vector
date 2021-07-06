@@ -19,17 +19,17 @@ choices:
   - stemcell|Change to the stemcell model
   - biobank|Change to the biobank model
 scoreChangeEconomic:
-  - pig|2
-  - stemcell|4
-  - biobank|4
+  - pig|-2
+  - stemcell|-4
+  - biobank|-4
 scoreChangeHarm:
   - pig|4
   - stemcell|2
   - biobank|1
 scoreChangeSuccess:
-  - pig|0
-  - stemcell|0
-  - biobank|0
+  - pig|-15
+  - stemcell|-20
+  - biobank|-25
 ---
 
 Good afternoon Team Ash, 
