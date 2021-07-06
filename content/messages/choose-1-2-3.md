@@ -133,7 +133,7 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score
   - init|start|mice|biobank|feedback|score|step|fish|adult|feedback|score
-  - init|start|mice|biobank|feedback|score|step|pigs|limit|step|step|feedback|score
+  - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score
 choices:
