@@ -8,6 +8,8 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score
   - init|start|mice|stemcell|feedback|score|step|stay|engage|feedback|score
   - init|start|mice|stemcell|feedback|score|step|stay|prosecute|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|adult|feedback|score
+init|start|mice|stemcell|feedback|score|step|change|fish|embryo|feedback|score
 choices:
   - step|Yes, let's go
 ---
