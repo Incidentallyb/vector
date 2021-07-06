@@ -126,6 +126,7 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|stay|stay
   - init|start|mice|stemcell|feedback|score|step|stay|engage
   - init|start|mice|stemcell|feedback|score|step|stay|prosecute
+  - init|start|mice|biobank|feedback|score|step|fish|adult
 choices:
   - feedback|Continue
 ---
