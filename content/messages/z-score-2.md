@@ -130,8 +130,6 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step
-  - init|start|mice|stemcell|feedback|score|step|change|fish
-  - init|start|mice|stemcell|feedback|score|step|change|mice
   - init|start|mice|stemcell|feedback|score|step|change|fish|adult
   - init|start|mice|stemcell|feedback|score|step|change|fish|embryo
 
