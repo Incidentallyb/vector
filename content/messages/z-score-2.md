@@ -124,6 +124,8 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|money
   - init|start|macaques|step|stay|feedback|score|step|share|transparant
   - init|start|mice|biobank|feedback|score|step|stay|stay
+  - init|start|mice|stemcell|feedback|score|step|stay|engage
+  - init|start|mice|stemcell|feedback|score|step|stay|prosecute
 choices:
   - feedback|Continue
 ---
