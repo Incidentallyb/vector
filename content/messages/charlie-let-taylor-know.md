@@ -20,6 +20,8 @@ triggered_by:
   - init|start|macaques|step|change|step|pigs|feedback|score|step|phased|change|fish
   - init|start|macaques|step|change|step|pigs|feedback|score|step|share|change|mice
   - init|start|macaques|step|change|step|pigs|feedback|score|step|share|change|fish
+  - init|start|mice|biobank|feedback|score|step|pigs|change|mice
+  - init|start|mice|biobank|feedback|score|step|pigs|change|fish
 choices:
   - step|OK, thanks
 ---
