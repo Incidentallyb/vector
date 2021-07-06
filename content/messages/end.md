@@ -148,6 +148,8 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score|nothing|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score|nothing|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score|nothing|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|step|feedback|score|nothing|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|mice|step|feedback|score|nothing|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|one-extra|feedback|score
@@ -278,6 +280,8 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score|one-extra|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score|one-extra|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score|one-extra|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|step|feedback|score|one-extra|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|mice|step|feedback|score|one-extra|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|two-extras|feedback|score
@@ -408,6 +412,8 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score|two-extras|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score|two-extras|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score|two-extras|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|step|feedback|score|two-extras|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|mice|step|feedback|score|two-extras|feedback|score
 
 choices:
     - send|Submit Your Review
