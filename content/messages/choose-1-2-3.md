@@ -136,6 +136,8 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|step|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|mice|step|feedback|score
 choices:
   - training|Training £1,000,000 - We can spend some time and resources training
     the animals so they feel more comfortable with the equipment, procedures and
