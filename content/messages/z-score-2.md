@@ -123,6 +123,7 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|fish|step|embryo
   - init|start|macaques|step|stay|feedback|score|step|share|money
   - init|start|macaques|step|stay|feedback|score|step|share|transparant
+  - init|start|mice|biobank|feedback|score|step|stay|stay
 choices:
   - feedback|Continue
 ---
