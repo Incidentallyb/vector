@@ -144,6 +144,7 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|fish|feedback|score
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|pigs|feedback|score
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|mice|feedback|score
+  - init|start|mice|biobank|feedback|score|step|fish|adult|feedback|score|nothing|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|one-extra|feedback|score
@@ -270,6 +271,7 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|one-extra|feedback|score
   - init|start|bio|biobank|feedback|score|step|fish|step|embryo|feedback|score|one-extra|feedback|score
   - init|start|bio|biobank|feedback|score|step|fish|step|adult|feedback|score|one-extra|feedback|score
+  - init|start|mice|biobank|feedback|score|step|fish|adult|feedback|score|one-extra|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|two-extras|feedback|score
@@ -396,6 +398,7 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|mice|step|fish|feedback|score|two-extras|feedback|score
   - init|start|bio|biobank|feedback|score|step|fish|step|embryo|feedback|score|two-extras|feedback|score
   - init|start|bio|biobank|feedback|score|step|fish|step|adult|feedback|score|two-extras|feedback|score
+  - init|start|mice|biobank|feedback|score|step|fish|adult|feedback|score|two-extras|feedback|score
 
 choices:
     - send|Submit Your Review
