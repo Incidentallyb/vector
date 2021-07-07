@@ -95,10 +95,10 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|scale|embryo|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|scale|change|mice|step|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|scale|change|pigs|step|feedback|score|nothing
-  - init|start|fish|embryo|feedback|score|step|phased|stay|feedback|score|nothing
+  - init|start|fish|embryo|feedback|score|step|phased|embryo|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|phased|change|mice|step|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|phased|change|pigs|step|feedback|score|nothing
-  - init|start|fish|embryo|feedback|score|step|share|stay|feedback|score|nothing
+  - init|start|fish|embryo|feedback|score|step|share|embryo|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step|feedback|score|nothing
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step|feedback|score|nothing
   - init|start|bio|biobank|feedback|score|step|mice|step|limit|feedback|score|nothing
@@ -237,10 +237,10 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|scale|embryo|feedback|score|one-extra
   - init|start|fish|embryo|feedback|score|step|scale|change|mice|step|feedback|score|one-extra
   - init|start|fish|embryo|feedback|score|step|scale|change|pigs|step|feedback|score|one-extra
-  - init|start|fish|embryo|feedback|score|step|phased|stay|feedback|score|one-extra
+  - init|start|fish|embryo|feedback|score|step|phased|embryo|feedback|score|one-extra
   - init|start|fish|embryo|feedback|score|step|phased|change|mice|step|feedback|score|one-extra
   - init|start|fish|embryo|feedback|score|step|phased|change|pigs|step|feedback|score|one-extra
-  - init|start|fish|embryo|feedback|score|step|share|stay|feedback|score|one-extra
+  - init|start|fish|embryo|feedback|score|step|share|embryo|feedback|score|one-extra
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step|feedback|score|one-extra
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step|feedback|score|one-extra
   - init|start|bio|biobank|feedback|score|step|stay|pigs|feedback|score|one-extra
@@ -361,10 +361,10 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|scale|embryo|feedback|score|two-extras
   - init|start|fish|embryo|feedback|score|step|scale|change|mice|step|feedback|score|two-extras
   - init|start|fish|embryo|feedback|score|step|scale|change|pigs|step|feedback|score|two-extras
-  - init|start|fish|embryo|feedback|score|step|phased|stay|feedback|score|two-extras
+  - init|start|fish|embryo|feedback|score|step|phased|embryo|feedback|score|two-extras
   - init|start|fish|embryo|feedback|score|step|phased|change|mice|step|feedback|score|two-extras
   - init|start|fish|embryo|feedback|score|step|phased|change|pigs|step|feedback|score|two-extras
-  - init|start|fish|embryo|feedback|score|step|share|stay|feedback|score|two-extras
+  - init|start|fish|embryo|feedback|score|step|share|embryo|feedback|score|two-extras
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step|feedback|score|two-extras
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step|feedback|score|two-extras
   - init|start|bio|biobank|feedback|score|step|stay|pigs|feedback|score|two-extras
