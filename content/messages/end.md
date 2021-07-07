@@ -144,14 +144,14 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|fish|feedback|score
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|pigs|feedback|score
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|mice|feedback|score
-  - init|start|mice|biobank|feedback|score|step|fish|adult|feedback|score|nothing|feedback|score
+  - init|start|mice|biobank|feedback|score|step|fish|adult|step|feedback|score|nothing|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score|nothing|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score|nothing|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score|nothing|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|fish|step|feedback|score|nothing|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|mice|step|feedback|score|nothing|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|fish|adult|step|feedback|score|nothing|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|step|feedback|score|nothing|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|feedback|score|nothing|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|mice|feedback|score|nothing|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|adult|feedback|score|nothing|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|feedback|score|nothing|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|one-extra|feedback|score
@@ -282,10 +282,10 @@ triggered_by:
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score|one-extra|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score|one-extra|feedback|score
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score|one-extra|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|fish|step|feedback|score|one-extra|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|mice|step|feedback|score|one-extra|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|fish|adult|step|feedback|score|one-extra|feedback|score
-  - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|step|feedback|score|one-extra|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|feedback|score|one-extra|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|mice|feedback|score|one-extra|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|adult|feedback|score|one-extra|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|feedback|score|one-extra|feedback|score
 
   - init|start|macaques|step|stay|feedback|score|step|scale|pigs|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|mice|feedback|score|two-extras|feedback|score
