@@ -6,17 +6,13 @@ triggered_by:
 author: Dr. Barry Taylor
 subject: Substandard Biobank material, we must discuss alternatives
 choices:
-  - mice|Change to Mice
   - fish|Change to Fish
   - stay|Carry on with Bio Banks
 scoreChangeEconomic:
-  - mice|-2
   - fish|-2
 scoreChangeHarm:
-  - mice|6
   - fish|5
 scoreChangeSuccess:
-  - mice|35
   - fish|25
 ---
 
