@@ -95,10 +95,10 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|scale|embryo
   - init|start|fish|embryo|feedback|score|step|scale|change|mice|step
   - init|start|fish|embryo|feedback|score|step|scale|change|pigs|step
-  - init|start|fish|embryo|feedback|score|step|phased|stay
+  - init|start|fish|embryo|feedback|score|step|phased|embryo
   - init|start|fish|embryo|feedback|score|step|phased|change|mice|step
   - init|start|fish|embryo|feedback|score|step|phased|change|pigs|step
-  - init|start|fish|embryo|feedback|score|step|share|stay
+  - init|start|fish|embryo|feedback|score|step|share|embryo
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step
   - init|start|bio|biobank|feedback|score|step|stay|pigs
