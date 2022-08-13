@@ -17,13 +17,16 @@ type Key
     | UploadPath
       --- Intro page
     | StartNewGame
-    | IntroVideo
       --- Navigation text
     | NavDocuments
     | NavEmails
     | NavMessagesNeedAttention
     | NavMessages
     | NavSocial
+      --- VideoUrls
+    | IntroVideo1
+    | IntroVideo2
+    | VideoFromId String
       --- Messages
     | FromPlayerTeam
     | ReadyToReply

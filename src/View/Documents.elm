@@ -12,12 +12,14 @@ import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Set
+import View.Video
 
 
 type alias DocumentWithRead =
     { triggered_by : List String
     , title : String
     , subtitle : Maybe String
+    , videoId : Maybe String
     , image : Maybe ImageData
     , numberUsed : Maybe String
     , cost : Maybe String
@@ -30,6 +32,15 @@ type alias DocumentWithRead =
     , basename : String
     , read : Bool
     }
+
+
+renderVideo : String -> Bool -> Html Msg
+renderVideo videoId isFirstVisit =
+    if isFirstVisit then
+        View.Video.view (t (VideoFromId videoId))
+
+    else
+        text "[cCc] Video Button"
 
 
 renderImage : Content.DocumentData -> Html Msg
@@ -85,8 +96,8 @@ renderList listTitle listContent =
                 ]
 
 
-single : Maybe Content.DocumentData -> Html Msg
-single maybeContent =
+single : Maybe Content.DocumentData -> Bool -> Html Msg
+single maybeContent isFirstVisit =
     case maybeContent of
         Nothing ->
             text (t ItemNotFound)
@@ -94,9 +105,14 @@ single maybeContent =
         Just document ->
             div [ class "document card" ]
                 [ div [ class "card-body" ]
-                    [ h1 []
-                        [ text document.title ]
+                    [ h1 [] [ text document.title ]
                     , renderSubtitle document.subtitle
+                    , case document.videoId of
+                        Just videoId ->
+                            renderVideo videoId isFirstVisit
+
+                        Nothing ->
+                            text ""
                     , div
                         [ class "row" ]
                         [ renderImage document
@@ -119,6 +135,11 @@ single maybeContent =
                 ]
 
 
+hasReadDocument : Content.DocumentData -> Set.Set String -> Bool
+hasReadDocument document visitedSet =
+    Set.member ("/documents/" ++ document.basename) visitedSet
+
+
 list : GameData -> Dict String Content.DocumentData -> Set.Set String -> Html Msg
 list gamedata documentDict visitedSet =
     div [ class "row documents" ]
@@ -129,13 +150,10 @@ addReadStatus : List Content.DocumentData -> Set.Set String -> List DocumentWith
 addReadStatus documentData visitedSet =
     List.map
         (\document ->
-            let
-                readStatus =
-                    Set.member ("/documents/" ++ document.basename) visitedSet
-            in
             { triggered_by = document.triggered_by
             , title = document.title
             , subtitle = document.subtitle
+            , videoId = document.videoId
             , image = document.image
             , numberUsed = document.numberUsed
             , cost = document.cost
@@ -146,7 +164,7 @@ addReadStatus documentData visitedSet =
             , preview = document.preview
             , content = document.content
             , basename = document.basename
-            , read = readStatus
+            , read = hasReadDocument document visitedSet
             }
         )
         documentData

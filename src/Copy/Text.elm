@@ -45,12 +45,19 @@ t key =
         UploadPath ->
             "/images/uploads/"
 
+        -- Video urls
+        IntroVideo1 ->
+            embedUrlFromVideoId "VB0y52wzNZU"
+
+        IntroVideo2 ->
+            embedUrlFromVideoId "rztd_BIXyUQ"
+
+        VideoFromId videoId ->
+            embedUrlFromVideoId videoId
+
         -- Intro page
         StartNewGame ->
             "Begin Ethical Review"
-
-        IntroVideo ->
-            "https://www.youtube.com/embed/mRRMSFHPWJU"
 
         NavDocuments ->
             "Documents"
@@ -198,3 +205,12 @@ t key =
 
         FilterInputPlaceholder ->
             "e.g. macaques, pigs"
+
+
+
+--- Helpers
+
+
+embedUrlFromVideoId : String -> String
+embedUrlFromVideoId id =
+    String.join "/" [ "https://www.youtube.com/embed", id ]

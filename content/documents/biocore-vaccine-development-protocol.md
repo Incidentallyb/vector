@@ -2,6 +2,7 @@
 title: Vaccine Development Protocol
 triggered_by:
   - "init"
+videoId: WI9u6WcT148
 image:
   src: biocore-logo-white.png
   alt: ""

@@ -36,6 +36,7 @@ type alias Model =
     , data : Content.Datastore
     , gameData : GameData
     , visited : Set.Set String
+    , isFirstVisit : Bool
     , notifications : NotificationCount
     , socialInput : String
     }
@@ -56,6 +57,7 @@ init flags url key =
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
+      , isFirstVisit = True
       , notifications = GameData.notificationsInit
       , socialInput = ""
       }
@@ -90,6 +92,9 @@ update msg model =
 
                 newVisits =
                     Set.insert (Route.toString newRoute) model.visited
+
+                isFirstVisit =
+                    not (Set.member (Route.toString newRoute) model.visited)
 
                 newGameData =
                     model.gameData
@@ -138,7 +143,15 @@ update msg model =
                         _ ->
                             resetViewportTop
             in
-            ( { model | page = newRoute, visited = newVisits, gameData = updatedGameData, notifications = updatedSingleViewNotifications2 }, resetViewport )
+            ( { model
+                | page = newRoute
+                , visited = newVisits
+                , isFirstVisit = isFirstVisit
+                , gameData = updatedGameData
+                , notifications = updatedSingleViewNotifications2
+              }
+            , resetViewport
+            )
 
         ChoiceButtonClicked choice ->
             let
@@ -387,7 +400,9 @@ view model =
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
-                    [ View.Documents.single (Dict.get id model.data.documents)
+                    [ View.Documents.single
+                        (Dict.get id model.data.documents)
+                        model.isFirstVisit
                     ]
                 ]
 
