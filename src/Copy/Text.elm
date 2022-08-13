@@ -55,6 +55,10 @@ t key =
         VideoFromId videoId ->
             embedUrlFromVideoId videoId
 
+        -- Document page
+        WatchVideo ->
+            "Watch Video"
+
         -- Intro page
         StartNewGame ->
             "Begin Ethical Review"

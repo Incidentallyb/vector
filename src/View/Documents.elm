@@ -5,9 +5,10 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import Dict exposing (Dict)
 import GameData exposing (GameData, filterDocuments)
-import Heroicons.Outline exposing (arrowLeft)
+import Heroicons.Outline exposing (arrowLeft, eye)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
@@ -34,13 +35,22 @@ type alias DocumentWithRead =
     }
 
 
-renderVideo : String -> Bool -> Html Msg
-renderVideo videoId isFirstVisit =
-    if isFirstVisit then
+type alias VideoContext =
+    { isFirstVisit : Bool
+    , hasRequestedWatch : Bool
+    }
+
+
+renderVideo : String -> VideoContext -> Html Msg
+renderVideo videoId { isFirstVisit, hasRequestedWatch } =
+    if isFirstVisit || hasRequestedWatch then
         View.Video.view (t (VideoFromId videoId))
 
     else
-        text "[cCc] Video Button"
+        button [ class "btn btn-primary", onClick WatchVideoClicked ]
+            [ eye []
+            , text (t WatchVideo)
+            ]
 
 
 renderImage : Content.DocumentData -> Html Msg
@@ -96,8 +106,8 @@ renderList listTitle listContent =
                 ]
 
 
-single : Maybe Content.DocumentData -> Bool -> Html Msg
-single maybeContent isFirstVisit =
+single : Maybe Content.DocumentData -> VideoContext -> Html Msg
+single maybeContent { isFirstVisit, hasRequestedWatch } =
     case maybeContent of
         Nothing ->
             text (t ItemNotFound)
@@ -109,7 +119,11 @@ single maybeContent isFirstVisit =
                     , renderSubtitle document.subtitle
                     , case document.videoId of
                         Just videoId ->
-                            renderVideo videoId isFirstVisit
+                            renderVideo
+                                videoId
+                                { isFirstVisit = isFirstVisit
+                                , hasRequestedWatch = hasRequestedWatch
+                                }
 
                         Nothing ->
                             text ""

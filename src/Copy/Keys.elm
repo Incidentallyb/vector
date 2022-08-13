@@ -27,6 +27,8 @@ type Key
     | IntroVideo1
     | IntroVideo2
     | VideoFromId String
+      -- Documents
+    | WatchVideo
       --- Messages
     | FromPlayerTeam
     | ReadyToReply
