@@ -6,13 +6,13 @@ import Html.Attributes exposing (..)
 
 view : String -> Html msg
 view videoSrc =
-    iframe
-        [ class "d-block mx-auto"
-        , width 560
-        , height 315
-        , src videoSrc
-        , attribute "frameborder" "0"
-        , attribute "allowfullscreen" "true"
-        , attribute "gyroscope" "true"
+    div [ class "video-container" ]
+        [ iframe
+            [ class "d-block mx-auto video"
+            , src videoSrc
+            , attribute "frameborder" "0"
+            , attribute "allowfullscreen" "true"
+            , attribute "gyroscope" "true"
+            ]
+            []
         ]
-        []
