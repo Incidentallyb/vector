@@ -12,7 +12,8 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|phased|limit
   - init|start|pigs|keep|feedback|score|step|share|limit
   - init|start|bio|stemcell|feedback|score|step|change|pigs|step|limit
-  - init|start|bio|biobank|feedback|score|step|pigs|step|limit
+  - init|start|bio|biobank|feedback|score|step|pigs|limit
+  - init|start|mice|biobank|feedback|score|step|pigs|limit
 choices:
   - step|OK, thanks
 ---

@@ -15,6 +15,7 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|scale
   - init|start|pigs|keep|feedback|score|step|phased
   - init|start|pigs|keep|feedback|score|step|share
+  - init|start|mice|biobank|feedback|score|step|pigs
 choices:
   - limit|Limit contact
   - change|Change animal model

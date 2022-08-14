@@ -132,6 +132,15 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|pigs|step|mice|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score
+  - init|start|mice|biobank|feedback|score|step|fish|adult|feedback|score
+  - init|start|mice|biobank|feedback|score|step|fish|embryo|feedback|score
+  - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score
+  - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step|feedback|score
+  - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|step|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|mice|step|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|adult|feedback|score
+  - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|feedback|score
 choices:
   - training|Training £1,000,000 - We can spend some time and resources training
     the animals so they feel more comfortable with the equipment, procedures and

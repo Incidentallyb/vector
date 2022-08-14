@@ -6,7 +6,6 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step
   - init|start|mice|biobank|feedback|score|step
 choices:
-  - mice|Change to Mice
   - fish|Change to Fish
   - pigs|Change to Pigs
   - stay|Stay with Bio Banks

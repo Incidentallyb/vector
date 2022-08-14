@@ -8,7 +8,6 @@ triggered_by:
 choices:
   - limit|Limit contact
   - fish|Change to fish
-  - mice|Change to mice
 scoreChangeEconomic:
   - limit|-3
   - fish|-2

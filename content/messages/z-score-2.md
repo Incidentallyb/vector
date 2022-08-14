@@ -95,10 +95,10 @@ triggered_by:
   - init|start|fish|embryo|feedback|score|step|scale|embryo
   - init|start|fish|embryo|feedback|score|step|scale|change|mice|step
   - init|start|fish|embryo|feedback|score|step|scale|change|pigs|step
-  - init|start|fish|embryo|feedback|score|step|phased|stay
+  - init|start|fish|embryo|feedback|score|step|phased|embryo
   - init|start|fish|embryo|feedback|score|step|phased|change|mice|step
   - init|start|fish|embryo|feedback|score|step|phased|change|pigs|step
-  - init|start|fish|embryo|feedback|score|step|share|stay
+  - init|start|fish|embryo|feedback|score|step|share|embryo
   - init|start|fish|embryo|feedback|score|step|share|change|mice|step
   - init|start|fish|embryo|feedback|score|step|share|change|pigs|step
   - init|start|bio|biobank|feedback|score|step|stay|pigs
@@ -123,6 +123,16 @@ triggered_by:
   - init|start|bio|biobank|feedback|score|step|fish|step|embryo
   - init|start|macaques|step|stay|feedback|score|step|share|money
   - init|start|macaques|step|stay|feedback|score|step|share|transparant
+  - init|start|mice|biobank|feedback|score|step|stay|stay
+  - init|start|mice|stemcell|feedback|score|step|stay|engage
+  - init|start|mice|stemcell|feedback|score|step|stay|prosecute
+  - init|start|mice|biobank|feedback|score|step|fish|adult
+  - init|start|mice|biobank|feedback|score|step|pigs|limit|step
+  - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step
+  - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step
+  - init|start|mice|stemcell|feedback|score|step|change|fish|adult
+  - init|start|mice|stemcell|feedback|score|step|change|fish|embryo
+
 choices:
   - feedback|Continue
 ---

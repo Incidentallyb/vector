@@ -12,6 +12,8 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|scale|change
   - init|start|pigs|keep|feedback|score|step|phased|change
   - init|start|pigs|keep|feedback|score|step|share|change
+  - init|start|mice|biobank|feedback|score|step|pigs|change
+  - init|start|mice|stemcell|feedback|score|step|change
 choices:
   - mice|Mice
   - fish|Fish
@@ -28,7 +30,7 @@ scoreChangeSuccess:
 
 Hello,
 
-We can't use Macaques as the supply lines have become difficult because of Brexit, and we are too far along to start a bio-matter model. Here are the choices below.
+I have put togther some options for the change of our model, and we are too far along to start a bio-matter model. Here are the choices below.
 
 Thanks,
 

@@ -20,6 +20,7 @@ triggered_by:
   - init|start|bio|stemcell|feedback|score|step|change|mice
   - init|start|bio|stemcell|feedback|score|step|change|pigs
   - init|start|bio|biobank|feedback|score|step|mice|step|step
+  - init|start|mice|biobank|feedback|score|step|pigs
 ---
 
 Hi Everyone, I have a bit of a personal request, so I have sent over an email...

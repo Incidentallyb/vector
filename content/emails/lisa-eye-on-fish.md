@@ -9,6 +9,7 @@ triggered_by:
   - init|start|fish|adult|feedback|score|step|scale|adult
   - init|start|fish|adult|feedback|score|step|phased|adult
   - init|start|fish|adult|feedback|score|step|share|adult
+  - init|start|mice|biobank|feedback|score|step|fish|adult
 ---
 
 Hello,
