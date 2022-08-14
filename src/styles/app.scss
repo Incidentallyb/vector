@@ -25,6 +25,10 @@ body {
   background-color: var(--black);
 }
 
+iframe {
+  max-width: 100%;
+}
+
 .nav.nav-pills {
   margin-top: 1em;
   a {
