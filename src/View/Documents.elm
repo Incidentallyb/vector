@@ -44,7 +44,7 @@ type alias VideoContext =
 renderVideo : String -> VideoContext -> Html Msg
 renderVideo videoId { isFirstVisit, hasRequestedWatch } =
     if isFirstVisit || hasRequestedWatch then
-        View.Video.view (t (VideoFromId videoId))
+        View.Video.view videoId
 
     else
         button [ class "btn btn-primary", onClick WatchVideoClicked ]

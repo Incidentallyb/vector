@@ -45,16 +45,6 @@ t key =
         UploadPath ->
             "/images/uploads/"
 
-        -- Video urls
-        IntroVideo1 ->
-            embedUrlFromVideoId "VB0y52wzNZU"
-
-        IntroVideo2 ->
-            embedUrlFromVideoId "rztd_BIXyUQ"
-
-        VideoFromId videoId ->
-            embedUrlFromVideoId videoId
-
         -- Document page
         WatchVideo ->
             "Watch Video"
@@ -209,12 +199,3 @@ t key =
 
         FilterInputPlaceholder ->
             "e.g. macaques, pigs"
-
-
-
---- Helpers
-
-
-embedUrlFromVideoId : String -> String
-embedUrlFromVideoId id =
-    String.join "/" [ "https://www.youtube.com/embed", id ]

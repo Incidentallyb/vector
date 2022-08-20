@@ -23,10 +23,6 @@ type Key
     | NavMessagesNeedAttention
     | NavMessages
     | NavSocial
-      --- VideoUrls
-    | IntroVideo1
-    | IntroVideo2
-    | VideoFromId String
       -- Documents
     | WatchVideo
       --- Messages
