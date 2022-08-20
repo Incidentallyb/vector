@@ -149,6 +149,7 @@ update msg model =
                 | page = newRoute
                 , visited = newVisits
                 , isFirstVisit = isFirstVisit
+                , requestedWatchAgain = False
                 , gameData = updatedGameData
                 , notifications = updatedSingleViewNotifications2
               }
