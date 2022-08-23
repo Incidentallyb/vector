@@ -16,6 +16,7 @@ type Route
     | Messages
     | Social
     | Intro
+    | Landing
     | EndInfo
     | PathChecker View.PathChecker.Model
 
@@ -52,6 +53,9 @@ toString route =
 
         Intro ->
             "/" ++ t IntroSlug
+
+        Landing ->
+            "/" ++ t LandingSlug
 
         EndInfo ->
             "/" ++ t EndInfoSlug
@@ -102,5 +106,6 @@ routeParser =
         , map Social (s (t SocialSlug))
         , map EndInfo (s (t EndInfoSlug))
         , map (PathChecker "") (s (t PathCheckerSlug))
-        , map Intro top
+        , map Intro (s (t IntroSlug))
+        , map Landing top
         ]

@@ -12,6 +12,7 @@ type Key
     | MessagesSlug
     | SocialSlug
     | IntroSlug
+    | LandingSlug
     | EndInfoSlug
     | PathCheckerSlug
     | UploadPath
@@ -61,6 +62,13 @@ type Key
     | EndInfoParagraph2
     | EndInfoParagraph3
     | EndInfoParagraph4
+      --- Ending info
+    | LandingHeader
+    | LandingParagraph1
+    | LandingParagraph2
+    | LandingVideo
+    | LandingVideoIframeTitle
+    | LandingLinkText
       --- TeamNames
     | TeamNames
     | TeamLogo String

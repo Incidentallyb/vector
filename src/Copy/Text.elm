@@ -37,6 +37,9 @@ t key =
             "path-check"
 
         IntroSlug ->
+            "intro"
+
+        LandingSlug ->
             ""
 
         EndInfoSlug ->
@@ -178,6 +181,7 @@ t key =
         SocialInputPost ->
             "Tweeeet"
 
+        -- End page
         EndInfoHeader ->
             "Thank you for playing!"
 
@@ -192,6 +196,26 @@ t key =
 
         EndInfoParagraph4 ->
             "Coded collectively by Nick Wade, Kris Sum and Katja Mordaunt"
+
+        -- Landing page
+        LandingHeader ->
+            "[cCc] Vector"
+
+        LandingParagraph1 ->
+            "[cCc] Some content goes here!"
+
+        LandingParagraph2 ->
+            "[cCc] Some more content goes here!"
+
+        LandingVideo ->
+            "https://www.youtube.com/embed/YgEEqV6unQ0?autoplay=1&controls=0&rel=0"
+
+        -- This is advised to match the title of the embedded document
+        LandingVideoIframeTitle ->
+            "[cCc] clip12 - YouTube"
+
+        LandingLinkText ->
+            "[cCc] Continue"
 
         FilterInputLabel ->
             "Add comma separated values (with spaces)"

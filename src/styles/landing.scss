@@ -1,0 +1,13 @@
+.landing {
+  color: var(--white);
+
+  footer {
+    background-color: var(--white);
+    padding: 1.5em 0;
+
+    img {
+      display: block;
+      max-height: 100px; // This keeps Annex under 300px wide.
+    }
+  }
+}
