@@ -45,12 +45,13 @@ t key =
         UploadPath ->
             "/images/uploads/"
 
+        -- Document page
+        WatchVideo ->
+            "Watch Video"
+
         -- Intro page
         StartNewGame ->
             "Begin Ethical Review"
-
-        IntroVideo ->
-            "https://www.youtube.com/embed/mRRMSFHPWJU"
 
         NavDocuments ->
             "Documents"

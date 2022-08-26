@@ -37,6 +37,7 @@ type alias DocumentData =
     { triggered_by : List String
     , title : String
     , subtitle : Maybe String
+    , videoId : Maybe String
     , image : Maybe ImageData
     , numberUsed : Maybe String
     , cost : Maybe String
@@ -122,6 +123,7 @@ emptyDocument =
     { triggered_by = [ "" ]
     , title = "Sorry. Something's gone wrong."
     , subtitle = Nothing
+    , videoId = Nothing
     , image = Nothing
     , numberUsed = Nothing
     , cost = Nothing
@@ -196,6 +198,7 @@ documentDictDecoder =
             |> andMap (Json.Decode.field "triggered_by" (list string) |> withDefault [])
             |> andMap (Json.Decode.field "title" string |> withDefault "")
             |> andMap (Json.Decode.maybe (Json.Decode.field "subtitle" string))
+            |> andMap (Json.Decode.maybe (Json.Decode.field "videoId" string))
             |> andMap (Json.Decode.maybe (Json.Decode.field "image" imageDecoder))
             |> andMap (Json.Decode.maybe (Json.Decode.field "numberUsed" string))
             |> andMap (Json.Decode.maybe (Json.Decode.field "cost" string))

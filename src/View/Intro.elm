@@ -6,6 +6,8 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Video exposing (Video(..), videoToIdString)
+import View.Video
 
 
 view : Html Msg
@@ -14,18 +16,7 @@ view =
         [ div [ class "row my-4" ]
             [ h1 [ class "d-block mx-auto px-4 text-center" ] [ text (t SiteTitle) ]
             ]
-        , div [ class "row my-4" ]
-            [ iframe
-                [ class "d-block mx-auto"
-                , width 560
-                , height 315
-                , src (t IntroVideo)
-                , attribute "frameborder" "0"
-                , attribute "allowfullscreen" "true"
-                , attribute "gyroscope" "true"
-                ]
-                []
-            ]
+        , div [ class "intro-video" ] [ View.Video.view (videoToIdString Intro1) ]
         , div [ class "row my-4" ]
             [ a [ class "btn btn-primary btn-lg mx-auto", href (Route.toString Route.Desktop) ] [ text (t StartNewGame) ]
             ]

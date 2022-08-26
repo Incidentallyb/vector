@@ -76,6 +76,7 @@ collections:
       - { label: "Title (filename)", name: "title", widget: "string" }
       - { label: "Triggered by choice list", name: "triggered_by", required: true, widget: "list" }
       - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+      - { label: "YouTube video id", name: "videoId", widget: "string", required: false }
       - label: Image
         name: image
         widget: object

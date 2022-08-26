@@ -17,13 +17,14 @@ type Key
     | UploadPath
       --- Intro page
     | StartNewGame
-    | IntroVideo
       --- Navigation text
     | NavDocuments
     | NavEmails
     | NavMessagesNeedAttention
     | NavMessages
     | NavSocial
+      -- Documents
+    | WatchVideo
       --- Messages
     | FromPlayerTeam
     | ReadyToReply
