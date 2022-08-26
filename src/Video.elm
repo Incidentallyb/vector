@@ -1,22 +1,27 @@
-module Video exposing (Video(..), embedUrlFromIdString, videoToIdString)
+module Video exposing (Video(..), embedUrlFromIdString, videoToData)
 
 
 type Video
-    = Intro1
+    = Landing
+    | Intro1
     | Intro2
     | Intro3
 
 
-videoToIdString video =
+videoToData : Video -> { id : String, title : String }
+videoToData video =
     case video of
+        Landing ->
+            { id = "oWzsFH4LLME", title = "Let’s get started - YouTube" }
+
         Intro1 ->
-            "VB0y52wzNZU"
+            { id = "VB0y52wzNZU", title = "" }
 
         Intro2 ->
-            "rztd_BIXyUQ"
+            { id = "rztd_BIXyUQ", title = "" }
 
         Intro3 ->
-            ""
+            { id = "", title = "" }
 
 
 embedUrlFromIdString : String -> String

@@ -199,7 +199,6 @@ t key =
             "Coded collectively by Nick Wade, Kris Sum and Katja Mordaunt"
 
         -- Landing page
-
         LandingParagraph ->
             "[cCc] Cookie consent text, needs to cover Google Analytics and ideally also YouTube"
 

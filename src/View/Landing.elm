@@ -7,26 +7,15 @@ import Html.Attributes exposing (..)
 import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
+import Video exposing (Video(..), videoToData)
+import View.Video
 
 
 view : Html Msg
 view =
     div [ class "landing container-fluid" ]
         [ div [ class "container" ]
-            [ div [ class "row my-5" ]
-                [ iframe
-                    [ class "d-block mx-auto"
-                    , width 560
-                    , height 315
-                    , src (t LandingVideo)
-                    , attribute "frameborder" "0"
-                    , attribute "allowfullscreen" "true"
-                    , attribute "gyroscope" "true"
-                    , attribute "allow" "autoplay"
-                    , attribute "title" (t LandingVideo)
-                    ]
-                    []
-                ]
+            [ View.Video.view (videoToData Video.Landing)
             , div [ class "row my-5 text-center" ]
                 [ div [ class "col-12 text-center" ]
                     [ a [ class "btn btn-primary btn-lg mx-auto", href (Route.toString Route.Intro) ] [ text (t LandingLinkText) ]
