@@ -35,5 +35,6 @@ view =
         , footer [ class "row d-flex justify-content-center" ]
             [ img [ src "images/wellcome-logo.png", alt "Wellcome Trust" ] []
             , img [ src "images/AnNex_Logo_600.png", alt "Annex - Animal Research Nexus" ] []
+            , img [ src "images/lab-collective.png", alt "Lab Collective" ] []
             ]
         ]

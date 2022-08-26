@@ -63,9 +63,7 @@ type Key
     | EndInfoParagraph3
     | EndInfoParagraph4
       --- Ending info
-    | LandingHeader
-    | LandingParagraph1
-    | LandingParagraph2
+    | LandingParagraph
     | LandingVideo
     | LandingVideoIframeTitle
     | LandingLinkText

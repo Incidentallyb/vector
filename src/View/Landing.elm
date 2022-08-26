@@ -14,20 +14,6 @@ view =
     div [ class "landing container-fluid" ]
         [ div [ class "container" ]
             [ div [ class "row my-5" ]
-                [ div [ class "col-12" ]
-                    [ h1 [ class "d-block mx-auto text-center" ]
-                        [ text (t LandingHeader)
-                        ]
-                    ]
-                , Markdown.toHtml [ class "col-12 mt-4" ]
-                    -- join each string with newlines so Markdown.toHtml can insert paragraphs
-                    -- could be joined into one string in Text.elm instead
-                    (t LandingParagraph1
-                        ++ "\n\n"
-                        ++ t LandingParagraph2
-                    )
-                ]
-            , div [ class "row my-4" ]
                 [ iframe
                     [ class "d-block mx-auto"
                     , width 560
@@ -46,9 +32,14 @@ view =
                     [ a [ class "btn btn-primary btn-lg mx-auto", href (Route.toString Route.Intro) ] [ text (t LandingLinkText) ]
                     ]
                 ]
+            , div [ class "row my-5" ]
+                [ Markdown.toHtml []
+                    (t LandingParagraph)
+                ]
             ]
         , footer [ class "row d-flex justify-content-center" ]
             [ img [ src "images/wellcome-logo.png", alt "Wellcome Trust" ] []
             , img [ src "images/AnNex_Logo_600.png", alt "Annex - Animal Research Nexus" ] []
+            , img [ src "images/lab-collective.png", alt "Lab Collective" ] []
             ]
         ]

@@ -198,14 +198,9 @@ t key =
             "Coded collectively by Nick Wade, Kris Sum and Katja Mordaunt"
 
         -- Landing page
-        LandingHeader ->
-            "[cCc] Vector"
 
-        LandingParagraph1 ->
-            "[cCc] Some content goes here!"
-
-        LandingParagraph2 ->
-            "[cCc] Some more content goes here!"
+        LandingParagraph ->
+            "[cCc] Cookie consent text, needs to cover Google Analytics and ideally also YouTube"
 
         LandingVideo ->
             "https://www.youtube.com/embed/YgEEqV6unQ0?autoplay=1&controls=0&rel=0"
@@ -215,7 +210,7 @@ t key =
             "[cCc] clip12 - YouTube"
 
         LandingLinkText ->
-            "[cCc] Continue"
+            "ENTER BIOCORE"
 
         FilterInputLabel ->
             "Add comma separated values (with spaces)"
