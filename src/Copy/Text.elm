@@ -48,12 +48,13 @@ t key =
         UploadPath ->
             "/images/uploads/"
 
+        -- Document page
+        WatchVideo ->
+            "Watch Video"
+
         -- Intro page
         StartNewGame ->
             "Begin Ethical Review"
-
-        IntroVideo ->
-            "https://www.youtube.com/embed/mRRMSFHPWJU"
 
         NavDocuments ->
             "Documents"
@@ -161,13 +162,13 @@ t key =
             "I have sent you an outline of our vaccine development protocol for you to review. Please check the document store."
 
         FeedbackForm1Source ->
-            "https://incidentallyb.typeform.com/to/xHe8Bf3N"
+            "https://form.typeform.com/to/xHe8Bf3N"
 
         FeedbackForm2Source ->
-            "https://incidentallyb.typeform.com/to/yuQOdud5"
+            "https://form.typeform.com/to/yuQOdud5"
 
         FeedbackForm3Source ->
-            "https://incidentallyb.typeform.com/to/WEEJSvQN"
+            "https://form.typeform.com/to/WEEJSvQN"
 
         FeedbackFormClose ->
             "Close"

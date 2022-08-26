@@ -8,6 +8,7 @@ import View.PathChecker
 type Msg
     = UrlChanged Url.Url
     | LinkClicked Browser.UrlRequest
+    | WatchVideoClicked
     | ChoiceButtonClicked String
     | CheckboxClicked String
     | CheckboxesSubmitted String
