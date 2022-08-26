@@ -28,7 +28,8 @@ update msg =
 view : Model -> Content.Datastore -> Html Msg
 view filterString contentData =
     div [ id "path-checker" ]
-        [ text (t FilterInputLabel)
+        [ renderDeadEnds contentData
+        , text (t FilterInputLabel)
         , input
             [ placeholder (t FilterInputPlaceholder)
             , onInput ChangeFilter
@@ -39,8 +40,131 @@ view filterString contentData =
         ]
 
 
-getAvailableChoices : Model -> Content.Datastore -> List String
-getAvailableChoices filterString allContent =
+ignoreInChoiceMatch : List String
+ignoreInChoiceMatch =
+    [ "step", "change" ]
+
+
+pathList : List String
+pathList =
+    [ "bio", "fish", "macaque", "mice", "pigs" ]
+
+
+validChoices : List String
+validChoices =
+    pathList ++ [ "feedback", "score", "scoreone-extra", "scoretwo-extra", "nothing" ]
+
+
+renderDeadEnds : Content.Datastore -> Html Msg
+renderDeadEnds content =
+    ul [] (getProblemList content)
+
+
+getHiddenContent : Content.Datastore -> Content.Datastore
+getHiddenContent content =
+    content
+
+
+getContentWithChoices : Content.Datastore -> Content.Datastore
+getContentWithChoices content =
+    content
+
+
+getContentWithoutTriggeredBy : Content.Datastore -> List String
+getContentWithoutTriggeredBy content =
+    []
+
+
+getProblemList : Content.Datastore -> List (Html Msg)
+getProblemList allContent =
+    let
+        messages =
+            Dict.values allContent.messages
+
+        messageErrors =
+            List.map
+                (\message ->
+                    if List.isEmpty message.triggered_by then
+                        [ li []
+                            [ text "* Message with empty triggered by: "
+                            , contentPathFromBasename "message" message.basename
+                            ]
+                        ]
+
+                    else
+                        [ text "" ]
+                )
+                messages
+
+        documents =
+            Dict.values allContent.documents
+
+        documentErrors =
+            List.map
+                (\document ->
+                    if List.isEmpty document.triggered_by then
+                        [ li []
+                            [ text "* Document with empty triggered by: "
+                            , contentPathFromBasename "document" document.basename
+                            ]
+                        ]
+
+                    else
+                        [ text "" ]
+                )
+                documents
+
+        emails =
+            Dict.values allContent.emails
+
+        emailErrors =
+            List.map
+                (\email ->
+                    [ case email.hideFromTeams of
+                        Nothing ->
+                            text ""
+
+                        Just _ ->
+                            li []
+                                [ text "* Email is hidden from some teams: "
+                                , contentPathFromBasename "email" email.basename
+                                ]
+                    , if List.isEmpty email.triggered_by then
+                        li []
+                            [ text "* Email with empty triggered by: "
+                            , contentPathFromBasename "email" email.basename
+                            ]
+
+                      else
+                        text ""
+                    ]
+                )
+                emails
+
+        socials =
+            Dict.values allContent.social
+
+        socialErrors =
+            List.map
+                (\social ->
+                    if List.isEmpty social.triggered_by then
+                        [ li []
+                            [ text "* Social with empty triggered by: "
+                            , contentPathFromBasename "social" social.basename
+                            ]
+                        ]
+
+                    else
+                        [ text "" ]
+                )
+                socials
+    in
+    (documentErrors ++ emailErrors ++ messageErrors ++ socialErrors)
+        |> List.concat
+
+
+getTriggerList : Content.Datastore -> List String
+getTriggerList allContent =
     let
         messages =
             Dict.values allContent.messages
@@ -70,6 +194,17 @@ getAvailableChoices filterString allContent =
         |> List.concat
         |> Set.fromList
         |> Set.toList
+
+
+contentPathFromBasename : String -> String -> Html Msg
+contentPathFromBasename contentType basename =
+    a [ href (String.join "/" [ "/admin/#/collections", contentType, "entries", basename ]) ]
+        [ text basename ]
+
+
+getAvailableChoices : Model -> Content.Datastore -> List String
+getAvailableChoices filterString allContent =
+    getTriggerList allContent
         |> filterChoicesBySelected (String.split ", " filterString)
 
 
@@ -93,16 +228,6 @@ isTriggeredByChoices selectedChoices triggeredBy =
     String.contains choiceString cleanTriggerString
 
 
-ignoreInChoiceMatch : List String
-ignoreInChoiceMatch =
-    [ "step", "change" ]
-
-
-pathList : List String
-pathList =
-    [ "bio", "fish", "macaque", "mice", "pigs" ]
-
-
 filterChoicesByPath : String -> List String -> List String
 filterChoicesByPath path choices =
     List.filter (\choice -> String.contains path choice) choices
@@ -110,7 +235,7 @@ filterChoicesByPath path choices =
 
 renderTable : List String -> Content.Datastore -> Html Msg
 renderTable allChoices allContent =
-    table []
+    table [ Html.Attributes.style "font-size" "10px" ]
         [ thead [] [ tr [] renderHeaders ]
         , tbody []
             [ tr []

@@ -1,7 +1,7 @@
 ---
 title: Lisa handle mice
 author: Dr. Lisa Finnamore
-subject: Handling the Mice are causing stress
+subject: Handling the mice is causing stress
 triggered_by:
 
 hideFromTeams:
