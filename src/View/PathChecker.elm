@@ -194,7 +194,10 @@ getDeadEnds content =
                 messagePathDataWithChoices
                 |> List.concat
     in
-    List.map (\message -> li [] [ text message ]) messagesWithDeadEndChoices
+    List.map (\message -> li [] [ text message ])
+        (messagesWithDeadEndChoices
+            |> List.sort
+        )
 
 
 type alias PathData =
