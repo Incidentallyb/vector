@@ -28,7 +28,7 @@ update msg =
 view : Model -> Content.Datastore -> Html Msg
 view filterString contentData =
     div [ id "path-checker" ]
-        [ renderDeadEnds contentData
+        [ renderProblems contentData
         , text (t FilterInputLabel)
         , input
             [ placeholder (t FilterInputPlaceholder)
@@ -55,8 +55,8 @@ validChoices =
     pathList ++ [ "feedback", "score", "scoreone-extra", "scoretwo-extra", "nothing" ]
 
 
-renderDeadEnds : Content.Datastore -> Html Msg
-renderDeadEnds content =
+renderProblems : Content.Datastore -> Html Msg
+renderProblems content =
     ul [] (getProblemList content)
 
 
@@ -124,9 +124,13 @@ getProblemList allContent =
                         Nothing ->
                             text ""
 
-                        Just _ ->
+                        Just teamList ->
                             li []
-                                [ text "* Email is hidden from some teams: "
+                                [ text
+                                    ("* Email is hidden from "
+                                        ++ String.join ", " (List.sort teamList)
+                                        ++ ": "
+                                    )
                                 , contentPathFromBasename "email" email.basename
                                 ]
                     , if List.isEmpty email.triggered_by then
