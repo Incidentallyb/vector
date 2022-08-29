@@ -182,7 +182,6 @@ getProblemList allContent =
 getDeadEnds : Content.Datastore -> List (Html Msg)
 getDeadEnds content =
     let
-        -- Todo add emails here
         allTriggers =
             getTriggerList content
 
@@ -200,26 +199,35 @@ getDeadEnds content =
 
         excludeMessagesEndingInNonScoringChoice =
             List.filter (\trigger -> not (List.member (lastChoice trigger) nonScoringChoices)) messagesWithDeadEndChoices
+
+        emailPathDataWithChoices =
+            emailsToPathData (Dict.values content.emails)
+                |> List.filter (\data -> List.length data.triggers > 0)
+
+        emailsWithDeadEndChoices =
+            List.map
+                (\data ->
+                    List.filter (\trigger -> not (List.member trigger allTriggers)) data.triggers
+                )
+                emailPathDataWithChoices
+                |> List.concat
+
+        excludeEmailsEndingInNonScoringChoice =
+            List.filter (\trigger -> not (List.member (lastChoice trigger) nonScoringChoices)) emailsWithDeadEndChoices
     in
-    List.map (\message -> li [] [ text message ])
-        (excludeMessagesEndingInNonScoringChoice
+    List.map (\path -> li [] [ text path ])
+        (excludeEmailsEndingInNonScoringChoice
+            ++ excludeMessagesEndingInNonScoringChoice
             |> List.sort
         )
 
 
 lastChoice : String -> String
 lastChoice trigger =
-    let
-        last =
-            String.split "|" trigger
-                |> List.reverse
-                |> List.head
-                |> Maybe.withDefault ""
-
-        d =
-            Debug.log "LAST " last
-    in
-    last
+    String.split "|" trigger
+        |> List.reverse
+        |> List.head
+        |> Maybe.withDefault ""
 
 
 type alias PathData =
@@ -228,26 +236,43 @@ type alias PathData =
     }
 
 
-getPathData : Content.Datastore -> List PathData
-getPathData allContent =
-    List.map
-        (\content ->
-            { triggers = []
-            , basename = content.basename
-            }
-        )
-        (Dict.values allContent.messages)
-
-
 messagesToPathData : List Content.MessageData -> List PathData
 messagesToPathData messages =
     List.map pathDataFromMessage messages
 
 
-pathDataFromMessage : Content.MessageData -> { triggers : List String, basename : String }
+pathDataFromMessage :
+    Content.MessageData
+    ->
+        { triggers : List String
+        , basename : String
+        }
 pathDataFromMessage message =
     { triggers = List.map (\choice -> List.map (\trigger -> trigger ++ "|" ++ getChoiceKey choice) message.triggered_by) message.choices |> List.concat
     , basename = message.basename
+    }
+
+
+emailsToPathData : List Content.EmailData -> List PathData
+emailsToPathData emails =
+    List.map pathDataFromEmail emails
+
+
+pathDataFromEmail :
+    Content.EmailData
+    ->
+        { triggers : List String
+        , basename : String
+        }
+pathDataFromEmail email =
+    { triggers =
+        List.map
+            (\choice ->
+                List.map (\trigger -> trigger ++ "|" ++ getChoiceKey choice) email.triggered_by
+            )
+            (getEmailChoicesFromMaybes [ email.choices ])
+            |> List.concat
+    , basename = email.basename
     }
 
 
@@ -260,25 +285,31 @@ getChoiceList : Content.Datastore -> List String
 getChoiceList allContent =
     let
         messageChoices =
-            List.map (\message -> List.map (\choice -> getChoiceKey choice) message.choices) (Dict.values allContent.messages)
+            List.map (\message -> List.map (\choice -> getChoiceKey choice) message.choices) (Dict.values allContent.messages) |> List.concat
 
         maybeEmailChoicesList =
             Dict.values allContent.emails
                 |> List.map (\email -> email.choices)
 
         emailChoices =
-            List.map
-                (\maybeEmailChoices ->
-                    case maybeEmailChoices of
-                        Just choiceList ->
-                            List.map (\choice -> getChoiceKey choice) choiceList
-
-                        Nothing ->
-                            []
-                )
-                maybeEmailChoicesList
+            getEmailChoicesFromMaybes maybeEmailChoicesList
     in
-    messageChoices ++ emailChoices |> List.concat |> Set.fromList |> Set.toList
+    messageChoices ++ emailChoices |> Set.fromList |> Set.toList
+
+
+getEmailChoicesFromMaybes : List (Maybe (List String)) -> List String
+getEmailChoicesFromMaybes maybeEmailChoicesList =
+    List.map
+        (\maybeEmailChoices ->
+            case maybeEmailChoices of
+                Just choiceList ->
+                    List.map (\choice -> getChoiceKey choice) choiceList
+
+                Nothing ->
+                    []
+        )
+        maybeEmailChoicesList
+        |> List.concat
 
 
 getTriggerList : Content.Datastore -> List String
