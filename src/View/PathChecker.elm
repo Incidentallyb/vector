@@ -50,9 +50,12 @@ pathList =
     [ "bio", "fish", "macaque", "mice", "pigs" ]
 
 
-choose123AndEndingChoices : List String
-choose123AndEndingChoices =
-    [ "training", "rehousing", "helping", "making", "publishing", "cage", "donothing" ] ++ [ "replay", "send" ]
+nonScoringChoices : List String
+nonScoringChoices =
+    [ "training", "rehousing", "helping", "making", "publishing", "cage", "donothing" ]
+        ++ [ "one-extra", "two-extras", "nothing" ]
+        ++ [ "replay", "send" ]
+        ++ [ "feedback" ]
 
 
 renderProblems : Content.Datastore -> Html Msg
@@ -73,7 +76,7 @@ getChoiceKeyTypos content =
         -- filter out choices not in any triggered_by
         (List.filter (\aChoice -> not (List.member aChoice (getAllTriggerKeys content))) (getChoiceList content)
             -- Filter out ending choices
-            |> List.filter (\maybeBadChoice -> not (List.member maybeBadChoice choose123AndEndingChoices))
+            |> List.filter (\maybeBadChoice -> not (List.member maybeBadChoice nonScoringChoices))
         )
 
 
@@ -179,6 +182,7 @@ getProblemList allContent =
 getDeadEnds : Content.Datastore -> List (Html Msg)
 getDeadEnds content =
     let
+        -- Todo add emails here
         allTriggers =
             getTriggerList content
 
@@ -193,11 +197,29 @@ getDeadEnds content =
                 )
                 messagePathDataWithChoices
                 |> List.concat
+
+        excludeMessagesEndingInNonScoringChoice =
+            List.filter (\trigger -> not (List.member (lastChoice trigger) nonScoringChoices)) messagesWithDeadEndChoices
     in
     List.map (\message -> li [] [ text message ])
-        (messagesWithDeadEndChoices
+        (excludeMessagesEndingInNonScoringChoice
             |> List.sort
         )
+
+
+lastChoice : String -> String
+lastChoice trigger =
+    let
+        last =
+            String.split "|" trigger
+                |> List.reverse
+                |> List.head
+                |> Maybe.withDefault ""
+
+        d =
+            Debug.log "LAST " last
+    in
+    last
 
 
 type alias PathData =
