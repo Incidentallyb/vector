@@ -42,7 +42,7 @@ To know how the vaccine works we need to show it stops the mice getting sick, or
 
 The mice will not live long enough to test if the vaccine works and to continue using this model will likely breach severity standards set out in the legislation and we risk being investigated by the Home Office.
 
-I understand there are considerable time and budget pressures but for welfare reasons you need to select a new animal model. I suggest switching to either pigs or biobank stem cells. I have sent you some additional documentation to help with this decision. To change to Pigs it will cost us £2,000,000 or to change to stemcells/biobank models will cost a little more at £4,000,000
+I understand there are considerable time and budget pressures but for welfare reasons you need to select a new animal model. I suggest switching to either pigs or biobank stem cells. I have sent you some additional documentation to help with this decision. To change to Pigs it will cost us £2,000,000 or to change to stem cells/biobank models will cost a little more at £4,000,000
 
 Thank you for understanding and I am sure you will continue to make good ethical choices.
 
