@@ -10,7 +10,7 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|phased|pigs
   - init|start|macaques|step|stay|feedback|score|step|phased|fish
   - init|start|macaques|step|stay|feedback|score|step|share|money
-  - init|start|macaques|step|stay|feedback|score|step|share|transparant
+  - init|start|macaques|step|stay|feedback|score|step|share|transparent
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step
@@ -65,9 +65,9 @@ triggered_by:
   - init|start|mice|macaque|feedback|score|step|share|money
   - init|start|mice|macaque|feedback|score|step|phased|money
   - init|start|mice|macaque|feedback|score|step|scale|money
-  - init|start|mice|macaque|feedback|score|step|share|transparant
-  - init|start|mice|macaque|feedback|score|step|phased|transparant
-  - init|start|mice|macaque|feedback|score|step|scale|transparant
+  - init|start|mice|macaque|feedback|score|step|share|transparent
+  - init|start|mice|macaque|feedback|score|step|phased|transparent
+  - init|start|mice|macaque|feedback|score|step|scale|transparent
   - init|start|mice|inhouse|feedback|score|step|scale|tubes
   - init|start|mice|inhouse|feedback|score|step|phased|tubes
   - init|start|mice|inhouse|feedback|score|step|share|tubes
@@ -136,4 +136,5 @@ triggered_by:
 choices:
   - feedback|Continue
 ---
+
 I've got your next set of results, are you ready to see them?
