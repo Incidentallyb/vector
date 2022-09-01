@@ -69,13 +69,13 @@ triggered_by:
   - init|start|mice|fish|feedback|score|step|phased|embryo|feedback|score|nothing|feedback|score
   - init|start|mice|fish|feedback|score|step|share|embryo|feedback|score|nothing|feedback|score
   - init|start|mice|fish|feedback|score|step|scale|adult|feedback|score|nothing|feedback|score
-  - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score|nothing|feedback|score  
+  - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score|nothing|feedback|score
   - init|start|mice|macaque|feedback|score|step|scale|money|feedback|score|nothing|feedback|score
   - init|start|mice|macaque|feedback|score|step|phased|money|feedback|score|nothing|feedback|score
   - init|start|mice|macaque|feedback|score|step|share|money|feedback|score|nothing|feedback|score
-  - init|start|mice|macaque|feedback|score|step|scale|transparant|feedback|score|nothing|feedback|score
-  - init|start|mice|macaque|feedback|score|step|phased|transparant|feedback|score|nothing|feedback|score
-  - init|start|mice|macaque|feedback|score|step|share|transparant|feedback|score|nothing|feedback|score
+  - init|start|mice|macaque|feedback|score|step|scale|transparent|feedback|score|nothing|feedback|score
+  - init|start|mice|macaque|feedback|score|step|phased|transparent|feedback|score|nothing|feedback|score
+  - init|start|mice|macaque|feedback|score|step|share|transparent|feedback|score|nothing|feedback|score
   - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score|nothing|feedback|score
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|nothing|feedback|score
   - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|nothing|feedback|score
@@ -162,14 +162,14 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|pigs|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|mice|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|fish|feedback|score|one-extra|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparent|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|resignation|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|redeploy|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|pigs|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|fish|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score|one-extra|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|one-extra|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparent|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step|feedback|score|one-extra|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step|feedback|score|one-extra|feedback|score
@@ -222,13 +222,13 @@ triggered_by:
   - init|start|mice|fish|feedback|score|step|phased|embryo|feedback|score|one-extra|feedback|score
   - init|start|mice|fish|feedback|score|step|share|embryo|feedback|score|one-extra|feedback|score
   - init|start|mice|fish|feedback|score|step|scale|adult|feedback|score|one-extra|feedback|score
-  - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score|one-extra|feedback|score 
+  - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score|one-extra|feedback|score
   - init|start|mice|macaque|feedback|score|step|scale|money|feedback|score|one-extra|feedback|score
   - init|start|mice|macaque|feedback|score|step|phased|money|feedback|score|one-extra|feedback|score
   - init|start|mice|macaque|feedback|score|step|share|money|feedback|score|one-extra|feedback|score
-  - init|start|mice|macaque|feedback|score|step|scale|transparant|feedback|score|one-extra|feedback|score
-  - init|start|mice|macaque|feedback|score|step|phased|transparant|feedback|score|one-extra|feedback|score
-  - init|start|mice|macaque|feedback|score|step|share|transparant|feedback|score|one-extra|feedback|score
+  - init|start|mice|macaque|feedback|score|step|scale|transparent|feedback|score|one-extra|feedback|score
+  - init|start|mice|macaque|feedback|score|step|phased|transparent|feedback|score|one-extra|feedback|score
+  - init|start|mice|macaque|feedback|score|step|share|transparent|feedback|score|one-extra|feedback|score
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|one-extra|feedback|score
   - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|one-extra|feedback|score
   - init|start|mice|offsite|feedback|score|step|scale|tubes|feedback|score|one-extra|feedback|score
@@ -296,14 +296,14 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|pigs|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|mice|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|fish|feedback|score|two-extras|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparent|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|resignation|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|support|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|scale|redeploy|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|pigs|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|phased|fish|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|stay|feedback|score|step|share|money|feedback|score|two-extras|feedback|score
-  - init|start|macaques|step|stay|feedback|score|step|share|transparant|feedback|score|two-extras|feedback|score
+  - init|start|macaques|step|stay|feedback|score|step|share|transparent|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|limit|step|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|mice|step|feedback|score|two-extras|feedback|score
   - init|start|macaques|step|change|step|pigs|feedback|score|step|scale|change|fish|step|feedback|score|two-extras|feedback|score
@@ -357,12 +357,12 @@ triggered_by:
   - init|start|mice|fish|feedback|score|step|phased|embryo|feedback|score|two-extras|feedback|score
   - init|start|mice|fish|feedback|score|step|share|embryo|feedback|score|two-extras|feedback|score
   - init|start|mice|fish|feedback|score|step|scale|adult|feedback|score|two-extras|feedback|score
-  - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score|two-extras|feedback|score 
+  - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score|two-extras|feedback|score
   - init|start|mice|macaque|feedback|score|step|phased|money|feedback|score|two-extras|feedback|score
   - init|start|mice|macaque|feedback|score|step|share|money|feedback|score|two-extras|feedback|score
-  - init|start|mice|macaque|feedback|score|step|scale|transparant|feedback|score|two-extras|feedback|score
-  - init|start|mice|macaque|feedback|score|step|phased|transparant|feedback|score|two-extras|feedback|score
-  - init|start|mice|macaque|feedback|score|step|share|transparant|feedback|score|two-extras|feedback|score
+  - init|start|mice|macaque|feedback|score|step|scale|transparent|feedback|score|two-extras|feedback|score
+  - init|start|mice|macaque|feedback|score|step|phased|transparent|feedback|score|two-extras|feedback|score
+  - init|start|mice|macaque|feedback|score|step|share|transparent|feedback|score|two-extras|feedback|score
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|two-extras|feedback|score
   - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score|two-extras|feedback|score
   - init|start|mice|offsite|feedback|score|step|scale|tubes|feedback|score|two-extras|feedback|score
@@ -422,8 +422,8 @@ triggered_by:
   - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|step|feedback|score|two-extra|feedback|score
 
 choices:
-    - send|Submit Your Review
-    - replay|Restart Your Review
+  - send|Submit Your Review
+  - replay|Restart Your Review
 ---
 
 At BioCore we like to say an ethical review is never complete, only briefly agreed. However, you have now reached the end of this process. Your participation is important to us and we value all your insights. What would you like to do next?

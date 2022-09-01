@@ -30,7 +30,7 @@ scoreChangeSuccess:
 
 Hello,
 
-I have put togther some options for the change of our model, and we are too far along to start a bio-matter model. Here are the choices below.
+I have put together some options for the change of our model, and we are too far along to start a bio-matter model. Here are the choices below.
 
 Thanks,
 
