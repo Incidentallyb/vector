@@ -50,12 +50,12 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|limit|step
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step
-  - init|start|mice|pig|feedback|score|step|scale|limit
-  - init|start|mice|pig|feedback|score|step|phased|limit
-  - init|start|mice|pig|feedback|score|step|share|limit
-  - init|start|mice|pig|feedback|score|step|scale|fish
-  - init|start|mice|pig|feedback|score|step|phased|fish
-  - init|start|mice|pig|feedback|score|step|share|fish
+  - init|start|mice|pigs|feedback|score|step|scale|limit
+  - init|start|mice|pigs|feedback|score|step|phased|limit
+  - init|start|mice|pigs|feedback|score|step|share|limit
+  - init|start|mice|pigs|feedback|score|step|scale|fish
+  - init|start|mice|pigs|feedback|score|step|phased|fish
+  - init|start|mice|pigs|feedback|score|step|share|fish
   - init|start|mice|fish|feedback|score|step|scale|embryo
   - init|start|mice|fish|feedback|score|step|phased|embryo
   - init|start|mice|fish|feedback|score|step|share|embryo
@@ -124,6 +124,7 @@ triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|share|money
   - init|start|macaques|step|stay|feedback|score|step|share|transparant
   - init|start|mice|biobank|feedback|score|step|stay|stay
+  - init|start|mice|biobank|feedback|score|step|stay|fish
   - init|start|mice|stemcell|feedback|score|step|stay|engage
   - init|start|mice|stemcell|feedback|score|step|stay|prosecute
   - init|start|mice|biobank|feedback|score|step|fish|adult

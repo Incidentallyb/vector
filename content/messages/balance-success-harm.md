@@ -7,7 +7,7 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step
   - init|start|mice|macaque|feedback|score|step
   - init|start|mice|fish|feedback|score|step
-  - init|start|mice|pig|feedback|score|step
+  - init|start|mice|pigs|feedback|score|step
   - init|start|mice|inhouse|feedback|score|step
   - init|start|mice|offsite|feedback|score|step
   - init|start|fish|adult|feedback|score|step

@@ -13,19 +13,19 @@ hideFromTeams:
 triggered_by:
   - init|start|mice
 choices:
-  - pig|Change to a pig model
+  - pigs|Change to a pig model
   - stemcell|Change to the stemcell model
   - biobank|Change to the biobank model
 scoreChangeEconomic:
-  - pig|-2
+  - pigs|-2
   - stemcell|-4
   - biobank|-4
 scoreChangeHarm:
-  - pig|4
+  - pigs|4
   - stemcell|2
   - biobank|1
 scoreChangeSuccess:
-  - pig|-15
+  - pigs|-15
   - stemcell|-20
   - biobank|-25
 ---
