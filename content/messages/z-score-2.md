@@ -66,11 +66,13 @@ triggered_by:
   - init|start|mice|fish|feedback|score|step|phased|adult
   - init|start|mice|fish|feedback|score|step|share|adult
   - init|start|mice|macaques|feedback|score|step|share|money
-  - init|start|mice|macaques|feedback|score|step|phased|money
-  - init|start|mice|macaques|feedback|score|step|scale|money
+  - init|start|mice|macaques|feedback|score|step|phased|redeploy
+  - init|start|mice|macaques|feedback|score|step|phased|resignation
+  - init|start|mice|macaques|feedback|score|step|phased|support
+  - init|start|mice|macaques|feedback|score|step|scale|redeploy
+  - init|start|mice|macaques|feedback|score|step|scale|resignation
+  - init|start|mice|macaques|feedback|score|step|scale|support
   - init|start|mice|macaques|feedback|score|step|share|transparent
-  - init|start|mice|macaques|feedback|score|step|phased|transparent
-  - init|start|mice|macaques|feedback|score|step|scale|transparent
   - init|start|mice|inhouse|feedback|score|step|scale|tubes
   - init|start|mice|inhouse|feedback|score|step|phased|tubes
   - init|start|mice|inhouse|feedback|score|step|share|tubes

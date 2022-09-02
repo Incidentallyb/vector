@@ -60,10 +60,13 @@ triggered_by:
   - init|start|mice|fish|feedback|score|step|share|embryo|feedback|score|nothing
   - init|start|mice|fish|feedback|score|step|scale|adult|feedback|score|nothing
   - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score|nothing
-  - init|start|mice|macaques|feedback|score|step|phased|money|feedback|score|nothing
+  - init|start|mice|macaques|feedback|score|step|phased|redeploy|feedback|score|nothing
+  - init|start|mice|macaques|feedback|score|step|phased|resignation|feedback|score|nothing
+  - init|start|mice|macaques|feedback|score|step|phased|support|feedback|score|nothing
   - init|start|mice|macaques|feedback|score|step|share|money|feedback|score|nothing
-  - init|start|mice|macaques|feedback|score|step|scale|transparent|feedback|score|nothing
-  - init|start|mice|macaques|feedback|score|step|phased|transparent|feedback|score|nothing
+  - init|start|mice|macaques|feedback|score|step|scale|redeploy|feedback|score|nothing
+  - init|start|mice|macaques|feedback|score|step|scale|resignation|feedback|score|nothing
+  - init|start|mice|macaques|feedback|score|step|scale|support|feedback|score|nothing
   - init|start|mice|macaques|feedback|score|step|share|transparent|feedback|score|nothing
   - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score|nothing
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score|nothing
