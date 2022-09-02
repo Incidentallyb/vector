@@ -5,21 +5,21 @@ subject: Limiting contact with the Pigs
 triggered_by:
   - init|start|bio|stemcell|feedback|score|step|change|pigs|step
   - init|start|bio|biobank|feedback|score|step|pigs|step
+  - init|start|mice|pigs|feedback|score|step|phased
+  - init|start|mice|pigs|feedback|score|step|scale
+  - init|start|mice|pigs|feedback|score|step|share
 choices:
   - limit|Limit contact
   - fish|Change to fish
 scoreChangeEconomic:
   - limit|-3
   - fish|-2
-  - mice|-2
 scoreChangeHarm:
   - limit|-2
   - fish|1
-  - mice|2
 scoreChangeSuccess:
   - limit|10
   - fish|10
-  - mice|10
 ---
 
 Hello All,

@@ -51,8 +51,11 @@ triggered_by:
   - init|start|pigs|keep|feedback|score|step|share|change|mice|step
   - init|start|pigs|keep|feedback|score|step|share|change|fish|step
   - init|start|mice|pigs|feedback|score|step|scale|limit
+  - init|start|mice|pigs|feedback|score|step|scale|change
   - init|start|mice|pigs|feedback|score|step|phased|limit
+  - init|start|mice|pigs|feedback|score|step|phased|change
   - init|start|mice|pigs|feedback|score|step|share|limit
+  - init|start|mice|pigs|feedback|score|step|share|change
   - init|start|mice|pigs|feedback|score|step|scale|fish
   - init|start|mice|pigs|feedback|score|step|phased|fish
   - init|start|mice|pigs|feedback|score|step|share|fish
