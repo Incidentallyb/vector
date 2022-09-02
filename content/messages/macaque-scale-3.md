@@ -2,7 +2,7 @@
 title: Macaque scale 3
 author: AL
 triggered_by:
-  - init|step|maquaques-scale-3
+  - init|step|macaques
 choices:
   - pigs|Pigs
   - fish|Fish
