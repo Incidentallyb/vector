@@ -384,7 +384,7 @@ filterChoicesByPath path choices =
 
 renderTable : List String -> Content.Datastore -> Html Msg
 renderTable allChoices allContent =
-    table [ Html.Attributes.style "font-size" "10px" ]
+    table [ Html.Attributes.style "background-color: white; font-size" "10px" ]
         [ thead [] [ tr [] renderHeaders ]
         , tbody []
             [ tr []
