@@ -62,11 +62,11 @@ renderProblems : Content.Datastore -> Html Msg
 renderProblems content =
     div []
         [ h3 [] [ text "Choices that do not appear in any trigger" ]
-        , ul [] (getChoiceKeyTypos content)
+        , ul [ id "bad-choices" ] (getChoiceKeyTypos content)
         , h3 [] [ text "Content hidden from some teams or without trigger" ]
-        , ul [] (getProblemList content)
+        , ul [ id "hidden-content" ] (getProblemList content)
         , h3 [] [ text "Dead ends" ]
-        , ul [] (getDeadEnds content)
+        , ul [ id "dead-ends" ] (getDeadEnds content)
         ]
 
 
