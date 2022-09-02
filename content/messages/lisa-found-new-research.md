@@ -9,7 +9,6 @@ triggered_by:
   - init|start|fish|adult|feedback|score|step|phased
   - init|start|fish|adult|feedback|score|step|share
   - init|start|mice|biobank|feedback|score|step|fish
-  - 
 ---
 
 My Team have found some new research. I'm going to email you now....
