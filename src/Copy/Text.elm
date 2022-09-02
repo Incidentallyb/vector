@@ -37,6 +37,9 @@ t key =
             "path-check"
 
         IntroSlug ->
+            "intro"
+
+        LandingSlug ->
             ""
 
         EndInfoSlug ->
@@ -179,6 +182,7 @@ t key =
         SocialInputPost ->
             "Tweeeet"
 
+        -- End page
         EndInfoHeader ->
             "Thank you for playing!"
 
@@ -193,6 +197,20 @@ t key =
 
         EndInfoParagraph4 ->
             "Coded collectively by Nick Wade, Kris Sum and Katja Mordaunt"
+
+        -- Landing page
+        LandingParagraph ->
+            "[cCc] Cookie consent text, needs to cover Google Analytics and ideally also YouTube"
+
+        LandingVideo ->
+            "https://www.youtube.com/embed/YgEEqV6unQ0?autoplay=1&controls=0&rel=0"
+
+        -- This is advised to match the title of the embedded document
+        LandingVideoIframeTitle ->
+            "[cCc] clip12 - YouTube"
+
+        LandingLinkText ->
+            "ENTER BIOCORE"
 
         FilterInputLabel ->
             "Add comma separated values (with spaces)"

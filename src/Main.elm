@@ -21,6 +21,7 @@ import View.Documents
 import View.Emails
 import View.EndInfo exposing (view)
 import View.Intro exposing (view)
+import View.Landing exposing (view)
 import View.Messages exposing (view)
 import View.PathChecker
 import View.Social
@@ -52,9 +53,9 @@ init flags url key =
         datastore =
             Content.datastoreDictDecoder flags
     in
-    -- If not a valid route, default to Desktop
+    -- If not a valid route, default to Landing
     ( { key = key
-      , page = Maybe.withDefault Intro maybeRoute
+      , page = Maybe.withDefault Landing maybeRoute
       , data = datastore
       , gameData = GameData.init
       , visited = Set.empty
@@ -89,8 +90,8 @@ update msg model =
         UrlChanged url ->
             let
                 newRoute =
-                    -- If not a valid Route, default to Intro
-                    Maybe.withDefault Intro (Route.fromUrl url)
+                    -- If not a valid Route, default to Landing
+                    Maybe.withDefault Landing (Route.fromUrl url)
 
                 newVisits =
                     Set.insert (Route.toString newRoute) model.visited
@@ -457,6 +458,11 @@ view model =
         Intro ->
             div []
                 [ View.Intro.view
+                ]
+
+        Landing ->
+            div []
+                [ View.Landing.view
                 ]
 
         EndInfo ->
