@@ -2,18 +2,16 @@
 title: Barry mice not susceptible
 author: Dr. Barry Taylor
 subject: Mice are not susceptible to the disease
-triggered_by:
-  - init|start|mice
 hideFromTeams:
   - Oak
   - Ash
   - Birch
-  - Fir
   - Cedar
-  - Hawthorn
   - Juniper
   - Lime
   - Maple
+triggered_by:
+  - init|start|mice
 choices:
   - macaque|Change to a macaque model
   - fish|Change to a fish model
@@ -27,8 +25,7 @@ scoreChangeSuccess:
   - macaque|0
   - fish|0
 ---
-
-Dear Team Elm,
+Dear Team,
 
 We have not had a chance to meet yet, I am Dr. Barry Taylor, the Principal Investigator for this research. It is my job to drive the science forward and achieve the best possible research outcomes. I have some important news about the model you have selected.
 
