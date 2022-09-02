@@ -5,7 +5,7 @@ triggered_by:
   - init|start|macaques|step|stay
   - init|start|pigs|increase
   - init|start|pigs|keep
-  - init|start|mice|macaque
+  - init|start|mice|macaques
   - init|start|mice|fish
   - init|start|mice|pigs
   - init|start|mice|stemcell

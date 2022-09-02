@@ -13,16 +13,16 @@ hideFromTeams:
 triggered_by:
   - init|start|mice
 choices:
-  - macaque|Change to a macaque model
+  - macaques|Change to a macaque model
   - fish|Change to a fish model
 scoreChangeEconomic:
-  - macaque|-2
+  - macaques|-2
   - fish|-2
 scoreChangeHarm:
-  - macaque|5
+  - macaques|5
   - fish|2
 scoreChangeSuccess:
-  - macaque|0
+  - macaques|0
   - fish|0
 ---
 Dear Team,

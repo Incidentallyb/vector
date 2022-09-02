@@ -63,12 +63,12 @@ triggered_by:
   - init|start|mice|fish|feedback|score|step|scale|adult|feedback|score
   - init|start|mice|fish|feedback|score|step|phased|adult|feedback|score
   - init|start|mice|fish|feedback|score|step|share|adult|feedback|score
-  - init|start|mice|macaque|feedback|score|step|scale|money|feedback|score
-  - init|start|mice|macaque|feedback|score|step|phased|money|feedback|score
-  - init|start|mice|macaque|feedback|score|step|share|money|feedback|score
-  - init|start|mice|macaque|feedback|score|step|scale|transparant|feedback|score
-  - init|start|mice|macaque|feedback|score|step|phased|transparant|feedback|score
-  - init|start|mice|macaque|feedback|score|step|share|transparant|feedback|score
+  - init|start|mice|macaques|feedback|score|step|scale|money|feedback|score
+  - init|start|mice|macaques|feedback|score|step|phased|money|feedback|score
+  - init|start|mice|macaques|feedback|score|step|share|money|feedback|score
+  - init|start|mice|macaques|feedback|score|step|scale|transparant|feedback|score
+  - init|start|mice|macaques|feedback|score|step|phased|transparant|feedback|score
+  - init|start|mice|macaques|feedback|score|step|share|transparant|feedback|score
   - init|start|mice|inhouse|feedback|score|step|scale|tubes|feedback|score
   - init|start|mice|inhouse|feedback|score|step|phased|tubes|feedback|score
   - init|start|mice|inhouse|feedback|score|step|share|tubes|feedback|score

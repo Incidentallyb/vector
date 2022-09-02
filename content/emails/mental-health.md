@@ -4,8 +4,8 @@ author: Charlie
 subject: PRIVATE AND CONFIDENTIAL - Mental Health in the workplace
 triggered_by:
   - init|start|macaques|step|stay|feedback|score|step|scale
-  - init|start|mice|macaque|feedback|score|step|scale
-  - init|start|mice|macaque|feedback|score|step|phased
+  - init|start|mice|macaques|feedback|score|step|scale
+  - init|start|mice|macaques|feedback|score|step|phased
 choices:
   - resignation|Accept their resignation
   - support|Create a Mental Health support program
