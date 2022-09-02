@@ -135,7 +135,7 @@ triggered_by:
   - init|start|mice|stemcell|feedback|score|step|stay|prosecute|feedback|score|step|fish
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|fish
   - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|mice
-  - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|pig
+  - init|start|mice|biobank|feedback|score|step|stay|stay|feedback|score|step|pigs
   - init|start|mice|biobank|feedback|score|step|fish|adult|step|feedback|score|nothing
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step|feedback|score|nothing
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step|feedback|score|nothing
