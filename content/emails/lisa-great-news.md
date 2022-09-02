@@ -6,6 +6,7 @@ triggered_by:
   - init|start|macaques|step|change|step|fish|feedback|score|step|scale|embryo
   - init|start|macaques|step|change|step|fish|feedback|score|step|phased|embryo
   - init|start|macaques|step|change|step|fish|feedback|score|step|share|embryo
+  - init|start|mice|biobank|feedback|score|step|fish|embryo
   - init|start|fish|adult|feedback|score|step|scale|embryo
   - init|start|fish|adult|feedback|score|step|phased|embryo
   - init|start|fish|adult|feedback|score|step|share|embryo
