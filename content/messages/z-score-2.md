@@ -127,6 +127,7 @@ triggered_by:
   - init|start|mice|stemcell|feedback|score|step|stay|engage
   - init|start|mice|stemcell|feedback|score|step|stay|prosecute
   - init|start|mice|biobank|feedback|score|step|fish|adult
+  - init|start|mice|biobank|feedback|score|step|fish|embryo
   - init|start|mice|biobank|feedback|score|step|pigs|limit|step
   - init|start|mice|biobank|feedback|score|step|pigs|change|mice|step
   - init|start|mice|biobank|feedback|score|step|pigs|change|fish|step
