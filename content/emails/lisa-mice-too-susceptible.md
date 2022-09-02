@@ -29,8 +29,7 @@ scoreChangeSuccess:
   - stemcell|-20
   - biobank|-25
 ---
-
-Good afternoon Team Ash,
+Good afternoon Team,
 
 I don’t think we’ve met yet. I’m Dr. Lisa Finnamore, the Named Veterinary Surgeon in this facility. I’m responsible for ensuring that the welfare of the animals remains within legal standards. I know it sounds grand but should the activities in the experiment compromise the welfare of the animals, I have the ability to stop it straight away. Just to let you know!
 
