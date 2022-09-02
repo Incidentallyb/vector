@@ -4,9 +4,7 @@ author: Dr. Lisa Finnamore
 subject: Mice are not susceptible to the disease
 hideFromTeams:
   - Oak
-  - Birch
   - Fir
-  - Cedar
   - Hawthorn
   - Juniper
   - Lime
