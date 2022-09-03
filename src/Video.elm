@@ -6,6 +6,7 @@ type Video
     | Intro1
     | Intro2
     | Intro3
+    | EndMessage
 
 
 videoToData : Video -> { id : String, title : String }
@@ -22,6 +23,9 @@ videoToData video =
 
         Intro3 ->
             { id = "", title = "" }
+
+        EndMessage ->
+            { id = "5jG7032_r7g", title = "Thank You - YouTube" }
 
 
 embedUrlFromIdString : String -> String
