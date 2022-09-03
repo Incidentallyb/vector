@@ -53,6 +53,15 @@ t key =
             "Watch Video"
 
         -- Intro page
+        WatchIntro1 ->
+            "Watch Welcome Video"
+
+        WatchIntro2 ->
+            "Watch Protocol Video"
+
+        WatchIntro3 ->
+            "Watch Next Steps Video"
+
         StartNewGame ->
             "Begin Ethical Review"
 
