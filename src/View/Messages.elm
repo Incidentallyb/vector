@@ -14,7 +14,9 @@ import Markdown
 import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Set
+import Video
 import View.ChoiceButtons
+import View.Video
 
 
 view : GameData -> Content.Datastore -> Html Msg
@@ -104,7 +106,7 @@ renderMessageAndPrompt gamedata datastore message =
 
           else
             text ""
-        , renderMessage message.author message.content
+        , renderMessage message
         , renderPrompt message gamedata.choices gamedata.checkboxSet gamedata.teamName
         , if readyForScore then
             renderScore "AL" triggeredByScore actualTriggers gamedata.teamName datastore gamedata.socialsPosted
@@ -156,14 +158,19 @@ renderScore from isLatestScore triggers team datastore socialPosts =
         ]
 
 
-renderMessage : String -> String -> Html Msg
-renderMessage from message =
+renderMessage : Content.MessageData -> Html Msg
+renderMessage message =
     div
         [ class "message al w-75 float-left mt-3 ml-3 py-2" ]
         [ div [ class "mx-3" ]
             [ p [ class "message-from m-0" ]
-                [ text from ]
-            , Markdown.toHtml [ class "card-text" ] message
+                [ text message.author ]
+            , if message.basename == "end" then
+                View.Video.view (Video.videoToData Video.EndMessage)
+
+              else
+                text ""
+            , Markdown.toHtml [ class "card-text" ] message.content
             ]
         ]
 
