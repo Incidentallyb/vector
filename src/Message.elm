@@ -16,4 +16,5 @@ type Msg
     | SocialInputAdded String
     | PostSocial String String
     | PathCheckerMsg View.PathChecker.Msg
+    | CookieAccepted
     | NoOp

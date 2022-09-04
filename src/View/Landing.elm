@@ -9,16 +9,17 @@ import Message exposing (Msg(..))
 import Route exposing (Route(..))
 import Video exposing (Video(..), videoToData)
 import View.Video
+import Html.Events exposing (onClick)
 
 
 view : Html Msg
 view =
     div [ class "landing container-fluid" ]
-        [ div [ class "container" ]
+        [ div [ class "container intro-video my-5" ]
             [ View.Video.view (videoToData Video.Landing)
             , div [ class "row my-5 text-center" ]
                 [ div [ class "col-12 text-center" ]
-                    [ a [ class "btn btn-primary btn-lg mx-auto", href (Route.toString Route.Intro) ] [ text (t LandingLinkText) ]
+                    [ a [ class "btn btn-primary btn-lg mx-auto", onClick (CookieAccepted), href (Route.toString Route.Intro) ] [ text (t LandingLinkText) ]
                     ]
                 ]
             , div [ class "row my-5" ]
