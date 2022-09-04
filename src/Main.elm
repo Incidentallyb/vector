@@ -1,4 +1,4 @@
-module Main exposing (main)
+port module Main exposing (main)
 
 import Browser
 import Browser.Dom
@@ -365,8 +365,14 @@ update msg model =
                 _ ->
                     ( model, Cmd.none )
 
+        CookieAccepted ->
+            ( model, enableAnalytics True )
+
         NoOp ->
             ( model, Cmd.none )
+
+
+port enableAnalytics : Bool -> Cmd msg
 
 
 updatePathChecker : Model -> ( View.PathChecker.Model, Cmd View.PathChecker.Msg ) -> ( Model, Cmd Msg )
