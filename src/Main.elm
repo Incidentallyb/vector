@@ -374,6 +374,7 @@ update msg model =
 
 port enableAnalytics : Bool -> Cmd msg
 
+
 updatePathChecker : Model -> ( View.PathChecker.Model, Cmd View.PathChecker.Msg ) -> ( Model, Cmd Msg )
 updatePathChecker model ( pathChecker, cmds ) =
     ( { model | page = Route.PathChecker pathChecker }
