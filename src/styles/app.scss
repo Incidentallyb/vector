@@ -2,7 +2,7 @@
 :root {
   --red: #dc3545;
   --green: #28a745;
-  --blue: #0072ed;
+  --blue: #006fe6;
   --blue-pale: #9fb8f0;
   --purple: #563d7c;
   --white: #ffffff;
@@ -27,6 +27,14 @@ body {
 
 iframe {
   max-width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--blue);
+}
+
+.btn:disabled {
+  opacity: 1;
 }
 
 .nav.nav-pills {
@@ -59,6 +67,10 @@ iframe {
       font-weight: bold;
     }
   }
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--blue);
 }
 
 @media (prefers-reduced-motion: reduce) {
