@@ -31,12 +31,13 @@ view activeVideo =
 
 renderVideoButtons : Html Msg
 renderVideoButtons =
-    ol [ class "row my-4 list-unstyled justify-content-md-center" ]
+    ol [ class "row my-4 list-unstyled video-button-list" ]
         (List.map
             (\( buttonTextKey, videoKey ) ->
                 li [ class "col text-center" ]
                     [ button
                         [ class "btn btn-primary btn-md mx-2"
+                        , type_ "button"
                         , onClick (WatchIntroVideoClicked videoKey)
                         ]
                         [ text (t buttonTextKey) ]
