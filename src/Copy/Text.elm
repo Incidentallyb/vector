@@ -126,19 +126,19 @@ t key =
                     "elm.png"
 
                 "Fir" ->
-                    "fir.png"
+                    "fir.jpg"
 
-                "Hawthorne" ->
-                    "hawthorne.png"
+                "Hawthorn" ->
+                    "hawthorn.png"
 
                 "Juniper" ->
-                    "juniper.png"
+                    "juniper.gif"
 
                 "Lime" ->
                     "lime.png"
 
                 "Maple" ->
-                    "maple.png"
+                    "maple.jpg"
 
                 "Oak" ->
                     "oak.png"
