@@ -200,7 +200,7 @@ t key =
 
         -- Landing page
         LandingParagraph ->
-            "[cCc] This game uses Google Analytics to improve your experience. By entering BioCore, you agree to Google Analytics cookies being placed on your device."
+            "This game uses Google Analytics to improve your experience. By entering BioCore, you agree to Google Analytics cookies being placed on your device."
 
         LandingVideo ->
             "https://www.youtube.com/embed/YgEEqV6unQ0?autoplay=1&controls=0&rel=0"
