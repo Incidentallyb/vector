@@ -16,3 +16,21 @@
   margin: auto;
   max-width: 800px;
 }
+
+.video-button-list {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  max-width: 800px;
+
+  li button {
+    width: 200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .video-button-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

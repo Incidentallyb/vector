@@ -17,6 +17,9 @@ type Key
     | PathCheckerSlug
     | UploadPath
       --- Intro page
+    | WatchIntro1
+    | WatchIntro2
+    | WatchIntro3
     | StartNewGame
       --- Navigation text
     | NavDocuments

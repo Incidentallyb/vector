@@ -47,7 +47,7 @@ renderVideo videoId { isFirstVisit, hasRequestedWatch } =
         View.Video.view { id = videoId, title = "title" }
 
     else
-        button [ class "btn btn-primary", onClick WatchVideoClicked ]
+        button [ class "btn btn-primary", onClick WatchDocumentVideoClicked ]
             [ eye []
             , text (t WatchVideo)
             ]

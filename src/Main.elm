@@ -16,6 +16,7 @@ import Route exposing (Route(..))
 import Set
 import Task
 import Url
+import Video
 import View.Desktop
 import View.Documents
 import View.Emails
@@ -39,6 +40,7 @@ type alias Model =
     , visited : Set.Set String
     , isFirstVisit : Bool
     , requestedWatchAgain : Bool
+    , activeIntroVideo : Video.Video
     , notifications : NotificationCount
     , socialInput : String
     }
@@ -61,6 +63,7 @@ init flags url key =
       , visited = Set.empty
       , isFirstVisit = True
       , requestedWatchAgain = False
+      , activeIntroVideo = Video.Intro1
       , notifications = GameData.notificationsInit
       , socialInput = ""
       }
@@ -151,14 +154,18 @@ update msg model =
                 , visited = newVisits
                 , isFirstVisit = isFirstVisit
                 , requestedWatchAgain = False
+                , activeIntroVideo = Video.Intro1
                 , gameData = updatedGameData
                 , notifications = updatedSingleViewNotifications2
               }
             , resetViewport
             )
 
-        WatchVideoClicked ->
+        WatchDocumentVideoClicked ->
             ( { model | requestedWatchAgain = True }, Cmd.none )
+
+        WatchIntroVideoClicked video ->
+            ( { model | activeIntroVideo = video }, Cmd.none )
 
         ChoiceButtonClicked choice ->
             let
@@ -463,7 +470,7 @@ view model =
 
         Intro ->
             div []
-                [ View.Intro.view
+                [ View.Intro.view model.activeIntroVideo
                 ]
 
         Landing ->

@@ -16,13 +16,13 @@ videoToData video =
             { id = "oWzsFH4LLME", title = "Let’s get started - YouTube" }
 
         Intro1 ->
-            { id = "VB0y52wzNZU", title = "" }
+            { id = "mvo5p86uYNc", title = "Welcome to Biocore - YouTube" }
 
         Intro2 ->
-            { id = "rztd_BIXyUQ", title = "" }
+            { id = "zDvg0tnHc0Q", title = "Protocol - YouTube" }
 
         Intro3 ->
-            { id = "", title = "" }
+            { id = "qCv6EkEG5sQ", title = "Next Steps - YouTube" }
 
         EndMessage ->
             { id = "5jG7032_r7g", title = "Thank You - YouTube" }
