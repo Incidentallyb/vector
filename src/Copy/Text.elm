@@ -10,9 +10,42 @@ import Copy.Keys exposing (Key(..))
 t : Key -> String
 t key =
     case key of
-        -- Meta
+        -- Meta [cCc]
         SiteTitle ->
             "Welcome to BioCore"
+
+        DesktopTitle ->
+            "Biocore Desktop"
+
+        DocumentsTitle ->
+            "Biocore Documents"
+
+        DocumentTitle id ->
+            "Biocore Document | " ++ id
+
+        EmailsTitle ->
+            "Biocore Emails"
+
+        EmailTitle id ->
+            "Biocore Email | " ++ id
+
+        MessagesTitle ->
+            "Biocore Messages"
+
+        SocialTitle ->
+            "Biocore Tweeeeter"
+
+        IntroTitle ->
+            "Welcome to Biocore"
+
+        LandingTitle ->
+            "Welcome to Biocore"
+
+        EndInfoTitle ->
+            "Biocore - Thank You"
+
+        PathCheckerTitle ->
+            "Path Checker"
 
         -- Slugs
         Navbar ->

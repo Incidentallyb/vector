@@ -4,6 +4,17 @@ module Copy.Keys exposing (Key(..))
 type Key
     = --- Site Meta
       SiteTitle
+    | DesktopTitle
+    | DocumentsTitle
+    | DocumentTitle String
+    | EmailsTitle
+    | EmailTitle String
+    | MessagesTitle
+    | SocialTitle
+    | IntroTitle
+    | LandingTitle
+    | EndInfoTitle
+    | PathCheckerTitle
       --- Route Slugs
     | Navbar
     | DesktopSlug
