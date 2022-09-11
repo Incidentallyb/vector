@@ -7,6 +7,7 @@ import GameData exposing (GameData, NotificationCount)
 import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Attributes.Aria exposing (ariaHidden)
 import Html.Events exposing (on, onClick, targetValue)
 import Json.Decode as Json
 import Message exposing (Msg(..))
@@ -147,7 +148,7 @@ renderNavLinks pageRoute notifications =
                 ]
             , href (Route.toString Route.Messages)
             ]
-            [ chatAlt [ Svg.Attributes.class "nav-icon" ]
+            [ chatAlt [ Svg.Attributes.class "nav-icon", ariaHidden True ]
             , text (t NavMessages)
             , if notifications.messages > 0 then
                 span [ class "badge badge-warning" ] [ text (String.fromInt notifications.messages) ]
@@ -167,7 +168,7 @@ renderNavLinks pageRoute notifications =
                 ]
             , href (Route.toString Route.Documents)
             ]
-            [ documentText [ Svg.Attributes.class "nav-icon" ]
+            [ documentText [ Svg.Attributes.class "nav-icon", ariaHidden True ]
             , text (t NavDocuments)
             , text " "
             , if notifications.documents > 0 then
@@ -183,7 +184,7 @@ renderNavLinks pageRoute notifications =
                 ]
             , href (Route.toString Route.Emails)
             ]
-            [ mail [ Svg.Attributes.class "nav-icon" ]
+            [ mail [ Svg.Attributes.class "nav-icon", ariaHidden True ]
             , text (t NavEmails)
             , if notifications.emails > 0 then
                 span [ class "badge badge-warning" ] [ text (String.fromInt notifications.emails) ]
@@ -203,7 +204,7 @@ renderNavLinks pageRoute notifications =
                 ]
             , href (Route.toString Route.Social)
             ]
-            [ hashtag [ Svg.Attributes.class "nav-icon" ]
+            [ hashtag [ Svg.Attributes.class "nav-icon", ariaHidden True ]
             , text (t NavSocial)
             , if notifications.social > 0 then
                 span [ class "badge badge-warning" ] [ text (String.fromInt notifications.social) ]
@@ -225,7 +226,7 @@ renderMobileNavLinks pageRoute notifications =
             , class "mobile-nav-item"
             , href (Route.toString Route.Messages)
             ]
-            [ chatAlt [ Svg.Attributes.class "mobile-nav-icon" ]
+            [ chatAlt [ Svg.Attributes.class "mobile-nav-icon", ariaHidden True ]
             , div [] [ text (t NavMessages) ]
             , if notifications.messages > 0 then
                 span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.messages) ]
@@ -246,7 +247,7 @@ renderMobileNavLinks pageRoute notifications =
             , class "mobile-nav-item"
             , href (Route.toString Route.Documents)
             ]
-            [ documentText [ Svg.Attributes.class "mobile-nav-icon" ]
+            [ documentText [ Svg.Attributes.class "mobile-nav-icon", ariaHidden True ]
             , div [] [ text (t NavDocuments) ]
             , if notifications.documents > 0 then
                 span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.documents) ]
@@ -262,7 +263,7 @@ renderMobileNavLinks pageRoute notifications =
             , class "mobile-nav-item"
             , href (Route.toString Route.Emails)
             ]
-            [ mail [ Svg.Attributes.class "mobile-nav-icon" ]
+            [ mail [ Svg.Attributes.class "mobile-nav-icon", ariaHidden True ]
             , div [] [ text (t NavEmails) ]
             , if notifications.emails > 0 then
                 span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.emails) ]
@@ -278,7 +279,7 @@ renderMobileNavLinks pageRoute notifications =
             , class "mobile-nav-item"
             , href (Route.toString Route.Social)
             ]
-            [ hashtag [ Svg.Attributes.class "mobile-nav-icon" ]
+            [ hashtag [ Svg.Attributes.class "mobile-nav-icon", ariaHidden True ]
             , div [] [ text (t NavSocial) ]
             , if notifications.social > 0 then
                 span [ class "badge badge-warning badge-mobile" ] [ text (String.fromInt notifications.social) ]
