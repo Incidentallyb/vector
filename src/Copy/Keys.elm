@@ -17,8 +17,8 @@ type Key
     | PathCheckerSlug
     | UploadPath
       --- Intro page
-    | WatchIntro3Button
-    | SkipIntro3VideoLink
+    | WatchIntro2Button
+    | SkipIntro2VideoLink
     | StartNewGameLink
       --- Navigation text
     | NavDocuments

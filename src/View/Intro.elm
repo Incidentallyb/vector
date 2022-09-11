@@ -24,9 +24,9 @@ view activeVideo =
                 button
                     [ class "btn btn-primary btn-lg mx-auto"
                     , type_ "button"
-                    , onClick (WatchIntroVideoClicked Intro3)
+                    , onClick (WatchIntroVideoClicked Intro2)
                     ]
-                    [ text (t WatchIntro3Button) ]
+                    [ text (t WatchIntro2Button) ]
 
               else
                 text ""
@@ -35,11 +35,11 @@ view activeVideo =
                 , href (Route.toString Route.Desktop)
                 ]
                 [ text
-                    (if activeVideo == Intro3 then
+                    (if activeVideo == Intro2 then
                         t StartNewGameLink
 
                      else
-                        t SkipIntro3VideoLink
+                        t SkipIntro2VideoLink
                     )
                 ]
             ]

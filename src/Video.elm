@@ -4,7 +4,7 @@ module Video exposing (Video(..), embedUrlFromIdString, videoToData)
 type Video
     = Landing
     | Intro1
-    | Intro3
+    | Intro2
     | EndMessage
 
 
@@ -17,7 +17,7 @@ videoToData video =
         Intro1 ->
             { id = "mvo5p86uYNc", title = "Welcome to Biocore - YouTube" }
 
-        Intro3 ->
+        Intro2 ->
             { id = "qCv6EkEG5sQ", title = "Next Steps - YouTube" }
 
         EndMessage ->

@@ -53,10 +53,10 @@ t key =
             "Watch Video"
 
         -- Intro page
-        WatchIntro3Button ->
+        WatchIntro2Button ->
             "YOUR ASSIGNMENT"
 
-        SkipIntro3VideoLink ->
+        SkipIntro2VideoLink ->
             "JUMP RIGHT IN"
 
         StartNewGameLink ->
