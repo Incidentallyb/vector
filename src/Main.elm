@@ -395,7 +395,44 @@ updatePathChecker model ( pathChecker, cmds ) =
 
 viewDocument : Model -> Browser.Document Msg
 viewDocument model =
-    { title = t SiteTitle, body = [ view model ] }
+    { title = t (titleKeyFromPage model.page), body = [ view model ] }
+
+
+titleKeyFromPage : Route -> Key
+titleKeyFromPage page =
+    case page of
+        Desktop ->
+            DesktopTitle
+
+        Documents ->
+            DocumentsTitle
+
+        Document id ->
+            DocumentTitle id
+
+        Emails ->
+            EmailsTitle
+
+        Email id ->
+            EmailTitle id
+
+        Messages ->
+            MessagesTitle
+
+        Social ->
+            SocialTitle
+
+        Intro ->
+            IntroTitle
+
+        EndInfo ->
+            EndInfoTitle
+
+        Landing ->
+            LandingTitle
+
+        PathChecker _ ->
+            PathCheckerTitle
 
 
 view : Model -> Html Msg
