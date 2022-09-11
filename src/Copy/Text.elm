@@ -53,17 +53,14 @@ t key =
             "Watch Video"
 
         -- Intro page
-        WatchIntro1 ->
-            "Watch Welcome Video"
+        WatchIntro3Button ->
+            "YOUR ASSIGNMENT"
 
-        WatchIntro2 ->
-            "Watch Protocol Video"
+        SkipIntro3VideoLink ->
+            "JUMP RIGHT IN"
 
-        WatchIntro3 ->
-            "Watch Next Steps Video"
-
-        StartNewGame ->
-            "Begin Ethical Review"
+        StartNewGameLink ->
+            "BEGIN ETHICAL REVIEW"
 
         NavDocuments ->
             "Documents"
