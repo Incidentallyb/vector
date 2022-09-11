@@ -208,13 +208,6 @@ t key =
         LandingParagraph ->
             "This game uses Google Analytics to improve your experience. By entering BioCore, you agree to Google Analytics cookies being placed on your device."
 
-        LandingVideo ->
-            "https://www.youtube.com/embed/YgEEqV6unQ0?autoplay=1&controls=0&rel=0"
-
-        -- This is advised to match the title of the embedded document
-        LandingVideoIframeTitle ->
-            "[cCc] clip12 - YouTube"
-
         LandingLinkText ->
             "ENTER BIOCORE"
 

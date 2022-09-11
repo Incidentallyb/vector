@@ -67,8 +67,6 @@ type Key
     | EndInfoParagraph4
       --- Ending info
     | LandingParagraph
-    | LandingVideo
-    | LandingVideoIframeTitle
     | LandingLinkText
       --- TeamNames
     | TeamNames
