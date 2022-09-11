@@ -16,6 +16,16 @@
     filter: drop-shadow(0px 0px 5px var(--black));
   }
 
+  .scores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1rem 0;
+    max-width: 500px;
+    padding: 0;
+    width: 100%;
+  }
+
   .content {
     ul {
       padding-inline-start: 1rem;
@@ -28,40 +38,46 @@
 
   .card-body {
     ul {
-      padding: 15px;
       list-style: none;
     }
   }
 
   .info-list-item {
-    display: flex;
-    margin-bottom: 1rem;
+    align-items: center;
     font-weight: 700;
-
-    .info-label {
-      flex: 0 0 6rem;
-    }
+    margin-bottom: 1rem;
 
     .symbol {
-      padding: 0.3rem;
-      border: 2px solid var(--grey-twitter);
-      flex: 0 0 3rem;
-      text-align: center;
-      border-top-left-radius: 0.5rem;
-      border-bottom-left-radius: 0.5rem;
       background-color: var(--grey-twitter);
+      border-bottom-left-radius: 0.5rem;
+      border-top-left-radius: 0.5rem;
+      border: 2px solid var(--grey-twitter);
       color: var(--white);
+      margin-left: auto;
+      padding: 0.3rem;
+      text-align: center;
+      width: 3rem;
     }
 
     .value {
-      text-align: center;
-      padding: 0.3rem;
-      border-top-right-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
-      border: 2px solid var(--grey-twitter);
       border-left: 0;
-      flex: 0 0 5rem;
+      border-top-right-radius: 0.5rem;
+      border: 2px solid var(--grey-twitter);
+      margin-right: 1rem;
+      padding: 0.3rem;
+      text-align: center;
+      width: 5rem;
     }
+  }
+
+  .lists {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .subheading {
+    font-size: 1.25rem;
   }
 }
 

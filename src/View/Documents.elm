@@ -63,11 +63,11 @@ renderImage document =
             img [ src (t UploadPath ++ image.src), alt image.alt, class "col-md-6" ] []
 
 
-renderSubtitle : Maybe String -> Html Msg
-renderSubtitle maybeSubtitle =
+renderNumberUsed : Maybe String -> Html Msg
+renderNumberUsed maybeSubtitle =
     case maybeSubtitle of
         Just subtitle ->
-            h2 [] [ text subtitle ]
+            h2 [ class "subheading mb-5" ] [ text subtitle ]
 
         Nothing ->
             text ""
@@ -82,8 +82,10 @@ renderInfo label symbol data extra =
         Just value ->
             li [ class "info-list-item" ]
                 [ div [ class "info-label" ] [ text label ]
-                , div [ class "symbol" ] [ text symbol ]
-                , div [ class "value" ] [ text (value ++ extra) ]
+                , div [ class "d-flex" ]
+                    [ div [ class "symbol" ] [ text symbol ]
+                    , div [ class "value" ] [ text (value ++ extra) ]
+                    ]
                 ]
 
 
@@ -99,9 +101,9 @@ renderList listTitle listContent =
             text ""
 
         Just content ->
-            section [ class "col-md-6" ]
-                [ h2 [] [ text listTitle ]
-                , ul []
+            section [ class "col-md-6 p-0" ]
+                [ h2 [ class "subheading" ] [ text listTitle ]
+                , ul [ class "p-0" ]
                     (List.map renderListItem content)
                 ]
 
@@ -115,9 +117,7 @@ single maybeContent { isFirstVisit, hasRequestedWatch } =
         Just document ->
             div [ class "document card" ]
                 [ div [ class "card-body" ]
-                    [ h1 [] [ text document.title ]
-                    , renderSubtitle document.subtitle
-                    , case document.videoId of
+                    [ case document.videoId of
                         Just videoId ->
                             renderVideo
                                 videoId
@@ -126,21 +126,29 @@ single maybeContent { isFirstVisit, hasRequestedWatch } =
                                 }
 
                         Nothing ->
-                            text ""
-                    , div
-                        [ class "row" ]
-                        [ renderImage document
-                        , ul [ class "col-md-6" ]
+                            renderImage document
+                    , div []
+                        [ ul [ class "scores" ]
                             [ renderInfo "Cost" "£" document.cost "M"
                             , renderInfo "Success" "%" document.success ""
                             , renderInfo "Harm" "!" document.harm ""
                             ]
-                        , renderList "Pros" document.pros
-                        , renderList "Cons" document.cons
+                        , h1 [ class "my-4" ] [ text document.title ]
+                        , div [ class "lists" ]
+                            [ renderList "Pros" document.pros
+                            , renderList "Cons" document.cons
+                            ]
                         ]
                     ]
                 , div [ class "card-footer" ]
-                    [ p [] [ Markdown.toHtml [ class "content" ] document.content ]
+                    [ case document.videoId of
+                        Just videoId ->
+                            h2 [ class "subheading" ] [ text "Video Summary" ]
+
+                        Nothing ->
+                            text ""
+                    , p [] [ Markdown.toHtml [ class "content" ] document.content ]
+                    , renderNumberUsed document.subtitle
                     , a [ href (Route.toString Documents), class "btn btn-primary" ]
                         [ arrowLeft []
                         , text (t NavDocumentsBackTo)
