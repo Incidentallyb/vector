@@ -165,7 +165,14 @@ update msg model =
             ( { model | requestedWatchAgain = True }, Cmd.none )
 
         WatchIntroVideoClicked video ->
-            ( { model | activeIntroVideo = video }, Cmd.none )
+            ( { model
+                | activeIntroVideo = video
+
+                -- If Your assignment video is watched mark the doc as read
+                , visited = Set.insert "/documents/your-assignment" model.visited
+              }
+            , Cmd.none
+            )
 
         ChoiceButtonClicked choice ->
             let

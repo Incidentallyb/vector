@@ -28,10 +28,9 @@ type Key
     | PathCheckerSlug
     | UploadPath
       --- Intro page
-    | WatchIntro1
-    | WatchIntro2
-    | WatchIntro3
-    | StartNewGame
+    | WatchIntro2Button
+    | SkipIntro2VideoLink
+    | StartNewGameLink
       --- Navigation text
     | NavDocuments
     | NavEmails
@@ -79,8 +78,6 @@ type Key
     | EndInfoParagraph4
       --- Ending info
     | LandingParagraph
-    | LandingVideo
-    | LandingVideoIframeTitle
     | LandingLinkText
       --- TeamNames
     | TeamNames

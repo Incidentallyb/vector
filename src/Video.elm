@@ -5,7 +5,6 @@ type Video
     = Landing
     | Intro1
     | Intro2
-    | Intro3
     | EndMessage
 
 
@@ -19,9 +18,6 @@ videoToData video =
             { id = "mvo5p86uYNc", title = "Welcome to Biocore - YouTube" }
 
         Intro2 ->
-            { id = "zDvg0tnHc0Q", title = "Protocol - YouTube" }
-
-        Intro3 ->
             { id = "qCv6EkEG5sQ", title = "Next Steps - YouTube" }
 
         EndMessage ->

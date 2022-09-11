@@ -17,34 +17,30 @@ view activeVideo =
         [ div [ class "row my-4" ]
             [ h1 [ class "d-block mx-auto px-4 text-center" ] [ text (t SiteTitle) ]
             ]
-        , div [ class "intro-video" ] [ View.Video.view (videoToData activeVideo) ]
-        , renderVideoButtons
-        , div [ class "row my-4" ]
-            [ a
+        , div [ class "intro-video" ]
+            [ View.Video.view (videoToData activeVideo) ]
+        , div [ class "row my-4 video-button-row" ]
+            [ if activeVideo == Intro1 then
+                button
+                    [ class "btn btn-primary btn-lg mx-auto"
+                    , type_ "button"
+                    , onClick (WatchIntroVideoClicked Intro2)
+                    ]
+                    [ text (t WatchIntro2Button) ]
+
+              else
+                text ""
+            , a
                 [ class "btn btn-primary btn-lg mx-auto"
                 , href (Route.toString Route.Desktop)
                 ]
-                [ text (t StartNewGame) ]
+                [ text
+                    (if activeVideo == Intro2 then
+                        t StartNewGameLink
+
+                     else
+                        t SkipIntro2VideoLink
+                    )
+                ]
             ]
         ]
-
-
-renderVideoButtons : Html Msg
-renderVideoButtons =
-    ol [ class "row my-4 list-unstyled video-button-list" ]
-        (List.map
-            (\( buttonTextKey, videoKey ) ->
-                li [ class "col text-center" ]
-                    [ button
-                        [ class "btn btn-primary btn-md mx-2"
-                        , type_ "button"
-                        , onClick (WatchIntroVideoClicked videoKey)
-                        ]
-                        [ text (t buttonTextKey) ]
-                    ]
-            )
-            [ ( WatchIntro1, Intro1 )
-            , ( WatchIntro2, Intro2 )
-            , ( WatchIntro3, Intro3 )
-            ]
-        )

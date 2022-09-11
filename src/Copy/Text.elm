@@ -86,17 +86,14 @@ t key =
             "Watch Video"
 
         -- Intro page
-        WatchIntro1 ->
-            "Watch Welcome Video"
+        WatchIntro2Button ->
+            "YOUR ASSIGNMENT"
 
-        WatchIntro2 ->
-            "Watch Protocol Video"
+        SkipIntro2VideoLink ->
+            "JUMP RIGHT IN"
 
-        WatchIntro3 ->
-            "Watch Next Steps Video"
-
-        StartNewGame ->
-            "Begin Ethical Review"
+        StartNewGameLink ->
+            "BEGIN ETHICAL REVIEW"
 
         NavDocuments ->
             "Documents"
@@ -243,13 +240,6 @@ t key =
         -- Landing page
         LandingParagraph ->
             "This game uses Google Analytics to improve your experience. By entering BioCore, you agree to Google Analytics cookies being placed on your device."
-
-        LandingVideo ->
-            "https://www.youtube.com/embed/YgEEqV6unQ0?autoplay=1&controls=0&rel=0"
-
-        -- This is advised to match the title of the embedded document
-        LandingVideoIframeTitle ->
-            "[cCc] clip12 - YouTube"
 
         LandingLinkText ->
             "ENTER BIOCORE"
