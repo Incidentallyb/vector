@@ -143,7 +143,7 @@ single maybeContent { isFirstVisit, hasRequestedWatch } =
                 , div [ class "card-footer" ]
                     [ case document.videoId of
                         Just videoId ->
-                            h2 [ class "subheading" ] [ text "Video Summary" ]
+                            h2 [ class "subheading" ] [ text (t VideoSummary) ]
 
                         Nothing ->
                             text ""
