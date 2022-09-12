@@ -85,6 +85,9 @@ t key =
         WatchVideo ->
             "Watch Video"
 
+        VideoSummary ->
+            "Video Summary"
+
         -- Intro page
         WatchIntro2Button ->
             "YOUR ASSIGNMENT"

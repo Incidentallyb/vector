@@ -39,6 +39,7 @@ type Key
     | NavSocial
       -- Documents
     | WatchVideo
+    | VideoSummary
       --- Messages
     | FromPlayerTeam
     | ReadyToReply
