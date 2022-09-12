@@ -17,6 +17,8 @@ type Key
     | PathCheckerTitle
       --- Route Slugs
     | Navbar
+    | CloseAudio
+    | OpenAudio
     | DesktopSlug
     | DocumentsSlug
     | EmailsSlug

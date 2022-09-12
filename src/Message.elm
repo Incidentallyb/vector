@@ -15,6 +15,7 @@ type Msg
     | CheckboxClicked String
     | CheckboxesSubmitted String
     | TeamChosen String
+    | ToggleAudio
     | SocialInputAdded String
     | PostSocial String String
     | PathCheckerMsg View.PathChecker.Msg

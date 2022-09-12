@@ -1,5 +1,5 @@
 :root {
-  --navHeight: 70px;
+  --navHeight: 56px;
   --mobileNavHeight: 4em;
 }
 
@@ -14,9 +14,47 @@
   .desktop {
     height: calc(100vh - var(--mobileNavHeight) - var(--navHeight));
   }
-  audio {
-    max-width: 6em !important;
+}
+
+.audio-toggle {
+  background: none;
+  border-radius: 4px;
+  border: 2px solid var(--black);
+  height: 44px;
+  margin-left: 1rem;
+  width: 44px;
+
+  &:focus {
+    outline: 2px solid var(--blue);
   }
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.audio-toggle.audio-open {
+  background: var(--blue);
+
+  svg {
+    stroke: var(--white);
+  }
+}
+
+.audio {
+  position: absolute;
+  right: 1rem;
+  z-index: 9999;
+}
+
+.hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
 }
 
 .header-icon {
@@ -63,11 +101,21 @@
   }
 }
 
-@keyframes bounce { 
-  0%, 10%, 25%, 40%, 50% { transform: translateY(0);} 
-  20% {transform: translateY(-3px);} 
-  30% {transform: translateY(-2px);} 
-} 
+@keyframes bounce {
+  0%,
+  10%,
+  25%,
+  40%,
+  50% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-3px);
+  }
+  30% {
+    transform: translateY(-2px);
+  }
+}
 
 .mobile-nav {
   display: flex;
@@ -161,10 +209,11 @@
 }
 
 audio {
-  max-width: 19em;
+  width: 19rem;
   margin-left: 1em;
   display: block;
-  filter: sepia(100%);
+  border-radius: 5rem;
+  border: 3px solid var(--grey-twitter);
 }
 
 .login-logo {

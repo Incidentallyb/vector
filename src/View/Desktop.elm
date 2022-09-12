@@ -4,10 +4,10 @@ import Copy.Keys exposing (Key(..))
 import Copy.Text exposing (t)
 import FeedbackForm
 import GameData exposing (GameData, NotificationCount)
-import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail)
+import Heroicons.Outline exposing (chatAlt, documentText, hashtag, mail, volumeUp, x)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Attributes.Aria exposing (ariaHidden)
+import Html.Attributes.Aria exposing (ariaControls, ariaExpanded, ariaHidden, ariaLabel)
 import Html.Events exposing (on, onClick, targetValue)
 import Json.Decode as Json
 import Message exposing (Msg(..))
@@ -15,8 +15,8 @@ import Route exposing (Route(..))
 import Svg.Attributes
 
 
-view : GameData -> Route -> NotificationCount -> Html Msg
-view gameData pageRoute notifications =
+view : GameData -> Route -> NotificationCount -> Bool -> Html Msg
+view gameData pageRoute notifications audioOpen =
     case String.left 1 gameData.teamName of
         "?" ->
             renderLoginPage gameData
@@ -30,7 +30,7 @@ view gameData pageRoute notifications =
         -}
         _ ->
             div []
-                [ renderTopNavigation gameData.teamName
+                [ renderTopNavigation gameData.teamName audioOpen
                 , renderWrapperWithNav gameData
                     pageRoute
                     notifications
@@ -45,20 +45,59 @@ view gameData pageRoute notifications =
                 ]
 
 
-renderTopNavigation : String -> Html Msg
-renderTopNavigation teamName =
-    header [ class "navbar navbar-light bg-light", id "topnav" ]
-        [ img [ class "header-icon", src (t UploadPath ++ "biocore-logo.png") ] []
-        , a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
-        , span [ class "ml-auto" ] [ text ("Team " ++ teamName) ]
-        , audio
-            [ src "/audio/vector_loop_1_web.ogg"
-            , id "audio-player"
-            , controls True
-            , autoplay True
-            , loop True
+renderTopNavigation : String -> Bool -> Html Msg
+renderTopNavigation teamName audioOpen =
+    header [ class "navbar-light bg-light", id "topnav" ]
+        [ div [ class "navbar" ]
+            [ img [ class "header-icon", src (t UploadPath ++ "biocore-logo.png"), alt "" ] []
+            , a [ class "navbar-brand", href "#" ] [ text (t Navbar) ]
+            , span [ class "ml-auto" ] [ text ("Team " ++ teamName) ]
+            , button
+                [ classList
+                    [ ( "audio-toggle", True )
+                    , ( "audio-open", audioOpen )
+                    ]
+                , onClick ToggleAudio
+                , type_ "button"
+                , ariaControls "audio-player"
+                , ariaLabel
+                    (if audioOpen == True then
+                        t CloseAudio
+
+                     else
+                        t OpenAudio
+                    )
+                , ariaExpanded
+                    (if audioOpen == True then
+                        "true"
+
+                     else
+                        "false"
+                    )
+                ]
+                [ if audioOpen then
+                    x [ ariaHidden True ]
+
+                  else
+                    volumeUp [ ariaHidden True ]
+                ]
             ]
-            []
+        , div
+            [ classList
+                [ ( "audio", True )
+                , ( "hidden", audioOpen == False )
+                ]
+            , id "audio-player"
+            ]
+            [ audio
+                [ src "/audio/vector_loop_1_web.ogg"
+                , controls True
+                , autoplay True
+                , loop True
+                , class "ml-auto my-2"
+                ]
+                []
+            ]
         ]
 
 
