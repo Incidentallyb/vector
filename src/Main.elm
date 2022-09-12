@@ -39,6 +39,7 @@ type alias Model =
     , gameData : GameData
     , visited : Set.Set String
     , isFirstVisit : Bool
+    , audioOpen : Bool
     , requestedWatchAgain : Bool
     , activeIntroVideo : Video.Video
     , notifications : NotificationCount
@@ -64,6 +65,7 @@ init flags url key =
       , isFirstVisit = True
       , requestedWatchAgain = False
       , activeIntroVideo = Video.Intro1
+      , audioOpen = False
       , notifications = GameData.notificationsInit
       , socialInput = ""
       }
@@ -382,6 +384,13 @@ update msg model =
         CookieAccepted ->
             ( model, enableAnalytics True )
 
+        ToggleAudio ->
+            if model.audioOpen == True then
+                ( { model | audioOpen = False }, Cmd.none )
+
+            else
+                ( { model | audioOpen = True }, Cmd.none )
+
         NoOp ->
             ( model, Cmd.none )
 
@@ -446,11 +455,11 @@ view : Model -> Html Msg
 view model =
     case model.page of
         Desktop ->
-            View.Desktop.view model.gameData model.page model.notifications
+            View.Desktop.view model.gameData model.page model.notifications model.audioOpen
 
         Documents ->
             div []
-                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                [ View.Desktop.renderTopNavigation model.gameData.teamName model.audioOpen
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -460,7 +469,7 @@ view model =
 
         Document id ->
             div []
-                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                [ View.Desktop.renderTopNavigation model.gameData.teamName model.audioOpen
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -474,7 +483,7 @@ view model =
 
         Emails ->
             div []
-                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                [ View.Desktop.renderTopNavigation model.gameData.teamName model.audioOpen
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -484,7 +493,7 @@ view model =
 
         Email id ->
             div []
-                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                [ View.Desktop.renderTopNavigation model.gameData.teamName model.audioOpen
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -494,7 +503,7 @@ view model =
 
         Messages ->
             div []
-                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                [ View.Desktop.renderTopNavigation model.gameData.teamName model.audioOpen
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications
@@ -504,7 +513,7 @@ view model =
 
         Social ->
             div []
-                [ View.Desktop.renderTopNavigation model.gameData.teamName
+                [ View.Desktop.renderTopNavigation model.gameData.teamName model.audioOpen
                 , View.Desktop.renderWrapperWithNav model.gameData
                     model.page
                     model.notifications

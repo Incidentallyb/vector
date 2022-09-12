@@ -47,10 +47,17 @@ t key =
         PathCheckerTitle ->
             "Path Checker"
 
-        -- Slugs
+        -- Nav
         Navbar ->
             "BioCore"
 
+        CloseAudio ->
+            "Close audio controls"
+
+        OpenAudio ->
+            "Open audio controls"
+
+        -- Slugs
         DesktopSlug ->
             "desktop"
 
