@@ -17,7 +17,7 @@ view =
     div [ class "landing container-fluid" ]
         [ div [ class "row justify-content-center" ]
             [ div
-                [ class "col-6 my-4 alert alert-light text-center text-dark"
+                [ class "col-9 col-md-6 my-4 alert alert-light text-center text-dark"
                 ]
                 [ text (t LandingFictionAlert) ]
             ]
