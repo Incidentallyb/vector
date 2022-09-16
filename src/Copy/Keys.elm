@@ -29,6 +29,10 @@ type Key
     | EndInfoSlug
     | PathCheckerSlug
     | UploadPath
+      --- Landing page
+    | LandingFictionAlert
+    | LandingParagraph
+    | LandingLinkText
       --- Intro page
     | WatchIntro2Button
     | SkipIntro2VideoLink
@@ -79,9 +83,6 @@ type Key
     | EndInfoParagraph2
     | EndInfoParagraph3
     | EndInfoParagraph4
-      --- Ending info
-    | LandingParagraph
-    | LandingLinkText
       --- TeamNames
     | TeamNames
     | TeamLogo String

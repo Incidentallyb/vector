@@ -15,7 +15,13 @@ import View.Video
 view : Html Msg
 view =
     div [ class "landing container-fluid" ]
-        [ div [ class "container intro-video my-5" ]
+        [ div [ class "row justify-content-center" ]
+            [ div
+                [ class "col-9 col-md-6 my-4 alert alert-light text-center text-dark"
+                ]
+                [ text (t LandingFictionAlert) ]
+            ]
+        , div [ class "container intro-video my-5" ]
             [ View.Video.view (videoToData Video.Landing)
             , div [ class "row my-5 text-center" ]
                 [ div [ class "col-12 text-center" ]
