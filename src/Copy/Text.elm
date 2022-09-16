@@ -248,6 +248,9 @@ t key =
             "Coded collectively by Nick Wade, Kris Sum and Katja Mordaunt"
 
         -- Landing page
+        LandingFictionAlert ->
+            "VECTOR IS FICTIONAL. BIOCORE IS FICTIONAL."
+
         LandingParagraph ->
             "This game uses Google Analytics to improve your experience. By entering BioCore, you agree to Google Analytics cookies being placed on your device."
 
