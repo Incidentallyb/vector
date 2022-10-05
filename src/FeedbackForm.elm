@@ -51,5 +51,8 @@ formSource formId =
         3 ->
             t FeedbackForm3Source
 
+        4 ->
+            t FeedbackForm4Source
+
         _ ->
             ""
