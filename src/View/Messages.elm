@@ -165,7 +165,7 @@ renderMessage message =
         [ div [ class "mx-3" ]
             [ p [ class "message-from m-0" ]
                 [ text message.author ]
-            , if message.basename == "end" then
+            , if message.basename == "end-part1" then
                 View.Video.view (Video.videoToData Video.EndMessage)
 
               else
@@ -199,7 +199,7 @@ renderPrompt message choices checkboxes team =
                   in
                   div []
                     [ -- If there is more than one option to choose, it's an important decision
-                      if List.length message.choices > 1 && message.basename /= "end" then
+                      if List.length message.choices > 1 && message.basename /= "end-part1" && message.basename /= "end-part2" then
                         -- Lovely hack for checkbox messages (only choose-1-2-3 for now)
                         if message.basename == "choose-1-2-3" then
                             div []

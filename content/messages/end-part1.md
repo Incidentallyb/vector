@@ -416,8 +416,8 @@ triggered_by:
   - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|step|feedback|score|two-extra|feedback|score
 
 choices:
-  - send|Submit Your Review
-  - replay|Restart Your Review
+  - feedback|Participate in Local Review Board
+  - continue|Continue
 ---
 
-At BioCore we like to say an ethical review is never complete, only briefly agreed. However, you have now reached the end of this process. Your participation is important to us and we value all your insights. What would you like to do next?
+Thank you for participating.

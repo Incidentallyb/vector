@@ -67,6 +67,7 @@ type Key
     | FeedbackForm1Source
     | FeedbackForm2Source
     | FeedbackForm3Source
+    | FeedbackForm4Source
     | FeedbackFormClose
     | SubmitEndChoices
       --- Emails
