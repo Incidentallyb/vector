@@ -420,4 +420,4 @@ choices:
   - continue|Continue
 ---
 
-What would you like to do next?
+Thank you for participating.
