@@ -827,7 +827,7 @@ triggered_by:
   - init|start|mice|stemcell|feedback|score|step|change|fish|embryo|step|feedback|score|two-extra|feedback|score|continue
 
 choices:
-  - continue|Submit Your Review
+  - send|Submit Your Review
   - replay|Restart Your Review
 ---
 
