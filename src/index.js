@@ -15,12 +15,12 @@ app.ports.enableAnalytics.subscribe(function (hasConsented) {
   const gtag = document.createElement("script");
   gtag.type = "text/javascript";
   gtag.async = true;
-  gtag.src = "https://www.googletagmanager.com/gtag/js?id=G-[cCc]xyz123";
+  gtag.src = "https://www.googletagmanager.com/gtag/js?id=G-XYLPJB4EWF";
 
   const config = document.createElement("script");
   config.type = "text/javascript";
   config.text =
-    "window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments)};gtag('js', new Date()); gtag('config', 'G-[cCc]xyz123');";
+    "window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments)};gtag('js', new Date()); gtag('config', 'G-XYLPJB4EWF');";
 
   document.getElementsByTagName("head")[0].appendChild(gtag);
   document.getElementsByTagName("head")[0].appendChild(config);
